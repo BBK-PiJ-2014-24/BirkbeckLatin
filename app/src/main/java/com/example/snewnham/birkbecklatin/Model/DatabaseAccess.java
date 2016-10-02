@@ -13,11 +13,11 @@ import java.util.List;
  * Created by snewnham on 01/10/2016.
  */
 
-public class Model {
+public class DatabaseAccess {
 
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase database;
-    private static Model instance;
+    private static DatabaseAccess instance;
 
     //
 
@@ -26,7 +26,7 @@ public class Model {
      *
      * @param context
      */
-    private Model(Context context) {
+    private DatabaseAccess(Context context) {
         this.openHelper = new DatabaseHelper(context);
     }
 
@@ -37,9 +37,9 @@ public class Model {
      * @param context the Context
      * @return the instance of DabaseAccess
      */
-    public static Model getInstance(Context context) {
+    public static DatabaseAccess getInstance(Context context) {
         if (instance == null) {
-            instance = new Model(context);
+            instance = new DatabaseAccess(context);
         }
         return instance;
     }
