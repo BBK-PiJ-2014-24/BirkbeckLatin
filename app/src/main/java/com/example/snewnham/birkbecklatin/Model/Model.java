@@ -1,4 +1,4 @@
-package com.example.snewnham.birkbecklatin;
+package com.example.snewnham.birkbecklatin.Model;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * THIS IS THE DOORWAY TO THE DATABASE GENERATING THE SQL COMMANDS
  * Created by snewnham on 01/10/2016.
  */
 
@@ -18,7 +19,7 @@ public class Model {
     private SQLiteDatabase database;
     private static Model instance;
 
-    // DATABASE ACCESS IS THE DOORWAY TO THE DATABASE. IT IS A SINGLETON CLASS
+    //
 
     /**
      * Private constructor to avoid object creation from outside classes.
@@ -26,7 +27,7 @@ public class Model {
      * @param context
      */
     private Model(Context context) {
-        this.openHelper = new DatabaseOpenHelper(context);
+        this.openHelper = new DatabaseHelper(context);
     }
 
 
@@ -36,9 +37,9 @@ public class Model {
      * @param context the Context
      * @return the instance of DabaseAccess
      */
-    public static DatabaseAccess getInstance(Context context) {
+    public static Model getInstance(Context context) {
         if (instance == null) {
-            instance = new DatabaseAccess(context);
+            instance = new Model(context);
         }
         return instance;
     }
@@ -69,7 +70,7 @@ public class Model {
     public List<String> getQuotes() {
         List<String> list = new ArrayList<>();
         //Cursor cursor = database.rawQuery("SELECT str FROM myTable2", null);
-        Cursor cursor = myQuery("myTable2", new String[]{"str"},null, null);
+        Cursor cursor = sqlQuery("myTable2", new String[]{"str"},null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));
@@ -80,7 +81,7 @@ public class Model {
     }
 
 
-    public Cursor myQuery(String table, String[] column, String whereClause, String[] whereArgs) {
+    public Cursor sqlQuery(String table, String[] column, String whereClause, String[] whereArgs) {
 
         Cursor cursor = database.query(
                 table,  // FROM TABLE
