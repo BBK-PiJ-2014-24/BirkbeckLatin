@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * THIS IS THE DOORWAY TO THE DATABASE GENERATING THE SQL COMMANDS
  * Created by snewnham on 01/10/2016.

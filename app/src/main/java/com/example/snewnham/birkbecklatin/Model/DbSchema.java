@@ -5,12 +5,12 @@ package com.example.snewnham.birkbecklatin.Model;
  * Created by snewnham on 02/10/2016.
  */
 
-public class Schema {
+public class DbSchema {
 
     // inner STATIC class - VerbList Table
     // ------------------------------------
     public static final class VerbListTable {
-        public static final String VERBLIST = "VerbList";
+        public static final String TABLENAME = "VerbList";
 
 
         // inner inner STATIC class of the Table - Attributes

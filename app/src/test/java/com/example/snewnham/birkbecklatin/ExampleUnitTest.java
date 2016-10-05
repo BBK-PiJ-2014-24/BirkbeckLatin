@@ -1,6 +1,12 @@
 package com.example.snewnham.birkbecklatin;
 
+import com.example.snewnham.birkbecklatin.Model.DatabaseAccess;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -10,8 +16,14 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
+
+
+
     @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+
+
+
 }
