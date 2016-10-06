@@ -10,7 +10,7 @@ public class DbSchema {
     // inner STATIC class - VerbList Table
     // ------------------------------------
     public static final class VerbListTable {
-        public static final String TABLENAME = "VerbList";
+        public static final String VERBTABLE = "VerbList";
 
 
         // inner inner STATIC class of the Table - Attributes

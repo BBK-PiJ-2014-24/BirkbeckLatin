@@ -10,7 +10,7 @@ public class Verb {
     // Fields
     // ------
     private int mId;
-    private String mLatin_ConjName;
+    private int mLatin_ConjNum;
     private String mLatin_Present;
     private String mLatin_Infinitive;
     private String mLatin_Participle;
@@ -33,12 +33,12 @@ public class Verb {
 
     // Getter/Setters
     // --------------
-    public String getLatin_ConjName() {
-        return mLatin_ConjName;
+    public int getLatin_ConjNum() {
+        return mLatin_ConjNum;
     }
 
-    public void setLatin_ConjName(String latin_ConjName) {
-        mLatin_ConjName = latin_ConjName;
+    public void setLatin_ConjName(int latin_ConjNum) {
+        mLatin_ConjNum = latin_ConjNum;
     }
 
     public String getLatin_Present() {
