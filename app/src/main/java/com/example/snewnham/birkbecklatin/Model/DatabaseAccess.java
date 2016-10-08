@@ -151,14 +151,16 @@ public class DatabaseAccess {
      * @return
      */
 
-    public String sqlVerbStemQuery(String mood, String voice, String tense) {
+    public String sqlVerbStemQuery(String number, String mood, String voice, String tense) {
 
         String table = VERB_STEM_TABLE;  // FROM VerbStemTable
         String[] column = new String[]{DbSchema.LatinVerbStemTable.Cols.STEM};  // SELECT STEM
-        String whereClause = DbSchema.LatinVerbStemTable.Cols.MOOD + "=?" + " AND " +  // WHERE ... AND
+        String whereClause = DbSchema.LatinVerbStemTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                             DbSchema.LatinVerbStemTable.Cols.MOOD + "=?" + " AND " +
                              DbSchema.LatinVerbStemTable.Cols.VOICE + "=?" + " AND " +
                              DbSchema.LatinVerbStemTable.Cols.TENSE + "=?";
-        String[] whereArgs = new String[]{mood, voice, tense};
+
+        String[] whereArgs = new String[]{number, mood, voice, tense};
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
         cursor.moveToFirst();
         String stem = cursor.getString(cursor.getColumnIndex(DbSchema.LatinVerbStemTable.Cols.STEM));

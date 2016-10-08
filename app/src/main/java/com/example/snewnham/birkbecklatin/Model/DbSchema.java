@@ -42,13 +42,14 @@ public class DbSchema {
     // inner STATIC class - LatinVerbStem Table
     // ----------------------------------------
     public static final class LatinVerbStemTable {
-        public static final String VERB_STEM_TABLE = "LatinVerbStem";
+        public static final String VERB_STEM_TABLE = "VerbStem";
 
 
         // inner inner STATIC class of the Table - Attributes
         // ------------------------
         public static final class Cols {
             public static final String _id = "_id";
+            public static final String NUMBER = "Number";
             public static final String MOOD = "Mood";
             public static final String VOICE = "Voice";
             public static final String TENSE = "Tense";

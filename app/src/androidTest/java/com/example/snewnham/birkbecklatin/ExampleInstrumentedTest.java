@@ -48,7 +48,7 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void testDBAccess() throws Exception {
-        String table = VERBTABLE;
+        String table = VERB_LIST_TABLE;
         String[] column = new String[]{Cols.LATIN_INFINITIVE};
         String whereClause = "_id=?";
         String[] whereArgs = new String[]{"2"};
@@ -61,7 +61,7 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void testDBAccess2() throws Exception {
-        String table = VERBTABLE;
+        String table = VERB_LIST_TABLE;
         String[] column = null;
         String whereClause = "_id=?";
         String[] whereArgs = new String[]{"2"};
@@ -147,13 +147,25 @@ public class ExampleInstrumentedTest {
 
         // test answers
         // ------------
-        String mood = "Indicative";
-        String voice = "Active";
-        String tense = "Present";
-        String ans = "Present";
+        String number1 = "Singular";
+        String mood1 = "Indicative";
+        String voice1 = "Active";
+        String tense1 = "Present";
+        String ans1 = "Present";
 
-        String stem = databaseAccess.sqlVerbStemQuery();
-        assertEquals(ans, stem);
+        String stem1 = databaseAccess.sqlVerbStemQuery(number1, mood1, voice1, tense1);
+        assertEquals(ans1, stem1);
+
+
+        String number2 = "Singular";
+        String mood2 = "Imperative";
+        String voice2 = "Active";
+        String tense2 = "Imperative";
+        String ans2 = "Present";
+
+        String stem2 = databaseAccess.sqlVerbStemQuery(number2, mood2, voice2, tense2);
+        assertEquals(ans2, stem2);
+
 
     }
 
