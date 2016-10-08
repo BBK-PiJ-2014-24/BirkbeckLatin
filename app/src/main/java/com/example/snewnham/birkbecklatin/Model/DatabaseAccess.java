@@ -10,7 +10,7 @@ import java.util.List;
 
 
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbListTable.VERB_LIST_TABLE;
-import static com.example.snewnham.birkbecklatin.Model.DbSchema.LatinVerbStemTable.VERB_STEM_TABLE;
+import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbStemTable.VERB_STEM_TABLE;
 
 
 /**
@@ -154,16 +154,16 @@ public class DatabaseAccess {
     public String sqlVerbStemQuery(String number, String mood, String voice, String tense) {
 
         String table = VERB_STEM_TABLE;  // FROM VerbStemTable
-        String[] column = new String[]{DbSchema.LatinVerbStemTable.Cols.STEM};  // SELECT STEM
-        String whereClause = DbSchema.LatinVerbStemTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
-                             DbSchema.LatinVerbStemTable.Cols.MOOD + "=?" + " AND " +
-                             DbSchema.LatinVerbStemTable.Cols.VOICE + "=?" + " AND " +
-                             DbSchema.LatinVerbStemTable.Cols.TENSE + "=?";
+        String[] column = new String[]{DbSchema.VerbStemTable.Cols.STEM};  // SELECT STEM
+        String whereClause = DbSchema.VerbStemTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                             DbSchema.VerbStemTable.Cols.MOOD + "=?" + " AND " +
+                             DbSchema.VerbStemTable.Cols.VOICE + "=?" + " AND " +
+                             DbSchema.VerbStemTable.Cols.TENSE + "=?";
 
         String[] whereArgs = new String[]{number, mood, voice, tense};
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
         cursor.moveToFirst();
-        String stem = cursor.getString(cursor.getColumnIndex(DbSchema.LatinVerbStemTable.Cols.STEM));
+        String stem = cursor.getString(cursor.getColumnIndex(DbSchema.VerbStemTable.Cols.STEM));
         return stem;
     }
 

@@ -14,7 +14,7 @@ public class DbSchema {
 
 
         // inner inner STATIC class of the Table - Attributes
-        // ------------------------
+        // -------------------------------------
         public static final class Cols {
             public static final String _id = "_id";
             public static final String LATIN_TYPE = "Latin_Type";
@@ -39,14 +39,14 @@ public class DbSchema {
 
     }
 
-    // inner STATIC class - LatinVerbStem Table
+    // inner STATIC class - VerbStem Table
     // ----------------------------------------
-    public static final class LatinVerbStemTable {
+    public static final class VerbStemTable {
         public static final String VERB_STEM_TABLE = "VerbStem";
 
 
         // inner inner STATIC class of the Table - Attributes
-        // ------------------------
+        // -------------------------------------
         public static final class Cols {
             public static final String _id = "_id";
             public static final String NUMBER = "Number";
@@ -54,6 +54,27 @@ public class DbSchema {
             public static final String VOICE = "Voice";
             public static final String TENSE = "Tense";
             public static final String STEM = "Stem";
+        }
+    }
+
+
+    // inner STATIC class - VerbConjugation Table
+    // ----------------------------------------
+    public static final class VerbConjugationTable {
+        public static final String VERB_CONJ_TABLE = "VerbConjugation";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String PERSON = "Person";
+            public static final String NUMBER = "Number";
+            public static final String MOOD = "Mood";
+            public static final String VOICE = "Voice";
+            public static final String TENSE = "Tense";
+            public static final String CONJNUM = "ConjNum";
+            public static final String CONJ = "Conj";
         }
     }
 
