@@ -10,7 +10,7 @@ public class DbSchema {
     // inner STATIC class - VerbList Table
     // ------------------------------------
     public static final class VerbListTable {
-        public static final String VERBTABLE = "VerbList";
+        public static final String VERB_LIST_TABLE = "VerbList";
 
 
         // inner inner STATIC class of the Table - Attributes
@@ -38,6 +38,26 @@ public class DbSchema {
         }
 
     }
+
+    // inner STATIC class - LatinVerbStem Table
+    // ----------------------------------------
+    public static final class LatinVerbStemTable {
+        public static final String VERB_STEM_TABLE = "LatinVerbStem";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // ------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String MOOD = "MOOD";
+            public static final String VOICE = "VOICE";
+            public static final String STEM = "STEM";
+        }
+    }
+
+
+
+
 }
 
 
