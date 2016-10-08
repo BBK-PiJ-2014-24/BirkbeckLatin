@@ -88,7 +88,6 @@ public class ExampleInstrumentedTest {
 
         // test answers
         // ------------
-
         int id = 2;
         String latin_Type = "Regular";
         int latin_ConjNum = 2;
@@ -136,8 +135,31 @@ public class ExampleInstrumentedTest {
         assertEquals( english_Perfect, verb.getEnglish_Perfect() );
         assertEquals( english_Participle, verb.getEnglish_Participle() );
 
+    }
+
+    /**
+     * testLatinVerbStem()
+     * ===================
+     * Test sqlVerbStemQuery to select the correct stem for a latin verb
+     */
+    @Test
+    public void testLatinVerbStem() {
+
+        // test answers
+        // ------------
+        String mood = "Indicative";
+        String voice = "Active";
+        String tense = "Present";
+        String ans = "Present";
+
+        String stem = databaseAccess.sqlVerbStemQuery();
+        assertEquals(ans, stem);
 
     }
+
+
+
+
 
     @After
     public void breakDown() {
