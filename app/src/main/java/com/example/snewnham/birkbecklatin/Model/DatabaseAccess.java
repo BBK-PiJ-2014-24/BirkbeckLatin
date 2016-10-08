@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbListTable.VERBTABLE;
+
 
 /**
  * THIS IS THE DOORWAY TO THE DATABASE GENERATING THE SQL COMMANDS
@@ -70,7 +72,6 @@ public class DatabaseAccess {
 
 
     /**
-     *
      * Read all quotes from the database.
      *
      * @return a List of quotes
@@ -112,11 +113,31 @@ public class DatabaseAccess {
                 null // ORDER BY
         );
         return new LatinCursorWrapper(cursor);
-
     }
 
+    /**
+     * sqlVerbQuery(int id)
+     * ====================
+     * Runs an SQL query to select a verb from the VerbList Table given the row Id.
+     * The method then converts the sql cursor to an object.
+     * @param id - row Number of Verb in the db's VerbList
+     * @return verb object
+     */
 
-    public
+
+    public Verb sqlVerbQuery(int id) {
+        String strId = Integer.toString(id);
+        String table = VERBTABLE;           // FROM Table = VerbList
+        String[] column = null;             // SELECT *
+        String whereClause = "_id=?";
+        String[] whereArgs = new String[]{strId}; // WHERE _id =
+
+        LatinCursorWrapper cursor = sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        cursor.moveToFirst();
+        Verb verb = cursor.turnCursorToVerb();  // Convert Query from Cursor to object.
+        return verb;
+
+    }
 
 
 
