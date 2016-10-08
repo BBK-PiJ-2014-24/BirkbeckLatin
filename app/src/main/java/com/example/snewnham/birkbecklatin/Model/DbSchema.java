@@ -49,9 +49,10 @@ public class DbSchema {
         // ------------------------
         public static final class Cols {
             public static final String _id = "_id";
-            public static final String MOOD = "MOOD";
-            public static final String VOICE = "VOICE";
-            public static final String STEM = "STEM";
+            public static final String MOOD = "Mood";
+            public static final String VOICE = "Voice";
+            public static final String TENSE = "Tense";
+            public static final String STEM = "Stem";
         }
     }
 

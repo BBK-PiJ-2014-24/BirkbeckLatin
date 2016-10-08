@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbListTable.VERBTABLE;
+
+import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbListTable.VERB_LIST_TABLE;
+import static com.example.snewnham.birkbecklatin.Model.DbSchema.LatinVerbStemTable.VERB_STEM_TABLE;
 
 
 /**
@@ -127,7 +129,7 @@ public class DatabaseAccess {
 
     public Verb sqlVerbQuery(int id) {
         String strId = Integer.toString(id);
-        String table = VERBTABLE;           // FROM Table = VerbList
+        String table = VERB_LIST_TABLE;           // FROM Table = VerbList
         String[] column = null;             // SELECT *
         String whereClause = "_id=?";
         String[] whereArgs = new String[]{strId}; // WHERE _id =
@@ -138,6 +140,31 @@ public class DatabaseAccess {
         return verb;
 
     }
+
+    /**
+     * sqlVerbStemQuery(String mood, String voice, String tense)
+     * =========================================================
+     * a SQL query to select the correct stem for a Latin Verb, given mood, voice, tense.
+     * @param mood
+     * @param voice
+     * @param tense
+     * @return
+     */
+
+    public String sqlVerbStemQuery(String mood, String voice, String tense) {
+
+        String table = VERB_STEM_TABLE;  // FROM VerbStemTable
+        String[] column = new String[]{DbSchema.LatinVerbStemTable.Cols.STEM};  // SELECT STEM
+        String whereClause = DbSchema.LatinVerbStemTable.Cols.MOOD + "=?" + " AND " +  // WHERE ... AND
+                             DbSchema.LatinVerbStemTable.Cols.VOICE + "=?" + " AND " +
+                             DbSchema.LatinVerbStemTable.Cols.TENSE + "=?";
+        String[] whereArgs = new String[]{mood, voice, tense};
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
+        String stem = cursor.getString(cursor.getColumnIndex(DbSchema.LatinVerbStemTable.Cols.STEM));
+        return stem;
+    }
+
 
 
 
