@@ -90,15 +90,17 @@ public class DatabaseAccess {
 
 
     /**
-     * sqlQuery
+     * sqlQuery()
+     * ==========
+     * Runs a SQL query on the DB.
      * @param table
      * @param column
      * @param whereClause
      * @param whereArgs
-     * @return
+     * @return returns a cursor that is wrapped - the LatinCursorWrapper - which converts db data to Java objectss
      */
 
-    public Cursor sqlQuery(String table, String[] column, String whereClause, String[] whereArgs) {
+    public LatinCursorWrapper sqlQuery(String table, String[] column, String whereClause, String[] whereArgs) {
 
         Cursor cursor = database.query(
                 table,  // FROM TABLE
@@ -109,9 +111,12 @@ public class DatabaseAccess {
                 null, // HAVING
                 null // ORDER BY
         );
-        return cursor;
+        return new LatinCursorWrapper(cursor);
+
     }
 
+
+    public
 
 
 

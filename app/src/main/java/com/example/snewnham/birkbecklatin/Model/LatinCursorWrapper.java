@@ -17,13 +17,13 @@ public class LatinCursorWrapper extends CursorWrapper {
 
 
     /**
-     * getVerb()
+     * turnCursorToVerb()
      * ---------
      * converts a cursor into a Verb object
      * @return verb object
      */
 
-    public Verb getVerb() {
+    public Verb turnCursorToVerb() {
 
         // Pull data from the Cursor
         //--------------------------
