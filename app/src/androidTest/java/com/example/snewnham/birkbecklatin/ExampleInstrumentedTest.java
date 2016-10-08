@@ -85,39 +85,53 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void testDatabaseToVerb() throws Exception {
-        int id = 2;
-        int latin_ConjNum = 2;
+
         // test answers
         // ------------
-        String latin_Present = "moneo";
+
+        int id = 2;
+        String latin_Type = "Regular";
+        int latin_ConjNum = 2;
+
+        String latin_Present = "moneo";        // Participle Parts
         String latin_Infinitive = "monere";
         String latin_Perfect = "monui";
         String latin_Participle = "monitus";
-        String latin_Present_Stem = "monui";
-        String latin_Infinitive_Stem = "mon";
+
+        String latin_Present_Stem = "mon";     // Stems
+        String latin_Infinitive_Stem = "moner";
         String latin_Infinitive_StemMod = "monea";
         String latin_Perfect_Stem = "monu";
         String latin_Participle_Stem = "monit";
-        String english_Infinitive = "warn/advise";
-        String english_Present_3rdPerson = "warns/advises";
-        String english_Perfect = "warned/advised";
-        String english_Participle = "warning/advising";
+
+        String english_Infinitive = "warn, advise";    // English
+        String english_Present_3rdPerson = "warns, advises";
+        String english_Perfect = "warned, advised";
+        String english_Participle = "warning, advising";
+
+        // Run Query
+        // ---------
+        Verb verb = databaseAccess.sqlVerbQuery(id);
 
 
         // test the Verb Fields
         // --------------------
         assertEquals( id, verb.getId());
+        assertEquals( latin_Type, verb.getLatin_Type() );
         assertEquals( latin_ConjNum, verb.getLatin_ConjNum());
-        assertEquals( latin_Present, verb.getLatin_Present() );
+
+        assertEquals( latin_Present, verb.getLatin_Present() );   // Priciple Parts
         assertEquals( latin_Infinitive, verb.getLatin_Infinitive() );
         assertEquals( latin_Perfect, verb.getLatin_Perfect() );
         assertEquals( latin_Participle, verb.getLatin_Participle() );
-        assertEquals( latin_Present_Stem, verb.getLatin_Participle() );
+
+        assertEquals( latin_Present_Stem, verb.getLatin_Present_Stem() );    // Stems
         assertEquals( latin_Infinitive_Stem, verb.getLatin_Infinitive_Stem() );
         assertEquals( latin_Infinitive_StemMod, verb.getLatin_Infinitive_StemMod() );
         assertEquals( latin_Perfect_Stem, verb.getLatin_Perfect_Stem() );
         assertEquals( latin_Participle_Stem, verb.getLatin_Participle_Stem() );
-        assertEquals( english_Infinitive, verb.getEnglish_Infinitive() );
+
+        assertEquals( english_Infinitive, verb.getEnglish_Infinitive() );     // English
         assertEquals( english_Present_3rdPerson, verb.getEnglish_Present_3rdPerson() );
         assertEquals( english_Perfect, verb.getEnglish_Perfect() );
         assertEquals( english_Participle, verb.getEnglish_Participle() );

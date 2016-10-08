@@ -10,6 +10,7 @@ public class Verb {
     // Fields
     // ------
     private int mId;
+    private String mLatin_Type;
     private int mLatin_ConjNum;
     private String mLatin_Present;
     private String mLatin_Infinitive;
@@ -26,6 +27,7 @@ public class Verb {
     private String mEnglish_Participle;
 
 
+
     // Constructor
     // -----------
     public Verb(int id) {
@@ -38,6 +40,16 @@ public class Verb {
 
     public int getId() {return mId;}
 
+
+    public String getLatin_Type() {
+        return mLatin_Type;
+    }
+
+    public void setLatin_Type(String latin_Type) {
+        mLatin_Type = latin_Type;
+    }
+
+
     public int getLatin_ConjNum() {
         return mLatin_ConjNum;
     }
@@ -45,6 +57,7 @@ public class Verb {
     public void setLatin_ConjName(int latin_ConjNum) {
         mLatin_ConjNum = latin_ConjNum;
     }
+
 
     public String getLatin_Present() {
         return mLatin_Present;
@@ -54,6 +67,7 @@ public class Verb {
         mLatin_Present = latin_Present;
     }
 
+
     public String getLatin_Infinitive() {
         return mLatin_Infinitive;
     }
@@ -61,6 +75,7 @@ public class Verb {
     public void setLatin_Infinitive(String latin_Infinitive) {
         mLatin_Infinitive = latin_Infinitive;
     }
+
 
     public String getLatin_Perfect() {
         return mLatin_Perfect;
@@ -70,6 +85,7 @@ public class Verb {
         mLatin_Perfect = latin_Perfect;
     }
 
+
     public String getLatin_Participle() {
         return mLatin_Participle;
     }
@@ -77,6 +93,7 @@ public class Verb {
     public void setLatin_Participle(String latin_Participle) {
         mLatin_Participle = latin_Participle;
     }
+
 
     public String getLatin_Present_Stem() {
         return mLatin_Present_Stem;
@@ -86,6 +103,7 @@ public class Verb {
         mLatin_Present_Stem = latin_Present_Stem;
     }
 
+
     public String getLatin_Infinitive_Stem() {
         return mLatin_Infinitive_Stem;
     }
@@ -93,6 +111,7 @@ public class Verb {
     public void setLatin_Infinitive_Stem(String latin_Infinitive_Stem) {
         mLatin_Infinitive_Stem = latin_Infinitive_Stem;
     }
+
 
     public String getLatin_Infinitive_StemMod() {
         return mLatin_Infinitive_StemMod;
@@ -102,6 +121,7 @@ public class Verb {
         mLatin_Infinitive_StemMod = latin_Infinitive_StemMod;
     }
 
+
     public String getLatin_Perfect_Stem() {
         return mLatin_Perfect_Stem;
     }
@@ -109,6 +129,7 @@ public class Verb {
     public void setLatin_Perfect_Stem(String latin_Perfect_Stem) {
         mLatin_Perfect_Stem = latin_Perfect_Stem;
     }
+
 
     public String getLatin_Participle_Stem() {
         return mLatin_Participle_Stem;
@@ -118,6 +139,7 @@ public class Verb {
         mLatin_Participle_Stem = latin_Participle_Stem;
     }
 
+
     public String getEnglish_Infinitive() {
         return mEnglish_Infinitive;
     }
@@ -125,6 +147,7 @@ public class Verb {
     public void setEnglish_Infinitive(String english_Infinitive) {
         mEnglish_Infinitive = english_Infinitive;
     }
+
 
     public String getEnglish_Present_3rdPerson() {
         return mEnglish_Present_3rdPerson;
@@ -134,6 +157,7 @@ public class Verb {
         mEnglish_Present_3rdPerson = english_Present_3rdPerson;
     }
 
+
     public String getEnglish_Perfect() {
         return mEnglish_Perfect;
     }
@@ -141,6 +165,7 @@ public class Verb {
     public void setEnglish_Perfect(String english_Perfect) {
         mEnglish_Perfect = english_Perfect;
     }
+
 
     public String getEnglish_Participle() {
         return mEnglish_Participle;
