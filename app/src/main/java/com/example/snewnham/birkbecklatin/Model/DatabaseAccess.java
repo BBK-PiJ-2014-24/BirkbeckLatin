@@ -24,7 +24,7 @@ public class DatabaseAccess {
 
     /**
      * Private constructor to avoid object creation from outside classes.
-     *
+     * ===================
      * @param context
      */
     private DatabaseAccess(Context context) {
@@ -33,6 +33,8 @@ public class DatabaseAccess {
 
 
     /**
+     * getInstance()
+     * =============
      * Return a singleton instance of DatabaseAccess.
      *
      * @param context the Context
@@ -47,6 +49,8 @@ public class DatabaseAccess {
 
 
     /**
+     * open()
+     * ======
      * Open the database connection.
      */
     public void open() {
@@ -54,6 +58,8 @@ public class DatabaseAccess {
     }
 
     /**
+     * close()
+     * =======
      * Close the database connection.
      */
     public void close() {
@@ -64,6 +70,7 @@ public class DatabaseAccess {
 
 
     /**
+     *
      * Read all quotes from the database.
      *
      * @return a List of quotes
@@ -82,6 +89,15 @@ public class DatabaseAccess {
     }
 
 
+    /**
+     * sqlQuery
+     * @param table
+     * @param column
+     * @param whereClause
+     * @param whereArgs
+     * @return
+     */
+
     public Cursor sqlQuery(String table, String[] column, String whereClause, String[] whereArgs) {
 
         Cursor cursor = database.query(
@@ -95,6 +111,9 @@ public class DatabaseAccess {
         );
         return cursor;
     }
+
+
+
 
 
 }

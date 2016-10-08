@@ -17,7 +17,7 @@ public class DbSchema {
         // ------------------------
         public static final class Cols {
             public static final String _id = "_id";
-            public static final String LATIN_CONJNAME = "Latin_ConjName";
+            public static final String LATIN_CONJNUM = "Latin_ConjName";
             public static final String LATIN_PRESENT = "Latin_Present";
             public static final String LATIN_INFINITIVE = "Latin_Infinitive";
             public static final String LATIN_PERFECT = "Latin_Perfect";

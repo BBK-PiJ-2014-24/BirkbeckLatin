@@ -13,6 +13,7 @@ public class Verb {
     private int mLatin_ConjNum;
     private String mLatin_Present;
     private String mLatin_Infinitive;
+    private String mLatin_Perfect;
     private String mLatin_Participle;
     private String mLatin_Present_Stem;
     private String mLatin_Infinitive_Stem;
@@ -24,6 +25,7 @@ public class Verb {
     private String mEnglish_Perfect;
     private String mEnglish_Participle;
 
+
     // Constructor
     // -----------
     public Verb(int id) {
@@ -33,6 +35,9 @@ public class Verb {
 
     // Getter/Setters
     // --------------
+
+    public int getId() {return mId;}
+
     public int getLatin_ConjNum() {
         return mLatin_ConjNum;
     }
@@ -55,6 +60,14 @@ public class Verb {
 
     public void setLatin_Infinitive(String latin_Infinitive) {
         mLatin_Infinitive = latin_Infinitive;
+    }
+
+    public String getLatin_Perfect() {
+        return mLatin_Perfect;
+    }
+
+    public void setLatin_Perfect(String latin_Perfect) {
+        mLatin_Perfect = latin_Perfect;
     }
 
     public String getLatin_Participle() {
