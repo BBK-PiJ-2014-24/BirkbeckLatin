@@ -218,6 +218,7 @@ public class ExampleInstrumentedTest {
      * ========================
      * Test testEnglishPersonTable to select the correct English Person.
      */
+    @Test
     public void testEnglishPersonTable() {
 
         // test input + answers
