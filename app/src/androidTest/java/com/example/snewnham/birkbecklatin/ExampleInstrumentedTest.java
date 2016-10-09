@@ -212,9 +212,6 @@ public class ExampleInstrumentedTest {
 
         String engAuxVerb = databaseAccess.sqlEngAuxVerbQuery(person1, number1, mood1, voice1, tense1);
         assertEquals(ans, engAuxVerb );
-
-
-
     }
 
 

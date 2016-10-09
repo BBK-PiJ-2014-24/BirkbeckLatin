@@ -12,7 +12,7 @@ import java.util.List;
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbListTable.VERB_LIST_TABLE;
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbStemTable.VERB_STEM_TABLE;
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbConjugationTable.VERB_CONJ_TABLE;
-
+import static com.example.snewnham.birkbecklatin.Model.DbSchema.EnglishAuxillaryVerbTable.ENG_AUX_VERB_TABLE;
 
 /**
  * THIS IS THE DOORWAY TO THE DATABASE GENERATING THE SQL COMMANDS
@@ -203,7 +203,38 @@ public class DatabaseAccess {
         return verbEnding;
     }
 
+    /**
+     * sqlEngAuxVerbQuery(String person, String number, String mood, String voice, String tense)
+     * ==================
+     * a SQL query to select the correct English Auxiliary Verb for a Latin Verb translation
+     * @param person
+     * @param number
+     * @param mood
+     * @param voice
+     * @param tense
+     * @return
+     */
 
+    public String sqlEngAuxVerbQuery(String person, String number, String mood, String voice, String tense) {
+
+        String table = ENG_AUX_VERB_TABLE;  // FROM EnglishAuxiliaryTable
+        String[] column = new String[]{DbSchema.EnglishAuxillaryVerbTable.Cols.ENG_AUX_VERB};  // SELECT Eng_Aux_Verb
+
+        String whereClause = DbSchema.EnglishAuxillaryVerbTable.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND
+                DbSchema.EnglishAuxillaryVerbTable.Cols.NUMBER + "=?" + " AND " +
+                DbSchema.EnglishAuxillaryVerbTable.Cols.MOOD + "=?" + " AND " +
+                DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE + "=?" + " AND " +
+                DbSchema.EnglishAuxillaryVerbTable.Cols.TENSE + "=?";
+
+        String[] whereArgs = new String[]{person, number, mood, voice, tense};
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
+
+        String engAuxVerb = cursor.getString(cursor.getColumnIndex(DbSchema.EnglishAuxillaryVerbTable.Cols.ENG_AUX_VERB));
+
+        return engAuxVerb;
+    }
 
 
 
