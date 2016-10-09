@@ -111,7 +111,7 @@ public class DbSchema {
             public static final String _id = "_id";
             public static final String PERSON = "Person";
             public static final String NUMBER = "Number";
-            public static final String ENGLISH_PERSON = "English_Person_Word";
+            public static final String ENGLISH_PERSON_WORD = "English_Person_Word";
         }
     }
 

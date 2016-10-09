@@ -228,7 +228,7 @@ public class ExampleInstrumentedTest {
         String ans = "he/she ";
 
         String engPerson = databaseAccess.sqlEngPersonQuery(person1, number1);
-        assertEquals(ans, engAuxVerb );
+        assertEquals(ans, engPerson );
 
     }
 

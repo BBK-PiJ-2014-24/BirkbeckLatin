@@ -13,7 +13,7 @@ import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbListTable.VE
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbStemTable.VERB_STEM_TABLE;
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbConjugationTable.VERB_CONJ_TABLE;
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.EnglishAuxillaryVerbTable.ENG_AUX_VERB_TABLE;
-
+import static com.example.snewnham.birkbecklatin.Model.DbSchema.EnglishPersonsTable.ENG_PERSON_TABLE;
 /**
  * THIS IS THE DOORWAY TO THE DATABASE GENERATING THE SQL COMMANDS
  * Created by snewnham on 01/10/2016.
@@ -145,7 +145,7 @@ public class DatabaseAccess {
     /**
      * sqlVerbStemQuery(String mood, String voice, String tense)
      * =========================================================
-     * a SQL query to select the correct stem for a Latin Verb, given mood, voice, tense.
+     * A SQL query to select the correct stem for a Latin Verb, given mood, voice, tense.
      * @param mood
      * @param voice
      * @param tense
@@ -173,7 +173,7 @@ public class DatabaseAccess {
     /**
      * sqlVerbEndingQuery(String person, String number, String mood, String voice, String tense, String conjnum)
      * =================
-     * a SQL query to select the correct Ending for a Latin Verb, given mood, voice, tense etc.
+     * A SQL query to select the correct Ending for a Latin Verb, given mood, voice, tense etc.
      * @param person
      * @param number
      * @param mood
@@ -206,7 +206,7 @@ public class DatabaseAccess {
     /**
      * sqlEngAuxVerbQuery(String person, String number, String mood, String voice, String tense)
      * ==================
-     * a SQL query to select the correct English Auxiliary Verb for a Latin Verb translation
+     * A SQL query to select the correct English Auxiliary Verb for a Latin Verb translation
      * @param person
      * @param number
      * @param mood
@@ -234,6 +234,33 @@ public class DatabaseAccess {
         String engAuxVerb = cursor.getString(cursor.getColumnIndex(DbSchema.EnglishAuxillaryVerbTable.Cols.ENG_AUX_VERB));
 
         return engAuxVerb;
+    }
+
+
+    /**
+     * sqlEngPersonQuery(String person, String number)
+     * =================
+     * A SQL query to select the correct English Person Word for a Latin Verb translation
+     * @param person
+     * @param number
+     */
+    public String sqlEngPersonQuery(String person, String number) {
+
+        String table = ENG_PERSON_TABLE;  // FROM EnglishPerson Table
+        String[] column = new String[]{DbSchema.EnglishPersonsTable.Cols.ENGLISH_PERSON_WORD};  // SELECT Eng_Person_Word
+
+        String whereClause = DbSchema.EnglishPersonsTable.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND
+                DbSchema.EnglishPersonsTable.Cols.NUMBER + "=?";
+
+        String[] whereArgs = new String[]{person, number};
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
+
+        String engPersonWord = cursor.getString(cursor.getColumnIndex(DbSchema.EnglishPersonsTable.Cols.ENGLISH_PERSON_WORD));
+
+        return engPersonWord;
+
     }
 
 
