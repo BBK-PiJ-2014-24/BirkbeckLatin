@@ -145,8 +145,8 @@ public class ExampleInstrumentedTest {
     @Test
     public void testLatinVerbStem() {
 
-        // test answers
-        // ------------
+        // test input + answers
+        // --------------------
         String number1 = "Singular";
         String mood1 = "Indicative";
         String voice1 = "Active";
@@ -165,6 +165,30 @@ public class ExampleInstrumentedTest {
 
         String stem2 = databaseAccess.sqlVerbStemQuery(number2, mood2, voice2, tense2);
         assertEquals(ans2, stem2);
+    }
+
+
+    /**
+     * testLatinVerbConjugation()
+     * ==========================
+     * Test sqlVerbConjugationQuery to select the correct ENDING for a latin verb
+     */
+    @Test
+    public void testLatinVerbConjugation() {
+
+        // test input + answers
+        // --------------------
+        String id1 = "100";
+        String person1 = "1st";
+        String number1 = "Plural";
+        String mood1 = "Indicative";
+        String voice1 = "Active";
+        String tense1 = "Pluperfect";
+        String conjnum1 = "1";
+        String conj1 = "eramus";
+
+        String latinEnding = databaseAccess.sqlVerbEndingQuery(person1, number1, mood1, voice1, tense1, conjnum1);
+        assertEquals(conj1, latinEnding);
 
 
     }
