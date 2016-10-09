@@ -11,6 +11,7 @@ import java.util.List;
 
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbListTable.VERB_LIST_TABLE;
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbStemTable.VERB_STEM_TABLE;
+import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbConjugationTable.VERB_CONJ_TABLE;
 
 
 /**
@@ -161,10 +162,45 @@ public class DatabaseAccess {
                              DbSchema.VerbStemTable.Cols.TENSE + "=?";
 
         String[] whereArgs = new String[]{number, mood, voice, tense};
+
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
         cursor.moveToFirst();
         String stem = cursor.getString(cursor.getColumnIndex(DbSchema.VerbStemTable.Cols.STEM));
         return stem;
+    }
+
+
+    /**
+     * sqlVerbEndingQuery(String person, String number, String mood, String voice, String tense, String conjnum)
+     * =================
+     * a SQL query to select the correct Ending for a Latin Verb, given mood, voice, tense etc.
+     * @param person
+     * @param number
+     * @param mood
+     * @param voice
+     * @param tense
+     * @param conjnum
+     * @return
+     */
+    public String sqlVerbEndingQuery(String person, String number, String mood, String voice, String tense, String conjnum) {
+
+        String table = VERB_CONJ_TABLE;  // FROM VerbConjTable
+        String[] column = new String[]{DbSchema.VerbConjugationTable.Cols.CONJ};  // SELECT CONJ
+        String whereClause = DbSchema.VerbConjugationTable.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND
+                DbSchema.VerbConjugationTable.Cols.NUMBER + "=?" + " AND " +
+                DbSchema.VerbConjugationTable.Cols.MOOD + "=?" + " AND " +
+                DbSchema.VerbConjugationTable.Cols.VOICE + "=?" + " AND " +
+                DbSchema.VerbConjugationTable.Cols.TENSE + "=?" + " AND " +
+                DbSchema.VerbConjugationTable.Cols.CONJNUM + "=?";
+
+        String[] whereArgs = new String[]{person, number, mood, voice, tense, conjnum};
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
+
+        String verbEnding = cursor.getString(cursor.getColumnIndex(DbSchema.VerbConjugationTable.Cols.CONJ));
+
+        return verbEnding;
     }
 
 
