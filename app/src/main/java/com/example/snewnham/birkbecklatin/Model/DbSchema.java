@@ -99,6 +99,23 @@ public class DbSchema {
     }
 
 
+    // inner STATIC class - EnglishPersons Table
+    // ------------------------------------------
+    public static final class EnglishPersonsTable {
+        public static final String ENG_PERSON_TABLE = "English_Persons";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String PERSON = "Person";
+            public static final String NUMBER = "Number";
+            public static final String ENGLISH_PERSON = "English_Person_Word";
+        }
+    }
+
+
 
 
 }

@@ -199,7 +199,6 @@ public class ExampleInstrumentedTest {
      */
     @Test
     public void testEnglishAuxiliaryVerbTable() {
-
         // test input + answers
         // --------------------
         String id1 = "100";
@@ -213,6 +212,8 @@ public class ExampleInstrumentedTest {
         String engAuxVerb = databaseAccess.sqlEngAuxVerbQuery(person1, number1, mood1, voice1, tense1);
         assertEquals(ans, engAuxVerb );
     }
+
+
 
 
 
