@@ -208,7 +208,7 @@ public class ExampleInstrumentedTest {
         String mood1 = "Subjunctive";
         String voice1 = "Active";
         String tense1 = "Pluperfect";
-        String ans = "would have";
+        String ans = "would have ";
 
         String engAuxVerb = databaseAccess.sqlEngAuxVerbQuery(person1, number1, mood1, voice1, tense1);
         assertEquals(ans, engAuxVerb );

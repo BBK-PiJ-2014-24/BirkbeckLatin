@@ -81,7 +81,7 @@ public class DbSchema {
     // inner STATIC class - EnglishAuxiliaryVerb Table
     // ------------------------------------------------
     public static final class EnglishAuxillaryVerbTable {
-        public static final String ENG_AUX_VERB_TABLE = "EnglishAuxiliaryVerbs";
+        public static final String ENG_AUX_VERB_TABLE = "English_Auxiliary_Verbs";
 
 
         // inner inner STATIC class of the Table - Attributes
@@ -93,7 +93,7 @@ public class DbSchema {
             public static final String MOOD = "Mood";
             public static final String VOICE = "Voice";
             public static final String TENSE = "Tense";
-            public static final String ENG_AUX_VERB = "Eng_Aux_Verb";
+            public static final String ENG_AUX_VERB = "English_Aux_Verb";
 
         }
     }
