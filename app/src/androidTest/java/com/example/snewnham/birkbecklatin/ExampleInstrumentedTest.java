@@ -189,11 +189,33 @@ public class ExampleInstrumentedTest {
 
         String latinEnding = databaseAccess.sqlVerbEndingQuery(person1, number1, mood1, voice1, tense1, conjnum1);
         assertEquals(conj1, latinEnding);
-
-
     }
 
 
+    /**
+     * testEnglishAuxiliaryVerbTable()
+     * ===============================
+     * Test testEnglishAuxiliaryVerbTable to select the correct English Auxiliary Verb.
+     */
+    @Test
+    public void testEnglishAuxiliaryVerbTable() {
+
+        // test input + answers
+        // --------------------
+        String id1 = "100";
+        String person1 = "2nd";
+        String number1 = "Singular";
+        String mood1 = "Subjunctive";
+        String voice1 = "Active";
+        String tense1 = "Pluperfect";
+        String ans = "would have";
+
+        String engAuxVerb = databaseAccess.sqlEngAuxVerbQuery(person1, number1, mood1, voice1, tense1);
+        assertEquals(ans, engAuxVerb );
+
+
+
+    }
 
 
 
