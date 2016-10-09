@@ -213,8 +213,24 @@ public class ExampleInstrumentedTest {
         assertEquals(ans, engAuxVerb );
     }
 
+    /**
+     * testEnglishPersonTable()
+     * ========================
+     * Test testEnglishPersonTable to select the correct English Person.
+     */
+    public void testEnglishPersonTable() {
 
+        // test input + answers
+        // --------------------
+        String id1 = "3";
+        String person1 = "3rd";
+        String number1 = "Singular";
+        String ans = "he/she ";
 
+        String engPerson = databaseAccess.sqlEngPersonQuery(person1, number1);
+        assertEquals(ans, engAuxVerb );
+
+    }
 
 
     @After
