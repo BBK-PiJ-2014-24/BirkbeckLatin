@@ -78,6 +78,26 @@ public class DbSchema {
         }
     }
 
+    // inner STATIC class - EnglishAuxiliaryVerb Table
+    // ------------------------------------------------
+    public static final class EnglishAuxillaryVerbTable {
+        public static final String ENG_AUX_VERB_TABLE = "EnglishAuxiliaryVerbs";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String PERSON = "Person";
+            public static final String NUMBER = "Number";
+            public static final String MOOD = "Mood";
+            public static final String VOICE = "Voice";
+            public static final String TENSE = "Tense";
+            public static final String ENG_AUX_VERB = "Eng_Aux_Verb";
+
+        }
+    }
+
 
 
 
