@@ -54,7 +54,7 @@ public class Verb {
         return mLatin_ConjNum;
     }
 
-    public void setLatin_ConjName(int latin_ConjNum) {
+    public void setLatin_ConjNum(int latin_ConjNum) {
         mLatin_ConjNum = latin_ConjNum;
     }
 
