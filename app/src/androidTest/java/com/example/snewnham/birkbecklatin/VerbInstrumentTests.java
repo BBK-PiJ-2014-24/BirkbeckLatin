@@ -54,7 +54,7 @@ public class VerbInstrumentTests {
         // --------------------
 
         int id = 2;
-        Verb verb = new Verb(id);
+        Verb verb = new Verb(id, databaseAccess);
 
         verb.setLatin_Type("Regular");
         verb.setLatin_ConjNum(2);
@@ -80,11 +80,14 @@ public class VerbInstrumentTests {
         String tense1 = "Present";
         String mood1 = "Active";
         String voice1 = "Indicative";
+        String conjNum1 = "2";
 
-        verb.makeVerb(person1, number1, tense1, mood1, voice1);
+        verb.makeLatinVerb(person1, number1, tense1, mood1, voice1, conjNum1);
 
 
-        // assertEquals("mones", verb.getLatinVerb);
+        assertEquals("mone",verb.getLatinStem());
+        assertEquals("s",verb.getLatinEnding());
+        assertEquals("mones", verb.getLatinVerb());
         // assertEquals("he warns", verb.getEnglishVerb);
 
 

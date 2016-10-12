@@ -1,5 +1,8 @@
 package com.example.snewnham.birkbecklatin.Model;
 
+import android.content.Context;
+import android.provider.ContactsContract;
+
 /**
  * VERB is the class for verb. It contains the same data as that held in the database's 'VerbList' table
  * Created by snewnham on 05/10/2016.
@@ -26,22 +29,54 @@ public class Verb {
     private String mEnglish_Perfect;
     private String mEnglish_Participle;
 
+    private DatabaseAccess mDatabaseAccess;
+    private String mLatinStem;
+    private String mLatinEnding;
+    private String mLatinVerb;
+
 
 
     // Constructor
     // -----------
-    public Verb(int id) {
+    public Verb(int id, DatabaseAccess databaseAccess) {
         this.mId = id;
+        this.mDatabaseAccess = databaseAccess;
     }
 
     /**
-     * makeVerb(String person, String number, String tense, String mood, String voice)
-     * ========
+     * makeLatinVerb(String person, String number, String tense, String mood, String voice)
+     * =============
      *
      * Method that builds the Actual Latin and English Verb given person, number tense, mood, voice
      */
-    public void makeVerb(String person, String number, String tense, String mood, String voice) {
+    public String makeLatinVerb(String person, String number, String tense, String mood, String voice, String conjNum) {
 
+        // Find Latin Stem
+        //----------------
+        String stemTense = mDatabaseAccess.sqlVerbStemQuery(number,mood,voice,tense);
+        switch(stemTense){
+            case "Present":
+                mLatinStem = mLatin_Present_Stem;
+            case "Perfect":
+                mLatinStem = mLatin_Perfect_Stem;
+            case "Participle":
+                mLatinStem = mLatin_Participle;
+            case "Participle_Stem":
+                mLatinStem = mLatin_Participle_Stem;
+            case "Infinitive":
+                mLatinStem = mLatin_Infinitive;
+            case "Infinitive_Stem":
+                mLatinStem = mLatin_Infinitive_Stem;
+            case "Infinitive_Mod":
+                mLatinStem = mLatin_Infinitive_StemMod;
+        }
+
+        // Find Latin Ending
+        // -----------------
+        this.mLatinEnding = mDatabaseAccess.sqlVerbEndingQuery(person,number,mood,voice,tense, conjNum);
+        this.mLatinVerb = mLatinStem+mLatinEnding;
+
+        return this.mLatinVerb;
     }
 
 
@@ -183,5 +218,18 @@ public class Verb {
 
     public void setEnglish_Participle(String english_Participle) {
         mEnglish_Participle = english_Participle;
+    }
+
+
+    public String getLatinStem() {
+        return mLatinStem;
+    }
+
+    public String getLatinEnding() {
+        return mLatinEnding;
+    }
+
+    public String getLatinVerb() {
+        return mLatinVerb;
     }
 }
