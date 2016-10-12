@@ -1,30 +1,45 @@
 package com.example.snewnham.birkbecklatin;
 
+import android.content.Context;
+import android.support.test.InstrumentationRegistry;
+import android.support.test.runner.AndroidJUnit4;
+
 import com.example.snewnham.birkbecklatin.Model.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.Verb;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
-import java.util.List;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ * TESTS FOR CREATING VERBS
+ * Created by snewnham on 12/10/2016.
  */
-public class VerbUnitTests {
+@RunWith(AndroidJUnit4.class)
+public class VerbInstrumentTests {
 
+
+    // Fields
+    // ------
+    Context appContext;
+    DatabaseAccess databaseAccess;
+
+
+    @Before
+    public void setUp() {
+        appContext = InstrumentationRegistry.getTargetContext();
+        databaseAccess = DatabaseAccess.getInstance(appContext);  // CALL THE DATABASE STATICALY
+        databaseAccess.open();                                  // OPEN THE DATABASE
+    }
 
 
     @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+    public void useAppContext() throws Exception {
+        // Context of the app under test.
+        assertEquals("com.example.snewnham.birkbecklatin", appContext.getPackageName());
     }
-
 
     /**
      * testMakeVerbWord()
@@ -69,12 +84,11 @@ public class VerbUnitTests {
         verb.makeVerb(person1, number1, tense1, mood1, voice1);
 
 
-       // assertEquals("mones", verb.getLatinVerb);
-       // assertEquals("he warns", verb.getEnglishVerb);
+        // assertEquals("mones", verb.getLatinVerb);
+        // assertEquals("he warns", verb.getEnglishVerb);
 
 
     }
-
 
 
 }

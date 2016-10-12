@@ -34,6 +34,16 @@ public class Verb {
         this.mId = id;
     }
 
+    /**
+     * makeVerb(String person, String number, String tense, String mood, String voice)
+     * ========
+     *
+     * Method that builds the Actual Latin and English Verb given person, number tense, mood, voice
+     */
+    public void makeVerb(String person, String number, String tense, String mood, String voice) {
+
+    }
+
 
     // Getter/Setters
     // --------------

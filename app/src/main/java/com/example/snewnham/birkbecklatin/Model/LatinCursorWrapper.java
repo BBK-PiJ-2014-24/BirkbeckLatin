@@ -52,7 +52,7 @@ public class LatinCursorWrapper extends CursorWrapper {
         // ------------------------------
         Verb verb = new Verb(id);
         verb.setLatin_Type(latin_Type);
-        verb.setLatin_ConjName(latin_ConjNum);
+        verb.setLatin_ConjNum(latin_ConjNum);
 
         verb.setLatin_Present(latin_Present);  // Principle Parts
         verb.setLatin_Infinitive(latin_Infinitive);
