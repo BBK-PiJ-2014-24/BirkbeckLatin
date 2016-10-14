@@ -36,12 +36,20 @@ public class Verb {
 
 
 
-    // Constructor
-    // -----------
+    // Constructors
+    // ------------
+
+    public Verb(int id) {
+        this.mId = id;
+        this.mDatabaseAccess = null;
+    }
+
     public Verb(int id, DatabaseAccess databaseAccess) {
         this.mId = id;
         this.mDatabaseAccess = databaseAccess;
     }
+
+
 
     /**
      * makeLatinVerb(String person, String number, String tense, String mood, String voice)
@@ -49,26 +57,44 @@ public class Verb {
      *
      * Method that builds the Actual Latin and English Verb given person, number tense, mood, voice
      */
-    public String makeLatinVerb(String person, String number, String tense, String mood, String voice, String conjNum) {
+    public String makeLatinVerb(DatabaseAccess databaseAccess, String person, String number, String tense, String mood, String voice, String conjNum) {
+
+        if(mDatabaseAccess == null) {
+            this.mDatabaseAccess = databaseAccess;
+        }
 
         // Find Latin Stem
         //----------------
         String stemTense = mDatabaseAccess.sqlVerbStemQuery(number,mood,voice,tense);
         switch(stemTense){
-            case "Present":
-                mLatinStem = mLatin_Present_Stem;
-            case "Perfect":
-                mLatinStem = mLatin_Perfect_Stem;
-            case "Participle":
-                mLatinStem = mLatin_Participle;
-            case "Participle_Stem":
-                mLatinStem = mLatin_Participle_Stem;
-            case "Infinitive":
-                mLatinStem = mLatin_Infinitive;
-            case "Infinitive_Stem":
-                mLatinStem = mLatin_Infinitive_Stem;
-            case "Infinitive_Mod":
-                mLatinStem = mLatin_Infinitive_StemMod;
+            case "Present": {
+                this.mLatinStem = mLatin_Present_Stem;
+                break;
+            }
+            case "Perfect":{
+                this.mLatinStem = mLatin_Perfect_Stem;
+                break;
+            }
+            case "Participle": {
+                this.mLatinStem = mLatin_Participle;
+                break;
+            }
+            case "Participle_Stem": {
+                this.mLatinStem = mLatin_Participle_Stem;
+                break;
+            }
+            case "Infinitive": {
+                this.mLatinStem = mLatin_Infinitive;
+                break;
+            }
+            case "Infinitive_Stem": {
+                this.mLatinStem = mLatin_Infinitive_Stem;
+                break;
+            }
+            case "Infinitive_Mod": {
+                this.mLatinStem = mLatin_Infinitive_StemMod;
+                break;
+            }
         }
 
         // Find Latin Ending
@@ -220,6 +246,10 @@ public class Verb {
         mEnglish_Participle = english_Participle;
     }
 
+
+    public void setDatabaseAccess(DatabaseAccess databaseAccess) {
+        mDatabaseAccess = databaseAccess;
+    }
 
     public String getLatinStem() {
         return mLatinStem;

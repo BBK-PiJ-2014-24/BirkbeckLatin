@@ -26,35 +26,44 @@ public class VerbInstrumentTests {
     Context appContext;
     DatabaseAccess databaseAccess;
 
+    int id;
+    Verb verb;
+
+    String person1;
+    String person2;
+    String person3;
+
+    String numberSingular;
+    String numberPlural;
+
+    String moodIndicative;
+    String moodSubjunctive;
+    String moodImperative;
+
+    String voiceActive;
+    String voicePassive;
+
+    String tensePresent;
+    String tenseImPerfect;
+    String tenseFuture;
+    String tensePerfect;
+    String tensePluperfect;
+    String tenseFuturePerfect;
+
+    String conjNum1;
+    String conjNum2;
+    String conjNum3;
+    String conjNum4;
+
 
     @Before
     public void setUp() {
         appContext = InstrumentationRegistry.getTargetContext();
         databaseAccess = DatabaseAccess.getInstance(appContext);  // CALL THE DATABASE STATICALY
         databaseAccess.open();                                  // OPEN THE DATABASE
-    }
 
-
-    @Test
-    public void useAppContext() throws Exception {
-        // Context of the app under test.
-        assertEquals("com.example.snewnham.birkbecklatin", appContext.getPackageName());
-    }
-
-    /**
-     * testMakeVerbWord()
-     * ==================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation
-     * @throws Exception
-     */
-    @Test
-    public void testMakeVerbWord() throws Exception {
-
-        // test input + answers
-        // --------------------
-
-        int id = 2;
-        Verb verb = new Verb(id, databaseAccess);
+        id = 2;
+        verb = new Verb(id, databaseAccess);
 
         verb.setLatin_Type("Regular");
         verb.setLatin_ConjNum(2);
@@ -75,18 +84,60 @@ public class VerbInstrumentTests {
         verb.setEnglish_Perfect("warned, advised");
         verb.setEnglish_Participle("warning, advising");
 
-        String person1 = "2nd";
-        String number1 = "Singular";
-        String tense1 = "Present";
-        String mood1 = "Active";
-        String voice1 = "Indicative";
-        String conjNum1 = "2";
+        // makeLatinWord Arguments
+        // -----------------------
 
-        verb.makeLatinVerb(person1, number1, tense1, mood1, voice1, conjNum1);
+        person1 = "1st";
+        person2 = "2nd";
+        person3 = "3rd";
+
+        numberSingular = "Singular";
+        numberPlural = "Plural";
+
+        moodIndicative = "Indicative";
+        moodSubjunctive = "Subjunctive";
+        moodImperative = "Subjunctive";
+
+        voiceActive = "Active";
+        voicePassive = "Passive";
+
+        tensePresent = "Present";
+        tenseImPerfect = "ImPerfect";
+        tenseFuture = "Future";
+        tensePerfect = "Perfect";
+        tensePluperfect = "Pluperfect";
+        tenseFuturePerfect = "Future Imperfect";
+
+        conjNum1 = "1";
+        conjNum2 = "2";
+        conjNum3 = "3";
+        conjNum4 = "4";
+    }
 
 
-        assertEquals("mone",verb.getLatinStem());
-        assertEquals("s",verb.getLatinEnding());
+    @Test
+    public void useAppContext() throws Exception {
+        // Context of the app under test.
+        assertEquals("com.example.snewnham.birkbecklatin", appContext.getPackageName());
+    }
+
+    /**
+     * testMakeVerbWord()
+     * ==================
+     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * @throws Exception
+     */
+    @Test
+    public void testMakeVerbWord() throws Exception {
+
+        // test input + answers
+        // --------------------
+        int x =5;
+        verb.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
+                            moodIndicative, voiceActive, conjNum2);
+
+        assertEquals("mon",verb.getLatinStem());
+        assertEquals("es",verb.getLatinEnding());
         assertEquals("mones", verb.getLatinVerb());
         // assertEquals("he warns", verb.getEnglishVerb);
 
