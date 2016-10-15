@@ -295,4 +295,62 @@ public class VerbInstrumentTests {
     }
 
 
+    /**
+     * testMakeVerbWordFutureActiveIndicative()  - PERFECT TENSE, ACTIVE, INDICATIVE
+     * =========================================
+     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeVerbWordPerfectActiveIndicative() throws Exception {
+
+        verb.makeLatinVerb(databaseAccess, person1, numberSingular, tensePerfect,
+                moodIndicative, voiceActive, conjNum2);
+
+        assertEquals("monu", verb.getLatinStem());
+        assertEquals("i", verb.getLatinEnding());
+        assertEquals("monui", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person2, numberSingular, tensePerfect,
+                moodIndicative, voiceActive, conjNum2);
+
+        assertEquals("monu", verb.getLatinStem());
+        assertEquals("isti", verb.getLatinEnding());
+        assertEquals("monuisti", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person3, numberSingular, tensePerfect,
+                moodIndicative, voiceActive, conjNum2);
+
+        assertEquals("monu", verb.getLatinStem());
+        assertEquals("it", verb.getLatinEnding());
+        assertEquals("monuit", verb.getLatinVerb());
+
+
+        verb.makeLatinVerb(databaseAccess, person1, numberPlural, tensePerfect,
+                moodIndicative, voiceActive, conjNum2);
+
+        assertEquals("monu", verb.getLatinStem());
+        assertEquals("imus", verb.getLatinEnding());
+        assertEquals("monuimus", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person2, numberPlural, tensePerfect,
+                moodIndicative, voiceActive, conjNum2);
+
+        assertEquals("monu", verb.getLatinStem());
+        assertEquals("istis", verb.getLatinEnding());
+        assertEquals("monuistis", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person3, numberPlural, tensePerfect,
+                moodIndicative, voiceActive, conjNum2);
+
+        assertEquals("monu", verb.getLatinStem());
+        assertEquals("erunt", verb.getLatinEnding());
+        assertEquals("monuerunt", verb.getLatinVerb());
+
+        // assertEquals("he warns", verb.getEnglishVerb);
+
+    }
+
+
 }
