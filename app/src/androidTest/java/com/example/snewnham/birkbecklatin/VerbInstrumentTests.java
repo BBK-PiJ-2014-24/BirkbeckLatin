@@ -121,6 +121,9 @@ public class VerbInstrumentTests {
         assertEquals("com.example.snewnham.birkbecklatin", appContext.getPackageName());
     }
 
+
+    // ==========================  ACTIVE, INDICATIVE  ================================================
+
     /**
      * testMakeVerbWordPresentActiveIndicative()  - PRESENT TENSE, ACTIVE, INDICATIVE
      * =========================================
@@ -135,9 +138,19 @@ public class VerbInstrumentTests {
         verb.makeLatinVerb(databaseAccess, person1, numberSingular, tensePresent,
                             moodIndicative, voiceActive, conjNum2);
 
+//        verb.makeEnglishVerb(databaseAccess, person1, numberSingular, tensePresent,
+//                moodIndicative, voiceActive, conjNum2);
+
         assertEquals("mon", verb.getLatinStem());
         assertEquals("eo", verb.getLatinEnding());
         assertEquals("moneo", verb.getLatinVerb());
+
+//        assertEquals("mon", verb.getEnglishPerson());
+//        assertEquals("eo", verb.getEnglishAuxiliraryVerb());
+//        assertEquals("moneo", verb.getEnglishVerbStem());
+//        assertEquals("moneo", verb.getEnglishVerbEnding());
+//        assertEquals("moneo", verb.getEnglishVerb());
+
 
         verb.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
                 moodIndicative, voiceActive, conjNum2);
@@ -293,6 +306,11 @@ public class VerbInstrumentTests {
         // assertEquals("he warns", verb.getEnglishVerb);
 
     }
+
+
+
+
+
 
 
     /**
@@ -469,7 +487,361 @@ public class VerbInstrumentTests {
 
     }
 
+// ============================== PASSIVE, INDICATIVE  =============================================
 
+    /**
+     * testMakeVerbWordPresentActiveIndicative()  - PRESENT TENSE, PASSIVE, INDICATIVE
+     * =========================================
+     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeVerbWordPresentPassiveIndicative() throws Exception {
+
+
+        verb.makeLatinVerb(databaseAccess, person1, numberSingular, tensePresent,
+                moodIndicative, voicePassive, conjNum2);
+
+//        verb.makeEnglishVerb(databaseAccess, person1, numberSingular, tensePresent,
+//                moodIndicative, voiceActive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("eor", verb.getLatinEnding());
+        assertEquals("moneor", verb.getLatinVerb());
+
+//        assertEquals("mon", verb.getEnglishPerson());
+//        assertEquals("eo", verb.getEnglishAuxiliraryVerb());
+//        assertEquals("moneo", verb.getEnglishVerbStem());
+//        assertEquals("moneo", verb.getEnglishVerbEnding());
+//        assertEquals("moneo", verb.getEnglishVerb());
+
+
+        verb.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("eris", verb.getLatinEnding());
+        assertEquals("moneris", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person3, numberSingular, tensePresent,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("etur", verb.getLatinEnding());
+        assertEquals("monetur", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person1, numberPlural, tensePresent,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("emur", verb.getLatinEnding());
+        assertEquals("monemur", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person2, numberPlural, tensePresent,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("emini", verb.getLatinEnding());
+        assertEquals("monemini", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person3, numberPlural, tensePresent,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("entur", verb.getLatinEnding());
+        assertEquals("monentur", verb.getLatinVerb());
+
+    }
+
+    /**
+     * testMakeVerbWordImperfectActiveIndicative()  - IMPERFECT TENSE, PASSIVE, INDICATIVE
+     * =========================================
+     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeVerbWordImperfectPassiveIndicative() throws Exception {
+
+        verb.makeLatinVerb(databaseAccess, person1, numberSingular, tenseImPerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("ebar", verb.getLatinEnding());
+        assertEquals("monebar", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person2, numberSingular, tenseImPerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("ebaris", verb.getLatinEnding());
+        assertEquals("monebaris", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person3, numberSingular, tenseImPerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("ebatur", verb.getLatinEnding());
+        assertEquals("monebatur", verb.getLatinVerb());
+
+
+        verb.makeLatinVerb(databaseAccess, person1, numberPlural, tenseImPerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("ebamur", verb.getLatinEnding());
+        assertEquals("monebamur", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person2, numberPlural, tenseImPerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("ebamini", verb.getLatinEnding());
+        assertEquals("monebamini", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person3, numberPlural, tenseImPerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("ebantur", verb.getLatinEnding());
+        assertEquals("monebantur", verb.getLatinVerb());
+
+        // assertEquals("he warns", verb.getEnglishVerb);
+
+    }
+
+
+    /**
+     * testMakeVerbWordFuturePassiveIndicative()  - FUTURE TENSE, PASSIVE, INDICATIVE
+     * =========================================
+     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeVerbWordFuturePassiveIndicative() throws Exception {
+
+        verb.makeLatinVerb(databaseAccess, person1, numberSingular, tenseFuture,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("ebor", verb.getLatinEnding());
+        assertEquals("monebor", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person2, numberSingular, tenseFuture,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("eberis", verb.getLatinEnding());
+        assertEquals("moneberis", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person3, numberSingular, tenseFuture,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("ebitur", verb.getLatinEnding());
+        assertEquals("monebitur", verb.getLatinVerb());
+
+
+        verb.makeLatinVerb(databaseAccess, person1, numberPlural, tenseFuture,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("ebimur", verb.getLatinEnding());
+        assertEquals("monebimur", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person2, numberPlural, tenseFuture,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("ebimini", verb.getLatinEnding());
+        assertEquals("monebimini", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person3, numberPlural, tenseFuture,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("ebuntur", verb.getLatinEnding());
+        assertEquals("monebuntur", verb.getLatinVerb());
+
+        // assertEquals("he warns", verb.getEnglishVerb);
+
+    }
+
+
+
+    /**
+     * testMakeVerbWordPerfectPassiveIndicative()  - PERFECT TENSE, PASSIVE, INDICATIVE
+     * =========================================
+     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeVerbWordPerfectPassiveIndicative() throws Exception {
+
+        verb.makeLatinVerb(databaseAccess, person1, numberSingular, tensePerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("us sum", verb.getLatinEnding());
+        assertEquals("monitus sum", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person2, numberSingular, tensePerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("us es", verb.getLatinEnding());
+        assertEquals("monitus es", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person3, numberSingular, tensePerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("us est", verb.getLatinEnding());
+        assertEquals("monitus est", verb.getLatinVerb());
+
+
+        verb.makeLatinVerb(databaseAccess, person1, numberPlural, tensePerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("i sumus", verb.getLatinEnding());
+        assertEquals("moniti sumus", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person2, numberPlural, tensePerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("i estis", verb.getLatinEnding());
+        assertEquals("moniti estis", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person3, numberPlural, tensePerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("i sunt", verb.getLatinEnding());
+        assertEquals("moniti sunt", verb.getLatinVerb());
+
+        // assertEquals("he warns", verb.getEnglishVerb);
+
+    }
+
+
+    /**
+     * testMakeVerbWordPluperfectPassiveIndicative()  - PERFECT TENSE, PASSIVE, INDICATIVE
+     * =========================================
+     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeVerbWordPluperfectPassiveIndicative() throws Exception {
+
+        verb.makeLatinVerb(databaseAccess, person1, numberSingular, tensePluperfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("us eram", verb.getLatinEnding());
+        assertEquals("monitus eram", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person2, numberSingular, tensePluperfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("us eras", verb.getLatinEnding());
+        assertEquals("monitus eras", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person3, numberSingular, tensePluperfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("us erat", verb.getLatinEnding());
+        assertEquals("monitus erat", verb.getLatinVerb());
+
+
+        verb.makeLatinVerb(databaseAccess, person1, numberPlural, tensePluperfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("i eramus", verb.getLatinEnding());
+        assertEquals("moniti eramus", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person2, numberPlural, tensePluperfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("i eratis", verb.getLatinEnding());
+        assertEquals("moniti eratis", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person3, numberPlural, tensePluperfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("i erant", verb.getLatinEnding());
+        assertEquals("moniti erant", verb.getLatinVerb());
+
+        // assertEquals("he warns", verb.getEnglishVerb);
+    }
+
+
+    /**
+     * testMakeVerbWordFuturePerfectPassiveIndicative()  - FUTURE-PERFECT TENSE, PASSIVE, INDICATIVE
+     * =========================================
+     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeVerbWordFuturePerfectPassiveIndicative() throws Exception {
+
+        verb.makeLatinVerb(databaseAccess, person1, numberSingular, tenseFuturePerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("us ero", verb.getLatinEnding());
+        assertEquals("monitus ero", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person2, numberSingular, tenseFuturePerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("us eris", verb.getLatinEnding());
+        assertEquals("monitus eris", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person3, numberSingular, tenseFuturePerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("us erit", verb.getLatinEnding());
+        assertEquals("monitus erit", verb.getLatinVerb());
+
+
+        verb.makeLatinVerb(databaseAccess, person1, numberPlural, tenseFuturePerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("i erimus", verb.getLatinEnding());
+        assertEquals("moniti erimus", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person2, numberPlural, tenseFuturePerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("i eritis", verb.getLatinEnding());
+        assertEquals("moniti eritis", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, person3, numberPlural, tenseFuturePerfect,
+                moodIndicative, voicePassive, conjNum2);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("i erunt", verb.getLatinEnding());
+        assertEquals("moniti erunt", verb.getLatinVerb());
+
+        // assertEquals("he warns", verb.getEnglishVerb);
+
+    }
 
 
 }
