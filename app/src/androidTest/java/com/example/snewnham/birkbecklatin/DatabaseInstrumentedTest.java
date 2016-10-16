@@ -234,6 +234,30 @@ public class DatabaseInstrumentedTest {
     }
 
 
+    /**
+     * testEnglishVerbEndingTable()
+     * =============================
+     * Test testEnglish_Verb_Table to select the English Verb with the correct Ending
+     */
+    @Test
+    public void testEnglishVerbEndingTable() {
+
+        // test input + answers
+        // --------------------
+
+
+        String number1 = "Singular";
+        String tense1 = "Present";
+        String mood1 = "Indicative";
+        String voice1 = "Active";
+        String ans = "English_Infinitive";
+
+        String guessEngVerbEnding = databaseAccess.sqlEngVerbEnding(number1, tense1,
+                            mood1, voice1);
+        assertEquals(ans, guessEngVerbEnding );
+
+    }
+
     @After
     public void breakDown() {
         databaseAccess.close();
