@@ -33,6 +33,7 @@ public class Verb {
     private String mEnglishPerson;
     private String mEnglishAuxiliaryVerb;
     private String mEnglishVerbEnding;
+    private String mEnglishVerb;
 
 
 
@@ -106,7 +107,19 @@ public class Verb {
         return this.mLatinVerb;
     }
 
-
+    /**
+     * makeEnglishVerb(DatabaseAccess databaseAccess, String person, String number, String tense, String mood, String voice)
+     * ===============
+     * Make the correct English Translation of a given Latin Verb
+     *
+     * @param databaseAccess
+     * @param person
+     * @param number
+     * @param tense
+     * @param mood
+     * @param voice
+     * @return
+     */
 
     public String makeEnglishVerb(DatabaseAccess databaseAccess, String person, String number,
                                   String tense, String mood, String voice) {
@@ -116,13 +129,36 @@ public class Verb {
         }
 
         mEnglishPerson = databaseAccess.sqlEngPersonQuery(person, number);
+        if(tense.equals("Present") && mood.equals("Subjunctive")){
+            mEnglishPerson = ""; // override to drop Person for Subjunctive, Present Verbs
+        }
         mEnglishAuxiliaryVerb = databaseAccess.sqlEngAuxVerbQuery(person, number, mood, voice, tense);
-       // mEnglishVerbEnding = databaseAccess
+        String englishVerbCase = databaseAccess.sqlEngVerbEnding(number, tense, mood, voice);
 
+        if(person.equals("3rd") && tense.equals("Present") && mood.equals("Indicative") && voice.equals("Active")) {
+            englishVerbCase = "English_Present_3rdPerson";   // override to pick up present 3rd person present
+        }
 
-
-
-        return null;
+        switch(englishVerbCase){
+            case "English_Infinitive":{
+                mEnglishVerbEnding = this.mEnglish_Infinitive;
+                break;
+            }
+            case "English_Present_3rdPerson":{
+                mEnglishVerbEnding = this.mEnglish_Present_3rdPerson;
+                break;
+            }
+            case "English_Perfect":{
+                mEnglishVerbEnding = this.mEnglish_Perfect;
+                break;
+            }
+            case "English_Participle":{
+                mEnglishVerbEnding = this.mEnglish_Participle;
+                break;
+            }
+        }
+        mEnglishVerb = mEnglishPerson + mEnglishAuxiliaryVerb + mEnglishVerbEnding;
+        return mEnglishVerb;
     }
 
 
@@ -293,5 +329,9 @@ public class Verb {
 
     public String getEnglishVerbEnding() {
         return mEnglishVerbEnding;
+    }
+
+    public String getEnglishVerb() {
+        return mEnglishVerb;
     }
 }
