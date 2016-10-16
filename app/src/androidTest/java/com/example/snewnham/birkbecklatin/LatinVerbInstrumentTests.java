@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
 
 /**
- * TESTS FOR CREATING VERBS
+ * TESTS FOR CREATING LATIN VERBS FOR ALL PERSONS, MOODS, VOICES, COJUGATIONS
  * Created by snewnham on 12/10/2016.
  */
 @RunWith(AndroidJUnit4.class)
@@ -127,7 +127,7 @@ public class LatinVerbInstrumentTests {
     /**
      * testMakeVerbWordPresentActiveIndicative()  - PRESENT TENSE, ACTIVE, INDICATIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -138,19 +138,9 @@ public class LatinVerbInstrumentTests {
         verb.makeLatinVerb(databaseAccess, person1, numberSingular, tensePresent,
                             moodIndicative, voiceActive, conjNum2);
 
-//        verb.makeEnglishVerb(databaseAccess, person1, numberSingular, tensePresent,
-//                moodIndicative, voiceActive, conjNum2);
-
         assertEquals("mon", verb.getLatinStem());
         assertEquals("eo", verb.getLatinEnding());
         assertEquals("moneo", verb.getLatinVerb());
-
-//        assertEquals("mon", verb.getEnglishPerson());
-//        assertEquals("eo", verb.getEnglishAuxiliraryVerb());
-//        assertEquals("moneo", verb.getEnglishVerbStem());
-//        assertEquals("moneo", verb.getEnglishVerbEnding());
-//        assertEquals("moneo", verb.getEnglishVerb());
-
 
         verb.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
                 moodIndicative, voiceActive, conjNum2);
@@ -186,15 +176,12 @@ public class LatinVerbInstrumentTests {
         assertEquals("mon", verb.getLatinStem());
         assertEquals("ent", verb.getLatinEnding());
         assertEquals("monent", verb.getLatinVerb());
-
-        // assertEquals("he warns", verb.getEnglishVerb);
-
     }
 
     /**
      * testMakeVerbWordImperfectActiveIndicative()  - IMPERFECT TENSE, ACTIVE, INDICATIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -244,8 +231,6 @@ public class LatinVerbInstrumentTests {
         assertEquals("ebant", verb.getLatinEnding());
         assertEquals("monebant", verb.getLatinVerb());
 
-        // assertEquals("he warns", verb.getEnglishVerb);
-
     }
 
 
@@ -253,7 +238,7 @@ public class LatinVerbInstrumentTests {
     /**
      * testMakeVerbWordFutureActiveIndicative()  - FUTURE TENSE, ACTIVE, INDICATIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -302,21 +287,13 @@ public class LatinVerbInstrumentTests {
         assertEquals("mon", verb.getLatinStem());
         assertEquals("ebunt", verb.getLatinEnding());
         assertEquals("monebunt", verb.getLatinVerb());
-
-        // assertEquals("he warns", verb.getEnglishVerb);
-
     }
-
-
-
-
-
 
 
     /**
      * testMakeVerbWordPerfectActiveIndicative()  - PERFECT TENSE, ACTIVE, INDICATIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -366,15 +343,13 @@ public class LatinVerbInstrumentTests {
         assertEquals("erunt", verb.getLatinEnding());
         assertEquals("monuerunt", verb.getLatinVerb());
 
-        // assertEquals("he warns", verb.getEnglishVerb);
-
     }
 
 
     /**
      * testMakeVerbWordPluperfectActiveIndicative()  - PLUPERFECT TENSE, ACTIVE, INDICATIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -424,8 +399,6 @@ public class LatinVerbInstrumentTests {
         assertEquals("erant", verb.getLatinEnding());
         assertEquals("monuerant", verb.getLatinVerb());
 
-        // assertEquals("he warns", verb.getEnglishVerb);
-
     }
 
 
@@ -433,7 +406,7 @@ public class LatinVerbInstrumentTests {
     /**
      * testMakeVerbWordFuturePerfectActiveIndicative()  - FUTURE-PERFECT TENSE, ACTIVE, INDICATIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -482,9 +455,6 @@ public class LatinVerbInstrumentTests {
         assertEquals("monu", verb.getLatinStem());
         assertEquals("erint", verb.getLatinEnding());
         assertEquals("monuerint", verb.getLatinVerb());
-
-        // assertEquals("he warns", verb.getEnglishVerb);
-
     }
 
 // ============================== PASSIVE, INDICATIVE  =============================================
@@ -492,7 +462,7 @@ public class LatinVerbInstrumentTests {
     /**
      * testMakeVerbWordPresentActiveIndicative()  - PRESENT TENSE, PASSIVE, INDICATIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -503,19 +473,9 @@ public class LatinVerbInstrumentTests {
         verb.makeLatinVerb(databaseAccess, person1, numberSingular, tensePresent,
                 moodIndicative, voicePassive, conjNum2);
 
-//        verb.makeEnglishVerb(databaseAccess, person1, numberSingular, tensePresent,
-//                moodIndicative, voiceActive, conjNum2);
-
         assertEquals("mon", verb.getLatinStem());
         assertEquals("eor", verb.getLatinEnding());
         assertEquals("moneor", verb.getLatinVerb());
-
-//        assertEquals("mon", verb.getEnglishPerson());
-//        assertEquals("eo", verb.getEnglishAuxiliraryVerb());
-//        assertEquals("moneo", verb.getEnglishVerbStem());
-//        assertEquals("moneo", verb.getEnglishVerbEnding());
-//        assertEquals("moneo", verb.getEnglishVerb());
-
 
         verb.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
                 moodIndicative, voicePassive, conjNum2);
@@ -557,7 +517,7 @@ public class LatinVerbInstrumentTests {
     /**
      * testMakeVerbWordImperfectActiveIndicative()  - IMPERFECT TENSE, PASSIVE, INDICATIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -606,16 +566,13 @@ public class LatinVerbInstrumentTests {
         assertEquals("mon", verb.getLatinStem());
         assertEquals("ebantur", verb.getLatinEnding());
         assertEquals("monebantur", verb.getLatinVerb());
-
-        // assertEquals("he warns", verb.getEnglishVerb);
-
     }
 
 
     /**
      * testMakeVerbWordFuturePassiveIndicative()  - FUTURE TENSE, PASSIVE, INDICATIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -664,9 +621,6 @@ public class LatinVerbInstrumentTests {
         assertEquals("mon", verb.getLatinStem());
         assertEquals("ebuntur", verb.getLatinEnding());
         assertEquals("monebuntur", verb.getLatinVerb());
-
-        // assertEquals("he warns", verb.getEnglishVerb);
-
     }
 
 
@@ -723,9 +677,6 @@ public class LatinVerbInstrumentTests {
         assertEquals("monit", verb.getLatinStem());
         assertEquals("i sunt", verb.getLatinEnding());
         assertEquals("moniti sunt", verb.getLatinVerb());
-
-        // assertEquals("he warns", verb.getEnglishVerb);
-
     }
 
 
@@ -781,8 +732,6 @@ public class LatinVerbInstrumentTests {
         assertEquals("monit", verb.getLatinStem());
         assertEquals("i erant", verb.getLatinEnding());
         assertEquals("moniti erant", verb.getLatinVerb());
-
-        // assertEquals("he warns", verb.getEnglishVerb);
     }
 
 
@@ -847,7 +796,7 @@ public class LatinVerbInstrumentTests {
     /**
      * testMakeVerbWordPresentActiveSubjunctive()  - PRESENT TENSE, ACTIVE, SUBJUNCTIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -858,19 +807,9 @@ public class LatinVerbInstrumentTests {
         verb.makeLatinVerb(databaseAccess, person1, numberSingular, tensePresent,
                 moodSubjunctive, voiceActive, conjNum2);
 
-//        verb.makeEnglishVerb(databaseAccess, person1, numberSingular, tensePresent,
-//                moodIndicative, voiceActive, conjNum2);
-
         assertEquals("monea", verb.getLatinStem());
         assertEquals("m", verb.getLatinEnding());
         assertEquals("moneam", verb.getLatinVerb());
-
-//        assertEquals("mon", verb.getEnglishPerson());
-//        assertEquals("eo", verb.getEnglishAuxiliraryVerb());
-//        assertEquals("moneo", verb.getEnglishVerbStem());
-//        assertEquals("moneo", verb.getEnglishVerbEnding());
-//        assertEquals("moneo", verb.getEnglishVerb());
-
 
         verb.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
                 moodSubjunctive, voiceActive, conjNum2);
@@ -912,7 +851,7 @@ public class LatinVerbInstrumentTests {
     /**
      * testMakeVerbWordImperfectActiveSubjunctive()  - IMPERFECT TENSE, ACTIVE, SUBJUNCTIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -961,16 +900,13 @@ public class LatinVerbInstrumentTests {
         assertEquals("monere", verb.getLatinStem());
         assertEquals("nt", verb.getLatinEnding());
         assertEquals("monerent", verb.getLatinVerb());
-
-        // assertEquals("he warns", verb.getEnglishVerb);
-
     }
 
 
     /**
      * testMakeVerbWordPerfectActiveSubjunctive()  - PERFECT TENSE, ACTIVE, SUBJUNCTIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -1019,16 +955,13 @@ public class LatinVerbInstrumentTests {
         assertEquals("monu", verb.getLatinStem());
         assertEquals("erint", verb.getLatinEnding());
         assertEquals("monuerint", verb.getLatinVerb());
-
-        // assertEquals("he warns", verb.getEnglishVerb);
-
     }
 
 
     /**
      * testMakeVerbWordPluperfectActiveIndicative()  - PLUPERFECT TENSE, ACTIVE, SUBJUNCTIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -1086,7 +1019,7 @@ public class LatinVerbInstrumentTests {
     /**
      * testMakeVerbWordPresentPassiveSubjunctive()  - PRESENT TENSE, PASSIVE, SUBJUNCTIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -1097,19 +1030,9 @@ public class LatinVerbInstrumentTests {
         verb.makeLatinVerb(databaseAccess, person1, numberSingular, tensePresent,
                 moodSubjunctive, voicePassive, conjNum2);
 
-//        verb.makeEnglishVerb(databaseAccess, person1, numberSingular, tensePresent,
-//                moodIndicative, voiceActive, conjNum2);
-
         assertEquals("monea", verb.getLatinStem());
         assertEquals("r", verb.getLatinEnding());
         assertEquals("monear", verb.getLatinVerb());
-
-//        assertEquals("mon", verb.getEnglishPerson());
-//        assertEquals("eo", verb.getEnglishAuxiliraryVerb());
-//        assertEquals("moneo", verb.getEnglishVerbStem());
-//        assertEquals("moneo", verb.getEnglishVerbEnding());
-//        assertEquals("moneo", verb.getEnglishVerb());
-
 
         verb.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
                 moodSubjunctive, voicePassive, conjNum2);
@@ -1151,7 +1074,7 @@ public class LatinVerbInstrumentTests {
     /**
      * testMakeVerbWordImperfectPassiveSubjunctive()  - IMPERFECT TENSE, PASSIVE, SUBJUNCTIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -1200,16 +1123,13 @@ public class LatinVerbInstrumentTests {
         assertEquals("monere", verb.getLatinStem());
         assertEquals("ntur", verb.getLatinEnding());
         assertEquals("monerentur", verb.getLatinVerb());
-
-        // assertEquals("he warns", verb.getEnglishVerb);
-
     }
 
 
     /**
      * testMakeVerbWordPerfectPassiveSubjunctive()  - PERFECT TENSE, PASSIVE, SUBJUNCTIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
@@ -1265,7 +1185,7 @@ public class LatinVerbInstrumentTests {
     /**
      * testMakeVerbWordPluperfectPassiveIndicative()  - PLUPERFECT TENSE, PASSIVE, SUBJUNCTIVE
      * =========================================
-     * test Verb Class that It Can build Correct Latin Verb and English Translation.
+     * test Verb Class that It Can build Correct Latin Verb.
      * @throws Exception
      */
 
