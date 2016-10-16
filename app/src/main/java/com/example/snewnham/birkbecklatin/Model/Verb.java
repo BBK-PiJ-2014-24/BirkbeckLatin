@@ -1,8 +1,5 @@
 package com.example.snewnham.birkbecklatin.Model;
 
-import android.content.Context;
-import android.provider.ContactsContract;
-
 /**
  * VERB is the class for verb. It contains the same data as that held in the database's 'VerbList' table
  * Created by snewnham on 05/10/2016.
@@ -33,6 +30,9 @@ public class Verb {
     private String mLatinStem;
     private String mLatinEnding;
     private String mLatinVerb;
+    private String mEnglishPerson;
+    private String mEnglishAuxiliaryVerb;
+    private String mEnglishVerbEnding;
 
 
 
@@ -57,7 +57,8 @@ public class Verb {
      *
      * Method that builds the Actual Latin and English Verb given person, number tense, mood, voice
      */
-    public String makeLatinVerb(DatabaseAccess databaseAccess, String person, String number, String tense, String mood, String voice, String conjNum) {
+    public String makeLatinVerb(DatabaseAccess databaseAccess, String person, String number, String tense,
+                                String mood, String voice, String conjNum) {
 
         if(mDatabaseAccess == null) {
             this.mDatabaseAccess = databaseAccess;
@@ -103,6 +104,25 @@ public class Verb {
         this.mLatinVerb = mLatinStem+mLatinEnding;
 
         return this.mLatinVerb;
+    }
+
+
+
+    public String makeEnglishVerb(DatabaseAccess databaseAccess, String person, String number,
+                                  String tense, String mood, String voice) {
+
+        if(mDatabaseAccess == null) {
+            this.mDatabaseAccess = databaseAccess;
+        }
+
+        mEnglishPerson = databaseAccess.sqlEngPersonQuery(person, number);
+        mEnglishAuxiliaryVerb = databaseAccess.sqlEngAuxVerbQuery(person, number, mood, voice, tense);
+        mEnglishVerbEnding = databaseAccess
+
+
+
+
+        return null;
     }
 
 
@@ -261,5 +281,17 @@ public class Verb {
 
     public String getLatinVerb() {
         return mLatinVerb;
+    }
+
+    public String getEnglishPerson() {
+        return mEnglishPerson;
+    }
+
+    public String getEnglishAuxiliaryVerb() {
+        return mEnglishAuxiliaryVerb;
+    }
+
+    public String getEnglishVerbEnding() {
+        return mEnglishVerbEnding;
     }
 }

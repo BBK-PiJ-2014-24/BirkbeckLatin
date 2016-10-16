@@ -116,6 +116,25 @@ public class DbSchema {
     }
 
 
+    // inner STATIC class - English_Verb_Table Table
+    // ----------------------------------------------
+    public static final class EnglishVerbEndingTable {
+        public static final String ENGLISH_VERB_ENDING_TABLE = "English_Verb_Ending";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String NUMBER = "Number";
+            public static final String TENSE = "Tense";
+            public static final String MOOD = "Mood";
+            public static final String VOICE = "Voice";
+
+            public static final String ENG_VERB_ENDING = "Eng_Verb_Ending";
+        }
+    }
+
 
 
 }
