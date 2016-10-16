@@ -14,6 +14,8 @@ import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbStemTable.VE
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbConjugationTable.VERB_CONJ_TABLE;
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.EnglishAuxillaryVerbTable.ENG_AUX_VERB_TABLE;
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.EnglishPersonsTable.ENG_PERSON_TABLE;
+import static com.example.snewnham.birkbecklatin.Model.DbSchema.EnglishVerbEndingTable.ENGLISH_VERB_ENDING_TABLE;
+
 /**
  * THIS IS THE DOORWAY TO THE DATABASE GENERATING THE SQL COMMANDS
  * Created by snewnham on 01/10/2016.
@@ -261,6 +263,37 @@ public class DatabaseAccess {
 
         return engPersonWord;
 
+    }
+
+    /**
+     * sqlEngVerbEnding(String number, String tense, String mood, String voice)
+     * =================
+     * A SQL query to select the English Verb with the correct Ending for a Latin Verb translation
+     * @param number
+     * @param tense
+     * @param mood
+     * @param voice
+     * @return
+     */
+
+    public String sqlEngVerbEnding(String number, String tense, String mood, String voice) {
+
+        String table = ENGLISH_VERB_ENDING_TABLE;  // FROM EnglishPerson Table
+        String[] column = new String[]{DbSchema.EnglishVerbEndingTable.Cols.ENG_VERB_ENDING};  // SELECT Eng_Verb Ending
+
+        String whereClause = DbSchema.EnglishVerbEndingTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                DbSchema.EnglishVerbEndingTable.Cols.TENSE + "=?" + " AND " +
+                DbSchema.EnglishVerbEndingTable.Cols.MOOD + "=?" + " AND " +
+                DbSchema.EnglishVerbEndingTable.Cols.VOICE + "=?";
+
+        String[] whereArgs = new String[]{number, tense, mood, voice};
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
+
+        String engPersonWord = cursor.getString(cursor.getColumnIndex(DbSchema.EnglishVerbEndingTable.Cols.ENG_VERB_ENDING));
+
+        return engPersonWord;
     }
 
 

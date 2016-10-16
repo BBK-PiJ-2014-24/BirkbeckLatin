@@ -117,7 +117,7 @@ public class Verb {
 
         mEnglishPerson = databaseAccess.sqlEngPersonQuery(person, number);
         mEnglishAuxiliaryVerb = databaseAccess.sqlEngAuxVerbQuery(person, number, mood, voice, tense);
-        mEnglishVerbEnding = databaseAccess
+       // mEnglishVerbEnding = databaseAccess
 
 
 
