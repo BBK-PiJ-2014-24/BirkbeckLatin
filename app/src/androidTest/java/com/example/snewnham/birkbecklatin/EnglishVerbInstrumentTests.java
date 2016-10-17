@@ -238,5 +238,67 @@ public class EnglishVerbInstrumentTests {
 
 
 
+    /**
+     * testMakeVerbWordFutureActiveIndicative()  - FUTURE TENSE, ACTIVE, INDICATIVE
+     * =========================================
+     * test Verb Class that It Can build Correct ENGLISH Verb.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeVerbWordFutureActiveIndicative() throws Exception {
+
+        verb.makeEnglishVerb(databaseAccess, person1, numberSingular,
+                tenseFuture, moodIndicative, voiceActive);
+
+        assertEquals("I", verb.getEnglishPerson());
+        assertEquals(" shall ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warn, advise", verb.getEnglishVerbEnding());
+        assertEquals("I shall warn, advise", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person2, numberSingular,
+                tenseFuture, moodIndicative, voiceActive);
+
+        assertEquals("you(s)", verb.getEnglishPerson());
+        assertEquals(" will ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warn, advise", verb.getEnglishVerbEnding());
+        assertEquals("you(s) will warn, advise", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person3, numberSingular,
+                tenseFuture, moodIndicative, voiceActive);
+
+        assertEquals("he/she", verb.getEnglishPerson());
+        assertEquals(" will ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warn, advise", verb.getEnglishVerbEnding());
+        assertEquals("he/she will warn, advise", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person1, numberPlural,
+                tenseFuture, moodIndicative, voiceActive);
+
+        assertEquals("we", verb.getEnglishPerson());
+        assertEquals(" shall ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warn, advise", verb.getEnglishVerbEnding());
+        assertEquals("we shall warn, advise", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person2, numberPlural,
+                tenseFuture, moodIndicative, voiceActive);
+
+        assertEquals("you(pl)", verb.getEnglishPerson());
+        assertEquals(" will ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warn, advise", verb.getEnglishVerbEnding());
+        assertEquals("you(pl) will warn, advise", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person3, numberPlural,
+                tenseFuture, moodIndicative, voiceActive);
+
+        assertEquals("they", verb.getEnglishPerson());
+        assertEquals(" will ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warn, advise", verb.getEnglishVerbEnding());
+        assertEquals("they will warn, advise", verb.getEnglishVerb());
+
+    }
+
+
+
 
 }
