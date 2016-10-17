@@ -176,5 +176,67 @@ public class EnglishVerbInstrumentTests {
     }
 
 
+    /**
+     * testMakeVerbWordImperfectActiveIndicative()  - IMPERFECT TENSE, ACTIVE, INDICATIVE
+     * =========================================
+     * test Verb Class that It Can build Correct ENGLISH Verb.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeVerbWordImperfectActiveIndicative() throws Exception {
+
+        verb.makeEnglishVerb(databaseAccess, person1, numberSingular,
+                tenseImPerfect, moodIndicative, voiceActive);
+
+        assertEquals("I", verb.getEnglishPerson());
+        assertEquals(" was ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warning, advising", verb.getEnglishVerbEnding());
+        assertEquals("I was warning, advising", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person2, numberSingular,
+                tenseImPerfect, moodIndicative, voiceActive);
+
+        assertEquals("you(s)", verb.getEnglishPerson());
+        assertEquals(" were ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warning, advising", verb.getEnglishVerbEnding());
+        assertEquals("you(s) were warning, advising", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person3, numberSingular,
+                tenseImPerfect, moodIndicative, voiceActive);
+
+        assertEquals("he/she", verb.getEnglishPerson());
+        assertEquals(" was ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warning, advising", verb.getEnglishVerbEnding());
+        assertEquals("he/she was warning, advising", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person1, numberPlural,
+                tenseImPerfect, moodIndicative, voiceActive);
+
+        assertEquals("we", verb.getEnglishPerson());
+        assertEquals(" were ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warning, advising", verb.getEnglishVerbEnding());
+        assertEquals("we were warning, advising", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person2, numberPlural,
+                tenseImPerfect, moodIndicative, voiceActive);
+
+        assertEquals("you(pl)", verb.getEnglishPerson());
+        assertEquals(" were ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warning, advising", verb.getEnglishVerbEnding());
+        assertEquals("you(pl) were warning, advising", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person3, numberPlural,
+                tenseImPerfect, moodIndicative, voiceActive);
+
+        assertEquals("they", verb.getEnglishPerson());
+        assertEquals(" were ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warning, advising", verb.getEnglishVerbEnding());
+        assertEquals("they were warning, advising", verb.getEnglishVerb());
+
+    }
+
+
+
 
 }
