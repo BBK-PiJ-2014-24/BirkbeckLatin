@@ -135,7 +135,7 @@ public class Verb {
         mEnglishAuxiliaryVerb = databaseAccess.sqlEngAuxVerbQuery(person, number, mood, voice, tense);
         String englishVerbCase = databaseAccess.sqlEngVerbEnding(number, tense, mood, voice);
 
-        if(person.equals("3rd") && tense.equals("Present") && mood.equals("Indicative") && voice.equals("Active")) {
+        if(person.equals("3rd") && number.equals("Singular") && tense.equals("Present") && mood.equals("Indicative") && voice.equals("Active")) {
             englishVerbCase = "English_Present_3rdPerson";   // override to pick up present 3rd person present
         }
 

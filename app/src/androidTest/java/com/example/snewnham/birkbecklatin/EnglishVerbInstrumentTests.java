@@ -132,6 +132,47 @@ public class EnglishVerbInstrumentTests {
         assertEquals(" ", verb.getEnglishAuxiliaryVerb());
         assertEquals("warn, advise", verb.getEnglishVerbEnding());
         assertEquals("I warn, advise", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person2, numberSingular,
+                tensePresent, moodIndicative, voiceActive);
+
+        assertEquals("you(s)", verb.getEnglishPerson());
+        assertEquals(" ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warn, advise", verb.getEnglishVerbEnding());
+        assertEquals("you(s) warn, advise", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person3, numberSingular,
+                tensePresent, moodIndicative, voiceActive);
+
+        assertEquals("he/she", verb.getEnglishPerson());
+        assertEquals(" ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warns, advises", verb.getEnglishVerbEnding());
+        assertEquals("he/she warns, advises", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person1, numberPlural,
+                tensePresent, moodIndicative, voiceActive);
+
+        assertEquals("we", verb.getEnglishPerson());
+        assertEquals(" ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warn, advise", verb.getEnglishVerbEnding());
+        assertEquals("we warn, advise", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person2, numberPlural,
+                tensePresent, moodIndicative, voiceActive);
+
+        assertEquals("you(pl)", verb.getEnglishPerson());
+        assertEquals(" ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warn, advise", verb.getEnglishVerbEnding());
+        assertEquals("you(pl) warn, advise", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person3, numberPlural,
+                tensePresent, moodIndicative, voiceActive);
+
+        assertEquals("they", verb.getEnglishPerson());
+        assertEquals(" ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warn, advise", verb.getEnglishVerbEnding());
+        assertEquals("they warn, advise", verb.getEnglishVerb());
+
     }
 
 
