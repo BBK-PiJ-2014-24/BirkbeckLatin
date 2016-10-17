@@ -420,6 +420,67 @@ public class EnglishVerbInstrumentTests {
     }
 
 
+    /**
+     * testMakeVerbWordFutureActiveIndicative()  - FUTURE PERFECT TENSE, ACTIVE, INDICATIVE
+     * =========================================
+     * test Verb Class that It Can build Correct ENGLISH Verb.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeVerbWordFuturePerfectActiveIndicative() throws Exception {
+
+        verb.makeEnglishVerb(databaseAccess, person1, numberSingular,
+                tenseFuturePerfect, moodIndicative, voiceActive);
+
+        assertEquals("I", verb.getEnglishPerson());
+        assertEquals(" shall have ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warned, advised", verb.getEnglishVerbEnding());
+        assertEquals("I shall have warned, advised", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person2, numberSingular,
+                tenseFuturePerfect, moodIndicative, voiceActive);
+
+        assertEquals("you(s)", verb.getEnglishPerson());
+        assertEquals(" will have ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warned, advised", verb.getEnglishVerbEnding());
+        assertEquals("you(s) will have warned, advised", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person3, numberSingular,
+                tenseFuturePerfect, moodIndicative, voiceActive);
+
+        assertEquals("he/she", verb.getEnglishPerson());
+        assertEquals(" will have ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warned, advised", verb.getEnglishVerbEnding());
+        assertEquals("he/she will have warned, advised", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person1, numberPlural,
+                tenseFuturePerfect, moodIndicative, voiceActive);
+
+        assertEquals("we", verb.getEnglishPerson());
+        assertEquals(" shall have ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warned, advised", verb.getEnglishVerbEnding());
+        assertEquals("we shall have warned, advised", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person2, numberPlural,
+                tenseFuturePerfect, moodIndicative, voiceActive);
+
+        assertEquals("you(pl)", verb.getEnglishPerson());
+        assertEquals(" will have ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warned, advised", verb.getEnglishVerbEnding());
+        assertEquals("you(pl) will have warned, advised", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, person3, numberPlural,
+                tenseFuturePerfect, moodIndicative, voiceActive);
+
+        assertEquals("they", verb.getEnglishPerson());
+        assertEquals("warned, advised", verb.getEnglishVerbEnding());
+        assertEquals("they will have warned, advised", verb.getEnglishVerb());
+
+    }
+
+
+
 
 
 }
