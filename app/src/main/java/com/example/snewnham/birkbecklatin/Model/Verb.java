@@ -99,6 +99,8 @@ public class Verb {
             }
         }
 
+
+
         // Find Latin Ending
         // -----------------
         this.mLatinEnding = mDatabaseAccess.sqlVerbEndingQuery(person,number,mood,voice,tense, conjNum);
