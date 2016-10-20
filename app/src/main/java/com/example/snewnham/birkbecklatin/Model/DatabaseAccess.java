@@ -158,6 +158,7 @@ public class DatabaseAccess {
 
         String table = VERB_STEM_TABLE;  // FROM VerbStemTable
         String[] column = new String[]{DbSchema.VerbStemTable.Cols.STEM};  // SELECT STEM
+
         String whereClause = DbSchema.VerbStemTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
                              DbSchema.VerbStemTable.Cols.MOOD + "=?" + " AND " +
                              DbSchema.VerbStemTable.Cols.VOICE + "=?" + " AND " +

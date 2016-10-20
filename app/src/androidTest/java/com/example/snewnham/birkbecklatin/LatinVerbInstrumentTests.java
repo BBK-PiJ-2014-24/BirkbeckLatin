@@ -1263,6 +1263,46 @@ public class LatinVerbInstrumentTests {
         assertEquals("monere", verb.getLatinStem());
         assertEquals( "", verb.getLatinEnding());
         assertEquals("monere", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, personNull, numberInfinitive, tensePerfect,
+                moodIndicative, voiceActive, conjNull);
+
+        assertEquals("monu", verb.getLatinStem());
+        assertEquals("isse", verb.getLatinEnding());
+        assertEquals("monuisse", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, personNull, numberInfinitive, tenseFuture,
+                moodIndicative, voiceActive, conjNull);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("urus esse", verb.getLatinEnding());
+        assertEquals("moniturus esse", verb.getLatinVerb());
+
+
+        verb.makeLatinVerb(databaseAccess, personNull, numberInfinitive, tensePresent,
+                moodIndicative, voicePassive, conjNull);
+
+        assertEquals("moner", verb.getLatinStem());
+        assertEquals("i", verb.getLatinEnding());
+        assertEquals("moneri", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, personNull, numberInfinitive, tensePerfect,
+                moodIndicative, voicePassive, conjNull);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("us esse", verb.getLatinEnding());
+        assertEquals("monitus esse", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, personNull, numberInfinitive, tenseFuture,
+                moodIndicative, voicePassive, conjNull);
+
+        assertEquals("monit", verb.getLatinStem());
+        assertEquals("um iri", verb.getLatinEnding());
+        assertEquals("monitum iri", verb.getLatinVerb());
+
+
+
+
     }
 
 
