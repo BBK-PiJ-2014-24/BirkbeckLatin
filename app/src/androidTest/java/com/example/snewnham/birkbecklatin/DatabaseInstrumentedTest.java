@@ -198,10 +198,10 @@ public class DatabaseInstrumentedTest {
         String voice2 = "Active";
         String tense2 = "Present";
         String conjnum2 = null;
-        String conj2 = "ere";
+        String conj2 = null;
 
-        String latinEnding2 = databaseAccess.sqlVerbEndingQuery(person1, number1, mood1, voice1, tense1, conjnum1);
-        assertEquals(conj1, latinEnding2);
+        String latinEnding2 = databaseAccess.sqlVerbEndingQuery(person2, number2, mood2, voice2, tense2, conjnum2);
+        assertEquals(conj2, latinEnding2);
     }
 
 
