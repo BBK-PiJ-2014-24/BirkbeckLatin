@@ -187,8 +187,21 @@ public class DatabaseInstrumentedTest {
         String conjnum1 = "1";
         String conj1 = "eramus";
 
-        String latinEnding = databaseAccess.sqlVerbEndingQuery(person1, number1, mood1, voice1, tense1, conjnum1);
-        assertEquals(conj1, latinEnding);
+        String latinEnding1 = databaseAccess.sqlVerbEndingQuery(person1, number1, mood1, voice1, tense1, conjnum1);
+        assertEquals(conj1, latinEnding1);
+
+
+        String id2 = "100";
+        String person2 = null;
+        String number2 = "Infinitive";
+        String mood2 = "Indicative";
+        String voice2 = "Active";
+        String tense2 = "Present";
+        String conjnum2 = null;
+        String conj2 = "ere";
+
+        String latinEnding2 = databaseAccess.sqlVerbEndingQuery(person1, number1, mood1, voice1, tense1, conjnum1);
+        assertEquals(conj1, latinEnding2);
     }
 
 
