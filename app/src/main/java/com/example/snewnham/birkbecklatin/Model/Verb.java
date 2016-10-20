@@ -104,6 +104,9 @@ public class Verb {
         // Find Latin Ending
         // -----------------
         this.mLatinEnding = mDatabaseAccess.sqlVerbEndingQuery(person,number,mood,voice,tense, conjNum);
+        if(this.mLatinEnding == null){
+            this.mLatinEnding = "";
+        }
         this.mLatinVerb = mLatinStem+mLatinEnding;
 
         return this.mLatinVerb;

@@ -32,6 +32,7 @@ public class LatinVerbInstrumentTests {
     String person1;
     String person2;
     String person3;
+    String personNull;
 
     String numberSingular;
     String numberPlural;
@@ -55,6 +56,7 @@ public class LatinVerbInstrumentTests {
     String conjNum2;
     String conjNum3;
     String conjNum4;
+    String conjNull;
 
 
     @Before
@@ -91,6 +93,7 @@ public class LatinVerbInstrumentTests {
         person1 = "1st";
         person2 = "2nd";
         person3 = "3rd";
+        personNull = null;
 
         numberSingular = "Singular";
         numberPlural = "Plural";
@@ -114,6 +117,7 @@ public class LatinVerbInstrumentTests {
         conjNum2 = "2";
         conjNum3 = "3";
         conjNum4 = "4";
+        conjNull = null;
     }
 
 
@@ -1253,11 +1257,12 @@ public class LatinVerbInstrumentTests {
     @Test
     public void testMakeVerbWordInfinitive() throws Exception {
 
-//        verb.makeLatinVerb(databaseAccess, numberInfinitive, tensePresent, voiceActive);
-//
-//        assertEquals("mon", verb.getLatinStem());
-//        assertEquals("ere", verb.getLatinEnding());
-//        assertEquals("monere", verb.getLatinVerb());
+        verb.makeLatinVerb(databaseAccess, personNull, numberInfinitive, tensePresent,
+                moodIndicative, voiceActive, conjNull);
+
+        assertEquals("monere", verb.getLatinStem());
+        assertEquals( "", verb.getLatinEnding());
+        assertEquals("monere", verb.getLatinVerb());
     }
 
 
