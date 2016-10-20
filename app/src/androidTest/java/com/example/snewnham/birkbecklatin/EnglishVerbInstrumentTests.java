@@ -31,9 +31,11 @@ public class EnglishVerbInstrumentTests {
     String person1;
     String person2;
     String person3;
+    String personNull;
 
     String numberSingular;
     String numberPlural;
+    String numberInfinitive;
 
     String moodIndicative;
     String moodSubjunctive;
@@ -53,6 +55,7 @@ public class EnglishVerbInstrumentTests {
     String conjNum2;
     String conjNum3;
     String conjNum4;
+    String conjNull;
 
 
     @Before
@@ -89,9 +92,11 @@ public class EnglishVerbInstrumentTests {
         person1 = "1st";
         person2 = "2nd";
         person3 = "3rd";
+        personNull = null;
 
         numberSingular = "Singular";
         numberPlural = "Plural";
+        numberInfinitive = "Infinitive";
 
         moodIndicative = "Indicative";
         moodSubjunctive = "Subjunctive";
@@ -111,6 +116,7 @@ public class EnglishVerbInstrumentTests {
         conjNum2 = "2";
         conjNum3 = "3";
         conjNum4 = "4";
+        conjNull = null;
     }
 
     // ==========================  ACTIVE, INDICATIVE  =============================================
@@ -1332,6 +1338,70 @@ public class EnglishVerbInstrumentTests {
         assertEquals("they would have been warned, advised", verb.getEnglishVerb());
     }
 
+
+    //============================= INFINITIVES ==============================================
+
+
+    /**
+     * testMakeVerbWordPluperfectPassiveSubjunctive()  - INFINITIVE
+     * =========================================
+     * test Verb Class that It Can build Correct ENGLISH Verb.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeVerbWordInfinitive() throws Exception {
+
+        verb.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
+                tensePresent, moodIndicative, voiceActive);
+
+        assertEquals("", verb.getEnglishPerson());
+        assertEquals("to ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warn, advise", verb.getEnglishVerbEnding());
+        assertEquals("to warn, advise", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
+                tensePerfect, moodIndicative, voiceActive);
+
+        assertEquals("", verb.getEnglishPerson());
+        assertEquals("to have ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warned, advised", verb.getEnglishVerbEnding());
+        assertEquals("to have warned, advised", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
+                tenseFuture, moodIndicative, voiceActive);
+
+        assertEquals("", verb.getEnglishPerson());
+        assertEquals("to be going to ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warn, advise", verb.getEnglishVerbEnding());
+        assertEquals("to be going to warn, advise", verb.getEnglishVerb());
+
+
+        verb.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
+                tensePresent, moodIndicative, voicePassive);
+
+        assertEquals("", verb.getEnglishPerson());
+        assertEquals("to be ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warned, advised", verb.getEnglishVerbEnding());
+        assertEquals("to be warned, advised", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
+                tensePerfect, moodIndicative, voicePassive);
+
+        assertEquals("", verb.getEnglishPerson());
+        assertEquals("to have been ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warned, advised", verb.getEnglishVerbEnding());
+        assertEquals("to have been warned, advised", verb.getEnglishVerb());
+
+        verb.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
+                tenseFuture, moodIndicative, voicePassive);
+
+        assertEquals("", verb.getEnglishPerson());
+        assertEquals("to be going to be ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warned, advised", verb.getEnglishVerbEnding());
+        assertEquals("to be going to be warned, advised", verb.getEnglishVerb());
+
+    }
 
 
 }

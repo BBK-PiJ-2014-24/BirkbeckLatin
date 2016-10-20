@@ -133,17 +133,23 @@ public class Verb {
             this.mDatabaseAccess = databaseAccess;
         }
 
-        mEnglishPerson = databaseAccess.sqlEngPersonQuery(person, number);
+
         if(tense.equals("Present") && mood.equals("Subjunctive")){
             mEnglishPerson = ""; // override to drop Person for Subjunctive, Present Verbs
+        } else if (number.equals("Infinitive")) {
+            mEnglishPerson = ""; // override to drop Person for All Infinitives
+        } else {
+            mEnglishPerson = databaseAccess.sqlEngPersonQuery(person, number);
         }
+
         mEnglishAuxiliaryVerb = databaseAccess.sqlEngAuxVerbQuery(person, number, mood, voice, tense);
         String englishVerbCase = databaseAccess.sqlEngVerbEnding(number, tense, mood, voice);
 
-        if(person.equals("3rd") && number.equals("Singular") && tense.equals("Present") && mood.equals("Indicative") && voice.equals("Active")) {
-            englishVerbCase = "English_Present_3rdPerson";   // override to pick up present 3rd person present
+        if( !number.equals("Infinitive")) { // Avoid nullpointerException for infinitives
+            if (person.equals("3rd") && number.equals("Singular") && tense.equals("Present") && mood.equals("Indicative") && voice.equals("Active")) {
+                englishVerbCase = "English_Present_3rdPerson";   // override to pick up present 3rd person present
+            }
         }
-
         switch(englishVerbCase){
             case "English_Infinitive":{
                 mEnglishVerbEnding = this.mEnglish_Infinitive;
