@@ -35,6 +35,7 @@ public class LatinVerbInstrumentTests {
 
     String numberSingular;
     String numberPlural;
+    String numberInfinitive;
 
     String moodIndicative;
     String moodSubjunctive;
@@ -93,6 +94,7 @@ public class LatinVerbInstrumentTests {
 
         numberSingular = "Singular";
         numberPlural = "Plural";
+        numberInfinitive = "Infinitive";
 
         moodIndicative = "Indicative";
         moodSubjunctive = "Subjunctive";
@@ -1234,8 +1236,30 @@ public class LatinVerbInstrumentTests {
         assertEquals("monit", verb.getLatinStem());
         assertEquals("i essent", verb.getLatinEnding());
         assertEquals("moniti essent", verb.getLatinVerb());
-
     }
+
+
+
+    // =========================== INFINITIVE, IMPERATIVE =======================================
+
+
+    /**
+     * testMakeVerbWordInfinitive()  - INFINITIVE
+     * ==========================================
+     * test Verb Class that It Can build Correct Latin Verb.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeVerbWordInfinitive() throws Exception {
+
+        verb.makeLatinVerb(databaseAccess, numberInfinitive, tensePresent, voiceActive);
+
+        assertEquals("mon", verb.getLatinStem());
+        assertEquals("ere", verb.getLatinEnding());
+        assertEquals("monere", verb.getLatinVerb());
+    }
+
 
 
 }
