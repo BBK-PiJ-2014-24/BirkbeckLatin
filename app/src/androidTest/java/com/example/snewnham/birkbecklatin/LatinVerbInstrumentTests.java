@@ -51,6 +51,7 @@ public class LatinVerbInstrumentTests {
     String tensePerfect;
     String tensePluperfect;
     String tenseFuturePerfect;
+    String tenseNull;
 
     String conjNum1;
     String conjNum2;
@@ -112,6 +113,7 @@ public class LatinVerbInstrumentTests {
         tensePerfect = "Perfect";
         tensePluperfect = "Pluperfect";
         tenseFuturePerfect = "Future Perfect";
+        tenseNull = null;
 
         conjNum1 = "1";
         conjNum2 = "2";
@@ -1300,11 +1302,26 @@ public class LatinVerbInstrumentTests {
         assertEquals("um iri", verb.getLatinEnding());
         assertEquals("monitum iri", verb.getLatinVerb());
 
-
-
-
     }
 
 
+    /**
+     * testMakeVerbWordImperative()  - IMPERATIVE
+     * ==========================================
+     * test Verb Class that It Can build Correct Latin Verb.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeVerbWordImperativeSingularActive() throws Exception {
+
+        verb.makeLatinVerb(databaseAccess, personNull, numberSingular, tenseNull,
+                moodImperative, voiceActive, conjNull);
+
+        assertEquals("mone", verb.getLatinStem());
+        assertEquals("", verb.getLatinEnding());
+        assertEquals("mone", verb.getLatinVerb());
+
+    }
 
 }
