@@ -291,7 +291,7 @@ public class DatabaseAccess {
             whereArgs = new String[]{number, mood, voice};
             whereClause = DbSchema.EnglishAuxillaryVerbTable.Cols.NUMBER + "=?" + " AND " +   // WHERE ... AND
                           DbSchema.EnglishAuxillaryVerbTable.Cols.MOOD + "=?" + " AND " +
-                          DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE;
+                          DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE + "=?";
         } else {
             whereArgs = new String[]{person, number, mood, voice, tense};
             whereClause = DbSchema.EnglishAuxillaryVerbTable.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND

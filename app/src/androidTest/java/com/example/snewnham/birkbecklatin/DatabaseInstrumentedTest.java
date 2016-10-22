@@ -98,14 +98,11 @@ public class DatabaseInstrumentedTest {
         conjNull = null;
     }
 
-
     @Test
     public void useAppContext() throws Exception {
         // Context of the app under test.
         assertEquals("com.example.snewnham.birkbecklatin", appContext.getPackageName());
     }
-
-
 
     @Test
     public void testDBAccess() throws Exception {
@@ -206,16 +203,16 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testLatinVerbStem() {
 
-        String ans1 = "Present";
-
         String stem1 = databaseAccess.sqlVerbStemQuery(numberSingular, moodIndicative,
                                                 voiceActive, tensePresent);
+        String ans1 = "Present";
         assertEquals(ans1, stem1);
 
-        String ans2 = "Infinitive_Stem";
 
+        // TEST IMPERATIVE
         String stem2 = databaseAccess.sqlVerbStemQuery(numberSingular, moodImperative,
                                                voiceActive, tenseNull);
+        String ans2 = "Infinitive_Stem";
         assertEquals(ans2, stem2);
     }
 
@@ -235,40 +232,23 @@ public class DatabaseInstrumentedTest {
         assertEquals(conj1, latinEnding1);
 
 
-        String id2 = "100";    // TEST INFINITIVE
-
-        String conj2 = null;
-
+        // TEST INFINITIVE
         String latinEnding2 = databaseAccess.sqlVerbEndingQuery(person2, numberInfinitive,
                                         moodIndicative, voiceActive, tensePresent, conjNull);
+        String conj2 = null;
+
         assertEquals(conj2, latinEnding2);
 
 
-        String id3 = "100";    // TEST IMPERATIVE
-
-        String conj3 = null;
-
+        // TEST IMPERATIVE
         String latinEnding3 = databaseAccess.sqlVerbEndingQuery(personNull, numberSingular,
                             moodImperative, voiceActive, tenseNull, conjNull);
+        String conj3 = null;
+
         assertEquals(conj3, latinEnding3);
 
     }
-
-
-    /**
-     * testEnglishAuxiliaryVerbTable()
-     * ===============================
-     * Test testEnglishAuxiliaryVerbTable to select the correct English Auxiliary Verb.
-     */
-    @Test
-    public void testEnglishAuxiliaryVerbTable() {
-
-        String ans = " would have ";
-
-        String engAuxVerb = databaseAccess.sqlEngAuxVerbQuery(person2, numberSingular,
-                                moodSubjunctive, voiceActive, tensePluperfect);
-        assertEquals(ans, engAuxVerb );
-    }
+    // =================== ENGLISH TESTS ==================================================
 
     /**
      * testEnglishPersonTable()
@@ -282,6 +262,29 @@ public class DatabaseInstrumentedTest {
 
         String engPerson = databaseAccess.sqlEngPersonQuery(person3, numberSingular);
         assertEquals(ans, engPerson );
+    }
+
+    /**
+     * testEnglishAuxiliaryVerbTable()
+     * ===============================
+     * Test testEnglishAuxiliaryVerbTable to select the correct English Auxiliary Verb.
+     */
+    @Test
+    public void testEnglishAuxiliaryVerbTable() {
+
+        String engAuxVerb1 = databaseAccess.sqlEngAuxVerbQuery(person2, numberSingular,
+                moodSubjunctive, voiceActive, tensePluperfect);
+
+        String ans1 = " would have ";
+        assertEquals(ans1, engAuxVerb1 );
+
+        // TEST IMPERATIVE
+        String engAuxVerb2 = databaseAccess.sqlEngAuxVerbQuery(personNull, numberSingular,
+                moodImperative, voicePassive, tenseNull);
+
+        String ans2 = "be ";
+        assertEquals(ans2, engAuxVerb2 );
+
 
     }
 
@@ -294,12 +297,12 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testEnglishVerbEndingTable() {
 
-        String ans = "English_Infinitive";
-
         String guessEngVerbEnding = databaseAccess.sqlEngVerbEnding(numberSingular, tensePresent,
                             moodIndicative, voiceActive);
-        assertEquals(ans, guessEngVerbEnding );
 
+        String ans = "English_Infinitive";
+
+        assertEquals(ans, guessEngVerbEnding );
     }
 
     @After
