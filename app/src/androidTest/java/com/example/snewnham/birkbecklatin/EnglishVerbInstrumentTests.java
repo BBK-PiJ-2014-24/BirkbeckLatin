@@ -50,6 +50,7 @@ public class EnglishVerbInstrumentTests {
     String tensePerfect;
     String tensePluperfect;
     String tenseFuturePerfect;
+    String tenseNull;
 
     String conjNum1;
     String conjNum2;
@@ -76,7 +77,8 @@ public class EnglishVerbInstrumentTests {
         verb.setLatin_Participle("monitus");
 
         verb.setLatin_Present_Stem("mon");     // Stems
-        verb.setLatin_Infinitive_Stem("moner");
+        verb.setLatin_Infinitive_Stem("mone");
+        verb.setLatin_Infinitive_PassiveStem("moner");
         verb.setLatin_Infinitive_StemMod("monea");
         verb.setLatin_Perfect_Stem("monu");
         verb.setLatin_Participle_Stem("monit");
@@ -100,7 +102,7 @@ public class EnglishVerbInstrumentTests {
 
         moodIndicative = "Indicative";
         moodSubjunctive = "Subjunctive";
-        moodImperative = "Subjunctive";
+        moodImperative = "Imperative";
 
         voiceActive = "Active";
         voicePassive = "Passive";
@@ -111,6 +113,7 @@ public class EnglishVerbInstrumentTests {
         tensePerfect = "Perfect";
         tensePluperfect = "Pluperfect";
         tenseFuturePerfect = "Future Perfect";
+        tenseNull = null;
 
         conjNum1 = "1";
         conjNum2 = "2";
@@ -1339,12 +1342,12 @@ public class EnglishVerbInstrumentTests {
     }
 
 
-    //============================= INFINITIVES ==============================================
+    //============================= INFINITIVES, IMPERATIVES ==============================================
 
 
     /**
-     * testMakeVerbWordPluperfectPassiveSubjunctive()  - INFINITIVE
-     * =========================================
+     * testMakeVerbInfinitive()  - INFINITIVE
+     * ========================
      * test Verb Class that It Can build Correct ENGLISH Verb.
      * @throws Exception
      */
@@ -1401,6 +1404,25 @@ public class EnglishVerbInstrumentTests {
         assertEquals("warned, advised", verb.getEnglishVerbEnding());
         assertEquals("to be going to be warned, advised", verb.getEnglishVerb());
 
+    }
+
+    /**
+     * testMakeVerbImperative()  - IMPERATIVE
+     * ========================
+     * test Verb Class that It Can build Correct ENGLISH Verb.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeVerbWordImperative() throws Exception {
+
+        verb.makeEnglishVerb(databaseAccess, personNull, numberSingular,
+                tenseNull, moodImperative, voiceActive);
+
+        assertEquals("", verb.getEnglishPerson());
+        assertEquals("", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warn, advise", verb.getEnglishVerbEnding());
+        assertEquals("warn, advise", verb.getEnglishVerb());
     }
 
 
