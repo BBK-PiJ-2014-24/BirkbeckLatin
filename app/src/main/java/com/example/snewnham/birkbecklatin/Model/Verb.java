@@ -18,6 +18,7 @@ public class Verb {
     private String mLatin_Participle;
     private String mLatin_Present_Stem;
     private String mLatin_Infinitive_Stem;
+    private String mLatin_Infinitive_PassiveStem;
     private String mLatin_Infinitive_StemMod;
     private String mLatin_Perfect_Stem;
     private String mLatin_Participle_Stem;
@@ -87,6 +88,10 @@ public class Verb {
             }
             case "Infinitive": {
                 this.mLatinStem = mLatin_Infinitive;
+                break;
+            }
+            case "Infinitive_PassiveStem": {
+                this.mLatinStem = mLatin_Infinitive_PassiveStem;
                 break;
             }
             case "Infinitive_Stem": {
@@ -252,6 +257,13 @@ public class Verb {
         mLatin_Infinitive_Stem = latin_Infinitive_Stem;
     }
 
+    public String getLatin_Infinitive_PassiveStem() {
+        return mLatin_Infinitive_PassiveStem;
+    }
+
+    public void setLatin_Infinitive_PassiveStem(String latin_Infinitive_PassiveStem) {
+        mLatin_Infinitive_PassiveStem = latin_Infinitive_PassiveStem;
+    }
 
     public String getLatin_Infinitive_StemMod() {
         return mLatin_Infinitive_StemMod;
