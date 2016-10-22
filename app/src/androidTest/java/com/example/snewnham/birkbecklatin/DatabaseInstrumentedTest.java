@@ -29,12 +29,73 @@ public class DatabaseInstrumentedTest {
     Context appContext;
     DatabaseAccess databaseAccess;
 
+    String person1;
+    String person2;
+    String person3;
+    String personNull;
+
+    String numberSingular;
+    String numberPlural;
+    String numberInfinitive;
+
+    String moodIndicative;
+    String moodSubjunctive;
+    String moodImperative;
+
+    String voiceActive;
+    String voicePassive;
+
+    String tensePresent;
+    String tenseImPerfect;
+    String tenseFuture;
+    String tensePerfect;
+    String tensePluperfect;
+    String tenseFuturePerfect;
+    String tenseNull;
+
+    String conjNum1;
+    String conjNum2;
+    String conjNum3;
+    String conjNum4;
+    String conjNull;
+
+
 
     @Before
     public void setUp() {
         appContext = InstrumentationRegistry.getTargetContext();
         databaseAccess = DatabaseAccess.getInstance(appContext);  // CALL THE DATABASE STATICALY
         databaseAccess.open();                                  // OPEN THE DATABASE
+
+        person1 = "1st";
+        person2 = "2nd";
+        person3 = "3rd";
+        personNull = null;
+
+        numberSingular = "Singular";
+        numberPlural = "Plural";
+        numberInfinitive = "Infinitive";
+
+        moodIndicative = "Indicative";
+        moodSubjunctive = "Subjunctive";
+        moodImperative = "Imperative";
+
+        voiceActive = "Active";
+        voicePassive = "Passive";
+
+        tensePresent = "Present";
+        tenseImPerfect = "Imperfect";
+        tenseFuture = "Future";
+        tensePerfect = "Perfect";
+        tensePluperfect = "Pluperfect";
+        tenseFuturePerfect = "Future Perfect";
+        tenseNull = null;
+
+        conjNum1 = "1";
+        conjNum2 = "2";
+        conjNum3 = "3";
+        conjNum4 = "4";
+        conjNull = null;
     }
 
 
@@ -145,25 +206,16 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testLatinVerbStem() {
 
-        // test input + answers
-        // --------------------
-        String number1 = "Singular";
-        String mood1 = "Indicative";
-        String voice1 = "Active";
-        String tense1 = "Present";
         String ans1 = "Present";
 
-        String stem1 = databaseAccess.sqlVerbStemQuery(number1, mood1, voice1, tense1);
+        String stem1 = databaseAccess.sqlVerbStemQuery(numberSingular, moodIndicative,
+                                                voiceActive, tensePresent);
         assertEquals(ans1, stem1);
 
+        String ans2 = "Infinitive_Stem";
 
-        String number2 = "Singular";
-        String mood2 = "Imperative";
-        String voice2 = "Active";
-        String tense2 = "Imperative";
-        String ans2 = "Present";
-
-        String stem2 = databaseAccess.sqlVerbStemQuery(number2, mood2, voice2, tense2);
+        String stem2 = databaseAccess.sqlVerbStemQuery(numberSingular, moodImperative,
+                                               voiceActive, tenseNull);
         assertEquals(ans2, stem2);
     }
 
@@ -176,44 +228,28 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testLatinVerbEnding() {
 
-        // test input + answers
-        // --------------------
-        String id1 = "100";
-        String person1 = "1st";
-        String number1 = "Plural";
-        String mood1 = "Indicative";
-        String voice1 = "Active";
-        String tense1 = "Pluperfect";
-        String conjnum1 = "1";
         String conj1 = "eramus";
 
-        String latinEnding1 = databaseAccess.sqlVerbEndingQuery(person1, number1, mood1, voice1, tense1, conjnum1);
+        String latinEnding1 = databaseAccess.sqlVerbEndingQuery(person1, numberPlural,
+                                            moodIndicative, voiceActive, tensePluperfect, conjNum1);
         assertEquals(conj1, latinEnding1);
 
 
         String id2 = "100";    // TEST INFINITIVE
-        String person2 = null;
-        String number2 = "Infinitive";
-        String mood2 = "Indicative";
-        String voice2 = "Active";
-        String tense2 = "Present";
-        String conjnum2 = null;
+
         String conj2 = null;
 
-        String latinEnding2 = databaseAccess.sqlVerbEndingQuery(person2, number2, mood2, voice2, tense2, conjnum2);
+        String latinEnding2 = databaseAccess.sqlVerbEndingQuery(person2, numberInfinitive,
+                                        moodIndicative, voiceActive, tensePresent, conjNull);
         assertEquals(conj2, latinEnding2);
 
 
         String id3 = "100";    // TEST IMPERATIVE
-        String person3 = null;
-        String number3 = "Singular";
-        String mood3 = "Imperative";
-        String voice3 = "Active";
-        String tense3 = null;
-        String conjnum3 = null;
+
         String conj3 = null;
 
-        String latinEnding3 = databaseAccess.sqlVerbEndingQuery(person3, number3, mood3, voice3, tense3, conjnum3);
+        String latinEnding3 = databaseAccess.sqlVerbEndingQuery(personNull, numberSingular,
+                            moodImperative, voiceActive, tenseNull, conjNull);
         assertEquals(conj3, latinEnding3);
 
     }
@@ -226,17 +262,11 @@ public class DatabaseInstrumentedTest {
      */
     @Test
     public void testEnglishAuxiliaryVerbTable() {
-        // test input + answers
-        // --------------------
-        String id1 = "100";
-        String person1 = "2nd";
-        String number1 = "Singular";
-        String mood1 = "Subjunctive";
-        String voice1 = "Active";
-        String tense1 = "Pluperfect";
+
         String ans = " would have ";
 
-        String engAuxVerb = databaseAccess.sqlEngAuxVerbQuery(person1, number1, mood1, voice1, tense1);
+        String engAuxVerb = databaseAccess.sqlEngAuxVerbQuery(person2, numberSingular,
+                                moodSubjunctive, voiceActive, tensePluperfect);
         assertEquals(ans, engAuxVerb );
     }
 
@@ -248,14 +278,9 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testEnglishPersonTable() {
 
-        // test input + answers
-        // --------------------
-        String id1 = "3";
-        String person1 = "3rd";
-        String number1 = "Singular";
         String ans = "he/she";
 
-        String engPerson = databaseAccess.sqlEngPersonQuery(person1, number1);
+        String engPerson = databaseAccess.sqlEngPersonQuery(person3, numberSingular);
         assertEquals(ans, engPerson );
 
     }
@@ -269,18 +294,10 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testEnglishVerbEndingTable() {
 
-        // test input + answers
-        // --------------------
-
-
-        String number1 = "Singular";
-        String tense1 = "Present";
-        String mood1 = "Indicative";
-        String voice1 = "Active";
         String ans = "English_Infinitive";
 
-        String guessEngVerbEnding = databaseAccess.sqlEngVerbEnding(number1, tense1,
-                            mood1, voice1);
+        String guessEngVerbEnding = databaseAccess.sqlEngVerbEnding(numberSingular, tensePresent,
+                            moodIndicative, voiceActive);
         assertEquals(ans, guessEngVerbEnding );
 
     }
