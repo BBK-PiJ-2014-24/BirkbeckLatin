@@ -1438,8 +1438,17 @@ public class EnglishVerbInstrumentTests {
                 tenseNull, moodImperative, voicePassive);
 
         assertEquals("", verb.getEnglishPerson());
-        assertEquals("be", verb.getEnglishAuxiliaryVerb());
-        assertEquals("be warned, advised", verb.getEnglishVerbEnding());
+        assertEquals("be ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warned, advised", verb.getEnglishVerbEnding());
+        assertEquals("be warned, advised", verb.getEnglishVerb());
+
+
+        verb.makeEnglishVerb(databaseAccess, personNull, numberPlural,
+                tenseNull, moodImperative, voicePassive);
+
+        assertEquals("", verb.getEnglishPerson());
+        assertEquals("be ", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warned, advised", verb.getEnglishVerbEnding());
         assertEquals("be warned, advised", verb.getEnglishVerb());
 
     }

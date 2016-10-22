@@ -151,7 +151,7 @@ public class Verb {
         mEnglishAuxiliaryVerb = databaseAccess.sqlEngAuxVerbQuery(person, number, mood, voice, tense);
         String englishVerbCase = databaseAccess.sqlEngVerbEnding(number, tense, mood, voice);
 
-        if( !number.equals("Infinitive")) { // Avoid nullpointerException for infinitives
+        if( !number.equals("Infinitive")  && !mood.equals("Imperative")) { // Avoid nullpointerException for infinitives
             if (person.equals("3rd") && number.equals("Singular") && tense.equals("Present") && mood.equals("Indicative") && voice.equals("Active")) {
                 englishVerbCase = "English_Present_3rdPerson";   // override to pick up present 3rd person present
             }
@@ -173,6 +173,9 @@ public class Verb {
                 mEnglishVerbEnding = this.mEnglish_Participle;
                 break;
             }
+        }
+        if(mEnglishAuxiliaryVerb == null){
+            mEnglishAuxiliaryVerb = "";
         }
         mEnglishVerb = mEnglishPerson + mEnglishAuxiliaryVerb + mEnglishVerbEnding;
         return mEnglishVerb;

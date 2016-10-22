@@ -297,12 +297,19 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testEnglishVerbEndingTable() {
 
-        String guessEngVerbEnding = databaseAccess.sqlEngVerbEnding(numberSingular, tensePresent,
+        String guessEngVerbEnding1 = databaseAccess.sqlEngVerbEnding(numberSingular, tensePresent,
                             moodIndicative, voiceActive);
 
-        String ans = "English_Infinitive";
+        String ans1 = "English_Infinitive";
+        assertEquals(ans1, guessEngVerbEnding1 );
 
-        assertEquals(ans, guessEngVerbEnding );
+        String guessEngVerbEnding2 = databaseAccess.sqlEngVerbEnding(numberPlural, tenseNull,
+                moodImperative, voiceActive);
+
+        String ans2 = "English_Infinitive";
+        assertEquals(ans2, guessEngVerbEnding2 );
+
+
     }
 
     @After
