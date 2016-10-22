@@ -159,12 +159,21 @@ public class DatabaseAccess {
         String table = VERB_STEM_TABLE;  // FROM VerbStemTable
         String[] column = new String[]{DbSchema.VerbStemTable.Cols.STEM};  // SELECT STEM
 
-        String whereClause = DbSchema.VerbStemTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
-                             DbSchema.VerbStemTable.Cols.MOOD + "=?" + " AND " +
-                             DbSchema.VerbStemTable.Cols.VOICE + "=?" + " AND " +
-                             DbSchema.VerbStemTable.Cols.TENSE + "=?";
+        String[] whereArgs;
+        String whereClause;
 
-        String[] whereArgs = new String[]{number, mood, voice, tense};
+        if( mood.equals("Imperative") ) { // FOR IMPERATIVES: reduce arguments for Imperatives (as SQLite can't take IS NULL)
+            whereArgs = new String[]{number, mood, voice};
+            whereClause = DbSchema.VerbStemTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                          DbSchema.VerbStemTable.Cols.MOOD + "=?" + " AND " +
+                          DbSchema.VerbStemTable.Cols.VOICE + "=?";
+        } else {  // FOR ALL OTHER VERBS
+            whereArgs = new String[]{number, mood, voice, tense};
+            whereClause = DbSchema.VerbStemTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                          DbSchema.VerbStemTable.Cols.MOOD + "=?" + " AND " +
+                          DbSchema.VerbStemTable.Cols.VOICE + "=?" + " AND " +
+                          DbSchema.VerbStemTable.Cols.TENSE + "=?";
+        }
 
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
         cursor.moveToFirst();
@@ -177,11 +186,11 @@ public class DatabaseAccess {
      * sqlVerbEndingQuery(String person, String number, String mood, String voice, String tense, String conjnum)
      * =================
      * A SQL query to select the correct Ending for a Latin Verb, given mood, voice, tense etc.
-     * @param person
+     * @param person will be null for Infintitive and Imperative verbs
      * @param number
      * @param mood
      * @param voice
-     * @param tense
+     * @param tense will be null for Imperative verbs
      * @param conjnum
      * @return
      */
@@ -196,9 +205,9 @@ public class DatabaseAccess {
         if( number.equals("Infinitive") ) {       // FOR INIFINITIVES: reduce arguments for Infinitive (as SQLite can't take IS NULL)
             whereArgs = new String[]{number, mood, voice, tense};
             whereClause = DbSchema.VerbConjugationTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
-                    DbSchema.VerbConjugationTable.Cols.MOOD + "=?" + " AND " +
-                    DbSchema.VerbConjugationTable.Cols.VOICE + "=?" + " AND " +
-                    DbSchema.VerbConjugationTable.Cols.TENSE + "=?";
+                          DbSchema.VerbConjugationTable.Cols.MOOD + "=?" + " AND " +
+                          DbSchema.VerbConjugationTable.Cols.VOICE + "=?" + " AND " +
+                          DbSchema.VerbConjugationTable.Cols.TENSE + "=?";
 
         } else if( mood.equals("Imperative") ) {  // FOR IMPERATIVES: reduce arguments for Imperatives (as SQLite can't take IS NULL)
             whereArgs = new String[]{number, mood, voice};

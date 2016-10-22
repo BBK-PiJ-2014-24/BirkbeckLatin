@@ -78,7 +78,8 @@ public class LatinVerbInstrumentTests {
         verb.setLatin_Participle("monitus");
 
         verb.setLatin_Present_Stem("mon");     // Stems
-        verb.setLatin_Infinitive_Stem("moner");
+        verb.setLatin_Infinitive_Stem("mone");
+        verb.setLatin_Infinitive_PassiveStem("moner");
         verb.setLatin_Infinitive_StemMod("monea");
         verb.setLatin_Perfect_Stem("monu");
         verb.setLatin_Participle_Stem("monit");
@@ -102,7 +103,7 @@ public class LatinVerbInstrumentTests {
 
         moodIndicative = "Indicative";
         moodSubjunctive = "Subjunctive";
-        moodImperative = "Subjunctive";
+        moodImperative = "Imperative";
 
         voiceActive = "Active";
         voicePassive = "Passive";
@@ -1313,7 +1314,7 @@ public class LatinVerbInstrumentTests {
      */
 
     @Test
-    public void testMakeVerbWordImperativeSingularActive() throws Exception {
+    public void testMakeVerbWordImperative() throws Exception {
 
         verb.makeLatinVerb(databaseAccess, personNull, numberSingular, tenseNull,
                 moodImperative, voiceActive, conjNull);
@@ -1321,6 +1322,28 @@ public class LatinVerbInstrumentTests {
         assertEquals("mone", verb.getLatinStem());
         assertEquals("", verb.getLatinEnding());
         assertEquals("mone", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, personNull, numberPlural, tenseNull,
+                moodImperative, voiceActive, conjNull);
+
+        assertEquals("mone", verb.getLatinStem());
+        assertEquals("te", verb.getLatinEnding());
+        assertEquals("monete", verb.getLatinVerb());
+
+
+        verb.makeLatinVerb(databaseAccess, personNull, numberSingular, tenseNull,
+                moodImperative, voicePassive, conjNull);
+
+        assertEquals("mone", verb.getLatinStem());
+        assertEquals("re", verb.getLatinEnding());
+        assertEquals("monere", verb.getLatinVerb());
+
+        verb.makeLatinVerb(databaseAccess, personNull, numberPlural, tenseNull,
+                moodImperative, voicePassive, conjNull);
+
+        assertEquals("mone", verb.getLatinStem());
+        assertEquals("mini", verb.getLatinEnding());
+        assertEquals("monemini", verb.getLatinVerb());
 
     }
 
