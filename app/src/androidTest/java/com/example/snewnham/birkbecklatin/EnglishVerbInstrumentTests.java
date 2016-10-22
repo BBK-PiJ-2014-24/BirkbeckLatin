@@ -1423,6 +1423,25 @@ public class EnglishVerbInstrumentTests {
         assertEquals("", verb.getEnglishAuxiliaryVerb());
         assertEquals("warn, advise", verb.getEnglishVerbEnding());
         assertEquals("warn, advise", verb.getEnglishVerb());
+
+
+        verb.makeEnglishVerb(databaseAccess, personNull, numberPlural,
+                tenseNull, moodImperative, voiceActive);
+
+        assertEquals("", verb.getEnglishPerson());
+        assertEquals("", verb.getEnglishAuxiliaryVerb());
+        assertEquals("warn, advise", verb.getEnglishVerbEnding());
+        assertEquals("warn, advise", verb.getEnglishVerb());
+
+
+        verb.makeEnglishVerb(databaseAccess, personNull, numberSingular,
+                tenseNull, moodImperative, voicePassive);
+
+        assertEquals("", verb.getEnglishPerson());
+        assertEquals("be", verb.getEnglishAuxiliaryVerb());
+        assertEquals("be warned, advised", verb.getEnglishVerbEnding());
+        assertEquals("be warned, advised", verb.getEnglishVerb());
+
     }
 
 

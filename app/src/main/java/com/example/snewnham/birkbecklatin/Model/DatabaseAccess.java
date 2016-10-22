@@ -234,59 +234,7 @@ public class DatabaseAccess {
         return verbEnding;
     }
 
-    /**
-     * sqlEngAuxVerbQuery(String person, String number, String mood, String voice, String tense)
-     * ==================
-     * A SQL query to select the correct English Auxiliary Verb for a Latin Verb translation
-     * @param person
-     * @param number
-     * @param mood
-     * @param voice
-     * @param tense
-     * @return
-     */
-
-    public String sqlEngAuxVerbQuery(String person, String number, String mood, String voice, String tense) {
-
-        String table = ENG_AUX_VERB_TABLE;  // FROM EnglishAuxiliaryTable
-        String[] column = new String[]{DbSchema.EnglishAuxillaryVerbTable.Cols.ENG_AUX_VERB};  // SELECT Eng_Aux_Verb
-
-        String[] whereArgs;
-        String whereClause;
-
-        if( number.equals("Infinitive") ) {       // reduce arguments for Infinitive (as SQLite can't take IS NULL
-            whereArgs = new String[]{number, mood, voice, tense};
-            whereClause = DbSchema.EnglishAuxillaryVerbTable.Cols.NUMBER + "=?" + " AND " +   // WHERE ... AND
-                    DbSchema.EnglishAuxillaryVerbTable.Cols.MOOD + "=?" + " AND " +
-                    DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE + "=?" + " AND " +
-                    DbSchema.EnglishAuxillaryVerbTable.Cols.TENSE + "=?";
-
-        } else if( mood.equals("Imperative") ) {       // reduce arguments for Imperative (as SQLite can't take IS NULL
-            whereArgs = new String[]{number, mood, voice};
-            whereClause = DbSchema.EnglishAuxillaryVerbTable.Cols.NUMBER + "=?" + " AND " +   // WHERE ... AND
-                    DbSchema.EnglishAuxillaryVerbTable.Cols.MOOD + "=?" + " AND " +
-                    DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE;
-
-        } else {
-            whereArgs = new String[]{person, number, mood, voice, tense};
-            whereClause = DbSchema.EnglishAuxillaryVerbTable.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND
-                          DbSchema.EnglishAuxillaryVerbTable.Cols.NUMBER + "=?" + " AND " +
-                          DbSchema.EnglishAuxillaryVerbTable.Cols.MOOD + "=?" + " AND " +
-                          DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE + "=?" + " AND " +
-                          DbSchema.EnglishAuxillaryVerbTable.Cols.TENSE + "=?";
-        }
-
-
-
-        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
-        cursor.moveToFirst();
-
-        String engAuxVerb = cursor.getString(cursor.getColumnIndex(DbSchema.EnglishAuxillaryVerbTable.Cols.ENG_AUX_VERB));
-
-        return engAuxVerb;
-    }
-
-
+    // ====================== ENGLISH ==============================================
     /**
      * sqlEngPersonQuery(String person, String number)
      * =================
@@ -310,7 +258,57 @@ public class DatabaseAccess {
         String engPersonWord = cursor.getString(cursor.getColumnIndex(DbSchema.EnglishPersonsTable.Cols.ENGLISH_PERSON_WORD));
 
         return engPersonWord;
+    }
 
+    /**
+     * sqlEngAuxVerbQuery(String person, String number, String mood, String voice, String tense)
+     * ==================
+     * A SQL query to select the correct English Auxiliary Verb for a Latin Verb translation
+     * @param person
+     * @param number
+     * @param mood
+     * @param voice
+     * @param tense
+     * @return
+     */
+
+    public String sqlEngAuxVerbQuery(String person, String number, String mood, String voice, String tense) {
+
+        String table = ENG_AUX_VERB_TABLE;  // FROM EnglishAuxiliaryTable
+        String[] column = new String[]{DbSchema.EnglishAuxillaryVerbTable.Cols.ENG_AUX_VERB};  // SELECT Eng_Aux_Verb
+
+        String[] whereArgs;
+        String whereClause;
+
+        if( number.equals("Infinitive") ) {       // reduce arguments for Infinitive (as SQLite can't take IS NULL
+            whereArgs = new String[]{number, mood, voice, tense};
+            whereClause = DbSchema.EnglishAuxillaryVerbTable.Cols.NUMBER + "=?" + " AND " +   // WHERE ... AND
+                          DbSchema.EnglishAuxillaryVerbTable.Cols.MOOD + "=?" + " AND " +
+                          DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE + "=?" + " AND " +
+                          DbSchema.EnglishAuxillaryVerbTable.Cols.TENSE + "=?";
+
+        } else if( mood.equals("Imperative") ) {       // reduce arguments for Imperative (as SQLite can't take IS NULL
+            whereArgs = new String[]{number, mood, voice};
+            whereClause = DbSchema.EnglishAuxillaryVerbTable.Cols.NUMBER + "=?" + " AND " +   // WHERE ... AND
+                          DbSchema.EnglishAuxillaryVerbTable.Cols.MOOD + "=?" + " AND " +
+                          DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE;
+        } else {
+            whereArgs = new String[]{person, number, mood, voice, tense};
+            whereClause = DbSchema.EnglishAuxillaryVerbTable.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND
+                          DbSchema.EnglishAuxillaryVerbTable.Cols.NUMBER + "=?" + " AND " +
+                          DbSchema.EnglishAuxillaryVerbTable.Cols.MOOD + "=?" + " AND " +
+                          DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE + "=?" + " AND " +
+                          DbSchema.EnglishAuxillaryVerbTable.Cols.TENSE + "=?";
+        }
+
+
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
+
+        String engAuxVerb = cursor.getString(cursor.getColumnIndex(DbSchema.EnglishAuxillaryVerbTable.Cols.ENG_AUX_VERB));
+
+        return engAuxVerb;
     }
 
     /**
@@ -329,12 +327,23 @@ public class DatabaseAccess {
         String table = ENGLISH_VERB_ENDING_TABLE;  // FROM EnglishPerson Table
         String[] column = new String[]{DbSchema.EnglishVerbEndingTable.Cols.ENG_VERB_ENDING};  // SELECT Eng_Verb Ending
 
-        String whereClause = DbSchema.EnglishVerbEndingTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
-                DbSchema.EnglishVerbEndingTable.Cols.TENSE + "=?" + " AND " +
-                DbSchema.EnglishVerbEndingTable.Cols.MOOD + "=?" + " AND " +
-                DbSchema.EnglishVerbEndingTable.Cols.VOICE + "=?";
+        String[] whereArgs;
+        String whereClause;
 
-        String[] whereArgs = new String[]{number, tense, mood, voice};
+        if( mood.equals("Imperative") ) {
+            whereArgs = new String[]{number, mood, voice};
+            whereClause = DbSchema.EnglishVerbEndingTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                    DbSchema.EnglishVerbEndingTable.Cols.MOOD + "=?" + " AND " +
+                    DbSchema.EnglishVerbEndingTable.Cols.VOICE + "=?";
+
+        } else {
+            whereArgs = new String[]{number, tense, mood, voice};
+            whereClause = DbSchema.EnglishVerbEndingTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                          DbSchema.EnglishVerbEndingTable.Cols.TENSE + "=?" + " AND " +
+                          DbSchema.EnglishVerbEndingTable.Cols.MOOD + "=?" + " AND " +
+                          DbSchema.EnglishVerbEndingTable.Cols.VOICE + "=?";
+        }
+
 
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
         cursor.moveToFirst();
@@ -343,7 +352,4 @@ public class DatabaseAccess {
 
         return engPersonWord;
     }
-
-
-
 }
