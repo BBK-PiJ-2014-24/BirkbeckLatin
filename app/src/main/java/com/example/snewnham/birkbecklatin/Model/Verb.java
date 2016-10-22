@@ -138,13 +138,12 @@ public class Verb {
             this.mDatabaseAccess = databaseAccess;
         }
 
-
-        if(tense.equals("Present") && mood.equals("Subjunctive")){
+        if (mood.equals("Imperative") ) {
+            mEnglishPerson = ""; // override to drop Person for All Imperatives
+        } else if(tense.equals("Present") && mood.equals("Subjunctive")){
             mEnglishPerson = ""; // override to drop Person for Subjunctive, Present Verbs
         } else if (number.equals("Infinitive")) {
             mEnglishPerson = ""; // override to drop Person for All Infinitives
-        } else if (mood.equals("Imperative") ) {
-
         } else {
             mEnglishPerson = databaseAccess.sqlEngPersonQuery(person, number);
         }

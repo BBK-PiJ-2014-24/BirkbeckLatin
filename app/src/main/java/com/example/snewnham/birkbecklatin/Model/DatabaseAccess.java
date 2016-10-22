@@ -257,9 +257,15 @@ public class DatabaseAccess {
         if( number.equals("Infinitive") ) {       // reduce arguments for Infinitive (as SQLite can't take IS NULL
             whereArgs = new String[]{number, mood, voice, tense};
             whereClause = DbSchema.EnglishAuxillaryVerbTable.Cols.NUMBER + "=?" + " AND " +   // WHERE ... AND
-                          DbSchema.EnglishAuxillaryVerbTable.Cols.MOOD + "=?" + " AND " +
-                          DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE + "=?" + " AND " +
-                          DbSchema.EnglishAuxillaryVerbTable.Cols.TENSE + "=?";
+                    DbSchema.EnglishAuxillaryVerbTable.Cols.MOOD + "=?" + " AND " +
+                    DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE + "=?" + " AND " +
+                    DbSchema.EnglishAuxillaryVerbTable.Cols.TENSE + "=?";
+
+        } else if( mood.equals("Imperative") ) {       // reduce arguments for Imperative (as SQLite can't take IS NULL
+            whereArgs = new String[]{number, mood, voice};
+            whereClause = DbSchema.EnglishAuxillaryVerbTable.Cols.NUMBER + "=?" + " AND " +   // WHERE ... AND
+                    DbSchema.EnglishAuxillaryVerbTable.Cols.MOOD + "=?" + " AND " +
+                    DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE;
 
         } else {
             whereArgs = new String[]{person, number, mood, voice, tense};
