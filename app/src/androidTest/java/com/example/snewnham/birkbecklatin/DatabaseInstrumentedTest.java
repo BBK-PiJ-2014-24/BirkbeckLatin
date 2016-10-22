@@ -98,7 +98,7 @@ public class DatabaseInstrumentedTest {
         String latin_Participle = "monitus";
 
         String latin_Present_Stem = "mon";     // Stems
-        String latin_Infinitive_Stem = "moner";
+        String latin_Infinitive_Stem = "mone";
         String latin_Infinitive_StemMod = "monea";
         String latin_Perfect_Stem = "monu";
         String latin_Participle_Stem = "monit";
@@ -169,12 +169,12 @@ public class DatabaseInstrumentedTest {
 
 
     /**
-     * testLatinVerbConjugation()
+     * testLatinVerbEnding()
      * ==========================
      * Test sqlVerbConjugationQuery to select the correct ENDING for a latin verb
      */
     @Test
-    public void testLatinVerbConjugation() {
+    public void testLatinVerbEnding() {
 
         // test input + answers
         // --------------------
@@ -191,7 +191,7 @@ public class DatabaseInstrumentedTest {
         assertEquals(conj1, latinEnding1);
 
 
-        String id2 = "100";
+        String id2 = "100";    // TEST INFINITIVE
         String person2 = null;
         String number2 = "Infinitive";
         String mood2 = "Indicative";
@@ -202,6 +202,20 @@ public class DatabaseInstrumentedTest {
 
         String latinEnding2 = databaseAccess.sqlVerbEndingQuery(person2, number2, mood2, voice2, tense2, conjnum2);
         assertEquals(conj2, latinEnding2);
+
+
+        String id3 = "100";    // TEST IMPERATIVE
+        String person3 = null;
+        String number3 = "Singular";
+        String mood3 = "Imperative";
+        String voice3 = "Active";
+        String tense3 = null;
+        String conjnum3 = null;
+        String conj3 = null;
+
+        String latinEnding3 = databaseAccess.sqlVerbEndingQuery(person3, number3, mood3, voice3, tense3, conjnum3);
+        assertEquals(conj3, latinEnding3);
+
     }
 
 

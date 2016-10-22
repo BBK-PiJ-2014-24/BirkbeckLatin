@@ -138,6 +138,8 @@ public class Verb {
             mEnglishPerson = ""; // override to drop Person for Subjunctive, Present Verbs
         } else if (number.equals("Infinitive")) {
             mEnglishPerson = ""; // override to drop Person for All Infinitives
+        } else if (mood.equals("Imperative") ) {
+
         } else {
             mEnglishPerson = databaseAccess.sqlEngPersonQuery(person, number);
         }

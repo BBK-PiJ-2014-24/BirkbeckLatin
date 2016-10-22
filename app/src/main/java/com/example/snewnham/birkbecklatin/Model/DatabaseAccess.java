@@ -193,14 +193,20 @@ public class DatabaseAccess {
         String[] whereArgs;
         String whereClause;
 
-        if( number.equals("Infinitive") ) {       // reduce arguments for Infinitive (as SQLite can't take IS NULL)
+        if( number.equals("Infinitive") ) {       // FOR INIFINITIVES: reduce arguments for Infinitive (as SQLite can't take IS NULL)
             whereArgs = new String[]{number, mood, voice, tense};
             whereClause = DbSchema.VerbConjugationTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
-                          DbSchema.VerbConjugationTable.Cols.MOOD + "=?" + " AND " +
-                          DbSchema.VerbConjugationTable.Cols.VOICE + "=?" + " AND " +
-                          DbSchema.VerbConjugationTable.Cols.TENSE + "=?";
+                    DbSchema.VerbConjugationTable.Cols.MOOD + "=?" + " AND " +
+                    DbSchema.VerbConjugationTable.Cols.VOICE + "=?" + " AND " +
+                    DbSchema.VerbConjugationTable.Cols.TENSE + "=?";
 
-        } else {
+        } else if( mood.equals("Imperative") ) {  // FOR IMPERATIVES: reduce arguments for Imperatives (as SQLite can't take IS NULL)
+            whereArgs = new String[]{number, mood, voice};
+            whereClause = DbSchema.VerbConjugationTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                          DbSchema.VerbConjugationTable.Cols.MOOD + "=?" + " AND " +
+                          DbSchema.VerbConjugationTable.Cols.VOICE + "=?";
+
+        } else {  // FOR ALL OTHER VERBS
             whereArgs = new String[]{person, number, mood, voice, tense, conjnum};
             whereClause = DbSchema.VerbConjugationTable.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND
                           DbSchema.VerbConjugationTable.Cols.NUMBER + "=?" + " AND " +
