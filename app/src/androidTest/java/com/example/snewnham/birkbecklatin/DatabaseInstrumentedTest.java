@@ -184,7 +184,7 @@ public class DatabaseInstrumentedTest {
 
         assertEquals( latin_Present_Stem, verbRegular.getLatin_Present_Stem() );    // Stems
         assertEquals( latin_Infinitive_Stem, verbRegular.getLatin_Infinitive_Stem() );
-        assertEquals( latin_Infinitive_StemMod, verbRegular.getLatin_Infinitive_StemMod() );
+        assertEquals( latin_Infinitive_StemMod, verbRegular.getLatin_Present_SubjuncStem() );
         assertEquals( latin_Perfect_Stem, verbRegular.getLatin_Perfect_Stem() );
         assertEquals( latin_Participle_Stem, verbRegular.getLatin_Participle_Stem() );
 
@@ -198,7 +198,7 @@ public class DatabaseInstrumentedTest {
     /**
      * testLatinVerbStem()
      * ===================
-     * Test sqlVerbStemQuery to select the correct stem for a latin mVerbRegular
+     * Test sqlVerbStemQuery to select the correct stem for a latin verbDeponent
      */
     @Test
     public void testLatinVerbStem() {
@@ -220,7 +220,7 @@ public class DatabaseInstrumentedTest {
     /**
      * testLatinVerbEnding()
      * ==========================
-     * Test sqlVerbConjugationQuery to select the correct ENDING for a latin mVerbRegular
+     * Test sqlVerbConjugationQuery to select the correct ENDING for a latin verbDeponent
      */
     @Test
     public void testLatinVerbEnding() {

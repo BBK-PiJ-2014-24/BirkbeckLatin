@@ -61,7 +61,7 @@ public class LatinCursorWrapper extends CursorWrapper {
 
         verbRegular.setLatin_Present_Stem(latin_Present_Stem);   // Stems
         verbRegular.setLatin_Infinitive_Stem(latin_Infinitive_Stem);
-        verbRegular.setLatin_Infinitive_StemMod(latin_Infinitive_StemMod);
+        verbRegular.setLatin_Present_SubjuncStem(latin_Infinitive_StemMod);
         verbRegular.setLatin_Perfect_Stem(latin_Perfect_Stem);
         verbRegular.setLatin_Participle_Stem(latin_Participle_Stem);
 

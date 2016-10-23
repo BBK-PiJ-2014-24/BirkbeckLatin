@@ -80,7 +80,7 @@ public class LatinVerbInstrumentTests {
         mVerbRegular.setLatin_Present_Stem("mon");     // Stems
         mVerbRegular.setLatin_Infinitive_Stem("mone");
         mVerbRegular.setLatin_Infinitive_PassiveStem("moner");
-        mVerbRegular.setLatin_Infinitive_StemMod("monea");
+        mVerbRegular.setLatin_Present_SubjuncStem("monea");
         mVerbRegular.setLatin_Perfect_Stem("monu");
         mVerbRegular.setLatin_Participle_Stem("monit");
 

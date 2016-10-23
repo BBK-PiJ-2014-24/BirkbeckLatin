@@ -19,7 +19,7 @@ public class VerbRegular implements Verb {
     private String mLatin_Present_Stem;
     private String mLatin_Infinitive_Stem;
     private String mLatin_Infinitive_PassiveStem;
-    private String mLatin_Infinitive_StemMod;
+    private String mLatin_Present_SubjuncStem;
     private String mLatin_Perfect_Stem;
     private String mLatin_Participle_Stem;
     private String mEnglish_Infinitive;
@@ -82,6 +82,10 @@ public class VerbRegular implements Verb {
                 this.mLatinStem = mLatin_Present_Stem;
                 break;
             }
+            case "Present_SubjuncStem": {
+                this.mLatinStem = mLatin_Present_SubjuncStem;
+                break;
+            }
             case "Perfect":{
                 this.mLatinStem = mLatin_Perfect_Stem;
                 break;
@@ -106,10 +110,7 @@ public class VerbRegular implements Verb {
                 this.mLatinStem = mLatin_Infinitive_Stem;
                 break;
             }
-            case "Infinitive_Mod": {
-                this.mLatinStem = mLatin_Infinitive_StemMod;
-                break;
-            }
+
         }
 
 
@@ -275,12 +276,12 @@ public class VerbRegular implements Verb {
         mLatin_Infinitive_PassiveStem = latin_Infinitive_PassiveStem;
     }
 
-    public String getLatin_Infinitive_StemMod() {
-        return mLatin_Infinitive_StemMod;
+    public String getLatin_Present_SubjuncStem() {
+        return mLatin_Present_SubjuncStem;
     }
 
-    public void setLatin_Infinitive_StemMod(String latin_Infinitive_StemMod) {
-        mLatin_Infinitive_StemMod = latin_Infinitive_StemMod;
+    public void setLatin_Present_SubjuncStem(String latin_Present_SubjuncStem) {
+        mLatin_Present_SubjuncStem = latin_Present_SubjuncStem;
     }
 
 
