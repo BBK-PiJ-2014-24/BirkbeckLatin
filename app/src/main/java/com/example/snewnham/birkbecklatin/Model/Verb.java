@@ -5,21 +5,30 @@ package com.example.snewnham.birkbecklatin.Model;
  */
 
 public interface Verb {
+
     /**
-     * makeLatinVerb(String person, String number, String tense, String mood, String voice)
-     * =============
+     *  makeLatinVerb()
+     * ==============
      *
-     * Method that builds the Actual Latin and English VerbRegular given person, number tense, mood, voice
-     */
+     * Method that builds the Actual Latin Verb given person, number tense, mood, voice etc.
+     * @param databaseAccess
+     * @param person
+     * @param number
+     * @param tense
+     * @param mood
+     * @param voice
+     * @param conjNum
+     * @return
+    */
     public String makeLatinVerb(DatabaseAccess databaseAccess, String person, String number, String tense,
                                 String mood, String voice, String conjNum);
 
 
 
     /**
-     * makeEnglishVerb(DatabaseAccess databaseAccess, String person, String number, String tense, String mood, String voice)
-     * ===============
-     * Make the correct English Translation of a given Latin VerbRegular
+     * makeEnglishVerb()
+     * =================
+     * Make the correct English Translation of a given Latin Verb
      *
      * @param databaseAccess
      * @param person
@@ -34,7 +43,7 @@ public interface Verb {
 
 
     /**
-     * getLatinStem
+     * getLatinStem()
      * ============
      * @return Latin Verb Stem
      */
