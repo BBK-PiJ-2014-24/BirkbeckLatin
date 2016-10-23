@@ -80,7 +80,7 @@ public class LatinDeponentVerbInstrumentTests {
         verbDeponent.setLatin_Present_Stem("vid");     // Stems
         verbDeponent.setLatin_Present_SubjuncStem("videa");
         verbDeponent.setLatin_Infinitive_Stem("vide");
-        verbDeponent.setLatin_Infinitive_PassiveStem("videa");
+        verbDeponent.setLatin_Infinitive_PassiveStem("vider");
         verbDeponent.setLatin_Perfect_Stem(null);
         verbDeponent.setLatin_Participle_Stem("vis");
 
