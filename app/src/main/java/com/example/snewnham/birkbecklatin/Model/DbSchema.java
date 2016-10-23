@@ -27,7 +27,8 @@ public class DbSchema {
 
             public static final String LATIN_PRESENT_STEM = "Latin_Present_Stem";
             public static final String LATIN_INFINITIVE_STEM = "Latin_Infinitive_Stem";
-            public static final String LATIN_INFINITIVE_STEMMODIF = "Latin_Infinitive_StemModif";
+            public static final String LATIN_INFINITIVE_PASSIVE_STEM = "Latin_Infinitive_PassiveStem";
+            public static final String LATIN_PRESENT_SUBJUNCSTEM = "Latin_Present_SubjuncStem";
             public static final String LATIN_PERFECT_STEM = "Latin_Perfect_Stem";
             public static final String LATIN_PARTICIPLE_STEM = "Latin_Participle_Stem";
 

@@ -156,8 +156,9 @@ public class DatabaseInstrumentedTest {
         String latin_Participle = "monitus";
 
         String latin_Present_Stem = "mon";     // Stems
+        String latin_Present_SubjuncStem = "monea";
         String latin_Infinitive_Stem = "mone";
-        String latin_Infinitive_StemMod = "monea";
+        String latin_Infinitive_PassiveStem = "moner";
         String latin_Perfect_Stem = "monu";
         String latin_Participle_Stem = "monit";
 
@@ -183,8 +184,9 @@ public class DatabaseInstrumentedTest {
         assertEquals( latin_Participle, verbRegular.getLatin_Participle() );
 
         assertEquals( latin_Present_Stem, verbRegular.getLatin_Present_Stem() );    // Stems
+        assertEquals( latin_Present_SubjuncStem, verbRegular.getLatin_Present_SubjuncStem() );
         assertEquals( latin_Infinitive_Stem, verbRegular.getLatin_Infinitive_Stem() );
-        assertEquals( latin_Infinitive_StemMod, verbRegular.getLatin_Present_SubjuncStem() );
+        assertEquals( latin_Infinitive_PassiveStem, verbRegular.getLatin_Infinitive_PassiveStem() );
         assertEquals( latin_Perfect_Stem, verbRegular.getLatin_Perfect_Stem() );
         assertEquals( latin_Participle_Stem, verbRegular.getLatin_Participle_Stem() );
 
