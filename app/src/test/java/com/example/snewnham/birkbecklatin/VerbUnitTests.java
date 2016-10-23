@@ -1,13 +1,6 @@
 package com.example.snewnham.birkbecklatin;
 
-import com.example.snewnham.birkbecklatin.Model.DatabaseAccess;
-import com.example.snewnham.birkbecklatin.Model.Verb;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-
-import java.util.List;
 
 import static org.junit.Assert.*;
 

@@ -19,11 +19,11 @@ public class LatinCursorWrapper extends CursorWrapper {
     /**
      * turnCursorToVerb()
      * ---------
-     * converts a cursor into a Verb object
+     * converts a cursor into a VerbRegular object
      * @return verb object
      */
 
-    public Verb turnCursorToVerb() {
+    public VerbRegular turnCursorToVerb() {
 
 
         // Pull data from the Cursor
@@ -48,29 +48,29 @@ public class LatinCursorWrapper extends CursorWrapper {
         String english_Perfect = getString(getColumnIndex(DbSchema.VerbListTable.Cols.ENGLISH_PERFECT));
         String english_Participle = getString(getColumnIndex(DbSchema.VerbListTable.Cols.ENGLISH_PARTICIPLE));
 
-        // Transfer data to a Verb object
+        // Transfer data to a VerbRegular object
         // ------------------------------
-        Verb verb = new Verb(id);
-        verb.setLatin_Type(latin_Type);
-        verb.setLatin_ConjNum(latin_ConjNum);
+        VerbRegular verbRegular = new VerbRegular(id);
+        verbRegular.setLatin_Type(latin_Type);
+        verbRegular.setLatin_ConjNum(latin_ConjNum);
 
-        verb.setLatin_Present(latin_Present);  // Principle Parts
-        verb.setLatin_Infinitive(latin_Infinitive);
-        verb.setLatin_Participle(latin_Participle);
-        verb.setLatin_Perfect(latin_Perfect);
+        verbRegular.setLatin_Present(latin_Present);  // Principle Parts
+        verbRegular.setLatin_Infinitive(latin_Infinitive);
+        verbRegular.setLatin_Participle(latin_Participle);
+        verbRegular.setLatin_Perfect(latin_Perfect);
 
-        verb.setLatin_Present_Stem(latin_Present_Stem);   // Stems
-        verb.setLatin_Infinitive_Stem(latin_Infinitive_Stem);
-        verb.setLatin_Infinitive_StemMod(latin_Infinitive_StemMod);
-        verb.setLatin_Perfect_Stem(latin_Perfect_Stem);
-        verb.setLatin_Participle_Stem(latin_Participle_Stem);
+        verbRegular.setLatin_Present_Stem(latin_Present_Stem);   // Stems
+        verbRegular.setLatin_Infinitive_Stem(latin_Infinitive_Stem);
+        verbRegular.setLatin_Infinitive_StemMod(latin_Infinitive_StemMod);
+        verbRegular.setLatin_Perfect_Stem(latin_Perfect_Stem);
+        verbRegular.setLatin_Participle_Stem(latin_Participle_Stem);
 
-        verb.setEnglish_Infinitive(english_Infinitive);   // ENGLISH
-        verb.setEnglish_Present_3rdPerson(english_Present_3rdPerson);
-        verb.setEnglish_Perfect(english_Perfect);
-        verb.setEnglish_Participle(english_Participle);
+        verbRegular.setEnglish_Infinitive(english_Infinitive);   // ENGLISH
+        verbRegular.setEnglish_Present_3rdPerson(english_Present_3rdPerson);
+        verbRegular.setEnglish_Perfect(english_Perfect);
+        verbRegular.setEnglish_Participle(english_Participle);
 
-        return verb;
+        return verbRegular;
     }
 
 }

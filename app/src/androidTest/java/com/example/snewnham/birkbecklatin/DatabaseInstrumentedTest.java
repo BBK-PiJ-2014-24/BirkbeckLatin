@@ -6,7 +6,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Model.DatabaseAccess;
-import com.example.snewnham.birkbecklatin.Model.Verb;
+import com.example.snewnham.birkbecklatin.Model.VerbRegular;
 
 import org.junit.After;
 import org.junit.Before;
@@ -137,7 +137,7 @@ public class DatabaseInstrumentedTest {
     /**
      * testDatabaseToVerb()
      * -------------------
-     * Tests whether we can convert from VerbList db table to Verb object
+     * Tests whether we can convert from VerbList db table to VerbRegular object
      * @throws Exception
      */
 
@@ -168,37 +168,37 @@ public class DatabaseInstrumentedTest {
 
         // Run Query
         // ---------
-        Verb verb = databaseAccess.sqlVerbQuery(id);
+        VerbRegular verbRegular = databaseAccess.sqlVerbQuery(id);
 
 
-        // test the Verb Fields
+        // test the VerbRegular Fields
         // --------------------
-        assertEquals( id, verb.getId());
-        assertEquals( latin_Type, verb.getLatin_Type() );
-        assertEquals( latin_ConjNum, verb.getLatin_ConjNum());
+        assertEquals( id, verbRegular.getId());
+        assertEquals( latin_Type, verbRegular.getLatin_Type() );
+        assertEquals( latin_ConjNum, verbRegular.getLatin_ConjNum());
 
-        assertEquals( latin_Present, verb.getLatin_Present() );   // Priciple Parts
-        assertEquals( latin_Infinitive, verb.getLatin_Infinitive() );
-        assertEquals( latin_Perfect, verb.getLatin_Perfect() );
-        assertEquals( latin_Participle, verb.getLatin_Participle() );
+        assertEquals( latin_Present, verbRegular.getLatin_Present() );   // Priciple Parts
+        assertEquals( latin_Infinitive, verbRegular.getLatin_Infinitive() );
+        assertEquals( latin_Perfect, verbRegular.getLatin_Perfect() );
+        assertEquals( latin_Participle, verbRegular.getLatin_Participle() );
 
-        assertEquals( latin_Present_Stem, verb.getLatin_Present_Stem() );    // Stems
-        assertEquals( latin_Infinitive_Stem, verb.getLatin_Infinitive_Stem() );
-        assertEquals( latin_Infinitive_StemMod, verb.getLatin_Infinitive_StemMod() );
-        assertEquals( latin_Perfect_Stem, verb.getLatin_Perfect_Stem() );
-        assertEquals( latin_Participle_Stem, verb.getLatin_Participle_Stem() );
+        assertEquals( latin_Present_Stem, verbRegular.getLatin_Present_Stem() );    // Stems
+        assertEquals( latin_Infinitive_Stem, verbRegular.getLatin_Infinitive_Stem() );
+        assertEquals( latin_Infinitive_StemMod, verbRegular.getLatin_Infinitive_StemMod() );
+        assertEquals( latin_Perfect_Stem, verbRegular.getLatin_Perfect_Stem() );
+        assertEquals( latin_Participle_Stem, verbRegular.getLatin_Participle_Stem() );
 
-        assertEquals( english_Infinitive, verb.getEnglish_Infinitive() );     // English
-        assertEquals( english_Present_3rdPerson, verb.getEnglish_Present_3rdPerson() );
-        assertEquals( english_Perfect, verb.getEnglish_Perfect() );
-        assertEquals( english_Participle, verb.getEnglish_Participle() );
+        assertEquals( english_Infinitive, verbRegular.getEnglish_Infinitive() );     // English
+        assertEquals( english_Present_3rdPerson, verbRegular.getEnglish_Present_3rdPerson() );
+        assertEquals( english_Perfect, verbRegular.getEnglish_Perfect() );
+        assertEquals( english_Participle, verbRegular.getEnglish_Participle() );
 
     }
 
     /**
      * testLatinVerbStem()
      * ===================
-     * Test sqlVerbStemQuery to select the correct stem for a latin verb
+     * Test sqlVerbStemQuery to select the correct stem for a latin mVerbRegular
      */
     @Test
     public void testLatinVerbStem() {
@@ -220,7 +220,7 @@ public class DatabaseInstrumentedTest {
     /**
      * testLatinVerbEnding()
      * ==========================
-     * Test sqlVerbConjugationQuery to select the correct ENDING for a latin verb
+     * Test sqlVerbConjugationQuery to select the correct ENDING for a latin mVerbRegular
      */
     @Test
     public void testLatinVerbEnding() {
@@ -267,7 +267,7 @@ public class DatabaseInstrumentedTest {
     /**
      * testEnglishAuxiliaryVerbTable()
      * ===============================
-     * Test testEnglishAuxiliaryVerbTable to select the correct English Auxiliary Verb.
+     * Test testEnglishAuxiliaryVerbTable to select the correct English Auxiliary VerbRegular.
      */
     @Test
     public void testEnglishAuxiliaryVerbTable() {
@@ -292,7 +292,7 @@ public class DatabaseInstrumentedTest {
     /**
      * testEnglishVerbEndingTable()
      * =============================
-     * Test testEnglish_Verb_Table to select the English Verb with the correct Ending
+     * Test testEnglish_Verb_Table to select the English VerbRegular with the correct Ending
      */
     @Test
     public void testEnglishVerbEndingTable() {

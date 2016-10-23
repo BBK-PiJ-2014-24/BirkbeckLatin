@@ -125,12 +125,12 @@ public class DatabaseAccess {
      * ====================
      * Runs an SQL query to select a verb from the VerbList Table given the row Id.
      * The method then converts the sql cursor to an object.
-     * @param id - row Number of Verb in the db's VerbList
+     * @param id - row Number of VerbRegular in the db's VerbList
      * @return verb object
      */
 
 
-    public Verb sqlVerbQuery(int id) {
+    public VerbRegular sqlVerbQuery(int id) {
         String strId = Integer.toString(id);
         String table = VERB_LIST_TABLE;           // FROM Table = VerbList
         String[] column = null;             // SELECT *
@@ -139,15 +139,15 @@ public class DatabaseAccess {
 
         LatinCursorWrapper cursor = sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
         cursor.moveToFirst();
-        Verb verb = cursor.turnCursorToVerb();  // Convert Query from Cursor to object.
-        return verb;
+        VerbRegular verbRegular = cursor.turnCursorToVerb();  // Convert Query from Cursor to object.
+        return verbRegular;
 
     }
 
     /**
      * sqlVerbStemQuery(String mood, String voice, String tense)
      * =========================================================
-     * A SQL query to select the correct stem for a Latin Verb, given mood, voice, tense.
+     * A SQL query to select the correct stem for a Latin VerbRegular, given mood, voice, tense.
      * @param mood
      * @param voice
      * @param tense
@@ -185,7 +185,7 @@ public class DatabaseAccess {
     /**
      * sqlVerbEndingQuery(String person, String number, String mood, String voice, String tense, String conjnum)
      * =================
-     * A SQL query to select the correct Ending for a Latin Verb, given mood, voice, tense etc.
+     * A SQL query to select the correct Ending for a Latin VerbRegular, given mood, voice, tense etc.
      * @param person will be null for Infintitive and Imperative verbs
      * @param number
      * @param mood
@@ -238,7 +238,7 @@ public class DatabaseAccess {
     /**
      * sqlEngPersonQuery(String person, String number)
      * =================
-     * A SQL query to select the correct English Person Word for a Latin Verb translation
+     * A SQL query to select the correct English Person Word for a Latin VerbRegular translation
      * @param person
      * @param number
      */
@@ -263,7 +263,7 @@ public class DatabaseAccess {
     /**
      * sqlEngAuxVerbQuery(String person, String number, String mood, String voice, String tense)
      * ==================
-     * A SQL query to select the correct English Auxiliary Verb for a Latin Verb translation
+     * A SQL query to select the correct English Auxiliary VerbRegular for a Latin VerbRegular translation
      * @param person
      * @param number
      * @param mood
@@ -314,7 +314,7 @@ public class DatabaseAccess {
     /**
      * sqlEngVerbEnding(String number, String tense, String mood, String voice)
      * =================
-     * A SQL query to select the English Verb with the correct Ending for a Latin Verb translation
+     * A SQL query to select the English VerbRegular with the correct Ending for a Latin VerbRegular translation
      * @param number
      * @param tense
      * @param mood
