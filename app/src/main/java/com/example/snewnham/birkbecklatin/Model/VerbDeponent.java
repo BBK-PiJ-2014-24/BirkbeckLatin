@@ -43,7 +43,7 @@ public class VerbDeponent extends VerbRegular {
     /**
      * makeEnglishVerb()
      * =================
-     * Make the correct English Translation of a given Latin Verb
+     * Make the correct English Translation of a given DEPONENT Latin Verb
      *
      * @param databaseAccess
      * @param person

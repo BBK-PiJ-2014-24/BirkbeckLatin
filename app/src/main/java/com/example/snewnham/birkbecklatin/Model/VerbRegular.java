@@ -356,6 +356,7 @@ public class VerbRegular implements Verb {
         return mLatinEnding;
     }
 
+
     @Override
     public String getLatinVerb() {
         return mLatinVerb;
@@ -379,5 +380,41 @@ public class VerbRegular implements Verb {
     @Override
     public String getEnglishVerb() {
         return mEnglishVerb;
+    }
+
+
+    @Override
+    public void setLatinStem(String latinStem) {
+        mLatinStem = latinStem;
+    }
+
+    @Override
+    public void setLatinEnding(String latinEnding) {
+        mLatinEnding = latinEnding;
+    }
+
+    @Override
+    public void setLatinVerb(String latinVerb) {
+        mLatinVerb = latinVerb;
+    }
+
+    @Override
+    public void setEnglishPerson(String englishPerson) {
+        mEnglishPerson = englishPerson;
+    }
+
+    @Override
+    public void setEnglishAuxiliaryVerb(String englishAuxiliaryVerb) {
+        mEnglishAuxiliaryVerb = englishAuxiliaryVerb;
+    }
+
+    @Override
+    public void setEnglishVerbEnding(String englishVerbEnding) {
+        mEnglishVerbEnding = englishVerbEnding;
+    }
+
+    @Override
+    public void setEnglishVerb(String englishVerb) {
+        mEnglishVerb = englishVerb;
     }
 }

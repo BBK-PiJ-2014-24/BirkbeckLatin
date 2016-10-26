@@ -200,7 +200,7 @@ public class DatabaseInstrumentedTest {
     /**
      * testLatinVerbStem()
      * ===================
-     * Test sqlVerbStemQuery to select the correct stem for a latin verbDeponent
+     * Test sqlVerbStemQuery to select the correct stem for a latin verbSemiDeponent
      */
     @Test
     public void testLatinVerbStem() {
@@ -222,7 +222,7 @@ public class DatabaseInstrumentedTest {
     /**
      * testLatinVerbEnding()
      * ==========================
-     * Test sqlVerbConjugationQuery to select the correct ENDING for a latin verbDeponent
+     * Test sqlVerbConjugationQuery to select the correct ENDING for a latin verbSemiDeponent
      */
     @Test
     public void testLatinVerbEnding() {

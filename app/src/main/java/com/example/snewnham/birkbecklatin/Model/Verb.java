@@ -49,6 +49,13 @@ public interface Verb {
      */
     public String getLatinStem();
 
+    /**
+     * setLatinStem()
+     * @param latinStem
+     */
+    public void setLatinStem(String latinStem);
+
+
 
     /**
      * getLatinEnding()
@@ -56,6 +63,15 @@ public interface Verb {
      * @return Latin Verb Ending
      */
     public String getLatinEnding();
+
+
+    /**
+     *  public void setLatin()
+     *  ======================
+     * @param latinEnding
+     */
+    public void setLatinEnding(String latinEnding);
+
 
     /**
      * getLatinVerb()
@@ -65,11 +81,27 @@ public interface Verb {
     public String getLatinVerb();
 
     /**
+     * setLatinVerb()
+     * ==============
+     * @param latinVerb
+     */
+    public void setLatinVerb(String latinVerb);
+
+
+
+    /**
      * getEnglishPerson()
      * ==================
      * @return English Person (I, You, He, etc. )
      */
     public String getEnglishPerson();
+
+    /**
+     * public void setEnglish()
+     * ========================
+     * @param person
+     */
+    public void setEnglishPerson(String person);
 
     /**
      * getEnglishAuxiliaryVerb
@@ -78,6 +110,16 @@ public interface Verb {
      */
     public String getEnglishAuxiliaryVerb();
 
+
+    /**
+     * setEnglishAuxiliaryVerb()
+     * =========================
+     * @param englishAuxiliaryVerb
+     */
+    public void setEnglishAuxiliaryVerb(String englishAuxiliaryVerb);
+
+
+
     /**
      * getEnglishVerbEnding()
      * ======================
@@ -85,11 +127,28 @@ public interface Verb {
      */
     public String getEnglishVerbEnding();
 
+
+    /**
+     * setEnglishVerbEnding()
+     * ======================
+     * @param verbEnding
+     */
+    public void setEnglishVerbEnding(String verbEnding);
+
+
+
     /**
      * getEnglishVerb()
      * @return The Complete English Verb
      */
     public String getEnglishVerb();
 
+
+    /**
+     * setEnglishVerb()
+     * ================
+     * @param englishVerb
+     */
+    public void setEnglishVerb(String englishVerb);
 
 }
