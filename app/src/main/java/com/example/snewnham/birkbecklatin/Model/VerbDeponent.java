@@ -22,12 +22,12 @@ public class VerbDeponent extends VerbRegular {
      * ===============
      * Method that builds the DEPONENT Latin Verb given person, number tense, mood, voice
      *
-     *      * @param databaseAccess
+     * @param databaseAccess
      * @param person
      * @param number
      * @param tense
      * @param mood
-     * @param voice - ALWAYS PASSIVE
+     * @param voice - ALWAYS PASSIVE ELSE null
      * @param conjNum
      * @return
      */
@@ -35,10 +35,17 @@ public class VerbDeponent extends VerbRegular {
     public String makeLatinVerb(DatabaseAccess databaseAccess, String person, String number, String tense,
                                 String mood, String voice, String conjNum) {
 
-        String voicePassive = "Passive"; // Override to Ensure that Deponent Latin Verbs ALWAYS HAVE PASSIVE ENDINGS
-
-        return super.makeLatinVerb(databaseAccess,person,number,tense,mood, voicePassive, conjNum);
+        if( voice.equals("Active") ){
+            String voicePassive = "Passive"; // Override to Ensure that Deponent Latin Verbs ALWAYS HAVE PASSIVE ENDINGS
+            return super.makeLatinVerb(databaseAccess,person,number,tense,mood, voicePassive, conjNum);
+        } else {
+            setLatinStem(null);
+            setLatinEnding(null);
+            setLatinVerb(null);
+            return null;
+        }
     }
+
 
     /**
      * makeEnglishVerb()
@@ -50,15 +57,23 @@ public class VerbDeponent extends VerbRegular {
      * @param number
      * @param tense
      * @param mood
-     * @param voice - ALWAYS ACTIVE
+     * @param voice - ALWAYS ACTIVE OR ELSE null
      * @return
      */
     @Override
     public String makeEnglishVerb(DatabaseAccess databaseAccess, String person, String number,
                                   String tense, String mood, String voice){
 
-        String voiceActive = "Active"; //Override to Ensure that Deponent Latin Verbs ALWAYS HAVE ACTIVE ENGLISH MEANINGS
-        return super.makeEnglishVerb(databaseAccess,person,number,tense,mood, voiceActive);
+        if( voice.equals("Active") ) {
+            String voiceActive = "Active"; //Override to Ensure that Deponent Latin Verbs ALWAYS HAVE ACTIVE ENGLISH MEANINGS
+            return super.makeEnglishVerb(databaseAccess, person, number, tense, mood, voiceActive);
+        } else {
+            setEnglishPerson(null); // Deponent Verbs cannot be Passive!
+            setEnglishAuxiliaryVerb(null);
+            setEnglishVerbEnding(null);
+            setEnglishVerb(null);
+            return null;
+        }
     }
 
 }

@@ -502,50 +502,50 @@ public class EnglishDeponentVerbInstrumentTests {
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePresent, moodIndicative, voicePassive);
 
-        assertEquals("I", verbDeponent.getEnglishPerson());
-        assertEquals(" ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("I seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePresent, moodIndicative, voicePassive);
 
-        assertEquals("you(s)", verbDeponent.getEnglishPerson());
-        assertEquals(" ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(s) seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePresent, moodIndicative, voicePassive);
 
-        assertEquals("he/she", verbDeponent.getEnglishPerson());
-        assertEquals(" ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seems", verbDeponent.getEnglishVerbEnding());
-        assertEquals("he/she seems", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePresent, moodIndicative, voicePassive);
 
-        assertEquals("we", verbDeponent.getEnglishPerson());
-        assertEquals(" ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("we seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePresent, moodIndicative, voicePassive);
 
-        assertEquals("you(pl)", verbDeponent.getEnglishPerson());
-        assertEquals(" ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(pl) seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePresent, moodIndicative, voicePassive);
 
-        assertEquals("they", verbDeponent.getEnglishPerson());
-        assertEquals(" ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("they seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
     }
 
@@ -563,50 +563,50 @@ public class EnglishDeponentVerbInstrumentTests {
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tenseImPerfect, moodIndicative, voicePassive);
 
-        assertEquals("I", verbDeponent.getEnglishPerson());
-        assertEquals(" was ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seeming", verbDeponent.getEnglishVerbEnding());
-        assertEquals("I was seeming", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tenseImPerfect, moodIndicative, voicePassive);
 
-        assertEquals("you(s)", verbDeponent.getEnglishPerson());
-        assertEquals(" were ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seeming", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(s) were seeming", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tenseImPerfect, moodIndicative, voicePassive);
 
-        assertEquals("he/she", verbDeponent.getEnglishPerson());
-        assertEquals(" was ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seeming", verbDeponent.getEnglishVerbEnding());
-        assertEquals("he/she was seeming", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tenseImPerfect, moodIndicative, voicePassive);
 
-        assertEquals("we", verbDeponent.getEnglishPerson());
-        assertEquals(" were ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seeming", verbDeponent.getEnglishVerbEnding());
-        assertEquals("we were seeming", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tenseImPerfect, moodIndicative, voicePassive);
 
-        assertEquals("you(pl)", verbDeponent.getEnglishPerson());
-        assertEquals(" were ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seeming", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(pl) were seeming", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tenseImPerfect, moodIndicative, voicePassive);
 
-        assertEquals("they", verbDeponent.getEnglishPerson());
-        assertEquals(" were ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seeming", verbDeponent.getEnglishVerbEnding());
-        assertEquals("they were seeming", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
     }
 
@@ -625,50 +625,50 @@ public class EnglishDeponentVerbInstrumentTests {
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tenseFuture, moodIndicative, voicePassive);
 
-        assertEquals("I", verbDeponent.getEnglishPerson());
-        assertEquals(" shall ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("I shall seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tenseFuture, moodIndicative, voicePassive);
 
-        assertEquals("you(s)", verbDeponent.getEnglishPerson());
-        assertEquals(" will ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(s) will seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tenseFuture, moodIndicative, voicePassive);
 
-        assertEquals("he/she", verbDeponent.getEnglishPerson());
-        assertEquals(" will ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("he/she will seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tenseFuture, moodIndicative, voicePassive);
 
-        assertEquals("we", verbDeponent.getEnglishPerson());
-        assertEquals(" shall ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("we shall seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberPlural,
-                tenseFuture, moodIndicative, voiceActive);
+                tenseFuture, moodIndicative, voicePassive);
 
-        assertEquals("you(pl)", verbDeponent.getEnglishPerson());
-        assertEquals(" will ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(pl) will seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tenseFuture, moodIndicative, voicePassive);
 
-        assertEquals("they", verbDeponent.getEnglishPerson());
-        assertEquals(" will ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("they will seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
     }
 
@@ -686,50 +686,50 @@ public class EnglishDeponentVerbInstrumentTests {
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePerfect, moodIndicative, voicePassive);
 
-        assertEquals("I", verbDeponent.getEnglishPerson());
-        assertEquals(" have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("I have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePerfect, moodIndicative, voicePassive);
 
-        assertEquals("you(s)", verbDeponent.getEnglishPerson());
-        assertEquals(" have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(s) have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePerfect, moodIndicative, voicePassive);
 
-        assertEquals("he/she", verbDeponent.getEnglishPerson());
-        assertEquals(" has ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("he/she has seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePerfect, moodIndicative, voicePassive);
 
-        assertEquals("we", verbDeponent.getEnglishPerson());
-        assertEquals(" have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("we have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePerfect, moodIndicative, voicePassive);
 
-        assertEquals("you(pl)", verbDeponent.getEnglishPerson());
-        assertEquals(" have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(pl) have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePerfect, moodIndicative, voicePassive);
 
-        assertEquals("they", verbDeponent.getEnglishPerson());
-        assertEquals(" have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("they have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
     }
 
 
@@ -747,50 +747,50 @@ public class EnglishDeponentVerbInstrumentTests {
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePluperfect, moodIndicative, voicePassive);
 
-        assertEquals("I", verbDeponent.getEnglishPerson());
-        assertEquals(" had ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("I had seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePluperfect, moodIndicative, voicePassive);
 
-        assertEquals("you(s)", verbDeponent.getEnglishPerson());
-        assertEquals(" had ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(s) had seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePluperfect, moodIndicative, voicePassive);
 
-        assertEquals("he/she", verbDeponent.getEnglishPerson());
-        assertEquals(" had ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("he/she had seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePluperfect, moodIndicative, voicePassive);
 
-        assertEquals("we", verbDeponent.getEnglishPerson());
-        assertEquals(" had ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("we had seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePluperfect, moodIndicative, voicePassive);
 
-        assertEquals("you(pl)", verbDeponent.getEnglishPerson());
-        assertEquals(" had ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(pl) had seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePluperfect, moodIndicative, voicePassive);
 
-        assertEquals("they", verbDeponent.getEnglishPerson());
-        assertEquals(" had ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("they had seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
     }
 
 
@@ -807,49 +807,50 @@ public class EnglishDeponentVerbInstrumentTests {
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tenseFuturePerfect, moodIndicative, voicePassive);
 
-        assertEquals("I", verbDeponent.getEnglishPerson());
-        assertEquals(" shall have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("I shall have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tenseFuturePerfect, moodIndicative, voicePassive);
 
-        assertEquals("you(s)", verbDeponent.getEnglishPerson());
-        assertEquals(" will have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(s) will have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tenseFuturePerfect, moodIndicative, voicePassive);
 
-        assertEquals("he/she", verbDeponent.getEnglishPerson());
-        assertEquals(" will have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("he/she will have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tenseFuturePerfect, moodIndicative, voicePassive);
 
-        assertEquals("we", verbDeponent.getEnglishPerson());
-        assertEquals(" shall have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("we shall have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tenseFuturePerfect, moodIndicative, voicePassive);
 
-        assertEquals("you(pl)", verbDeponent.getEnglishPerson());
-        assertEquals(" will have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(pl) will have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tenseFuturePerfect, moodIndicative, voicePassive);
 
-        assertEquals("they", verbDeponent.getEnglishPerson());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("they will have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
     }
 // ==========================  ACTIVE, SUBJUNCTIVE  =============================================
@@ -1111,50 +1112,50 @@ public class EnglishDeponentVerbInstrumentTests {
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePresent, moodSubjunctive, voicePassive);
 
-        assertEquals("", verbDeponent.getEnglishPerson());
-        assertEquals("May I ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("May I seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePresent, moodSubjunctive, voicePassive);
 
-        assertEquals("", verbDeponent.getEnglishPerson());
-        assertEquals("May you(s) ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("May you(s) seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePresent, moodSubjunctive, voicePassive);
 
-        assertEquals("", verbDeponent.getEnglishPerson());
-        assertEquals("May he/she ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("May he/she seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePresent, moodSubjunctive, voicePassive);
 
-        assertEquals("", verbDeponent.getEnglishPerson());
-        assertEquals("Let us ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("Let us seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePresent, moodSubjunctive, voicePassive);
 
-        assertEquals("", verbDeponent.getEnglishPerson());
-        assertEquals("May you(pl) ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("May you(pl) seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePresent, moodSubjunctive, voicePassive);
 
-        assertEquals("", verbDeponent.getEnglishPerson());
-        assertEquals("May they ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("May they seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
     }
 
@@ -1172,50 +1173,50 @@ public class EnglishDeponentVerbInstrumentTests {
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tenseImPerfect, moodSubjunctive, voicePassive);
 
-        assertEquals("I", verbDeponent.getEnglishPerson());
-        assertEquals(" would ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("I would seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );;
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tenseImPerfect, moodSubjunctive, voicePassive);
 
-        assertEquals("you(s)", verbDeponent.getEnglishPerson());
-        assertEquals(" would ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(s) would seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tenseImPerfect, moodSubjunctive, voicePassive);
 
-        assertEquals("he/she", verbDeponent.getEnglishPerson());
-        assertEquals(" would ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("he/she would seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tenseImPerfect, moodSubjunctive, voicePassive);
 
-        assertEquals("we", verbDeponent.getEnglishPerson());
-        assertEquals(" would ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("we would seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tenseImPerfect, moodSubjunctive, voicePassive);
 
-        assertEquals("you(pl)", verbDeponent.getEnglishPerson());
-        assertEquals(" would ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(pl) would seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tenseImPerfect, moodSubjunctive, voicePassive);
 
-        assertEquals("they", verbDeponent.getEnglishPerson());
-        assertEquals(" would ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("they would seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
     }
 
@@ -1232,50 +1233,50 @@ public class EnglishDeponentVerbInstrumentTests {
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePerfect, moodSubjunctive, voicePassive);
 
-        assertEquals("I", verbDeponent.getEnglishPerson());
-        assertEquals(" may have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("I may have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePerfect, moodSubjunctive, voicePassive);
 
-        assertEquals("you(s)", verbDeponent.getEnglishPerson());
-        assertEquals(" may have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(s) may have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePerfect, moodSubjunctive, voicePassive);
 
-        assertEquals("he/she", verbDeponent.getEnglishPerson());
-        assertEquals(" may have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("he/she may have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePerfect, moodSubjunctive, voicePassive);
 
-        assertEquals("we", verbDeponent.getEnglishPerson());
-        assertEquals(" may have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("we may have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePerfect, moodSubjunctive, voicePassive);
 
-        assertEquals("you(pl)", verbDeponent.getEnglishPerson());
-        assertEquals(" may have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(pl) may have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePerfect, moodSubjunctive, voicePassive);
 
-        assertEquals("they", verbDeponent.getEnglishPerson());
-        assertEquals(" may have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("they may have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
     }
 
 
@@ -1293,50 +1294,50 @@ public class EnglishDeponentVerbInstrumentTests {
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePluperfect, moodSubjunctive, voicePassive);
 
-        assertEquals("I", verbDeponent.getEnglishPerson());
-        assertEquals(" would have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("I would have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePluperfect, moodSubjunctive, voicePassive);
 
-        assertEquals("you(s)", verbDeponent.getEnglishPerson());
-        assertEquals(" would have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(s) would have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePluperfect, moodSubjunctive, voicePassive);
 
-        assertEquals("he/she", verbDeponent.getEnglishPerson());
-        assertEquals(" would have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("he/she would have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePluperfect, moodSubjunctive, voicePassive);
 
-        assertEquals("we", verbDeponent.getEnglishPerson());
-        assertEquals(" would have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("we would have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePluperfect, moodSubjunctive, voicePassive);
 
-        assertEquals("you(pl)", verbDeponent.getEnglishPerson());
-        assertEquals(" would have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("you(pl) would have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePluperfect, moodSubjunctive, voicePassive);
 
-        assertEquals("they", verbDeponent.getEnglishPerson());
-        assertEquals(" would have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("they would have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
     }
 
 
@@ -1381,26 +1382,26 @@ public class EnglishDeponentVerbInstrumentTests {
         verbDeponent.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
                 tensePresent, moodIndicative, voicePassive);
 
-        assertEquals("", verbDeponent.getEnglishPerson());
-        assertEquals("to ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("to seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
                 tensePerfect, moodIndicative, voicePassive);
 
-        assertEquals("", verbDeponent.getEnglishPerson());
-        assertEquals("to have ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seemed", verbDeponent.getEnglishVerbEnding());
-        assertEquals("to have seemed", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
         verbDeponent.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
                 tenseFuture, moodIndicative, voicePassive);
 
-        assertEquals("", verbDeponent.getEnglishPerson());
-        assertEquals("to be going to ", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("to be going to seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
     }
 
@@ -1435,19 +1436,19 @@ public class EnglishDeponentVerbInstrumentTests {
         verbDeponent.makeEnglishVerb(databaseAccess, personNull, numberSingular,
                 tenseNull, moodImperative, voicePassive);
 
-        assertEquals("", verbDeponent.getEnglishPerson());
-        assertEquals("", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
 
         verbDeponent.makeEnglishVerb(databaseAccess, personNull, numberPlural,
                 tenseNull, moodImperative, voicePassive);
 
-        assertEquals("", verbDeponent.getEnglishPerson());
-        assertEquals("", verbDeponent.getEnglishAuxiliaryVerb());
-        assertEquals("seem", verbDeponent.getEnglishVerbEnding());
-        assertEquals("seem", verbDeponent.getEnglishVerb());
+        assertEquals( null, verbDeponent.getEnglishPerson() );
+        assertEquals( null, verbDeponent.getEnglishAuxiliaryVerb() );
+        assertEquals( null, verbDeponent.getEnglishVerbEnding() );
+        assertEquals( null, verbDeponent.getEnglishVerb() );
 
     }
 
