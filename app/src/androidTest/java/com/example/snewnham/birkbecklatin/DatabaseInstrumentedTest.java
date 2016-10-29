@@ -250,6 +250,23 @@ public class DatabaseInstrumentedTest {
         assertEquals(conj3, latinEnding3);
 
     }
+
+
+    /**
+     * testLatinIrregularVerb()
+     * =======================
+     * test sql query for IrregularVerb
+     */
+    @Test
+    public void testLatinIrregularVerb(){
+
+            String irregularVerb = "esse";
+
+            String query = databaseAccess.sqlLatinIrregularVerb(irregularVerb, person2,numberSingular,moodIndicative,voiceActive,tensePerfect);
+            assertEquals("fuisti", query);
+
+
+    }
     // =================== ENGLISH TESTS ==================================================
 
     /**
