@@ -137,6 +137,30 @@ public class DbSchema {
     }
 
 
+    // inner STATIC class - VerbConjugation_Irregular
+    // ----------------------------------------------
+    public static final class VerbConjugation_Irregular {
+        public static final String LATIN_IRREGULAR_CONJ__TABLE = "VerbConjugation_Irregular";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String PERSON = "Person";
+            public static final String NUMBER = "Number";
+            public static final String TENSE = "Tense";
+            public static final String MOOD = "Mood";
+            public static final String VOICE = "Voice";
+
+            public static final String ENG_VERB_ENDING = "Eng_Verb_Ending";
+        }
+    }
+
+
+
+
+
 
 }
 
