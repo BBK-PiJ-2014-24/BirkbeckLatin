@@ -12,9 +12,11 @@ import java.util.List;
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbListTable.VERB_LIST_TABLE;
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbStemTable.VERB_STEM_TABLE;
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbConjugationTable.VERB_CONJ_TABLE;
+import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbConjugation_Irregular.VERB_IRREGULAR_CONJ_TABLE;
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.EnglishAuxillaryVerbTable.ENG_AUX_VERB_TABLE;
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.EnglishPersonsTable.ENG_PERSON_TABLE;
 import static com.example.snewnham.birkbecklatin.Model.DbSchema.EnglishVerbEndingTable.ENGLISH_VERB_ENDING_TABLE;
+
 
 /**
  * THIS IS THE DOORWAY TO THE DATABASE GENERATING THE SQL COMMANDS
@@ -232,6 +234,51 @@ public class DatabaseAccess {
         String verbEnding = cursor.getString(cursor.getColumnIndex(DbSchema.VerbConjugationTable.Cols.CONJ));
 
         return verbEnding;
+    }
+
+
+
+    public String sqlLatinIrregularVerb(String irregularVerb, String person, String number, String mood,
+                                        String voice, String tense) {
+
+        // Ensure First Letter is Upper Case in order to pick up the Correct Column in the database
+        irregularVerb = irregularVerb.substring(0,1).toUpperCase() + irregularVerb.substring(1);
+
+
+        String table = VERB_IRREGULAR_CONJ_TABLE;  // FROM VerbConjugation_Irregular Table
+        String[] column = new String[]{irregularVerb};  // SELECT the Column with the Irregular Verb
+
+        String[] whereArgs;
+        String whereClause;
+
+        if( number.equals("Infinitive") ) {       // FOR INIFINITIVES: reduce arguments for Infinitive (as SQLite can't take IS NULL)
+            whereArgs = new String[]{number, mood, voice, tense};
+            whereClause = DbSchema.VerbConjugation_Irregular.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                    DbSchema.VerbConjugation_Irregular.Cols.MOOD + "=?" + " AND " +
+                    DbSchema.VerbConjugation_Irregular.Cols.VOICE + "=?" + " AND " +
+                    DbSchema.VerbConjugation_Irregular.Cols.TENSE + "=?";
+
+        } else if( mood.equals("Imperative") ) {  // FOR IMPERATIVES: reduce arguments for Imperatives (as SQLite can't take IS NULL)
+            whereArgs = new String[]{number, mood, voice};
+            whereClause = DbSchema.VerbConjugation_Irregular.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                    DbSchema.VerbConjugation_Irregular.Cols.MOOD + "=?" + " AND " +
+                    DbSchema.VerbConjugation_Irregular.Cols.VOICE + "=?";
+        } else {
+            whereArgs = new String[]{person, number, mood, voice, tense};
+            whereClause = DbSchema.VerbConjugation_Irregular.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND
+                    DbSchema.VerbConjugation_Irregular.Cols.NUMBER + "=?" + " AND " +
+                    DbSchema.VerbConjugation_Irregular.Cols.MOOD + "=?" + " AND " +
+                    DbSchema.VerbConjugation_Irregular.Cols.VOICE + "=?" + " AND " +
+                    DbSchema.VerbConjugation_Irregular.Cols.TENSE + "=?";
+        }
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
+
+
+        String verb = cursor.getString(cursor.getColumnIndex(irregularVerb));
+
+        return verb;
     }
 
     // ====================== ENGLISH ==============================================

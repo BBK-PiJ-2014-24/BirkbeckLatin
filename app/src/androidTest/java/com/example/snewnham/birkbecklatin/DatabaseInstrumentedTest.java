@@ -260,10 +260,22 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testLatinIrregularVerb(){
 
-            String irregularVerb = "esse";
+        String irregularVerb = "esse";
 
-            String query = databaseAccess.sqlLatinIrregularVerb(irregularVerb, person2,numberSingular,moodIndicative,voiceActive,tensePerfect);
-            assertEquals("fuisti", query);
+        String query = databaseAccess.sqlLatinIrregularVerb(irregularVerb, person2, numberSingular,
+                                                    moodIndicative, voiceActive, tensePerfect);
+        assertEquals("fuisti", query);
+
+
+        // TEST INFINITIVE
+        query = databaseAccess.sqlLatinIrregularVerb(irregularVerb, personNull, numberInfinitive,
+                                                    moodIndicative, voiceActive, tensePerfect);
+        assertEquals("fuisse", query);
+
+        // TEST IMPERATIVE
+        query = databaseAccess.sqlLatinIrregularVerb(irregularVerb, personNull, numberPlural,
+                moodImperative, voiceActive, tensePerfect);
+        assertEquals("este", query);
 
 
     }

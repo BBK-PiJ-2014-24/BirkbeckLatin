@@ -140,7 +140,7 @@ public class DbSchema {
     // inner STATIC class - VerbConjugation_Irregular
     // ----------------------------------------------
     public static final class VerbConjugation_Irregular {
-        public static final String LATIN_IRREGULAR_CONJ__TABLE = "VerbConjugation_Irregular";
+        public static final String VERB_IRREGULAR_CONJ_TABLE = "VerbConjugation_Irregular";
 
 
         // inner inner STATIC class of the Table - Attributes
