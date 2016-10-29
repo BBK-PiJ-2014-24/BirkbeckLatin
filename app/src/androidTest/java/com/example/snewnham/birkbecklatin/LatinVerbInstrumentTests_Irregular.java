@@ -130,7 +130,6 @@ public class LatinVerbInstrumentTests_Irregular {
         assertEquals("com.example.snewnham.birkbecklatin", appContext.getPackageName());
     }
 
-
     // ==========================  ACTIVE, INDICATIVE  ================================================
 
     /**
@@ -218,7 +217,6 @@ public class LatinVerbInstrumentTests_Irregular {
 
     }
 
-
     /**
      * testMakeVerbWordFutureActiveIndicative()  - FUTURE TENSE, ACTIVE, INDICATIVE
      * =========================================
@@ -260,7 +258,6 @@ public class LatinVerbInstrumentTests_Irregular {
 
         assertEquals("erant", mVerbRegular.getLatinVerb());
     }
-
 
     /**
      * testMakeVerbWordPerfectActiveIndicative()  - PERFECT TENSE, ACTIVE, INDICATIVE
@@ -305,7 +302,6 @@ public class LatinVerbInstrumentTests_Irregular {
 
     }
 
-
     /**
      * testMakeVerbWordPluperfectActiveIndicative()  - PLUPERFECT TENSE, ACTIVE, INDICATIVE
      * =========================================
@@ -348,8 +344,6 @@ public class LatinVerbInstrumentTests_Irregular {
         assertEquals("fuerant", mVerbRegular.getLatinVerb());
 
     }
-
-
 
     /**
      * testMakeVerbWordFuturePerfectActiveIndicative()  - FUTURE-PERFECT TENSE, ACTIVE, INDICATIVE
@@ -480,7 +474,6 @@ public class LatinVerbInstrumentTests_Irregular {
         assertEquals(null, mVerbRegular.getLatinVerb());
     }
 
-
     /**
      * testMakeVerbWordFuturePassiveIndicative()  - FUTURE TENSE, PASSIVE, INDICATIVE
      * =========================================
@@ -610,7 +603,6 @@ public class LatinVerbInstrumentTests_Irregular {
         assertEquals(null, mVerbRegular.getLatinVerb());
     }
 
-
     /**
      * testMakeVerbWordFuturePerfectPassiveIndicative()  - FUTURE-PERFECT TENSE, PASSIVE, INDICATIVE
      * ================================================
@@ -655,7 +647,6 @@ public class LatinVerbInstrumentTests_Irregular {
     }
 
     // ======================= ACTIVE, SUBJUNCTIVE ==================================
-
 
     /**
      * testMakeVerbWordPresentActiveSubjunctive()  - PRESENT TENSE, ACTIVE, SUBJUNCTIVE
@@ -782,7 +773,6 @@ public class LatinVerbInstrumentTests_Irregular {
 
         assertEquals("fuerint", mVerbRegular.getLatinVerb());
     }
-
 
     /**
      * testMakeVerbWordPluperfectActiveIndicative()  - PLUPERFECT TENSE, ACTIVE, SUBJUNCTIVE
@@ -1000,10 +990,7 @@ public class LatinVerbInstrumentTests_Irregular {
         assertEquals(null, mVerbRegular.getLatinVerb());
     }
 
-
-
     // =========================== INFINITIVE, IMPERATIVE =======================================
-
 
     /**
      * testMakeVerbWordInfinitive()  - INFINITIVE

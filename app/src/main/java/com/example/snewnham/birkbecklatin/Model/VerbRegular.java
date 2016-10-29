@@ -27,7 +27,7 @@ public class VerbRegular implements Verb {
     private String mEnglish_Perfect;
     private String mEnglish_Participle;
 
-    private DatabaseAccess mDatabaseAccess;
+    protected DatabaseAccess mDatabaseAccess;
     private String mLatinStem;
     private String mLatinEnding;
     private String mLatinVerb;
