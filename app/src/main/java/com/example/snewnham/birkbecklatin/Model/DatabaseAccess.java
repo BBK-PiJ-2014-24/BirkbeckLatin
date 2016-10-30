@@ -411,7 +411,65 @@ public class DatabaseAccess {
         return engPersonWord;
     }
 
+    /**
+     * sqlEnglishIrregularESSEVerb( String irregularVerb, String person, String number, String tense, String mood, String voice)
+     * ============================
+     *
+     * Special sql query for The Irregular English Verb 'to be /ESSE'
+     * @param irregularVerb = "ESSE VERRB"
+     * @param person
+     * @param number
+     * @param tense
+     * @param mood
+     * @param voice
+     * @return
+     */
+    public String sqlEnglishIrregularESSEVerb( String irregularVerb, String person, String number, String tense,
+                                            String mood, String voice) {
 
+
+        if ( irregularVerb.equals("esse") || irregularVerb.equals("Esse") ) {
+
+            // Ensure First Letter is Upper Case in order to pick up the Correct Column in the database
+            irregularVerb = irregularVerb.substring(0, 1).toUpperCase() + irregularVerb.substring(1);
+
+            String table = VERB_IRREGULAR_CONJ_TABLE;  // FROM VerbConjugation_Irregular Table
+            String[] column = new String[]{"Esse_English"};  // SELECT the Column "English_Esse"
+
+            String[] whereArgs;
+            String whereClause;
+
+            if( number.equals("Infinitive") ) {       // FOR INIFINITIVES: reduce arguments for Infinitive (as SQLite can't take IS NULL)
+                whereArgs = new String[]{number, mood, voice, tense};
+                whereClause = DbSchema.VerbConjugation_Irregular.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                        DbSchema.VerbConjugation_Irregular.Cols.MOOD + "=?" + " AND " +
+                        DbSchema.VerbConjugation_Irregular.Cols.VOICE + "=?" + " AND " +
+                        DbSchema.VerbConjugation_Irregular.Cols.TENSE + "=?";
+
+            } else if( mood.equals("Imperative") ) {  // FOR IMPERATIVES: reduce arguments for Imperatives (as SQLite can't take IS NULL)
+                whereArgs = new String[]{number, mood, voice};
+                whereClause = DbSchema.VerbConjugation_Irregular.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                        DbSchema.VerbConjugation_Irregular.Cols.MOOD + "=?" + " AND " +
+                        DbSchema.VerbConjugation_Irregular.Cols.VOICE + "=?";
+            } else {
+                whereArgs = new String[]{person, number, mood, voice, tense};
+                whereClause = DbSchema.VerbConjugation_Irregular.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND
+                        DbSchema.VerbConjugation_Irregular.Cols.NUMBER + "=?" + " AND " +
+                        DbSchema.VerbConjugation_Irregular.Cols.MOOD + "=?" + " AND " +
+                        DbSchema.VerbConjugation_Irregular.Cols.VOICE + "=?" + " AND " +
+                        DbSchema.VerbConjugation_Irregular.Cols.TENSE + "=?";
+            }
+
+            Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+            cursor.moveToFirst();
+
+            String verb = cursor.getString(cursor.getColumnIndex(irregularVerb));
+            return verb;
+
+        } else {
+            return null;
+        }
+    }
 
 
 

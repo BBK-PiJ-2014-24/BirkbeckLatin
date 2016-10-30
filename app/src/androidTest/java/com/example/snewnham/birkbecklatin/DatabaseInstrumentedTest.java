@@ -343,17 +343,17 @@ public class DatabaseInstrumentedTest {
 
 
     /**
-     * testEnglishIrregularVerb()
+     * testEnglishIrregularESSEVerb()
      * ==========================
-     * Test to select an Irregular English Verb
+     * Test to select an Irregular English Verb, 'To Be / ESSE'
      */
 
     @Test
-    public void testEnglishIrregularVerb() {
+    public void testEnglishIrregularESSEVerb() {
 
         String irregularVerb = "esse";
 
-        String guessEngIrregVerb = databaseAccess.sqlEnglishIrregularVerb(irregularVerb, person2, numberSingular, tensePresent,
+        String guessEngIrregVerb = databaseAccess.sqlEnglishIrregularESSEVerb(irregularVerb, person2, numberSingular, tensePresent,
                 moodIndicative, voiceActive);
 
         assertEquals("he is", guessEngIrregVerb);
