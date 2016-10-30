@@ -339,7 +339,24 @@ public class DatabaseInstrumentedTest {
 
         String ans2 = "English_Infinitive";
         assertEquals(ans2, guessEngVerbEnding2 );
+    }
 
+
+    /**
+     * testEnglishIrregularVerb()
+     * ==========================
+     * Test to select an Irregular English Verb
+     */
+
+    @Test
+    public void testEnglishIrregularVerb() {
+
+        String irregularVerb = "esse";
+
+        String guessEngIrregVerb = databaseAccess.sqlEnglishIrregularVerb(irregularVerb, person2, numberSingular, tensePresent,
+                moodIndicative, voiceActive);
+
+        assertEquals("he is", guessEngIrregVerb);
 
     }
 

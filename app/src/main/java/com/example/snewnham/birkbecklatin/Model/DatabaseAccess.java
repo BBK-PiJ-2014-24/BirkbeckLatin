@@ -237,7 +237,18 @@ public class DatabaseAccess {
     }
 
 
-
+    /**
+     * sqlLatinIrregularVerb(String irregularVerb, String person, String number, String mood, String voice, String tense)
+     * =====================
+     * sql query on Irregular Latin Words
+     * @param irregularVerb
+     * @param person
+     * @param number
+     * @param mood
+     * @param voice
+     * @param tense
+     * @return
+     */
     public String sqlLatinIrregularVerb(String irregularVerb, String person, String number, String mood,
                                         String voice, String tense) {
 
@@ -399,4 +410,9 @@ public class DatabaseAccess {
 
         return engPersonWord;
     }
+
+
+
+
+
 }
