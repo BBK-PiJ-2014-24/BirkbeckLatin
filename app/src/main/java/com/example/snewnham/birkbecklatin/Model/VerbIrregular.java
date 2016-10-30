@@ -72,11 +72,23 @@ public class VerbIrregular extends VerbRegular {
         // Adjust for Irregular Verb for 'to be' ESSE
         // ---------------------------------------------
         if( latinVerb.equals("esse") || latinVerb.equals("Esse")) {
+
+            if(voice.equals("Passive")){  // defence checker for all passive to be to null.
+                setEnglishPerson(null);
+                setEnglishAuxiliaryVerb(null);
+                setEnglishVerbEnding(null);
+                setEnglishVerb(null);
+                return getEnglishVerb();
+            }
             englishVerb = databaseAccess.sqlEnglishIrregularESSEVerb(latinVerb, person, number, tense, mood, voice);
-            setEnglishVerb(englishVerb);
+            if(englishVerb == null) {
+                englishVerb = "";
+            }
+            setEnglishVerbEnding(englishVerb);  // Reset Verb Ending
+            setEnglishVerb(getEnglishPerson()+getEnglishAuxiliaryVerb()+englishVerb); // Reset Complete Verb
         }
 
-        return englishVerb;
+        return getEnglishVerb();
     }
 
 
