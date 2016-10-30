@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
  * Created by snewnham on 12/10/2016.
  */
 @RunWith(AndroidJUnit4.class)
-public class LatinVerbInstrumentTests_ESSE_Irregular {
+public class LatinVerb_InstrumentTests_ESSE_Irregular {
 
 
     // Fields

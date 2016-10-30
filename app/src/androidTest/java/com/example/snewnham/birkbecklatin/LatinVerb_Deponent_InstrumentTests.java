@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
  * Created by snewnham on 22/10/2016.
  */
 @RunWith(AndroidJUnit4.class)
-public class LatinDeponentVerbInstrumentTests {
+public class LatinVerb_Deponent_InstrumentTests {
 
 
     // Fields
