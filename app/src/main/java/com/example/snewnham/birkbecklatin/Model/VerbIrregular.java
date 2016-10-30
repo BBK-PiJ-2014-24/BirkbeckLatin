@@ -58,7 +58,7 @@ public class VerbIrregular extends VerbRegular {
             String englishVerb = super.makeEnglishVerb(databaseAccess, person, number, tense, mood, voice);
         }
 
-        return englishVerb;
+        return null;
     }
 
 

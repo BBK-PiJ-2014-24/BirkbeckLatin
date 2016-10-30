@@ -344,7 +344,7 @@ public class DatabaseInstrumentedTest {
 
     /**
      * testEnglishIrregularESSEVerb()
-     * ==========================
+     * ============================
      * Test to select an Irregular English Verb, 'To Be / ESSE'
      */
 
@@ -353,10 +353,15 @@ public class DatabaseInstrumentedTest {
 
         String irregularVerb = "esse";
 
-        String guessEngIrregVerb = databaseAccess.sqlEnglishIrregularESSEVerb(irregularVerb, person2, numberSingular, tensePresent,
-                moodIndicative, voiceActive);
+        String guessEngIrregVerb = databaseAccess.sqlEnglishIrregularESSEVerb(irregularVerb, person3, numberSingular, tensePresent,
+                                                                     moodIndicative, voiceActive);
+        assertEquals("is", guessEngIrregVerb);
 
-        assertEquals("he is", guessEngIrregVerb);
+        guessEngIrregVerb = databaseAccess.sqlEnglishIrregularESSEVerb(irregularVerb, personNull, numberInfinitive, tensePresent,
+                moodIndicative, voiceActive);
+        assertEquals("be", guessEngIrregVerb);
+
+
 
     }
 

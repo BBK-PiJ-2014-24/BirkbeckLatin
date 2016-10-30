@@ -415,7 +415,7 @@ public class DatabaseAccess {
      * sqlEnglishIrregularESSEVerb( String irregularVerb, String person, String number, String tense, String mood, String voice)
      * ============================
      *
-     * Special sql query for The Irregular English Verb 'to be /ESSE'
+     * Special sql query for The Irregular English Verb 'to be / ESSE'
      * @param irregularVerb = "ESSE VERRB"
      * @param person
      * @param number
@@ -430,11 +430,9 @@ public class DatabaseAccess {
 
         if ( irregularVerb.equals("esse") || irregularVerb.equals("Esse") ) {
 
-            // Ensure First Letter is Upper Case in order to pick up the Correct Column in the database
-            irregularVerb = irregularVerb.substring(0, 1).toUpperCase() + irregularVerb.substring(1);
-
             String table = VERB_IRREGULAR_CONJ_TABLE;  // FROM VerbConjugation_Irregular Table
-            String[] column = new String[]{"Esse_English"};  // SELECT the Column "English_Esse"
+            String columnName = "Esse_English";
+            String[] column = new String[]{columnName};  // SELECT the Column "English_Esse"
 
             String[] whereArgs;
             String whereClause;
@@ -463,7 +461,7 @@ public class DatabaseAccess {
             Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
             cursor.moveToFirst();
 
-            String verb = cursor.getString(cursor.getColumnIndex(irregularVerb));
+            String verb = cursor.getString(cursor.getColumnIndex(columnName));
             return verb;
 
         } else {
