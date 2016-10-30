@@ -316,7 +316,6 @@ public class DatabaseInstrumentedTest {
         String ans2 = "be ";
         assertEquals(ans2, engAuxVerb2 );
 
-
     }
 
 
@@ -357,11 +356,10 @@ public class DatabaseInstrumentedTest {
                                                                      moodIndicative, voiceActive);
         assertEquals("is", guessEngIrregVerb);
 
+        // Infinitive
         guessEngIrregVerb = databaseAccess.sqlEnglishIrregularESSEVerb(irregularVerb, personNull, numberInfinitive, tensePresent,
                 moodIndicative, voiceActive);
         assertEquals("be", guessEngIrregVerb);
-
-
 
     }
 

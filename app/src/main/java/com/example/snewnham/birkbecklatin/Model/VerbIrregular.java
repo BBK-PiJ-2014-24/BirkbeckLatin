@@ -41,24 +41,42 @@ public class VerbIrregular extends VerbRegular {
         setLatinEnding(null);  // set ending to null
         String irregularVerb = getLatin_Infinitive();
 
-        String latinIrregularVerb = databaseAccess.sqlLatinIrregularVerb(irregularVerb, person, number, tense, mood, voice);
+        String latinIrregularVerb = databaseAccess.sqlLatinIrregularVerb(irregularVerb,person,number,mood,voice,tense);
         setLatinVerb(latinIrregularVerb);  // set field of latin IrregularVerb
 
         return latinIrregularVerb;
     }
 
+    /**
+     * makeEnglishVerb(DatabaseAccess databaseAccess, String person, String number, String tense, String mood, String voice)
+     * ===============
+     * Makes an English Verb from an Irregular Latin Verb.
+     * Note that ESSE, to be, is irregular in English as well, which is taken into account.
+     * @param databaseAccess
+     * @param person
+     * @param number
+     * @param tense
+     * @param mood
+     * @param voice
+     * @return
+     */
     @Override
     public String makeEnglishVerb(DatabaseAccess databaseAccess, String person, String number,
                                   String tense, String mood, String voice) {
 
-        String latinInfinitive = getLatin_Infinitive();
-        if( latinInfinitive.equals("esse") ){
 
-        } else {
-            String englishVerb = super.makeEnglishVerb(databaseAccess, person, number, tense, mood, voice);
+        String englishVerb = super.makeEnglishVerb(databaseAccess, person, number, tense, mood, voice);
+
+        String latinVerb = getLatin_Infinitive();
+
+        // Adjust for Irregular Verb for 'to be' ESSE
+        // ---------------------------------------------
+        if( latinVerb.equals("esse") || latinVerb.equals("Esse")) {
+            englishVerb = databaseAccess.sqlEnglishIrregularESSEVerb(latinVerb, person, number, tense, mood, voice);
+            setEnglishVerb(englishVerb);
         }
 
-        return null;
+        return englishVerb;
     }
 
 
