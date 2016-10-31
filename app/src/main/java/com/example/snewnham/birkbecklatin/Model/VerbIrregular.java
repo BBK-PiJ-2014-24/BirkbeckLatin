@@ -64,31 +64,47 @@ public class VerbIrregular extends VerbRegular {
     public String makeEnglishVerb(DatabaseAccess databaseAccess, String person, String number,
                                   String tense, String mood, String voice) {
 
+        String latin_infinitive_verb = getLatin_Infinitive();
+        // Check to See If The Verb is Not Defective for the given verb parameters - person, mood etc.
+        String latin_Verb = makeLatinVerb(databaseAccess, person, number, tense, mood, voice, null);
 
-        String englishVerb = super.makeEnglishVerb(databaseAccess, person, number, tense, mood, voice);
+        if(latin_Verb == null){
+            makeEnglishVerbNull();  // If latin verb == null => English verb should be null
+            return null;
+        } else {
+            String englishVerb = super.makeEnglishVerb(databaseAccess, person, number, tense, mood, voice);
 
-        String latinVerb = getLatin_Infinitive();
+            // Verb Ending Adjustment if Irregular Verb is 'to be' ESSE
+            // --------------------------------------------------------
+            if (latin_infinitive_verb.equals("esse") || latin_infinitive_verb.equals("Esse")) {
 
-        // Adjust for Irregular Verb for 'to be' ESSE
-        // ---------------------------------------------
-        if( latinVerb.equals("esse") || latinVerb.equals("Esse")) {
+                if (voice.equals("Passive")) {  // defence checker for all passive to be to null.
+                    makeEnglishVerbNull();
+                    return getEnglishVerb();
+                }
+                englishVerb = databaseAccess.sqlEnglishIrregularESSEVerb(latin_infinitive_verb, person, number, tense, mood, voice);
 
-            if(voice.equals("Passive")){  // defence checker for all passive to be to null.
-                setEnglishPerson(null);
-                setEnglishAuxiliaryVerb(null);
-                setEnglishVerbEnding(null);
-                setEnglishVerb(null);
-                return getEnglishVerb();
+                if (englishVerb == null) {
+                    englishVerb = "";
+                }
+                setEnglishVerbEnding(englishVerb);  // Reset Verb Ending
+                setEnglishVerb(getEnglishPerson() + getEnglishAuxiliaryVerb() + englishVerb); // Reset Complete Verb
             }
-            englishVerb = databaseAccess.sqlEnglishIrregularESSEVerb(latinVerb, person, number, tense, mood, voice);
-            if(englishVerb == null) {
-                englishVerb = "";
-            }
-            setEnglishVerbEnding(englishVerb);  // Reset Verb Ending
-            setEnglishVerb(getEnglishPerson()+getEnglishAuxiliaryVerb()+englishVerb); // Reset Complete Verb
         }
-
         return getEnglishVerb();
+    }
+
+    /**
+     * makeEnglishVerbNull()
+     * =====================
+     * helper method to set the English Verb Fields to Null.
+     *
+     */
+    private void makeEnglishVerbNull(){
+        setEnglishPerson(null);
+        setEnglishAuxiliaryVerb(null);
+        setEnglishVerbEnding(null);
+        setEnglishVerb(null);
     }
 
 

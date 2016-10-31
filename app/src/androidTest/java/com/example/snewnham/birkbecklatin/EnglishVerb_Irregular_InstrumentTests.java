@@ -26,7 +26,7 @@ public class EnglishVerb_Irregular_InstrumentTests {
     DatabaseAccess databaseAccess;
 
     int id;
-    VerbIrregular mVerbEsse;
+    VerbIrregular mVerbIrregular;
 
     String person1;
     String person2;
@@ -66,20 +66,20 @@ public class EnglishVerb_Irregular_InstrumentTests {
         databaseAccess.open();                                  // OPEN THE DATABASE
 
         id = 2;
-        mVerbEsse = new VerbIrregular(id, databaseAccess);
+        mVerbIrregular = new VerbIrregular(id, databaseAccess);
 
-        mVerbEsse.setLatin_Type("Irregular");
+        mVerbIrregular.setLatin_Type("Irregular");
 
-        mVerbEsse.setLatin_Present("sum");        // Participle Parts
-        mVerbEsse.setLatin_Infinitive("esse");
-        mVerbEsse.setLatin_Perfect("fui");
-        mVerbEsse.setLatin_Participle("futurus");
+        mVerbIrregular.setLatin_Present("malo");        // Participle Parts
+        mVerbIrregular.setLatin_Infinitive("malle");
+        mVerbIrregular.setLatin_Perfect("malle");
+        mVerbIrregular.setLatin_Participle("malui");
 
 
-        mVerbEsse.setEnglish_Infinitive("be");    // English
-        mVerbEsse.setEnglish_Present_3rdPerson("is");
-        mVerbEsse.setEnglish_Perfect("been");
-        mVerbEsse.setEnglish_Participle("being");
+        mVerbIrregular.setEnglish_Infinitive("prefer");    // English
+        mVerbIrregular.setEnglish_Present_3rdPerson("prefers");
+        mVerbIrregular.setEnglish_Perfect("preferred");
+        mVerbIrregular.setEnglish_Participle("preferring");
 
         // makeLatinWord Arguments
         // -----------------------
@@ -127,53 +127,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordPresentActiveIndicative() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePresent, moodIndicative, voiceActive);
 
-        assertEquals("I", mVerbEsse.getEnglishPerson());
-        assertEquals(" ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("am", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("I am", mVerbEsse.getEnglishVerb());
+        assertEquals("I", mVerbIrregular.getEnglishPerson());
+        assertEquals(" ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("I prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePresent, moodIndicative, voiceActive);
 
-        assertEquals("you(s)", mVerbEsse.getEnglishPerson());
-        assertEquals(" ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("are", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(s) are", mVerbEsse.getEnglishVerb());
+        assertEquals("you(s)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(s) prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePresent, moodIndicative, voiceActive);
 
-        assertEquals("he/she", mVerbEsse.getEnglishPerson());
-        assertEquals(" ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("is", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("he/she is", mVerbEsse.getEnglishVerb());
+        assertEquals("he/she", mVerbIrregular.getEnglishPerson());
+        assertEquals(" ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefers", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("he/she prefers", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePresent, moodIndicative, voiceActive);
 
-        assertEquals("we", mVerbEsse.getEnglishPerson());
-        assertEquals(" ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("are", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("we are", mVerbEsse.getEnglishVerb());
+        assertEquals("we", mVerbIrregular.getEnglishPerson());
+        assertEquals(" ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("we prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePresent, moodIndicative, voiceActive);
 
-        assertEquals("you(pl)", mVerbEsse.getEnglishPerson());
-        assertEquals(" ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("are", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(pl) are", mVerbEsse.getEnglishVerb());
+        assertEquals("you(pl)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(pl) prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePresent, moodIndicative, voiceActive);
 
-        assertEquals("they", mVerbEsse.getEnglishPerson());
-        assertEquals(" ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("are", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("they are", mVerbEsse.getEnglishVerb());
+        assertEquals("they", mVerbIrregular.getEnglishPerson());
+        assertEquals(" ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("they prefer", mVerbIrregular.getEnglishVerb());
 
     }
 
@@ -188,53 +188,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordImperfectActiveIndicative() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tenseImPerfect, moodIndicative, voiceActive);
 
-        assertEquals("I", mVerbEsse.getEnglishPerson());
-        assertEquals(" was ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("I was ", mVerbEsse.getEnglishVerb());
+        assertEquals("I", mVerbIrregular.getEnglishPerson());
+        assertEquals(" was ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferring", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("I was preferring", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tenseImPerfect, moodIndicative, voiceActive);
 
-        assertEquals("you(s)", mVerbEsse.getEnglishPerson());
-        assertEquals(" were ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(s) were ", mVerbEsse.getEnglishVerb());
+        assertEquals("you(s)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" were ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferring", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(s) were preferring", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tenseImPerfect, moodIndicative, voiceActive);
 
-        assertEquals("he/she", mVerbEsse.getEnglishPerson());
-        assertEquals(" was ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("he/she was ", mVerbEsse.getEnglishVerb());
+        assertEquals("he/she", mVerbIrregular.getEnglishPerson());
+        assertEquals(" was ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferring", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("he/she was preferring", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tenseImPerfect, moodIndicative, voiceActive);
 
-        assertEquals("we", mVerbEsse.getEnglishPerson());
-        assertEquals(" were ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("we were ", mVerbEsse.getEnglishVerb());
+        assertEquals("we", mVerbIrregular.getEnglishPerson());
+        assertEquals(" were ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferring", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("we were preferring", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tenseImPerfect, moodIndicative, voiceActive);
 
-        assertEquals("you(pl)", mVerbEsse.getEnglishPerson());
-        assertEquals(" were ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(pl) were ", mVerbEsse.getEnglishVerb());
+        assertEquals("you(pl)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" were ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferring", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(pl) were preferring", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tenseImPerfect, moodIndicative, voiceActive);
 
-        assertEquals("they", mVerbEsse.getEnglishPerson());
-        assertEquals(" were ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("they were ", mVerbEsse.getEnglishVerb());
+        assertEquals("they", mVerbIrregular.getEnglishPerson());
+        assertEquals(" were ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferring", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("they were preferring", mVerbIrregular.getEnglishVerb());
 
     }
 
@@ -250,53 +250,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordFutureActiveIndicative() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tenseFuture, moodIndicative, voiceActive);
 
-        assertEquals("I", mVerbEsse.getEnglishPerson());
-        assertEquals(" shall ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("I shall be", mVerbEsse.getEnglishVerb());
+        assertEquals("I", mVerbIrregular.getEnglishPerson());
+        assertEquals(" shall ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("I shall prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tenseFuture, moodIndicative, voiceActive);
 
-        assertEquals("you(s)", mVerbEsse.getEnglishPerson());
-        assertEquals(" will ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(s) will be", mVerbEsse.getEnglishVerb());
+        assertEquals("you(s)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" will ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(s) will prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tenseFuture, moodIndicative, voiceActive);
 
-        assertEquals("he/she", mVerbEsse.getEnglishPerson());
-        assertEquals(" will ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("he/she will be", mVerbEsse.getEnglishVerb());
+        assertEquals("he/she", mVerbIrregular.getEnglishPerson());
+        assertEquals(" will ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("he/she will prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tenseFuture, moodIndicative, voiceActive);
 
-        assertEquals("we", mVerbEsse.getEnglishPerson());
-        assertEquals(" shall ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("we shall be", mVerbEsse.getEnglishVerb());
+        assertEquals("we", mVerbIrregular.getEnglishPerson());
+        assertEquals(" shall ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("we shall prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tenseFuture, moodIndicative, voiceActive);
 
-        assertEquals("you(pl)", mVerbEsse.getEnglishPerson());
-        assertEquals(" will ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(pl) will be", mVerbEsse.getEnglishVerb());
+        assertEquals("you(pl)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" will ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(pl) will prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tenseFuture, moodIndicative, voiceActive);
 
-        assertEquals("they", mVerbEsse.getEnglishPerson());
-        assertEquals(" will ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("they will be", mVerbEsse.getEnglishVerb());
+        assertEquals("they", mVerbIrregular.getEnglishPerson());
+        assertEquals(" will ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("they will prefer", mVerbIrregular.getEnglishVerb());
 
     }
 
@@ -311,53 +311,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordPerfectActiveIndicative() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePerfect, moodIndicative, voiceActive);
 
-        assertEquals("I", mVerbEsse.getEnglishPerson());
-        assertEquals(" have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("I have been", mVerbEsse.getEnglishVerb());
+        assertEquals("I", mVerbIrregular.getEnglishPerson());
+        assertEquals(" have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("I have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePerfect, moodIndicative, voiceActive);
 
-        assertEquals("you(s)", mVerbEsse.getEnglishPerson());
-        assertEquals(" have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(s) have been", mVerbEsse.getEnglishVerb());
+        assertEquals("you(s)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(s) have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePerfect, moodIndicative, voiceActive);
 
-        assertEquals("he/she", mVerbEsse.getEnglishPerson());
-        assertEquals(" has ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("he/she has been", mVerbEsse.getEnglishVerb());
+        assertEquals("he/she", mVerbIrregular.getEnglishPerson());
+        assertEquals(" has ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("he/she has preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePerfect, moodIndicative, voiceActive);
 
-        assertEquals("we", mVerbEsse.getEnglishPerson());
-        assertEquals(" have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("we have been", mVerbEsse.getEnglishVerb());
+        assertEquals("we", mVerbIrregular.getEnglishPerson());
+        assertEquals(" have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("we have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePerfect, moodIndicative, voiceActive);
 
-        assertEquals("you(pl)", mVerbEsse.getEnglishPerson());
-        assertEquals(" have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(pl) have been", mVerbEsse.getEnglishVerb());
+        assertEquals("you(pl)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(pl) have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePerfect, moodIndicative, voiceActive);
 
-        assertEquals("they", mVerbEsse.getEnglishPerson());
-        assertEquals(" have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("they have been", mVerbEsse.getEnglishVerb());
+        assertEquals("they", mVerbIrregular.getEnglishPerson());
+        assertEquals(" have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("they have preferred", mVerbIrregular.getEnglishVerb());
     }
 
 
@@ -372,53 +372,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordPluperfectActiveIndicative() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePluperfect, moodIndicative, voiceActive);
 
-        assertEquals("I", mVerbEsse.getEnglishPerson());
-        assertEquals(" had ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("I had been", mVerbEsse.getEnglishVerb());
+        assertEquals("I", mVerbIrregular.getEnglishPerson());
+        assertEquals(" had ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("I had preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePluperfect, moodIndicative, voiceActive);
 
-        assertEquals("you(s)", mVerbEsse.getEnglishPerson());
-        assertEquals(" had ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(s) had been", mVerbEsse.getEnglishVerb());
+        assertEquals("you(s)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" had ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(s) had preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePluperfect, moodIndicative, voiceActive);
 
-        assertEquals("he/she", mVerbEsse.getEnglishPerson());
-        assertEquals(" had ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("he/she had been", mVerbEsse.getEnglishVerb());
+        assertEquals("he/she", mVerbIrregular.getEnglishPerson());
+        assertEquals(" had ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("he/she had preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePluperfect, moodIndicative, voiceActive);
 
-        assertEquals("we", mVerbEsse.getEnglishPerson());
-        assertEquals(" had ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("we had been", mVerbEsse.getEnglishVerb());
+        assertEquals("we", mVerbIrregular.getEnglishPerson());
+        assertEquals(" had ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("we had preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePluperfect, moodIndicative, voiceActive);
 
-        assertEquals("you(pl)", mVerbEsse.getEnglishPerson());
-        assertEquals(" had ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(pl) had been", mVerbEsse.getEnglishVerb());
+        assertEquals("you(pl)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" had ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(pl) had preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePluperfect, moodIndicative, voiceActive);
 
-        assertEquals("they", mVerbEsse.getEnglishPerson());
-        assertEquals(" had ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("they had been", mVerbEsse.getEnglishVerb());
+        assertEquals("they", mVerbIrregular.getEnglishPerson());
+        assertEquals(" had ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("they had preferred", mVerbIrregular.getEnglishVerb());
     }
 
 
@@ -432,53 +432,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordFuturePerfectActiveIndicative() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tenseFuturePerfect, moodIndicative, voiceActive);
 
-        assertEquals("I", mVerbEsse.getEnglishPerson());
-        assertEquals(" shall have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("I shall have been", mVerbEsse.getEnglishVerb());
+        assertEquals("I", mVerbIrregular.getEnglishPerson());
+        assertEquals(" shall have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("I shall have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tenseFuturePerfect, moodIndicative, voiceActive);
 
-        assertEquals("you(s)", mVerbEsse.getEnglishPerson());
-        assertEquals(" will have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(s) will have been", mVerbEsse.getEnglishVerb());
+        assertEquals("you(s)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" will have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(s) will have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tenseFuturePerfect, moodIndicative, voiceActive);
 
-        assertEquals("he/she", mVerbEsse.getEnglishPerson());
-        assertEquals(" will have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("he/she will have been", mVerbEsse.getEnglishVerb());
+        assertEquals("he/she", mVerbIrregular.getEnglishPerson());
+        assertEquals(" will have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("he/she will have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tenseFuturePerfect, moodIndicative, voiceActive);
 
-        assertEquals("we", mVerbEsse.getEnglishPerson());
-        assertEquals(" shall have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("we shall have been", mVerbEsse.getEnglishVerb());
+        assertEquals("we", mVerbIrregular.getEnglishPerson());
+        assertEquals(" shall have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("we shall have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tenseFuturePerfect, moodIndicative, voiceActive);
 
-        assertEquals("you(pl)", mVerbEsse.getEnglishPerson());
-        assertEquals(" will have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(pl) will have been", mVerbEsse.getEnglishVerb());
+        assertEquals("you(pl)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" will have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(pl) will have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tenseFuturePerfect, moodIndicative, voiceActive);
 
-        assertEquals("they", mVerbEsse.getEnglishPerson());
-        assertEquals(" will have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("they will have been", mVerbEsse.getEnglishVerb());
+        assertEquals("they", mVerbIrregular.getEnglishPerson());
+        assertEquals(" will have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("they will have preferred", mVerbIrregular.getEnglishVerb());
 
     }
 
@@ -494,53 +494,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordPresentPassiveIndicative() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePresent, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePresent, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePresent, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePresent, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePresent, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePresent, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
     }
 
@@ -555,53 +555,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordImperfectPassiveIndicative() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tenseImPerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tenseImPerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tenseImPerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tenseImPerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tenseImPerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tenseImPerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
     }
 
 
@@ -616,53 +616,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordFuturePassiveIndicative() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tenseFuture, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tenseFuture, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tenseFuture, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tenseFuture, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tenseFuture, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tenseFuture, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
     }
 
 
@@ -676,53 +676,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordPerfectPassiveIndicative() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
     }
 
 
@@ -737,53 +737,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordPluperfectPassiveIndicative() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePluperfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePluperfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePluperfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePluperfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePluperfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePluperfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
     }
 
 
@@ -797,53 +797,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordFuturePerfectPassiveIndicative() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tenseFuturePerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tenseFuturePerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tenseFuturePerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tenseFuturePerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tenseFuturePerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tenseFuturePerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
     }
 // ==========================  ACTIVE, SUBJUNCTIVE  =============================================
@@ -858,53 +858,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordPresentActiveSubjunctive() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePresent, moodSubjunctive, voiceActive);
 
-        assertEquals("", mVerbEsse.getEnglishPerson());
-        assertEquals("May I ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("May I be", mVerbEsse.getEnglishVerb());
+        assertEquals("", mVerbIrregular.getEnglishPerson());
+        assertEquals("May I ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("May I prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePresent, moodSubjunctive, voiceActive);
 
-        assertEquals("", mVerbEsse.getEnglishPerson());
-        assertEquals("May you(s) ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("May you(s) be", mVerbEsse.getEnglishVerb());
+        assertEquals("", mVerbIrregular.getEnglishPerson());
+        assertEquals("May you(s) ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("May you(s) prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePresent, moodSubjunctive, voiceActive);
 
-        assertEquals("", mVerbEsse.getEnglishPerson());
-        assertEquals("May he/she ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("May he/she be", mVerbEsse.getEnglishVerb());
+        assertEquals("", mVerbIrregular.getEnglishPerson());
+        assertEquals("May he/she ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("May he/she prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePresent, moodSubjunctive, voiceActive);
 
-        assertEquals("", mVerbEsse.getEnglishPerson());
-        assertEquals("Let us ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("Let us be", mVerbEsse.getEnglishVerb());
+        assertEquals("", mVerbIrregular.getEnglishPerson());
+        assertEquals("Let us ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("Let us prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePresent, moodSubjunctive, voiceActive);
 
-        assertEquals("", mVerbEsse.getEnglishPerson());
-        assertEquals("May you(pl) ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("May you(pl) be", mVerbEsse.getEnglishVerb());
+        assertEquals("", mVerbIrregular.getEnglishPerson());
+        assertEquals("May you(pl) ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("May you(pl) prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePresent, moodSubjunctive, voiceActive);
 
-        assertEquals("", mVerbEsse.getEnglishPerson());
-        assertEquals("May they ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("May they be", mVerbEsse.getEnglishVerb());
+        assertEquals("", mVerbIrregular.getEnglishPerson());
+        assertEquals("May they ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("May they prefer", mVerbIrregular.getEnglishVerb());
 
     }
 
@@ -919,53 +919,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordImperfectActiveSubjunctive() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tenseImPerfect, moodSubjunctive, voiceActive);
 
-        assertEquals("I", mVerbEsse.getEnglishPerson());
-        assertEquals(" would ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("I would be", mVerbEsse.getEnglishVerb());
+        assertEquals("I", mVerbIrregular.getEnglishPerson());
+        assertEquals(" would ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("I would prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tenseImPerfect, moodSubjunctive, voiceActive);
 
-        assertEquals("you(s)", mVerbEsse.getEnglishPerson());
-        assertEquals(" would ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(s) would be", mVerbEsse.getEnglishVerb());
+        assertEquals("you(s)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" would ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(s) would prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tenseImPerfect, moodSubjunctive, voiceActive);
 
-        assertEquals("he/she", mVerbEsse.getEnglishPerson());
-        assertEquals(" would ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("he/she would be", mVerbEsse.getEnglishVerb());
+        assertEquals("he/she", mVerbIrregular.getEnglishPerson());
+        assertEquals(" would ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("he/she would prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tenseImPerfect, moodSubjunctive, voiceActive);
 
-        assertEquals("we", mVerbEsse.getEnglishPerson());
-        assertEquals(" would ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("we would be", mVerbEsse.getEnglishVerb());
+        assertEquals("we", mVerbIrregular.getEnglishPerson());
+        assertEquals(" would ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("we would prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tenseImPerfect, moodSubjunctive, voiceActive);
 
-        assertEquals("you(pl)", mVerbEsse.getEnglishPerson());
-        assertEquals(" would ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(pl) would be", mVerbEsse.getEnglishVerb());
+        assertEquals("you(pl)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" would ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(pl) would prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tenseImPerfect, moodSubjunctive, voiceActive);
 
-        assertEquals("they", mVerbEsse.getEnglishPerson());
-        assertEquals(" would ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("they would be", mVerbEsse.getEnglishVerb());
+        assertEquals("they", mVerbIrregular.getEnglishPerson());
+        assertEquals(" would ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("they would prefer", mVerbIrregular.getEnglishVerb());
 
     }
 
@@ -979,53 +979,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordPerfectActiveSubjunctive() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePerfect, moodSubjunctive, voiceActive);
 
-        assertEquals("I", mVerbEsse.getEnglishPerson());
-        assertEquals(" may have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("I may have been", mVerbEsse.getEnglishVerb());
+        assertEquals("I", mVerbIrregular.getEnglishPerson());
+        assertEquals(" may have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("I may have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePerfect, moodSubjunctive, voiceActive);
 
-        assertEquals("you(s)", mVerbEsse.getEnglishPerson());
-        assertEquals(" may have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(s) may have been", mVerbEsse.getEnglishVerb());
+        assertEquals("you(s)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" may have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(s) may have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePerfect, moodSubjunctive, voiceActive);
 
-        assertEquals("he/she", mVerbEsse.getEnglishPerson());
-        assertEquals(" may have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("he/she may have been", mVerbEsse.getEnglishVerb());
+        assertEquals("he/she", mVerbIrregular.getEnglishPerson());
+        assertEquals(" may have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("he/she may have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePerfect, moodSubjunctive, voiceActive);
 
-        assertEquals("we", mVerbEsse.getEnglishPerson());
-        assertEquals(" may have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("we may have been", mVerbEsse.getEnglishVerb());
+        assertEquals("we", mVerbIrregular.getEnglishPerson());
+        assertEquals(" may have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("we may have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePerfect, moodSubjunctive, voiceActive);
 
-        assertEquals("you(pl)", mVerbEsse.getEnglishPerson());
-        assertEquals(" may have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(pl) may have been", mVerbEsse.getEnglishVerb());
+        assertEquals("you(pl)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" may have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(pl) may have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePerfect, moodSubjunctive, voiceActive);
 
-        assertEquals("they", mVerbEsse.getEnglishPerson());
-        assertEquals(" may have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("they may have been", mVerbEsse.getEnglishVerb());
+        assertEquals("they", mVerbIrregular.getEnglishPerson());
+        assertEquals(" may have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("they may have preferred", mVerbIrregular.getEnglishVerb());
     }
 
 
@@ -1040,53 +1040,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordPluperfectActiveSubjunctive() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePluperfect, moodSubjunctive, voiceActive);
 
-        assertEquals("I", mVerbEsse.getEnglishPerson());
-        assertEquals(" would have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("I would have been", mVerbEsse.getEnglishVerb());
+        assertEquals("I", mVerbIrregular.getEnglishPerson());
+        assertEquals(" would have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("I would have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePluperfect, moodSubjunctive, voiceActive);
 
-        assertEquals("you(s)", mVerbEsse.getEnglishPerson());
-        assertEquals(" would have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(s) would have been", mVerbEsse.getEnglishVerb());
+        assertEquals("you(s)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" would have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(s) would have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePluperfect, moodSubjunctive, voiceActive);
 
-        assertEquals("he/she", mVerbEsse.getEnglishPerson());
-        assertEquals(" would have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("he/she would have been", mVerbEsse.getEnglishVerb());
+        assertEquals("he/she", mVerbIrregular.getEnglishPerson());
+        assertEquals(" would have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("he/she would have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePluperfect, moodSubjunctive, voiceActive);
 
-        assertEquals("we", mVerbEsse.getEnglishPerson());
-        assertEquals(" would have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("we would have been", mVerbEsse.getEnglishVerb());
+        assertEquals("we", mVerbIrregular.getEnglishPerson());
+        assertEquals(" would have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("we would have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePluperfect, moodSubjunctive, voiceActive);
 
-        assertEquals("you(pl)", mVerbEsse.getEnglishPerson());
-        assertEquals(" would have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(pl) would have been", mVerbEsse.getEnglishVerb());
+        assertEquals("you(pl)", mVerbIrregular.getEnglishPerson());
+        assertEquals(" would have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("you(pl) would have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePluperfect, moodSubjunctive, voiceActive);
 
-        assertEquals("they", mVerbEsse.getEnglishPerson());
-        assertEquals(" would have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("they would have been", mVerbEsse.getEnglishVerb());
+        assertEquals("they", mVerbIrregular.getEnglishPerson());
+        assertEquals(" would have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("they would have preferred", mVerbIrregular.getEnglishVerb());
     }
 
 
@@ -1102,53 +1102,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordPresentPassiveSubjunctive() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePresent, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePresent, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePresent, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePresent, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePresent, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePresent, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
     }
 
@@ -1163,53 +1163,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordImperfectPassiveSubjunctive() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tenseImPerfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tenseImPerfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tenseImPerfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tenseImPerfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tenseImPerfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tenseImPerfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
     }
 
@@ -1223,53 +1223,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordPerfectPassiveSubjunctive() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePerfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePerfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePerfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePerfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePerfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePerfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
     }
 
 
@@ -1284,53 +1284,53 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordPluperfectPassiveSubjunctive() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePluperfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePluperfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePluperfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tensePluperfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tensePluperfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tensePluperfect, moodSubjunctive, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
     }
 
 
@@ -1347,54 +1347,54 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordInfinitive() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
                 tensePresent, moodIndicative, voiceActive);
 
-        assertEquals("", mVerbEsse.getEnglishPerson());
-        assertEquals("to ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("to be", mVerbEsse.getEnglishVerb());
+        assertEquals("", mVerbIrregular.getEnglishPerson());
+        assertEquals("to ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("to prefer", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
                 tensePerfect, moodIndicative, voiceActive);
 
-        assertEquals("", mVerbEsse.getEnglishPerson());
-        assertEquals("to have ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("been", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("to have been", mVerbEsse.getEnglishVerb());
+        assertEquals("", mVerbIrregular.getEnglishPerson());
+        assertEquals("to have ", mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals("preferred", mVerbIrregular.getEnglishVerbEnding());
+        assertEquals("to have preferred", mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
                 tenseFuture, moodIndicative, voiceActive);
 
-        assertEquals("", mVerbEsse.getEnglishPerson());
-        assertEquals("to be going to ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("to be going to be", mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
                 tensePresent, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
                 tensePerfect, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
                 tenseFuture, moodIndicative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
     }
 
@@ -1408,40 +1408,40 @@ public class EnglishVerb_Irregular_InstrumentTests {
     @Test
     public void testMakeVerbWordImperative() throws Exception {
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, personNull, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, personNull, numberSingular,
                 tenseNull, moodImperative, voiceActive);
 
-        assertEquals("", mVerbEsse.getEnglishPerson());
-        assertEquals("", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("be", mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, personNull, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, personNull, numberPlural,
                 tenseNull, moodImperative, voiceActive);
 
-        assertEquals("", mVerbEsse.getEnglishPerson());
-        assertEquals("", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("be", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("be", mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, personNull, numberSingular,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, personNull, numberSingular,
                 tenseNull, moodImperative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
 
-        mVerbEsse.makeEnglishVerb(databaseAccess, personNull, numberPlural,
+        mVerbIrregular.makeEnglishVerb(databaseAccess, personNull, numberPlural,
                 tenseNull, moodImperative, voicePassive);
 
-        assertEquals(null, mVerbEsse.getEnglishPerson());
-        assertEquals(null, mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals(null, mVerbEsse.getEnglishVerbEnding());
-        assertEquals(null, mVerbEsse.getEnglishVerb());
+        assertEquals(null, mVerbIrregular.getEnglishPerson());
+        assertEquals(null, mVerbIrregular.getEnglishAuxiliaryVerb());
+        assertEquals(null, mVerbIrregular.getEnglishVerbEnding());
+        assertEquals(null, mVerbIrregular.getEnglishVerb());
 
     }
 
