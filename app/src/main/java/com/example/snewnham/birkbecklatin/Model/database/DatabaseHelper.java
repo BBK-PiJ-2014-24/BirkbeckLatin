@@ -1,4 +1,4 @@
-package com.example.snewnham.birkbecklatin.Model;
+package com.example.snewnham.birkbecklatin.Model.database;
 
 import android.content.Context;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;

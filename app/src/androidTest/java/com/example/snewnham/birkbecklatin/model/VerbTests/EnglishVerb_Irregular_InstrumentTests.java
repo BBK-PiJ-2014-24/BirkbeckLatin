@@ -1,11 +1,11 @@
-package com.example.snewnham.birkbecklatin;
+package com.example.snewnham.birkbecklatin.model.VerbTests;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.snewnham.birkbecklatin.Model.DatabaseAccess;
-import com.example.snewnham.birkbecklatin.Model.VerbIrregular;
+import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.verbs.VerbIrregular;
 
 import org.junit.Before;
 import org.junit.Test;

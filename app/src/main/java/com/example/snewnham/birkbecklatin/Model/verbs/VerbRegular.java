@@ -1,4 +1,6 @@
-package com.example.snewnham.birkbecklatin.Model;
+package com.example.snewnham.birkbecklatin.Model.verbs;
+
+import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
 /**
  * VerbRegular is the class for regular latin verbs. It contains the same data as that held in the database's 'VerbList' table

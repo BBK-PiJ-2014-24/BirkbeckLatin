@@ -1,8 +1,9 @@
-package com.example.snewnham.birkbecklatin.Model;
+package com.example.snewnham.birkbecklatin.Model.database;
 
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
+import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
 
 
 /**

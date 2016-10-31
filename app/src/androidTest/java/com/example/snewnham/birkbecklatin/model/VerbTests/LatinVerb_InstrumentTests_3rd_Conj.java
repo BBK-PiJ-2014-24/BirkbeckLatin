@@ -1,11 +1,11 @@
-package com.example.snewnham.birkbecklatin;
+package com.example.snewnham.birkbecklatin.model.VerbTests;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.snewnham.birkbecklatin.Model.DatabaseAccess;
-import com.example.snewnham.birkbecklatin.Model.VerbRegular;
+import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
  * Created by snewnham on 12/10/2016.
  */
 @RunWith(AndroidJUnit4.class)
-public class LatinVerb_InstrumentTests_3rd_io_Conj {
+public class LatinVerb_InstrumentTests_3rd_Conj {
 
 
     // Fields
@@ -56,7 +56,6 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     String conjNum1;
     String conjNum2;
     String conjNum3;
-    String conjNum31;
     String conjNum4;
     String conjNull;
 
@@ -71,24 +70,24 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
         mVerbRegular = new VerbRegular(id, databaseAccess);
 
         mVerbRegular.setLatin_Type("Regular");
-        mVerbRegular.setLatin_ConjNum(31);
+        mVerbRegular.setLatin_ConjNum(3);
 
-        mVerbRegular.setLatin_Present("capio");        // Participle Parts
-        mVerbRegular.setLatin_Infinitive("capere");
-        mVerbRegular.setLatin_Perfect("cepi");
-        mVerbRegular.setLatin_Participle("captus");
+        mVerbRegular.setLatin_Present("rego");        // Participle Parts
+        mVerbRegular.setLatin_Infinitive("regere");
+        mVerbRegular.setLatin_Perfect("rexi");
+        mVerbRegular.setLatin_Participle("rectus");
 
-        mVerbRegular.setLatin_Present_Stem("cap");     // Stems
-        mVerbRegular.setLatin_Infinitive_Stem("cape");
-        mVerbRegular.setLatin_Infinitive_PassiveStem("cap");
-        mVerbRegular.setLatin_Present_SubjuncStem("capia");
-        mVerbRegular.setLatin_Perfect_Stem("cep");
-        mVerbRegular.setLatin_Participle_Stem("capt");
+        mVerbRegular.setLatin_Present_Stem("reg");     // Stems
+        mVerbRegular.setLatin_Infinitive_Stem("rege");
+        mVerbRegular.setLatin_Infinitive_PassiveStem("reg");
+        mVerbRegular.setLatin_Present_SubjuncStem("rega");
+        mVerbRegular.setLatin_Perfect_Stem("rex");
+        mVerbRegular.setLatin_Participle_Stem("rect");
 
-        mVerbRegular.setEnglish_Infinitive("take, capture");    // English
-        mVerbRegular.setEnglish_Present_3rdPerson("takes, captures");
-        mVerbRegular.setEnglish_Perfect("took, captured");
-        mVerbRegular.setEnglish_Participle("taking, capturing");
+        mVerbRegular.setEnglish_Infinitive("rule");    // English
+        mVerbRegular.setEnglish_Present_3rdPerson("rules");
+        mVerbRegular.setEnglish_Perfect("ruled");
+        mVerbRegular.setEnglish_Participle("ruling");
 
         // makeLatinWord Arguments
         // -----------------------
@@ -120,7 +119,6 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
         conjNum1 = "1";
         conjNum2 = "2";
         conjNum3 = "3";
-        conjNum31 = "31";
         conjNum4 = "4";
         conjNull = null;
     }
@@ -147,46 +145,46 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tensePresent,
-                            moodIndicative, voiceActive, conjNum31);
+                            moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("io", mVerbRegular.getLatinEnding());
-        assertEquals("capio", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("o", mVerbRegular.getLatinEnding());
+        assertEquals("rego", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
+        assertEquals("reg", mVerbRegular.getLatinStem());
         assertEquals("is", mVerbRegular.getLatinEnding());
-        assertEquals("capis", mVerbRegular.getLatinVerb());
+        assertEquals("regis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tensePresent,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
+        assertEquals("reg", mVerbRegular.getLatinStem());
         assertEquals("it", mVerbRegular.getLatinEnding());
-        assertEquals("capit", mVerbRegular.getLatinVerb());
+        assertEquals("regit", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tensePresent,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
+        assertEquals("reg", mVerbRegular.getLatinStem());
         assertEquals("imus", mVerbRegular.getLatinEnding());
-        assertEquals("capimus", mVerbRegular.getLatinVerb());
+        assertEquals("regimus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tensePresent,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
+        assertEquals("reg", mVerbRegular.getLatinStem());
         assertEquals("itis", mVerbRegular.getLatinEnding());
-        assertEquals("capitis", mVerbRegular.getLatinVerb());
+        assertEquals("regitis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tensePresent,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iunt", mVerbRegular.getLatinEnding());
-        assertEquals("capiunt", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("unt", mVerbRegular.getLatinEnding());
+        assertEquals("regunt", mVerbRegular.getLatinVerb());
     }
 
     /**
@@ -200,47 +198,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordImperfectActiveIndicative() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tenseImPerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iebam", mVerbRegular.getLatinEnding());
-        assertEquals("capiebam", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("ebam", mVerbRegular.getLatinEnding());
+        assertEquals("regebam", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tenseImPerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iebas", mVerbRegular.getLatinEnding());
-        assertEquals("capiebas", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("ebas", mVerbRegular.getLatinEnding());
+        assertEquals("regebas", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tenseImPerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iebat", mVerbRegular.getLatinEnding());
-        assertEquals("capiebat", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("ebat", mVerbRegular.getLatinEnding());
+        assertEquals("regebat", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tenseImPerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iebamus", mVerbRegular.getLatinEnding());
-        assertEquals("capiebamus", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("ebamus", mVerbRegular.getLatinEnding());
+        assertEquals("regebamus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tenseImPerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iebatis", mVerbRegular.getLatinEnding());
-        assertEquals("capiebatis", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("ebatis", mVerbRegular.getLatinEnding());
+        assertEquals("regebatis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tenseImPerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iebant", mVerbRegular.getLatinEnding());
-        assertEquals("capiebant", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("ebant", mVerbRegular.getLatinEnding());
+        assertEquals("regebant", mVerbRegular.getLatinVerb());
 
     }
 
@@ -257,47 +255,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordFutureActiveIndicative() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tenseFuture,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iam", mVerbRegular.getLatinEnding());
-        assertEquals("capiam", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("am", mVerbRegular.getLatinEnding());
+        assertEquals("regam", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tenseFuture,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("ies", mVerbRegular.getLatinEnding());
-        assertEquals("capies", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("es", mVerbRegular.getLatinEnding());
+        assertEquals("reges", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tenseFuture,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iet", mVerbRegular.getLatinEnding());
-        assertEquals("capiet", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("et", mVerbRegular.getLatinEnding());
+        assertEquals("reget", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tenseFuture,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iemus", mVerbRegular.getLatinEnding());
-        assertEquals("capiemus", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("emus", mVerbRegular.getLatinEnding());
+        assertEquals("regemus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tenseFuture,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("ietis", mVerbRegular.getLatinEnding());
-        assertEquals("capietis", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("etis", mVerbRegular.getLatinEnding());
+        assertEquals("regetis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tenseFuture,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("ient", mVerbRegular.getLatinEnding());
-        assertEquals("capient", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("ent", mVerbRegular.getLatinEnding());
+        assertEquals("regent", mVerbRegular.getLatinVerb());
     }
 
 
@@ -312,47 +310,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordPerfectActiveIndicative() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tensePerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("i", mVerbRegular.getLatinEnding());
-        assertEquals("cepi", mVerbRegular.getLatinVerb());
+        assertEquals("rexi", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tensePerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("isti", mVerbRegular.getLatinEnding());
-        assertEquals("cepisti", mVerbRegular.getLatinVerb());
+        assertEquals("rexisti", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tensePerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("it", mVerbRegular.getLatinEnding());
-        assertEquals("cepit", mVerbRegular.getLatinVerb());
+        assertEquals("rexit", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tensePerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("imus", mVerbRegular.getLatinEnding());
-        assertEquals("cepimus", mVerbRegular.getLatinVerb());
+        assertEquals("reximus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tensePerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("istis", mVerbRegular.getLatinEnding());
-        assertEquals("cepistis", mVerbRegular.getLatinVerb());
+        assertEquals("rexistis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tensePerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("erunt", mVerbRegular.getLatinEnding());
-        assertEquals("ceperunt", mVerbRegular.getLatinVerb());
+        assertEquals("rexerunt", mVerbRegular.getLatinVerb());
 
     }
 
@@ -368,47 +366,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordPluperfectActiveIndicative() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tensePluperfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("eram", mVerbRegular.getLatinEnding());
-        assertEquals("ceperam", mVerbRegular.getLatinVerb());
+        assertEquals("rexeram", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tensePluperfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("eras", mVerbRegular.getLatinEnding());
-        assertEquals("ceperas", mVerbRegular.getLatinVerb());
+        assertEquals("rexeras", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tensePluperfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("erat", mVerbRegular.getLatinEnding());
-        assertEquals("ceperat", mVerbRegular.getLatinVerb());
+        assertEquals("rexerat", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tensePluperfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("eramus", mVerbRegular.getLatinEnding());
-        assertEquals("ceperamus", mVerbRegular.getLatinVerb());
+        assertEquals("rexeramus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tensePluperfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("eratis", mVerbRegular.getLatinEnding());
-        assertEquals("ceperatis", mVerbRegular.getLatinVerb());
+        assertEquals("rexeratis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tensePluperfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("erant", mVerbRegular.getLatinEnding());
-        assertEquals("ceperant", mVerbRegular.getLatinVerb());
+        assertEquals("rexerant", mVerbRegular.getLatinVerb());
 
     }
 
@@ -425,47 +423,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordFuturePerfectActiveIndicative() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tenseFuturePerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("ero", mVerbRegular.getLatinEnding());
-        assertEquals("cepero", mVerbRegular.getLatinVerb());
+        assertEquals("rexero", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tenseFuturePerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("eris", mVerbRegular.getLatinEnding());
-        assertEquals("ceperis", mVerbRegular.getLatinVerb());
+        assertEquals("rexeris", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tenseFuturePerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("erit", mVerbRegular.getLatinEnding());
-        assertEquals("ceperit", mVerbRegular.getLatinVerb());
+        assertEquals("rexerit", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tenseFuturePerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("erimus", mVerbRegular.getLatinEnding());
-        assertEquals("ceperimus", mVerbRegular.getLatinVerb());
+        assertEquals("rexerimus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tenseFuturePerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("eritis", mVerbRegular.getLatinEnding());
-        assertEquals("ceperitis", mVerbRegular.getLatinVerb());
+        assertEquals("rexeritis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tenseFuturePerfect,
-                moodIndicative, voiceActive, conjNum31);
+                moodIndicative, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("erint", mVerbRegular.getLatinEnding());
-        assertEquals("ceperint", mVerbRegular.getLatinVerb());
+        assertEquals("rexerint", mVerbRegular.getLatinVerb());
     }
 
 // ============================== PASSIVE, INDICATIVE  =============================================
@@ -482,46 +480,46 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tensePresent,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("ior", mVerbRegular.getLatinEnding());
-        assertEquals("capior", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("or", mVerbRegular.getLatinEnding());
+        assertEquals("regor", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
+        assertEquals("reg", mVerbRegular.getLatinStem());
         assertEquals("eris", mVerbRegular.getLatinEnding());
-        assertEquals("caperis", mVerbRegular.getLatinVerb());
+        assertEquals("regeris", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tensePresent,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
+        assertEquals("reg", mVerbRegular.getLatinStem());
         assertEquals("itur", mVerbRegular.getLatinEnding());
-        assertEquals("capitur", mVerbRegular.getLatinVerb());
+        assertEquals("regitur", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tensePresent,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
+        assertEquals("reg", mVerbRegular.getLatinStem());
         assertEquals("imur", mVerbRegular.getLatinEnding());
-        assertEquals("capimur", mVerbRegular.getLatinVerb());
+        assertEquals("regimur", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tensePresent,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
+        assertEquals("reg", mVerbRegular.getLatinStem());
         assertEquals("imini", mVerbRegular.getLatinEnding());
-        assertEquals("capimini", mVerbRegular.getLatinVerb());
+        assertEquals("regimini", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tensePresent,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iuntur", mVerbRegular.getLatinEnding());
-        assertEquals("capiuntur", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("untur", mVerbRegular.getLatinEnding());
+        assertEquals("reguntur", mVerbRegular.getLatinVerb());
 
     }
 
@@ -536,47 +534,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordImperfectPassiveIndicative() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tenseImPerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iebar", mVerbRegular.getLatinEnding());
-        assertEquals("capiebar", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("ebar", mVerbRegular.getLatinEnding());
+        assertEquals("regebar", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tenseImPerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iebaris", mVerbRegular.getLatinEnding());
-        assertEquals("capiebaris", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("ebaris", mVerbRegular.getLatinEnding());
+        assertEquals("regebaris", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tenseImPerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iebatur", mVerbRegular.getLatinEnding());
-        assertEquals("capiebatur", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("ebatur", mVerbRegular.getLatinEnding());
+        assertEquals("regebatur", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tenseImPerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iebamur", mVerbRegular.getLatinEnding());
-        assertEquals("capiebamur", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("ebamur", mVerbRegular.getLatinEnding());
+        assertEquals("regebamur", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tenseImPerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iebamini", mVerbRegular.getLatinEnding());
-        assertEquals("capiebamini", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("ebamini", mVerbRegular.getLatinEnding());
+        assertEquals("regebamini", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tenseImPerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iebantur", mVerbRegular.getLatinEnding());
-        assertEquals("capiebantur", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("ebantur", mVerbRegular.getLatinEnding());
+        assertEquals("regebantur", mVerbRegular.getLatinVerb());
     }
 
 
@@ -591,47 +589,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordFuturePassiveIndicative() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tenseFuture,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iar", mVerbRegular.getLatinEnding());
-        assertEquals("capiar", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("ar", mVerbRegular.getLatinEnding());
+        assertEquals("regar", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tenseFuture,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("ieris", mVerbRegular.getLatinEnding());
-        assertEquals("capieris", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("eris", mVerbRegular.getLatinEnding());
+        assertEquals("regeris", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tenseFuture,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("ietur", mVerbRegular.getLatinEnding());
-        assertEquals("capietur", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("etur", mVerbRegular.getLatinEnding());
+        assertEquals("regetur", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tenseFuture,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iemur", mVerbRegular.getLatinEnding());
-        assertEquals("capiemur", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("emur", mVerbRegular.getLatinEnding());
+        assertEquals("regemur", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tenseFuture,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("iemini", mVerbRegular.getLatinEnding());
-        assertEquals("capiemini", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("emini", mVerbRegular.getLatinEnding());
+        assertEquals("regemini", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tenseFuture,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
-        assertEquals("ientur", mVerbRegular.getLatinEnding());
-        assertEquals("capientur", mVerbRegular.getLatinVerb());
+        assertEquals("reg", mVerbRegular.getLatinStem());
+        assertEquals("entur", mVerbRegular.getLatinEnding());
+        assertEquals("regentur", mVerbRegular.getLatinVerb());
     }
 
 
@@ -647,47 +645,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordPerfectPassiveIndicative() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tensePerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us sum", mVerbRegular.getLatinEnding());
-        assertEquals("captus sum", mVerbRegular.getLatinVerb());
+        assertEquals("rectus sum", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tensePerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us es", mVerbRegular.getLatinEnding());
-        assertEquals("captus es", mVerbRegular.getLatinVerb());
+        assertEquals("rectus es", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tensePerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us est", mVerbRegular.getLatinEnding());
-        assertEquals("captus est", mVerbRegular.getLatinVerb());
+        assertEquals("rectus est", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tensePerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i sumus", mVerbRegular.getLatinEnding());
-        assertEquals("capti sumus", mVerbRegular.getLatinVerb());
+        assertEquals("recti sumus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tensePerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i estis", mVerbRegular.getLatinEnding());
-        assertEquals("capti estis", mVerbRegular.getLatinVerb());
+        assertEquals("recti estis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tensePerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i sunt", mVerbRegular.getLatinEnding());
-        assertEquals("capti sunt", mVerbRegular.getLatinVerb());
+        assertEquals("recti sunt", mVerbRegular.getLatinVerb());
     }
 
 
@@ -702,47 +700,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordPluperfectPassiveIndicative() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tensePluperfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us eram", mVerbRegular.getLatinEnding());
-        assertEquals("captus eram", mVerbRegular.getLatinVerb());
+        assertEquals("rectus eram", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tensePluperfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us eras", mVerbRegular.getLatinEnding());
-        assertEquals("captus eras", mVerbRegular.getLatinVerb());
+        assertEquals("rectus eras", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tensePluperfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us erat", mVerbRegular.getLatinEnding());
-        assertEquals("captus erat", mVerbRegular.getLatinVerb());
+        assertEquals("rectus erat", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tensePluperfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i eramus", mVerbRegular.getLatinEnding());
-        assertEquals("capti eramus", mVerbRegular.getLatinVerb());
+        assertEquals("recti eramus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tensePluperfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i eratis", mVerbRegular.getLatinEnding());
-        assertEquals("capti eratis", mVerbRegular.getLatinVerb());
+        assertEquals("recti eratis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tensePluperfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i erant", mVerbRegular.getLatinEnding());
-        assertEquals("capti erant", mVerbRegular.getLatinVerb());
+        assertEquals("recti erant", mVerbRegular.getLatinVerb());
     }
 
 
@@ -757,47 +755,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordFuturePerfectPassiveIndicative() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tenseFuturePerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us ero", mVerbRegular.getLatinEnding());
-        assertEquals("captus ero", mVerbRegular.getLatinVerb());
+        assertEquals("rectus ero", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tenseFuturePerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us eris", mVerbRegular.getLatinEnding());
-        assertEquals("captus eris", mVerbRegular.getLatinVerb());
+        assertEquals("rectus eris", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tenseFuturePerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us erit", mVerbRegular.getLatinEnding());
-        assertEquals("captus erit", mVerbRegular.getLatinVerb());
+        assertEquals("rectus erit", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tenseFuturePerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i erimus", mVerbRegular.getLatinEnding());
-        assertEquals("capti erimus", mVerbRegular.getLatinVerb());
+        assertEquals("recti erimus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tenseFuturePerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i eritis", mVerbRegular.getLatinEnding());
-        assertEquals("capti eritis", mVerbRegular.getLatinVerb());
+        assertEquals("recti eritis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tenseFuturePerfect,
-                moodIndicative, voicePassive, conjNum31);
+                moodIndicative, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i erunt", mVerbRegular.getLatinEnding());
-        assertEquals("capti erunt", mVerbRegular.getLatinVerb());
+        assertEquals("recti erunt", mVerbRegular.getLatinVerb());
 
     }
 
@@ -816,46 +814,46 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tensePresent,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("capia", mVerbRegular.getLatinStem());
+        assertEquals("rega", mVerbRegular.getLatinStem());
         assertEquals("m", mVerbRegular.getLatinEnding());
-        assertEquals("capiam", mVerbRegular.getLatinVerb());
+        assertEquals("regam", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("capia", mVerbRegular.getLatinStem());
+        assertEquals("rega", mVerbRegular.getLatinStem());
         assertEquals("s", mVerbRegular.getLatinEnding());
-        assertEquals("capias", mVerbRegular.getLatinVerb());
+        assertEquals("regas", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tensePresent,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("capia", mVerbRegular.getLatinStem());
+        assertEquals("rega", mVerbRegular.getLatinStem());
         assertEquals("t", mVerbRegular.getLatinEnding());
-        assertEquals("capiat", mVerbRegular.getLatinVerb());
+        assertEquals("regat", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tensePresent,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("capia", mVerbRegular.getLatinStem());
+        assertEquals("rega", mVerbRegular.getLatinStem());
         assertEquals("mus", mVerbRegular.getLatinEnding());
-        assertEquals("capiamus", mVerbRegular.getLatinVerb());
+        assertEquals("regamus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tensePresent,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("capia", mVerbRegular.getLatinStem());
+        assertEquals("rega", mVerbRegular.getLatinStem());
         assertEquals("tis", mVerbRegular.getLatinEnding());
-        assertEquals("capiatis", mVerbRegular.getLatinVerb());
+        assertEquals("regatis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tensePresent,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("capia", mVerbRegular.getLatinStem());
+        assertEquals("rega", mVerbRegular.getLatinStem());
         assertEquals("nt", mVerbRegular.getLatinEnding());
-        assertEquals("capiant", mVerbRegular.getLatinVerb());
+        assertEquals("regant", mVerbRegular.getLatinVerb());
 
     }
 
@@ -870,47 +868,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordImperfectActiveSubjunctive() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tenseImPerfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("capere", mVerbRegular.getLatinStem());
+        assertEquals("regere", mVerbRegular.getLatinStem());
         assertEquals("m", mVerbRegular.getLatinEnding());
-        assertEquals("caperem", mVerbRegular.getLatinVerb());
+        assertEquals("regerem", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tenseImPerfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("capere", mVerbRegular.getLatinStem());
+        assertEquals("regere", mVerbRegular.getLatinStem());
         assertEquals("s", mVerbRegular.getLatinEnding());
-        assertEquals("caperes", mVerbRegular.getLatinVerb());
+        assertEquals("regeres", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tenseImPerfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("capere", mVerbRegular.getLatinStem());
+        assertEquals("regere", mVerbRegular.getLatinStem());
         assertEquals("t", mVerbRegular.getLatinEnding());
-        assertEquals("caperet", mVerbRegular.getLatinVerb());
+        assertEquals("regeret", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tenseImPerfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("capere", mVerbRegular.getLatinStem());
+        assertEquals("regere", mVerbRegular.getLatinStem());
         assertEquals("mus", mVerbRegular.getLatinEnding());
-        assertEquals("caperemus", mVerbRegular.getLatinVerb());
+        assertEquals("regeremus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tenseImPerfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("capere", mVerbRegular.getLatinStem());
+        assertEquals("regere", mVerbRegular.getLatinStem());
         assertEquals("tis", mVerbRegular.getLatinEnding());
-        assertEquals("caperetis", mVerbRegular.getLatinVerb());
+        assertEquals("regeretis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tenseImPerfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("capere", mVerbRegular.getLatinStem());
+        assertEquals("regere", mVerbRegular.getLatinStem());
         assertEquals("nt", mVerbRegular.getLatinEnding());
-        assertEquals("caperent", mVerbRegular.getLatinVerb());
+        assertEquals("regerent", mVerbRegular.getLatinVerb());
     }
 
 
@@ -925,47 +923,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordPerfectActiveSubjunctive() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tensePerfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("erim", mVerbRegular.getLatinEnding());
-        assertEquals("ceperim", mVerbRegular.getLatinVerb());
+        assertEquals("rexerim", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tensePerfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("eris", mVerbRegular.getLatinEnding());
-        assertEquals("ceperis", mVerbRegular.getLatinVerb());
+        assertEquals("rexeris", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tensePerfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("erit", mVerbRegular.getLatinEnding());
-        assertEquals("ceperit", mVerbRegular.getLatinVerb());
+        assertEquals("rexerit", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tensePerfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("erimus", mVerbRegular.getLatinEnding());
-        assertEquals("ceperimus", mVerbRegular.getLatinVerb());
+        assertEquals("rexerimus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tensePerfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("eritis", mVerbRegular.getLatinEnding());
-        assertEquals("ceperitis", mVerbRegular.getLatinVerb());
+        assertEquals("rexeritis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tensePerfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("erint", mVerbRegular.getLatinEnding());
-        assertEquals("ceperint", mVerbRegular.getLatinVerb());
+        assertEquals("rexerint", mVerbRegular.getLatinVerb());
     }
 
 
@@ -980,47 +978,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordPluperfectActiveSubjunctive() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tensePluperfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("issem", mVerbRegular.getLatinEnding());
-        assertEquals("cepissem", mVerbRegular.getLatinVerb());
+        assertEquals("rexissem", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tensePluperfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("isses", mVerbRegular.getLatinEnding());
-        assertEquals("cepisses", mVerbRegular.getLatinVerb());
+        assertEquals("rexisses", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tensePluperfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("isset", mVerbRegular.getLatinEnding());
-        assertEquals("cepisset", mVerbRegular.getLatinVerb());
+        assertEquals("rexisset", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tensePluperfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("issemus", mVerbRegular.getLatinEnding());
-        assertEquals("cepissemus", mVerbRegular.getLatinVerb());
+        assertEquals("rexissemus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tensePluperfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("issetis", mVerbRegular.getLatinEnding());
-        assertEquals("cepissetis", mVerbRegular.getLatinVerb());
+        assertEquals("rexissetis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tensePluperfect,
-                moodSubjunctive, voiceActive, conjNum31);
+                moodSubjunctive, voiceActive, conjNum3);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("issent", mVerbRegular.getLatinEnding());
-        assertEquals("cepissent", mVerbRegular.getLatinVerb());
+        assertEquals("rexissent", mVerbRegular.getLatinVerb());
 
     }
 
@@ -1039,46 +1037,46 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tensePresent,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capia", mVerbRegular.getLatinStem());
+        assertEquals("rega", mVerbRegular.getLatinStem());
         assertEquals("r", mVerbRegular.getLatinEnding());
-        assertEquals("capiar", mVerbRegular.getLatinVerb());
+        assertEquals("regar", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capia", mVerbRegular.getLatinStem());
+        assertEquals("rega", mVerbRegular.getLatinStem());
         assertEquals("ris", mVerbRegular.getLatinEnding());
-        assertEquals("capiaris", mVerbRegular.getLatinVerb());
+        assertEquals("regaris", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tensePresent,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capia", mVerbRegular.getLatinStem());
+        assertEquals("rega", mVerbRegular.getLatinStem());
         assertEquals("tur", mVerbRegular.getLatinEnding());
-        assertEquals("capiatur", mVerbRegular.getLatinVerb());
+        assertEquals("regatur", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tensePresent,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capia", mVerbRegular.getLatinStem());
+        assertEquals("rega", mVerbRegular.getLatinStem());
         assertEquals("mur", mVerbRegular.getLatinEnding());
-        assertEquals("capiamur", mVerbRegular.getLatinVerb());
+        assertEquals("regamur", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tensePresent,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capia", mVerbRegular.getLatinStem());
+        assertEquals("rega", mVerbRegular.getLatinStem());
         assertEquals("mini", mVerbRegular.getLatinEnding());
-        assertEquals("capiamini", mVerbRegular.getLatinVerb());
+        assertEquals("regamini", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tensePresent,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capia", mVerbRegular.getLatinStem());
+        assertEquals("rega", mVerbRegular.getLatinStem());
         assertEquals("ntur", mVerbRegular.getLatinEnding());
-        assertEquals("capiantur", mVerbRegular.getLatinVerb());
+        assertEquals("regantur", mVerbRegular.getLatinVerb());
 
     }
 
@@ -1093,47 +1091,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordImperfectPassiveSubjunctive() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tenseImPerfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capere", mVerbRegular.getLatinStem());
+        assertEquals("regere", mVerbRegular.getLatinStem());
         assertEquals("r", mVerbRegular.getLatinEnding());
-        assertEquals("caperer", mVerbRegular.getLatinVerb());
+        assertEquals("regerer", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tenseImPerfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capere", mVerbRegular.getLatinStem());
+        assertEquals("regere", mVerbRegular.getLatinStem());
         assertEquals("ris", mVerbRegular.getLatinEnding());
-        assertEquals("capereris", mVerbRegular.getLatinVerb());
+        assertEquals("regereris", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tenseImPerfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capere", mVerbRegular.getLatinStem());
+        assertEquals("regere", mVerbRegular.getLatinStem());
         assertEquals("tur", mVerbRegular.getLatinEnding());
-        assertEquals("caperetur", mVerbRegular.getLatinVerb());
+        assertEquals("regeretur", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tenseImPerfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capere", mVerbRegular.getLatinStem());
+        assertEquals("regere", mVerbRegular.getLatinStem());
         assertEquals("mur", mVerbRegular.getLatinEnding());
-        assertEquals("caperemur", mVerbRegular.getLatinVerb());
+        assertEquals("regeremur", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tenseImPerfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capere", mVerbRegular.getLatinStem());
+        assertEquals("regere", mVerbRegular.getLatinStem());
         assertEquals("mini", mVerbRegular.getLatinEnding());
-        assertEquals("caperemini", mVerbRegular.getLatinVerb());
+        assertEquals("regeremini", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tenseImPerfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capere", mVerbRegular.getLatinStem());
+        assertEquals("regere", mVerbRegular.getLatinStem());
         assertEquals("ntur", mVerbRegular.getLatinEnding());
-        assertEquals("caperentur", mVerbRegular.getLatinVerb());
+        assertEquals("regerentur", mVerbRegular.getLatinVerb());
     }
 
 
@@ -1148,47 +1146,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordPerfectPassiveSubjunctive() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tensePerfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us sim", mVerbRegular.getLatinEnding());
-        assertEquals("captus sim", mVerbRegular.getLatinVerb());
+        assertEquals("rectus sim", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tensePerfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us sis", mVerbRegular.getLatinEnding());
-        assertEquals("captus sis", mVerbRegular.getLatinVerb());
+        assertEquals("rectus sis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tensePerfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us sit", mVerbRegular.getLatinEnding());
-        assertEquals("captus sit", mVerbRegular.getLatinVerb());
+        assertEquals("rectus sit", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tensePerfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i simus", mVerbRegular.getLatinEnding());
-        assertEquals("capti simus", mVerbRegular.getLatinVerb());
+        assertEquals("recti simus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tensePerfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i sitis", mVerbRegular.getLatinEnding());
-        assertEquals("capti sitis", mVerbRegular.getLatinVerb());
+        assertEquals("recti sitis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tensePerfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i sint", mVerbRegular.getLatinEnding());
-        assertEquals("capti sint", mVerbRegular.getLatinVerb());
+        assertEquals("recti sint", mVerbRegular.getLatinVerb());
 
     }
 
@@ -1204,47 +1202,47 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
     public void testMakeVerbWordPluperfectPassiveSubjunctive() throws Exception {
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberSingular, tensePluperfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us essem", mVerbRegular.getLatinEnding());
-        assertEquals("captus essem", mVerbRegular.getLatinVerb());
+        assertEquals("rectus essem", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tensePluperfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us esses", mVerbRegular.getLatinEnding());
-        assertEquals("captus esses", mVerbRegular.getLatinVerb());
+        assertEquals("rectus esses", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberSingular, tensePluperfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us esset", mVerbRegular.getLatinEnding());
-        assertEquals("captus esset", mVerbRegular.getLatinVerb());
+        assertEquals("rectus esset", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, person1, numberPlural, tensePluperfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i essemus", mVerbRegular.getLatinEnding());
-        assertEquals("capti essemus", mVerbRegular.getLatinVerb());
+        assertEquals("recti essemus", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberPlural, tensePluperfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i essetis", mVerbRegular.getLatinEnding());
-        assertEquals("capti essetis", mVerbRegular.getLatinVerb());
+        assertEquals("recti essetis", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, person3, numberPlural, tensePluperfect,
-                moodSubjunctive, voicePassive, conjNum31);
+                moodSubjunctive, voicePassive, conjNum3);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("i essent", mVerbRegular.getLatinEnding());
-        assertEquals("capti essent", mVerbRegular.getLatinVerb());
+        assertEquals("recti essent", mVerbRegular.getLatinVerb());
     }
 
 
@@ -1265,45 +1263,45 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
         mVerbRegular.makeLatinVerb(databaseAccess, personNull, numberInfinitive, tensePresent,
                 moodIndicative, voiceActive, conjNull);
 
-        assertEquals("capere", mVerbRegular.getLatinStem());
+        assertEquals("regere", mVerbRegular.getLatinStem());
         assertEquals( "", mVerbRegular.getLatinEnding());
-        assertEquals("capere", mVerbRegular.getLatinVerb());
+        assertEquals("regere", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, personNull, numberInfinitive, tensePerfect,
                 moodIndicative, voiceActive, conjNull);
 
-        assertEquals("cep", mVerbRegular.getLatinStem());
+        assertEquals("rex", mVerbRegular.getLatinStem());
         assertEquals("isse", mVerbRegular.getLatinEnding());
-        assertEquals("cepisse", mVerbRegular.getLatinVerb());
+        assertEquals("rexisse", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, personNull, numberInfinitive, tenseFuture,
                 moodIndicative, voiceActive, conjNull);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("urus esse", mVerbRegular.getLatinEnding());
-        assertEquals("capturus esse", mVerbRegular.getLatinVerb());
+        assertEquals("recturus esse", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, personNull, numberInfinitive, tensePresent,
                 moodIndicative, voicePassive, conjNull);
 
-        assertEquals("cap", mVerbRegular.getLatinStem());
+        assertEquals("reg", mVerbRegular.getLatinStem());
         assertEquals("i", mVerbRegular.getLatinEnding());
-        assertEquals("capi", mVerbRegular.getLatinVerb());
+        assertEquals("regi", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, personNull, numberInfinitive, tensePerfect,
                 moodIndicative, voicePassive, conjNull);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("us esse", mVerbRegular.getLatinEnding());
-        assertEquals("captus esse", mVerbRegular.getLatinVerb());
+        assertEquals("rectus esse", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, personNull, numberInfinitive, tenseFuture,
                 moodIndicative, voicePassive, conjNull);
 
-        assertEquals("capt", mVerbRegular.getLatinStem());
+        assertEquals("rect", mVerbRegular.getLatinStem());
         assertEquals("um iri", mVerbRegular.getLatinEnding());
-        assertEquals("captum iri", mVerbRegular.getLatinVerb());
+        assertEquals("rectum iri", mVerbRegular.getLatinVerb());
 
     }
 
@@ -1321,31 +1319,31 @@ public class LatinVerb_InstrumentTests_3rd_io_Conj {
         mVerbRegular.makeLatinVerb(databaseAccess, personNull, numberSingular, tenseNull,
                 moodImperative, voiceActive, conjNull);
 
-        assertEquals("cape", mVerbRegular.getLatinStem());
+        assertEquals("rege", mVerbRegular.getLatinStem());
         assertEquals("", mVerbRegular.getLatinEnding());
-        assertEquals("cape", mVerbRegular.getLatinVerb());
+        assertEquals("rege", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, personNull, numberPlural, tenseNull,
                 moodImperative, voiceActive, conjNull);
 
-        assertEquals("cape", mVerbRegular.getLatinStem());
+        assertEquals("rege", mVerbRegular.getLatinStem());
         assertEquals("te", mVerbRegular.getLatinEnding());
-        assertEquals("capete", mVerbRegular.getLatinVerb());
+        assertEquals("regete", mVerbRegular.getLatinVerb());
 
 
         mVerbRegular.makeLatinVerb(databaseAccess, personNull, numberSingular, tenseNull,
                 moodImperative, voicePassive, conjNull);
 
-        assertEquals("cape", mVerbRegular.getLatinStem());
+        assertEquals("rege", mVerbRegular.getLatinStem());
         assertEquals("re", mVerbRegular.getLatinEnding());
-        assertEquals("capere", mVerbRegular.getLatinVerb());
+        assertEquals("regere", mVerbRegular.getLatinVerb());
 
         mVerbRegular.makeLatinVerb(databaseAccess, personNull, numberPlural, tenseNull,
                 moodImperative, voicePassive, conjNull);
 
-        assertEquals("cape", mVerbRegular.getLatinStem());
+        assertEquals("rege", mVerbRegular.getLatinStem());
         assertEquals("mini", mVerbRegular.getLatinEnding());
-        assertEquals("capemini", mVerbRegular.getLatinVerb());
+        assertEquals("regemini", mVerbRegular.getLatinVerb());
 
     }
 

@@ -1,21 +1,14 @@
-package com.example.snewnham.birkbecklatin.Model;
+package com.example.snewnham.birkbecklatin.Model.database;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
+
 import java.util.ArrayList;
 import java.util.List;
-
-
-import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbListTable.VERB_LIST_TABLE;
-import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbStemTable.VERB_STEM_TABLE;
-import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbConjugationTable.VERB_CONJ_TABLE;
-import static com.example.snewnham.birkbecklatin.Model.DbSchema.VerbConjugation_Irregular.VERB_IRREGULAR_CONJ_TABLE;
-import static com.example.snewnham.birkbecklatin.Model.DbSchema.EnglishAuxillaryVerbTable.ENG_AUX_VERB_TABLE;
-import static com.example.snewnham.birkbecklatin.Model.DbSchema.EnglishPersonsTable.ENG_PERSON_TABLE;
-import static com.example.snewnham.birkbecklatin.Model.DbSchema.EnglishVerbEndingTable.ENGLISH_VERB_ENDING_TABLE;
 
 
 /**
@@ -134,7 +127,7 @@ public class DatabaseAccess {
 
     public VerbRegular sqlVerbQuery(int id) {
         String strId = Integer.toString(id);
-        String table = VERB_LIST_TABLE;           // FROM Table = VerbList
+        String table = DbSchema.VerbListTable.VERB_LIST_TABLE;           // FROM Table = VerbList
         String[] column = null;             // SELECT *
         String whereClause = "_id=?";
         String[] whereArgs = new String[]{strId}; // WHERE _id =
@@ -158,7 +151,7 @@ public class DatabaseAccess {
 
     public String sqlVerbStemQuery(String number, String mood, String voice, String tense) {
 
-        String table = VERB_STEM_TABLE;  // FROM VerbStemTable
+        String table = DbSchema.VerbStemTable.VERB_STEM_TABLE;  // FROM VerbStemTable
         String[] column = new String[]{DbSchema.VerbStemTable.Cols.STEM};  // SELECT STEM
 
         String[] whereArgs;
@@ -198,7 +191,7 @@ public class DatabaseAccess {
      */
     public String sqlVerbEndingQuery(String person, String number, String mood, String voice, String tense, String conjnum) {
 
-        String table = VERB_CONJ_TABLE;  // FROM VerbConjTable
+        String table = DbSchema.VerbConjugationTable.VERB_CONJ_TABLE;  // FROM VerbConjTable
         String[] column = new String[]{DbSchema.VerbConjugationTable.Cols.CONJ};  // SELECT CONJ
 
         String[] whereArgs;
@@ -256,7 +249,7 @@ public class DatabaseAccess {
         irregularVerb = irregularVerb.substring(0,1).toUpperCase() + irregularVerb.substring(1);
 
 
-        String table = VERB_IRREGULAR_CONJ_TABLE;  // FROM VerbConjugation_Irregular Table
+        String table = DbSchema.VerbConjugation_Irregular.VERB_IRREGULAR_CONJ_TABLE;  // FROM VerbConjugation_Irregular Table
         String[] column = new String[]{irregularVerb};  // SELECT the Column with the Irregular Verb
 
         String[] whereArgs;
@@ -302,7 +295,7 @@ public class DatabaseAccess {
      */
     public String sqlEngPersonQuery(String person, String number) {
 
-        String table = ENG_PERSON_TABLE;  // FROM EnglishPerson Table
+        String table = DbSchema.EnglishPersonsTable.ENG_PERSON_TABLE;  // FROM EnglishPerson Table
         String[] column = new String[]{DbSchema.EnglishPersonsTable.Cols.ENGLISH_PERSON_WORD};  // SELECT Eng_Person_Word
 
         String whereClause = DbSchema.EnglishPersonsTable.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND
@@ -332,7 +325,7 @@ public class DatabaseAccess {
 
     public String sqlEngAuxVerbQuery(String person, String number, String mood, String voice, String tense) {
 
-        String table = ENG_AUX_VERB_TABLE;  // FROM EnglishAuxiliaryTable
+        String table = DbSchema.EnglishAuxillaryVerbTable.ENG_AUX_VERB_TABLE;  // FROM EnglishAuxiliaryTable
         String[] column = new String[]{DbSchema.EnglishAuxillaryVerbTable.Cols.ENG_AUX_VERB};  // SELECT Eng_Aux_Verb
 
         String[] whereArgs;
@@ -382,7 +375,7 @@ public class DatabaseAccess {
 
     public String sqlEngVerbEnding(String number, String tense, String mood, String voice) {
 
-        String table = ENGLISH_VERB_ENDING_TABLE;  // FROM EnglishPerson Table
+        String table = DbSchema.EnglishVerbEndingTable.ENGLISH_VERB_ENDING_TABLE;  // FROM EnglishPerson Table
         String[] column = new String[]{DbSchema.EnglishVerbEndingTable.Cols.ENG_VERB_ENDING};  // SELECT Eng_Verb Ending
 
         String[] whereArgs;
@@ -430,7 +423,7 @@ public class DatabaseAccess {
 
         if ( irregularVerb.equals("esse") || irregularVerb.equals("Esse") ) {
 
-            String table = VERB_IRREGULAR_CONJ_TABLE;  // FROM VerbConjugation_Irregular Table
+            String table = DbSchema.VerbConjugation_Irregular.VERB_IRREGULAR_CONJ_TABLE;  // FROM VerbConjugation_Irregular Table
             String columnName = "Esse_English";
             String[] column = new String[]{columnName};  // SELECT the Column "English_Esse"
 

@@ -1,4 +1,6 @@
-package com.example.snewnham.birkbecklatin.Model;
+package com.example.snewnham.birkbecklatin.Model.verbs;
+
+import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
 /**
  * Interface for a Verb Class that will form the Latin and English Verb

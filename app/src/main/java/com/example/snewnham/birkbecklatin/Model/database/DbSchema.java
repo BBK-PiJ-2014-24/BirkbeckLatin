@@ -1,4 +1,4 @@
-package com.example.snewnham.birkbecklatin.Model;
+package com.example.snewnham.birkbecklatin.Model.database;
 
 /**
  * Scehema for the

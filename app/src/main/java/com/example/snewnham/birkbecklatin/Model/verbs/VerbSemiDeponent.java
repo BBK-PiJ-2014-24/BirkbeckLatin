@@ -1,4 +1,6 @@
-package com.example.snewnham.birkbecklatin.Model;
+package com.example.snewnham.birkbecklatin.Model.verbs;
+
+import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
 /**
  * Created by snewnham on 25/10/2016.
