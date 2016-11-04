@@ -10,7 +10,7 @@ public class DbSchema {
     // inner STATIC class - VerbList Table
     // ------------------------------------
     public static final class VerbListTable {
-        public static final String VERB_LIST_TABLE = "VerbList";
+        public static final String VERB_LIST_TABLE = "Verb_List";
 
 
         // inner inner STATIC class of the Table - Attributes
@@ -43,7 +43,7 @@ public class DbSchema {
     // inner STATIC class - VerbStem Table
     // ----------------------------------------
     public static final class VerbStemTable {
-        public static final String VERB_STEM_TABLE = "VerbStem";
+        public static final String VERB_STEM_TABLE = "Verb_Stem";
 
 
         // inner inner STATIC class of the Table - Attributes
@@ -62,7 +62,7 @@ public class DbSchema {
     // inner STATIC class - VerbConjugation Table
     // ----------------------------------------
     public static final class VerbConjugationTable {
-        public static final String VERB_CONJ_TABLE = "VerbConjugation";
+        public static final String VERB_CONJ_TABLE = "Verb_Conjugation";
 
 
         // inner inner STATIC class of the Table - Attributes
@@ -140,7 +140,7 @@ public class DbSchema {
     // inner STATIC class - VerbConjugation_Irregular
     // ----------------------------------------------
     public static final class VerbConjugation_Irregular {
-        public static final String VERB_IRREGULAR_CONJ_TABLE = "VerbConjugation_Irregular";
+        public static final String VERB_IRREGULAR_CONJ_TABLE = "Verb_Conjugation_Irregular";
 
 
         // inner inner STATIC class of the Table - Attributes

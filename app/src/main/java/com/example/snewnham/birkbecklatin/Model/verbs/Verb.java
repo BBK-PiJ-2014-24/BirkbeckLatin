@@ -45,6 +45,121 @@ public interface Verb {
 
 
     /**
+     * setLatin_Type()
+     * ---------------
+     * @param latin_Type
+     */
+    public void setLatin_Type(String latin_Type);
+
+    /**
+     * setLatin_ConjNum()
+     * ------------------
+     * @param latin_ConjNum
+     */
+    public void setLatin_ConjNum(int latin_ConjNum);
+
+    /**
+     * setLatin_Present()
+     * ------------------
+     * @param latin_Present
+     */
+    public void setLatin_Present(String latin_Present);  // Principle Parts
+
+    /**
+     * setLatin_Infinitive()
+     * ---------------------
+     * @param latin_Infinitive
+     */
+    public void setLatin_Infinitive(String latin_Infinitive);
+
+    /**
+     * setLatin_Participle()
+     * ---------------------
+     * @param latin_Participle
+     */
+    public void setLatin_Participle(String latin_Participle);
+
+    /**
+     * setLatin_Perfect()
+     * ------------------
+     * @param latin_Perfect
+     */
+    public void setLatin_Perfect(String latin_Perfect);
+
+    /**
+     * setLatin_Present_Stem()
+     * -----------------------
+     * @param latin_Present_Stem
+     */
+    public void setLatin_Present_Stem(String latin_Present_Stem);   // Stems
+
+    /**
+     * setLatin_Present_SubjuncStem()
+     * ------------------------------
+     * @param latin_Present_SubjuncStem
+     */
+    public void setLatin_Present_SubjuncStem(String latin_Present_SubjuncStem);
+
+    /**
+     * setLatin_Infinitive_Stem()
+     * ---------------------------
+     * @param latin_Infinitive_Stem
+     */
+    public void setLatin_Infinitive_Stem(String latin_Infinitive_Stem);
+
+    /**
+     * setLatin_Infinitive_PassiveStem()
+     * ---------------------------------
+     * @param latin_Infinitive_PassiveStem
+     */
+    public void setLatin_Infinitive_PassiveStem(String latin_Infinitive_PassiveStem);
+
+    /**
+     * setLatin_Perfect_Stem()
+     * -----------------------
+     * @param latin_Perfect_Stem
+     */
+    public void setLatin_Perfect_Stem(String latin_Perfect_Stem);
+
+    /**
+     * setLatin_Participle_Stem()
+     * --------------------------
+     * @param latin_Participle_Stem
+     */
+    public void setLatin_Participle_Stem(String latin_Participle_Stem);
+
+    /**
+     * setEnglish_Infinitive()
+     * -----------------------
+     * @param english_Infinitive
+     */
+    public void setEnglish_Infinitive(String english_Infinitive);   // ENGLISH
+
+    /**
+     * setEnglish_Present_3rdPerson()
+     * ------------------------------
+     * @param english_Present_3rdPerson
+     */
+    public void setEnglish_Present_3rdPerson(String english_Present_3rdPerson);
+
+    /**
+     * setEnglish_Perfect()
+     * --------------------
+     * @param english_Perfect
+     */
+    public void setEnglish_Perfect(String english_Perfect);
+
+    /**
+     * setEnglish_Participle()
+     * -----------------------
+     * @param english_Participle
+     */
+    public void setEnglish_Participle(String english_Participle);
+
+
+
+
+    /**
      * getLatinStem()
      * ============
      * @return Latin Verb Stem
