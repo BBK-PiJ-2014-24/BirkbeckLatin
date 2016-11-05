@@ -163,8 +163,8 @@ public class DbSchema {
 // ===================================== NOUN ======================================================
 
 
-    // inner STATIC class - VerbConjugation_Irregular
-    // ----------------------------------------------
+    // inner STATIC class - NounList
+    // -----------------------------
     public static final class NounList {
         public static final String NOUN_LIST = "Noun_List";
 
@@ -181,6 +181,26 @@ public class DbSchema {
             public static final String GENETIVE_PLURAL = "Genitive_Plural";
             public static final String NOUN_STEM = "Noun_Stem";
             public static final String ENGLISH_NOUN = "English_Noun";
+        }
+    }
+
+
+    // inner STATIC class - NounDeclension
+    // -----------------------------------
+    public static final class NounDeclension {
+        public static final String NOUN_DECLENSION = "Noun_Declension";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String DECLENSION = "Declension";
+            public static final String NUMBER = "Number";
+            public static final String GENDER = "Gender";
+            public static final String CASE = "Case";
+            public static final String LATIN_ENDING = "Latin_Ending";
+
         }
     }
 
