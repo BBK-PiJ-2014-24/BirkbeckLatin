@@ -89,6 +89,7 @@ public class NounRegular implements Noun {
     @Override
     public void setNominative(String nominative) {
         mNominative = nominative;
+
     }
 
     @Override

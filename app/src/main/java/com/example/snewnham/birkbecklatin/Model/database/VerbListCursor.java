@@ -28,7 +28,7 @@ public class VerbListCursor extends CursorWrapper {
     /**
      * turnCursorToVerb()
      * -----------------
-     * converts a cursor into a VerbRegular object
+     * converts a cursor into a Verb object
      * @return verb object
      */
 

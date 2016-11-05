@@ -6,6 +6,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.nouns.Noun;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
 
@@ -382,6 +383,8 @@ public class DatabaseInstrumentedTest {
 
 
     /**
+     * testNounList()
+     * ==============
      * Test sql query on NounList using the NounListCursor.
      */
     @Test
@@ -402,24 +405,21 @@ public class DatabaseInstrumentedTest {
 
         // Run Query
         // ---------
-        Noun noun = databaseAccess.sqlNounListQuery(id);
+        Noun noun = databaseAccess.sqlNounListQuery(noun_id);
 
 
         // test the VerbRegular Fields
         // --------------------
-        assertEquals(id, noun.getId());
-        assertEquals(noun_Type, noun.getType());
-        assertEquals(noun_Declension, noun.getDeclension());
-        assertEquals(noun_Gender, noun.getGender());
-        assertEquals(noun_Nominative, noun.getNominative());
-        assertEquals(noun_Geninitive, noun.getGenitive());
-        assertEquals(noun_Geninitive_Plural, noun.getGenitivePlural());
-        assertEquals(noun_Latin_Noun_Stem, noun.getLatinNounStem());
-        assertEquals(noun_English_Noun, noun.getEnglishNoun());
-
-
+        assertEquals( noun_id, noun.getId() );
+        assertEquals( noun_Type, noun.getType() );
+        assertEquals( noun_Declension, noun.getDeclension() );
+        assertEquals( noun_Gender, noun.getGender() );
+        assertEquals( noun_Nominative, noun.getNominative() );
+        assertEquals( noun_Geninitive, noun.getGenitive() );
+        assertEquals( noun_Geninitive_Plural, noun.getGenitivePlural() );
+        assertEquals( noun_Latin_Noun_Stem, noun.getLatinNounStem() );
+        assertEquals( noun_English_Noun, noun.getEnglishNoun() );
     }
-
 
 
 
