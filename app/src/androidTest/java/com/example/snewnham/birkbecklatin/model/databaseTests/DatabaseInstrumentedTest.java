@@ -60,6 +60,16 @@ public class DatabaseInstrumentedTest {
     String conjNum4;
     String conjNull;
 
+    int noun_id;
+    String noun_Type;
+    int noun_Declension;
+    String noun_Gender;
+    String noun_Nominative;
+    String noun_Geninitive;
+    String noun_Geninitive_Plural;
+    String noun_Latin_Noun_Stem;
+    String noun_English_Noun;
+
 
 
     @Before
@@ -68,6 +78,8 @@ public class DatabaseInstrumentedTest {
         databaseAccess = DatabaseAccess.getInstance(appContext);  // CALL THE DATABASE STATICALY
         databaseAccess.open();                                  // OPEN THE DATABASE
 
+        // VERB FIELDS
+        // -----------
         person1 = "1st";
         person2 = "2nd";
         person3 = "3rd";
@@ -97,6 +109,8 @@ public class DatabaseInstrumentedTest {
         conjNum3 = "3";
         conjNum4 = "4";
         conjNull = null;
+
+
     }
 
     @Test
@@ -280,7 +294,7 @@ public class DatabaseInstrumentedTest {
 
 
     }
-    // =================== ENGLISH TESTS ==================================================
+    // =================== ENGLISH VERB TESTS ==================================================
 
     /**
      * testEnglishPersonTable()
@@ -363,6 +377,51 @@ public class DatabaseInstrumentedTest {
         assertEquals("be", guessEngIrregVerb);
 
     }
+
+    // ============================== NOUN TESTS ==================================================
+
+
+    /**
+     * Test sql query on NounList using the NounListCursor.
+     */
+    @Test
+    public void testNounList() {
+
+        // NOUN FIELDS
+        // -----------
+        noun_id = 2;
+        noun_Type = "Noun";
+        noun_Declension = 2;
+        noun_Gender = "m";
+        noun_Nominative = "amicus";
+        noun_Geninitive = "amici";
+        noun_Geninitive_Plural = null;
+        noun_Latin_Noun_Stem = "amic";
+        noun_English_Noun = "friend";
+
+
+        // Run Query
+        // ---------
+        Noun noun = databaseAccess.sqlNounListQuery(id);
+
+
+        // test the VerbRegular Fields
+        // --------------------
+        assertEquals(id, noun.getId());
+        assertEquals(noun_Type, noun.getType());
+        assertEquals(noun_Declension, noun.getDeclension);
+        assertEquals(noun_Gender, noun.getGender);
+        assertEquals(noun_Nominative, noun.getNominative);
+        assertEquals(noun_Geninitive, noun.getGenitive);
+        assertEquals(noun_Geninitive_Plural, noun.getGenitivePlural);
+        assertEquals(noun_Latin_Noun_Stem, noun.getLatinNounStem);
+        assertEquals(noun_English_Noun, noun.getEnglishNoun);
+
+
+    }
+
+
+
 
     @After
     public void breakDown() {
