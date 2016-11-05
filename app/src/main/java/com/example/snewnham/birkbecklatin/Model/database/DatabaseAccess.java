@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.snewnham.birkbecklatin.Model.nouns.Noun;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 
 import java.util.ArrayList;
@@ -98,10 +99,12 @@ public class DatabaseAccess {
      * @param column
      * @param whereClause
      * @param whereArgs
-     * @return returns a cursor that is wrapped - the VerbListCursor - which converts db data to Java Verb objects
+     * @return returns a cursor that has an option to be wrapped.
+     *         Either a VerbListCursor - which converts db data to Java Verb object
+     *         or a NounListCursor - which convertsdb data to a Java Noun object.
      */
 
-    public VerbListCursor sqlQuery(String table, String[] column, String whereClause, String[] whereArgs) {
+    public Cursor sqlQuery(String table, String[] column, String whereClause, String[] whereArgs) {
 
         Cursor cursor = database.query(
                 table,  // FROM TABLE
@@ -112,12 +115,18 @@ public class DatabaseAccess {
                 null, // HAVING
                 null // ORDER BY
         );
-        return new VerbListCursor(cursor);
+
+        if (table.equals(DbSchema.VerbListTable.VERB_LIST_TABLE))
+            return new VerbListCursor(cursor);
+        else if (table.equals(DbSchema.NounListTable.NOUN_LIST_TABLE))
+            return new NounListCursor(cursor);
+        else
+            return cursor;
     }
 
     /**
      * sqlVerbListQuery(int id)
-     * ====================
+     * =======================
      * Runs an SQL query to select a verb from the VerbList Table given the row Id.
      * The method then converts the sql cursor to an object.
      * @param id - row Number of Verb in the db's VerbList
@@ -132,7 +141,7 @@ public class DatabaseAccess {
         String whereClause = "_id=?";
         String[] whereArgs = new String[]{strId}; // WHERE _id =
 
-        VerbListCursor verbListCursor = sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        VerbListCursor verbListCursor = (VerbListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
         verbListCursor.moveToFirst();
         Verb verb = verbListCursor.makeVerbObject();  // Convert Query from Cursor to Verb Object.
         return verb;
@@ -248,7 +257,7 @@ public class DatabaseAccess {
         irregularVerb = irregularVerb.substring(0,1).toUpperCase() + irregularVerb.substring(1);
 
 
-        String table = DbSchema.VerbConjugation_Irregular.VERB_IRREGULAR_CONJ_TABLE;  // FROM VerbConjugation_Irregular Table
+        String table = DbSchema.VerbConjugation_Irregular_Table.VERB_IRREGULAR_CONJ_TABLE;  // FROM VerbConjugation_Irregular_Table Table
         String[] column = new String[]{irregularVerb};  // SELECT the Column with the Irregular Verb
 
         String[] whereArgs;
@@ -256,23 +265,23 @@ public class DatabaseAccess {
 
         if( number.equals("Infinitive") ) {       // FOR INIFINITIVES: reduce arguments for Infinitive (as SQLite can't take IS NULL)
             whereArgs = new String[]{number, mood, voice, tense};
-            whereClause = DbSchema.VerbConjugation_Irregular.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
-                    DbSchema.VerbConjugation_Irregular.Cols.MOOD + "=?" + " AND " +
-                    DbSchema.VerbConjugation_Irregular.Cols.VOICE + "=?" + " AND " +
-                    DbSchema.VerbConjugation_Irregular.Cols.TENSE + "=?";
+            whereClause = DbSchema.VerbConjugation_Irregular_Table.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                    DbSchema.VerbConjugation_Irregular_Table.Cols.MOOD + "=?" + " AND " +
+                    DbSchema.VerbConjugation_Irregular_Table.Cols.VOICE + "=?" + " AND " +
+                    DbSchema.VerbConjugation_Irregular_Table.Cols.TENSE + "=?";
 
         } else if( mood.equals("Imperative") ) {  // FOR IMPERATIVES: reduce arguments for Imperatives (as SQLite can't take IS NULL)
             whereArgs = new String[]{number, mood, voice};
-            whereClause = DbSchema.VerbConjugation_Irregular.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
-                    DbSchema.VerbConjugation_Irregular.Cols.MOOD + "=?" + " AND " +
-                    DbSchema.VerbConjugation_Irregular.Cols.VOICE + "=?";
+            whereClause = DbSchema.VerbConjugation_Irregular_Table.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                    DbSchema.VerbConjugation_Irregular_Table.Cols.MOOD + "=?" + " AND " +
+                    DbSchema.VerbConjugation_Irregular_Table.Cols.VOICE + "=?";
         } else {
             whereArgs = new String[]{person, number, mood, voice, tense};
-            whereClause = DbSchema.VerbConjugation_Irregular.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND
-                    DbSchema.VerbConjugation_Irregular.Cols.NUMBER + "=?" + " AND " +
-                    DbSchema.VerbConjugation_Irregular.Cols.MOOD + "=?" + " AND " +
-                    DbSchema.VerbConjugation_Irregular.Cols.VOICE + "=?" + " AND " +
-                    DbSchema.VerbConjugation_Irregular.Cols.TENSE + "=?";
+            whereClause = DbSchema.VerbConjugation_Irregular_Table.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND
+                    DbSchema.VerbConjugation_Irregular_Table.Cols.NUMBER + "=?" + " AND " +
+                    DbSchema.VerbConjugation_Irregular_Table.Cols.MOOD + "=?" + " AND " +
+                    DbSchema.VerbConjugation_Irregular_Table.Cols.VOICE + "=?" + " AND " +
+                    DbSchema.VerbConjugation_Irregular_Table.Cols.TENSE + "=?";
         }
 
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
@@ -284,7 +293,7 @@ public class DatabaseAccess {
         return verb;
     }
 
-    // ====================== ENGLISH ==============================================
+    // ====================== ENGLISH VERBS ==============================================
     /**
      * sqlEngPersonQuery(String person, String number)
      * =================
@@ -422,7 +431,7 @@ public class DatabaseAccess {
 
         if ( irregularVerb.equals("esse") || irregularVerb.equals("Esse") ) {
 
-            String table = DbSchema.VerbConjugation_Irregular.VERB_IRREGULAR_CONJ_TABLE;  // FROM VerbConjugation_Irregular Table
+            String table = DbSchema.VerbConjugation_Irregular_Table.VERB_IRREGULAR_CONJ_TABLE;  // FROM VerbConjugation_Irregular_Table Table
             String columnName = "Esse_English";
             String[] column = new String[]{columnName};  // SELECT the Column "English_Esse"
 
@@ -431,23 +440,23 @@ public class DatabaseAccess {
 
             if( number.equals("Infinitive") ) {       // FOR INIFINITIVES: reduce arguments for Infinitive (as SQLite can't take IS NULL)
                 whereArgs = new String[]{number, mood, voice, tense};
-                whereClause = DbSchema.VerbConjugation_Irregular.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
-                        DbSchema.VerbConjugation_Irregular.Cols.MOOD + "=?" + " AND " +
-                        DbSchema.VerbConjugation_Irregular.Cols.VOICE + "=?" + " AND " +
-                        DbSchema.VerbConjugation_Irregular.Cols.TENSE + "=?";
+                whereClause = DbSchema.VerbConjugation_Irregular_Table.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                        DbSchema.VerbConjugation_Irregular_Table.Cols.MOOD + "=?" + " AND " +
+                        DbSchema.VerbConjugation_Irregular_Table.Cols.VOICE + "=?" + " AND " +
+                        DbSchema.VerbConjugation_Irregular_Table.Cols.TENSE + "=?";
 
             } else if( mood.equals("Imperative") ) {  // FOR IMPERATIVES: reduce arguments for Imperatives (as SQLite can't take IS NULL)
                 whereArgs = new String[]{number, mood, voice};
-                whereClause = DbSchema.VerbConjugation_Irregular.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
-                        DbSchema.VerbConjugation_Irregular.Cols.MOOD + "=?" + " AND " +
-                        DbSchema.VerbConjugation_Irregular.Cols.VOICE + "=?";
+                whereClause = DbSchema.VerbConjugation_Irregular_Table.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                        DbSchema.VerbConjugation_Irregular_Table.Cols.MOOD + "=?" + " AND " +
+                        DbSchema.VerbConjugation_Irregular_Table.Cols.VOICE + "=?";
             } else {
                 whereArgs = new String[]{person, number, mood, voice, tense};
-                whereClause = DbSchema.VerbConjugation_Irregular.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND
-                        DbSchema.VerbConjugation_Irregular.Cols.NUMBER + "=?" + " AND " +
-                        DbSchema.VerbConjugation_Irregular.Cols.MOOD + "=?" + " AND " +
-                        DbSchema.VerbConjugation_Irregular.Cols.VOICE + "=?" + " AND " +
-                        DbSchema.VerbConjugation_Irregular.Cols.TENSE + "=?";
+                whereClause = DbSchema.VerbConjugation_Irregular_Table.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND
+                        DbSchema.VerbConjugation_Irregular_Table.Cols.NUMBER + "=?" + " AND " +
+                        DbSchema.VerbConjugation_Irregular_Table.Cols.MOOD + "=?" + " AND " +
+                        DbSchema.VerbConjugation_Irregular_Table.Cols.VOICE + "=?" + " AND " +
+                        DbSchema.VerbConjugation_Irregular_Table.Cols.TENSE + "=?";
             }
 
             Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
@@ -461,6 +470,28 @@ public class DatabaseAccess {
         }
     }
 
+
+    // =============================== LATIN NOUNS =================================================
+
+
+    /**
+     * sqlNounListQuery()
+     *  A sql inquiry on the Noun List Table given the id. Returns the Noun object.
+     * @param id
+     * @return
+     */
+    public Noun sqlNounListQuery(int id){
+        String strId = Integer.toString(id);
+        String table = DbSchema.NounListTable.NOUN_LIST_TABLE;           // FROM Table = VerbListCursor
+        String[] column = null;             // SELECT *
+        String whereClause = "_id=?";
+        String[] whereArgs = new String[]{strId}; // WHERE _id =
+
+        NounListCursor nounListCursor = (NounListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        nounListCursor.moveToFirst();
+        Noun noun = nounListCursor.makeNounObject();  // Convert Query from Cursor to Verb Object.
+        return noun;
+    }
 
 
 }

@@ -140,9 +140,9 @@ public class DbSchema {
     }
 
 
-    // inner STATIC class - VerbConjugation_Irregular
+    // inner STATIC class - VerbConjugation_Irregular_Table
     // ----------------------------------------------
-    public static final class VerbConjugation_Irregular {
+    public static final class VerbConjugation_Irregular_Table {
         public static final String VERB_IRREGULAR_CONJ_TABLE = "Verb_Conjugation_Irregular";
 
 
@@ -163,10 +163,10 @@ public class DbSchema {
 // ===================================== NOUN ======================================================
 
 
-    // inner STATIC class - NounList
+    // inner STATIC class - NounListTable
     // -----------------------------
-    public static final class NounList {
-        public static final String NOUN_LIST = "Noun_List";
+    public static final class NounListTable {
+        public static final String NOUN_LIST_TABLE = "Noun_List";
 
 
         // inner inner STATIC class of the Table - Attributes
@@ -177,17 +177,17 @@ public class DbSchema {
             public static final String DECLENSION = "Declension";
             public static final String GENDER = "Gender";
             public static final String NOMINATIVE = "Nominative";
-            public static final String GENETIVE = "Genitive";
-            public static final String GENETIVE_PLURAL = "Genitive_Plural";
+            public static final String GENITIVE = "Genitive";
+            public static final String GENITIVE_PLURAL = "Genitive_Plural";
             public static final String LATIN_NOUN_STEM = "Latin_Noun_Stem";
             public static final String ENGLISH_NOUN = "English_Noun";
         }
     }
 
 
-    // inner STATIC class - NounDeclension
+    // inner STATIC class - NounDeclensionTable
     // -----------------------------------
-    public static final class NounDeclension {
+    public static final class NounDeclensionTable {
         public static final String NOUN_DECLENSION = "Noun_Declension";
 
 

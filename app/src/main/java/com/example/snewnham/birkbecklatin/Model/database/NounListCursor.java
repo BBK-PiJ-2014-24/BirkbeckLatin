@@ -36,15 +36,15 @@ public class NounListCursor extends CursorWrapper{
 
         // Pull data from the Cursor
         //--------------------------
-        int id = getInt(getColumnIndex(DbSchema.NounList.Cols._id));
-        String type = getString(getColumnIndex(DbSchema.NounList.Cols.TYPE));
-        int declension = getInt(getColumnIndex(DbSchema.NounList.Cols.DECLENSION));
-        String gender = getString(getColumnIndex(DbSchema.NounList.Cols.GENDER));
-        String nominative = getString(getColumnIndex(DbSchema.NounList.Cols.NOMINATIVE));
-        String genitive = getString(getColumnIndex(DbSchema.NounList.Cols.GENETIVE));
-        String genitivePlural = getString(getColumnIndex(DbSchema.NounList.Cols.GENETIVE_PLURAL));
-        String latinNounStem = getString(getColumnIndex(DbSchema.NounList.Cols.LATIN_NOUN_STEM));
-        String englishNoun = getString(getColumnIndex(DbSchema.NounList.Cols.ENGLISH_NOUN));
+        int id = getInt(getColumnIndex(DbSchema.NounListTable.Cols._id));
+        String type = getString(getColumnIndex(DbSchema.NounListTable.Cols.TYPE));
+        int declension = getInt(getColumnIndex(DbSchema.NounListTable.Cols.DECLENSION));
+        String gender = getString(getColumnIndex(DbSchema.NounListTable.Cols.GENDER));
+        String nominative = getString(getColumnIndex(DbSchema.NounListTable.Cols.NOMINATIVE));
+        String genitive = getString(getColumnIndex(DbSchema.NounListTable.Cols.GENITIVE));
+        String genitivePlural = getString(getColumnIndex(DbSchema.NounListTable.Cols.GENITIVE_PLURAL));
+        String latinNounStem = getString(getColumnIndex(DbSchema.NounListTable.Cols.LATIN_NOUN_STEM));
+        String englishNoun = getString(getColumnIndex(DbSchema.NounListTable.Cols.ENGLISH_NOUN));
 
 
         // Mini Factory - Create Verb Object

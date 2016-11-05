@@ -385,7 +385,7 @@ public class DatabaseInstrumentedTest {
     /**
      * testNounList()
      * ==============
-     * Test sql query on NounList using the NounListCursor.
+     * Test sql query on NounListTable using the NounListCursor.
      */
     @Test
     public void testNounList() {

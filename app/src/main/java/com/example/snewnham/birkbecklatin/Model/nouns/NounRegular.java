@@ -15,8 +15,8 @@ public class NounRegular implements Noun {
     int  mDeclension;
     String mGender;
     String mNominative;
-    String mGeninitive;
-    String mGeninitive_Plural;
+    String mGenitive;
+    String mGenitive_Plural;
     String mLatin_Noun_Stem;
     String mEnglish_Noun;
 
@@ -94,22 +94,22 @@ public class NounRegular implements Noun {
 
     @Override
     public String getGenitive() {
-        return mGeninitive;
+        return mGenitive;
     }
 
     @Override
     public void setGenitive(String genitive) {
-        mGeninitive = genitive;
+        mGenitive = genitive;
     }
 
     @Override
     public String getGenitivePlural() {
-        return mGeninitive_Plural;
+        return mGenitive_Plural;
     }
 
     @Override
     public void setGenitivePlural(String genitivePlural) {
-        mGeninitive_Plural = genitivePlural;
+        mGenitive_Plural = genitivePlural;
     }
 
     @Override
