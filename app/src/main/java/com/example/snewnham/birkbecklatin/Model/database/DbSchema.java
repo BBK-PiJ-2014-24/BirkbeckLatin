@@ -7,7 +7,7 @@ package com.example.snewnham.birkbecklatin.Model.database;
 
 public class DbSchema {
 
-    // inner STATIC class - VerbList Table
+    // inner STATIC class - VerbListCursor Table
     // ------------------------------------
     public static final class VerbListTable {
         public static final String VERB_LIST_TABLE = "Verb_List";

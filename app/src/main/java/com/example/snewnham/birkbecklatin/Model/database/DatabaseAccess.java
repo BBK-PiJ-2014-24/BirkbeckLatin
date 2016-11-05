@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
+import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,10 +98,10 @@ public class DatabaseAccess {
      * @param column
      * @param whereClause
      * @param whereArgs
-     * @return returns a cursor that is wrapped - the LatinCursorWrapper - which converts db data to Java objectss
+     * @return returns a cursor that is wrapped - the VerbListCursor - which converts db data to Java Verb objects
      */
 
-    public LatinCursorWrapper sqlQuery(String table, String[] column, String whereClause, String[] whereArgs) {
+    public VerbListCursor sqlQuery(String table, String[] column, String whereClause, String[] whereArgs) {
 
         Cursor cursor = database.query(
                 table,  // FROM TABLE
@@ -112,31 +112,30 @@ public class DatabaseAccess {
                 null, // HAVING
                 null // ORDER BY
         );
-        return new LatinCursorWrapper(cursor);
+        return new VerbListCursor(cursor);
     }
 
     /**
-     * sqlVerbQuery(int id)
+     * sqlVerbListQuery(int id)
      * ====================
      * Runs an SQL query to select a verb from the VerbList Table given the row Id.
      * The method then converts the sql cursor to an object.
-     * @param id - row Number of VerbRegular in the db's VerbList
+     * @param id - row Number of Verb in the db's VerbList
      * @return verb object
      */
 
 
-    public VerbRegular sqlVerbQuery(int id) {
+    public Verb sqlVerbListQuery(int id) {
         String strId = Integer.toString(id);
-        String table = DbSchema.VerbListTable.VERB_LIST_TABLE;           // FROM Table = VerbList
+        String table = DbSchema.VerbListTable.VERB_LIST_TABLE;           // FROM Table = VerbListCursor
         String[] column = null;             // SELECT *
         String whereClause = "_id=?";
         String[] whereArgs = new String[]{strId}; // WHERE _id =
 
-        LatinCursorWrapper cursor = sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
-        cursor.moveToFirst();
-        VerbRegular verbRegular = cursor.turnCursorToVerb();  // Convert Query from Cursor to object.
-        return verbRegular;
-
+        VerbListCursor verbListCursor = sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        verbListCursor.moveToFirst();
+        Verb verb = verbListCursor.makeVerbObject();  // Convert Query from Cursor to Verb Object.
+        return verb;
     }
 
     /**

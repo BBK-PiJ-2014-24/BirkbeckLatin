@@ -6,6 +6,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
 
 import org.junit.After;
@@ -137,7 +138,7 @@ public class DatabaseInstrumentedTest {
     /**
      * testDatabaseToVerb()
      * -------------------
-     * Tests whether we can convert from VerbList db table to VerbRegular object
+     * Tests whether we can convert from VerbListCursor db table to VerbRegular object
      * @throws Exception
      */
 
@@ -169,12 +170,12 @@ public class DatabaseInstrumentedTest {
 
         // Run Query
         // ---------
-        VerbRegular verbRegular = databaseAccess.sqlVerbQuery(id);
+        Verb verbRegular = databaseAccess.sqlVerbListQuery(id);
 
 
         // test the VerbRegular Fields
         // --------------------
-        assertEquals( id, verbRegular.getId());
+        assertEquals( id, verbRegular.getId() );
         assertEquals( latin_Type, verbRegular.getLatin_Type() );
         assertEquals( latin_ConjNum, verbRegular.getLatin_ConjNum());
 

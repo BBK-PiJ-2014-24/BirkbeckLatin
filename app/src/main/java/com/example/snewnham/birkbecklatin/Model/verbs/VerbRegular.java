@@ -3,7 +3,7 @@ package com.example.snewnham.birkbecklatin.Model.verbs;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
 /**
- * VerbRegular is the class for regular latin verbs. It contains the same data as that held in the database's 'VerbList' table
+ * VerbRegular is the class for regular latin verbs. It contains the same data as that held in the database's 'VerbListCursor' table
  * Created by snewnham on 05/10/2016.
  */
 
@@ -193,52 +193,56 @@ public class VerbRegular implements Verb {
     }
 
 
-    // Getter/Setters
-    // --------------
+    // Field Getter/Setters
+    // --------------------
 
+
+    @Override
     public int getId() {return mId;}
+    @Override
+    public void setId(int id){mId = id;}
 
-
+    @Override
     public String getLatin_Type() {
         return mLatin_Type;
     }
-
+    @Override
     public void setLatin_Type(String latin_Type) {
         mLatin_Type = latin_Type;
     }
 
-
+    @Override
     public int getLatin_ConjNum() {
         return mLatin_ConjNum;
     }
-
+    @Override
     public void setLatin_ConjNum(int latin_ConjNum) {
         mLatin_ConjNum = latin_ConjNum;
     }
 
-
+    @Override
     public String getLatin_Present() {
         return mLatin_Present;
     }
-
+    @Override
     public void setLatin_Present(String latin_Present) {
         mLatin_Present = latin_Present;
     }
 
-
+    @Override
     public String getLatin_Infinitive() {
         return mLatin_Infinitive;
     }
-
+    @Override
     public void setLatin_Infinitive(String latin_Infinitive) {
         mLatin_Infinitive = latin_Infinitive;
     }
 
-
+    @Override
     public String getLatin_Perfect() {
         return mLatin_Perfect;
     }
-
+    @Override
     public void setLatin_Perfect(String latin_Perfect) {
         mLatin_Perfect = latin_Perfect;
     }
@@ -247,95 +251,97 @@ public class VerbRegular implements Verb {
     public String getLatin_Participle() {
         return mLatin_Participle;
     }
-
+    @Override
     public void setLatin_Participle(String latin_Participle) {
         mLatin_Participle = latin_Participle;
     }
 
-
+    @Override
     public String getLatin_Present_Stem() {
         return mLatin_Present_Stem;
     }
-
+    @Override
     public void setLatin_Present_Stem(String latin_Present_Stem) {
         mLatin_Present_Stem = latin_Present_Stem;
     }
 
-
+    @Override
     public String getLatin_Infinitive_Stem() {
         return mLatin_Infinitive_Stem;
     }
-
+    @Override
     public void setLatin_Infinitive_Stem(String latin_Infinitive_Stem) {
         mLatin_Infinitive_Stem = latin_Infinitive_Stem;
     }
 
+    @Override
     public String getLatin_Infinitive_PassiveStem() {
         return mLatin_Infinitive_PassiveStem;
     }
-
+    @Override
     public void setLatin_Infinitive_PassiveStem(String latin_Infinitive_PassiveStem) {
         mLatin_Infinitive_PassiveStem = latin_Infinitive_PassiveStem;
     }
 
+    @Override
     public String getLatin_Present_SubjuncStem() {
         return mLatin_Present_SubjuncStem;
     }
-
+    @Override
     public void setLatin_Present_SubjuncStem(String latin_Present_SubjuncStem) {
         mLatin_Present_SubjuncStem = latin_Present_SubjuncStem;
     }
 
-
+    @Override
     public String getLatin_Perfect_Stem() {
         return mLatin_Perfect_Stem;
     }
-
+    @Override
     public void setLatin_Perfect_Stem(String latin_Perfect_Stem) {
         mLatin_Perfect_Stem = latin_Perfect_Stem;
     }
 
-
+    @Override
     public String getLatin_Participle_Stem() {
         return mLatin_Participle_Stem;
     }
-
+    @Override
     public void setLatin_Participle_Stem(String latin_Participle_Stem) {
         mLatin_Participle_Stem = latin_Participle_Stem;
     }
 
-
+    @Override
     public String getEnglish_Infinitive() {
         return mEnglish_Infinitive;
     }
-
+    @Override
     public void setEnglish_Infinitive(String english_Infinitive) {
         mEnglish_Infinitive = english_Infinitive;
     }
 
-
+    @Override
     public String getEnglish_Present_3rdPerson() {
         return mEnglish_Present_3rdPerson;
     }
-
+    @Override
     public void setEnglish_Present_3rdPerson(String english_Present_3rdPerson) {
         mEnglish_Present_3rdPerson = english_Present_3rdPerson;
     }
 
-
+    @Override
     public String getEnglish_Perfect() {
         return mEnglish_Perfect;
     }
-
+    @Override
     public void setEnglish_Perfect(String english_Perfect) {
         mEnglish_Perfect = english_Perfect;
     }
 
-
+    @Override
     public String getEnglish_Participle() {
         return mEnglish_Participle;
     }
-
+    @Override
     public void setEnglish_Participle(String english_Participle) {
         mEnglish_Participle = english_Participle;
     }

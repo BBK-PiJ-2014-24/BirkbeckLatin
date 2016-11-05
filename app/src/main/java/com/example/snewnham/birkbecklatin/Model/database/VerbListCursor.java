@@ -3,17 +3,24 @@ package com.example.snewnham.birkbecklatin.Model.database;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
+import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
-import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
-
+import com.example.snewnham.birkbecklatin.Model.verbs.*;
 
 /**
+ *
+ * VerbListCursor - Takes a DB query on the Verb_List table, which is in the form of a cursor, and converts
+ * that data into a Verb Object. A mini internal 'factory' is used to create the correct verb class(i.e.,
+ * Regular, Irregular, Deponent, Semi-Deponent).
+ *
  * Created by snewnham on 05/10/2016.
  */
 
-public class LatinCursorWrapper extends CursorWrapper {
+public class VerbListCursor extends CursorWrapper {
 
-    public LatinCursorWrapper(Cursor cursor) {
+    // Constructor
+    // -----------
+    public VerbListCursor(Cursor cursor) {
         super(cursor);
     }
 
@@ -25,7 +32,7 @@ public class LatinCursorWrapper extends CursorWrapper {
      * @return verb object
      */
 
-    public Regular turnCursorToVerb() {
+    public Verb makeVerbObject() {
 
 
         // Pull data from the Cursor
@@ -51,27 +58,52 @@ public class LatinCursorWrapper extends CursorWrapper {
         String english_Perfect = getString(getColumnIndex(DbSchema.VerbListTable.Cols.ENGLISH_PERFECT));
         String english_Participle = getString(getColumnIndex(DbSchema.VerbListTable.Cols.ENGLISH_PARTICIPLE));
 
-        // Transfer data to a VerbRegular object
-        // ------------------------------
+
+        // Mini Factory - Create Verb Object
+        //----------------------------------
+        Verb verb = null;
+        switch(latin_Type) {
+            case "Regular": {
+                verb = new VerbRegular(id);
+                break;
+            }
+            case "Irregular": {
+                verb = new VerbIrregular(id);
+                break;
+            }
+            case "Deponent": {
+                verb = new VerbDeponent(id);
+                break;
+            }
+            case "SemiDeponent": {
+                verb = new VerbSemiDeponent(id);
+                break;
+            }
+        }
 
 
-        Verb verb = new VerbRegular(id);  ///////+++++++++++++++ FACTORY+++++++++++++++ getInstance;
+        // Transfer db data to a Verb object
+        // ----------------------------------
+
         verb.setLatin_Type(latin_Type);
         verb.setLatin_ConjNum(latin_ConjNum);
 
-        verb.setLatin_Present(latin_Present);  // Principle Parts
+        // Principle Parts
+        verb.setLatin_Present(latin_Present);
         verb.setLatin_Infinitive(latin_Infinitive);
         verb.setLatin_Participle(latin_Participle);
         verb.setLatin_Perfect(latin_Perfect);
 
-        verb.setLatin_Present_Stem(latin_Present_Stem);   // Stems
+        // Stems
+        verb.setLatin_Present_Stem(latin_Present_Stem);
         verb.setLatin_Present_SubjuncStem(latin_Present_SubjuncStem);
         verb.setLatin_Infinitive_Stem(latin_Infinitive_Stem);
         verb.setLatin_Infinitive_PassiveStem(latin_Infinitive_PassiveStem);
         verb.setLatin_Perfect_Stem(latin_Perfect_Stem);
         verb.setLatin_Participle_Stem(latin_Participle_Stem);
 
-        verb.setEnglish_Infinitive(english_Infinitive);   // ENGLISH
+        // ENGLISH
+        verb.setEnglish_Infinitive(english_Infinitive);
         verb.setEnglish_Present_3rdPerson(english_Present_3rdPerson);
         verb.setEnglish_Perfect(english_Perfect);
         verb.setEnglish_Participle(english_Participle);
