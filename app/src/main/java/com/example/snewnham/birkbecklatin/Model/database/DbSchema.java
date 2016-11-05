@@ -7,6 +7,9 @@ package com.example.snewnham.birkbecklatin.Model.database;
 
 public class DbSchema {
 
+
+ // ========================= VERB ================================================================
+
     // inner STATIC class - VerbListCursor Table
     // ------------------------------------
     public static final class VerbListTable {
@@ -157,7 +160,29 @@ public class DbSchema {
         }
     }
 
+// ===================================== NOUN ======================================================
 
+
+    // inner STATIC class - VerbConjugation_Irregular
+    // ----------------------------------------------
+    public static final class NounList {
+        public static final String NOUN_LIST = "Noun_List";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String TYPE = "Type";
+            public static final String DECLENSION = "Declension";
+            public static final String GENDER = "Gender";
+            public static final String NOMINATIVE = "Nominative";
+            public static final String GENETIVE = "Genitive";
+            public static final String GENETIVE_PLURAL = "Genitive_Plural";
+            public static final String NOUN_STEM = "Noun_Stem";
+            public static final String ENGLISH_NOUN = "English_Noun";
+        }
+    }
 
 
 
