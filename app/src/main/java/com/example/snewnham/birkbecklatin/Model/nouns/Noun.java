@@ -42,7 +42,15 @@ public interface Noun {
     String getLatinNounStem();
     void setLatinNounStem(String latinNounStem);
 
+    String getLatinNounEnding();
+    void setLatinNounEnding(String latinNounStem);
+
+    String getLatinNoun();
+    void setLatinNoun(String latinNoun);
+
     String getEnglishNoun();
     void setEnglishNoun(String englishNoun);
+
+
 
 }

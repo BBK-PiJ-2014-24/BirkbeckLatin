@@ -10,7 +10,8 @@ public class NounRegular implements Noun {
 
     // Fields
     // ------
-    int mid;
+    DatabaseAccess mDatabaseAccess;
+    int mId;
     String mType;
     int  mDeclension;
     String mGender;
@@ -18,14 +19,23 @@ public class NounRegular implements Noun {
     String mGenitive;
     String mGenitive_Plural;
     String mLatin_Noun_Stem;
-    String mEnglish_Noun;
+    String mEnglishNoun;
+    String mLatinNoun;
 
 
     // Constructor
     // -----------
     public NounRegular(int id){
-
+        mId = id;
+        mDatabaseAccess = null;
     }
+
+    public NounRegular(int id, DatabaseAccess databaseAccess){
+        mId = id;
+        mDatabaseAccess = databaseAccess;
+    }
+
+
 
     @Override
     public String makeLatinNoun(DatabaseAccess databaseAccess, String number, String Declension) {
@@ -43,12 +53,12 @@ public class NounRegular implements Noun {
     // --------------
     @Override
     public int getId() {
-        return mid;
+        return mId;
     }
 
     @Override
     public void setId(int id) {
-        mid = id;
+        mId = id;
     }
 
     @Override
@@ -124,11 +134,17 @@ public class NounRegular implements Noun {
 
     @Override
     public String getEnglishNoun() {
-        return mEnglish_Noun;
+        return mEnglishNoun;
     }
 
     @Override
     public void setEnglishNoun(String englishNoun) {
-        mEnglish_Noun = englishNoun;
+        mEnglishNoun = englishNoun;
     }
+
+    @Override
+    public String getLatinNoun() { return mLatinNoun; }
+
+    @Override
+    public void setLatinNoun(String latinNoun) { mLatinNoun = latinNoun; }
 }
