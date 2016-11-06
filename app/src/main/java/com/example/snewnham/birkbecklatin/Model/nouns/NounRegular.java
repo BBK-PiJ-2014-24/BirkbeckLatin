@@ -13,14 +13,15 @@ public class NounRegular implements Noun {
     DatabaseAccess mDatabaseAccess;
     int mId;
     String mType;
-    int  mDeclension;
+    int mDeclension;
     String mGender;
     String mNominative;
     String mGenitive;
     String mGenitive_Plural;
     String mLatin_Noun_Stem;
-    String mEnglishNoun;
+    String mLatin_Noun_Ending;
     String mLatinNoun;
+    String mEnglishNoun;
 
 
     // Constructor
@@ -36,15 +37,32 @@ public class NounRegular implements Noun {
     }
 
 
-
+    /**
+     * makeLatinNoun()
+     * ---------------
+     * sql query for making the Latin Noun From the stem and ending, given the case, number and declension
+     * @param databaseAccess
+     * @param number
+     * @param declension
+     * @return
+     */
     @Override
-    public String makeLatinNoun(DatabaseAccess databaseAccess, String number, String Declension) {
-        return null;
+    public String makeLatinNoun(DatabaseAccess databaseAccess, String number, String declension) {
+
+        if( mType.equals("Noun") ){
+            mLatin_Noun_Ending = databaseAccess.sqlNounEndingQuery( Integer.toString(mDeclension), number, mGender, declension );
+        } else {
+            mLatin_Noun_Ending = "";
+        }
+
+        mLatinNoun = mLatin_Noun_Stem + mLatin_Noun_Ending;
+
+        return mLatin_Noun_Stem;
     }
 
     @Override
     public String makeEnglishNoun(DatabaseAccess databaseAccess) {
-        return null;
+        return mEnglishNoun;
     }
 
 
@@ -97,10 +115,7 @@ public class NounRegular implements Noun {
     }
 
     @Override
-    public void setNominative(String nominative) {
-        mNominative = nominative;
-
-    }
+    public void setNominative(String nominative) { mNominative = nominative; }
 
     @Override
     public String getGenitive() {
@@ -133,6 +148,12 @@ public class NounRegular implements Noun {
     }
 
     @Override
+    public String getLatinNounEnding() { return mLatin_Noun_Ending; }
+
+    @Override
+    public void setLatinNounEnding(String latinNounEnding) { mLatin_Noun_Ending = latinNounEnding; }
+
+    @Override
     public String getEnglishNoun() {
         return mEnglishNoun;
     }
@@ -142,9 +163,13 @@ public class NounRegular implements Noun {
         mEnglishNoun = englishNoun;
     }
 
+
     @Override
     public String getLatinNoun() { return mLatinNoun; }
 
     @Override
     public void setLatinNoun(String latinNoun) { mLatinNoun = latinNoun; }
+
+
+
 }

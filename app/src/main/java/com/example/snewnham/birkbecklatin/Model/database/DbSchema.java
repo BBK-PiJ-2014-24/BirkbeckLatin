@@ -186,9 +186,9 @@ public class DbSchema {
 
 
     // inner STATIC class - NounDeclensionTable
-    // -----------------------------------
+    // -----------------------------------------
     public static final class NounDeclensionTable {
-        public static final String NOUN_DECLENSION = "Noun_Declension";
+        public static final String NOUN_DECLENSION_TABLE = "Noun_Declension";
 
 
         // inner inner STATIC class of the Table - Attributes
@@ -198,7 +198,7 @@ public class DbSchema {
             public static final String DECLENSION = "Declension";
             public static final String NUMBER = "Number";
             public static final String GENDER = "Gender";
-            public static final String CASE = "Case";
+            public static final String CASE = "Latin_Case";
             public static final String LATIN_ENDING = "Latin_Ending";
 
         }

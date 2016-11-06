@@ -6,6 +6,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.nouns.Noun;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
@@ -120,6 +121,12 @@ public class DatabaseInstrumentedTest {
         assertEquals("com.example.snewnham.birkbecklatin", appContext.getPackageName());
     }
 
+    /**
+     * testDBAccess()
+     * --------------
+     * Test General database access with basic sql queries
+     * @throws Exception
+     */
     @Test
     public void testDBAccess() throws Exception {
         String table = VERB_LIST_TABLE;
@@ -131,6 +138,28 @@ public class DatabaseInstrumentedTest {
         cursor.moveToFirst();
         String ans = cursor.getString(0);
         assertEquals("monere", ans);
+
+        String table1 = "Noun_Declension";
+        String[] column1 = new String[]{"Gender"};
+        String whereClause1 = "_id=?";
+        String[] whereArgs1 = new String[]{"2"};
+
+        Cursor cursor1 = databaseAccess.sqlQuery(table1, column1, whereClause1, whereArgs1  );
+        cursor1.moveToFirst();
+        String ans1 = cursor1.getString(0);
+        assertEquals("f", ans1);
+
+        String table2 = DbSchema.NounDeclensionTable.NOUN_DECLENSION_TABLE;
+        String[] column2 = new String[]{DbSchema.NounDeclensionTable.Cols.CASE};
+        String whereClause2 = "_id=?";
+        String[] whereArgs2 = new String[]{"2"};
+
+        Cursor cursor2 = databaseAccess.sqlQuery(table2, column2, whereClause2, whereArgs2  );
+        cursor2.moveToFirst();
+        String ans2 = cursor2.getString(0);
+        assertEquals("Accusative", ans2);
+
+
     }
 
     @Test

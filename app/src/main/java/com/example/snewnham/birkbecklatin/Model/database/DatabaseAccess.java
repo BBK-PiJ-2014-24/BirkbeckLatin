@@ -476,6 +476,7 @@ public class DatabaseAccess {
 
     /**
      * sqlNounListQuery()
+     * ------------------
      *  A sql inquiry on the Noun List Table given the id. Returns the Noun object.
      * @param id
      * @return
@@ -491,6 +492,39 @@ public class DatabaseAccess {
         nounListCursor.moveToFirst();
         Noun noun = nounListCursor.makeNounObject();  // Convert Query from Cursor to Verb Object.
         return noun;
+    }
+
+
+    /**
+     * sqlNounEndingQuery()
+     * -------------------
+     * A sql inquiry on the Noun Ending
+     *
+     * @param number
+     * @param gender
+     * @param nounCase
+     * @return
+     */
+    public String sqlNounEndingQuery( String declension, String number, String gender, String nounCase ){
+
+        String table = DbSchema.NounDeclensionTable.NOUN_DECLENSION_TABLE;  // FROM NOUN_DECLENSION_TABLE Table
+        String columnName = DbSchema.NounDeclensionTable.Cols.LATIN_ENDING;
+        String[] column = new String[]{columnName};  // SELECT the Column "Latin_Ending"
+
+        String[] whereArgs;
+        String whereClause;
+
+        whereArgs = new String[]{ declension, number, gender, nounCase };
+        whereClause = DbSchema.NounDeclensionTable.Cols.DECLENSION + "=?" + " AND " +  // WHERE ... AND
+                      DbSchema.NounDeclensionTable.Cols.NUMBER + "=?" + " AND " +
+                      DbSchema.NounDeclensionTable.Cols.GENDER + "=?" + " AND " +
+                      DbSchema.NounDeclensionTable.Cols.CASE + "=?";
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
+
+        String nounEnding = cursor.getString(cursor.getColumnIndex(columnName));
+        return nounEnding;
     }
 
 

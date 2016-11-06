@@ -7,7 +7,6 @@ import android.support.test.runner.AndroidJUnit4;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +19,7 @@ import static org.junit.Assert.assertEquals;
  * Created by snewnham on 12/10/2016.
  */
 @RunWith(AndroidJUnit4.class)
-public class LatinNoun_InstrumentTests_2nd_Male_Declension {
+public class LatinNoun_InstrumentTests_2nd_Neuter_Declension {
 
 
     // Fields
@@ -34,8 +33,9 @@ public class LatinNoun_InstrumentTests_2nd_Male_Declension {
     String typeNoun;
     String pronoun;
 
-    String genderMale = "m";
-    String genderFemale = "f";
+    String genderMale;
+    String genderFemale;
+    String genderNeuter;
 
     int declension1;
     int declension2;
@@ -73,6 +73,7 @@ public class LatinNoun_InstrumentTests_2nd_Male_Declension {
 
         genderMale = "m";
         genderFemale = "f";
+        genderNeuter = "n";
 
         declension1 = 1;
         declension2 = 2;
@@ -90,23 +91,22 @@ public class LatinNoun_InstrumentTests_2nd_Male_Declension {
         numberSingular = "Singular";
         numberPlural = "Plural";
 
-        nominative = "amicus";
-        genitive = "amici";
+        nominative = "bellum";
+        genitive = "belli";
         genitivePlural = null;
-        latinNounStem = "amic";
-        englishNoun = "friend";
+        latinNounStem = "bell";
+        englishNoun = "war";
 
         mNounRegular = new NounRegular(id, databaseAccess);
             mNounRegular.setId(id);
             mNounRegular.setType(typeNoun);
-            mNounRegular.setDeclension(declension2);
-            mNounRegular.setGender(genderMale);
+            mNounRegular.setDeclension(declension2);  // SET DECLENSION
+            mNounRegular.setGender(genderNeuter);    //  SET GENDER
             mNounRegular.setNominative(nominative);
             mNounRegular.setGenitive(genitive);
             mNounRegular.setGenitivePlural(genitivePlural);
             mNounRegular.setLatinNounStem(latinNounStem);
             mNounRegular.setEnglishNoun(englishNoun);
-
     }
 
 
@@ -131,39 +131,39 @@ public class LatinNoun_InstrumentTests_2nd_Male_Declension {
 
         mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("us", mNounRegular.getLatinNounEnding());
-        assertEquals("amicus", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinNounStem());
+        assertEquals("um", mNounRegular.getLatinNounEnding());
+        assertEquals("bellum", mNounRegular.getLatinNoun());
 
         mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
+        assertEquals("bell", mNounRegular.getLatinNounStem());
         assertEquals("um", mNounRegular.getLatinNounEnding());
-        assertEquals("amicum", mNounRegular.getLatinNoun());
+        assertEquals("bellum", mNounRegular.getLatinNoun());
 
         mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
+        assertEquals("bell", mNounRegular.getLatinNounStem());
         assertEquals("i", mNounRegular.getLatinNounEnding());
-        assertEquals("amici", mNounRegular.getLatinNoun());
+        assertEquals("belli", mNounRegular.getLatinNoun());
 
         mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
+        assertEquals("bell", mNounRegular.getLatinNounStem());
         assertEquals("o", mNounRegular.getLatinNounEnding());
-        assertEquals("amico", mNounRegular.getLatinNoun());
+        assertEquals("bello", mNounRegular.getLatinNoun());
 
         mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
+        assertEquals("bell", mNounRegular.getLatinNounStem());
         assertEquals("o", mNounRegular.getLatinNounEnding());
-        assertEquals("amico", mNounRegular.getLatinNoun());
+        assertEquals("bello", mNounRegular.getLatinNoun());
 
         mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("e", mNounRegular.getLatinNounEnding());
-        assertEquals("amice", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinNounStem());
+        assertEquals("um", mNounRegular.getLatinNounEnding());
+        assertEquals("bellum", mNounRegular.getLatinNoun());
     }
 
 
@@ -181,39 +181,39 @@ public class LatinNoun_InstrumentTests_2nd_Male_Declension {
 
         mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("i", mNounRegular.getLatinNounEnding());
-        assertEquals("amici", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinNounStem());
+        assertEquals("a", mNounRegular.getLatinNounEnding());
+        assertEquals("bella", mNounRegular.getLatinNoun());
 
         mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("os", mNounRegular.getLatinNounEnding());
-        assertEquals("amicos", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinNounStem());
+        assertEquals("a", mNounRegular.getLatinNounEnding());
+        assertEquals("bella", mNounRegular.getLatinNoun());
 
         mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
+        assertEquals("bell", mNounRegular.getLatinNounStem());
         assertEquals("orum", mNounRegular.getLatinNounEnding());
-        assertEquals("amicorum", mNounRegular.getLatinNoun());
+        assertEquals("bellorum", mNounRegular.getLatinNoun());
 
         mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
+        assertEquals("bell", mNounRegular.getLatinNounStem());
         assertEquals("is", mNounRegular.getLatinNounEnding());
-        assertEquals("amicis", mNounRegular.getLatinNoun());
+        assertEquals("bellis", mNounRegular.getLatinNoun());
 
         mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
+        assertEquals("bell", mNounRegular.getLatinNounStem());
         assertEquals("is", mNounRegular.getLatinNounEnding());
-        assertEquals("amicis", mNounRegular.getLatinNoun());
+        assertEquals("bellis", mNounRegular.getLatinNoun());
 
         mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("i", mNounRegular.getLatinNounEnding());
-        assertEquals("amici", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinNounStem());
+        assertEquals("a", mNounRegular.getLatinNounEnding());
+        assertEquals("bella", mNounRegular.getLatinNoun());
     }
 
 
