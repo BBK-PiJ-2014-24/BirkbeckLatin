@@ -49,15 +49,21 @@ public class NounRegular implements Noun {
     @Override
     public String makeLatinNoun(DatabaseAccess databaseAccess, String number, String declension) {
 
-        if( mType.equals("Noun") ){
+            // Override for 3rd Declension Nominative and Singular (Singular) && Genitive Plural
+            if( mDeclension == 3 ) {
+                if( (declension.equals("Nominative") || declension.equals("Vocative")) && number.equals("Singular") ) {
+                    mLatin_Noun_Ending = "";
+                    mLatinNoun = mNominative;
+                    return mLatin_Noun_Stem;
+                } else if (declension.equals("Genitive") && number.equals("Plural") && mGenitive_Plural != null) {
+                    mLatin_Noun_Ending = "";
+                    mLatinNoun = mGenitive_Plural;
+                    return mLatin_Noun_Stem;
+                }
+            }
             mLatin_Noun_Ending = databaseAccess.sqlNounEndingQuery( Integer.toString(mDeclension), number, mGender, declension );
-        } else {
-            mLatin_Noun_Ending = "";
-        }
-
-        mLatinNoun = mLatin_Noun_Stem + mLatin_Noun_Ending;
-
-        return mLatin_Noun_Stem;
+            mLatinNoun = mLatin_Noun_Stem + mLatin_Noun_Ending;
+            return mLatin_Noun_Stem;
     }
 
     @Override
