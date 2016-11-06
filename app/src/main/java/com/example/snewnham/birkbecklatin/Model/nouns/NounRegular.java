@@ -54,16 +54,20 @@ public class NounRegular implements Noun {
                 if( (declension.equals("Nominative") || declension.equals("Vocative")) && number.equals("Singular") ) {
                     mLatin_Noun_Ending = "";
                     mLatinNoun = mNominative;
-                    return mLatin_Noun_Stem;
+                    return mLatinNoun;
+                } else if( declension.equals("Accusative") && mGender.equals("n") && number.equals("Singular") ){
+                    mLatin_Noun_Ending = "";
+                    mLatinNoun = mNominative;
+                    return mLatinNoun;
                 } else if (declension.equals("Genitive") && number.equals("Plural") && mGenitive_Plural != null) {
                     mLatin_Noun_Ending = "";
                     mLatinNoun = mGenitive_Plural;
-                    return mLatin_Noun_Stem;
+                    return mLatinNoun;
                 }
             }
             mLatin_Noun_Ending = databaseAccess.sqlNounEndingQuery( Integer.toString(mDeclension), number, mGender, declension );
             mLatinNoun = mLatin_Noun_Stem + mLatin_Noun_Ending;
-            return mLatin_Noun_Stem;
+            return mLatinNoun;
     }
 
     @Override

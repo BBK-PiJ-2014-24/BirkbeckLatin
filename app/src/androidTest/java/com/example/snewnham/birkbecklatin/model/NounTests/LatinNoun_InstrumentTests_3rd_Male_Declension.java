@@ -120,7 +120,7 @@ public class LatinNoun_InstrumentTests_3rd_Male_Declension {
     // ================================  SINGULAR  =============================================
 
     /**
-     * testMakeNoun_2nd_Declension_Male_Singular()  - 2nd Declension, Male, Singular
+     * testMakeNoun_3rd_Declension_Male_Singular()  - 3rd Declension, Male, Singular
      * ===========================================
      * test Noun Class that It Can build Correct Latin Noun.
      * @throws Exception
@@ -169,15 +169,14 @@ public class LatinNoun_InstrumentTests_3rd_Male_Declension {
 
     // ==============================  PLURAL  =============================================
 
-
     /**
-     * testMakeNoun_2nd_Declension_Male_Plural()  - 2nd Declension, Male, Plural
+     * testMakeNoun_3rd_Declension_Male_Plural()  - 3rd Declension, Male, Plural
      * ========================================
      * test Noun Class that It Can build Correct Latin Noun.
      * @throws Exception
      */
     @Test
-    public void testMakeNoun_2nd_Declension_Male_Plural() throws Exception {
+    public void testMakeNoun_3rd_Declension_Male_Plural() throws Exception {
 
         mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
 
