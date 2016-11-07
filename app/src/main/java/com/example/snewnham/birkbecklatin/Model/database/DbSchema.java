@@ -185,22 +185,20 @@ public class DbSchema {
     }
 
 
-    // inner STATIC class - NounDeclensionTable
+
+
+    // inner STATIC class - Preposition_List Table
     // -----------------------------------------
-    public static final class NounDeclensionTable {
-        public static final String NOUN_DECLENSION_TABLE = "Noun_Declension";
+    public static final class PrepositionListTable {
+        public static final String PREPOSITION_TABLE = "Preposition_List";
 
 
         // inner inner STATIC class of the Table - Attributes
         // --------------------------------------
         public static final class Cols {
             public static final String _id = "_id";
-            public static final String DECLENSION = "Declension";
-            public static final String NUMBER = "Number";
-            public static final String GENDER = "Gender";
-            public static final String CASE = "Latin_Case";
-            public static final String LATIN_ENDING = "Latin_Ending";
-
+            public static final String LATIN_PREPOSITION = "Latin_Preposition";
+            public static final String ENGLISH_PRESPOSITION = "English_Preposition";
         }
     }
 
