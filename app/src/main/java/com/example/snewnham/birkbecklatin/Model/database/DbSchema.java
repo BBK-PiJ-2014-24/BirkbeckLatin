@@ -164,7 +164,7 @@ public class DbSchema {
 
 
     // inner STATIC class - NounListTable
-    // -----------------------------
+    // ----------------------------------
     public static final class NounListTable {
         public static final String NOUN_LIST_TABLE = "Noun_List";
 
@@ -185,6 +185,23 @@ public class DbSchema {
     }
 
 
+    // inner STATIC class - NounListTable
+    // ----------------------------------
+    public static final class NounDeclensionTable {
+        public static final String NOUN_DECLENSION_TABLE = "Noun_Declension";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String DECLENSION = "Declension";
+            public static final String NUMBER = "Number";
+            public static final String GENDER = "Gender";
+            public static final String CASE = "Latin_Case";
+            public static final String LATIN_ENDING = "Latin_Ending";
+        }
+    }
 
 
     // inner STATIC class - Preposition_List Table

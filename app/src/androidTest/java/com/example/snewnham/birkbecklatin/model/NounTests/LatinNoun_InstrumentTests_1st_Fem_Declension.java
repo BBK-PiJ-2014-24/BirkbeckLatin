@@ -215,6 +215,16 @@ public class LatinNoun_InstrumentTests_1st_Fem_Declension {
         assertEquals("puellae", mNounRegular.getLatinNoun());
     }
 
+    /**
+     * testEnglishNounTranslation()
+     * ----------------------------
+     * Test to get the English Noun
+     */
+    @Test
+    public void testEnglishNounTranslation(){
+        assertEquals("girl", mNounRegular.getEnglishNoun() );
+    }
+
 
     @After
     public void breakDown() {
