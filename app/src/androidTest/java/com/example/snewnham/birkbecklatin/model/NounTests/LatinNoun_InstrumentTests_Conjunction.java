@@ -5,6 +5,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 
 import org.junit.After;
@@ -28,7 +29,7 @@ public class LatinNoun_InstrumentTests_Conjunction {
     DatabaseAccess databaseAccess;
 
     int id;
-    Preposition conjunction;
+    Conjunction conjunction;
 
     String typeNoun;
     String typePreposition;
@@ -52,7 +53,7 @@ public class LatinNoun_InstrumentTests_Conjunction {
         latin_Other = "tamen";
         englishNoun = "however";
 
-        conjunction = new Preposition(id, databaseAccess);
+        conjunction = new Conjunction(id, databaseAccess);
             conjunction.setId(id);
             conjunction.setType(typeConjunction);
             conjunction.setDeclension(0);  // SET DECLENSION
