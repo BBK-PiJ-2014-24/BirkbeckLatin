@@ -5,7 +5,6 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
-import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 
 import org.junit.After;
@@ -20,7 +19,7 @@ import static org.junit.Assert.assertEquals;
  * Created by snewnham on 12/10/2016.
  */
 @RunWith(AndroidJUnit4.class)
-public class LatinNoun_InstrumentTests_Preposition {
+public class LatinNoun_InstrumentTests_Conjunction {
 
 
     // Fields
@@ -29,10 +28,11 @@ public class LatinNoun_InstrumentTests_Preposition {
     DatabaseAccess databaseAccess;
 
     int id;
-    Preposition preposition;
+    Preposition conjunction;
 
     String typeNoun;
     String typePreposition;
+    String typeConjunction;
     String latin_Other;
 
     String englishNoun;
@@ -49,21 +49,20 @@ public class LatinNoun_InstrumentTests_Preposition {
         typeNoun = "Noun";
         typePreposition = "Preposition";
 
-        latin_Other = "circum";
-        englishNoun = "around";
+        latin_Other = "tamen";
+        englishNoun = "however";
 
-        preposition = new Preposition(id, databaseAccess);
-            preposition.setId(id);
-            preposition.setType(typePreposition);
-            preposition.setDeclension(0);  // SET DECLENSION
-            preposition.setGender(null);       // SET GENDER
-            preposition.setNominative(null);
-            preposition.setGenitive(null);
-            preposition.setGenitivePlural(null);
-            preposition.setLatinNounStem(null);
-            preposition.setLatin_Other(latin_Other);
-            preposition.setEnglishNoun(englishNoun);
-
+        conjunction = new Preposition(id, databaseAccess);
+            conjunction.setId(id);
+            conjunction.setType(typeConjunction);
+            conjunction.setDeclension(0);  // SET DECLENSION
+            conjunction.setGender(null);       // SET GENDER
+            conjunction.setNominative(null);
+            conjunction.setGenitive(null);
+            conjunction.setGenitivePlural(null);
+            conjunction.setLatinNounStem(null);
+            conjunction.setLatin_Other(latin_Other);
+            conjunction.setEnglishNoun(englishNoun);
     }
 
 
@@ -84,14 +83,13 @@ public class LatinNoun_InstrumentTests_Preposition {
      */
 
     @Test
-    public void testMakePreposition() throws Exception {
+    public void testMakeConjunction() throws Exception {
 
-        preposition.makeLatinNoun(databaseAccess, null, null);
+        conjunction.makeLatinNoun(databaseAccess, null, null);
 
-        assertEquals(null, preposition.getLatinNounStem());
-        assertEquals(null, preposition.getLatinNounEnding());
-        assertEquals("circum", preposition.getLatinNoun());
-
+        assertEquals(null, conjunction.getLatinNounStem());
+        assertEquals(null, conjunction.getLatinNounEnding());
+        assertEquals("tamen", conjunction.getLatinNoun());
     }
 
     /**
@@ -100,8 +98,8 @@ public class LatinNoun_InstrumentTests_Preposition {
      * Test to get the English Noun
      */
     @Test
-    public void testEnglishPrespositionTranslation(){
-        assertEquals("around", preposition.getEnglishNoun() );
+    public void testEnglishConjunctionTranslation(){
+        assertEquals("however", conjunction.getEnglishNoun() );
     }
 
 
