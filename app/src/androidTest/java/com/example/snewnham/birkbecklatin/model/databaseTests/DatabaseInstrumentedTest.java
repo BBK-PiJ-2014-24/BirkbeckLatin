@@ -70,6 +70,7 @@ public class DatabaseInstrumentedTest {
     String noun_Geninitive;
     String noun_Geninitive_Plural;
     String noun_Latin_Noun_Stem;
+    String noun_Latin_Other;
     String noun_English_Noun;
 
 
@@ -429,6 +430,7 @@ public class DatabaseInstrumentedTest {
         noun_Geninitive = "amici";
         noun_Geninitive_Plural = null;
         noun_Latin_Noun_Stem = "amic";
+        noun_Latin_Other = null;
         noun_English_Noun = "friend";
 
 
@@ -447,6 +449,7 @@ public class DatabaseInstrumentedTest {
         assertEquals( noun_Geninitive, noun.getGenitive() );
         assertEquals( noun_Geninitive_Plural, noun.getGenitivePlural() );
         assertEquals( noun_Latin_Noun_Stem, noun.getLatinNounStem() );
+        assertEquals( noun_Latin_Other, noun.getLatin_Other() );
         assertEquals( noun_English_Noun, noun.getEnglishNoun() );
     }
 

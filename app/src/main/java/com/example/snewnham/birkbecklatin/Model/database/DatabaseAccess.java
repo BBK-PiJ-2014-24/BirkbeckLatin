@@ -530,7 +530,7 @@ public class DatabaseAccess {
 
 
 
-    public String sqlPrepositionQuery
+   // public String sqlPrepositionQuery
 
 
 }

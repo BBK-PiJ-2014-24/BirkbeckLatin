@@ -3,6 +3,8 @@ package com.example.snewnham.birkbecklatin.Model.nouns;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
 /**
+ * Preposition - Forms the Latin Preposition and English Translation.
+ *
  * Created by snewnham on 07/11/2016.
  */
 
@@ -22,6 +24,7 @@ public class Preposition implements Noun {
     String mLatin_Noun_Stem;
     String mLatin_Noun_Ending;
     String mLatinNoun;
+    String mLatin_Other;
     String mEnglishNoun;
 
 
@@ -38,14 +41,22 @@ public class Preposition implements Noun {
     }
 
 
+    /**
+     * Simply returns the preposition in the Latin_Other attribute of the Noun_list Table
+     * @param databaseAccess
+     * @param number = null
+     * @param Declension = null
+     * @return
+     */
     @Override
     public String makeLatinNoun(DatabaseAccess databaseAccess, String number, String Declension) {
-        return null;
+        mLatinNoun = mLatin_Other;
+        return mLatin_Other;
     }
 
     @Override
     public String makeEnglishNoun(DatabaseAccess databaseAccess) {
-        return null;
+        return mEnglishNoun;
     }
 
 
@@ -135,6 +146,11 @@ public class Preposition implements Noun {
 
     @Override
     public void setLatinNounEnding(String latinNounEnding) { mLatin_Noun_Ending = latinNounEnding; }
+
+    public String getLatin_Other() {return mLatin_Other;}
+
+    @Override
+    public void setLatin_Other(String latin_Other) { mLatin_Other = latin_Other;}
 
     @Override
     public String getEnglishNoun() {

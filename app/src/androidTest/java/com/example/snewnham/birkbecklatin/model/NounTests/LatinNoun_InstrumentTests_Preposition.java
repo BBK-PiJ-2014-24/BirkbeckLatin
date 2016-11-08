@@ -6,6 +6,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
+import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 
 import org.junit.After;
 import org.junit.Before;
@@ -28,11 +29,11 @@ public class LatinNoun_InstrumentTests_Preposition {
     DatabaseAccess databaseAccess;
 
     int id;
-    NounRegular preposition;
+    Preposition preposition;
 
     String typeNoun;
     String typePreposition;
-
+    String latin_Other;
 
     String englishNoun;
 
@@ -48,9 +49,10 @@ public class LatinNoun_InstrumentTests_Preposition {
         typeNoun = "Noun";
         typePreposition = "Preposition";
 
+        latin_Other = "circum";
         englishNoun = "around";
 
-        preposition = new NounRegular(id, databaseAccess);
+        preposition = new Preposition(id, databaseAccess);
             preposition.setId(id);
             preposition.setType(typeNoun);
             preposition.setDeclension(0);  // SET DECLENSION
@@ -59,6 +61,7 @@ public class LatinNoun_InstrumentTests_Preposition {
             preposition.setGenitive(null);
             preposition.setGenitivePlural(null);
             preposition.setLatinNounStem(null);
+            preposition.setLatin_Other(latin_Other);
             preposition.setEnglishNoun(englishNoun);
 
     }
