@@ -528,4 +528,9 @@ public class DatabaseAccess {
     }
 
 
+
+
+    public String sqlPrepositionQuery
+
+
 }

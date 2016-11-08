@@ -3,10 +3,11 @@ package com.example.snewnham.birkbecklatin.Model.nouns;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
 /**
- * Created by snewnham on 05/11/2016.
+ * Created by snewnham on 07/11/2016.
  */
 
-public class NounRegular implements Noun {
+public class Preposition implements Noun {
+
 
     // Fields
     // ------
@@ -21,59 +22,30 @@ public class NounRegular implements Noun {
     String mLatin_Noun_Stem;
     String mLatin_Noun_Ending;
     String mLatinNoun;
-    String mLatin_Other;
     String mEnglishNoun;
 
 
     // Constructor
     // -----------
-    public NounRegular(int id){
+    public Preposition(int id){
         mId = id;
         mDatabaseAccess = null;
     }
 
-    public NounRegular(int id, DatabaseAccess databaseAccess){
+    public Preposition(int id, DatabaseAccess databaseAccess){
         mId = id;
         mDatabaseAccess = databaseAccess;
     }
 
 
-    /**
-     * makeLatinNoun()
-     * ---------------
-     * sql query for making the Latin Noun From the stem and ending, given the case, number and declension
-     * @param databaseAccess
-     * @param number
-     * @param declension
-     * @return
-     */
     @Override
-    public String makeLatinNoun(DatabaseAccess databaseAccess, String number, String declension) {
-
-            // Override for 3rd Declension Nominative and Singular (Singular) && Genitive Plural
-            if( mDeclension == 3 ) {
-                if( (declension.equals("Nominative") || declension.equals("Vocative")) && number.equals("Singular") ) {
-                    mLatin_Noun_Ending = "";
-                    mLatinNoun = mNominative;
-                    return mLatinNoun;
-                } else if( declension.equals("Accusative") && mGender.equals("n") && number.equals("Singular") ){
-                    mLatin_Noun_Ending = "";
-                    mLatinNoun = mNominative;
-                    return mLatinNoun;
-                } else if (declension.equals("Genitive") && number.equals("Plural") && mGenitive_Plural != null) {
-                    mLatin_Noun_Ending = "";
-                    mLatinNoun = mGenitive_Plural;
-                    return mLatinNoun;
-                }
-            }
-            mLatin_Noun_Ending = databaseAccess.sqlNounEndingQuery( Integer.toString(mDeclension), number, mGender, declension );
-            mLatinNoun = mLatin_Noun_Stem + mLatin_Noun_Ending;
-            return mLatinNoun;
+    public String makeLatinNoun(DatabaseAccess databaseAccess, String number, String Declension) {
+        return null;
     }
 
     @Override
     public String makeEnglishNoun(DatabaseAccess databaseAccess) {
-        return mEnglishNoun;
+        return null;
     }
 
 
@@ -165,12 +137,6 @@ public class NounRegular implements Noun {
     public void setLatinNounEnding(String latinNounEnding) { mLatin_Noun_Ending = latinNounEnding; }
 
     @Override
-    public String getLatin_Other() {return mLatin_Other;}
-
-    @Override
-    public void setLatin_Other(String latin_Other) { mLatin_Other = latin_Other;}
-
-    @Override
     public String getEnglishNoun() {
         return mEnglishNoun;
     }
@@ -186,6 +152,8 @@ public class NounRegular implements Noun {
 
     @Override
     public void setLatinNoun(String latinNoun) { mLatinNoun = latinNoun; }
+
+
 
 
 

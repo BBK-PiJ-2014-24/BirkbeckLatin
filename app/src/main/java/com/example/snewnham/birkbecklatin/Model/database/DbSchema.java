@@ -180,6 +180,7 @@ public class DbSchema {
             public static final String GENITIVE = "Genitive";
             public static final String GENITIVE_PLURAL = "Genitive_Plural";
             public static final String LATIN_NOUN_STEM = "Latin_Noun_Stem";
+            public static final String LATIN_OTHER = "Latin_Other";
             public static final String ENGLISH_NOUN = "English_Noun";
         }
     }

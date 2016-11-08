@@ -45,6 +45,9 @@ public interface Noun {
     String getLatinNounEnding();
     void setLatinNounEnding(String latinNounStem);
 
+    String getLatin_Other();
+    void setLatin_Other(String latin_Other);
+
     String getLatinNoun();
     void setLatinNoun(String latinNoun);
 

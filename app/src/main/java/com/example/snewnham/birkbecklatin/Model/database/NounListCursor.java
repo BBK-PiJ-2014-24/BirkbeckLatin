@@ -44,6 +44,7 @@ public class NounListCursor extends CursorWrapper{
         String genitive = getString(getColumnIndex(DbSchema.NounListTable.Cols.GENITIVE));
         String genitivePlural = getString(getColumnIndex(DbSchema.NounListTable.Cols.GENITIVE_PLURAL));
         String latinNounStem = getString(getColumnIndex(DbSchema.NounListTable.Cols.LATIN_NOUN_STEM));
+        String latinOther = getString(getColumnIndex(DbSchema.NounListTable.Cols.LATIN_OTHER));
         String englishNoun = getString(getColumnIndex(DbSchema.NounListTable.Cols.ENGLISH_NOUN));
 
 
@@ -64,7 +65,6 @@ public class NounListCursor extends CursorWrapper{
 
         // Transfer db data to a Noun object
         // ----------------------------------
-
         noun.setId(id);
         noun.setType(type);
         noun.setDeclension(declension);
@@ -73,6 +73,7 @@ public class NounListCursor extends CursorWrapper{
         noun.setGenitive(genitive);
         noun.setGenitivePlural(genitivePlural);
         noun.setLatinNounStem(latinNounStem);
+        noun.setLatin_Other(latinOther);
         noun.setEnglishNoun(englishNoun);
 
         return noun;
