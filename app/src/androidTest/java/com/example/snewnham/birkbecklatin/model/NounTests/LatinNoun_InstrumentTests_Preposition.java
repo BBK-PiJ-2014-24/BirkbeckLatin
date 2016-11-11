@@ -62,7 +62,7 @@ public class LatinNoun_InstrumentTests_Preposition {
             preposition.setGenitivePlural(null);
             preposition.setLatinNounStem(null);
             preposition.setLatin_Other(latin_Other);
-            preposition.setEnglishNoun(englishNoun);
+            preposition.setEnglishNounSingular(englishNoun);
 
     }
 
@@ -101,7 +101,7 @@ public class LatinNoun_InstrumentTests_Preposition {
      */
     @Test
     public void testEnglishPrespositionTranslation(){
-        assertEquals("around", preposition.getEnglishNoun() );
+        assertEquals("around", preposition.getEnglishNounSingular() );
     }
 
 

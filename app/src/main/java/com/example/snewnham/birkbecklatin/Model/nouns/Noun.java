@@ -12,7 +12,7 @@ public interface Noun {
 
     String makeLatinNoun(DatabaseAccess databaseAccess, String number, String Declension);
 
-    String makeEnglishNoun(DatabaseAccess databaseAccess);
+    String makeEnglishNoun(DatabaseAccess databaseAccess, String number);
 
 
 
@@ -51,8 +51,11 @@ public interface Noun {
     String getLatinNoun();
     void setLatinNoun(String latinNoun);
 
-    String getEnglishNoun();
-    void setEnglishNoun(String englishNoun);
+    String getEnglishNounSingular();
+    void setEnglishNounSingular(String englishNounSingular);
+
+    String getEnglishNounPlural();
+    void setEnglishNounPlural(String englishNounPlural);
 
 
 

@@ -45,7 +45,8 @@ public class NounListCursor extends CursorWrapper{
         String genitivePlural = getString(getColumnIndex(DbSchema.NounListTable.Cols.GENITIVE_PLURAL));
         String latinNounStem = getString(getColumnIndex(DbSchema.NounListTable.Cols.LATIN_NOUN_STEM));
         String latinOther = getString(getColumnIndex(DbSchema.NounListTable.Cols.LATIN_OTHER));
-        String englishNoun = getString(getColumnIndex(DbSchema.NounListTable.Cols.ENGLISH_NOUN));
+        String englishNounSingular = getString(getColumnIndex(DbSchema.NounListTable.Cols.ENGLISH_NOUN_SINGULAR));
+        String englishNounPlural = getString(getColumnIndex(DbSchema.NounListTable.Cols.ENGLISH_NOUN_PLURAL));
 
 
         // Mini Factory - Create Verb Object
@@ -74,8 +75,8 @@ public class NounListCursor extends CursorWrapper{
         noun.setGenitivePlural(genitivePlural);
         noun.setLatinNounStem(latinNounStem);
         noun.setLatin_Other(latinOther);
-        noun.setEnglishNoun(englishNoun);
-
+        noun.setEnglishNounSingular(englishNounSingular);
+        noun.setEnglishNounPlural(englishNounPlural);
         return noun;
     }
 }

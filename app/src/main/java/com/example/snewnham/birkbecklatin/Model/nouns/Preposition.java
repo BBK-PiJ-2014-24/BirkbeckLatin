@@ -25,7 +25,8 @@ public class Preposition implements Noun {
     String mLatin_Noun_Ending;
     String mLatinNoun;
     String mLatin_Other;
-    String mEnglishNoun;
+    String mEnglishNounSingular;
+    String mEnglishNounPlural;
 
 
     // Constructor
@@ -55,8 +56,13 @@ public class Preposition implements Noun {
     }
 
     @Override
-    public String makeEnglishNoun(DatabaseAccess databaseAccess) {
-        return mEnglishNoun;
+    public String makeEnglishNoun(DatabaseAccess databaseAccess, String number) {
+
+        if(number.equals("Singular")) {
+            return mEnglishNounSingular;
+        } else {
+            return mEnglishNounPlural;
+        }
     }
 
 
@@ -153,22 +159,30 @@ public class Preposition implements Noun {
     public void setLatin_Other(String latin_Other) { mLatin_Other = latin_Other;}
 
     @Override
-    public String getEnglishNoun() {
-        return mEnglishNoun;
-    }
-
-    @Override
-    public void setEnglishNoun(String englishNoun) {
-        mEnglishNoun = englishNoun;
-    }
-
-
-    @Override
     public String getLatinNoun() { return mLatinNoun; }
 
     @Override
     public void setLatinNoun(String latinNoun) { mLatinNoun = latinNoun; }
 
+    @Override
+    public String getEnglishNounSingular() {
+        return mEnglishNounSingular;
+    }
+
+    @Override
+    public void setEnglishNounSingular(String englishNounSingular) {
+        mEnglishNounSingular = englishNounSingular;
+    }
+
+    @Override
+    public String getEnglishNounPlural() {
+        return mEnglishNounPlural;
+    }
+
+    @Override
+    public void setEnglishNounPlural(String englishNounPlural) {
+        mEnglishNounPlural = englishNounPlural;
+    }
 
 
 

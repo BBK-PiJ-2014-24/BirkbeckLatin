@@ -56,7 +56,7 @@ public class LatinNoun_InstrumentTests_1st_Fem_Declension {
     String genitive;
     String genitivePlural;
     String latinNounStem;
-    String englishNoun;
+    String englishNounSingular;
 
 
     @Before
@@ -93,7 +93,7 @@ public class LatinNoun_InstrumentTests_1st_Fem_Declension {
         genitive = "puellae";
         genitivePlural = null;
         latinNounStem = "puell";
-        englishNoun = "girl";
+        englishNounSingular = "girl";
 
         mNounRegular = new NounRegular(id, databaseAccess);
             mNounRegular.setId(id);
@@ -104,7 +104,7 @@ public class LatinNoun_InstrumentTests_1st_Fem_Declension {
             mNounRegular.setGenitive(genitive);
             mNounRegular.setGenitivePlural(genitivePlural);
             mNounRegular.setLatinNounStem(latinNounStem);
-            mNounRegular.setEnglishNoun(englishNoun);
+            mNounRegular.setEnglishNounSingular(englishNounSingular);
 
     }
 
@@ -222,7 +222,7 @@ public class LatinNoun_InstrumentTests_1st_Fem_Declension {
      */
     @Test
     public void testEnglishNounTranslation(){
-        assertEquals("girl", mNounRegular.getEnglishNoun() );
+        assertEquals("girl", mNounRegular.getEnglishNounSingular() );
     }
 
 

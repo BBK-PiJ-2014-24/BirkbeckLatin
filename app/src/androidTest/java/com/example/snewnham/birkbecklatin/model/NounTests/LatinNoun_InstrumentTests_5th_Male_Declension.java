@@ -106,7 +106,7 @@ public class LatinNoun_InstrumentTests_5th_Male_Declension {
             mNounRegular.setGenitive(genitive);
             mNounRegular.setGenitivePlural(genitivePlural);
             mNounRegular.setLatinNounStem(latinNounStem);
-            mNounRegular.setEnglishNoun(englishNoun);
+            mNounRegular.setEnglishNounSingular(englishNoun);
     }
 
 

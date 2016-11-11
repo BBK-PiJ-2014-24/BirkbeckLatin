@@ -63,7 +63,7 @@ public class LatinNoun_InstrumentTests_Conjunction {
             conjunction.setGenitivePlural(null);
             conjunction.setLatinNounStem(null);
             conjunction.setLatin_Other(latin_Other);
-            conjunction.setEnglishNoun(englishNoun);
+            conjunction.setEnglishNounSingular(englishNoun);
     }
 
 
@@ -100,7 +100,7 @@ public class LatinNoun_InstrumentTests_Conjunction {
      */
     @Test
     public void testEnglishConjunctionTranslation(){
-        assertEquals("however", conjunction.getEnglishNoun() );
+        assertEquals("however", conjunction.getEnglishNounSingular() );
     }
 
 
