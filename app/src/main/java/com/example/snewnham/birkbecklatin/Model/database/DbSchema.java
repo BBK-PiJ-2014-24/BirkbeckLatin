@@ -206,6 +206,24 @@ public class DbSchema {
     }
 
 
+    // inner STATIC class - NounIrregularTable
+    // ----------------------------------------
+    public static final class NounIrregularTable {
+        public static final String NOUN_IRREGULAR_TABLE = "Noun_Irregular_Table";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String GENDER = "Gender";
+            public static final String NUMBER = "Number";
+            public static final String LATIN_CASE = "Latin_Case";
+        }
+    }
+
+
+
     // inner STATIC class - Preposition_List Table
     // -----------------------------------------
     public static final class PrepositionListTable {
