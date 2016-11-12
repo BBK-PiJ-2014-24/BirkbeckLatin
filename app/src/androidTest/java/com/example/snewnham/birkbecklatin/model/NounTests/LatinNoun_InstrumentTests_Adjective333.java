@@ -6,7 +6,6 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
-import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 
 import org.junit.After;
 import org.junit.Before;
@@ -104,7 +103,7 @@ public class LatinNoun_InstrumentTests_Adjective333 {
             adjective.setGenitive(genitive);
             adjective.setGenitivePlural(genitivePlural);
             adjective.setLatinNounStem(latinNounStem);
-            adjective.setLatin_Other(latin_Other);
+            adjective.setLatin_Preposition(latin_Other);
             adjective.setEnglishNounSingular(englishNounSingular);
             adjective.setEnglishNounPlural(englishNounPlural);
     }
@@ -331,7 +330,7 @@ public class LatinNoun_InstrumentTests_Adjective333 {
     @Test
     public void testMakeAdjectiveSingularNeuter() throws Exception {
 
-        adjective.setGender(genderNeuter);   // SET GENDER TO FEMALE
+        adjective.setGender(genderNeuter);   // SET GENDER TO NEUTER
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
 
@@ -383,7 +382,7 @@ public class LatinNoun_InstrumentTests_Adjective333 {
     @Test
     public void testMakeAdjectivePluralNeuter() throws Exception {
 
-        adjective.setGender(genderNeuter);   // SET GENDER TO FEMALE
+        adjective.setGender(genderNeuter);   // SET GENDER TO NEUTER
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
 

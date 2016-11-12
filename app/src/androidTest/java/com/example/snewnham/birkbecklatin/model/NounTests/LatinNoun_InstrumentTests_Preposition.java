@@ -5,7 +5,6 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
-import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 
 import org.junit.After;
@@ -61,7 +60,7 @@ public class LatinNoun_InstrumentTests_Preposition {
             preposition.setGenitive(null);
             preposition.setGenitivePlural(null);
             preposition.setLatinNounStem(null);
-            preposition.setLatin_Other(latin_Other);
+            preposition.setLatin_Preposition(latin_Other);
             preposition.setEnglishNounSingular(englishNoun);
 
     }

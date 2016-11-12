@@ -6,7 +6,6 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
-import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 
 import org.junit.After;
 import org.junit.Before;
@@ -64,7 +63,7 @@ public class LatinNoun_InstrumentTests_Conjunction {
             conjunction.setGenitive(null);
             conjunction.setGenitivePlural(null);
             conjunction.setLatinNounStem(null);
-            conjunction.setLatin_Other(latin_Other);
+            conjunction.setLatin_Preposition(latin_Other);
             conjunction.setEnglishNounSingular(englishNoun);
     }
 

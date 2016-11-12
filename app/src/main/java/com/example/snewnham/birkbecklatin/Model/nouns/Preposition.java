@@ -24,7 +24,7 @@ public class Preposition implements Noun {
     String mLatin_Noun_Stem;
     String mLatin_Noun_Ending;
     String mLatinNoun;
-    String mLatin_Other;
+    String mLatin_Preposition;
     String mEnglishNounSingular;
     String mEnglishNounPlural;
 
@@ -51,8 +51,8 @@ public class Preposition implements Noun {
      */
     @Override
     public String makeLatinNoun(DatabaseAccess databaseAccess, String number, String Declension) {
-        mLatinNoun = mLatin_Other;
-        return mLatin_Other;
+        mLatinNoun = mLatin_Preposition;
+        return mLatin_Preposition;
     }
 
     @Override
@@ -153,10 +153,10 @@ public class Preposition implements Noun {
     @Override
     public void setLatinNounEnding(String latinNounEnding) { mLatin_Noun_Ending = latinNounEnding; }
 
-    public String getLatin_Other() {return mLatin_Other;}
+    public String getLatin_Preposition() {return mLatin_Preposition;}
 
     @Override
-    public void setLatin_Other(String latin_Other) { mLatin_Other = latin_Other;}
+    public void setLatin_Preposition(String latin_Preposition) { mLatin_Preposition = latin_Preposition;}
 
     @Override
     public String getLatinNoun() { return mLatinNoun; }

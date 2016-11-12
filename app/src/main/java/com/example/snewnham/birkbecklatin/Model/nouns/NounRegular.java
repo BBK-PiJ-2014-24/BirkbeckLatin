@@ -21,7 +21,7 @@ public class NounRegular implements Noun {
     String mLatin_Noun_Stem;
     String mLatin_Noun_Ending;
     String mLatinNoun;
-    String mLatin_Other;
+    String mLatin_Preposition;
     String mEnglishNounSingular;
     String mEnglishNounPlural;
 
@@ -171,10 +171,10 @@ public class NounRegular implements Noun {
     public void setLatinNounEnding(String latinNounEnding) { mLatin_Noun_Ending = latinNounEnding; }
 
     @Override
-    public String getLatin_Other() {return mLatin_Other;}
+    public String getLatin_Preposition() {return mLatin_Preposition;}
 
     @Override
-    public void setLatin_Other(String latin_Other) { mLatin_Other = latin_Other;}
+    public void setLatin_Preposition(String latin_Other) { mLatin_Preposition = latin_Other;}
 
 
     @Override

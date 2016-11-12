@@ -5,6 +5,7 @@ import android.database.CursorWrapper;
 
 import com.example.snewnham.birkbecklatin.Model.nouns.Noun;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
+import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 
 /**
  * NounListCursor
@@ -44,7 +45,7 @@ public class NounListCursor extends CursorWrapper{
         String genitive = getString(getColumnIndex(DbSchema.NounListTable.Cols.GENITIVE));
         String genitivePlural = getString(getColumnIndex(DbSchema.NounListTable.Cols.GENITIVE_PLURAL));
         String latinNounStem = getString(getColumnIndex(DbSchema.NounListTable.Cols.LATIN_NOUN_STEM));
-        String latinOther = getString(getColumnIndex(DbSchema.NounListTable.Cols.LATIN_OTHER));
+        String latinPreposition = getString(getColumnIndex(DbSchema.NounListTable.Cols.PREPOSITION));
         String englishNounSingular = getString(getColumnIndex(DbSchema.NounListTable.Cols.ENGLISH_NOUN_SINGULAR));
         String englishNounPlural = getString(getColumnIndex(DbSchema.NounListTable.Cols.ENGLISH_NOUN_PLURAL));
 
@@ -74,7 +75,7 @@ public class NounListCursor extends CursorWrapper{
         noun.setGenitive(genitive);
         noun.setGenitivePlural(genitivePlural);
         noun.setLatinNounStem(latinNounStem);
-        noun.setLatin_Other(latinOther);
+        noun.setLatin_Preposition(latinPreposition);
         noun.setEnglishNounSingular(englishNounSingular);
         noun.setEnglishNounPlural(englishNounPlural);
         return noun;

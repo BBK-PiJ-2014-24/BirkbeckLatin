@@ -9,7 +9,6 @@ import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.nouns.Noun;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
-import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
 
 import org.junit.After;
 import org.junit.Before;
@@ -454,7 +453,7 @@ public class DatabaseInstrumentedTest {
         assertEquals( noun_Geninitive, noun.getGenitive() );
         assertEquals( noun_Geninitive_Plural, noun.getGenitivePlural() );
         assertEquals( noun_Latin_Noun_Stem, noun.getLatinNounStem() );
-        assertEquals( noun_Latin_Other, noun.getLatin_Other() );
+        assertEquals( noun_Latin_Other, noun.getLatin_Preposition() );
         assertEquals( noun_English_Noun_Singular, noun.getEnglishNounSingular() );
         assertEquals( noun_English_Noun_Plural, noun.getEnglishNounPlural() );
     }
