@@ -240,6 +240,25 @@ public class DbSchema {
     }
 
 
+    // inner STATIC class - Adjective_EndingTable
+    // ------------------------------------------
+    public static final class AdjectiveEndingTable {
+        public static final String ADJECTIVE_ENDING_TABLE = "Adjective_Ending";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String DECLENSION = "Declension";
+            public static final String GENDER = "Gender";
+            public static final String NUMBER = "Number";
+            public static final String CASE = "Latin_Case";
+            public static final String LATIN_ENDING = "Latin_Ending";
+        }
+    }
+
+
 
 
 }
