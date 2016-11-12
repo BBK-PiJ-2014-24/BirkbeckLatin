@@ -25,8 +25,7 @@ public class NounIrregular extends NounRegular {
     @Override
     public String makeLatinNoun(DatabaseAccess databaseAccess, String number, String declension){
 
-        String nounIrregular = mNominative.substring(0,1).toUpperCase() + mNominative.substring(1); // make First Letter Upper Case.
-        mLatinNoun = databaseAccess.sqlLatinIrregularNoun(nounIrregular, mGender, number, declension);
+        mLatinNoun = databaseAccess.sqlNounIrregularQuery(mNominative, mGender, number, declension);
 
         return mLatinNoun;
     }

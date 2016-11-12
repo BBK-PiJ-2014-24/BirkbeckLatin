@@ -528,9 +528,39 @@ public class DatabaseAccess {
     }
 
 
+    /**
+     * sqlNounIrregularQuery(String nounIrregular, String gender, String number, String latin_Case)
+     * ---------------------
+     * Runs a sql query on the Noun Irregular Table.
+     * @param nounIrregular - this is the Nominative of the Irregular, which is also the Column Name
+     * @param gender
+     * @param number
+     * @param latin_Case
+     * @return
+     */
+    public String sqlNounIrregularQuery(String nounIrregular, String gender, String number, String latin_Case) {
+
+        nounIrregular = nounIrregular.substring(0,1).toUpperCase() + nounIrregular.substring(1); // make First Letter Upper Case.
+
+        String table = DbSchema.NounIrregularTable.NOUN_IRREGULAR_TABLE;  // FROM NOUN_IRREGULAR_TABLE Table
+
+        String[] column = new String[]{nounIrregular};  // SELECT the Column ""
+
+        String[] whereArgs;
+        String whereClause;
+
+        whereArgs = new String[]{ gender, number, latin_Case };
+        whereClause = DbSchema.NounIrregularTable.Cols.GENDER + "=?" + " AND " +  // WHERE ... AND
+                DbSchema.NounIrregularTable.Cols.NUMBER + "=?" + " AND " +
+                DbSchema.NounIrregularTable.Cols.LATIN_CASE + "=?";
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
 
 
-   // public String sqlPrepositionQuery
+        String latinNounIrregular = cursor.getString(cursor.getColumnIndex(nounIrregular));
+        return latinNounIrregular;
+    }
 
 
 }

@@ -209,7 +209,7 @@ public class DbSchema {
     // inner STATIC class - NounIrregularTable
     // ----------------------------------------
     public static final class NounIrregularTable {
-        public static final String NOUN_IRREGULAR_TABLE = "Noun_Irregular_Table";
+        public static final String NOUN_IRREGULAR_TABLE = "Noun_Irregular";
 
 
         // inner inner STATIC class of the Table - Attributes

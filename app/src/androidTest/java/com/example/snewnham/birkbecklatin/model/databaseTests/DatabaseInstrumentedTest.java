@@ -470,6 +470,7 @@ public class DatabaseInstrumentedTest {
 
         String nounIrregular = "hic";
         noun_Gender = "m";
+        noun_number = "Singular";
         noun_Latin_Case = "Accusative";
 
         // Run Query
