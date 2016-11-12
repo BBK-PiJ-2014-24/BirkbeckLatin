@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
  * Created by snewnham on 12/10/2016.
  */
 @RunWith(AndroidJUnit4.class)
-public class LatinNoun_InstrumentTests_Adjective333 {
+public class LatinNoun_InstrumentTests_Adjective333b {
 
 
     // Fields
@@ -85,13 +85,13 @@ public class LatinNoun_InstrumentTests_Adjective333 {
         numberSingular = "Singular";
         numberPlural = "Plural";
 
-        nominative = "fortis";
-        genitive = "fortis";
-        genitivePlural = "fortium";
-        latinNounStem = "fort";
-        nominativeAdjective = "forte";
-        englishNounSingular = "brave, strong";
-        englishNounPlural = "brave, strong";
+        nominative = "ingens";
+        genitive = "ingentis";
+        genitivePlural = "ingentium";
+        latinNounStem = "ingent";
+        nominativeAdjective = "ingens";
+        englishNounSingular = "huge";
+        englishNounPlural = "huge";
 
 
 
@@ -131,39 +131,39 @@ public class LatinNoun_InstrumentTests_Adjective333 {
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
-        assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("fortis", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinNounStem());
+        assertEquals("", adjective.getLatinNounEnding());
+        assertEquals("ingens", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("em", adjective.getLatinNounEnding());
-        assertEquals("fortem", adjective.getLatinNoun());
+        assertEquals("ingentem", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("fortis", adjective.getLatinNoun());
+        assertEquals("ingentis", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("forti", adjective.getLatinNoun());
+        assertEquals("ingenti", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("forti", adjective.getLatinNoun());
+        assertEquals("ingenti", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
-        assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("fortis", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinNounStem());
+        assertEquals("", adjective.getLatinNounEnding());
+        assertEquals("ingens", adjective.getLatinNoun());
     }
 
 
@@ -181,39 +181,39 @@ public class LatinNoun_InstrumentTests_Adjective333 {
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("es", adjective.getLatinNounEnding());
-        assertEquals("fortes", adjective.getLatinNoun());
+        assertEquals("ingentes", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("es", adjective.getLatinNounEnding());
-        assertEquals("fortes", adjective.getLatinNoun());
+        assertEquals("ingentes", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("ium", adjective.getLatinNounEnding());
-        assertEquals("fortium", adjective.getLatinNoun());
+        assertEquals("ingentium", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("ibus", adjective.getLatinNounEnding());
-        assertEquals("fortibus", adjective.getLatinNoun());
+        assertEquals("ingentibus", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("ibus", adjective.getLatinNounEnding());
-        assertEquals("fortibus", adjective.getLatinNoun());
+        assertEquals("ingentibus", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("es", adjective.getLatinNounEnding());
-        assertEquals("fortes", adjective.getLatinNoun());
+        assertEquals("ingentes", adjective.getLatinNoun());
     }
 
 
@@ -233,39 +233,39 @@ public class LatinNoun_InstrumentTests_Adjective333 {
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
-        assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("fortis", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinNounStem());
+        assertEquals("", adjective.getLatinNounEnding());
+        assertEquals("ingens", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("em", adjective.getLatinNounEnding());
-        assertEquals("fortem", adjective.getLatinNoun());
+        assertEquals("ingentem", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("fortis", adjective.getLatinNoun());
+        assertEquals("ingentis", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("forti", adjective.getLatinNoun());
+        assertEquals("ingenti", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("forti", adjective.getLatinNoun());
+        assertEquals("ingenti", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
-        assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("fortis", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinNounStem());
+        assertEquals("", adjective.getLatinNounEnding());
+        assertEquals("ingens", adjective.getLatinNoun());
     }
 
 
@@ -285,39 +285,39 @@ public class LatinNoun_InstrumentTests_Adjective333 {
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("es", adjective.getLatinNounEnding());
-        assertEquals("fortes", adjective.getLatinNoun());
+        assertEquals("ingentes", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("es", adjective.getLatinNounEnding());
-        assertEquals("fortes", adjective.getLatinNoun());
+        assertEquals("ingentes", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("ium", adjective.getLatinNounEnding());
-        assertEquals("fortium", adjective.getLatinNoun());
+        assertEquals("ingentium", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("ibus", adjective.getLatinNounEnding());
-        assertEquals("fortibus", adjective.getLatinNoun());
+        assertEquals("ingentibus", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("ibus", adjective.getLatinNounEnding());
-        assertEquals("fortibus", adjective.getLatinNoun());
+        assertEquals("ingentibus", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("es", adjective.getLatinNounEnding());
-        assertEquals("fortes", adjective.getLatinNoun());
+        assertEquals("ingentes", adjective.getLatinNoun());
     }
 
     // ================================  SINGULAR, NEUTER  =============================================
@@ -336,39 +336,39 @@ public class LatinNoun_InstrumentTests_Adjective333 {
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
-        assertEquals("e", adjective.getLatinNounEnding());
-        assertEquals("forte", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinNounStem());
+        assertEquals("", adjective.getLatinNounEnding());
+        assertEquals("ingens", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
-        assertEquals("e", adjective.getLatinNounEnding());
-        assertEquals("forte", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinNounStem());
+        assertEquals("", adjective.getLatinNounEnding());
+        assertEquals("ingens", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("fortis", adjective.getLatinNoun());
+        assertEquals("ingentis", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("forti", adjective.getLatinNoun());
+        assertEquals("ingenti", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("forti", adjective.getLatinNoun());
+        assertEquals("ingenti", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
-        assertEquals("e", adjective.getLatinNounEnding());
-        assertEquals("forte", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinNounStem());
+        assertEquals("", adjective.getLatinNounEnding());
+        assertEquals("ingens", adjective.getLatinNoun());
     }
 
 
@@ -388,39 +388,39 @@ public class LatinNoun_InstrumentTests_Adjective333 {
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("ia", adjective.getLatinNounEnding());
-        assertEquals("fortia", adjective.getLatinNoun());
+        assertEquals("ingentia", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("ia", adjective.getLatinNounEnding());
-        assertEquals("fortia", adjective.getLatinNoun());
+        assertEquals("ingentia", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("ium", adjective.getLatinNounEnding());
-        assertEquals("fortium", adjective.getLatinNoun());
+        assertEquals("ingentium", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("ibus", adjective.getLatinNounEnding());
-        assertEquals("fortibus", adjective.getLatinNoun());
+        assertEquals("ingentibus", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("ibus", adjective.getLatinNounEnding());
-        assertEquals("fortibus", adjective.getLatinNoun());
+        assertEquals("ingentibus", adjective.getLatinNoun());
 
         adjective.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("fort", adjective.getLatinNounStem());
+        assertEquals("ingent", adjective.getLatinNounStem());
         assertEquals("ia", adjective.getLatinNounEnding());
-        assertEquals("fortia", adjective.getLatinNoun());
+        assertEquals("ingentia", adjective.getLatinNoun());
     }
 
 
@@ -432,8 +432,8 @@ public class LatinNoun_InstrumentTests_Adjective333 {
     @Test
     public void testEnglishNounTranslation() throws Exception{
         String s = adjective.getEnglishNounPlural();
-        assertEquals("brave, strong", adjective.getEnglishNounSingular() );
-        assertEquals("brave, strong", adjective.getEnglishNounPlural() );
+        assertEquals("huge", adjective.getEnglishNounSingular() );
+        assertEquals("huge", adjective.getEnglishNounPlural() );
     }
 
     @After
