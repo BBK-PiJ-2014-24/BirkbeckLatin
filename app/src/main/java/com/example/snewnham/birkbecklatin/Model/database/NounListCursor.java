@@ -46,6 +46,7 @@ public class NounListCursor extends CursorWrapper{
         String genitivePlural = getString(getColumnIndex(DbSchema.NounListTable.Cols.GENITIVE_PLURAL));
         String latinNounStem = getString(getColumnIndex(DbSchema.NounListTable.Cols.LATIN_NOUN_STEM));
         String latinPreposition = getString(getColumnIndex(DbSchema.NounListTable.Cols.PREPOSITION));
+        String nominativeAdjective = getString(getColumnIndex(DbSchema.NounListTable.Cols.NOMINATIVE_ADJECTIVE));
         String englishNounSingular = getString(getColumnIndex(DbSchema.NounListTable.Cols.ENGLISH_NOUN_SINGULAR));
         String englishNounPlural = getString(getColumnIndex(DbSchema.NounListTable.Cols.ENGLISH_NOUN_PLURAL));
 
@@ -76,6 +77,7 @@ public class NounListCursor extends CursorWrapper{
         noun.setGenitivePlural(genitivePlural);
         noun.setLatinNounStem(latinNounStem);
         noun.setLatin_Preposition(latinPreposition);
+        noun.setLatin_Nominative_Adjective(nominativeAdjective);
         noun.setEnglishNounSingular(englishNounSingular);
         noun.setEnglishNounPlural(englishNounPlural);
         return noun;

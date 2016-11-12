@@ -25,6 +25,7 @@ public class Preposition implements Noun {
     String mLatin_Noun_Ending;
     String mLatinNoun;
     String mLatin_Preposition;
+    String mLatin_Nominative_Adjective;
     String mEnglishNounSingular;
     String mEnglishNounPlural;
 
@@ -184,7 +185,13 @@ public class Preposition implements Noun {
         mEnglishNounPlural = englishNounPlural;
     }
 
+    @Override
+    public String getLatin_Nominative_Adjective() {
+        return mLatin_Nominative_Adjective;
+    }
 
-
-
+    @Override
+    public void setLatin_Nominative_Adjective(String latin_Nominative_Adjective) {
+        mLatin_Nominative_Adjective = latin_Nominative_Adjective;
+    }
 }

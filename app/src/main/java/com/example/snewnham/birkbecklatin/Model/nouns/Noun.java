@@ -57,6 +57,7 @@ public interface Noun {
     String getEnglishNounPlural();
     void setEnglishNounPlural(String englishNounPlural);
 
-
+    String getLatin_Nominative_Adjective();
+    void setLatin_Nominative_Adjective(String latin_Nominative_Adjective);
 
 }
