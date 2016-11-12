@@ -499,9 +499,9 @@ public class DatabaseInstrumentedTest {
         // Run Query
         // ---------
 
-        String query = databaseAccess.sqlAdjectiveEnding(noun_Declension, noun_Gender, noun_number, noun_Latin_Case);
+        String query = databaseAccess.sqlAdjectiveEnding(Integer.toString(noun_Declension), noun_Gender, noun_number, noun_Latin_Case);
 
-        assertEquals("is", query);
+        assertEquals("um", query);
 
     }
 

@@ -5,6 +5,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 
 import org.junit.After;
@@ -28,13 +29,25 @@ public class LatinNoun_InstrumentTests_Adjective {
     DatabaseAccess databaseAccess;
 
     int id;
-    Preposition adjective;
 
+    Adjective adjective;
+
+    int declension212;
     String typeNoun;
     String typePreposition;
     String latin_Other;
 
     String englishNoun;
+
+    String numberSingular;
+    String numberPlural;
+
+    String caseNominative;
+    String caseAccusative;
+    String caseGenitive;
+    String caseDative;
+    String caseAblative;
+    String caseVocative;
 
 
     @Before
@@ -45,11 +58,24 @@ public class LatinNoun_InstrumentTests_Adjective {
 
 
         id = 2;
+        declension212 = 212;
         typeNoun = "Noun";
         typePreposition = "Preposition";
 
         latin_Other = "circum";
         englishNoun = "around";
+
+        caseNominative = "Nominative";
+        caseAccusative = "Accusative";
+        caseGenitive = "Genitive";
+        caseDative = "Dative";
+        caseAblative = "Ablative";
+        caseVocative = "Vocative";
+
+        numberSingular = "Singular";
+        numberPlural = "Plural";
+
+
 
         adjective = new Adjective(id, databaseAccess);
             adjective.setId(id);

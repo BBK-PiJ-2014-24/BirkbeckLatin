@@ -562,5 +562,38 @@ public class DatabaseAccess {
         return latinNounIrregular;
     }
 
+    /**
+     * sqlAdjectiveEnding()
+     * --------------------
+     * sql query on Adjective_Ending Table.
+     * @param declension
+     * @param gender
+     * @param number
+     * @param latin_Case
+     * @return
+     */
+    public String sqlAdjectiveEnding(String declension, String gender, String number, String latin_Case){
+
+        String table = DbSchema.AdjectiveEndingTable.ADJECTIVE_ENDING_TABLE;  // FROM ADJECTIVE_ENDING_TABLE Table
+        String columnName = DbSchema.AdjectiveEndingTable.Cols.LATIN_ENDING;
+        String[] column = new String[]{columnName};  // SELECT the Column "Latin_Ending"
+
+        String[] whereArgs;
+        String whereClause;
+
+        whereArgs = new String[]{ declension, gender, number, latin_Case };
+        whereClause = DbSchema.NounDeclensionTable.Cols.DECLENSION + "=?" + " AND " +  // WHERE ... AND
+                DbSchema.AdjectiveEndingTable.Cols.GENDER + "=?" + " AND " +
+                DbSchema.AdjectiveEndingTable.Cols.NUMBER + "=?" + " AND " +
+                DbSchema.AdjectiveEndingTable.Cols.CASE + "=?";
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
+
+        String adjEnding = cursor.getString(cursor.getColumnIndex(columnName));
+        return adjEnding;
+
+    }
+
 
 }
