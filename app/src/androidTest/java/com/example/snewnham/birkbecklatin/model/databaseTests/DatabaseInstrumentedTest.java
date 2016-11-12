@@ -466,7 +466,7 @@ public class DatabaseInstrumentedTest {
      * test a sql query for an irregular noun, Possessives, Pronouns etc.
      */
     @Test
-    public void testNounIrregularQuery(){
+    public void testNounIrregularQuery() throws Exception{
 
         String nounIrregular = "hic";
         noun_Gender = "m";
@@ -478,6 +478,30 @@ public class DatabaseInstrumentedTest {
         String query = databaseAccess.sqlNounIrregularQuery(nounIrregular, noun_Gender, noun_number, noun_Latin_Case);
 
         assertEquals("hunc", query);
+    }
+
+
+
+    /**
+     * testAdjectiveEndingQuery()
+     * --------------------------
+     * test a sql query for an Adjective.
+     */
+
+    @Test
+    public void testAdjectiveEndingQuery(){
+
+        noun_Declension = 212;
+        noun_Gender = "m";
+        noun_number = "Singular";
+        noun_Latin_Case = "Accusative";
+
+        // Run Query
+        // ---------
+
+        String query = databaseAccess.sqlAdjectiveEnding(noun_Declension, noun_Gender, noun_number, noun_Latin_Case);
+
+        assertEquals("is", query);
 
     }
 
