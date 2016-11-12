@@ -73,6 +73,8 @@ public class DatabaseInstrumentedTest {
     String noun_Latin_Other;
     String noun_English_Noun_Singular;
     String noun_English_Noun_Plural;
+    String noun_number;
+    String noun_Latin_Case;
 
 
 
@@ -458,12 +460,31 @@ public class DatabaseInstrumentedTest {
     }
 
 
+    /**
+     * testNounIrregularQuery()
+     * ------------------------
+     * test a sql query for an irregular noun, Possessives, Pronouns etc.
+     */
+    @Test
+    public void testNounIrregularQuery(){
+
+        String nounIrregular = "hic";
+        noun_Gender = "m";
+        noun_Latin_Case = "Accusative";
+
+        // Run Query
+        // ---------
+        String query = databaseAccess.sqlNounIrregularQuery(nounIrregular, noun_Gender, noun_number, noun_Latin_Case);
+
+        assertEquals("hunc", query);
+
+    }
+
+
     @After
     public void breakDown() {
         databaseAccess.close();
     }
-
-
 
 
 }
