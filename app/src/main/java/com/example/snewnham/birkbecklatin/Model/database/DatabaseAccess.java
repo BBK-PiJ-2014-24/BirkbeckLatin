@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
+import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
@@ -127,6 +128,8 @@ public class DatabaseAccess {
             return new AdjectiveListCursor(cursor);
         else if (table.equals(DbSchema.PrepositionListTable.PREPOSITION_TABLE))
             return new PrepositionListCursor(cursor);
+        else if (table.equals(DbSchema.ConjunctionListTable.CONJUNCTION_TABLE))
+            return new ConjunctionListCursor(cursor);
         else
             return cursor;
     }
@@ -644,6 +647,29 @@ public class DatabaseAccess {
         prepositionListCursor.moveToFirst();
         Preposition preposition = prepositionListCursor.makePrepositionObject();  // Convert Query from Cursor to Verb Object.
         return preposition;
+    }
+
+
+    /**
+     * sqlConjunctionListQuery(int id)
+     * -------------------------------
+     * Runs a SQL query on the Conjunction_List table, selects a row with a cursor
+     * and converts into a Conjunction Object
+     * @param id
+     * @return
+     */
+    public Conjunction sqlConjunctionListQuery(int id){
+        String strId = Integer.toString(id);
+        String table = DbSchema.ConjunctionListTable.CONJUNCTION_TABLE;           // FROM Table = AdjectiveList
+        String[] column = null;             // SELECT *
+        String whereClause = "_id=?";
+        String[] whereArgs = new String[]{strId}; // WHERE _id =
+
+        ConjunctionListCursor conjunctionListCursor = (ConjunctionListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        conjunctionListCursor.moveToFirst();
+        Conjunction conjunction = conjunctionListCursor.makeConjunctionObject();  // Convert Query from Cursor to Verb Object.
+        return conjunction;
+
     }
 
 
