@@ -8,6 +8,7 @@ import android.support.test.runner.AndroidJUnit4;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
+import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
@@ -94,6 +95,10 @@ public class DatabaseInstrumentedTest {
     int prepositionId;
     String prepositionLatin;
     String prepositionEnglish;
+
+    int conjunctionId;
+    String conjunctionLatin;
+    String conjunctionEnglish;
 
 
 
@@ -579,6 +584,29 @@ public class DatabaseInstrumentedTest {
         assertEquals(prepositionId, preposition.getId());
         assertEquals(prepositionLatin, preposition.getLatinWord());
         assertEquals(prepositionEnglish, preposition.getEnglishWordPlural());
+
+    }
+
+
+    /**
+     * testConjunctionListQuery()
+     * --------------------------
+     * test the sql query on Conjunction_List table.
+     */
+    @Test
+    public void testConjunctionListQuery(){
+
+        conjunctionId = 3;
+        conjunctionLatin = "tamen";
+        conjunctionEnglish = "however";
+
+        // Run Query
+        // ---------
+        Conjunction conjunction = databaseAccess.sqlConjunctionListQuery(conjunctionId);
+
+        assertEquals(conjunctionId, conjunction.getId());
+        assertEquals(conjunctionLatin, conjunction.getLatinWord());
+        assertEquals(conjunctionEnglish, conjunction.getEnglishWordPlural());
 
     }
 
