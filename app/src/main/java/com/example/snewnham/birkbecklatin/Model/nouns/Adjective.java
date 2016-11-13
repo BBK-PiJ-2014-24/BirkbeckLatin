@@ -38,7 +38,7 @@ public class Adjective extends NounRegular {
                     mLatin_Noun_Ending = databaseAccess.sqlAdjectiveEnding(Integer.toString(mDeclension), mGender, number, latin_case);
                     mLatinNoun = mLatin_Noun_Stem + mLatin_Noun_Ending;
                 }
-            } else { // N 333
+            } else { // Neuter 333
                 if (latin_case.equals("Nominative") && number.equals("Singular")) {  // Adjective 333 Nominatives can be Irregular
                     int stemLength = mLatin_Noun_Stem.length();
                     mLatin_Noun_Ending = mLatin_Nominative_Adjective.substring(stemLength);  // Calc ending
@@ -56,9 +56,15 @@ public class Adjective extends NounRegular {
                     mLatinNoun = mLatin_Noun_Stem + mLatin_Noun_Ending;
                 }
             }
-        } else {
-            mLatin_Noun_Ending = databaseAccess.sqlAdjectiveEnding(Integer.toString(mDeclension), mGender, number, latin_case);
-            mLatinNoun = mLatin_Noun_Stem + mLatin_Noun_Ending;
+        } else { // 212
+            if(latin_case.equals("Nominative") && number.equals("Singular") && mGender.equals("m")){
+                int stemLength = mLatin_Noun_Stem.length();
+                mLatin_Noun_Ending = mNominative.substring(stemLength);  // Calc ending
+                mLatinNoun = mNominative;
+            } else {
+                mLatin_Noun_Ending = databaseAccess.sqlAdjectiveEnding(Integer.toString(mDeclension), mGender, number, latin_case);
+                mLatinNoun = mLatin_Noun_Stem + mLatin_Noun_Ending;
+            }
         }
 
         return mLatinNoun;
