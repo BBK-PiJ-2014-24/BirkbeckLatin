@@ -7,7 +7,9 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
-import com.example.snewnham.birkbecklatin.Model.nouns.Noun;
+import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
+import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
+import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 
 import org.junit.After;
@@ -75,6 +77,18 @@ public class DatabaseInstrumentedTest {
     String noun_English_Noun_Plural;
     String noun_number;
     String noun_Latin_Case;
+
+    int adjectiveId;
+    String adjectiveType;
+    int adjectiveDeclension;
+    String adjectiveNominative;
+    String adjectiveNominativeNeuter;
+    String adjectiveLatinAdjectiveStem;
+    String adjectiveEnglishAdjective;
+    String adjectiveLatinComparative;
+    String adjectiveEnglishComparative;
+    String adjectiveLatinSuperlative;
+    String adjectiveEnglishSuperlative;
 
 
 
@@ -433,18 +447,12 @@ public class DatabaseInstrumentedTest {
         noun_Geninitive = "amici";
         noun_Geninitive_Plural = null;
         noun_Latin_Noun_Stem = "amic";
-        noun_Latin_Preposition = null;
-        noun_Latin_Nominative_Adjective = null;
-
         noun_English_Noun_Singular = "friend";
         noun_English_Noun_Plural = "friends";
 
-
-
         // Run Query
         // ---------
-        Noun noun = databaseAccess.sqlNounListQuery(noun_id);
-
+        NounRegular noun = databaseAccess.sqlNounListQuery(noun_id);
 
         // test the VerbRegular Fields
         // --------------------
@@ -455,11 +463,9 @@ public class DatabaseInstrumentedTest {
         assertEquals( noun_Nominative, noun.getNominative() );
         assertEquals( noun_Geninitive, noun.getGenitive() );
         assertEquals( noun_Geninitive_Plural, noun.getGenitivePlural() );
-        assertEquals( noun_Latin_Noun_Stem, noun.getLatinNounStem() );
-        assertEquals( noun_Latin_Preposition, noun.getLatin_Preposition() );
-        assertEquals( noun_Latin_Nominative_Adjective, noun.getLatin_Nominative_Adjective() );
-        assertEquals( noun_English_Noun_Singular, noun.getEnglishNounSingular() );
-        assertEquals( noun_English_Noun_Plural, noun.getEnglishNounPlural() );
+        assertEquals( noun_Latin_Noun_Stem, noun.getLatinWordStem() );
+        assertEquals( noun_English_Noun_Singular, noun.getEnglishWordSingular() );
+        assertEquals( noun_English_Noun_Plural, noun.getEnglishWordPlural() );
     }
 
 
@@ -481,6 +487,41 @@ public class DatabaseInstrumentedTest {
         String query = databaseAccess.sqlNounIrregularQuery(nounIrregular, noun_Gender, noun_number, noun_Latin_Case);
 
         assertEquals("hunc", query);
+    }
+
+
+    @Test
+    public void testAdjectivelist() throws Exception {
+
+        // Adjective FIELDS
+        // -----------
+        adjectiveId = 2;
+        adjectiveType = "Adjective";
+        adjectiveDeclension = 212;
+        adjectiveNominative = "longus";
+        adjectiveNominativeNeuter = null;
+        adjectiveLatinAdjectiveStem = "long";
+        adjectiveEnglishAdjective = "long";
+        adjectiveLatinComparative = "longior";
+        adjectiveEnglishComparative = "longer";
+        adjectiveLatinSuperlative = "longissem";
+        adjectiveEnglishSuperlative = "longest";
+
+        // Run Query
+        // ---------
+        Adjective adjective = databaseAccess.sqlAdjectiveListQuery(noun_id);
+
+        assertEquals( adjectiveId, adjective.getId() );
+        assertEquals( adjectiveType, adjective.getType() );
+        assertEquals( adjectiveDeclension, adjective.getDeclension() );
+        assertEquals( adjectiveNominative, adjective.getNominative() );
+        assertEquals( adjectiveNominativeNeuter, adjective.getNominative_Neuter() );
+        assertEquals( adjectiveLatinAdjectiveStem, adjective.getLatinAdjectiveStem() );
+        assertEquals( adjectiveEnglishAdjective, adjective.getEnglishAdjective() );
+        assertEquals( adjectiveLatinComparative, adjective.getLatinComparative() );
+        assertEquals( adjectiveEnglishComparative, adjective.getEnglishComparative() );
+        assertEquals( adjectiveLatinSuperlative, adjective.getLatinSuperlative() );
+        assertEquals( adjectiveEnglishSuperlative, adjective.getEnglishSuperlative() );
     }
 
 

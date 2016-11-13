@@ -68,7 +68,7 @@ public class LatinNoun_InstrumentTests_2nd_Neuter_Declension {
 
 
         id = 2;
-        typeNoun = "Noun";
+        typeNoun = "NounEtc";
         pronoun = "Pronoun";
 
         genderMale = "m";
@@ -105,8 +105,8 @@ public class LatinNoun_InstrumentTests_2nd_Neuter_Declension {
             mNounRegular.setNominative(nominative);
             mNounRegular.setGenitive(genitive);
             mNounRegular.setGenitivePlural(genitivePlural);
-            mNounRegular.setLatinNounStem(latinNounStem);
-            mNounRegular.setEnglishNounSingular(englishNoun);
+            mNounRegular.setLatinWordStem(latinNounStem);
+            mNounRegular.setEnglishWordSingular(englishNoun);
     }
 
 
@@ -122,48 +122,48 @@ public class LatinNoun_InstrumentTests_2nd_Neuter_Declension {
     /**
      * testMakeNoun_2nd_Declension_Male_Singular()  - 2nd Declension, Male, Singular
      * ===========================================
-     * test Noun Class that It Can build Correct Latin Noun.
+     * test NounEtc Class that It Can build Correct Latin NounEtc.
      * @throws Exception
      */
 
     @Test
     public void testMakeNoun_2nd_Declension_Male_Singular() throws Exception {
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("bell", mNounRegular.getLatinNounStem());
-        assertEquals("um", mNounRegular.getLatinNounEnding());
-        assertEquals("bellum", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinWordStem());
+        assertEquals("um", mNounRegular.getLatinWordEnding());
+        assertEquals("bellum", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("bell", mNounRegular.getLatinNounStem());
-        assertEquals("um", mNounRegular.getLatinNounEnding());
-        assertEquals("bellum", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinWordStem());
+        assertEquals("um", mNounRegular.getLatinWordEnding());
+        assertEquals("bellum", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("bell", mNounRegular.getLatinNounStem());
-        assertEquals("i", mNounRegular.getLatinNounEnding());
-        assertEquals("belli", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinWordStem());
+        assertEquals("i", mNounRegular.getLatinWordEnding());
+        assertEquals("belli", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseDative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("bell", mNounRegular.getLatinNounStem());
-        assertEquals("o", mNounRegular.getLatinNounEnding());
-        assertEquals("bello", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinWordStem());
+        assertEquals("o", mNounRegular.getLatinWordEnding());
+        assertEquals("bello", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("bell", mNounRegular.getLatinNounStem());
-        assertEquals("o", mNounRegular.getLatinNounEnding());
-        assertEquals("bello", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinWordStem());
+        assertEquals("o", mNounRegular.getLatinWordEnding());
+        assertEquals("bello", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("bell", mNounRegular.getLatinNounStem());
-        assertEquals("um", mNounRegular.getLatinNounEnding());
-        assertEquals("bellum", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinWordStem());
+        assertEquals("um", mNounRegular.getLatinWordEnding());
+        assertEquals("bellum", mNounRegular.getLatinWord());
     }
 
 
@@ -173,47 +173,47 @@ public class LatinNoun_InstrumentTests_2nd_Neuter_Declension {
     /**
      * testMakeNoun_2nd_Declension_Male_Plural()  - 2nd Declension, Male, Plural
      * ========================================
-     * test Noun Class that It Can build Correct Latin Noun.
+     * test NounEtc Class that It Can build Correct Latin NounEtc.
      * @throws Exception
      */
     @Test
     public void testMakeNoun_2nd_Declension_Male_Plural() throws Exception {
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("bell", mNounRegular.getLatinNounStem());
-        assertEquals("a", mNounRegular.getLatinNounEnding());
-        assertEquals("bella", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinWordStem());
+        assertEquals("a", mNounRegular.getLatinWordEnding());
+        assertEquals("bella", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("bell", mNounRegular.getLatinNounStem());
-        assertEquals("a", mNounRegular.getLatinNounEnding());
-        assertEquals("bella", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinWordStem());
+        assertEquals("a", mNounRegular.getLatinWordEnding());
+        assertEquals("bella", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("bell", mNounRegular.getLatinNounStem());
-        assertEquals("orum", mNounRegular.getLatinNounEnding());
-        assertEquals("bellorum", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinWordStem());
+        assertEquals("orum", mNounRegular.getLatinWordEnding());
+        assertEquals("bellorum", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseDative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("bell", mNounRegular.getLatinNounStem());
-        assertEquals("is", mNounRegular.getLatinNounEnding());
-        assertEquals("bellis", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinWordStem());
+        assertEquals("is", mNounRegular.getLatinWordEnding());
+        assertEquals("bellis", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("bell", mNounRegular.getLatinNounStem());
-        assertEquals("is", mNounRegular.getLatinNounEnding());
-        assertEquals("bellis", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinWordStem());
+        assertEquals("is", mNounRegular.getLatinWordEnding());
+        assertEquals("bellis", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("bell", mNounRegular.getLatinNounStem());
-        assertEquals("a", mNounRegular.getLatinNounEnding());
-        assertEquals("bella", mNounRegular.getLatinNoun());
+        assertEquals("bell", mNounRegular.getLatinWordStem());
+        assertEquals("a", mNounRegular.getLatinWordEnding());
+        assertEquals("bella", mNounRegular.getLatinWord());
     }
 
 

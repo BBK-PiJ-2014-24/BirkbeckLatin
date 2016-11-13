@@ -8,26 +8,17 @@ import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
  * Created by snewnham on 07/11/2016.
  */
 
-public class Preposition implements Noun {
+public class Preposition implements NounEtc {
+
 
 
     // Fields
     // ------
-    DatabaseAccess mDatabaseAccess;
-    int mId;
-    String mType;
-    int mDeclension;
-    String mGender;
-    String mNominative;
-    String mGenitive;
-    String mGenitive_Plural;
-    String mLatin_Noun_Stem;
-    String mLatin_Noun_Ending;
-    String mLatinNoun;
-    String mLatin_Preposition;
-    String mLatin_Nominative_Adjective;
-    String mEnglishNounSingular;
-    String mEnglishNounPlural;
+    private DatabaseAccess mDatabaseAccess;
+    private int mId;
+    private String mLatin_Preposition;
+    private String mEnglish_Presposition;
+
 
 
     // Constructor
@@ -51,147 +42,115 @@ public class Preposition implements Noun {
      * @return
      */
     @Override
-    public String makeLatinNoun(DatabaseAccess databaseAccess, String number, String Declension) {
-        mLatinNoun = mLatin_Preposition;
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String Declension) {
         return mLatin_Preposition;
     }
 
     @Override
-    public String makeEnglishNoun(DatabaseAccess databaseAccess, String number) {
+    public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
+        return mEnglish_Presposition;
 
-        if(number.equals("Singular")) {
-            return mEnglishNounSingular;
-        } else {
-            return mEnglishNounPlural;
-        }
     }
 
-
-
-    // Getter/Setters
-    // --------------
     @Override
     public int getId() {
-        return mId;
+        return 0;
     }
 
     @Override
     public void setId(int id) {
-        mId = id;
+
     }
 
     @Override
     public String getType() {
-        return mType;
+        return "Preposition";
     }
 
     @Override
     public void setType(String type) {
-        mType = type;
+
     }
 
     @Override
     public int getDeclension() {
-        return mDeclension;
+        return 0;
     }
 
     @Override
     public void setDeclension(int declension) {
-        mDeclension = declension;
+
     }
 
     @Override
     public String getGender() {
-        return mGender;
+        return null;
     }
 
     @Override
     public void setGender(String gender) {
-        mGender = gender;
+
     }
 
     @Override
     public String getNominative() {
-        return mNominative;
+        return null;
     }
 
     @Override
-    public void setNominative(String nominative) { mNominative = nominative; }
+    public void setNominative(String nominative) {
 
-    @Override
-    public String getGenitive() {
-        return mGenitive;
     }
 
     @Override
-    public void setGenitive(String genitive) {
-        mGenitive = genitive;
+    public String getLatinWordStem() {
+        return null;
     }
 
     @Override
-    public String getGenitivePlural() {
-        return mGenitive_Plural;
+    public void setLatinWordStem(String latinStem) {
+
     }
 
     @Override
-    public void setGenitivePlural(String genitivePlural) {
-        mGenitive_Plural = genitivePlural;
+    public String getLatinWordEnding() {
+        return null;
     }
 
     @Override
-    public String getLatinNounStem() {
-        return mLatin_Noun_Stem;
+    public void setLatinWordEnding(String latinWordEnding) {
+
     }
 
     @Override
-    public void setLatinNounStem(String latinNounStem) {
-        mLatin_Noun_Stem = latinNounStem;
+    public String getLatinWord() {
+        return mLatin_Preposition;
     }
 
     @Override
-    public String getLatinNounEnding() { return mLatin_Noun_Ending; }
-
-    @Override
-    public void setLatinNounEnding(String latinNounEnding) { mLatin_Noun_Ending = latinNounEnding; }
-
-    public String getLatin_Preposition() {return mLatin_Preposition;}
-
-    @Override
-    public void setLatin_Preposition(String latin_Preposition) { mLatin_Preposition = latin_Preposition;}
-
-    @Override
-    public String getLatinNoun() { return mLatinNoun; }
-
-    @Override
-    public void setLatinNoun(String latinNoun) { mLatinNoun = latinNoun; }
-
-    @Override
-    public String getEnglishNounSingular() {
-        return mEnglishNounSingular;
+    public void setLatinWord(String latinWord) {
+        mLatin_Preposition = latinWord;
     }
 
     @Override
-    public void setEnglishNounSingular(String englishNounSingular) {
-        mEnglishNounSingular = englishNounSingular;
+    public String getEnglishWordSingular() {
+        return mEnglish_Presposition;
     }
 
     @Override
-    public String getEnglishNounPlural() {
-        return mEnglishNounPlural;
+    public void setEnglishWordSingular(String englishWordSingular) {
+        mEnglish_Presposition = englishWordSingular;
     }
 
     @Override
-    public void setEnglishNounPlural(String englishNounPlural) {
-        mEnglishNounPlural = englishNounPlural;
+    public String getEnglishWordPlural() {
+        return mEnglish_Presposition;
     }
 
     @Override
-    public String getLatin_Nominative_Adjective() {
-        return mLatin_Nominative_Adjective;
+    public void setEnglishWordPlural(String englishWordPlural) {
+        mEnglish_Presposition = englishWordPlural;
     }
 
-    @Override
-    public void setLatin_Nominative_Adjective(String latin_Nominative_Adjective) {
-        mLatin_Nominative_Adjective = latin_Nominative_Adjective;
-    }
+
 }

@@ -5,7 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.snewnham.birkbecklatin.Model.nouns.Noun;
+import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
+import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 
 import java.util.ArrayList;
@@ -101,7 +102,7 @@ public class DatabaseAccess {
      * @param whereArgs
      * @return returns a cursor that has an option to be wrapped.
      *         Either a VerbListCursor - which converts db data to Java Verb object
-     *         or a NounListCursor - which convertsdb data to a Java Noun object.
+     *         or a NounListCursor - which convertsdb data to a Java NounEtc object.
      */
 
     public Cursor sqlQuery(String table, String[] column, String whereClause, String[] whereArgs) {
@@ -477,11 +478,11 @@ public class DatabaseAccess {
     /**
      * sqlNounListQuery()
      * ------------------
-     *  A sql inquiry on the Noun List Table given the id. Returns the Noun object.
+     *  A sql inquiry on the Noun List Table given the id. Returns the NounRegular object.
      * @param id
      * @return
      */
-    public Noun sqlNounListQuery(int id){
+    public NounRegular sqlNounListQuery(int id){
         String strId = Integer.toString(id);
         String table = DbSchema.NounListTable.NOUN_LIST_TABLE;           // FROM Table = VerbListCursor
         String[] column = null;             // SELECT *
@@ -490,7 +491,7 @@ public class DatabaseAccess {
 
         NounListCursor nounListCursor = (NounListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
         nounListCursor.moveToFirst();
-        Noun noun = nounListCursor.makeNounObject();  // Convert Query from Cursor to Verb Object.
+        NounRegular noun = nounListCursor.makeNounObject();  // Convert Query from Cursor to Verb Object.
         return noun;
     }
 
@@ -498,7 +499,7 @@ public class DatabaseAccess {
     /**
      * sqlNounEndingQuery()
      * -------------------
-     * A sql inquiry on the Noun Ending
+     * A sql inquiry on the NounEtc Ending
      *
      * @param number
      * @param gender
@@ -531,7 +532,7 @@ public class DatabaseAccess {
     /**
      * sqlNounIrregularQuery(String nounIrregular, String gender, String number, String latin_Case)
      * ---------------------
-     * Runs a sql query on the Noun Irregular Table.
+     * Runs a sql query on the NounEtc Irregular Table.
      * @param nounIrregular - this is the Nominative of the Irregular, which is also the Column Name
      * @param gender
      * @param number

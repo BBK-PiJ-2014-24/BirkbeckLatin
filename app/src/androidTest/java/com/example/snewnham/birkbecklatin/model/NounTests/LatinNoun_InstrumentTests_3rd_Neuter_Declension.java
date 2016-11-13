@@ -68,7 +68,7 @@ public class LatinNoun_InstrumentTests_3rd_Neuter_Declension {
 
 
         id = 2;
-        typeNoun = "Noun";
+        typeNoun = "NounEtc";
         pronoun = "Pronoun";
 
         genderMale = "m";
@@ -105,8 +105,8 @@ public class LatinNoun_InstrumentTests_3rd_Neuter_Declension {
             mNounRegular.setNominative(nominative);
             mNounRegular.setGenitive(genitive);
             mNounRegular.setGenitivePlural(genitivePlural);
-            mNounRegular.setLatinNounStem(latinNounStem);
-            mNounRegular.setEnglishNounSingular(englishNoun);
+            mNounRegular.setLatinWordStem(latinNounStem);
+            mNounRegular.setEnglishWordSingular(englishNoun);
     }
 
 
@@ -122,48 +122,48 @@ public class LatinNoun_InstrumentTests_3rd_Neuter_Declension {
     /**
      * testMakeNoun_3rd_Declension_Neuter_Singular()  - 3rd Declension, Neuter, Singular
      * ===========================================
-     * test Noun Class that It Can build Correct Latin Noun.
+     * test NounEtc Class that It Can build Correct Latin NounEtc.
      * @throws Exception
      */
 
     @Test
     public void testMakeNoun_3rd_Declension_Neuter_Singular() throws Exception {
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("nomin", mNounRegular.getLatinNounStem());
-        assertEquals("", mNounRegular.getLatinNounEnding());
-        assertEquals("nomen", mNounRegular.getLatinNoun());
+        assertEquals("nomin", mNounRegular.getLatinWordStem());
+        assertEquals("", mNounRegular.getLatinWordEnding());
+        assertEquals("nomen", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("nomin", mNounRegular.getLatinNounStem());
-        assertEquals("", mNounRegular.getLatinNounEnding());
-        assertEquals("nomen", mNounRegular.getLatinNoun());
+        assertEquals("nomin", mNounRegular.getLatinWordStem());
+        assertEquals("", mNounRegular.getLatinWordEnding());
+        assertEquals("nomen", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("nomin", mNounRegular.getLatinNounStem());
-        assertEquals("is", mNounRegular.getLatinNounEnding());
-        assertEquals("nominis", mNounRegular.getLatinNoun());
+        assertEquals("nomin", mNounRegular.getLatinWordStem());
+        assertEquals("is", mNounRegular.getLatinWordEnding());
+        assertEquals("nominis", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseDative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("nomin", mNounRegular.getLatinNounStem());
-        assertEquals("i", mNounRegular.getLatinNounEnding());
-        assertEquals("nomini", mNounRegular.getLatinNoun());
+        assertEquals("nomin", mNounRegular.getLatinWordStem());
+        assertEquals("i", mNounRegular.getLatinWordEnding());
+        assertEquals("nomini", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("nomin", mNounRegular.getLatinNounStem());
-        assertEquals("e", mNounRegular.getLatinNounEnding());
-        assertEquals("nomine", mNounRegular.getLatinNoun());
+        assertEquals("nomin", mNounRegular.getLatinWordStem());
+        assertEquals("e", mNounRegular.getLatinWordEnding());
+        assertEquals("nomine", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("nomin", mNounRegular.getLatinNounStem());
-        assertEquals("", mNounRegular.getLatinNounEnding());
-        assertEquals("nomen", mNounRegular.getLatinNoun());
+        assertEquals("nomin", mNounRegular.getLatinWordStem());
+        assertEquals("", mNounRegular.getLatinWordEnding());
+        assertEquals("nomen", mNounRegular.getLatinWord());
     }
 
 
@@ -173,47 +173,47 @@ public class LatinNoun_InstrumentTests_3rd_Neuter_Declension {
     /**
      * testMakeNoun_3rd_Declension_Neuter_Plural()  - 3rd Declension, Neuter, Plural
      * ========================================
-     * test Noun Class that It Can build Correct Latin Noun.
+     * test NounEtc Class that It Can build Correct Latin NounEtc.
      * @throws Exception
      */
     @Test
     public void testMakeNoun_3rd_Declension_Neuter_Plural() throws Exception {
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("nomin", mNounRegular.getLatinNounStem());
-        assertEquals("a", mNounRegular.getLatinNounEnding());
-        assertEquals("nomina", mNounRegular.getLatinNoun());
+        assertEquals("nomin", mNounRegular.getLatinWordStem());
+        assertEquals("a", mNounRegular.getLatinWordEnding());
+        assertEquals("nomina", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("nomin", mNounRegular.getLatinNounStem());
-        assertEquals("a", mNounRegular.getLatinNounEnding());
-        assertEquals("nomina", mNounRegular.getLatinNoun());
+        assertEquals("nomin", mNounRegular.getLatinWordStem());
+        assertEquals("a", mNounRegular.getLatinWordEnding());
+        assertEquals("nomina", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("nomin", mNounRegular.getLatinNounStem());
-        assertEquals("um", mNounRegular.getLatinNounEnding());
-        assertEquals("nominum", mNounRegular.getLatinNoun());
+        assertEquals("nomin", mNounRegular.getLatinWordStem());
+        assertEquals("um", mNounRegular.getLatinWordEnding());
+        assertEquals("nominum", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseDative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("nomin", mNounRegular.getLatinNounStem());
-        assertEquals("ibus", mNounRegular.getLatinNounEnding());
-        assertEquals("nominibus", mNounRegular.getLatinNoun());
+        assertEquals("nomin", mNounRegular.getLatinWordStem());
+        assertEquals("ibus", mNounRegular.getLatinWordEnding());
+        assertEquals("nominibus", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("nomin", mNounRegular.getLatinNounStem());
-        assertEquals("ibus", mNounRegular.getLatinNounEnding());
-        assertEquals("nominibus", mNounRegular.getLatinNoun());
+        assertEquals("nomin", mNounRegular.getLatinWordStem());
+        assertEquals("ibus", mNounRegular.getLatinWordEnding());
+        assertEquals("nominibus", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("nomin", mNounRegular.getLatinNounStem());
-        assertEquals("a", mNounRegular.getLatinNounEnding());
-        assertEquals("nomina", mNounRegular.getLatinNoun());
+        assertEquals("nomin", mNounRegular.getLatinWordStem());
+        assertEquals("a", mNounRegular.getLatinWordEnding());
+        assertEquals("nomina", mNounRegular.getLatinWord());
     }
 
 

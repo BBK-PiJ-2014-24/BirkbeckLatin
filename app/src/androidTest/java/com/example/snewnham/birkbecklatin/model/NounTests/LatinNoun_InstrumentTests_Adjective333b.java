@@ -70,7 +70,7 @@ public class LatinNoun_InstrumentTests_Adjective333b {
 
         id = 2;
         declension333 = 333;
-        typeNoun = "Noun";
+        typeNoun = "NounEtc";
         typePreposition = "Preposition";
 
         latin_Preposition = null;
@@ -96,18 +96,13 @@ public class LatinNoun_InstrumentTests_Adjective333b {
 
 
         adjective = new Adjective(id, databaseAccess);
-            adjective.setId(id);
-            adjective.setType(typePreposition);
-            adjective.setDeclension(declension333);  // SET DECLENSION
-            adjective.setGender(genderMale);       // SET GENDER
-            adjective.setNominative(nominative);
-            adjective.setGenitive(genitive);
-            adjective.setGenitivePlural(genitivePlural);
-            adjective.setLatinNounStem(latinNounStem);
-            adjective.setLatin_Preposition(latin_Preposition);
-            adjective.setLatin_Nominative_Adjective(nominativeAdjective);
-            adjective.setEnglishNounSingular(englishNounSingular);
-            adjective.setEnglishNounPlural(englishNounPlural);
+        adjective.setId(id);
+        adjective.setType(typePreposition);
+        adjective.setDeclension(declension333);  // SET DECLENSION
+        adjective.setGender(genderMale);       // SET GENDER
+        adjective.setNominative(nominative);
+        adjective.setLatinAdjectiveStem(latinNounStem);
+        adjective.setEnglishAdjective(englishNounPlural);
     }
 
 
@@ -122,48 +117,48 @@ public class LatinNoun_InstrumentTests_Adjective333b {
     /**
      * testMakeAdjectiveSingular()  - Singular, Male
      * ===============================
-     * test Noun Class that It Can build Correct Latin Adjective.
+     * test NounEtc Class that It Can build Correct Latin Adjective.
      * @throws Exception
      */
 
     @Test
     public void testMakeAdjectiveSingularMale() throws Exception {
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("", adjective.getLatinNounEnding());
-        assertEquals("ingens", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("", adjective.getLatinWordEnding());
+        assertEquals("ingens", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("em", adjective.getLatinNounEnding());
-        assertEquals("ingentem", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("em", adjective.getLatinWordEnding());
+        assertEquals("ingentem", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("ingentis", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("is", adjective.getLatinWordEnding());
+        assertEquals("ingentis", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseDative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("ingenti", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("i", adjective.getLatinWordEnding());
+        assertEquals("ingenti", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("ingenti", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("i", adjective.getLatinWordEnding());
+        assertEquals("ingenti", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("", adjective.getLatinNounEnding());
-        assertEquals("ingens", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("", adjective.getLatinWordEnding());
+        assertEquals("ingens", adjective.getLatinWord());
     }
 
 
@@ -173,47 +168,47 @@ public class LatinNoun_InstrumentTests_Adjective333b {
     /**
      * testMakeAdjectivePlural()  - Plural, Male
      * =============================
-     * test Noun Class that It Can build Correct Latin Adjective.
+     * test NounEtc Class that It Can build Correct Latin Adjective.
      * @throws Exception
      */
     @Test
     public void testMakeAdjectivePluralMale() throws Exception {
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("es", adjective.getLatinNounEnding());
-        assertEquals("ingentes", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("es", adjective.getLatinWordEnding());
+        assertEquals("ingentes", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("es", adjective.getLatinNounEnding());
-        assertEquals("ingentes", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("es", adjective.getLatinWordEnding());
+        assertEquals("ingentes", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("ium", adjective.getLatinNounEnding());
-        assertEquals("ingentium", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("ium", adjective.getLatinWordEnding());
+        assertEquals("ingentium", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseDative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("ibus", adjective.getLatinNounEnding());
-        assertEquals("ingentibus", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("ibus", adjective.getLatinWordEnding());
+        assertEquals("ingentibus", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("ibus", adjective.getLatinNounEnding());
-        assertEquals("ingentibus", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("ibus", adjective.getLatinWordEnding());
+        assertEquals("ingentibus", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("es", adjective.getLatinNounEnding());
-        assertEquals("ingentes", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("es", adjective.getLatinWordEnding());
+        assertEquals("ingentes", adjective.getLatinWord());
     }
 
 
@@ -222,7 +217,7 @@ public class LatinNoun_InstrumentTests_Adjective333b {
     /**
      * testMakeAdjectiveSingular()  - Singular, Female
      * ===============================
-     * test Noun Class that It Can build Correct Latin Adjective.
+     * test NounEtc Class that It Can build Correct Latin Adjective.
      * @throws Exception
      */
 
@@ -231,41 +226,41 @@ public class LatinNoun_InstrumentTests_Adjective333b {
 
         adjective.setGender(genderFemale);   // SET GENDER TO FEMALE
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("", adjective.getLatinNounEnding());
-        assertEquals("ingens", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("", adjective.getLatinWordEnding());
+        assertEquals("ingens", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("em", adjective.getLatinNounEnding());
-        assertEquals("ingentem", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("em", adjective.getLatinWordEnding());
+        assertEquals("ingentem", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("ingentis", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("is", adjective.getLatinWordEnding());
+        assertEquals("ingentis", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseDative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("ingenti", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("i", adjective.getLatinWordEnding());
+        assertEquals("ingenti", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("ingenti", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("i", adjective.getLatinWordEnding());
+        assertEquals("ingenti", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("", adjective.getLatinNounEnding());
-        assertEquals("ingens", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("", adjective.getLatinWordEnding());
+        assertEquals("ingens", adjective.getLatinWord());
     }
 
 
@@ -275,7 +270,7 @@ public class LatinNoun_InstrumentTests_Adjective333b {
     /**
      * testMakeAdjectivePlural()  - Plural, Female
      * =============================
-     * test Noun Class that It Can build Correct Latin Adjective.
+     * test NounEtc Class that It Can build Correct Latin Adjective.
      * @throws Exception
      */
     @Test
@@ -283,41 +278,41 @@ public class LatinNoun_InstrumentTests_Adjective333b {
 
         adjective.setGender(genderFemale);   // SET GENDER TO FEMALE
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("es", adjective.getLatinNounEnding());
-        assertEquals("ingentes", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("es", adjective.getLatinWordEnding());
+        assertEquals("ingentes", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("es", adjective.getLatinNounEnding());
-        assertEquals("ingentes", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("es", adjective.getLatinWordEnding());
+        assertEquals("ingentes", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("ium", adjective.getLatinNounEnding());
-        assertEquals("ingentium", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("ium", adjective.getLatinWordEnding());
+        assertEquals("ingentium", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseDative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("ibus", adjective.getLatinNounEnding());
-        assertEquals("ingentibus", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("ibus", adjective.getLatinWordEnding());
+        assertEquals("ingentibus", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("ibus", adjective.getLatinNounEnding());
-        assertEquals("ingentibus", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("ibus", adjective.getLatinWordEnding());
+        assertEquals("ingentibus", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("es", adjective.getLatinNounEnding());
-        assertEquals("ingentes", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("es", adjective.getLatinWordEnding());
+        assertEquals("ingentes", adjective.getLatinWord());
     }
 
     // ================================  SINGULAR, NEUTER  =============================================
@@ -325,7 +320,7 @@ public class LatinNoun_InstrumentTests_Adjective333b {
     /**
      * testMakeAdjectiveSingular()  - Singular, Neuter
      * ===============================
-     * test Noun Class that It Can build Correct Latin Adjective.
+     * test NounEtc Class that It Can build Correct Latin Adjective.
      * @throws Exception
      */
 
@@ -334,41 +329,41 @@ public class LatinNoun_InstrumentTests_Adjective333b {
 
         adjective.setGender(genderNeuter);   // SET GENDER TO NEUTER
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("", adjective.getLatinNounEnding());
-        assertEquals("ingens", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("", adjective.getLatinWordEnding());
+        assertEquals("ingens", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("", adjective.getLatinNounEnding());
-        assertEquals("ingens", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("", adjective.getLatinWordEnding());
+        assertEquals("ingens", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("ingentis", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("is", adjective.getLatinWordEnding());
+        assertEquals("ingentis", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseDative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("ingenti", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("i", adjective.getLatinWordEnding());
+        assertEquals("ingenti", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("ingenti", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("i", adjective.getLatinWordEnding());
+        assertEquals("ingenti", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("", adjective.getLatinNounEnding());
-        assertEquals("ingens", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("", adjective.getLatinWordEnding());
+        assertEquals("ingens", adjective.getLatinWord());
     }
 
 
@@ -378,7 +373,7 @@ public class LatinNoun_InstrumentTests_Adjective333b {
     /**
      * testMakeAdjectivePlural()  - Plural, Neuter
      * =============================
-     * test Noun Class that It Can build Correct Latin Adjective.
+     * test NounEtc Class that It Can build Correct Latin Adjective.
      * @throws Exception
      */
     @Test
@@ -386,54 +381,54 @@ public class LatinNoun_InstrumentTests_Adjective333b {
 
         adjective.setGender(genderNeuter);   // SET GENDER TO NEUTER
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("ia", adjective.getLatinNounEnding());
-        assertEquals("ingentia", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("ia", adjective.getLatinWordEnding());
+        assertEquals("ingentia", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("ia", adjective.getLatinNounEnding());
-        assertEquals("ingentia", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("ia", adjective.getLatinWordEnding());
+        assertEquals("ingentia", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("ium", adjective.getLatinNounEnding());
-        assertEquals("ingentium", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("ium", adjective.getLatinWordEnding());
+        assertEquals("ingentium", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseDative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("ibus", adjective.getLatinNounEnding());
-        assertEquals("ingentibus", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("ibus", adjective.getLatinWordEnding());
+        assertEquals("ingentibus", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("ibus", adjective.getLatinNounEnding());
-        assertEquals("ingentibus", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("ibus", adjective.getLatinWordEnding());
+        assertEquals("ingentibus", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("ingent", adjective.getLatinNounStem());
-        assertEquals("ia", adjective.getLatinNounEnding());
-        assertEquals("ingentia", adjective.getLatinNoun());
+        assertEquals("ingent", adjective.getLatinWordStem());
+        assertEquals("ia", adjective.getLatinWordEnding());
+        assertEquals("ingentia", adjective.getLatinWord());
     }
 
 
     /**
      * testEnglishNounTranslation()
      * ----------------------------
-     * Test to get the English Noun
+     * Test to get the English NounEtc
      */
     @Test
     public void testEnglishNounTranslation() throws Exception{
-        String s = adjective.getEnglishNounPlural();
-        assertEquals("huge", adjective.getEnglishNounSingular() );
-        assertEquals("huge", adjective.getEnglishNounPlural() );
+        String s = adjective.getEnglishWordPlural();
+        assertEquals("huge", adjective.getEnglishWordSingular() );
+        assertEquals("huge", adjective.getEnglishWordPlural() );
     }
 
     @After

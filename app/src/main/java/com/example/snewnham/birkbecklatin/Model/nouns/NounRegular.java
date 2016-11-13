@@ -6,25 +6,23 @@ import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
  * Created by snewnham on 05/11/2016.
  */
 
-public class NounRegular implements Noun {
+public class NounRegular implements NounEtc {
 
     // Fields
     // ------
-    DatabaseAccess mDatabaseAccess;
-    int mId;
-    String mType;
-    int mDeclension;
-    String mGender;
-    String mNominative;
-    String mGenitive;
-    String mGenitive_Plural;
-    String mLatin_Noun_Stem;
-    String mLatin_Noun_Ending;
-    String mLatinNoun;
-    String mLatin_Preposition;
-    String mLatin_Nominative_Adjective;
-    String mEnglishNounSingular;
-    String mEnglishNounPlural;
+    protected DatabaseAccess mDatabaseAccess;
+    protected int mId;
+    protected String mType;
+    protected int mDeclension;
+    protected String mGender;
+    protected String mNominative;
+    protected String mGenitive;
+    protected String mGenitive_Plural;
+    protected String mLatin_Noun_Stem;
+    protected String mLatin_Noun_Ending;
+    protected String mLatinNoun;
+    protected String mEnglishNounSingular;
+    protected  String mEnglishNounPlural;
 
 
     // Constructor
@@ -41,16 +39,16 @@ public class NounRegular implements Noun {
 
 
     /**
-     * makeLatinNoun()
+     * makeLatinWord()
      * ---------------
-     * sql query for making the Latin Noun From the stem and ending, given the case, number and declension
+     * sql query for making the Latin NounEtc From the stem and ending, given the case, number and declension
      * @param databaseAccess
      * @param number
      * @param declension
      * @return
      */
     @Override
-    public String makeLatinNoun(DatabaseAccess databaseAccess, String number, String declension) {
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String declension) {
 
             // Override for 3rd Declension Nominative and Singular (Singular) && Genitive Plural
             if( mDeclension == 3 ) {
@@ -74,7 +72,7 @@ public class NounRegular implements Noun {
     }
 
     @Override
-    public String makeEnglishNoun(DatabaseAccess databaseAccess, String number) {
+    public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
 
         if(number.equals("Singular")){
             return mEnglishNounSingular;
@@ -135,83 +133,68 @@ public class NounRegular implements Noun {
     @Override
     public void setNominative(String nominative) { mNominative = nominative; }
 
-    @Override
+
     public String getGenitive() {
         return mGenitive;
     }
 
-    @Override
+
     public void setGenitive(String genitive) {
         mGenitive = genitive;
     }
 
-    @Override
+
     public String getGenitivePlural() {
         return mGenitive_Plural;
     }
 
-    @Override
+
     public void setGenitivePlural(String genitivePlural) {
         mGenitive_Plural = genitivePlural;
     }
 
     @Override
-    public String getLatinNounStem() {
+    public String getLatinWordStem() {
         return mLatin_Noun_Stem;
     }
 
     @Override
-    public void setLatinNounStem(String latinNounStem) {
+    public void setLatinWordStem(String latinNounStem) {
         mLatin_Noun_Stem = latinNounStem;
     }
 
     @Override
-    public String getLatinNounEnding() { return mLatin_Noun_Ending; }
+    public String getLatinWordEnding() { return mLatin_Noun_Ending; }
 
     @Override
-    public void setLatinNounEnding(String latinNounEnding) { mLatin_Noun_Ending = latinNounEnding; }
-
-    @Override
-    public String getLatin_Preposition() {return mLatin_Preposition;}
-
-    @Override
-    public void setLatin_Preposition(String latin_Other) { mLatin_Preposition = latin_Other;}
+    public void setLatinWordEnding(String latinNounEnding) { mLatin_Noun_Ending = latinNounEnding; }
 
 
     @Override
-    public String getLatinNoun() { return mLatinNoun; }
+    public String getLatinWord() { return mLatinNoun; }
 
     @Override
-    public void setLatinNoun(String latinNoun) { mLatinNoun = latinNoun; }
+    public void setLatinWord(String latinNoun) { mLatinNoun = latinNoun; }
 
 
     @Override
-    public String getEnglishNounSingular() {
+    public String getEnglishWordSingular() {
         return mEnglishNounSingular;
     }
 
     @Override
-    public void setEnglishNounSingular(String englishNounSingular) {
+    public void setEnglishWordSingular(String englishNounSingular) {
         mEnglishNounSingular = englishNounSingular;
     }
 
     @Override
-    public String getEnglishNounPlural() {
+    public String getEnglishWordPlural() {
         return mEnglishNounPlural;
     }
 
     @Override
-    public void setEnglishNounPlural(String englishNounPlural) {
-        mEnglishNounPlural = englishNounPlural;
+    public void setEnglishWordPlural(String englishWordPlural) {
+        mEnglishNounPlural = englishWordPlural;
     }
 
-    @Override
-    public String getLatin_Nominative_Adjective() {
-        return mLatin_Nominative_Adjective;
-    }
-
-    @Override
-    public void setLatin_Nominative_Adjective(String latin_Nominative_Adjective) {
-        mLatin_Nominative_Adjective = latin_Nominative_Adjective;
-    }
 }

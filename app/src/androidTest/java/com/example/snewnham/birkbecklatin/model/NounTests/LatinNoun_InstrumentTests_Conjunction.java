@@ -29,12 +29,8 @@ public class LatinNoun_InstrumentTests_Conjunction {
 
     int id;
     Conjunction conjunction;
-
     String typeNoun;
-    String typePreposition;
-    String typeConjunction;
-    String latin_Other;
-
+    String latinConjunction;
     String englishNoun;
 
 
@@ -48,23 +44,16 @@ public class LatinNoun_InstrumentTests_Conjunction {
 
 
         id = 2;
-        typeNoun = "Noun";
-        typePreposition = "Preposition";
-
-        latin_Other = "tamen";
+        typeNoun = "NounEtc";
+        latinConjunction = "tamen";
         englishNoun = "however";
 
         conjunction = new Conjunction(id, databaseAccess);
             conjunction.setId(id);
-            conjunction.setType(typeConjunction);
-            conjunction.setDeclension(0);  // SET DECLENSION
-            conjunction.setGender(null);       // SET GENDER
-            conjunction.setNominative(null);
-            conjunction.setGenitive(null);
-            conjunction.setGenitivePlural(null);
-            conjunction.setLatinNounStem(null);
-            conjunction.setLatin_Preposition(latin_Other);
-            conjunction.setEnglishNounSingular(englishNoun);
+            conjunction.setLatinWordStem(null);
+            conjunction.setLatinWordEnding(null);
+            conjunction.setLatinWord(latinConjunction);
+            conjunction.setEnglishWordSingular(englishNoun);
     }
 
 
@@ -80,28 +69,28 @@ public class LatinNoun_InstrumentTests_Conjunction {
     /**
      * testMakeNoun_2nd_Declension_Male_Singular()  - 2nd Declension, Male, Singular
      * ===========================================
-     * test Noun Class that It Can build Correct Latin Noun.
+     * test NounEtc Class that It Can build Correct Latin NounEtc.
      * @throws Exception
      */
 
     @Test
     public void testMakeConjunction() throws Exception {
 
-        conjunction.makeLatinNoun(databaseAccess, null, null);
+        conjunction.makeLatinWord(databaseAccess, null, null);
 
-        assertEquals(null, conjunction.getLatinNounStem());
-        assertEquals(null, conjunction.getLatinNounEnding());
-        assertEquals("tamen", conjunction.getLatinNoun());
+        assertEquals(null, conjunction.getLatinWordStem());
+        assertEquals(null, conjunction.getLatinWordEnding());
+        assertEquals("tamen", conjunction.getLatinWord());
     }
 
     /**
      * testEnglishPrespositionTranslation()
      * ----------------------------
-     * Test to get the English Noun
+     * Test to get the English NounEtc
      */
     @Test
     public void testEnglishConjunctionTranslation(){
-        assertEquals("however", conjunction.getEnglishNounSingular() );
+        assertEquals("however", conjunction.getEnglishWordSingular() );
     }
 
 

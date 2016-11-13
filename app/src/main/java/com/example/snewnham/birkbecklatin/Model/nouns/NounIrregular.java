@@ -27,7 +27,7 @@ public class NounIrregular extends NounRegular {
     }
 
     @Override
-    public String makeLatinNoun(DatabaseAccess databaseAccess, String number, String declension){
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String declension){
 
         mLatin_Noun_Stem = null;
         mLatin_Noun_Ending = null;

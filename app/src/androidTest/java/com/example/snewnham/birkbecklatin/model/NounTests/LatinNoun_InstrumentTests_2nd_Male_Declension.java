@@ -68,7 +68,7 @@ public class LatinNoun_InstrumentTests_2nd_Male_Declension {
 
 
         id = 2;
-        typeNoun = "Noun";
+        typeNoun = "NounEtc";
         pronoun = "Pronoun";
 
         genderMale = "m";
@@ -104,8 +104,8 @@ public class LatinNoun_InstrumentTests_2nd_Male_Declension {
             mNounRegular.setNominative(nominative);
             mNounRegular.setGenitive(genitive);
             mNounRegular.setGenitivePlural(genitivePlural);
-            mNounRegular.setLatinNounStem(latinNounStem);
-            mNounRegular.setEnglishNounSingular(englishNoun);
+            mNounRegular.setLatinWordStem(latinNounStem);
+            mNounRegular.setEnglishWordSingular(englishNoun);
 
     }
 
@@ -122,48 +122,48 @@ public class LatinNoun_InstrumentTests_2nd_Male_Declension {
     /**
      * testMakeNoun_2nd_Declension_Male_Singular()  - 2nd Declension, Male, Singular
      * ===========================================
-     * test Noun Class that It Can build Correct Latin Noun.
+     * test NounEtc Class that It Can build Correct Latin NounEtc.
      * @throws Exception
      */
 
     @Test
     public void testMakeNoun_2nd_Declension_Male_Singular() throws Exception {
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("us", mNounRegular.getLatinNounEnding());
-        assertEquals("amicus", mNounRegular.getLatinNoun());
+        assertEquals("amic", mNounRegular.getLatinWordStem());
+        assertEquals("us", mNounRegular.getLatinWordEnding());
+        assertEquals("amicus", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("um", mNounRegular.getLatinNounEnding());
-        assertEquals("amicum", mNounRegular.getLatinNoun());
+        assertEquals("amic", mNounRegular.getLatinWordStem());
+        assertEquals("um", mNounRegular.getLatinWordEnding());
+        assertEquals("amicum", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("i", mNounRegular.getLatinNounEnding());
-        assertEquals("amici", mNounRegular.getLatinNoun());
+        assertEquals("amic", mNounRegular.getLatinWordStem());
+        assertEquals("i", mNounRegular.getLatinWordEnding());
+        assertEquals("amici", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseDative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("o", mNounRegular.getLatinNounEnding());
-        assertEquals("amico", mNounRegular.getLatinNoun());
+        assertEquals("amic", mNounRegular.getLatinWordStem());
+        assertEquals("o", mNounRegular.getLatinWordEnding());
+        assertEquals("amico", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("o", mNounRegular.getLatinNounEnding());
-        assertEquals("amico", mNounRegular.getLatinNoun());
+        assertEquals("amic", mNounRegular.getLatinWordStem());
+        assertEquals("o", mNounRegular.getLatinWordEnding());
+        assertEquals("amico", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("e", mNounRegular.getLatinNounEnding());
-        assertEquals("amice", mNounRegular.getLatinNoun());
+        assertEquals("amic", mNounRegular.getLatinWordStem());
+        assertEquals("e", mNounRegular.getLatinWordEnding());
+        assertEquals("amice", mNounRegular.getLatinWord());
     }
 
 
@@ -173,47 +173,47 @@ public class LatinNoun_InstrumentTests_2nd_Male_Declension {
     /**
      * testMakeNoun_2nd_Declension_Male_Plural()  - 2nd Declension, Male, Plural
      * ========================================
-     * test Noun Class that It Can build Correct Latin Noun.
+     * test NounEtc Class that It Can build Correct Latin NounEtc.
      * @throws Exception
      */
     @Test
     public void testMakeNoun_2nd_Declension_Male_Plural() throws Exception {
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("i", mNounRegular.getLatinNounEnding());
-        assertEquals("amici", mNounRegular.getLatinNoun());
+        assertEquals("amic", mNounRegular.getLatinWordStem());
+        assertEquals("i", mNounRegular.getLatinWordEnding());
+        assertEquals("amici", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("os", mNounRegular.getLatinNounEnding());
-        assertEquals("amicos", mNounRegular.getLatinNoun());
+        assertEquals("amic", mNounRegular.getLatinWordStem());
+        assertEquals("os", mNounRegular.getLatinWordEnding());
+        assertEquals("amicos", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("orum", mNounRegular.getLatinNounEnding());
-        assertEquals("amicorum", mNounRegular.getLatinNoun());
+        assertEquals("amic", mNounRegular.getLatinWordStem());
+        assertEquals("orum", mNounRegular.getLatinWordEnding());
+        assertEquals("amicorum", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseDative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("is", mNounRegular.getLatinNounEnding());
-        assertEquals("amicis", mNounRegular.getLatinNoun());
+        assertEquals("amic", mNounRegular.getLatinWordStem());
+        assertEquals("is", mNounRegular.getLatinWordEnding());
+        assertEquals("amicis", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("is", mNounRegular.getLatinNounEnding());
-        assertEquals("amicis", mNounRegular.getLatinNoun());
+        assertEquals("amic", mNounRegular.getLatinWordStem());
+        assertEquals("is", mNounRegular.getLatinWordEnding());
+        assertEquals("amicis", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("amic", mNounRegular.getLatinNounStem());
-        assertEquals("i", mNounRegular.getLatinNounEnding());
-        assertEquals("amici", mNounRegular.getLatinNoun());
+        assertEquals("amic", mNounRegular.getLatinWordStem());
+        assertEquals("i", mNounRegular.getLatinWordEnding());
+        assertEquals("amici", mNounRegular.getLatinWord());
     }
 
 

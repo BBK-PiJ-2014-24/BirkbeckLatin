@@ -68,7 +68,7 @@ public class LatinNoun_InstrumentTests_4th_Female_Declension {
 
 
         id = 2;
-        typeNoun = "Noun";
+        typeNoun = "NounEtc";
         pronoun = "Pronoun";
 
         genderMale = "m";
@@ -105,8 +105,8 @@ public class LatinNoun_InstrumentTests_4th_Female_Declension {
             mNounRegular.setNominative(nominative);
             mNounRegular.setGenitive(genitive);
             mNounRegular.setGenitivePlural(genitivePlural);
-            mNounRegular.setLatinNounStem(latinNounStem);
-            mNounRegular.setEnglishNounSingular(englishNoun);
+            mNounRegular.setLatinWordStem(latinNounStem);
+            mNounRegular.setEnglishWordSingular(englishNoun);
     }
 
 
@@ -122,48 +122,48 @@ public class LatinNoun_InstrumentTests_4th_Female_Declension {
     /**
      * testMakeNoun_4th_Declension_Female_Singular()  - 4th Declension, Female, Singular
      * ===========================================
-     * test Noun Class that It Can build Correct Latin Noun.
+     * test NounEtc Class that It Can build Correct Latin NounEtc.
      * @throws Exception
      */
 
     @Test
     public void testMakeNoun_4th_Declension_Female_Singular() throws Exception {
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("man", mNounRegular.getLatinNounStem());
-        assertEquals("us", mNounRegular.getLatinNounEnding());
-        assertEquals("manus", mNounRegular.getLatinNoun());
+        assertEquals("man", mNounRegular.getLatinWordStem());
+        assertEquals("us", mNounRegular.getLatinWordEnding());
+        assertEquals("manus", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("man", mNounRegular.getLatinNounStem());
-        assertEquals("um", mNounRegular.getLatinNounEnding());
-        assertEquals("manum", mNounRegular.getLatinNoun());
+        assertEquals("man", mNounRegular.getLatinWordStem());
+        assertEquals("um", mNounRegular.getLatinWordEnding());
+        assertEquals("manum", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("man", mNounRegular.getLatinNounStem());
-        assertEquals("us", mNounRegular.getLatinNounEnding());
-        assertEquals("manus", mNounRegular.getLatinNoun());
+        assertEquals("man", mNounRegular.getLatinWordStem());
+        assertEquals("us", mNounRegular.getLatinWordEnding());
+        assertEquals("manus", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseDative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("man", mNounRegular.getLatinNounStem());
-        assertEquals("ui", mNounRegular.getLatinNounEnding());
-        assertEquals("manui", mNounRegular.getLatinNoun());
+        assertEquals("man", mNounRegular.getLatinWordStem());
+        assertEquals("ui", mNounRegular.getLatinWordEnding());
+        assertEquals("manui", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("man", mNounRegular.getLatinNounStem());
-        assertEquals("u", mNounRegular.getLatinNounEnding());
-        assertEquals("manu", mNounRegular.getLatinNoun());
+        assertEquals("man", mNounRegular.getLatinWordStem());
+        assertEquals("u", mNounRegular.getLatinWordEnding());
+        assertEquals("manu", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("man", mNounRegular.getLatinNounStem());
-        assertEquals("us", mNounRegular.getLatinNounEnding());
-        assertEquals("manus", mNounRegular.getLatinNoun());
+        assertEquals("man", mNounRegular.getLatinWordStem());
+        assertEquals("us", mNounRegular.getLatinWordEnding());
+        assertEquals("manus", mNounRegular.getLatinWord());
     }
 
 
@@ -173,47 +173,47 @@ public class LatinNoun_InstrumentTests_4th_Female_Declension {
     /**
      * testMakeNoun_4th_Declension_Female_Plural()  - 4th Declension, Female, Plural
      * ========================================
-     * test Noun Class that It Can build Correct Latin Noun.
+     * test NounEtc Class that It Can build Correct Latin NounEtc.
      * @throws Exception
      */
     @Test
     public void testMakeNoun_4th_Declension_Female_Plural() throws Exception {
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("man", mNounRegular.getLatinNounStem());
-        assertEquals("us", mNounRegular.getLatinNounEnding());
-        assertEquals("manus", mNounRegular.getLatinNoun());
+        assertEquals("man", mNounRegular.getLatinWordStem());
+        assertEquals("us", mNounRegular.getLatinWordEnding());
+        assertEquals("manus", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("man", mNounRegular.getLatinNounStem());
-        assertEquals("us", mNounRegular.getLatinNounEnding());
-        assertEquals("manus", mNounRegular.getLatinNoun());
+        assertEquals("man", mNounRegular.getLatinWordStem());
+        assertEquals("us", mNounRegular.getLatinWordEnding());
+        assertEquals("manus", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("man", mNounRegular.getLatinNounStem());
-        assertEquals("uum", mNounRegular.getLatinNounEnding());
-        assertEquals("manuum", mNounRegular.getLatinNoun());
+        assertEquals("man", mNounRegular.getLatinWordStem());
+        assertEquals("uum", mNounRegular.getLatinWordEnding());
+        assertEquals("manuum", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseDative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("man", mNounRegular.getLatinNounStem());
-        assertEquals("ibus", mNounRegular.getLatinNounEnding());
-        assertEquals("manibus", mNounRegular.getLatinNoun());
+        assertEquals("man", mNounRegular.getLatinWordStem());
+        assertEquals("ibus", mNounRegular.getLatinWordEnding());
+        assertEquals("manibus", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("man", mNounRegular.getLatinNounStem());
-        assertEquals("ibus", mNounRegular.getLatinNounEnding());
-        assertEquals("manibus", mNounRegular.getLatinNoun());
+        assertEquals("man", mNounRegular.getLatinWordStem());
+        assertEquals("ibus", mNounRegular.getLatinWordEnding());
+        assertEquals("manibus", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("man", mNounRegular.getLatinNounStem());
-        assertEquals("us", mNounRegular.getLatinNounEnding());
-        assertEquals("manus", mNounRegular.getLatinNoun());
+        assertEquals("man", mNounRegular.getLatinWordStem());
+        assertEquals("us", mNounRegular.getLatinWordEnding());
+        assertEquals("manus", mNounRegular.getLatinWord());
     }
 
 

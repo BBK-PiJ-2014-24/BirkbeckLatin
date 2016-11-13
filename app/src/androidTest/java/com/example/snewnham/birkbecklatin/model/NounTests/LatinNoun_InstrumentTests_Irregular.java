@@ -6,7 +6,6 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounIrregular;
-import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 
 import org.junit.After;
 import org.junit.Before;
@@ -69,7 +68,7 @@ public class LatinNoun_InstrumentTests_Irregular {
 
 
         id = 2;
-        typeNoun = "Noun";
+        typeNoun = "NounEtc";
         pronoun = "Pronoun";
 
         genderMale = "m";
@@ -106,9 +105,9 @@ public class LatinNoun_InstrumentTests_Irregular {
             nounIrregular.setNominative(nominative);
             nounIrregular.setGenitive(genitive);
             nounIrregular.setGenitivePlural(genitivePlural);
-            nounIrregular.setLatinNounStem(latinNounStem);
-            nounIrregular.setEnglishNounSingular(englishNounSingular);
-            nounIrregular.setEnglishNounPlural(englishNounPlural);
+            nounIrregular.setLatinWordStem(latinNounStem);
+            nounIrregular.setEnglishWordSingular(englishNounSingular);
+            nounIrregular.setEnglishWordPlural(englishNounPlural);
     }
 
 
@@ -124,48 +123,48 @@ public class LatinNoun_InstrumentTests_Irregular {
     /**
      * testMakeNounIrregularSingular()
      * ===============================
-     * test Noun Class that It Can build Correct Latin Noun.
+     * test NounEtc Class that It Can build Correct Latin NounEtc.
      * @throws Exception
      */
 
     @Test
     public void testMakeNounIrregularSingular() throws Exception {
 
-        nounIrregular.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
+        nounIrregular.makeLatinWord(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals(null, nounIrregular.getLatinNounStem());
-        assertEquals(null, nounIrregular.getLatinNounEnding());
-        assertEquals("hic", nounIrregular.getLatinNoun());
+        assertEquals(null, nounIrregular.getLatinWordStem());
+        assertEquals(null, nounIrregular.getLatinWordEnding());
+        assertEquals("hic", nounIrregular.getLatinWord());
 
-        nounIrregular.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
+        nounIrregular.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals(null, nounIrregular.getLatinNounStem());
-        assertEquals(null, nounIrregular.getLatinNounEnding());
-        assertEquals("hunc", nounIrregular.getLatinNoun());
+        assertEquals(null, nounIrregular.getLatinWordStem());
+        assertEquals(null, nounIrregular.getLatinWordEnding());
+        assertEquals("hunc", nounIrregular.getLatinWord());
 
-        nounIrregular.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
+        nounIrregular.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals(null, nounIrregular.getLatinNounStem());
-        assertEquals(null, nounIrregular.getLatinNounEnding());
-        assertEquals("huius", nounIrregular.getLatinNoun());
+        assertEquals(null, nounIrregular.getLatinWordStem());
+        assertEquals(null, nounIrregular.getLatinWordEnding());
+        assertEquals("huius", nounIrregular.getLatinWord());
 
-        nounIrregular.makeLatinNoun(databaseAccess, numberSingular, caseDative);
+        nounIrregular.makeLatinWord(databaseAccess, numberSingular, caseDative);
 
-        assertEquals(null, nounIrregular.getLatinNounStem());
-        assertEquals(null, nounIrregular.getLatinNounEnding());
-        assertEquals("huic", nounIrregular.getLatinNoun());
+        assertEquals(null, nounIrregular.getLatinWordStem());
+        assertEquals(null, nounIrregular.getLatinWordEnding());
+        assertEquals("huic", nounIrregular.getLatinWord());
 
-        nounIrregular.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
+        nounIrregular.makeLatinWord(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals(null, nounIrregular.getLatinNounStem());
-        assertEquals(null, nounIrregular.getLatinNounEnding());
-        assertEquals("hoc", nounIrregular.getLatinNoun());
+        assertEquals(null, nounIrregular.getLatinWordStem());
+        assertEquals(null, nounIrregular.getLatinWordEnding());
+        assertEquals("hoc", nounIrregular.getLatinWord());
 
-        nounIrregular.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
+        nounIrregular.makeLatinWord(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals(null, nounIrregular.getLatinNounStem());
-        assertEquals(null, nounIrregular.getLatinNounEnding());
-        assertEquals(null, nounIrregular.getLatinNoun());
+        assertEquals(null, nounIrregular.getLatinWordStem());
+        assertEquals(null, nounIrregular.getLatinWordEnding());
+        assertEquals(null, nounIrregular.getLatinWord());
     }
 
 
@@ -175,58 +174,58 @@ public class LatinNoun_InstrumentTests_Irregular {
     /**
      * testMakeNounIrregularPlural()  - Plural
      * =============================
-     * test Noun Class that It Can build Correct Latin Noun.
+     * test NounEtc Class that It Can build Correct Latin NounEtc.
      * @throws Exception
      */
     @Test
     public void testMakeNounIrregularPlural() throws Exception {
 
-        nounIrregular.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
+        nounIrregular.makeLatinWord(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals(null, nounIrregular.getLatinNounStem());
-        assertEquals(null, nounIrregular.getLatinNounEnding());
-        assertEquals("hi", nounIrregular.getLatinNoun());
+        assertEquals(null, nounIrregular.getLatinWordStem());
+        assertEquals(null, nounIrregular.getLatinWordEnding());
+        assertEquals("hi", nounIrregular.getLatinWord());
 
-        nounIrregular.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
+        nounIrregular.makeLatinWord(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals(null, nounIrregular.getLatinNounStem());
-        assertEquals(null, nounIrregular.getLatinNounEnding());
-        assertEquals("hos", nounIrregular.getLatinNoun());
+        assertEquals(null, nounIrregular.getLatinWordStem());
+        assertEquals(null, nounIrregular.getLatinWordEnding());
+        assertEquals("hos", nounIrregular.getLatinWord());
 
-        nounIrregular.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
+        nounIrregular.makeLatinWord(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals(null, nounIrregular.getLatinNounStem());
-        assertEquals(null, nounIrregular.getLatinNounEnding());
-        assertEquals("horum", nounIrregular.getLatinNoun());
+        assertEquals(null, nounIrregular.getLatinWordStem());
+        assertEquals(null, nounIrregular.getLatinWordEnding());
+        assertEquals("horum", nounIrregular.getLatinWord());
 
-        nounIrregular.makeLatinNoun(databaseAccess, numberPlural, caseDative);
+        nounIrregular.makeLatinWord(databaseAccess, numberPlural, caseDative);
 
-        assertEquals(null, nounIrregular.getLatinNounStem());
-        assertEquals(null, nounIrregular.getLatinNounEnding());
-        assertEquals("his", nounIrregular.getLatinNoun());
+        assertEquals(null, nounIrregular.getLatinWordStem());
+        assertEquals(null, nounIrregular.getLatinWordEnding());
+        assertEquals("his", nounIrregular.getLatinWord());
 
-        nounIrregular.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
+        nounIrregular.makeLatinWord(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals(null, nounIrregular.getLatinNounStem());
-        assertEquals(null, nounIrregular.getLatinNounEnding());
-        assertEquals("his", nounIrregular.getLatinNoun());
+        assertEquals(null, nounIrregular.getLatinWordStem());
+        assertEquals(null, nounIrregular.getLatinWordEnding());
+        assertEquals("his", nounIrregular.getLatinWord());
 
-        nounIrregular.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
+        nounIrregular.makeLatinWord(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals(null, nounIrregular.getLatinNounStem());
-        assertEquals(null, nounIrregular.getLatinNounEnding());
-        assertEquals(null, nounIrregular.getLatinNoun());
+        assertEquals(null, nounIrregular.getLatinWordStem());
+        assertEquals(null, nounIrregular.getLatinWordEnding());
+        assertEquals(null, nounIrregular.getLatinWord());
     }
 
     /**
      * testEnglishNounTranslation()
      * ----------------------------
-     * Test to get the English Noun
+     * Test to get the English NounEtc
      */
     @Test
     public void testEnglishNounTranslation() throws Exception{
-        assertEquals("this", nounIrregular.getEnglishNounSingular() );
-        assertEquals("these", nounIrregular.getEnglishNounPlural() );
+        assertEquals("this", nounIrregular.getEnglishWordSingular() );
+        assertEquals("these", nounIrregular.getEnglishWordPlural() );
     }
 
 

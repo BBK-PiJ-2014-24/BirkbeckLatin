@@ -32,7 +32,7 @@ public class LatinNoun_InstrumentTests_Preposition {
 
     String typeNoun;
     String typePreposition;
-    String latin_Other;
+    String latinPresposition;
 
     String englishNoun;
 
@@ -45,23 +45,20 @@ public class LatinNoun_InstrumentTests_Preposition {
 
 
         id = 2;
-        typeNoun = "Noun";
+        typeNoun = "NounEtc";
         typePreposition = "Preposition";
 
-        latin_Other = "circum";
+        latinPresposition = "circum";
         englishNoun = "around";
 
         preposition = new Preposition(id, databaseAccess);
             preposition.setId(id);
             preposition.setType(typePreposition);
             preposition.setDeclension(0);  // SET DECLENSION
-            preposition.setGender(null);       // SET GENDER
-            preposition.setNominative(null);
-            preposition.setGenitive(null);
-            preposition.setGenitivePlural(null);
-            preposition.setLatinNounStem(null);
-            preposition.setLatin_Preposition(latin_Other);
-            preposition.setEnglishNounSingular(englishNoun);
+            preposition.setLatinWordStem(null);
+            preposition.setLatinWordEnding(null);
+            preposition.setLatinWord(latinPresposition);
+            preposition.setEnglishWordSingular(englishNoun);
 
     }
 
@@ -78,29 +75,29 @@ public class LatinNoun_InstrumentTests_Preposition {
     /**
      * testMakeNoun_2nd_Declension_Male_Singular()  - 2nd Declension, Male, Singular
      * ===========================================
-     * test Noun Class that It Can build Correct Latin Noun.
+     * test NounEtc Class that It Can build Correct Latin NounEtc.
      * @throws Exception
      */
 
     @Test
     public void testMakePreposition() throws Exception {
 
-        preposition.makeLatinNoun(databaseAccess, null, null);
+        preposition.makeLatinWord(databaseAccess, null, null);
 
-        assertEquals(null, preposition.getLatinNounStem());
-        assertEquals(null, preposition.getLatinNounEnding());
-        assertEquals("circum", preposition.getLatinNoun());
+        assertEquals(null, preposition.getLatinWordStem());
+        assertEquals(null, preposition.getLatinWordEnding());
+        assertEquals("circum", preposition.getLatinWord());
 
     }
 
     /**
      * testEnglishPrespositionTranslation()
      * ----------------------------
-     * Test to get the English Noun
+     * Test to get the English NounEtc
      */
     @Test
     public void testEnglishPrespositionTranslation(){
-        assertEquals("around", preposition.getEnglishNounSingular() );
+        assertEquals("around", preposition.getEnglishWordSingular() );
     }
 
 

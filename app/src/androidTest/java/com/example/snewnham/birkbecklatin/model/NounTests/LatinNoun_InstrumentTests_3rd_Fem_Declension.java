@@ -68,7 +68,7 @@ public class LatinNoun_InstrumentTests_3rd_Fem_Declension {
 
 
         id = 2;
-        typeNoun = "Noun";
+        typeNoun = "NounEtc";
         pronoun = "Pronoun";
 
         genderMale = "m";
@@ -105,8 +105,8 @@ public class LatinNoun_InstrumentTests_3rd_Fem_Declension {
             mNounRegular.setNominative(nominative);
             mNounRegular.setGenitive(genitive);
             mNounRegular.setGenitivePlural(genitivePlural);
-            mNounRegular.setLatinNounStem(latinNounStem);
-            mNounRegular.setEnglishNounSingular(englishNoun);
+            mNounRegular.setLatinWordStem(latinNounStem);
+            mNounRegular.setEnglishWordSingular(englishNoun);
     }
 
 
@@ -122,48 +122,48 @@ public class LatinNoun_InstrumentTests_3rd_Fem_Declension {
     /**
      * testMakeNoun_3rd_Declension_Female_Singular()  - 3rd Declension, Male, Singular
      * ===========================================
-     * test Noun Class that It Can build Correct Latin Noun.
+     * test NounEtc Class that It Can build Correct Latin NounEtc.
      * @throws Exception
      */
 
     @Test
     public void testMakeNoun_3rd_Declension_Female_Singular() throws Exception {
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("nav", mNounRegular.getLatinNounStem());
-        assertEquals("", mNounRegular.getLatinNounEnding());
-        assertEquals("navis", mNounRegular.getLatinNoun());
+        assertEquals("nav", mNounRegular.getLatinWordStem());
+        assertEquals("", mNounRegular.getLatinWordEnding());
+        assertEquals("navis", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("nav", mNounRegular.getLatinNounStem());
-        assertEquals("em", mNounRegular.getLatinNounEnding());
-        assertEquals("navem", mNounRegular.getLatinNoun());
+        assertEquals("nav", mNounRegular.getLatinWordStem());
+        assertEquals("em", mNounRegular.getLatinWordEnding());
+        assertEquals("navem", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("nav", mNounRegular.getLatinNounStem());
-        assertEquals("is", mNounRegular.getLatinNounEnding());
-        assertEquals("navis", mNounRegular.getLatinNoun());
+        assertEquals("nav", mNounRegular.getLatinWordStem());
+        assertEquals("is", mNounRegular.getLatinWordEnding());
+        assertEquals("navis", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseDative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("nav", mNounRegular.getLatinNounStem());
-        assertEquals("i", mNounRegular.getLatinNounEnding());
-        assertEquals("navi", mNounRegular.getLatinNoun());
+        assertEquals("nav", mNounRegular.getLatinWordStem());
+        assertEquals("i", mNounRegular.getLatinWordEnding());
+        assertEquals("navi", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("nav", mNounRegular.getLatinNounStem());
-        assertEquals("e", mNounRegular.getLatinNounEnding());
-        assertEquals("nave", mNounRegular.getLatinNoun());
+        assertEquals("nav", mNounRegular.getLatinWordStem());
+        assertEquals("e", mNounRegular.getLatinWordEnding());
+        assertEquals("nave", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
+        mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("nav", mNounRegular.getLatinNounStem());
-        assertEquals("", mNounRegular.getLatinNounEnding());
-        assertEquals("navis", mNounRegular.getLatinNoun());
+        assertEquals("nav", mNounRegular.getLatinWordStem());
+        assertEquals("", mNounRegular.getLatinWordEnding());
+        assertEquals("navis", mNounRegular.getLatinWord());
     }
 
 
@@ -173,47 +173,47 @@ public class LatinNoun_InstrumentTests_3rd_Fem_Declension {
     /**
      * testMakeNoun_3rd_Declension_Male_Plural()  - 3rd Declension, Male, Plural
      * ========================================
-     * test Noun Class that It Can build Correct Latin Noun.
+     * test NounEtc Class that It Can build Correct Latin NounEtc.
      * @throws Exception
      */
     @Test
     public void testMakeNoun_3rd_Declension_Female_Plural() throws Exception {
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("nav", mNounRegular.getLatinNounStem());
-        assertEquals("es", mNounRegular.getLatinNounEnding());
-        assertEquals("naves", mNounRegular.getLatinNoun());
+        assertEquals("nav", mNounRegular.getLatinWordStem());
+        assertEquals("es", mNounRegular.getLatinWordEnding());
+        assertEquals("naves", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("nav", mNounRegular.getLatinNounStem());
-        assertEquals("es", mNounRegular.getLatinNounEnding());
-        assertEquals("naves", mNounRegular.getLatinNoun());
+        assertEquals("nav", mNounRegular.getLatinWordStem());
+        assertEquals("es", mNounRegular.getLatinWordEnding());
+        assertEquals("naves", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("nav", mNounRegular.getLatinNounStem());
-        assertEquals("", mNounRegular.getLatinNounEnding());
-        assertEquals("navium", mNounRegular.getLatinNoun());
+        assertEquals("nav", mNounRegular.getLatinWordStem());
+        assertEquals("", mNounRegular.getLatinWordEnding());
+        assertEquals("navium", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseDative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("nav", mNounRegular.getLatinNounStem());
-        assertEquals("ibus", mNounRegular.getLatinNounEnding());
-        assertEquals("navibus", mNounRegular.getLatinNoun());
+        assertEquals("nav", mNounRegular.getLatinWordStem());
+        assertEquals("ibus", mNounRegular.getLatinWordEnding());
+        assertEquals("navibus", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("nav", mNounRegular.getLatinNounStem());
-        assertEquals("ibus", mNounRegular.getLatinNounEnding());
-        assertEquals("navibus", mNounRegular.getLatinNoun());
+        assertEquals("nav", mNounRegular.getLatinWordStem());
+        assertEquals("ibus", mNounRegular.getLatinWordEnding());
+        assertEquals("navibus", mNounRegular.getLatinWord());
 
-        mNounRegular.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
+        mNounRegular.makeLatinWord(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("nav", mNounRegular.getLatinNounStem());
-        assertEquals("es", mNounRegular.getLatinNounEnding());
-        assertEquals("naves", mNounRegular.getLatinNoun());
+        assertEquals("nav", mNounRegular.getLatinWordStem());
+        assertEquals("es", mNounRegular.getLatinWordEnding());
+        assertEquals("naves", mNounRegular.getLatinWord());
     }
 
 

@@ -70,7 +70,7 @@ public class LatinNoun_InstrumentTests_Adjective212 {
 
         id = 2;
         declension212 = 212;
-        typeNoun = "Noun";
+        typeNoun = "NounEtc";
         typePreposition = "Preposition";
 
         latin_Preposition = null;
@@ -101,13 +101,8 @@ public class LatinNoun_InstrumentTests_Adjective212 {
             adjective.setDeclension(declension212);  // SET DECLENSION
             adjective.setGender(genderMale);       // SET GENDER
             adjective.setNominative(nominative);
-            adjective.setGenitive(genitive);
-            adjective.setGenitivePlural(genitivePlural);
-            adjective.setLatinNounStem(latinNounStem);
-            adjective.setLatin_Preposition(latin_Preposition);
-            adjective.setLatin_Nominative_Adjective(nominativeAdjective);
-            adjective.setEnglishNounSingular(englishNounSingular);
-            adjective.setEnglishNounPlural(englishNounPlural);
+            adjective.setLatinAdjectiveStem(latinNounStem);
+            adjective.setEnglishAdjective(englishNounPlural);
     }
 
 
@@ -122,48 +117,48 @@ public class LatinNoun_InstrumentTests_Adjective212 {
     /**
      * testMakeAdjectiveSingular()  - Singular, Male
      * ===============================
-     * test Noun Class that It Can build Correct Latin Adjective.
+     * test NounEtc Class that It Can build Correct Latin Adjective.
      * @throws Exception
      */
 
     @Test
     public void testMakeAdjectiveSingularMale() throws Exception {
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("us", adjective.getLatinNounEnding());
-        assertEquals("bonus", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("us", adjective.getLatinWordEnding());
+        assertEquals("bonus", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("um", adjective.getLatinNounEnding());
-        assertEquals("bonum", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("um", adjective.getLatinWordEnding());
+        assertEquals("bonum", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("boni", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("i", adjective.getLatinWordEnding());
+        assertEquals("boni", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseDative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("o", adjective.getLatinNounEnding());
-        assertEquals("bono", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("o", adjective.getLatinWordEnding());
+        assertEquals("bono", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("o", adjective.getLatinNounEnding());
-        assertEquals("bono", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("o", adjective.getLatinWordEnding());
+        assertEquals("bono", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("us", adjective.getLatinNounEnding());
-        assertEquals("bonus", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("us", adjective.getLatinWordEnding());
+        assertEquals("bonus", adjective.getLatinWord());
     }
 
 
@@ -173,47 +168,47 @@ public class LatinNoun_InstrumentTests_Adjective212 {
     /**
      * testMakeAdjectivePlural()  - Plural, Male
      * =============================
-     * test Noun Class that It Can build Correct Latin Adjective.
+     * test NounEtc Class that It Can build Correct Latin Adjective.
      * @throws Exception
      */
     @Test
     public void testMakeAdjectivePluralMale() throws Exception {
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("boni", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("i", adjective.getLatinWordEnding());
+        assertEquals("boni", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("os", adjective.getLatinNounEnding());
-        assertEquals("bonos", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("os", adjective.getLatinWordEnding());
+        assertEquals("bonos", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("orum", adjective.getLatinNounEnding());
-        assertEquals("bonorum", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("orum", adjective.getLatinWordEnding());
+        assertEquals("bonorum", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseDative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("bonis", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("is", adjective.getLatinWordEnding());
+        assertEquals("bonis", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("bonis", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("is", adjective.getLatinWordEnding());
+        assertEquals("bonis", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("boni", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("i", adjective.getLatinWordEnding());
+        assertEquals("boni", adjective.getLatinWord());
     }
 
 
@@ -222,7 +217,7 @@ public class LatinNoun_InstrumentTests_Adjective212 {
     /**
      * testMakeAdjectiveSingular()  - Singular, Female
      * ===============================
-     * test Noun Class that It Can build Correct Latin Adjective.
+     * test NounEtc Class that It Can build Correct Latin Adjective.
      * @throws Exception
      */
 
@@ -231,41 +226,41 @@ public class LatinNoun_InstrumentTests_Adjective212 {
 
         adjective.setGender(genderFemale);   // SET GENDER TO FEMALE
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("a", adjective.getLatinNounEnding());
-        assertEquals("bona", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("a", adjective.getLatinWordEnding());
+        assertEquals("bona", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("am", adjective.getLatinNounEnding());
-        assertEquals("bonam", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("am", adjective.getLatinWordEnding());
+        assertEquals("bonam", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("ae", adjective.getLatinNounEnding());
-        assertEquals("bonae", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("ae", adjective.getLatinWordEnding());
+        assertEquals("bonae", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseDative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("ae", adjective.getLatinNounEnding());
-        assertEquals("bonae", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("ae", adjective.getLatinWordEnding());
+        assertEquals("bonae", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("a", adjective.getLatinNounEnding());
-        assertEquals("bona", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("a", adjective.getLatinWordEnding());
+        assertEquals("bona", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("a", adjective.getLatinNounEnding());
-        assertEquals("bona", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("a", adjective.getLatinWordEnding());
+        assertEquals("bona", adjective.getLatinWord());
     }
 
 
@@ -275,7 +270,7 @@ public class LatinNoun_InstrumentTests_Adjective212 {
     /**
      * testMakeAdjectivePlural()  - Plural, Female
      * =============================
-     * test Noun Class that It Can build Correct Latin Adjective.
+     * test NounEtc Class that It Can build Correct Latin Adjective.
      * @throws Exception
      */
     @Test
@@ -283,41 +278,41 @@ public class LatinNoun_InstrumentTests_Adjective212 {
 
         adjective.setGender(genderFemale);   // SET GENDER TO FEMALE
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("ae", adjective.getLatinNounEnding());
-        assertEquals("bonae", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("ae", adjective.getLatinWordEnding());
+        assertEquals("bonae", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("as", adjective.getLatinNounEnding());
-        assertEquals("bonas", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("as", adjective.getLatinWordEnding());
+        assertEquals("bonas", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("arum", adjective.getLatinNounEnding());
-        assertEquals("bonarum", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("arum", adjective.getLatinWordEnding());
+        assertEquals("bonarum", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseDative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("bonis", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("is", adjective.getLatinWordEnding());
+        assertEquals("bonis", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("bonis", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("is", adjective.getLatinWordEnding());
+        assertEquals("bonis", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("ae", adjective.getLatinNounEnding());
-        assertEquals("bonae", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("ae", adjective.getLatinWordEnding());
+        assertEquals("bonae", adjective.getLatinWord());
     }
 
     // ================================  SINGULAR, NEUTER  =============================================
@@ -325,7 +320,7 @@ public class LatinNoun_InstrumentTests_Adjective212 {
     /**
      * testMakeAdjectiveSingular()  - Singular, Neuter
      * ===============================
-     * test Noun Class that It Can build Correct Latin Adjective.
+     * test NounEtc Class that It Can build Correct Latin Adjective.
      * @throws Exception
      */
 
@@ -334,41 +329,41 @@ public class LatinNoun_InstrumentTests_Adjective212 {
 
         adjective.setGender(genderNeuter);   // SET GENDER TO NEUTER
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseNominative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseNominative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("um", adjective.getLatinNounEnding());
-        assertEquals("bonum", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("um", adjective.getLatinWordEnding());
+        assertEquals("bonum", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseAccusative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("um", adjective.getLatinNounEnding());
-        assertEquals("bonum", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("um", adjective.getLatinWordEnding());
+        assertEquals("bonum", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseGenitive);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("i", adjective.getLatinNounEnding());
-        assertEquals("boni", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("i", adjective.getLatinWordEnding());
+        assertEquals("boni", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseDative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseDative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("o", adjective.getLatinNounEnding());
-        assertEquals("bono", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("o", adjective.getLatinWordEnding());
+        assertEquals("bono", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseAblative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseAblative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("o", adjective.getLatinNounEnding());
-        assertEquals("bono", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("o", adjective.getLatinWordEnding());
+        assertEquals("bono", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberSingular, caseVocative);
+        adjective.makeLatinWord(databaseAccess, numberSingular, caseVocative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("um", adjective.getLatinNounEnding());
-        assertEquals("bonum", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("um", adjective.getLatinWordEnding());
+        assertEquals("bonum", adjective.getLatinWord());
     }
 
 
@@ -378,7 +373,7 @@ public class LatinNoun_InstrumentTests_Adjective212 {
     /**
      * testMakeAdjectivePlural()  - Plural, Neuter
      * =============================
-     * test Noun Class that It Can build Correct Latin Adjective.
+     * test NounEtc Class that It Can build Correct Latin Adjective.
      * @throws Exception
      */
     @Test
@@ -386,54 +381,54 @@ public class LatinNoun_InstrumentTests_Adjective212 {
 
         adjective.setGender(genderNeuter);   // SET GENDER TO NEUTER
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseNominative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseNominative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("a", adjective.getLatinNounEnding());
-        assertEquals("bona", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("a", adjective.getLatinWordEnding());
+        assertEquals("bona", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseAccusative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseAccusative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("a", adjective.getLatinNounEnding());
-        assertEquals("bona", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("a", adjective.getLatinWordEnding());
+        assertEquals("bona", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseGenitive);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseGenitive);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("orum", adjective.getLatinNounEnding());
-        assertEquals("bonorum", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("orum", adjective.getLatinWordEnding());
+        assertEquals("bonorum", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseDative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseDative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("bonis", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("is", adjective.getLatinWordEnding());
+        assertEquals("bonis", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseAblative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseAblative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("is", adjective.getLatinNounEnding());
-        assertEquals("bonis", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("is", adjective.getLatinWordEnding());
+        assertEquals("bonis", adjective.getLatinWord());
 
-        adjective.makeLatinNoun(databaseAccess, numberPlural, caseVocative);
+        adjective.makeLatinWord(databaseAccess, numberPlural, caseVocative);
 
-        assertEquals("bon", adjective.getLatinNounStem());
-        assertEquals("a", adjective.getLatinNounEnding());
-        assertEquals("bona", adjective.getLatinNoun());
+        assertEquals("bon", adjective.getLatinWordStem());
+        assertEquals("a", adjective.getLatinWordEnding());
+        assertEquals("bona", adjective.getLatinWord());
     }
 
 
     /**
      * testEnglishNounTranslation()
      * ----------------------------
-     * Test to get the English Noun
+     * Test to get the English NounEtc
      */
     @Test
     public void testEnglishNounTranslation() throws Exception{
-        String s = adjective.getEnglishNounPlural();
-        assertEquals("good", adjective.getEnglishNounSingular() );
-        assertEquals("good", adjective.getEnglishNounPlural() );
+        String s = adjective.getEnglishWordPlural();
+        assertEquals("good", adjective.getEnglishWordSingular() );
+        assertEquals("good", adjective.getEnglishWordPlural() );
     }
 
     @After

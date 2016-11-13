@@ -3,15 +3,14 @@ package com.example.snewnham.birkbecklatin.Model.database;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
-import com.example.snewnham.birkbecklatin.Model.nouns.Noun;
+import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
-import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 
 /**
  * NounListCursor
  * --------------
  * Takes a DB query on the Noun_List table, which is in the form of a cursor, and converts
- * that data into a Noun Object. A mini internal 'factory' is used to create the correct Noun class(i.e.,
+ * that data into a NounEtc Object. A mini internal 'factory' is used to create the correct NounEtc class(i.e.,
  * NounRegular, Pronoun etc.)
  *
  *
@@ -30,10 +29,10 @@ public class NounListCursor extends CursorWrapper{
     /**
      * makeNounObject()
      * ================
-     * Converts a Cursor into a Noun Object
+     * Converts a Cursor into a NounEtc Object
      * @return
      */
-    public Noun makeNounObject() {
+    public NounRegular makeNounObject() {
 
         // Pull data from the Cursor
         //--------------------------
@@ -45,28 +44,17 @@ public class NounListCursor extends CursorWrapper{
         String genitive = getString(getColumnIndex(DbSchema.NounListTable.Cols.GENITIVE));
         String genitivePlural = getString(getColumnIndex(DbSchema.NounListTable.Cols.GENITIVE_PLURAL));
         String latinNounStem = getString(getColumnIndex(DbSchema.NounListTable.Cols.LATIN_NOUN_STEM));
-        String latinPreposition = getString(getColumnIndex(DbSchema.NounListTable.Cols.PREPOSITION));
-        String nominativeAdjective = getString(getColumnIndex(DbSchema.NounListTable.Cols.NOMINATIVE_ADJECTIVE));
         String englishNounSingular = getString(getColumnIndex(DbSchema.NounListTable.Cols.ENGLISH_NOUN_SINGULAR));
         String englishNounPlural = getString(getColumnIndex(DbSchema.NounListTable.Cols.ENGLISH_NOUN_PLURAL));
 
 
         // Mini Factory - Create Verb Object
         //----------------------------------
-        Noun noun = null;
-        switch (type) {
-            case "Noun": {
-                noun = new NounRegular(id);
-                break;
-            }
-            case "Adjective": {
-                noun = null;
-                break;
-            }
-        }
+        NounRegular noun = new NounRegular(id);
 
 
-        // Transfer db data to a Noun object
+
+        // Transfer db data to a NounEtc object
         // ----------------------------------
         noun.setId(id);
         noun.setType(type);
@@ -75,11 +63,9 @@ public class NounListCursor extends CursorWrapper{
         noun.setNominative(nominative);
         noun.setGenitive(genitive);
         noun.setGenitivePlural(genitivePlural);
-        noun.setLatinNounStem(latinNounStem);
-        noun.setLatin_Preposition(latinPreposition);
-        noun.setLatin_Nominative_Adjective(nominativeAdjective);
-        noun.setEnglishNounSingular(englishNounSingular);
-        noun.setEnglishNounPlural(englishNounPlural);
+        noun.setLatinWordStem(latinNounStem);
+        noun.setEnglishWordSingular(englishNounSingular);
+        noun.setEnglishWordPlural(englishNounPlural);
         return noun;
     }
 }
