@@ -223,41 +223,6 @@ public class DbSchema {
 
 
 
-    // inner STATIC class - Preposition_List Table
-    // -----------------------------------------
-    public static final class PrepositionListTable {
-        public static final String PREPOSITION_TABLE = "Preposition_List";
-
-
-        // inner inner STATIC class of the Table - Attributes
-        // --------------------------------------
-        public static final class Cols {
-            public static final String _id = "_id";
-            public static final String LATIN_PREPOSITION = "Latin_Preposition";
-            public static final String ENGLISH_PRESPOSITION = "English_Preposition";
-        }
-    }
-
-
-    // inner STATIC class - Adjective_EndingTable
-    // ------------------------------------------
-    public static final class AdjectiveEndingTable {
-        public static final String ADJECTIVE_ENDING_TABLE = "Adjective_Ending";
-
-
-        // inner inner STATIC class of the Table - Attributes
-        // --------------------------------------
-        public static final class Cols {
-            public static final String _id = "_id";
-            public static final String DECLENSION = "Declension";
-            public static final String GENDER = "Gender";
-            public static final String NUMBER = "Number";
-            public static final String CASE = "Latin_Case";
-            public static final String LATIN_ENDING = "Latin_Ending";
-        }
-    }
-
-
     // inner STATIC class - AdjectiveListTable
     // ---------------------------------------
     public static final class AdjectiveListTable {
@@ -278,6 +243,56 @@ public class DbSchema {
             public static final String ENGLISH_COMPARATIVE = "English_Comparative";
             public static final String LATIN_SUPERLATIVE = "Latin_Superlative";
             public static final String ENGLISH_SUPERLATIVE = "English_Superlative";
+        }
+    }
+
+    // inner STATIC class - Adjective_EndingTable
+    // ------------------------------------------
+    public static final class AdjectiveEndingTable {
+        public static final String ADJECTIVE_ENDING_TABLE = "Adjective_Ending";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String DECLENSION = "Declension";
+            public static final String GENDER = "Gender";
+            public static final String NUMBER = "Number";
+            public static final String CASE = "Latin_Case";
+            public static final String LATIN_ENDING = "Latin_Ending";
+        }
+    }
+
+
+    // inner STATIC class - Preposition_List Table
+    // -----------------------------------------
+    public static final class PrepositionListTable {
+        public static final String PREPOSITION_TABLE = "Preposition_List";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String LATIN_PREPOSITION = "Latin_Preposition";
+            public static final String ENGLISH_PRESPOSITION = "English_Preposition";
+        }
+    }
+
+
+    // inner STATIC class - Conjunction_List Table
+    // -----------------------------------------
+    public static final class ConjunctionListTable {
+        public static final String CONJUNCTION_TABLE = "Conjunction_List";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String LATIN_CONJUNCTION = "Latin_Conjunction";
+            public static final String ENGLISH_CONJUNCTION = "English_Conjunction";
         }
     }
 
