@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
+import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 
 import java.util.ArrayList;
@@ -124,6 +125,8 @@ public class DatabaseAccess {
             return new NounListCursor(cursor);
         else if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE))
             return new AdjectiveListCursor(cursor);
+        else if (table.equals(DbSchema.PrepositionListTable.PREPOSITION_TABLE))
+            return new PrepositionListCursor(cursor);
         else
             return cursor;
     }
@@ -619,7 +622,28 @@ public class DatabaseAccess {
 
         String adjEnding = cursor.getString(cursor.getColumnIndex(columnName));
         return adjEnding;
+    }
 
+
+    /**
+     * sqlPrepositionListQuery()
+     * -------------------------
+     * Runs a SQL query on the Prepostion_List table, selects a row with a cursor
+     * and converts into a Preposition Object.
+     * @param id
+     * @return
+     */
+    public Preposition sqlPrepositionListQuery(int id){
+        String strId = Integer.toString(id);
+        String table = DbSchema.PrepositionListTable.PREPOSITION_TABLE;           // FROM Table = AdjectiveList
+        String[] column = null;             // SELECT *
+        String whereClause = "_id=?";
+        String[] whereArgs = new String[]{strId}; // WHERE _id =
+
+        PrepositionListCursor prepositionListCursor = (PrepositionListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        prepositionListCursor.moveToFirst();
+        Preposition preposition = prepositionListCursor.makePrepositionObject();  // Convert Query from Cursor to Verb Object.
+        return preposition;
     }
 
 

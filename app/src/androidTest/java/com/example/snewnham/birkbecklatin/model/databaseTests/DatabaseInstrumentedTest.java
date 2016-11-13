@@ -10,6 +10,7 @@ import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
+import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 
 import org.junit.After;
@@ -89,6 +90,10 @@ public class DatabaseInstrumentedTest {
     String adjectiveEnglishComparative;
     String adjectiveLatinSuperlative;
     String adjectiveEnglishSuperlative;
+
+    int prepositionId;
+    String prepositionLatin;
+    String prepositionEnglish;
 
 
 
@@ -552,6 +557,28 @@ public class DatabaseInstrumentedTest {
         String query = databaseAccess.sqlAdjectiveEnding(Integer.toString(noun_Declension), noun_Gender, noun_number, noun_Latin_Case);
 
         assertEquals("um", query);
+    }
+
+
+    /**
+     * testPrepositionListQuery()
+     * --------------------------
+     * test the sql query on Preposition_List table.
+     */
+    @Test
+    public void testPrepositionListQuery(){
+
+        prepositionId = 10;
+        prepositionLatin = "trans";
+        prepositionEnglish = "across";
+
+        // Run Query
+        // ---------
+        Preposition preposition = databaseAccess.sqlPrepositionListQuery(prepositionId);
+
+        assertEquals(prepositionId, preposition.getId());
+        assertEquals(prepositionLatin, preposition.getLatinWord());
+        assertEquals(prepositionEnglish, preposition.getEnglishWordPlural());
 
     }
 

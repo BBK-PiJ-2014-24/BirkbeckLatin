@@ -54,7 +54,7 @@ public class Preposition implements NounEtc {
 
     @Override
     public int getId() {
-        return 0;
+        return mId;
     }
 
     @Override
