@@ -188,8 +188,8 @@ public class DbSchema {
     }
 
 
-    // inner STATIC class - NounListTable
-    // ----------------------------------
+    // inner STATIC class - NounDeclensionTable
+    // ----------------------------------------
     public static final class NounDeclensionTable {
         public static final String NOUN_DECLENSION_TABLE = "Noun_Declension";
 
@@ -256,6 +256,30 @@ public class DbSchema {
             public static final String NUMBER = "Number";
             public static final String CASE = "Latin_Case";
             public static final String LATIN_ENDING = "Latin_Ending";
+        }
+    }
+
+
+    // inner STATIC class - AdjectiveListTable
+    // ---------------------------------------
+    public static final class AdjectiveListTable {
+        public static final String ADJECTIVE_LIST_TABLE = "Adjective_List";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String TYPE = "Type";
+            public static final String DECLENSION = "Declension";
+            public static final String NOMINATIVE = "Nominative";
+            public static final String NOMINATIVE_NEUTER = "Nominative_Neuter";
+            public static final String LATIN_ADJECTIVE_STEM = "Latin_Adj_Stem";
+            public static final String ENGLISH_ADJECTIVE = "English_Adjective";
+            public static final String LATIN_COMPARATIVE = "Latin_Comparative";
+            public static final String ENGLISH_COMPARATIVE = "English_Comparative";
+            public static final String LATIN_SUPERLATIVE = "Latin_Superlative";
+            public static final String ENGLISH_SUPERLATIVE = "English_Superlative";
         }
     }
 
