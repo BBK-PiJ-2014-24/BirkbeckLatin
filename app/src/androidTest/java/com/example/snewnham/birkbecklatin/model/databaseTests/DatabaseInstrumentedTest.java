@@ -490,8 +490,14 @@ public class DatabaseInstrumentedTest {
     }
 
 
+    /**
+     * testAdjectivelist()
+     * -------------------
+     * TEST SQL Query on Adjective List Table
+     * @throws Exception
+     */
     @Test
-    public void testAdjectivelist() throws Exception {
+    public void testAdjectiveList() throws Exception {
 
         // Adjective FIELDS
         // -----------
@@ -504,12 +510,12 @@ public class DatabaseInstrumentedTest {
         adjectiveEnglishAdjective = "long";
         adjectiveLatinComparative = "longior";
         adjectiveEnglishComparative = "longer";
-        adjectiveLatinSuperlative = "longissem";
+        adjectiveLatinSuperlative = "longissim";
         adjectiveEnglishSuperlative = "longest";
 
         // Run Query
         // ---------
-        Adjective adjective = databaseAccess.sqlAdjectiveListQuery(noun_id);
+        Adjective adjective = databaseAccess.sqlAdjectiveListQuery(adjectiveId);
 
         assertEquals( adjectiveId, adjective.getId() );
         assertEquals( adjectiveType, adjective.getType() );

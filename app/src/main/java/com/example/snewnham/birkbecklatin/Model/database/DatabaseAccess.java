@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
@@ -121,6 +122,8 @@ public class DatabaseAccess {
             return new VerbListCursor(cursor);
         else if (table.equals(DbSchema.NounListTable.NOUN_LIST_TABLE))
             return new NounListCursor(cursor);
+        else if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE))
+            return new AdjectiveListCursor(cursor);
         else
             return cursor;
     }
@@ -562,6 +565,29 @@ public class DatabaseAccess {
         String latinNounIrregular = cursor.getString(cursor.getColumnIndex(nounIrregular));
         return latinNounIrregular;
     }
+
+
+    /**
+     * sqlAdjectiveList(int id)
+     * --------------------------
+     * SQL query on Adjective_List, using a cursor to collect data on a row and convert to Adjective
+     * Object
+     * @param id
+     * @return
+     */
+    public Adjective sqlAdjectiveListQuery(int id) {
+        String strId = Integer.toString(id);
+        String table = DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE;           // FROM Table = AdjectiveList
+        String[] column = null;             // SELECT *
+        String whereClause = "_id=?";
+        String[] whereArgs = new String[]{strId}; // WHERE _id =
+
+        AdjectiveListCursor adjectiveListCursor = (AdjectiveListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        adjectiveListCursor.moveToFirst();
+        Adjective adjective = adjectiveListCursor.makeAdjectiveObject();  // Convert Query from Cursor to Verb Object.
+        return adjective;
+    }
+
 
     /**
      * sqlAdjectiveEnding()

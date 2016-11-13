@@ -272,7 +272,7 @@ public class DbSchema {
             public static final String DECLENSION = "Declension";
             public static final String NOMINATIVE = "Nominative";
             public static final String NOMINATIVE_NEUTER = "Nominative_Neuter";
-            public static final String LATIN_ADJECTIVE_STEM = "Latin_Adj_Stem";
+            public static final String LATIN_ADJECTIVE_STEM = "Latin_Adjective_Stem";
             public static final String ENGLISH_ADJECTIVE = "English_Adjective";
             public static final String LATIN_COMPARATIVE = "Latin_Comparative";
             public static final String ENGLISH_COMPARATIVE = "English_Comparative";

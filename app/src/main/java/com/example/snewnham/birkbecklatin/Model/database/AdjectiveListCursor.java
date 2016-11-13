@@ -44,6 +44,7 @@ public class AdjectiveListCursor extends CursorWrapper{
         String englishAdjective = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.ENGLISH_ADJECTIVE));
         String latinComparative = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.LATIN_COMPARATIVE));
         String englishComparative = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.ENGLISH_COMPARATIVE));
+        String latinSuplerlative = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.LATIN_SUPERLATIVE));
         String englishSuperlative = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.ENGLISH_SUPERLATIVE));
 
 
@@ -53,6 +54,7 @@ public class AdjectiveListCursor extends CursorWrapper{
 
         // Transfer db data to a Adjective object
         // --------------------------------------
+        adjective.setId(id);
         adjective.setType(type);
         adjective.setDeclension(declension);
         adjective.setNominative(nominative);
@@ -61,7 +63,7 @@ public class AdjectiveListCursor extends CursorWrapper{
         adjective.setEnglishAdjective(englishAdjective);
         adjective.setLatinComparative(latinComparative);
         adjective.setEnglishComparative(englishComparative);
-        adjective.setLatinSuperlative(latinComparative);
+        adjective.setLatinSuperlative(latinSuplerlative);
         adjective.setEnglishSuperlative(englishSuperlative);
         return adjective;
     }
