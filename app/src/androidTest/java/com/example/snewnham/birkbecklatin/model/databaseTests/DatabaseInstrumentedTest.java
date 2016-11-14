@@ -9,7 +9,6 @@ import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
-import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
@@ -534,9 +533,9 @@ public class DatabaseInstrumentedTest {
         assertEquals( adjectiveNominativeNeuter, adjective.getNominative_Neuter() );
         assertEquals( adjectiveLatinAdjectiveStem, adjective.getLatinAdjectiveStem() );
         assertEquals( adjectiveEnglishAdjective, adjective.getEnglishAdjective() );
-        assertEquals( adjectiveLatinComparative, adjective.getLatinComparative() );
+        assertEquals( adjectiveLatinComparative, adjective.getLatinComparativeStem() );
         assertEquals( adjectiveEnglishComparative, adjective.getEnglishComparative() );
-        assertEquals( adjectiveLatinSuperlative, adjective.getLatinSuperlative() );
+        assertEquals( adjectiveLatinSuperlative, adjective.getLatinSuperlativeStem() );
         assertEquals( adjectiveEnglishSuperlative, adjective.getEnglishSuperlative() );
     }
 

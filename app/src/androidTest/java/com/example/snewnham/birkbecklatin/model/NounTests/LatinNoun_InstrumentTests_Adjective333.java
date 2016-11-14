@@ -37,8 +37,7 @@ public class LatinNoun_InstrumentTests_Adjective333 {
     String genderFemale = "f";
     String genderNeuter = "n";
 
-    String typeNoun;
-    String typePreposition;
+    String typeAdjective;
     String latin_Preposition;
 
     String numberSingular;
@@ -58,7 +57,7 @@ public class LatinNoun_InstrumentTests_Adjective333 {
     String englishNounSingular;
     String englishNounPlural;
 
-    String nominativeAdjective;
+    String nominativeNeuter;
 
 
     @Before
@@ -70,8 +69,7 @@ public class LatinNoun_InstrumentTests_Adjective333 {
 
         id = 2;
         declension333 = 333;
-        typeNoun = "NounEtc";
-        typePreposition = "Preposition";
+        typeAdjective = "NounEtc";
 
         latin_Preposition = null;
 
@@ -89,7 +87,7 @@ public class LatinNoun_InstrumentTests_Adjective333 {
         genitive = "fortis";
         genitivePlural = "fortium";
         latinNounStem = "fort";
-        nominativeAdjective = "forte";
+        nominativeNeuter = "forte";
         englishNounSingular = "brave, strong";
         englishNounPlural = "brave, strong";
 
@@ -97,11 +95,12 @@ public class LatinNoun_InstrumentTests_Adjective333 {
 
         adjective = new Adjective(id, databaseAccess);
         adjective.setId(id);
-        adjective.setType(typePreposition);
+        adjective.setType(typeAdjective);
         adjective.setDeclension(declension333);  // SET DECLENSION
         adjective.setGender(genderMale);       // SET GENDER
         adjective.setNominative(nominative);
         adjective.setLatinAdjectiveStem(latinNounStem);
+        adjective.setNominative_Neuter(nominativeNeuter);
         adjective.setEnglishAdjective(englishNounPlural);
     }
 

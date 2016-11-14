@@ -42,9 +42,9 @@ public class AdjectiveListCursor extends CursorWrapper{
         String nominativeNeuter = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.NOMINATIVE_NEUTER));
         String latinAdjStem = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.LATIN_ADJECTIVE_STEM));
         String englishAdjective = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.ENGLISH_ADJECTIVE));
-        String latinComparative = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.LATIN_COMPARATIVE));
+        String latinComparativeStem = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.LATIN_COMPARATIVE_STEM));
         String englishComparative = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.ENGLISH_COMPARATIVE));
-        String latinSuplerlative = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.LATIN_SUPERLATIVE));
+        String latinSuplerlativeStem = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.LATIN_SUPERLATIVE_STEM));
         String englishSuperlative = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.ENGLISH_SUPERLATIVE));
 
 
@@ -61,9 +61,9 @@ public class AdjectiveListCursor extends CursorWrapper{
         adjective.setNominative_Neuter(nominativeNeuter);
         adjective.setLatinAdjectiveStem(latinAdjStem);
         adjective.setEnglishAdjective(englishAdjective);
-        adjective.setLatinComparative(latinComparative);
+        adjective.setLatinComparativeStem(latinComparativeStem);
         adjective.setEnglishComparative(englishComparative);
-        adjective.setLatinSuperlative(latinSuplerlative);
+        adjective.setLatinSuperlativeStem(latinSuplerlativeStem);
         adjective.setEnglishSuperlative(englishSuperlative);
         return adjective;
     }

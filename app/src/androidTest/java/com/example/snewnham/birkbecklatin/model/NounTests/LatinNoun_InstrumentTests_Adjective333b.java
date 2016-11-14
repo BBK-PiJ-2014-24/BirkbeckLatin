@@ -58,7 +58,7 @@ public class LatinNoun_InstrumentTests_Adjective333b {
     String englishNounSingular;
     String englishNounPlural;
 
-    String nominativeAdjective;
+    String nominativeNeuter;
 
 
     @Before
@@ -89,7 +89,7 @@ public class LatinNoun_InstrumentTests_Adjective333b {
         genitive = "ingentis";
         genitivePlural = "ingentium";
         latinNounStem = "ingent";
-        nominativeAdjective = "ingens";
+        nominativeNeuter = "ingens";
         englishNounSingular = "huge";
         englishNounPlural = "huge";
 
@@ -101,6 +101,7 @@ public class LatinNoun_InstrumentTests_Adjective333b {
         adjective.setDeclension(declension333);  // SET DECLENSION
         adjective.setGender(genderMale);       // SET GENDER
         adjective.setNominative(nominative);
+        adjective.setNominative_Neuter(nominativeNeuter);
         adjective.setLatinAdjectiveStem(latinNounStem);
         adjective.setEnglishAdjective(englishNounPlural);
     }

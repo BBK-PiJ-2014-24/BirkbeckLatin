@@ -11,22 +11,22 @@ public class Adjective implements NounEtc {
     // Fields
     // ------
 
-    DatabaseAccess mDatabaseAccess;
-    int mId;
-    String mType;
-    int mDeclension;
-    String mNominative;
-    String mNominative_Neuter;
-    String mLatinAdjectiveStem;
-    String mEnglishAdjective;
-    String mLatinComparative;
-    String mEnglishComparative;
-    String mLatinSuperlative;
-    String mEnglishSuperlative;
+    protected DatabaseAccess mDatabaseAccess;
+    protected int mId;
+    protected String mType;
+    protected int mDeclension;
+    protected String mNominative;
+    protected String mNominative_Neuter;
+    protected String mLatinAdjectiveStem;
+    protected String mEnglishAdjective;
+    protected String mLatinComparativeStem;
+    protected String mEnglishComparative;
+    protected String mLatinSuperlativeStem;
+    protected String mEnglishSuperlative;
 
-    String mGender;
-    String mLatin_Adjective_Ending;
-    String mLatinAdjective;
+    protected String mGender;
+    protected String mLatin_Adjective_Ending;
+    protected String mLatinAdjective;
 
 
 
@@ -36,10 +36,12 @@ public class Adjective implements NounEtc {
     // Constructor
     // -----------
     public Adjective(int id){
+        mId = id;
         mGender = "m";   // default
     }
 
     public Adjective(int id, DatabaseAccess databaseAccess){
+        mId = id;
         mDatabaseAccess = databaseAccess;
         mGender = "m";   // default
     }
@@ -215,12 +217,12 @@ public class Adjective implements NounEtc {
         mEnglishAdjective = englishAdjective;
     }
 
-    public String getLatinComparative() {
-        return mLatinComparative;
+    public String getLatinComparativeStem() {
+        return mLatinComparativeStem;
     }
 
-    public void setLatinComparative(String latinComparative) {
-        mLatinComparative = latinComparative;
+    public void setLatinComparativeStem(String latinComparativeStem) {
+        mLatinComparativeStem = latinComparativeStem;
     }
 
     public String getEnglishComparative() {
@@ -231,12 +233,12 @@ public class Adjective implements NounEtc {
         mEnglishComparative = englishComparative;
     }
 
-    public String getLatinSuperlative() {
-        return mLatinSuperlative;
+    public String getLatinSuperlativeStem() {
+        return mLatinSuperlativeStem;
     }
 
-    public void setLatinSuperlative(String latinSuperlative) {
-        mLatinSuperlative = latinSuperlative;
+    public void setLatinSuperlativeStem(String latinSuperlativeStem) {
+        mLatinSuperlativeStem = latinSuperlativeStem;
     }
 
     public String getEnglishSuperlative() {
