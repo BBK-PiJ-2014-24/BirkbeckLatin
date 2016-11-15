@@ -3,7 +3,7 @@ package com.example.snewnham.birkbecklatin.Model.nouns;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
 /**
- * Adjective Class - Builds an Adjective Element. N.b., that gender needs to be set. default = m
+ * Adjective Comparative - Builds an Comparative Element. N.b., that gender needs to be set. default = m
  */
 
 public class AdjectiveComparative extends Adjective {
