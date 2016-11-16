@@ -296,6 +296,24 @@ public class DbSchema {
         }
     }
 
+    // inner STATIC class - Adverb_List Table
+    // -----------------------------------------
+    public static final class AdverbListTable {
+        public static final String ADVERB_TABLE = "Adverb_List";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String DECLENSION = "Declension";
+            public static final String LATIN_ADVERB = "Latin_Adverb";
+            public static final String LATIN_ADVERB_STEM = "Latin_Adverb_Stem";
+            public static final String ENGLISH_ADVERB = "English_Adverb";
+            public static final String ENGLISH_ADVERB_COMPARATIVE = "English_Adverb_Comparative";
+            public static final String ENGLISH_ADVERB_SUPERLATIVE = "English_Adverb_Comparative";
+        }
+    }
 
 
 
