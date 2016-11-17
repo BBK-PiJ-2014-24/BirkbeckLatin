@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
+import com.example.snewnham.birkbecklatin.Model.nouns.Adverb;
 import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
@@ -130,6 +131,8 @@ public class DatabaseAccess {
             return new PrepositionListCursor(cursor);
         else if (table.equals(DbSchema.ConjunctionListTable.CONJUNCTION_TABLE))
             return new ConjunctionListCursor(cursor);
+        else if (table.equals(DbSchema.AdverbListTable.ADVERB_TABLE))
+            return new AdverbListCursor(cursor);
         else
             return cursor;
     }
@@ -669,6 +672,29 @@ public class DatabaseAccess {
         conjunctionListCursor.moveToFirst();
         Conjunction conjunction = conjunctionListCursor.makeConjunctionObject();  // Convert Query from Cursor to Verb Object.
         return conjunction;
+
+    }
+
+
+    /**
+     * sqlAdverbListQuery(int id)
+     * -------------------------------
+     * Runs a SQL query on the Adverb_List table, selects a row with a cursor
+     * and converts into a Adverb Object.
+     * @param id
+     * @return
+     */
+    public Adverb sqlAdverbListQuery(int id) {
+        String strId = Integer.toString(id);
+        String table = DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE;           // FROM Table = AdjectiveList
+        String[] column = null;             // SELECT *
+        String whereClause = "_id=?";
+        String[] whereArgs = new String[]{strId}; // WHERE _id =
+
+        AdverbListCursor adverbListTable = (AdverbListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        adverbListTable.moveToFirst();
+        Adverb adverb = adverbListTable.makeAdverbObject();  // Convert Query from Cursor to Verb Object.
+        return adverb;
 
     }
 
