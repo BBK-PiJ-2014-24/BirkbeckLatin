@@ -8,6 +8,7 @@ import android.support.test.runner.AndroidJUnit4;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
+import com.example.snewnham.birkbecklatin.Model.nouns.Adverb;
 import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
@@ -98,6 +99,14 @@ public class DatabaseInstrumentedTest {
     int conjunctionId;
     String conjunctionLatin;
     String conjunctionEnglish;
+
+    int adverbId;
+    int adverbDeclension;
+    String adverbLatinAdverb;
+    String adverbLatinAdverbStem;
+    String adverbEnglishAdverb;
+    String adverbEnglishComparative;
+    String adverbEnglishSuperlative;
 
 
 
@@ -607,6 +616,37 @@ public class DatabaseInstrumentedTest {
         assertEquals(conjunctionLatin, conjunction.getLatinWord());
         assertEquals(conjunctionEnglish, conjunction.getEnglishWordPlural());
 
+    }
+
+
+    /**
+     * testAdverbListQuery()
+     * --------------------------
+     * test the sql query on Adverb_List table.
+     */
+    @Test
+    public void testAdverbListQuery(){
+
+        adverbId = 2;
+        adverbDeclension = 212;
+        adverbLatinAdverb = "laete";
+        adverbLatinAdverbStem = "laet";
+        adverbEnglishAdverb = "happily";
+        adverbEnglishComparative = "more happily";
+        adverbEnglishSuperlative = "most happily";
+
+        // Run Query
+        // ---------
+        Adverb adverb = databaseAccess.sqlAdverbListQuery(adverbId);
+
+
+        assertEquals(adverbId, adverb.getId());
+        assertEquals(adverbDeclension, adverb.getDeclension());
+        assertEquals(adverbLatinAdverb, adverb.getLatinAdverb());
+        assertEquals(adverbLatinAdverbStem, adverb.getLatinAdverbStem());
+        assertEquals(adverbEnglishAdverb, adverb.getEnglishAdverb());
+        assertEquals(adverbEnglishComparative, adverb.getEnglishAdverbComparative());
+        assertEquals(adverbEnglishSuperlative, adverb.getEnglishAdverbSuperlative());
     }
 
 
