@@ -311,7 +311,7 @@ public class DbSchema {
             public static final String LATIN_ADVERB_STEM = "Latin_Adverb_Stem";
             public static final String ENGLISH_ADVERB = "English_Adverb";
             public static final String ENGLISH_ADVERB_COMPARATIVE = "English_Adverb_Comparative";
-            public static final String ENGLISH_ADVERB_SUPERLATIVE = "English_Adverb_Comparative";
+            public static final String ENGLISH_ADVERB_SUPERLATIVE = "English_Adverb_Superlative";
         }
     }
 

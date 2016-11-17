@@ -195,6 +195,16 @@ public class DatabaseInstrumentedTest {
         String ans2 = cursor2.getString(0);
         assertEquals("Accusative", ans2);
 
+        String table3 = DbSchema.AdverbListTable.ADVERB_TABLE;
+        String[] column3 = new String[]{DbSchema.AdverbListTable.Cols._id};
+        String whereClause3 = "_id=?";
+        String[] whereArgs3 = new String[]{"2"};
+
+        Cursor cursor3 = databaseAccess.sqlQuery(table3, column3, whereClause3, whereArgs3  );
+        cursor3.moveToFirst();
+        String ans3 = cursor3.getString(0);
+        assertEquals("2", ans3);
+
 
     }
 
@@ -627,13 +637,13 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testAdverbListQuery(){
 
-        adverbId = 2;
+        adverbId = 1;
         adverbDeclension = 212;
         adverbLatinAdverb = "laete";
         adverbLatinAdverbStem = "laet";
         adverbEnglishAdverb = "happily";
         adverbEnglishComparative = "more happily";
-        adverbEnglishSuperlative = "most happily";
+        adverbEnglishSuperlative = "very happily";
 
         // Run Query
         // ---------

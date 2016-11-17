@@ -686,7 +686,7 @@ public class DatabaseAccess {
      */
     public Adverb sqlAdverbListQuery(int id) {
         String strId = Integer.toString(id);
-        String table = DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE;           // FROM Table = AdjectiveList
+        String table = DbSchema.AdverbListTable.ADVERB_TABLE;           // FROM Table = AdjectiveList
         String[] column = null;             // SELECT *
         String whereClause = "_id=?";
         String[] whereArgs = new String[]{strId}; // WHERE _id =
