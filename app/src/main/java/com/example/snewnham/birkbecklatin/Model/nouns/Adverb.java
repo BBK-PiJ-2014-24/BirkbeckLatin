@@ -41,12 +41,12 @@ public class Adverb implements NounEtc {
 
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String Declension) {
-        return null;
+        return mLatinAdverb;
     }
 
     @Override
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
-        return null;
+        return mEnglishAdverb;
     }
 
     @Override
@@ -101,12 +101,12 @@ public class Adverb implements NounEtc {
 
     @Override
     public String getLatinWordStem() {
-        return null;
+        return mLatinAdverbStem;
     }
 
     @Override
     public void setLatinWordStem(String latinStem) {
-
+        mLatinAdverbStem = latinStem;
     }
 
     @Override
@@ -116,39 +116,38 @@ public class Adverb implements NounEtc {
 
     @Override
     public void setLatinWordEnding(String latinWordEnding) {
-
+        latinWordEnding = null;
     }
 
     @Override
     public String getLatinWord() {
-        return null;
+        return mLatinAdverb;
     }
 
     @Override
     public void setLatinWord(String latinWord) {
-
+        mLatinAdverb = latinWord;
     }
 
     @Override
     public String getEnglishWordSingular() {
-        return null;
+        return mEnglishAdverb;
     }
 
     @Override
     public void setEnglishWordSingular(String englishWordSingular) {
-
+        mEnglishAdverb = englishWordSingular;
     }
 
     @Override
     public String getEnglishWordPlural() {
-        return null;
+        return mEnglishAdverb;
     }
 
     @Override
     public void setEnglishWordPlural(String englishWordPlural) {
-
+        mEnglishAdverb = englishWordPlural;
     }
-
 
 
     public String getLatinAdverbStem() {

@@ -1,0 +1,115 @@
+package com.example.snewnham.birkbecklatin.model.NounTests;
+
+import android.content.Context;
+import android.support.test.InstrumentationRegistry;
+import android.support.test.runner.AndroidJUnit4;
+
+import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.nouns.Adverb;
+import com.example.snewnham.birkbecklatin.Model.nouns.AdverbComparative;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import static org.junit.Assert.assertEquals;
+
+/**
+ * TESTS FOR CREATING ADJECTIVES FOR ALL 212 DECLENSIONS, GENDERS and CASES.
+ * Created by snewnham on 12/10/2016.
+ */
+@RunWith(AndroidJUnit4.class)
+public class LatinNoun_InstrumentTests_AdverbComparative {
+
+
+    // Fields
+    // ------
+    Context appContext;
+    DatabaseAccess databaseAccess;
+
+    int id;
+    String gender;
+    int declension;
+    String latinAdverbStem;
+    String latinAdverb;
+    String englishAdverb;
+    String englishAdverbComparative;
+    String englishAdverbSuperlative;
+    AdverbComparative adverbComparative;
+
+
+    @Before
+    public void setUp() {
+        appContext = InstrumentationRegistry.getTargetContext();
+        databaseAccess = DatabaseAccess.getInstance(appContext);  // CALL THE DATABASE STATICALY
+        databaseAccess.open(); // OPEN THE DATABASE
+
+
+        int id = 1;
+        gender = "m";
+        declension = 212;
+        latinAdverbStem = null;
+        latinAdverb = "laete";
+        englishAdverb = "happily";
+        englishAdverbComparative = "more happily";
+        englishAdverbSuperlative = "very happily";
+        
+        adverbComparative = new AdverbComparative(id, databaseAccess);
+            adverbComparative.setId(id);
+            adverbComparative.setGender(gender);
+            adverbComparative.setLatinAdverbStem(null);  // SET DECLENSION
+            adverbComparative.setLatinAdverb(latinAdverb);       // SET GENDER
+            adverbComparative.setEnglishAdverb(englishAdverb);
+            adverbComparative.setEnglishAdverbComparative(englishAdverbComparative);
+            adverbComparative.setEnglishAdverbSuperlative(englishAdverbSuperlative);
+    }
+
+
+    @Test
+    public void useAppContext() throws Exception {
+        // Context of the app under test.
+        assertEquals("com.example.snewnham.birkbecklatin", appContext.getPackageName());
+    }
+
+    // ================================  SINGULAR, MALE  =============================================
+
+    /**
+     * testMakeAdverbComparative()
+     * ========================
+     * test Adverb Class that It Can build Correct Latin Adverb.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeAdverbComparative() throws Exception {
+
+        adverbComparative.makeLatinWord(databaseAccess, null, null);
+
+        assertEquals("laet", adverbComparative.getLatinWordStem());
+        assertEquals("ius", adverbComparative.getLatinWordStem());
+        assertEquals("laetius", adverbComparative.getLatinWord());
+
+    }
+
+
+
+    /**
+     * testEnglishAdverbComparative()
+     * ----------------------------
+     * Test to get the English Adverb
+     */
+    @Test
+    public void testEnglishNounTranslation() throws Exception{
+        String s = adverbComparative.getEnglishWordPlural();
+        assertEquals("happily", adverbComparative.getEnglishWordSingular() );
+        assertEquals("happily", adverbComparative.getEnglishWordPlural() );
+    }
+
+    @After
+    public void breakDown() {
+        databaseAccess.close();
+    }
+
+
+}

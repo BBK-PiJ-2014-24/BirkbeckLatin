@@ -649,7 +649,6 @@ public class DatabaseInstrumentedTest {
         // ---------
         Adverb adverb = databaseAccess.sqlAdverbListQuery(adverbId);
 
-
         assertEquals(adverbId, adverb.getId());
         assertEquals(adverbDeclension, adverb.getDeclension());
         assertEquals(adverbLatinAdverb, adverb.getLatinAdverb());
