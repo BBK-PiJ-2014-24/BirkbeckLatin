@@ -36,6 +36,7 @@ public class LatinNoun_InstrumentTests_AdverbComparative {
     String englishAdverb;
     String englishAdverbComparative;
     String englishAdverbSuperlative;
+    String latinAdverbEnding;
     AdverbComparative adverbComparative;
 
 
@@ -49,7 +50,8 @@ public class LatinNoun_InstrumentTests_AdverbComparative {
         int id = 1;
         gender = "m";
         declension = 212;
-        latinAdverbStem = null;
+        latinAdverbStem = "laet";
+        latinAdverbEnding = "ius";
         latinAdverb = "laete";
         englishAdverb = "happily";
         englishAdverbComparative = "more happily";
@@ -58,8 +60,9 @@ public class LatinNoun_InstrumentTests_AdverbComparative {
         adverbComparative = new AdverbComparative(id, databaseAccess);
             adverbComparative.setId(id);
             adverbComparative.setGender(gender);
-            adverbComparative.setLatinAdverbStem(null);  // SET DECLENSION
-            adverbComparative.setLatinAdverb(latinAdverb);       // SET GENDER
+            adverbComparative.setLatinWordStem(latinAdverbStem);
+            adverbComparative.setLatinWordEnding(latinAdverbEnding);
+            adverbComparative.setLatinAdverb(latinAdverb);
             adverbComparative.setEnglishAdverb(englishAdverb);
             adverbComparative.setEnglishAdverbComparative(englishAdverbComparative);
             adverbComparative.setEnglishAdverbSuperlative(englishAdverbSuperlative);
@@ -87,7 +90,7 @@ public class LatinNoun_InstrumentTests_AdverbComparative {
         adverbComparative.makeLatinWord(databaseAccess, null, null);
 
         assertEquals("laet", adverbComparative.getLatinWordStem());
-        assertEquals("ius", adverbComparative.getLatinWordStem());
+        assertEquals("ius", adverbComparative.getLatinWordEnding());
         assertEquals("laetius", adverbComparative.getLatinWord());
 
     }

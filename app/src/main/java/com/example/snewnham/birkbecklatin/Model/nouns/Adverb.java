@@ -21,6 +21,9 @@ public class Adverb implements NounEtc {
     protected String mEnglishAdverbComparative;
     protected String mEnglishAdverbSuperlative;
 
+    protected String mLatinWordEnding;
+    protected String mLatinWord;
+
 
 
     // Constructor
@@ -41,7 +44,8 @@ public class Adverb implements NounEtc {
 
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String Declension) {
-        return mLatinAdverb;
+        mLatinWord = mLatinAdverb;
+        return mLatinWord;
     }
 
     @Override
@@ -111,22 +115,22 @@ public class Adverb implements NounEtc {
 
     @Override
     public String getLatinWordEnding() {
-        return null;
+        return mLatinWordEnding;
     }
 
     @Override
     public void setLatinWordEnding(String latinWordEnding) {
-        latinWordEnding = null;
+        mLatinWordEnding = null;
     }
 
     @Override
     public String getLatinWord() {
-        return mLatinAdverb;
+        return mLatinWord;
     }
 
     @Override
     public void setLatinWord(String latinWord) {
-        mLatinAdverb = latinWord;
+        mLatinWord = latinWord;
     }
 
     @Override

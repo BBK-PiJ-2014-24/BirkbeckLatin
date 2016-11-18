@@ -8,6 +8,9 @@ import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
 public class AdverbComparative extends Adverb {
 
+    // Fields
+    // ------
+    private final String ADVERB_COMPARATIVE_ENDING = "ius";
 
     // Constructor
     // -----------
@@ -24,19 +27,16 @@ public class AdverbComparative extends Adverb {
 
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String Declension) {
-        return null;
+        mLatinWordEnding = ADVERB_COMPARATIVE_ENDING;
+        mLatinWord = mLatinAdverbStem + mLatinWordEnding;
+        return mLatinWord;
     }
 
     @Override
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
-        return null;
+        mLatinWord = mEnglishAdverbComparative;
+        return mLatinWord;
     }
-
-
-
-
-
-
 
 
 }
