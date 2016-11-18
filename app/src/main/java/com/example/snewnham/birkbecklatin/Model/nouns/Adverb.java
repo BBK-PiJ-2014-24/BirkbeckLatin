@@ -8,7 +8,6 @@ import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
 public class Adverb implements NounEtc {
 
-
     // Fields
     // ------
     protected int mId;
@@ -23,7 +22,7 @@ public class Adverb implements NounEtc {
 
     protected String mLatinWordEnding;
     protected String mLatinWord;
-
+    protected String mEnglishWord;
 
 
     // Constructor
@@ -50,6 +49,7 @@ public class Adverb implements NounEtc {
 
     @Override
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
+        mEnglishWord = mEnglishAdverb;
         return mEnglishAdverb;
     }
 
@@ -120,7 +120,7 @@ public class Adverb implements NounEtc {
 
     @Override
     public void setLatinWordEnding(String latinWordEnding) {
-        mLatinWordEnding = null;
+        mLatinWordEnding = latinWordEnding;
     }
 
     @Override
@@ -135,22 +135,22 @@ public class Adverb implements NounEtc {
 
     @Override
     public String getEnglishWordSingular() {
-        return mEnglishAdverb;
+        return mEnglishWord;
     }
 
     @Override
     public void setEnglishWordSingular(String englishWordSingular) {
-        mEnglishAdverb = englishWordSingular;
+        mEnglishWord = englishWordSingular;
     }
 
     @Override
     public String getEnglishWordPlural() {
-        return mEnglishAdverb;
+        return mEnglishWord;
     }
 
     @Override
     public void setEnglishWordPlural(String englishWordPlural) {
-        mEnglishAdverb = englishWordPlural;
+        mEnglishWord = englishWordPlural;
     }
 
 
@@ -193,7 +193,5 @@ public class Adverb implements NounEtc {
     public void setEnglishAdverbSuperlative(String englishAdverbSuperlative) {
         mEnglishAdverbSuperlative = englishAdverbSuperlative;
     }
-
-
 
 }
