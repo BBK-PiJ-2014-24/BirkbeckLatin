@@ -26,9 +26,9 @@ public class RandomGenerator {
     private final int NOUN_CUTOFF_VOCATIVE = 52;
 
     private final int GENDER_NUM_OUTCOMES = 3;
-    private final int GENDER_CUTOFF_MALE = 1;
-    private final int GENDER_CUTOFF_FEMALE = 2;
-    private final int GENDER_CUTOFF_NEUTER = 3;
+    private final int GENDER_CUTOFF_MALE = 0;
+    private final int GENDER_CUTOFF_FEMALE = 1;
+    private final int GENDER_CUTOFF_NEUTER = 2;
     private final String GENDER_MALE = "m";
     private final String GENDER_FEMALE = "f";
     private final String GENDER_NEUTER = "n";
@@ -97,17 +97,17 @@ public class RandomGenerator {
      * calcAdjectiveGender()
      * ---------------------
      * Generate a Random "GENDER" (m,f,n) for Adjectives,
-     * if random [0,1] - > "m"
-     * if random [1,2] - > "f"
-     * if random [2,3] - > "n"
+     * if random [0] - > "m"
+     * if random [1] - > "f"
+     * if random [2] - > "n"
      * @return
      */
     public String getAdjectiveGender() {
         int randomGenderNumber = randomGenerator.nextInt(GENDER_NUM_OUTCOMES);
 
-        if(randomGenderNumber <= GENDER_CUTOFF_MALE)
+        if(randomGenderNumber == GENDER_CUTOFF_MALE)
             return GENDER_MALE;
-        else if(randomGenderNumber <= GENDER_CUTOFF_FEMALE)
+        else if(randomGenderNumber == GENDER_CUTOFF_FEMALE)
             return GENDER_FEMALE;
         else
             return GENDER_NEUTER;

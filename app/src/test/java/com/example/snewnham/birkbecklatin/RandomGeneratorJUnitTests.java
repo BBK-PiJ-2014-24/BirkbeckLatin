@@ -95,6 +95,71 @@ public class RandomGeneratorJUnitTests {
     }
 
 
+    /**
+     * testRandomNounNumber()
+     * ----------------------
+     * Tests the randomness of generating NUMBER arguments (Singular, Plural)
+     * @throws Exception
+     */
+    @Test
+    public void testRandomNounNumber() throws Exception {
+        Map<String, Integer> map = new HashMap<>();
+        int randomSims = 40000;
+        int numOutcomes = 2;
+        int approxAns =  randomSims/numOutcomes;
+        int tolerance = 1000;
+
+
+        for(int i=0; i<randomSims; i++) {
+            String ans = randomGenerator.getNounNumber();
+            if (!map.containsKey(ans))
+                map.put(ans, 1);
+            else
+                map.put(ans, map.get(ans) + 1);
+        }
+
+        assertThat("Num Singular Simulations", map.get(SINGULAR), greaterThan(approxAns - tolerance));
+        assertThat("Num Singular Simulations", map.get(SINGULAR), lessThan(approxAns + tolerance));
+
+        assertThat("Num Plural Simulations", map.get(PLURAL), greaterThan(approxAns - tolerance));
+        assertThat("Num Plural Simulations", map.get(PLURAL), lessThan(approxAns + tolerance));
+    }
+
+    /**
+     * testRandomAdjGender()
+     * ----------------------
+     * Tests the randomness of generating GENDER arguments for Adjectives (m,f,n)
+     * @throws Exception
+     */
+    @Test
+    public void testRandomAdjGender() throws Exception {
+        Map<String, Integer> map = new HashMap<>();
+        int randomSims = 60000;
+        int numOutcomes = 3;
+        int approxAns =  randomSims/numOutcomes;
+        int tolerance = 1000;
+
+
+        for(int i=0; i<randomSims; i++) {
+            String ans = randomGenerator.getAdjectiveGender();
+            if (!map.containsKey(ans))
+                map.put(ans, 1);
+            else
+                map.put(ans, map.get(ans) + 1);
+        }
+
+        assertThat("Num Gender_Male Simulations", map.get(GENDER_MALE), greaterThan(approxAns - tolerance));
+        assertThat("Num Gender_Male Simulations", map.get(GENDER_MALE), lessThan(approxAns + tolerance));
+
+        assertThat("Num Gender_Female Simulations", map.get(GENDER_FEMALE), greaterThan(approxAns - tolerance));
+        assertThat("Num Gender_Female Simulations", map.get(GENDER_FEMALE), lessThan(approxAns + tolerance));
+
+        assertThat("Num Gender_Neuter Simulations", map.get(GENDER_NEUTER), greaterThan(approxAns - tolerance));
+        assertThat("Num Gender_Neuter Simulations", map.get(GENDER_NEUTER), lessThan(approxAns + tolerance));
+
+
+    }
+
 
 
 
