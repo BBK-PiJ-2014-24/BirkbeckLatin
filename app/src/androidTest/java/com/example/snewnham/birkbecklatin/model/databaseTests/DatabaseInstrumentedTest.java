@@ -215,9 +215,10 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testTableSize() throws Exception {
 
+        String table = VERB_LIST_TABLE;
+
         int answer = databaseAccess.sqlTableCountQuery(table);
 
-        DatabaseUtils.queryNumEntries(readableDatabase, TABLE_NAME)
         assertEquals(10, answer);
     }
 

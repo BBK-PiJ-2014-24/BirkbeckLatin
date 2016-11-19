@@ -2,6 +2,7 @@ package com.example.snewnham.birkbecklatin.Model.database;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -135,6 +136,19 @@ public class DatabaseAccess {
             return new AdverbListCursor(cursor);
         else
             return cursor;
+    }
+
+
+    /**
+     * sqlTableCountQuery()
+     * Counts the number or rows in a given table
+     * @param table
+     * @return
+     */
+    public int  sqlTableCountQuery(String table) {
+
+        int tableSize = (int) DatabaseUtils.queryNumEntries(database, table);  // downcast as returns a long
+        return tableSize;
     }
 
     /**
