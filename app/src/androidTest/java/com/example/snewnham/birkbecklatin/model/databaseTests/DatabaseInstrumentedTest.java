@@ -160,7 +160,7 @@ public class DatabaseInstrumentedTest {
     /**
      * testDBAccess()
      * --------------
-     * Test General database access with basic sql queries
+     * Test General database access to various Tables with basic sql queries
      * @throws Exception
      */
     @Test
@@ -205,23 +205,20 @@ public class DatabaseInstrumentedTest {
         String ans3 = cursor3.getString(0);
         assertEquals("2", ans3);
 
-
     }
 
+
+    /**
+     * Test to determine the size of any particular table
+     * @throws Exception
+     */
     @Test
-    public void testDBAccess2() throws Exception {
-        String table = VERB_LIST_TABLE;
-        String[] column = null;
-        String whereClause = "_id=?";
-        String[] whereArgs = new String[]{"2"};
+    public void testTableSize() throws Exception {
 
+        int answer = databaseAccess.sqlTableCountQuery(table);
 
-        Cursor cursor = databaseAccess.sqlQuery(table, column, whereClause, whereArgs  );
-        cursor.moveToFirst();
-        String answer = cursor.getString(cursor.getColumnIndex(Cols.LATIN_INFINITIVE));
-        cursor.close();
-
-        assertEquals("monere", answer);
+        DatabaseUtils.queryNumEntries(readableDatabase, TABLE_NAME)
+        assertEquals(10, answer);
     }
 
 
