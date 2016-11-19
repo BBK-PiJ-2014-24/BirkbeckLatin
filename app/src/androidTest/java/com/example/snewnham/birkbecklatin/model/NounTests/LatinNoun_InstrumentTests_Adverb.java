@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
 
 /**
- * TESTS FOR CREATING ADJECTIVES FOR ALL 212 DECLENSIONS, GENDERS and CASES.
+ * TESTS FOR CREATING ADVERBS FOR ALL 212 DECLENSIONS, GENDERS and CASES.
  * Created by snewnham on 12/10/2016.
  */
 @RunWith(AndroidJUnit4.class)

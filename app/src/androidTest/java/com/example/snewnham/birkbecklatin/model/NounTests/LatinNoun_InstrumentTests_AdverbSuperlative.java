@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
 
 /**
- * TESTS FOR CREATING ADJECTIVES FOR ALL 212 DECLENSIONS, GENDERS and CASES.
+ * TESTS FOR CREATING ADVERBS FOR ALL GENDERS and CASES.
  * Created by snewnham on 12/10/2016.
  */
 @RunWith(AndroidJUnit4.class)
@@ -59,6 +59,7 @@ public class LatinNoun_InstrumentTests_AdverbSuperlative {
         
         adverbSuperlative = new AdverbSuperlative(id, databaseAccess);
             adverbSuperlative.setId(id);
+            adverbSuperlative.setDeclension(declension);
             adverbSuperlative.setGender(gender);
             adverbSuperlative.setLatinWordStem(latinAdverbStem);
             adverbSuperlative.setLatinWordEnding(latinAdverbEnding);
@@ -92,9 +93,7 @@ public class LatinNoun_InstrumentTests_AdverbSuperlative {
         assertEquals("laet", adverbSuperlative.getLatinWordStem());
         assertEquals("issime", adverbSuperlative.getLatinWordEnding());
         assertEquals("laetissime", adverbSuperlative.getLatinWord());
-
     }
-
 
 
     /**

@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
 
 /**
- * TESTS FOR CREATING ADJECTIVES FOR ALL 212 DECLENSIONS, GENDERS and CASES.
+ * TESTS FOR CREATING ADVERBS FOR ALL GENDERS and CASES.
  * Created by snewnham on 12/10/2016.
  */
 @RunWith(AndroidJUnit4.class)
@@ -59,6 +59,7 @@ public class LatinNoun_InstrumentTests_AdverbComparative {
         
         adverbComparative = new AdverbComparative(id, databaseAccess);
             adverbComparative.setId(id);
+            adverbComparative.setDeclension(declension);
             adverbComparative.setGender(gender);
             adverbComparative.setLatinWordStem(latinAdverbStem);
             adverbComparative.setLatinWordEnding(latinAdverbEnding);

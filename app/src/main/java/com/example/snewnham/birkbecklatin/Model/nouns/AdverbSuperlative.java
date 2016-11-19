@@ -27,8 +27,13 @@ public class AdverbSuperlative extends Adverb {
 
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String Declension) {
-        mLatinWordEnding = ADVERB_SUPERLATIVE_ENDING;
-        mLatinWord = mLatinAdverbStem + mLatinWordEnding;
+        if(mDeclension != 0) {
+            mLatinWordEnding = ADVERB_SUPERLATIVE_ENDING;
+            mLatinWord = mLatinAdverbStem + mLatinWordEnding;
+        } else {
+            mLatinWordEnding = null;
+            mLatinWord = null;
+        }
         return mLatinWord;
     }
 
