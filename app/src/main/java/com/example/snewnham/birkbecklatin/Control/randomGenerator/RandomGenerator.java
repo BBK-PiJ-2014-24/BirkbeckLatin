@@ -16,6 +16,7 @@ public class RandomGenerator {
     private final int NOUN_NUMBER_NUM_OUTCOMES = 2;
     private final String SINGULAR = "singular";
     private final String PLURAL = "plural";
+    private final String INFINITIVE = "Infinitive";
 
     private final int NOUN_CASE_NUM_OUTCOMES = 52;
     private final int NOUN_CUTOFF_NOMINATIVE = 10;
@@ -33,8 +34,6 @@ public class RandomGenerator {
     private final String GENDER_FEMALE = "f";
     private final String GENDER_NEUTER = "n";
 
-
-
     private final String NOMINATIVE = "Nominative";
     private final String ACCUSATIVE = "Accusative";
     private final String GENITIVE = "Genitive";
@@ -43,12 +42,39 @@ public class RandomGenerator {
     private final String VOCATIVE = "Vocative";
 
 
+    private final int VERB_PERSON_NUM_OUTCOMES = 3;
+    private final int VERB_PERSON_1ST_CUTOFF = 0;
+    private final int VERB_PERSON_2ND_CUTOFF = 1;
+    private final int VERB_PERSON_3RD_CUTOFF = 2;
+    private final String VERB_PERSON_1ST = "1st";
+    private final String VERB_PERSON_2ND = "2nd";
+    private final String VERB_PERSON_3RD = "3rd";
+
+
+
+    private final String VERB_TENSE_PRESENT = "Present";
+    private final String VERB_TENSE_IMPERFECT = "Imperfect";
+    private final String VERB_TENSE_FUTURE = "Future";
+    private final String VERB_TENSE_PERFECT = "Perfect";
+    private final String VERB_TENSE_PLUPERFECT = "Pluperfect";
+    private final String VERB_TENSE_FUTURE_PERFECT = "Future Perfect";
+
+    private final String VERB_MOOD_INDICATIVE = "Indicative";
+    private final String VERB_MOOD_SUBJUNCTIVE = "Subjunctive";
+    private final String VERB_MOOD_IMPERATIVE = "Imperative";
+
+    private final String VERB_VOICE_ACTIVE = "Active";
+    private final String VERB_VOICE_PASSIVE = "Passive";
+
+
+
+
     public RandomGenerator(){
         randomGenerator = new Random();
     }
 
     /**
-     * calcNounNumber()
+     * getNounNumber()
      * ----------------
      * Generate a Random "Number" [Singular, Plural] for a Noun
      * if random [0,1] - > "Singular"
@@ -65,7 +91,7 @@ public class RandomGenerator {
     }
 
     /**
-     * calcNounCase()
+     * getNounCase()
      * ----------------
      * Generate a Random "CASE" [Nom, Acc, Gen ...] for a Noun's Declension
      * if random [0,10] - > "Nominative"
@@ -94,7 +120,7 @@ public class RandomGenerator {
     }
 
     /**
-     * calcAdjectiveGender()
+     * getAdjectiveGender()
      * ---------------------
      * Generate a Random "GENDER" (m,f,n) for Adjectives,
      * if random [0] - > "m"
@@ -112,6 +138,29 @@ public class RandomGenerator {
         else
             return GENDER_NEUTER;
     }
+
+    /**
+     * getVerbPerson()
+     * --------------
+     * Generate a Random "PERSON" argument (1,2,3) for Verbs
+     * if random [0] - > "1st"
+     * if random [1] - > "2nd"
+     * if random [2] - > "3rd"
+     * @return
+     */
+    public String getVerbPerson(){
+
+        int randomVerbPerson = randomGenerator.nextInt(VERB_PERSON_NUM_OUTCOMES);
+
+        if(randomVerbPerson == VERB_PERSON_1ST_CUTOFF)
+            return VERB_PERSON_1ST;
+        else if(randomVerbPerson == VERB_PERSON_2ND_CUTOFF)
+            return VERB_PERSON_2ND;
+        else
+            return VERB_PERSON_3RD;
+    }
+
+
 
 
 }

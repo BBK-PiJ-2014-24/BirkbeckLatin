@@ -41,6 +41,14 @@ public class RandomGeneratorJUnitTests {
     String ABLATIVE = "Ablative";
     String VOCATIVE = "Vocative";
 
+    String VERB_PERSON_1ST = "1st";
+    String VERB_PERSON_2ND = "2nd";
+    String VERB_PERSON_3RD = "3rd";
+
+
+
+
+
     RandomGenerator randomGenerator;
 
 
@@ -49,6 +57,8 @@ public class RandomGeneratorJUnitTests {
         randomGenerator = new RandomGenerator();
     }
 
+
+    // -------------------------------- NOUNS --------------------------------------------------
     /**
      * testRandomNounCase()
      * --------------------
@@ -156,8 +166,40 @@ public class RandomGeneratorJUnitTests {
 
         assertThat("Num Gender_Neuter Simulations", map.get(GENDER_NEUTER), greaterThan(approxAns - tolerance));
         assertThat("Num Gender_Neuter Simulations", map.get(GENDER_NEUTER), lessThan(approxAns + tolerance));
+    }
 
 
+    /**
+     * testRandomAdjGender()
+     * ----------------------
+     * Tests the randomness of generating GENDER arguments for Adjectives (m,f,n)
+     * @throws Exception
+     */
+    @Test
+    public void testRandomVerbPersons() throws Exception {
+        Map<String, Integer> map = new HashMap<>();
+        int randomSims = 60000;
+        int numOutcomes = 3;
+        int approxAns =  randomSims/numOutcomes;
+        int tolerance = 1000;
+
+
+        for(int i=0; i<randomSims; i++) {
+            String ans = randomGenerator.getVerbPerson();
+            if (!map.containsKey(ans))
+                map.put(ans, 1);
+            else
+                map.put(ans, map.get(ans) + 1);
+        }
+
+        assertThat("Num Verb 1st Person Simulations", map.get(VERB_PERSON_1ST), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb 1st Person Simulations", map.get(VERB_PERSON_1ST), lessThan(approxAns + tolerance));
+
+        assertThat("Num Verb 2nd Person Simulations", map.get(VERB_PERSON_2ND), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb 2nd Person Simulations", map.get(VERB_PERSON_2ND), lessThan(approxAns + tolerance));
+
+        assertThat("Num Verb 3rd Person Simulations", map.get(VERB_PERSON_3RD), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb 3rd Person Simulations", map.get(VERB_PERSON_3RD), lessThan(approxAns + tolerance));
     }
 
 
