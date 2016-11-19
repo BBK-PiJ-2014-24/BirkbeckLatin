@@ -52,8 +52,8 @@ public class RandomGeneratorJUnitTests {
     String VERB_TENSE_PLUPERFECT = "Pluperfect";
     String VERB_TENSE_FUTURE_PERFECT = "Future Perfect";
 
-
-
+    String VERB_VOICE_ACTIVE = "Active";
+    String VERB_VOICE_PASSIVE = "Passive";
 
 
     RandomGenerator randomGenerator;
@@ -253,7 +253,36 @@ public class RandomGeneratorJUnitTests {
         assertThat("Num Verb FUTURE_PERFECT TENSE Simulations", map.get(VERB_TENSE_FUTURE_PERFECT), lessThan(approxAns + tolerance));
     }
 
+    /**
+     * testRandomAdjGender()
+     * ----------------------
+     * Tests the randomness of generating GENDER arguments for Adjectives (m,f,n)
+     * @throws Exception
+     */
+    @Test
+    public void testRandomVerbVoice() throws Exception {
+        Map<String, Integer> map = new HashMap<>();
+        int randomSims = 40000;
+        int numOutcomes = 2;
+        int approxAns = randomSims / numOutcomes;
+        int tolerance = 1000;
 
 
+        for (int i = 0; i < randomSims; i++) {
+            String ans = randomGenerator.getVerbVoice();
+            if (!map.containsKey(ans))
+                map.put(ans, 1);
+            else
+                map.put(ans, map.get(ans) + 1);
+        }
+
+        assertThat("Num Verb Voice ACTIVE", map.get(VERB_VOICE_ACTIVE), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb Voice ACTIVE", map.get(VERB_VOICE_ACTIVE), lessThan(approxAns + tolerance));
+
+        assertThat("Num Verb Voice PASSIVE", map.get(VERB_VOICE_PASSIVE), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb Voice PASSIVE", map.get(VERB_VOICE_PASSIVE), lessThan(approxAns + tolerance));
+
+
+    }
 
 }

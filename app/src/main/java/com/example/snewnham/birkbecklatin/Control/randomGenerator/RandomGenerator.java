@@ -71,10 +71,12 @@ public class RandomGenerator {
     private final String VERB_MOOD_SUBJUNCTIVE = "Subjunctive";
     private final String VERB_MOOD_IMPERATIVE = "Imperative";
 
+
+    private final int VERB_VOICE_NUM_OUTCOMES = 2;
+    private final int VERB_VOICE_ACTIVE_CUTOFF= 0;
+    private final int VERB_VOICE_PASSIVE_CUTOFF = 1;
     private final String VERB_VOICE_ACTIVE = "Active";
     private final String VERB_VOICE_PASSIVE = "Passive";
-
-
 
 
     public RandomGenerator(){
@@ -207,7 +209,23 @@ public class RandomGenerator {
         return null;
     }
 
+    /**
+     * getVerbVoice()
+     * --------------
+     * Generate a Random "Voice" (Active, Passive)
+     * if random [0] - > "Active"
+     * if random [1] - > "Passive"
+     * @return
+     */
+    public String getVerbVoice() {
+        int randomGenderNumber = randomGenerator.nextInt(VERB_VOICE_NUM_OUTCOMES);
 
+        if (randomGenderNumber == VERB_VOICE_ACTIVE_CUTOFF)
+            return VERB_VOICE_ACTIVE;
+        else
+            return VERB_VOICE_PASSIVE;
+
+    }
 
 
 }
