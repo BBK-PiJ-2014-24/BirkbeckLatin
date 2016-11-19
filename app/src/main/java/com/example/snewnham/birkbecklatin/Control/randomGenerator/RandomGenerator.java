@@ -14,9 +14,9 @@ public class RandomGenerator {
     // ------
     private Random randomGenerator;
     private final int NOUN_NUMBER_NUM_OUTCOMES = 2;
-    private final String SINGULAR = "singular";
-    private final String PLURAL = "plural";
-    private final String INFINITIVE = "Infinitive";
+    private final String NOUN_SINGULAR = "Singular";
+    private final String NOUN_PLURAL = "Plural";
+
 
     private final int NOUN_CASE_NUM_OUTCOMES = 52;
     private final int NOUN_CUTOFF_NOMINATIVE = 10;
@@ -78,6 +78,14 @@ public class RandomGenerator {
     private final String VERB_VOICE_ACTIVE = "Active";
     private final String VERB_VOICE_PASSIVE = "Passive";
 
+    private final int VERB_NUMBER_NUM_OUTCOMES = 610;
+    private final int VERB_NUMBER_SINGULAR_CUTOFF = 301;
+    private final int VERB_NUMBER_PLURAL_CUTOFF = 604;
+    private final int VERB_NUMBER_INFINITIVE_CUTOFF = 610;
+    private final String VERB_NUMBER_SINGULAR = "Singular";
+    private final String VERB_NUMBER_PLURAL = "Plural";
+    private final String VERB_NUMBER_INFINITIVE = "Infinitive";
+
 
     public RandomGenerator(){
         randomGenerator = new Random();
@@ -94,9 +102,9 @@ public class RandomGenerator {
     public String getNounNumber() {
         int randomNounNumber = randomGenerator.nextInt(NOUN_NUMBER_NUM_OUTCOMES);
         if(randomNounNumber >= 1){
-            return SINGULAR;
+            return NOUN_SINGULAR;
         } else {
-            return PLURAL;
+            return NOUN_PLURAL;
         }
     }
 
@@ -225,6 +233,26 @@ public class RandomGenerator {
         else
             return VERB_VOICE_PASSIVE;
 
+    }
+
+    /**
+     * getVerbNumber()
+     * --------------
+     * Generate a Random "Number" (Singular, Plural, Infinitive) for a VERB
+     * if random [0,302] - > "Singular"
+     * if random [302,604] - > "Plural"
+     * if random [604,610] - > "Plural"
+     * @return
+     */
+    public String getVerbNumber() {
+        int randomGenderNumber = randomGenerator.nextInt(VERB_NUMBER_NUM_OUTCOMES);
+
+        if (randomGenderNumber <= VERB_NUMBER_SINGULAR_CUTOFF)
+            return VERB_NUMBER_SINGULAR;
+        else if (randomGenderNumber <= VERB_NUMBER_PLURAL_CUTOFF)
+            return VERB_NUMBER_PLURAL;
+        else
+            return VERB_NUMBER_INFINITIVE;
     }
 
 

@@ -26,8 +26,8 @@ public class RandomGeneratorJUnitTests {
 
     // Fields
     // ------
-    String SINGULAR = "singular";
-    String PLURAL = "plural";
+    String SINGULAR = "Singular";
+    String PLURAL = "Plural";
 
 
     String GENDER_MALE = "m";
@@ -54,6 +54,12 @@ public class RandomGeneratorJUnitTests {
 
     String VERB_VOICE_ACTIVE = "Active";
     String VERB_VOICE_PASSIVE = "Passive";
+
+    String VERB_NUMBER_SINGULAR = "Singular";
+    String VERB_NUMBER_PLURAL = "Plural";
+    String VERB_NUMBER_INFINITIVE = "Infinitive";
+
+
 
 
     RandomGenerator randomGenerator;
@@ -281,8 +287,44 @@ public class RandomGeneratorJUnitTests {
 
         assertThat("Num Verb Voice PASSIVE", map.get(VERB_VOICE_PASSIVE), greaterThan(approxAns - tolerance));
         assertThat("Num Verb Voice PASSIVE", map.get(VERB_VOICE_PASSIVE), lessThan(approxAns + tolerance));
+    }
 
 
+    /**
+     * testRandomVerbNumber()
+     * ----------------------
+     * Tests the randomness of generating NUMBER arguments for Verbs (Singular, Plural, Infinitive)
+     * @throws Exception
+     */
+    @Test
+    public void testRandomVerbNumber() throws Exception {
+        Map<String, Integer> map = new HashMap<>();
+        int randomSims = 61000;
+        int numOutcomes = 610;
+        int numInfinitiveOutcome = 6;
+        int tolerance = 1000;
+        int infinitiveTolerance = 150;
+        int approxAns =  randomSims/2;
+        int approxInfinitiveAns = (randomSims*numInfinitiveOutcome)/numOutcomes;
+
+
+        for (int i = 0; i < randomSims; i++) {
+            String ans = randomGenerator.getVerbNumber();
+            if (!map.containsKey(ans))
+                map.put(ans, 1);
+            else
+                map.put(ans, map.get(ans) + 1);
+        }
+
+        int x = 5;
+        assertThat("Num Verb NUMBER SINGULAR", map.get(VERB_NUMBER_SINGULAR), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb NUMBER SINGULAR", map.get(VERB_NUMBER_SINGULAR), lessThan(approxAns + tolerance));
+
+        assertThat("Num Verb NUMBER PLURAL", map.get(VERB_NUMBER_PLURAL), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb NUMBER PLURAL", map.get(VERB_NUMBER_PLURAL), lessThan(approxAns + tolerance));
+
+        assertThat("Num Verb NUMBER INFINITIVE", map.get(VERB_NUMBER_INFINITIVE), greaterThan(approxInfinitiveAns - infinitiveTolerance));
+        assertThat("Num Verb NUMBER INFINITIVE", map.get(VERB_NUMBER_INFINITIVE), lessThan(approxInfinitiveAns + infinitiveTolerance));
     }
 
 }
