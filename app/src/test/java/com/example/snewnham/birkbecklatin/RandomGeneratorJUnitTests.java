@@ -45,6 +45,13 @@ public class RandomGeneratorJUnitTests {
     String VERB_PERSON_2ND = "2nd";
     String VERB_PERSON_3RD = "3rd";
 
+    String VERB_TENSE_PRESENT = "Present";
+    String VERB_TENSE_IMPERFECT = "Imperfect";
+    String VERB_TENSE_FUTURE = "Future";
+    String VERB_TENSE_PERFECT = "Perfect";
+    String VERB_TENSE_PLUPERFECT = "Pluperfect";
+    String VERB_TENSE_FUTURE_PERFECT = "Future Perfect";
+
 
 
 
@@ -200,6 +207,50 @@ public class RandomGeneratorJUnitTests {
 
         assertThat("Num Verb 3rd Person Simulations", map.get(VERB_PERSON_3RD), greaterThan(approxAns - tolerance));
         assertThat("Num Verb 3rd Person Simulations", map.get(VERB_PERSON_3RD), lessThan(approxAns + tolerance));
+    }
+
+
+
+    /**
+     * testRandomVerbTense()
+     * ----------------------
+     * Tests the randomness of generating TENSE arguments for VERBS (PRESENT, IMPERFECT, ETC.)
+     * @throws Exception
+     */
+    @Test
+    public void testRandomVerbTense() throws Exception {
+        Map<String, Integer> map = new HashMap<>();
+        int randomSims = 120000;
+        int numOutcomes = 6;
+        int approxAns =  randomSims/numOutcomes;
+        int tolerance = 1000;
+
+
+        for(int i=0; i<randomSims; i++) {
+            String ans = randomGenerator.getVerbTense();
+            if (!map.containsKey(ans))
+                map.put(ans, 1);
+            else
+                map.put(ans, map.get(ans) + 1);
+        }
+
+        assertThat("Num Verb PRESENT TENSE Simulations", map.get(VERB_TENSE_PRESENT), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb PRESENT TENSE Simulations", map.get(VERB_TENSE_PRESENT), lessThan(approxAns + tolerance));
+
+        assertThat("Num Verb IMPERFECT TENSE Simulations", map.get(VERB_TENSE_IMPERFECT), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb IMPERFECT TENSE Simulations", map.get(VERB_TENSE_IMPERFECT), lessThan(approxAns + tolerance));
+
+        assertThat("Num Verb FUTURE TENSE Simulations", map.get(VERB_TENSE_FUTURE), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb FUTURE TENSE Simulations", map.get(VERB_TENSE_FUTURE), lessThan(approxAns + tolerance));
+
+        assertThat("Num Verb PERFECT TENSE Simulations", map.get(VERB_TENSE_PERFECT), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb PERFECT TENSE Simulations", map.get(VERB_TENSE_PERFECT), lessThan(approxAns + tolerance));
+
+        assertThat("Num Verb PLUPERFECT TENSE Simulations", map.get(VERB_TENSE_PLUPERFECT), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb PLUPERFECT TENSE Simulations", map.get(VERB_TENSE_PLUPERFECT), lessThan(approxAns + tolerance));
+
+        assertThat("Num Verb FUTURE_PERFECT TENSE Simulations", map.get(VERB_TENSE_FUTURE_PERFECT), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb FUTURE_PERFECT TENSE Simulations", map.get(VERB_TENSE_FUTURE_PERFECT), lessThan(approxAns + tolerance));
     }
 
 

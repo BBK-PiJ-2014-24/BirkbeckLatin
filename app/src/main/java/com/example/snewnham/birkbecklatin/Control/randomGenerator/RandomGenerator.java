@@ -52,12 +52,20 @@ public class RandomGenerator {
 
 
 
+    private final int VERB_TENSE_NUM_OUTCOMES = 6;
+    private final int VERB_TENSE_PRESENT_CUTOFF = 0;
+    private final int VERB_TENSE_IMPERFECT_CUTOFF = 1;
+    private final int VERB_TENSE_FUTURE_CUTOFF = 2;
+    private final int VERB_TENSE_PERFECT_CUTOFF = 3;
+    private final int VERB_TENSE_PLUPERFECT_CUTOFF = 4;
+    private final int VERB_TENSE_FUTURE_PERFECT_CUTOFF = 5;
     private final String VERB_TENSE_PRESENT = "Present";
     private final String VERB_TENSE_IMPERFECT = "Imperfect";
     private final String VERB_TENSE_FUTURE = "Future";
     private final String VERB_TENSE_PERFECT = "Perfect";
     private final String VERB_TENSE_PLUPERFECT = "Pluperfect";
     private final String VERB_TENSE_FUTURE_PERFECT = "Future Perfect";
+
 
     private final String VERB_MOOD_INDICATIVE = "Indicative";
     private final String VERB_MOOD_SUBJUNCTIVE = "Subjunctive";
@@ -158,6 +166,45 @@ public class RandomGenerator {
             return VERB_PERSON_2ND;
         else
             return VERB_PERSON_3RD;
+    }
+
+    /**
+     * getVerbTense()
+     * --------------
+     * Generate a Random "TENSE" argument (Present, Imperfect, Future etc) for Verbs
+     * if random [0] - > "Present"
+     * if random [1] - > "Perfect"
+     * if random [2] - > "Imperfect"
+     * if random [3] - > "Perfect"
+     * if random [4] - > "Pluperfect"
+     * if random [5] - > "Future Perfect"
+     *
+     * @return
+     */
+    public String getVerbTense(){
+
+        int randomVerbPerson = randomGenerator.nextInt(VERB_TENSE_NUM_OUTCOMES);
+
+        switch (randomVerbPerson) {
+            case VERB_TENSE_PRESENT_CUTOFF:
+                return VERB_TENSE_PRESENT;
+
+            case VERB_TENSE_IMPERFECT_CUTOFF:
+                return VERB_TENSE_IMPERFECT;
+
+            case VERB_TENSE_FUTURE_CUTOFF:
+                return VERB_TENSE_FUTURE;
+
+            case VERB_TENSE_PERFECT_CUTOFF:
+                return VERB_TENSE_PERFECT;
+
+            case VERB_TENSE_PLUPERFECT_CUTOFF:
+                return VERB_TENSE_PLUPERFECT;
+
+            case VERB_TENSE_FUTURE_PERFECT_CUTOFF:
+                return VERB_TENSE_FUTURE_PERFECT;
+        }
+        return null;
     }
 
 
