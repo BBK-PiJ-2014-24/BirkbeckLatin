@@ -30,6 +30,16 @@ public class RandomGenerator {
     private final String CONJUNCTION = "Conjunction";
     private final String ADVERB = "Adverb";
 
+    private final String ADVERB_COMPARATIVE = "AdverbComparative";
+    private final String ADVERB_SUPERLATIVE = "AdverbSuperlative";
+
+    private final int ADJECTIVE_NUM_OUTCOMES= 4;
+    private final int ADJECTIVE_CUTOFF = 1;
+    private final int ADJECTIVE_COMPARATIVE_CUTOFF = 2;
+    private final int ADJECTIVE_SUPERLATIVE_CUTOFF = 3;
+    private final String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
+    private final String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
+
 
     private final int NOUN_NUMBER_NUM_OUTCOMES = 2;
     private final String NOUN_SINGULAR = "Singular";
@@ -131,7 +141,7 @@ public class RandomGenerator {
      *
      * @return
      */
-    public String getNounEtc() {
+    public String getNounEtcType() {
 
         int numNouns = databaseAccess.sqlTableCountQuery(NOUN_TABLE);
         int numAdjective = databaseAccess.sqlTableCountQuery(ADJECTIVE_TABLE);
@@ -161,6 +171,24 @@ public class RandomGenerator {
         else
             return null;
     }
+
+    /**
+     * getAdjectiveType()
+     * ------------------
+     * Generate a random Adjective Type (Standard, Comparative, Superlative)
+     * @return
+     */
+    public String getAdjectiveType(){
+        int randomAdjectiveNumber = randomGenerator.nextInt(ADJECTIVE_NUM_OUTCOMES);
+
+        if(randomAdjectiveNumber <= ADJECTIVE_CUTOFF)
+            return ADJECTIVE;
+        else if (randomAdjectiveNumber == ADJECTIVE_COMPARATIVE_CUTOFF)
+            return ADJECTIVE_COMPARATIVE;
+        else
+            return ADJECTIVE_SUPERLATIVE;
+    }
+
 
     /**
      * getNounNumber()

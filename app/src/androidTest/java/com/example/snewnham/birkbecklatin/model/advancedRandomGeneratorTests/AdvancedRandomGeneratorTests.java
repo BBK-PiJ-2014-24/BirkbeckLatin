@@ -56,6 +56,8 @@ public class AdvancedRandomGeneratorTests {
     String PREPOSITION = "Preposition";
     String CONJUNCTION = "Conjunction";
     String ADVERB = "Adverb";
+    String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
+    String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
 
     RandomGenerator randomGenerator;
     DatabaseAccess databaseAccess;
@@ -103,7 +105,7 @@ public class AdvancedRandomGeneratorTests {
 
 
         for(int i=0; i<randomSims; i++) {
-            String ans = randomGenerator.getNounEtc();
+            String ans = randomGenerator.getNounEtcType();
             if (!map.containsKey(ans))
                 map.put(ans, 1);
             else
@@ -126,6 +128,51 @@ public class AdvancedRandomGeneratorTests {
         assertThat("Num ADVERB Simulations", map.get(ADVERB), lessThan(sampleAdverb + toleranceAdverb));
 
     }
+
+    /**
+     * testRandomAdjectiveType()
+     * -------------------------
+     * Generate a random Adjective Type (Standard, Comparative, Superlative)
+     * @throws Exception
+     */
+    @Test
+    public void testRandomAdjectiveType() throws Exception {
+
+        int randomSims = 80000;
+        int numAdjective = 2;
+        int numAdjComparative = 1;
+        int numAdjSuperlative = 1;
+        int total = 4;
+
+        int sampleAdjective = (randomSims * numAdjective)/total;
+        int sampleComparative = (randomSims * numAdjComparative)/total;
+        int sampleSuperlative = (randomSims * numAdjSuperlative)/total;
+        float toleranceFactor = 0.15f;
+        int toleranceAdjective = (int) (sampleAdjective * toleranceFactor);
+        int toleranceComparative = (int) (sampleComparative * toleranceFactor);
+        int toleranceSuperlative = (int) (sampleSuperlative * toleranceFactor);
+
+        Map<String, Integer> map = new HashMap<>();
+
+        for(int i=0; i<randomSims; i++) {
+            String ans = randomGenerator.getAdjectiveType();
+            if (!map.containsKey(ans))
+                map.put(ans, 1);
+            else
+                map.put(ans, map.get(ans) + 1);
+        }
+        int x = 5;
+        assertThat("Num ADJECTIVE_STANDARD Simulations", map.get(ADJECTIVE), greaterThan(sampleAdjective - toleranceAdjective));
+        assertThat("Num ADJECTIVE_STANDARD Simulations", map.get(ADJECTIVE), lessThan(sampleAdjective + toleranceAdjective));
+
+        assertThat("Num ADJECTIVE_COMPARATIVE Simulations", map.get(ADJECTIVE_COMPARATIVE), greaterThan(sampleComparative - toleranceComparative));
+        assertThat("Num ADJECTIVE_COMPARATIVE Simulations", map.get(ADJECTIVE_COMPARATIVE), lessThan(sampleComparative + toleranceComparative));
+
+        assertThat("Num ADJECTIVE_SUPERLATIVE Simulations", map.get(ADJECTIVE_SUPERLATIVE), greaterThan(sampleComparative - toleranceSuperlative));
+        assertThat("Num ADJECTIVE_SUPERLATIVE Simulations", map.get(ADJECTIVE_SUPERLATIVE), lessThan(sampleComparative + toleranceSuperlative));
+    }
+
+
 
     @After
     public void breakDown() {
