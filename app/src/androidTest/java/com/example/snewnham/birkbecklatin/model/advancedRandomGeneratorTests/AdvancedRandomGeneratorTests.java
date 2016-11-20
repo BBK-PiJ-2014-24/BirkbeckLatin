@@ -49,7 +49,7 @@ public class AdvancedRandomGeneratorTests {
     String ADJECTIVE_TABLE = "Adjective_List";
     String ADVERB_TABLE = "Adverb_List";
     String PREPOSITION_TABLE = "Preposition_List";
-    String CONJUNCTION_TABLE = "Conjunction_Table";
+    String CONJUNCTION_TABLE = "Conjunction_List";
 
     String NOUN = "Noun";
     String ADJECTIVE = "Adjective";
@@ -63,10 +63,10 @@ public class AdvancedRandomGeneratorTests {
 
     @Before
     public void setUp() {
-        randomGenerator = new RandomGenerator();
         appContext = InstrumentationRegistry.getTargetContext();
         databaseAccess = DatabaseAccess.getInstance(appContext);  // CALL THE DATABASE STATICALY
-        databaseAccess.open();                                  // OPEN THE DATABASE
+        //databaseAccess.open();                                  // OPEN THE DATABASE
+        randomGenerator = new RandomGenerator(databaseAccess);
     }
 
 
@@ -109,7 +109,7 @@ public class AdvancedRandomGeneratorTests {
             else
                 map.put(ans, map.get(ans) + 1);
         }
-
+        int x = 5;
         assertThat("Num NOUN Simulations", map.get(NOUN), greaterThan(sampleNouns - toleranceNoun));
         assertThat("Num NOUN Simulations", map.get(NOUN), lessThan(sampleNouns + toleranceNoun));
 

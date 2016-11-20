@@ -1,5 +1,8 @@
 package com.example.snewnham.birkbecklatin.Control.randomGenerator;
 
+import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
+
 import java.util.Random;
 
 /**
@@ -13,6 +16,21 @@ public class RandomGenerator {
     // Fields
     // ------
     private Random randomGenerator;
+    private DatabaseAccess databaseAccess;
+
+    private final String NOUN_TABLE = "Noun_List";
+    private final String ADJECTIVE_TABLE = "Adjective_List";
+    private final String ADVERB_TABLE = "Adverb_List";
+    private final String PREPOSITION_TABLE = "Preposition_List";
+    private final String CONJUNCTION_TABLE = "Conjunction_List";
+
+    private final String NOUN = "Noun";
+    private final String ADJECTIVE = "Adjective";
+    private final String PREPOSITION = "Preposition";
+    private final String CONJUNCTION = "Conjunction";
+    private final String ADVERB = "Adverb";
+
+
     private final int NOUN_NUMBER_NUM_OUTCOMES = 2;
     private final String NOUN_SINGULAR = "Singular";
     private final String NOUN_PLURAL = "Plural";
@@ -91,16 +109,57 @@ public class RandomGenerator {
     private final String VERB_MOOD_IMPERATIVE = "Imperative";
 
 
+
+    // Constructors
+    // ------------
     public RandomGenerator(){
         randomGenerator = new Random();
     }
 
+    public RandomGenerator(DatabaseAccess database){
+        randomGenerator = new Random();
+        databaseAccess = database;
+        databaseAccess.open();                                  // OPEN THE DATABASE
+    }
+
     // ------------------------------- NOUNS ----------------------------------------------
 
+    /**
+     * getNounEtc()
+     * ------------
+     * Generate a randomn NounEtc (Noun, Pronoun, Adjective, Preposition etc.)
+     *
+     * @return
+     */
+    public String getNounEtc() {
 
-    public String getNounEtc(){
+        int numNouns = databaseAccess.sqlTableCountQuery(NOUN_TABLE);
+        int numAdjective = databaseAccess.sqlTableCountQuery(ADJECTIVE_TABLE);
+        int numPreposition = databaseAccess.sqlTableCountQuery(PREPOSITION_TABLE);
+        int numConjunction = databaseAccess.sqlTableCountQuery(CONJUNCTION_TABLE);
+        int numAdverb = databaseAccess.sqlTableCountQuery(ADJECTIVE_TABLE);
+        int totalOutcomes = numNouns + numAdjective + numPreposition + numConjunction + numAdverb;
 
-        return null;
+        int cumulNouns = numNouns;
+        int cumulAdjective = numNouns + numAdjective;
+        int cumulPreposition = numNouns + numAdjective + numPreposition;
+        int cumulConjunction = numNouns + numAdjective + numPreposition + numConjunction;
+        int cumulAdverb = numNouns + numAdjective + numPreposition + numConjunction + numAdverb;
+
+        int randomNounEtcNumber = randomGenerator.nextInt(totalOutcomes);
+
+        if (randomNounEtcNumber <= cumulNouns)
+            return NOUN;
+        else if (randomNounEtcNumber <= cumulAdjective)
+            return ADJECTIVE;
+        if (randomNounEtcNumber <= cumulPreposition)
+            return PREPOSITION;
+        if (randomNounEtcNumber <= cumulConjunction)
+            return CONJUNCTION;
+        if (randomNounEtcNumber <= cumulAdverb)
+            return ADVERB;
+        else
+            return null;
     }
 
     /**
@@ -112,6 +171,7 @@ public class RandomGenerator {
      * @return number
      */
     public String getNounNumber() {
+
         int randomNounNumber = randomGenerator.nextInt(NOUN_NUMBER_NUM_OUTCOMES);
         if(randomNounNumber == 0){
             return NOUN_SINGULAR;
