@@ -67,11 +67,6 @@ public class RandomGenerator {
     private final String VERB_TENSE_FUTURE_PERFECT = "Future Perfect";
 
 
-    private final String VERB_MOOD_INDICATIVE = "Indicative";
-    private final String VERB_MOOD_SUBJUNCTIVE = "Subjunctive";
-    private final String VERB_MOOD_IMPERATIVE = "Imperative";
-
-
     private final int VERB_VOICE_NUM_OUTCOMES = 2;
     private final int VERB_VOICE_ACTIVE_CUTOFF= 0;
     private final int VERB_VOICE_PASSIVE_CUTOFF = 1;
@@ -87,21 +82,38 @@ public class RandomGenerator {
     private final String VERB_NUMBER_INFINITIVE = "Infinitive";
 
 
+    private final int VERB_MOOD_NUM_OUTCOMES = 610;
+    private final int VERB_MOOD_INDICATIVE_CUTOFF = 302;
+    private final int VERB_MOOD_SUBJUNCTIVE_CUTOFF = 606;
+    private final int VERB_MOOD_IMPERATIVE_CUTOFF = 610;
+    private final String VERB_MOOD_INDICATIVE = "Indicative";
+    private final String VERB_MOOD_SUBJUNCTIVE = "Subjunctive";
+    private final String VERB_MOOD_IMPERATIVE = "Imperative";
+
+
     public RandomGenerator(){
         randomGenerator = new Random();
+    }
+
+    // ------------------------------- NOUNS ----------------------------------------------
+
+
+    public String getNounEtc(){
+
+        return null;
     }
 
     /**
      * getNounNumber()
      * ----------------
      * Generate a Random "Number" [Singular, Plural] for a Noun
-     * if random [0,1] - > "Singular"
-     * if random [1,2] - > "Plural"
+     * if random [0] - > "Singular"
+     * if random [1] - > "Plural"
      * @return number
      */
     public String getNounNumber() {
         int randomNounNumber = randomGenerator.nextInt(NOUN_NUMBER_NUM_OUTCOMES);
-        if(randomNounNumber >= 1){
+        if(randomNounNumber == 0){
             return NOUN_SINGULAR;
         } else {
             return NOUN_PLURAL;
@@ -157,6 +169,7 @@ public class RandomGenerator {
             return GENDER_NEUTER;
     }
 
+    //  -------------------------------- VERBS ------------------------------------------------
     /**
      * getVerbPerson()
      * --------------
@@ -241,7 +254,7 @@ public class RandomGenerator {
      * Generate a Random "Number" (Singular, Plural, Infinitive) for a VERB
      * if random [0,302] - > "Singular"
      * if random [302,604] - > "Plural"
-     * if random [604,610] - > "Plural"
+     * if random [604,610] - > "Infinitive"
      * @return
      */
     public String getVerbNumber() {
@@ -253,6 +266,26 @@ public class RandomGenerator {
             return VERB_NUMBER_PLURAL;
         else
             return VERB_NUMBER_INFINITIVE;
+    }
+
+    /**
+     * getVerbMood()
+     * --------------
+     * Generate a Random "Mood" (Indicative, Subjunctive, Imperative) for a VERB
+     * if random [0,303] - > "Indicative"
+     * if random [304,606] - > "Subjunctive"
+     * if random [607,610] - > "Imperative"
+     * @return
+     */
+    public String getVerbMood() {
+        int randomGenderNumber = randomGenerator.nextInt(VERB_MOOD_NUM_OUTCOMES);
+
+        if (randomGenderNumber <= VERB_MOOD_INDICATIVE_CUTOFF)
+            return VERB_MOOD_INDICATIVE;
+        else if (randomGenderNumber <= VERB_MOOD_SUBJUNCTIVE_CUTOFF)
+            return VERB_MOOD_SUBJUNCTIVE;
+        else
+            return VERB_MOOD_IMPERATIVE;
     }
 
 

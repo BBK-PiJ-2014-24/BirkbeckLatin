@@ -1,6 +1,7 @@
 package com.example.snewnham.birkbecklatin;
 
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
+import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,14 +16,8 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class RandomGeneratorJUnitTests {
+public class BasicRandomGeneratorJUnitTests {
 
-
-
-    @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
-    }
 
     // Fields
     // ------
@@ -59,8 +54,9 @@ public class RandomGeneratorJUnitTests {
     String VERB_NUMBER_PLURAL = "Plural";
     String VERB_NUMBER_INFINITIVE = "Infinitive";
 
-
-
+    String VERB_MOOD_INDICATIVE = "Indicative";
+    String VERB_MOOD_SUBJUNCTIVE = "Subjunctive";
+    String VERB_MOOD_IMPERATIVE = "Imperative";
 
     RandomGenerator randomGenerator;
 
@@ -72,6 +68,7 @@ public class RandomGeneratorJUnitTests {
 
 
     // -------------------------------- NOUNS --------------------------------------------------
+
     /**
      * testRandomNounCase()
      * --------------------
@@ -216,6 +213,7 @@ public class RandomGeneratorJUnitTests {
     }
 
 
+    // -------------------------------- VERBS --------------------------------------------------
 
     /**
      * testRandomVerbTense()
@@ -316,7 +314,7 @@ public class RandomGeneratorJUnitTests {
                 map.put(ans, map.get(ans) + 1);
         }
 
-        int x = 5;
+
         assertThat("Num Verb NUMBER SINGULAR", map.get(VERB_NUMBER_SINGULAR), greaterThan(approxAns - tolerance));
         assertThat("Num Verb NUMBER SINGULAR", map.get(VERB_NUMBER_SINGULAR), lessThan(approxAns + tolerance));
 
@@ -325,6 +323,43 @@ public class RandomGeneratorJUnitTests {
 
         assertThat("Num Verb NUMBER INFINITIVE", map.get(VERB_NUMBER_INFINITIVE), greaterThan(approxInfinitiveAns - infinitiveTolerance));
         assertThat("Num Verb NUMBER INFINITIVE", map.get(VERB_NUMBER_INFINITIVE), lessThan(approxInfinitiveAns + infinitiveTolerance));
+    }
+
+    /**
+     * testRandomMoodNumber()
+     * ----------------------
+     * Tests the randomness of generating MOOD arguments for Verbs (Indicative, Subjunctive, Imperative)
+     * @throws Exception
+     */
+    @Test
+    public void testRandomMoodNumber() throws Exception {
+        Map<String, Integer> map = new HashMap<>();
+        int randomSims = 61000;
+        int numOutcomes = 610;
+        int numImperativeOutcome = 4;
+        int tolerance = 1000;
+        int imperativeTolerance = 150;
+        int approxAns =  randomSims/2;
+        int approxInfinitiveAns = (randomSims*numImperativeOutcome)/numOutcomes;
+
+
+        for (int i = 0; i < randomSims; i++) {
+            String ans = randomGenerator.getVerbMood();
+            if (!map.containsKey(ans))
+                map.put(ans, 1);
+            else
+                map.put(ans, map.get(ans) + 1);
+        }
+
+
+        assertThat("Num Verb MOOD INDICATIVE", map.get(VERB_MOOD_INDICATIVE), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb MOOD INDICATIVE", map.get(VERB_MOOD_INDICATIVE), lessThan(approxAns + tolerance));
+
+        assertThat("Num Verb MOOD SUBJUNCTIVE", map.get(VERB_MOOD_SUBJUNCTIVE), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb MOOD SUBJUNCTIVE", map.get(VERB_MOOD_SUBJUNCTIVE), lessThan(approxAns + tolerance));
+
+        assertThat("Num Verb MOOD IMPERATIVE", map.get(VERB_MOOD_IMPERATIVE), greaterThan(approxInfinitiveAns - imperativeTolerance));
+        assertThat("Num Verb MOOD IMPERATIVE", map.get(VERB_MOOD_IMPERATIVE), lessThan(approxInfinitiveAns + imperativeTolerance));
     }
 
 }
