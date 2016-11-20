@@ -58,6 +58,8 @@ public class AdvancedRandomGeneratorTests {
     String ADVERB = "Adverb";
     String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
     String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
+    String ADVERB_COMPARATIVE = "AdverbComparative";
+    String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
     RandomGenerator randomGenerator;
     DatabaseAccess databaseAccess;
@@ -170,6 +172,49 @@ public class AdvancedRandomGeneratorTests {
 
         assertThat("Num ADJECTIVE_SUPERLATIVE Simulations", map.get(ADJECTIVE_SUPERLATIVE), greaterThan(sampleComparative - toleranceSuperlative));
         assertThat("Num ADJECTIVE_SUPERLATIVE Simulations", map.get(ADJECTIVE_SUPERLATIVE), lessThan(sampleComparative + toleranceSuperlative));
+    }
+
+    /**
+     * testRandomAdverbType()
+     * -------------------------
+     * Generate a random Adverb Type (Standard, Comparative, Superlative)
+     * @throws Exception
+     */
+    @Test
+    public void testRandomAdverbType() throws Exception {
+
+        int randomSims = 80000;
+        int numAdverb = 2;
+        int numAdverbComparative = 1;
+        int numAdverbSuperlative = 1;
+        int total = 4;
+
+        int sampleAdverb = (randomSims * numAdverb)/total;
+        int sampleComparative = (randomSims * numAdverbComparative)/total;
+        int sampleSuperlative = (randomSims * numAdverbSuperlative)/total;
+        float toleranceFactor = 0.15f;
+        int toleranceAdjective = (int) (sampleAdverb * toleranceFactor);
+        int toleranceComparative = (int) (sampleComparative * toleranceFactor);
+        int toleranceSuperlative = (int) (sampleSuperlative * toleranceFactor);
+
+        Map<String, Integer> map = new HashMap<>();
+
+        for(int i=0; i<randomSims; i++) {
+            String ans = randomGenerator.getAdverbType();
+            if (!map.containsKey(ans))
+                map.put(ans, 1);
+            else
+                map.put(ans, map.get(ans) + 1);
+        }
+        int x = 5;
+        assertThat("Num ADVERB_STANDARD Simulations", map.get(ADVERB), greaterThan(sampleAdverb - toleranceAdjective));
+        assertThat("Num ADVERB_STANDARD Simulations", map.get(ADVERB), lessThan(sampleAdverb + toleranceAdjective));
+
+        assertThat("Num ADVERB_COMPARATIVE Simulations", map.get(ADVERB_COMPARATIVE), greaterThan(sampleComparative - toleranceComparative));
+        assertThat("Num ADVERB_COMPARATIVE Simulations", map.get(ADVERB_COMPARATIVE), lessThan(sampleComparative + toleranceComparative));
+
+        assertThat("Num ADVERB_SUPERLATIVE Simulations", map.get(ADVERB_SUPERLATIVE), greaterThan(sampleComparative - toleranceSuperlative));
+        assertThat("Num ADVERB_SUPERLATIVE Simulations", map.get(ADVERB_SUPERLATIVE), lessThan(sampleComparative + toleranceSuperlative));
     }
 
 

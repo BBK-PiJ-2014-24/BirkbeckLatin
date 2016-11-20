@@ -30,8 +30,13 @@ public class RandomGenerator {
     private final String CONJUNCTION = "Conjunction";
     private final String ADVERB = "Adverb";
 
+    private final int ADVERB_NUM_OUTCOMES= 4;
+    private final int ADVERB_CUTOFF = 1;
+    private final int ADVERB_COMPARATIVE_CUTOFF = 2;
+    private final int ADVERB_SUPERLATIVE_CUTOFF = 3;
     private final String ADVERB_COMPARATIVE = "AdverbComparative";
     private final String ADVERB_SUPERLATIVE = "AdverbSuperlative";
+
 
     private final int ADJECTIVE_NUM_OUTCOMES= 4;
     private final int ADJECTIVE_CUTOFF = 1;
@@ -187,6 +192,24 @@ public class RandomGenerator {
             return ADJECTIVE_COMPARATIVE;
         else
             return ADJECTIVE_SUPERLATIVE;
+    }
+
+
+    /**
+     * getAdverbType()
+     * ------------------
+     * Generate a random Adverb Type (Standard, Comparative, Superlative)
+     * @return
+     */
+    public String getAdverbType(){
+        int randomAdverbNumber = randomGenerator.nextInt(ADVERB_NUM_OUTCOMES);
+
+        if(randomAdverbNumber <= ADVERB_CUTOFF)
+            return ADVERB;
+        else if (randomAdverbNumber == ADVERB_COMPARATIVE_CUTOFF)
+            return ADVERB_COMPARATIVE;
+        else
+            return ADVERB_SUPERLATIVE;
     }
 
 
