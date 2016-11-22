@@ -96,6 +96,25 @@ public class DatabaseAccess {
         return list;
     }
 
+    // getCrimes() - Get the Crime List
+    // -----------
+//    public List<Crime> getCrimes(){
+//        //return mCrimes;
+//        List<Crime> crimes = new ArrayList<>();
+//        CrimeCursorWrapper cursor = queryCrimes(null, null);  // set up cursor pointing at db
+//
+//        try {
+//            cursor.moveToFirst();    // move cursor to first element of db
+//            while (!cursor.isAfterLast()) {  // while NOT after last element
+//                crimes.add(cursor.getCrime());  // getCrime from cursorWrapper takes db tuple -> Java Crime object
+//                cursor.moveToNext();
+//            }
+//        } finally {
+//            cursor.close();  // CLOSE CURSOR  !!
+//        }
+//        return crimes;
+//    }
+
 
     /**
      * sqlQuery()

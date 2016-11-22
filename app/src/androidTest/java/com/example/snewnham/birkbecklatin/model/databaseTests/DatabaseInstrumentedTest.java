@@ -19,6 +19,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.example.snewnham.birkbecklatin.Model.database.DbSchema.VerbListTable.*;
 import static org.junit.Assert.*;
 
@@ -222,6 +225,8 @@ public class DatabaseInstrumentedTest {
         assertEquals(10, answer);
     }
 
+
+    // --------------------------------- VERBS ------------------------------------------
 
     /**
      * testDatabaseToVerb()
@@ -451,6 +456,34 @@ public class DatabaseInstrumentedTest {
         assertEquals("be", guessEngIrregVerb);
 
     }
+
+
+    /**
+     * testListofVerbObjects()
+     * -----------------------
+     * Test to select a List of Verb Objects.
+     * @throws Exception
+     */
+    @Test
+    public void testListOfVerbObjects() throws Exception {
+
+        Verb verb1 = databaseAccess.sqlVerbListQuery(1);
+        Verb verb2 = databaseAccess.sqlVerbListQuery(5);
+        Verb verb3 = databaseAccess.sqlVerbListQuery(7);
+
+        List<Verb> verbList = new ArrayList<>();
+        verbList.add(verb1);
+        verbList.add(verb2);
+        verbList.add(verb3);
+
+        List<Verb> verbListQuery = databaseAccess.getVerbList(conjNum1);
+
+        assertEquals(verbList, verbListQuery);
+
+
+
+    }
+
 
     // ============================== NOUN TESTS ==================================================
 
