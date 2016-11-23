@@ -476,12 +476,10 @@ public class DatabaseInstrumentedTest {
         verbList.add(verb2);
         verbList.add(verb3);
 
-        List<Verb> verbListQuery = databaseAccess.getVerbList(conjNum1);
+        List<Verb> verbListQuery = databaseAccess.getVerbList(Integer.parseInt(conjNum1));
 
-        assertEquals(verbList, verbListQuery);
-
-
-
+        assertEquals(verbList.size(), verbListQuery.size());
+        assertEquals(verbList.get(1).getId(), verbListQuery.get(1).getId());
     }
 
 

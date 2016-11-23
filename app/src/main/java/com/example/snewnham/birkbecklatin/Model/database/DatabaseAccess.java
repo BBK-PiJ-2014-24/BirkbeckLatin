@@ -96,24 +96,35 @@ public class DatabaseAccess {
         return list;
     }
 
-    // getCrimes() - Get the Crime List
-    // -----------
-//    public List<Crime> getCrimes(){
-//        //return mCrimes;
-//        List<Crime> crimes = new ArrayList<>();
-//        CrimeCursorWrapper cursor = queryCrimes(null, null);  // set up cursor pointing at db
-//
-//        try {
-//            cursor.moveToFirst();    // move cursor to first element of db
-//            while (!cursor.isAfterLast()) {  // while NOT after last element
-//                crimes.add(cursor.getCrime());  // getCrime from cursorWrapper takes db tuple -> Java Crime object
-//                cursor.moveToNext();
-//            }
-//        } finally {
-//            cursor.close();  // CLOSE CURSOR  !!
-//        }
-//        return crimes;
-//    }
+    /**
+     * getVerbList()
+     * ------------
+     * Sql query retreiving a list of all verbs of a certain conjugation
+     *
+     * @return
+     */
+    public List<Verb> getVerbList(int conj){
+
+        String table = DbSchema.VerbListTable.VERB_LIST_TABLE;  // FROM VerbStemTable
+        String[] column = null;  // SELECT *
+        String whereClause = DbSchema.VerbListTable.Cols.LATIN_CONJNUM + "=?";
+        String[] whereArgs = new String[]{Integer.toString(conj)};
+
+
+        List<Verb> verbList = new ArrayList<>();
+        VerbListCursor cursor = (VerbListCursor) sqlQuery(table, column, whereClause, whereArgs);  // set up cursor pointing at db
+
+        try {
+            cursor.moveToFirst();    // move cursor to first element of db
+            while (!cursor.isAfterLast()) {  // while NOT after last element
+                verbList.add(cursor.makeVerbObject());  // getCrime from cursorWrapper takes db tuple -> Java Crime object
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();  // CLOSE CURSOR  !!
+        }
+        return verbList;
+    }
 
 
     /**
