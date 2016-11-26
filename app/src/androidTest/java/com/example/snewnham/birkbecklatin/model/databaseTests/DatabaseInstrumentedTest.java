@@ -459,9 +459,7 @@ public class DatabaseInstrumentedTest {
 
 
     /**
-     * testListofVerbObjects()
-     * -----------------------
-     * Test to select a List of Verb Objects.
+     * s.
      * @throws Exception
      */
     @Test
