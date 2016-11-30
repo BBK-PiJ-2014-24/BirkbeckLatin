@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
+import com.example.snewnham.birkbecklatin.R;
 
 import java.util.List;
 import java.util.UUID;
@@ -31,9 +32,10 @@ public class VerbPagerActivity extends AppCompatActivity {
     private static final String EXTRA_CONJ_ID = "com.example.snewnham.criminalintent.crime_id";
 
     // STATIC call on the Intent
-    public static Intent newIntent(Context packageContext, UUID crimeId){
+    // -------------------------
+    public static Intent newIntent(Context packageContext, int theVerbID){
         Intent intent = new Intent(packageContext, VerbPagerActivity.class);
-        intent.putExtra(EXTRA_CONJ_ID, crimeId);
+        intent.putExtra(EXTRA_CONJ_ID, theVerbID);
         return intent;
     }
 
@@ -46,17 +48,20 @@ public class VerbPagerActivity extends AppCompatActivity {
 
         int verbConj =  (int) getIntent().getSerializableExtra(EXTRA_CONJ_ID);  // Pull the Extra from the Intent
         // serializable from activity to Fragment
-        mViewPager = (ViewPager) findViewById(R.id.activity_crime_pager_view_pager); // wire View Pager to XML
+
+
+        mViewPager = (ViewPager) findViewById(R.id.activity_verb_pager); // wire View Pager to XML
         databaseAccess = DatabaseAccess.getInstance(this);
+        mVerbList = databaseAccess.getVerbList(verbConj);
+        int x = 5;
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-
 
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) { // Adapter between ViewPager and frag manager
             @Override                                                          // FM chooses correct Frag
             public Fragment getItem(int position) {
                 Verb verb = mVerbList.get(position);
-                return VerbListFragment.newInstance(verb.getId());
+                return VerbPagerFragment.newInstance(verb.getId());
             }
 
             @Override
@@ -64,7 +69,6 @@ public class VerbPagerActivity extends AppCompatActivity {
                 return mVerbList.size();
             }
         });
-
 
     }
 }
@@ -81,4 +85,3 @@ public class VerbPagerActivity extends AppCompatActivity {
 
 
 
-    }

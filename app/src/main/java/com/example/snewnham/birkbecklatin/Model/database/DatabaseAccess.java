@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adverb;
 import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
-import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
@@ -26,8 +25,11 @@ import java.util.List;
 public class DatabaseAccess {
 
     private SQLiteOpenHelper openHelper;
-    private SQLiteDatabase database;
-    private static DatabaseAccess instance;
+    private SQLiteDatabase mSQLiteDatabase;
+
+    private static DatabaseAccess sDatabaseAccess;
+
+    private Context mContext;
 
     //
 
@@ -37,55 +39,56 @@ public class DatabaseAccess {
      * @param context
      */
     private DatabaseAccess(Context context) {
-        this.openHelper = new DatabaseHelper(context);
+        mContext = context.getApplicationContext();
+        this.openHelper = new DatabaseHelper(mContext);
     }
 
 
     /**
      * getInstance()
      * =============
-     * Return a singleton instance of DatabaseAccess.
+     * Return a singleton sDatabaseAccess of DatabaseAccess.
      *
      * @param context the Context
-     * @return the instance of DabaseAccess
+     * @return the sDatabaseAccess of DabaseAccess
      */
     public static DatabaseAccess getInstance(Context context) {
-        if (instance == null) {
-            instance = new DatabaseAccess(context);
+        if (sDatabaseAccess == null) {
+            sDatabaseAccess = new DatabaseAccess(context);
         }
-        return instance;
+        return sDatabaseAccess;
     }
 
 
     /**
      * open()
      * ======
-     * Open the database connection.
+     * Open the mSQLiteDatabase connection.
      */
     public void open() {
-        this.database = openHelper.getWritableDatabase();  /// Called by the Constructor
+        this.mSQLiteDatabase = openHelper.getWritableDatabase();  /// Called by the Constructor
     }
 
     /**
      * close()
      * =======
-     * Close the database connection.
+     * Close the mSQLiteDatabase connection.
      */
     public void close() {
-        if (database != null) {
-            this.database.close();
+        if (mSQLiteDatabase != null) {
+            this.mSQLiteDatabase.close();
         }
     }
 
 
     /**
-     * Read all quotes from the database.
+     * Read all quotes from the mSQLiteDatabase.
      *
      * @return a List of quotes
      */
     public List<String> getQuotes() {
         List<String> list = new ArrayList<>();
-        //Cursor cursor = database.rawQuery("SELECT str FROM myTable2", null);
+        //Cursor cursor = mSQLiteDatabase.rawQuery("SELECT str FROM myTable2", null);
         Cursor cursor = sqlQuery("myTable2", new String[]{"str"},null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -142,7 +145,10 @@ public class DatabaseAccess {
 
     public Cursor sqlQuery(String table, String[] column, String whereClause, String[] whereArgs) {
 
-        Cursor cursor = database.query(
+        if(this.mSQLiteDatabase == null)
+            open();
+
+        Cursor cursor = this.mSQLiteDatabase.query(
                 table,  // FROM TABLE
                 column, // SELECT *
                 whereClause,
@@ -151,6 +157,7 @@ public class DatabaseAccess {
                 null, // HAVING
                 null // ORDER BY
         );
+
 
         if (table.equals(DbSchema.VerbListTable.VERB_LIST_TABLE))
             return new VerbListCursor(cursor);
@@ -166,6 +173,7 @@ public class DatabaseAccess {
             return new AdverbListCursor(cursor);
         else
             return cursor;
+
     }
 
 
@@ -177,7 +185,7 @@ public class DatabaseAccess {
      */
     public int  sqlTableCountQuery(String table) {
 
-        int tableSize = (int) DatabaseUtils.queryNumEntries(database, table);  // downcast as returns a long
+        int tableSize = (int) DatabaseUtils.queryNumEntries(mSQLiteDatabase, table);  // downcast as returns a long
         return tableSize;
     }
 
@@ -310,7 +318,7 @@ public class DatabaseAccess {
     public String sqlLatinIrregularVerb(String irregularVerb, String person, String number, String mood,
                                         String voice, String tense) {
 
-        // Ensure First Letter is Upper Case in order to pick up the Correct Column in the database
+        // Ensure First Letter is Upper Case in order to pick up the Correct Column in the mSQLiteDatabase
         irregularVerb = irregularVerb.substring(0,1).toUpperCase() + irregularVerb.substring(1);
 
 

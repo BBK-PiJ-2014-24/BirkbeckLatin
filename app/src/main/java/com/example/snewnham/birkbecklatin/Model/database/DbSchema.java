@@ -160,6 +160,20 @@ public class DbSchema {
         }
     }
 
+    // inner STATIC class - Incorrect_Verb_Table
+    // ----------------------------------------------
+    public static final class Incorrect_Verb_Table {
+        public static final String INCORRECT_VERB_TABLE = "Incorrect_Verb_Table";
+
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String VERB_ID = "Verb_id";
+        }
+    }
+
 // ===================================== NOUN ======================================================
 
 
