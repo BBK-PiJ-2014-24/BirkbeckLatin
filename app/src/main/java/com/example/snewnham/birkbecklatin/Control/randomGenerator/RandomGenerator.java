@@ -281,6 +281,26 @@ public class RandomGenerator {
             return GENDER_NEUTER;
     }
 
+    /**
+     * getIncorrectNounOutput()
+     * ------------------------
+     * Generate a random verb_id from the INCORRECT_NOUN_TABLE
+     * @return the IncorrectNounOutput Object, containing (NounType,NounId)
+     */
+    public IncorrectNounOutput getIncorrectNounOutput(){
+
+        int numNouns = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
+        int randomGenderNumber = randomGenerator.nextInt(numNouns) + 1;  // +1 as rand = [0,n-1]
+
+        String nounType = databaseAccess.sqlIncorrectNounEtc_GetType(randomGenderNumber);
+        int nounId = databaseAccess.sqlIncorrectNounEtc_GetId(randomGenderNumber);
+
+        IncorrectNounOutput output = new IncorrectNounOutput(nounType,nounId);
+
+        return output;
+    }
+
+
     //  -------------------------------- VERBS ------------------------------------------------
     /**
      * getVerbPerson()
@@ -399,7 +419,6 @@ public class RandomGenerator {
         else
             return VERB_MOOD_IMPERATIVE;
     }
-
 
     /**
      * getIncorrectVerbId()

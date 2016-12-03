@@ -5,6 +5,7 @@ import android.provider.ContactsContract;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.example.snewnham.birkbecklatin.Control.randomGenerator.IncorrectNounOutput;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
@@ -306,7 +307,7 @@ public class AdvancedRandomGeneratorTests {
         int nounId3 = 30;
         int nounId4 = 40;
 
-        int randomSims = 800;
+        int randomSims = 400;
 
         // load the table
         databaseAccess.sqlIncorrectNounEtc_Reset();
@@ -325,11 +326,11 @@ public class AdvancedRandomGeneratorTests {
         Map<Integer, Integer> map = new HashMap<>();
 
         for(int i=0; i<randomSims; i++) {
-            IncorrectNounOutput ans = randomGenerator.getIncorrectNoudId();
-            if (!map.containsKey(ans.getNoundId()))
-                map.put(ans.getNoundId(), 1);
+            IncorrectNounOutput ans = randomGenerator.getIncorrectNounOutput();
+            if (!map.containsKey(ans.getNounId()))
+                map.put(ans.getNounId(), 1);
             else
-                map.put(ans.getNoundId(), map.get(ans.getNoundId()) + 1);
+                map.put(ans.getNounId(), map.get(ans.getNounId()) + 1);
         }
         int x = 5;
         assertThat("Num nounId_1 Simulations", map.get(nounId1), greaterThan(sample - toleranceForSample));
