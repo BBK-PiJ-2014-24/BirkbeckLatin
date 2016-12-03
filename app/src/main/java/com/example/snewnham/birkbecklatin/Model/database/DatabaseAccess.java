@@ -1,5 +1,6 @@
 package com.example.snewnham.birkbecklatin.Model.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
@@ -533,6 +534,89 @@ public class DatabaseAccess {
         } else {
             return null;
         }
+    }
+
+    // ------------------------------- INCORRECT VERBS -------------------------------------
+    /**
+     * sqlIncorrectVerb_GetId()
+     * ------------------------
+     * Retrieves the verbId from the INCORRECT_VERB_TABLE. This is the 'Incorrect Verb' that corresponds with the Table's id (passed as argument)
+     * @param id the id of the Incorrect_Verb Table
+     * @return the verbId
+     */
+    public int sqlIncorrectVerb_GetId(int id){
+
+        String table = DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE;
+        String columnName = DbSchema.Incorrect_Verb_Table.Cols.VERB_ID;  // SELECT verb_Id
+        String[] column = new String[]{columnName};
+
+        String whereClause = DbSchema.Incorrect_Verb_Table.Cols._id + "=?"; // WHERE _id =
+        String strId = Integer.toString(id);
+        String[] whereArgs = new String[]{strId};
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
+
+        int verbId = cursor.getInt(cursor.getColumnIndex(columnName));
+
+        return verbId;
+    }
+
+    /**
+     * sqlIncorrectVerb_Insert()
+     * -------------------------
+     * Inserts a verbId into INCORRECT_VERB_TABLE.
+     * @param verbId
+     */
+    public void sqlIncorrectVerb_Insert(int verbId) {
+
+        // check if table is empty
+        int tableSize = sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
+        int id = tableSize + 1;  // increment the table's id / primary key - Autoincrement will not do this properly following a reset
+
+        ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
+        contentValues.put(DbSchema.Incorrect_Verb_Table.Cols._id, id); // manual _id insert for first record
+        contentValues.put(DbSchema.Incorrect_Verb_Table.Cols.VERB_ID, verbId);  // use key-value
+
+        if (this.mSQLiteDatabase == null)
+            open();
+
+        this.mSQLiteDatabase.insert(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE, null, contentValues);
+    }
+
+    /**
+     * sqlIncorrectVerb_Delete()
+     * -------------------------
+     * Deletes row from INCORRECT_VERB_TABLE  WHERE VerbId is given as argument.
+     * @param verbId
+     */
+    public void sqlIncorrectVerb_Delete(int verbId){
+
+        String table = DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE;
+
+        String whereClause = DbSchema.Incorrect_Verb_Table.Cols.VERB_ID + "=?"; // WHERE _id =
+        String strId = Integer.toString(verbId);
+        String[] whereArgs = new String[]{strId};
+
+        if (this.mSQLiteDatabase == null)
+            open();
+
+        this.mSQLiteDatabase.delete(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE, whereClause, whereArgs);
+    }
+
+    /**
+     * sqlIncorrectVerb_Reset()
+     * ------------------------
+     * Clears all records from the INCORRECT_VERB_TABLE. That is, wipes all Incorrect Verbs
+     */
+    public void sqlIncorrectVerb_Reset(){
+
+        String table = DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE;
+
+        if (this.mSQLiteDatabase == null)
+            open();
+
+        this.mSQLiteDatabase.delete(table,null,null);
     }
 
 

@@ -387,24 +387,38 @@ public class DatabaseInstrumentedTest {
         int id3 = 3;
         int verbId3 = 30;
 
+        databaseAccess.sqlIncorrectVerb_Reset();
+
         int originalSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
 
-        sqlIncorrectVerb_Insert(verbId1);
-        sqlIncorrectVerb_Insert(verbId2);
-        sqlIncorrectVerb_Insert(verbId3);
+        databaseAccess.sqlIncorrectVerb_Insert(verbId1);
+        databaseAccess.sqlIncorrectVerb_Insert(verbId2);
+        databaseAccess.sqlIncorrectVerb_Insert(verbId3);
 
         int newSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
         assertEquals(3, newSize - originalSize);  // Test the size of table has increased by 3.
 
-        int verbId = sqlIncorrectVerb_GetId(newSize);
-        assertEquals(newSize, verbId);  // Test retrieve a verbId given the id (of the table)
 
-        sqlIncorrectVerb_Delete(verbId1);
-        sqlIncorrectVerb_Delete(verbId2);
-        sqlIncorrectVerb_Delete(verbId3);
+        int verbId = databaseAccess.sqlIncorrectVerb_GetId(3);
+        assertEquals(verbId3, verbId);  // Test retrieve a verbId given the id (of the table)
+
+        databaseAccess.sqlIncorrectVerb_Delete(verbId1);
+        databaseAccess.sqlIncorrectVerb_Delete(verbId2);
+        databaseAccess.sqlIncorrectVerb_Delete(verbId3);
 
         int postDeleteSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
         assertEquals(originalSize, postDeleteSize); // Test delete a verbId given the id
+
+        databaseAccess.sqlIncorrectVerb_Insert(verbId1);
+        databaseAccess.sqlIncorrectVerb_Insert(verbId2);
+        databaseAccess.sqlIncorrectVerb_Insert(verbId3);
+
+        int ReinsertionSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
+        assertEquals(3, ReinsertionSize - postDeleteSize);  // RETEST the size of table has increased by 3.
+
+        databaseAccess.sqlIncorrectVerb_Reset();
+        int postResetSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
+        assertEquals(0, postResetSize); // Test RESET has cleared all records.
 
     }
 
