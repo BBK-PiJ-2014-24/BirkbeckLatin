@@ -330,6 +330,21 @@ public class DbSchema {
     }
 
 
+    // inner STATIC class - Incorrect_Verb_Table
+    // ----------------------------------------------
+    public static final class Incorrect_NounEtc_Table {
+        public static final String INCORRECT_NOUNETC_TABLE = "Incorrect_NounEtc_Table";
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String NOUNETC_TYPE = "NounEtc_Type";
+            public static final String NOUNETC_ID = "NounEtc_id";
+        }
+    }
+
+
 
 }
 

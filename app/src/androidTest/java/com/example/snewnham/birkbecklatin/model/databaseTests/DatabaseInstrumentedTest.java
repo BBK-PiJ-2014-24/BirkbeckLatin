@@ -733,6 +733,83 @@ public class DatabaseInstrumentedTest {
     }
 
 
+    /**
+     * testIncorrectLatinNounTable() - Tests general access to the IncorrectLatinNounEtc Table - add, delete, retrieve, reset
+     * =============================
+     * Test sqlIncorrectNounEtcTable
+     */
+    @Test
+    public void testIncorrectLatinNoun(){
+
+        String noun = "NOUN";
+        String irregularNoun = "IRREGULAR_NOUN";
+        String adjective = "ADJECTIVE";
+        String conjunction = "CONJUNCTION";
+        String preposition = "PREPOSITION";
+
+        int nounId1 = 10;
+        int nounId2 = 20;
+        int nounId3 = 30;
+
+
+        databaseAccess.sqlIncorrectNounEtc_Reset();
+
+        int originalSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
+
+        databaseAccess.sqlIncorrectNounEtc_Insert(noun ,nounId1);
+        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId2);
+        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId3);
+        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId3);  // test for duplication
+
+        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun ,nounId1);
+        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId2);
+        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);
+        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);  // test for duplication
+
+        int newSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
+        assertEquals(6, newSize - originalSize);  // Test the size of table has increased by 6.
+
+
+        int nounId = databaseAccess.sqlIncorrectNoun_GetId(3);
+        assertEquals(verbId3, nounId);  // Test retrieve a verbId given the id (of the table)
+        String nounType = databaseAccess.sqlIncorrectNoun_GetType(3);
+        assertEquals(noun, nounType);  // Test retrieve a verbId given the id (of the table)
+
+        databaseAccess.sqlIncorrectNounEtc_Delete(noun ,nounId1);
+        databaseAccess.sqlIncorrectNounEtc_Delete(noun, nounId2);
+        databaseAccess.sqlIncorrectNounEtc_Delete(noun, nounId3);
+        databaseAccess.sqlIncorrectNounEtc_Delete(noun, nounId3);  // test for duplication
+
+        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun ,nounId1);
+        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun, nounId2);
+        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun, nounId3);
+        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun, nounId3);  // test for duplication
+
+        int postDeleteSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
+        assertEquals(originalSize, postDeleteSize); // Test delete a verbId given the id
+
+        databaseAccess.sqlIncorrectNounEtc_Insert(noun ,nounId1);
+        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId2);
+        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId3);
+
+        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun ,nounId1);
+        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId2);
+        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);
+
+        int ReinsertionSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
+        assertEquals(3, ReinsertionSize - postDeleteSize);  // RETEST the size of table has increased by 3.
+
+        databaseAccess.sqlIncorrectNounEtc_Reset();
+        int postResetSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
+        assertEquals(0, postResetSize); // Test RESET has cleared all records.
+
+    }
+
+
+
+
+
+
     @After
     public void breakDown() {
         databaseAccess.close();
