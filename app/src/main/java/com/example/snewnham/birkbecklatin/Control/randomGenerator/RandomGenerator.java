@@ -1,6 +1,7 @@
 package com.example.snewnham.birkbecklatin.Control.randomGenerator;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 
 import java.util.Random;
@@ -400,9 +401,21 @@ public class RandomGenerator {
     }
 
 
+    /**
+     * getIncorrectVerbId()
+     * --------------------
+     * Generate a random verb_id from the INCORRECT_VERB_TABLE
+     * @return the verb_id
+     */
     public int getIncorrectVerbId(){
 
-        return 0;
+        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
+        int randomGenderNumber = randomGenerator.nextInt(numVerbs) + 1;  // +1 as rand = [0,n-1]
+
+        int verbId = databaseAccess.sqlIncorrectVerb_GetId(randomGenderNumber);
+
+
+        return verbId;
     }
 
 

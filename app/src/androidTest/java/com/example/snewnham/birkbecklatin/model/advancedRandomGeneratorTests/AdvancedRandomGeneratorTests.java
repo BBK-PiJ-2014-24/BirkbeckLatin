@@ -81,7 +81,7 @@ public class AdvancedRandomGeneratorTests {
     /**
      * testRandomVerbIncorrectTable()
      * ------------------------------
-     * Test for random selection of the primary key (_id) from the IncorrectVerb Table.
+     * Test for random selection of a verb_id from the IncorrectVerb Table.
      *
      * @throws Exception
      */
@@ -97,8 +97,7 @@ public class AdvancedRandomGeneratorTests {
         int id4 = 4;
         int verbId4 = 40;
 
-        int randomSims = 80000;
-
+        int randomSims = 800;
 
         // load the table
         databaseAccess.sqlIncorrectVerb_Reset();
@@ -109,7 +108,7 @@ public class AdvancedRandomGeneratorTests {
         int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
 
 
-        int sample = randomSims * numVerbs;
+        int sample = randomSims / numVerbs;
         float toleranceFactor = 0.15f;
         int toleranceForSample = (int) (sample * toleranceFactor);
 
@@ -124,18 +123,17 @@ public class AdvancedRandomGeneratorTests {
                 map.put(ans, map.get(ans) + 1);
         }
         int x = 5;
-        assertThat("Num id_1 Simulations", map.get(id1), greaterThan(sample - toleranceForSample));
-        assertThat("Num id_1 Simulations", map.get(id1), lessThan(sample + toleranceForSample));
+        assertThat("Num verbId_1 Simulations", map.get(verbId1), greaterThan(sample - toleranceForSample));
+        assertThat("Num verbId_1 Simulations", map.get(verbId1), lessThan(sample + toleranceForSample));
 
-        assertThat("Num id_2 Simulations", map.get(id2), greaterThan(sample - toleranceForSample));
-        assertThat("Num id_2 Simulations", map.get(id2), lessThan(sample + toleranceForSample));
+        assertThat("Num verbId_2 Simulations", map.get(verbId2), greaterThan(sample - toleranceForSample));
+        assertThat("Num verbId_2 Simulations", map.get(verbId2), lessThan(sample + toleranceForSample));
 
-        assertThat("Num id_3 Simulations", map.get(id3), greaterThan(sample - toleranceForSample));
-        assertThat("Num id_3 Simulations", map.get(id3), lessThan(sample + toleranceForSample));
+        assertThat("Num verbId_3 Simulations", map.get(verbId3), greaterThan(sample - toleranceForSample));
+        assertThat("Num verbId_3 Simulations", map.get(verbId3), lessThan(sample + toleranceForSample));
 
-        assertThat("Num id_4 Simulations", map.get(id4), greaterThan(sample - toleranceForSample));
-        assertThat("Num id_4 Simulations", map.get(id4), lessThan(sample + toleranceForSample));
-
+        assertThat("Num verbId_4 Simulations", map.get(verbId4), greaterThan(sample - toleranceForSample));
+        assertThat("Num verbId_4 Simulations", map.get(verbId4), lessThan(sample + toleranceForSample));
 
     }
 
