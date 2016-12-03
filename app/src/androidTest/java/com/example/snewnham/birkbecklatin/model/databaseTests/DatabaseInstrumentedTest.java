@@ -384,6 +384,7 @@ public class DatabaseInstrumentedTest {
         int verbId1 = 10;
         int verbId2 = 20;
         int verbId3 = 30;
+        int verbId4 = 40;
 
         databaseAccess.sqlIncorrectVerb_Reset();
 
@@ -392,6 +393,12 @@ public class DatabaseInstrumentedTest {
         databaseAccess.sqlIncorrectVerb_Insert(verbId1);
         databaseAccess.sqlIncorrectVerb_Insert(verbId2);
         databaseAccess.sqlIncorrectVerb_Insert(verbId3);
+        databaseAccess.sqlIncorrectVerb_Insert(verbId3); // for test of duplication
+
+        boolean testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(verbId3);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion in Table - TRUE
+        boolean testInsertionFalse = databaseAccess.sqlIncorrectVerb_TestInsertion(verbId4);
+        assertFalse(testInsertionFalse);  // Test Entry Insertion in Table - FALSE
 
         int newSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
         assertEquals(3, newSize - originalSize);  // Test the size of table has increased by 3.
@@ -784,8 +791,6 @@ public class DatabaseInstrumentedTest {
 
         int nounNull = databaseAccess.sqlIncorrectNounEtc_GetId(100);
         assertEquals(-1, nounNull);  // Test for a NULL retrieve for a id NOT in the table
-
-
 
         databaseAccess.sqlIncorrectNounEtc_Delete(noun ,nounId1);
         databaseAccess.sqlIncorrectNounEtc_Delete(noun, nounId2);

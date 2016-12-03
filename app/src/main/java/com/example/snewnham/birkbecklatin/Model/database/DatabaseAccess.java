@@ -585,6 +585,30 @@ public class DatabaseAccess {
     }
 
     /**
+     * sqlIncorrectNounEtc_TestInsertion()
+     * -----------------------------------
+     * Test if A Record Entry has been properly inserted in the INCORRECT_NOUNETC_TABLE.
+     * @param verbId
+     * @return True if verbId is in Table
+     */
+    public boolean sqlIncorrectVerb_TestInsertion(int verbId){
+        String table = DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE;
+
+        String[] column = null; // Select *
+
+        String whereClause = DbSchema.Incorrect_Verb_Table.Cols.VERB_ID + "=?";
+
+        String strId = Integer.toString(verbId);
+        String[] whereArgs = new String[]{strId};
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        if (cursor.getCount() == 0) // Cursor is empty, so no record exists
+            return false;
+        else
+            return true;
+    }
+
+    /**
      * sqlIncorrectVerb_Delete()
      * -------------------------
      * Deletes row from INCORRECT_VERB_TABLE  WHERE VerbId is given as argument.
@@ -924,6 +948,14 @@ public class DatabaseAccess {
         this.mSQLiteDatabase.insertWithOnConflict(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE, null, contentValues, SQLiteDatabase.CONFLICT_IGNORE);
     }
 
+    /**
+     * sqlIncorrectNounEtc_TestInsertion()
+     * -----------------------------------
+     * Test if A Record Entry has been properly inserted in the INCORRECT_NOUNETC_TABLE.
+     * @param nounType
+     * @param nounId
+     * @return
+     */
     public boolean sqlIncorrectNounEtc_TestInsertion(String nounType, int nounId){
         String table = DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE;
 
@@ -940,7 +972,6 @@ public class DatabaseAccess {
             return false;
         else
             return true;
-
     }
 
     /**
