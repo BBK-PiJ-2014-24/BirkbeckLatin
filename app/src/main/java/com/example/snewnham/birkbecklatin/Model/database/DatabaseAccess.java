@@ -601,7 +601,7 @@ public class DatabaseAccess {
         if (this.mSQLiteDatabase == null)
             open();
 
-        this.mSQLiteDatabase.delete(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE, whereClause, whereArgs);
+        this.mSQLiteDatabase.delete(table, whereClause, whereArgs);
     }
 
     /**
@@ -808,7 +808,6 @@ public class DatabaseAccess {
         conjunctionListCursor.moveToFirst();
         Conjunction conjunction = conjunctionListCursor.makeConjunctionObject();  // Convert Query from Cursor to Verb Object.
         return conjunction;
-
     }
 
 
@@ -831,8 +830,161 @@ public class DatabaseAccess {
         adverbListTable.moveToFirst();
         Adverb adverb = adverbListTable.makeAdverbObject();  // Convert Query from Cursor to Verb Object.
         return adverb;
+    }
+
+
+    // ------------------------------- INCORRECT NOUNS -------------------------------------
+    /**
+     * sqlIncorrectVerb_GetId()
+     * ------------------------
+     * Retrieves the NounId from the INCORRECT_NOUNETC_TABLE.
+     * This is the 'Incorrect NounEtc' that corresponds with the Table's id (passed as argument)
+     * @param id the id of the Incorrect_NounEtc Table
+     * @return the NounId
+     */
+    public int sqlIncorrectNounEtc_GetId(int id){
+
+        String table = DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE;
+        String columnName = DbSchema.Incorrect_NounEtc_Table.Cols.NOUNETC_ID;  // SELECT verb_Id
+        String[] column = new String[]{columnName};
+
+        String whereClause = DbSchema.Incorrect_NounEtc_Table.Cols._id + "=?"; // WHERE _id =
+        String strId = Integer.toString(id);
+        String[] whereArgs = new String[]{strId};
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        int nounId;
+
+        if(cursor.getCount() == 0)
+            nounId = -1;     // defence check to see if id is in Table
+        else {
+            cursor.moveToFirst();
+            nounId = cursor.getInt(cursor.getColumnIndex(columnName));
+        }
+
+        return nounId;
+    }
+
+
+    /**
+     * sqlIncorrectNounEtc_GetType()
+     * -----------------------------
+     * Retrieves the NounType from the INCORRECT_NOUNETC_TABLE.
+     * This is the Type of the 'Incorrect NounEtc' that corresponds with the Table's id (passed as argument)
+     * @param id
+     * @return Type of the 'Incorrect NounEtc' (Noun, Pronoun, Conjunction etc.)
+     */
+    public String sqlIncorrectNounEtc_GetType(int id){
+
+        String table = DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE;
+        String columnName = DbSchema.Incorrect_NounEtc_Table.Cols.NOUNETC_TYPE;  // SELECT verb_Id
+        String[] column = new String[]{columnName};
+
+        String whereClause = DbSchema.Incorrect_NounEtc_Table.Cols._id + "=?"; // WHERE _id =
+        String strId = Integer.toString(id);
+        String[] whereArgs = new String[]{strId};
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
+
+        String nounType = cursor.getString(cursor.getColumnIndex(columnName));
+
+        return nounType;
+    }
+
+
+
+
+    /**
+     * sqlIncorrectNounEtc_Insert()
+     * ----------------------------
+     * Inserts a nounType and nounId into INCORRECT_NOUNETC_TABLE.
+     * @param nounId
+     * @param nounId
+     */
+    public void sqlIncorrectNounEtc_Insert(String nounType, int nounId) {
+
+        // check that record does not exist already
+        boolean testIfAlreadyInserted = sDatabaseAccess.sqlIncorrectNounEtc_TestInsertion(nounType,nounId);
+        if(testIfAlreadyInserted)
+            return;   // STOP ALREADY INSERTED
+
+        // check table size
+        int tableSize = sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
+        int id = tableSize + 1;  // increment the table's id - Autoincrement will not do this properly following a reset
+
+        ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
+        contentValues.put(DbSchema.Incorrect_NounEtc_Table.Cols._id, id);
+        contentValues.put(DbSchema.Incorrect_NounEtc_Table.Cols.NOUNETC_TYPE, nounType);
+        contentValues.put(DbSchema.Incorrect_NounEtc_Table.Cols.NOUNETC_ID, nounId);  // use key-value
+
+        if (this.mSQLiteDatabase == null)
+            open();
+
+        this.mSQLiteDatabase.insertWithOnConflict(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE, null, contentValues, SQLiteDatabase.CONFLICT_IGNORE);
+    }
+
+    public boolean sqlIncorrectNounEtc_TestInsertion(String nounType, int nounId){
+        String table = DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE;
+
+        String[] column = null; // Select *
+
+        String whereClause = DbSchema.Incorrect_NounEtc_Table.Cols.NOUNETC_TYPE + "=?" + " AND " +
+                DbSchema.Incorrect_NounEtc_Table.Cols.NOUNETC_ID + "=?";
+
+        String strId = Integer.toString(nounId);
+        String[] whereArgs = new String[]{nounType, strId};
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        if (cursor.getCount() == 0) // Cursor is empty, so no record exists
+            return false;
+        else
+            return true;
 
     }
+
+    /**
+     * sqlIncorrectNounEtc_Delete()
+     * ----------------------------
+     * Deletes row from INCORRECT_NOUNETC_TABLE  WHERE NounType and NounId are given as arguments.
+     * @param nounId
+     * @param nounType
+     */
+    public void sqlIncorrectNounEtc_Delete(String nounType, int nounId){
+
+        String table = DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE;
+
+        String whereClause = DbSchema.Incorrect_NounEtc_Table.Cols.NOUNETC_TYPE + "=?" + " AND " +
+                             DbSchema.Incorrect_NounEtc_Table.Cols.NOUNETC_ID + "=?";
+
+        String strId = Integer.toString(nounId);
+        String[] whereArgs = new String[]{nounType, strId};
+
+        if (this.mSQLiteDatabase == null)
+            open();
+
+        this.mSQLiteDatabase.delete(table, whereClause, whereArgs);
+    }
+
+    /**
+     * sqlIncorrectNounEtc_Reset()
+     * ---------------------------
+     * Clears all records from the INCORRECT_NOUNETC_TABLE. That is, wipes all Incorrect Verbs
+     */
+    public void sqlIncorrectNounEtc_Reset(){
+
+        String table = DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE;
+
+        if (this.mSQLiteDatabase == null)
+            open();
+
+        this.mSQLiteDatabase.delete(table,null,null);
+    }
+
+
+
+
+
 
 
 }

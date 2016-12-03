@@ -734,9 +734,9 @@ public class DatabaseInstrumentedTest {
 
 
     /**
-     * testIncorrectLatinNounTable() - Tests general access to the IncorrectLatinNounEtc Table - add, delete, retrieve, reset
+     * testIncorrectLatinNounTable() - Tests general access to the IncorrectLatinNounEtc Table
      * =============================
-     * Test sqlIncorrectNounEtcTable
+     * Test sqlIncorrectNounEtcTable - add, delete, retrieve, reset, testInsertion
      */
     @Test
     public void testIncorrectLatinNoun(){
@@ -750,6 +750,7 @@ public class DatabaseInstrumentedTest {
         int nounId1 = 10;
         int nounId2 = 20;
         int nounId3 = 30;
+        int nounId4 = 40;
 
 
         databaseAccess.sqlIncorrectNounEtc_Reset();
@@ -766,14 +767,25 @@ public class DatabaseInstrumentedTest {
         databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);
         databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);  // test for duplication
 
+        boolean testInsertionTrue = databaseAccess.sqlIncorrectNounEtc_TestInsertion(noun, nounId3);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion in Table - TRUE
+        boolean testInsertionFalse = databaseAccess.sqlIncorrectNounEtc_TestInsertion(noun, nounId4);
+        assertFalse(testInsertionFalse);  // Test Entry Insertion in Table - FALSE
+
+
         int newSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
         assertEquals(6, newSize - originalSize);  // Test the size of table has increased by 6.
 
 
-        int nounId = databaseAccess.sqlIncorrectNoun_GetId(3);
-        assertEquals(verbId3, nounId);  // Test retrieve a verbId given the id (of the table)
-        String nounType = databaseAccess.sqlIncorrectNoun_GetType(3);
+        int nounId = databaseAccess.sqlIncorrectNounEtc_GetId(3);
+        assertEquals(nounId3, nounId);  // Test retrieve a verbId given the id (of the table)
+        String nounType = databaseAccess.sqlIncorrectNounEtc_GetType(3);
         assertEquals(noun, nounType);  // Test retrieve a verbId given the id (of the table)
+
+        int nounNull = databaseAccess.sqlIncorrectNounEtc_GetId(100);
+        assertEquals(-1, nounNull);  // Test for a NULL retrieve for a id NOT in the table
+
+
 
         databaseAccess.sqlIncorrectNounEtc_Delete(noun ,nounId1);
         databaseAccess.sqlIncorrectNounEtc_Delete(noun, nounId2);
@@ -797,7 +809,7 @@ public class DatabaseInstrumentedTest {
         databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);
 
         int ReinsertionSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
-        assertEquals(3, ReinsertionSize - postDeleteSize);  // RETEST the size of table has increased by 3.
+        assertEquals(6, ReinsertionSize - postDeleteSize);  // RETEST the size of table has increased by 3.
 
         databaseAccess.sqlIncorrectNounEtc_Reset();
         int postResetSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
