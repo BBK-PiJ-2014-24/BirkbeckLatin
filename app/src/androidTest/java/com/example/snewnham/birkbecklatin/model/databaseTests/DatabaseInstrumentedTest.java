@@ -380,11 +380,9 @@ public class DatabaseInstrumentedTest {
      */
     @Test
     public void testIncorrectLatinVerb(){
-        int id1 = 1;
+
         int verbId1 = 10;
-        int id2 = 2;
         int verbId2 = 20;
-        int id3 = 3;
         int verbId3 = 30;
 
         databaseAccess.sqlIncorrectVerb_Reset();

@@ -7,6 +7,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 
 import org.junit.After;
 import org.junit.Before;
@@ -69,11 +70,77 @@ public class AdvancedRandomGeneratorTests {
     public void setUp() {
         appContext = InstrumentationRegistry.getTargetContext();
         databaseAccess = DatabaseAccess.getInstance(appContext);  // CALL THE DATABASE STATICALY
-        //databaseAccess.open();                                  // OPEN THE DATABASE
+        databaseAccess.open();                                  // OPEN THE DATABASE
         randomGenerator = new RandomGenerator(databaseAccess);
     }
 
 
+
+    // --------------------------------- VERB ------------------------------------------------------
+
+    /**
+     * testRandomVerbIncorrectTable()
+     * ------------------------------
+     * Test for random selection of the primary key (_id) from the IncorrectVerb Table.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testRandomVerbIncorrectTable() throws Exception {
+
+        int id1 = 1;
+        int verbId1 = 10;
+        int id2 = 2;
+        int verbId2 = 20;
+        int id3 = 3;
+        int verbId3 = 30;
+        int id4 = 4;
+        int verbId4 = 40;
+
+        int randomSims = 80000;
+
+
+        // load the table
+        databaseAccess.sqlIncorrectVerb_Reset();
+        databaseAccess.sqlIncorrectVerb_Insert(verbId1);
+        databaseAccess.sqlIncorrectVerb_Insert(verbId2);
+        databaseAccess.sqlIncorrectVerb_Insert(verbId3);
+        databaseAccess.sqlIncorrectVerb_Insert(verbId4);
+        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
+
+
+        int sample = randomSims * numVerbs;
+        float toleranceFactor = 0.15f;
+        int toleranceForSample = (int) (sample * toleranceFactor);
+
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for(int i=0; i<randomSims; i++) {
+            int ans = randomGenerator.getIncorrectVerbId();
+            if (!map.containsKey(ans))
+                map.put(ans, 1);
+            else
+                map.put(ans, map.get(ans) + 1);
+        }
+        int x = 5;
+        assertThat("Num id_1 Simulations", map.get(id1), greaterThan(sample - toleranceForSample));
+        assertThat("Num id_1 Simulations", map.get(id1), lessThan(sample + toleranceForSample));
+
+        assertThat("Num id_2 Simulations", map.get(id2), greaterThan(sample - toleranceForSample));
+        assertThat("Num id_2 Simulations", map.get(id2), lessThan(sample + toleranceForSample));
+
+        assertThat("Num id_3 Simulations", map.get(id3), greaterThan(sample - toleranceForSample));
+        assertThat("Num id_3 Simulations", map.get(id3), lessThan(sample + toleranceForSample));
+
+        assertThat("Num id_4 Simulations", map.get(id4), greaterThan(sample - toleranceForSample));
+        assertThat("Num id_4 Simulations", map.get(id4), lessThan(sample + toleranceForSample));
+
+
+    }
+
+
+    // --------------------------------- NOUN ------------------------------------------------------
     /**
      * testRandomNounEtcType()
      * -----------------------
