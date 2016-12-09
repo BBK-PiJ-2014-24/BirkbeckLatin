@@ -1,9 +1,15 @@
 package com.example.snewnham.birkbecklatin;
 
+import com.example.snewnham.birkbecklatin.Control.randomGenerator.Item;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.ItemResponseTheory;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -92,6 +98,54 @@ public class BasicItemResponseTheoryJunitTests {
         assertTrue("Prob(theta5)", Math.abs(guessProb5 - ans5) < tolerance);
         assertTrue("Prob(theta6)", Math.abs(guessProb6 - ans6) < tolerance);
         assertTrue("Prob(theta7)", Math.abs(guessProb7 - ans7) < tolerance);
+
+    }
+
+
+    /**
+     * testCalcNewTheta()
+     * ------------------
+     * Test calcNewTheta() can update the new theta value after processing a list of items.
+     * @throws Exception
+     */
+
+    @Test
+    public void testCalcNewTheta() throws Exception{
+
+        int c = 0;
+
+        int mark1 = 1;  // response
+        int mark2 = 0;
+        int mark3 = 1;
+
+        double alpha1 = -1;   // difficulty
+        double alpha2 = 0;
+        double alpha3 = 1;
+
+        double lambda1 = 1.0;   // discrimination
+        double lambda2 = 1.2;
+        double lambda3 = 0.8;
+
+        double tolerance = 0.0005;
+        double answerTheta = 0.3249;
+
+        double originalTheta = 1;
+
+
+        Item item1 = new Item(c, theta5, alpha1, lambda1, mark1);
+        Item item2 = new Item(c, theta5, alpha2, lambda2, mark2);
+        Item item3 = new Item(c, theta5, alpha3, lambda3, mark3);
+
+        List<Item> itemList = new ArrayList<>();
+        itemList.add(item1);
+        itemList.add(item2);
+        itemList.add(item3);
+
+
+        double newTheta = ItemResponseTheory.calcNewTheta( itemList );
+        int x = 5;
+
+        assertTrue("calcTheta", Math.abs(newTheta - answerTheta)< tolerance);
 
 
     }
