@@ -59,32 +59,47 @@ public class ItemResponseTheory {
         double lambdaSq;
         double nominatorSum = 0;
         double denominatorSum = 0;
+        int sumMark = 0;
+
+        // Check First For Boundary Conditions
+        for(Item item : list){
+            sumMark = sumMark + item.getMark();
+        }
+        if(sumMark == 0)
+            return -3;        // FULL MARKS
+        else if (sumMark == list.size())
+            return 3;         // ZERO MARKS
+        else {
 
 
-        while(Math.abs(adjustedTheta - theta) > tolerance) {
-            for(Item item : list){
-                c = item.getC();
-                theta = item.getTheta();
-                alpha = item.getAlpha();
-                lambda = item.getLambda();
-                mark = item.getMark();
-                probTheta = calcProbTheta(c,lambda,theta,alpha); // Calc Pr(theta)
-                lambdaSq = lambda * lambda;
+            while (Math.abs(adjustedTheta - theta) > tolerance) {
 
-                nominatorSum = nominatorSum + (lambda*(mark - probTheta));
-                denominatorSum = denominatorSum + (lambdaSq*probTheta*(1-probTheta));
+                for (Item item : list) {
+                    c = item.getC();
+                    theta = item.getTheta();
+                    alpha = item.getAlpha();
+                    lambda = item.getLambda();
+                    mark = item.getMark();
+                    probTheta = calcProbTheta(c, lambda, theta, alpha); // Calc Pr(theta)
+                    lambdaSq = lambda * lambda;
+
+                    nominatorSum = nominatorSum + (lambda * (mark - probTheta));
+                    denominatorSum = denominatorSum + (lambdaSq * probTheta * (1 - probTheta));
+                }
+
+                adjustedTheta = theta + (nominatorSum / denominatorSum);
+                nominatorSum = 0;    // Reset Aggregators to Zero.
+                denominatorSum = 0;
+
+                for (Item item : list) {
+                    item.setTheta(adjustedTheta);  // reset theta to newly updated theta
+                }                                  // for next iteration loop.
+
+
             }
 
-            adjustedTheta = theta + (nominatorSum/denominatorSum);
-            nominatorSum = 0;    // Reset Aggregators to Zero.
-            denominatorSum = 0;
-
-            for(Item item : list){
-                item.setTheta(adjustedTheta);  // reset theta to newly updated theta
-            }                                  // for next iteration loop.
+            return adjustedTheta;
         }
-
-        return adjustedTheta;
     }
 
 

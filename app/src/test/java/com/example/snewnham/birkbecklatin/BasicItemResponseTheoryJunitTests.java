@@ -3,6 +3,7 @@ package com.example.snewnham.birkbecklatin;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.Item;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.ItemResponseTheory;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -146,9 +147,89 @@ public class BasicItemResponseTheoryJunitTests {
         int x = 5;
 
         assertTrue("calcTheta", Math.abs(newTheta - answerTheta)< tolerance);
-
-
     }
+
+
+
+    /**
+     * testCalcNewTheta()
+     * ------------------
+     * Test calcNewTheta() can update the new theta value after processing a list of ALL CORRECT items.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMaxExtremeCalcNewTheta() throws Exception{
+
+        int c = 0;
+
+        int mark1 = 1;  // response
+
+        double alpha1 = -1;   // difficulty
+
+        double lambda1 = 1.0;   // discrimination
+
+        Item item1 = new Item(c, theta5, alpha1, lambda1, mark1);
+
+        List<Item> itemList = new ArrayList<>();
+        itemList.add(item1);    // ALL CORRECT ANSWERS
+        itemList.add(item1);
+        itemList.add(item1);
+        itemList.add(item1);
+        itemList.add(item1);
+        itemList.add(item1);
+        itemList.add(item1);
+        itemList.add(item1);
+        itemList.add(item1);
+        itemList.add(item1);
+        itemList.add(item1);
+        itemList.add(item1);
+
+        double newTheta = ItemResponseTheory.calcNewTheta( itemList );
+
+        assertEquals("test ALL CORRECT", 3.0,newTheta,0.1);
+    }
+
+
+    /**
+     * testCalcNewTheta()
+     * ------------------
+     * Test calcNewTheta() can update the new theta value after processing a list of ALL WRONG items.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMinExtremeCalcNewTheta() throws Exception{
+
+        int c = 0;
+
+        int mark2 = 0;  // response
+
+        double alpha1 = -1;   // difficulty
+
+        double lambda1 = 1.0;   // discrimination
+
+        Item item2 = new Item(c, theta5, alpha1, lambda1, mark2);
+
+        List<Item> itemList = new ArrayList<>();
+        itemList.add(item2);    // ALL CORRECT ANSWERS
+        itemList.add(item2);
+        itemList.add(item2);
+        itemList.add(item2);
+        itemList.add(item2);
+        itemList.add(item2);
+        itemList.add(item2);
+        itemList.add(item2);
+        itemList.add(item2);
+        itemList.add(item2);
+        itemList.add(item2);
+        itemList.add(item2);
+
+        double newTheta = ItemResponseTheory.calcNewTheta( itemList );
+
+        assertEquals("test ALL WRONG", -3.0,newTheta,0.1);
+    }
+
 
 
 }
