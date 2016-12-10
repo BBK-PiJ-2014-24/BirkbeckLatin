@@ -36,7 +36,9 @@ public class ItemResponseTheory {
      * calcNewTheta()
      * --------------
      * Calculates a newly updated Theta (the student's ability), given new
-     * question's results.
+     * question's results. Border Cases are confined to [-3,+3] for
+     * (ALL INCORRECT items, ALL CORRECT items).
+     *
      * @param list - List of Items
      * Note that an item object contains:
      *      theta - Theta Before Update - the examinee's ability
