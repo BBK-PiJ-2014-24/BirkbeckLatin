@@ -46,6 +46,7 @@ public class VerbRegular implements Verb {
     public VerbRegular(int id) {
         this.mId = id;
         this.mDatabaseAccess = null;
+
     }
 
     public VerbRegular(int id, DatabaseAccess databaseAccess) {
@@ -114,7 +115,6 @@ public class VerbRegular implements Verb {
             }
 
         }
-
 
 
         // Find Latin Ending

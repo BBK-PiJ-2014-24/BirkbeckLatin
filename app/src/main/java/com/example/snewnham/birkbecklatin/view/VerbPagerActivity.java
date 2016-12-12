@@ -14,7 +14,6 @@ import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 import com.example.snewnham.birkbecklatin.R;
 
 import java.util.List;
-import java.util.UUID;
 
 
 /**
@@ -52,7 +51,7 @@ public class VerbPagerActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager) findViewById(R.id.activity_verb_pager); // wire View Pager to XML
         databaseAccess = DatabaseAccess.getInstance(this);
-        mVerbList = databaseAccess.getVerbList(verbConj);
+        mVerbList = databaseAccess.getVerbConjugationList(verbConj);
         int x = 5;
 
         FragmentManager fragmentManager = getSupportFragmentManager();

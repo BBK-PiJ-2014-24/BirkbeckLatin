@@ -3,6 +3,7 @@ package com.example.snewnham.birkbecklatin.Control.randomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
+import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 
 import java.util.Random;
 
@@ -302,6 +303,22 @@ public class RandomGenerator {
 
 
     //  -------------------------------- VERBS ------------------------------------------------
+
+    /**
+     * getRandomVerbID()
+     * ----------------
+     * Generate a random Verb ID from the VerbList
+     * @return
+     */
+    public int getRandomVerbID(){
+
+        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.VerbListTable.VERB_LIST_TABLE);
+        int randomVerbIDNumber = randomGenerator.nextInt(numVerbs) + 1;  // +1 as rand = [0,n-1]
+
+        return randomVerbIDNumber;
+    }
+
+
     /**
      * getVerbPerson()
      * --------------
@@ -321,6 +338,26 @@ public class RandomGenerator {
             return VERB_PERSON_2ND;
         else
             return VERB_PERSON_3RD;
+    }
+
+    /**
+     * getVerbNumber()
+     * --------------
+     * Generate a Random "Number" (Singular, Plural, Infinitive) for a VERB
+     * if random [0,302] - > "Singular"
+     * if random [302,604] - > "Plural"
+     * if random [604,610] - > "Infinitive"
+     * @return
+     */
+    public String getVerbNumber() {
+        int randomGenderNumber = randomGenerator.nextInt(VERB_NUMBER_NUM_OUTCOMES);
+
+        if (randomGenderNumber <= VERB_NUMBER_SINGULAR_CUTOFF)
+            return VERB_NUMBER_SINGULAR;
+        else if (randomGenderNumber <= VERB_NUMBER_PLURAL_CUTOFF)
+            return VERB_NUMBER_PLURAL;
+        else
+            return VERB_NUMBER_INFINITIVE;
     }
 
     /**
@@ -380,25 +417,6 @@ public class RandomGenerator {
 
     }
 
-    /**
-     * getVerbNumber()
-     * --------------
-     * Generate a Random "Number" (Singular, Plural, Infinitive) for a VERB
-     * if random [0,302] - > "Singular"
-     * if random [302,604] - > "Plural"
-     * if random [604,610] - > "Infinitive"
-     * @return
-     */
-    public String getVerbNumber() {
-        int randomGenderNumber = randomGenerator.nextInt(VERB_NUMBER_NUM_OUTCOMES);
-
-        if (randomGenderNumber <= VERB_NUMBER_SINGULAR_CUTOFF)
-            return VERB_NUMBER_SINGULAR;
-        else if (randomGenderNumber <= VERB_NUMBER_PLURAL_CUTOFF)
-            return VERB_NUMBER_PLURAL;
-        else
-            return VERB_NUMBER_INFINITIVE;
-    }
 
     /**
      * getVerbMood()
@@ -432,7 +450,6 @@ public class RandomGenerator {
         int randomGenderNumber = randomGenerator.nextInt(numVerbs) + 1;  // +1 as rand = [0,n-1]
 
         int verbId = databaseAccess.sqlIncorrectVerb_GetId(randomGenderNumber);
-
 
         return verbId;
     }

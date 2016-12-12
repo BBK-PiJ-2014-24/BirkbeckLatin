@@ -13,6 +13,10 @@ import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
+import com.example.snewnham.birkbecklatin.Model.verbs.VerbDeponent;
+import com.example.snewnham.birkbecklatin.Model.verbs.VerbIrregular;
+import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
+import com.example.snewnham.birkbecklatin.Model.verbs.VerbSemiDeponent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,13 +105,13 @@ public class DatabaseAccess {
     }
 
     /**
-     * getVerbList()
-     * ------------
-     * Sql query retreiving a list of all verbs of a certain conjugation
+     * getVerbConjugationList()
+     * -------------------------
+     * Sql query retreiving a list of all verbs of a certain conjugation. To BE USED WITH A PAGE_VIEWER.
      *
      * @return
      */
-    public List<Verb> getVerbList(int conj){
+    public List<Verb> getVerbConjugationList(int conj){
 
         String table = DbSchema.VerbListTable.VERB_LIST_TABLE;  // FROM VerbStemTable
         String[] column = null;  // SELECT *
@@ -128,6 +132,41 @@ public class DatabaseAccess {
             cursor.close();  // CLOSE CURSOR  !!
         }
         return verbList;
+    }
+
+    /**
+     * getVerbIDConjugationList()
+     * --------------------------
+     * This is used for SKILL 1 in the VerbGame in order to Limit the Verbs Available.
+     * Retrieves a List of Verb IDs from the DB where Conj is limited to max (ideally 2)
+     * and Verbs are Regular plus the ESSE Irregular Verb.
+     * @param maxConj set at 2
+     * @return list of Verb IDs meeting criteria above.
+     */
+    public List<Integer> getVerbIDConjugationList(int maxConj){
+
+        String table = DbSchema.VerbListTable.VERB_LIST_TABLE;  // FROM VerbStemTable
+        String[] column = new String[]{DbSchema.VerbListTable.Cols._id}; // SELECT _id
+        String whereClause = DbSchema.VerbListTable.Cols.LATIN_CONJNUM + "<=? AND " +
+                             DbSchema.VerbListTable.Cols.LATIN_TYPE + "=? OR " +
+                             DbSchema.VerbListTable.Cols.LATIN_INFINITIVE + "=?";
+        String[] whereArgs = new String[]{Integer.toString(maxConj),
+                                          "Regular",
+                                          "esse"};
+
+        List<Integer> verbIDList = new ArrayList<>();
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs);  // set up cursor pointing at db
+
+        try {
+            cursor.moveToFirst();    // move cursor to first element of db
+            while (!cursor.isAfterLast()) {  // while NOT after last element
+                verbIDList.add(cursor.getInt(cursor.getColumnIndex(DbSchema.VerbListTable.Cols._id)));  // getCrime from cursorWrapper takes db tuple -> Java Crime object
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();  // CLOSE CURSOR  !!
+        }
+        return verbIDList;
     }
 
 
@@ -177,9 +216,9 @@ public class DatabaseAccess {
 
     }
 
-
     /**
      * sqlTableCountQuery()
+     * ====================
      * Counts the number or rows in a given table
      * @param table
      * @return
@@ -189,6 +228,50 @@ public class DatabaseAccess {
         int tableSize = (int) DatabaseUtils.queryNumEntries(mSQLiteDatabase, table);  // downcast as returns a long
         return tableSize;
     }
+
+
+    /**
+     * sqlVerbTypeQuery()
+     * ===============
+     * Runs a SQL query on VERB_LIST table returning the TYPE of Verb (Regular, Irregular, Deponent etc.)
+     * @param id
+     * @return
+     */
+    public String sqlVerbTypeQuery(int id){
+        String strId = Integer.toString(id);
+        String table = DbSchema.VerbListTable.VERB_LIST_TABLE;           // FROM Table = VerbListCursor
+        String[] column = new String[]{DbSchema.VerbListTable.Cols.LATIN_TYPE};            // SELECT *
+        String whereClause = "_id=?";
+        String[] whereArgs = new String[]{strId}; // WHERE _id =
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        cursor.moveToFirst();
+        String verbType = cursor.getString(cursor.getColumnIndex(DbSchema.VerbListTable.Cols.LATIN_TYPE));
+        return verbType;
+    }
+
+
+    /**
+     * sqlVerbConjQuery()
+     * ===============
+     * Runs a SQL query on VERB_LIST table returning the CONJUGATION of Verb (1,2,3,4 or null)
+     * @param id
+     * @return
+     */
+    public String sqlVerbConjQuery(int id){
+        String strId = Integer.toString(id);
+        String table = DbSchema.VerbListTable.VERB_LIST_TABLE;           // FROM Table = VerbListCursor
+        String[] column = new String[]{DbSchema.VerbListTable.Cols.LATIN_CONJNUM};            // SELECT *
+        String whereClause = "_id=?";
+        String[] whereArgs = new String[]{strId}; // WHERE _id =
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        cursor.moveToFirst();
+        String verbConj = cursor.getString(cursor.getColumnIndex(DbSchema.VerbListTable.Cols.LATIN_CONJNUM));
+        return verbConj;
+    }
+
+
 
     /**
      * sqlVerbListQuery(int id)
@@ -358,6 +441,7 @@ public class DatabaseAccess {
 
         return verb;
     }
+
 
     // ====================== ENGLISH VERBS ==============================================
     /**

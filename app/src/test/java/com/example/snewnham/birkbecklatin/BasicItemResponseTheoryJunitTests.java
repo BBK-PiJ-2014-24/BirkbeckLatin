@@ -230,6 +230,25 @@ public class BasicItemResponseTheoryJunitTests {
         assertEquals("test ALL WRONG", -3.0,newTheta,0.1);
     }
 
+    @Test
+    public void testExponential() throws Exception {
+
+        double lambda = 0.5;
+        List<Double> list = new ArrayList<>();
+
+        for(int i=0; i<100; i++) {
+            double u = Math.random();
+            double x = -(1 / lambda) * Math.log(u);
+            list.add(x);
+        }
+
+        int ww = 5;
+
+    }
+
+
+
+
 
 
 }

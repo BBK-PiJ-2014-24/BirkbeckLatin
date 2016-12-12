@@ -23,6 +23,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.snewnham.birkbecklatin.Model.database.DbSchema.VerbListTable.*;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.isIn;
 import static org.junit.Assert.*;
 
 /**
@@ -228,6 +232,56 @@ public class DatabaseInstrumentedTest {
 
     // --------------------------------- VERBS ------------------------------------------
 
+
+    /**
+     * testSqlVerbTypeQuery()
+     * ----------------------
+     * Test sqlVerbTypeQuery() which can detect the Type of Verb given _id in Verb_List
+     * @throws Exception
+     */
+    @Test
+    public void testSqlVerbTypeQuery() throws Exception {
+
+        int id7 = 7;
+        int id8 = 8;
+        int id9 = 9;
+        int id10 = 10;
+
+        String regular = "Regular";
+        String deponent = "Deponent";
+        String semideponent = "Semi Deponent";
+        String irregular = "Irregular";
+
+        String ans7 = databaseAccess.sqlVerbTypeQuery(id7);
+        String ans8 = databaseAccess.sqlVerbTypeQuery(id8);
+        String ans9 = databaseAccess.sqlVerbTypeQuery(id9);
+        String ans10 = databaseAccess.sqlVerbTypeQuery(id10);
+
+        assertEquals("test Regular Type", regular, ans7);
+        assertEquals("test Deponent Type", deponent, ans8);
+        assertEquals("test Semi Deponent Type", semideponent, ans9);
+        assertEquals("test Irregular Type", irregular, ans10);
+    }
+
+
+    /**
+     * testGetVerbIDConjugationList()
+     * ------------------------------
+     * Tests the list from getVerbIDConjugationList() containing Verb IDs of just Conj 1+2 and the Esse Verb.
+     * This is Used for Selecting Verbs for Skill Level 1 in the Verb Game.
+     * TEST USES HAMCREST
+     * @throws Exception
+     */
+    @Test
+    public void testGetVerbIDConjugationList() throws Exception {
+        List<Integer> list = databaseAccess.getVerbIDConjugationList(2);
+        assertThat(1, isIn(list));
+        assertThat(2, isIn(list));
+        assertThat(10, isIn(list));
+       // assertThat(list, containsInAnyOrder(1,2,10));
+    }
+
+
     /**
      * testDatabaseToVerb()
      * -------------------
@@ -290,6 +344,8 @@ public class DatabaseInstrumentedTest {
         assertEquals( english_Participle, verbRegular.getEnglish_Participle() );
 
     }
+
+
 
     /**
      * testLatinVerbStem()
@@ -528,7 +584,7 @@ public class DatabaseInstrumentedTest {
         verbList.add(verb2);
         verbList.add(verb3);
 
-        List<Verb> verbListQuery = databaseAccess.getVerbList(Integer.parseInt(conjNum1));
+        List<Verb> verbListQuery = databaseAccess.getVerbConjugationList(Integer.parseInt(conjNum1));
 
         assertEquals(verbList.size(), verbListQuery.size());
         assertEquals(verbList.get(1).getId(), verbListQuery.get(1).getId());

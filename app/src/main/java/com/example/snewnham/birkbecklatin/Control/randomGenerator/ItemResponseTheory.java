@@ -63,8 +63,8 @@ public class ItemResponseTheory {
         double denominatorSum = 0;
         int sumMark = 0;
 
-        // Check First For Boundary Conditions
-        for(Item item : list){
+
+        for(Item item : list){  // Check First For Boundary Conditions
             sumMark = sumMark + item.getMark();
         }
         if(sumMark == 0)
@@ -72,10 +72,7 @@ public class ItemResponseTheory {
         else if (sumMark == list.size())
             return 3;         // ZERO MARKS
         else {
-
-
             while (Math.abs(adjustedTheta - theta) > tolerance) {
-
                 for (Item item : list) {
                     c = item.getC();
                     theta = item.getTheta();
@@ -96,10 +93,7 @@ public class ItemResponseTheory {
                 for (Item item : list) {
                     item.setTheta(adjustedTheta);  // reset theta to newly updated theta
                 }                                  // for next iteration loop.
-
-
             }
-
             return adjustedTheta;
         }
     }

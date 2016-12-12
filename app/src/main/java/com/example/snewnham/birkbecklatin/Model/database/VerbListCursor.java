@@ -75,7 +75,7 @@ public class VerbListCursor extends CursorWrapper {
                 verb = new VerbDeponent(id);
                 break;
             }
-            case "SemiDeponent": {
+            case "Semi Deponent": {
                 verb = new VerbSemiDeponent(id);
                 break;
             }
