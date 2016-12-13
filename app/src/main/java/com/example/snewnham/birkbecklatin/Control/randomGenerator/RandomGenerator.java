@@ -5,6 +5,8 @@ import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -316,6 +318,31 @@ public class RandomGenerator {
         int randomVerbIDNumber = randomGenerator.nextInt(numVerbs) + 1;  // +1 as rand = [0,n-1]
 
         return randomVerbIDNumber;
+    }
+
+    /**
+     * getRestrictedRandomVerbID()
+     * ---------------------------
+     * This is used for Selecting Verbs for Skill Level 1 in the Verb Game
+     * Gets A Random Selected Verb ID from a Restricted Verb List (confined to
+     * conj 1+2 and Esse Verb) and then gets the nearest Verb Id next to the random
+     * selected Verb (which will be used for the incorrect options in multiple choice).
+     * @return List of two verb IDs
+     */
+    public List<Integer> getRestrictedRandomVerbID(){
+
+        List<Integer> restrictedVerbList = databaseAccess.getVerbIDConjugationList(2);  // get the restricted verb list
+        int numRestrictedList = restrictedVerbList.size();
+        int randomSelectionFromList = randomGenerator.nextInt(numRestrictedList);  // make a random number for selection in list
+
+        List<Integer> selectedVerbIDlist = new ArrayList<>();
+        selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList));  // select the Verb ID of that item in the list.s
+        if(randomSelectionFromList != 0)  // check condition so that don't overrun the list.
+            selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList-1)); // select the Verb ID next in the list.
+        else
+            selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList+1));
+
+        return selectedVerbIDlist;
     }
 
 

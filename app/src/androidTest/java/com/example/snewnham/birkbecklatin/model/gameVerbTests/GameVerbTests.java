@@ -84,7 +84,7 @@ public class GameVerbTests {
 
 
 
-       // verbGame = new VerbGame(databaseAccess, );
+        verbGame = new VerbGame(databaseAccess, 1);
 
         id_Regular = 1;
         id_Deponent = 8;
@@ -169,7 +169,7 @@ public class GameVerbTests {
     @Test
     public void testMakeGameVerb_Regular() throws Exception {
 
-        Verb verb = verbGame.makeGameVerb(REGULAR, id_Regular, person3, numberSingular, tensePresent,
+        Verb verb = verbGame.makeGameVerb(id_Regular, person3, numberSingular, tensePresent,
                                             moodIndicative, voiceActive);
         String latinWord = verb.getLatinVerb();
         assertEquals("Regular Latin Verb", "portat", latinWord );
@@ -190,7 +190,7 @@ public class GameVerbTests {
     @Test
     public void testMakeGameVerb_Deponent() throws Exception {
 
-        Verb verb = verbGame.makeGameVerb(DEPONENT, id_Deponent, person3, numberSingular, tensePerfect,
+        Verb verb = verbGame.makeGameVerb(id_Deponent, person3, numberSingular, tensePerfect,
                 moodIndicative, voiceActive);
         String latinWord = verb.getLatinVerb();
         assertEquals("Deponent Latin Verb", "visus est", latinWord );
@@ -210,7 +210,7 @@ public class GameVerbTests {
     @Test
     public void testMakeGameVerb_SemiDeponent() throws Exception {
 
-        Verb verb1 = verbGame.makeGameVerb(SEMI_DEPONENT, id_SemiDeponent, person3, numberSingular, tensePresent,
+        Verb verb1 = verbGame.makeGameVerb(id_SemiDeponent, person3, numberSingular, tensePresent,
                 moodIndicative, voiceActive);
         String latinWord1 = verb1.getLatinVerb();
         assertEquals("Semi Deponent Latin Verb (Present)", "gaudet", latinWord1 );
@@ -219,7 +219,7 @@ public class GameVerbTests {
         assertEquals("Semi Deponent English Verb (Present)", "he/she rejoices", englishWord1 );
 
 
-        Verb verb2 = verbGame.makeGameVerb(SEMI_DEPONENT, id_SemiDeponent, person3, numberSingular, tensePerfect,
+        Verb verb2 = verbGame.makeGameVerb(id_SemiDeponent, person3, numberSingular, tensePerfect,
                 moodIndicative, voiceActive);
         String latinWord2 = verb2.getLatinVerb();
         assertEquals("Semi Deponent Latin Verb (Present)", "gavisus est", latinWord2 );
@@ -238,7 +238,7 @@ public class GameVerbTests {
     @Test
     public void testMakeGameVerb_Irregular() throws Exception {
 
-        Verb verb = verbGame.makeGameVerb(IRREGULAR, id_Irregular, person3, numberSingular, tensePresent,
+        Verb verb = verbGame.makeGameVerb(id_Irregular, person3, numberSingular, tensePresent,
                 moodIndicative, voiceActive);
         String latinWord = verb.getLatinVerb();
         assertEquals("Deponent Latin Verb", "est", latinWord );

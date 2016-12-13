@@ -15,11 +15,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.isIn;
 import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -319,7 +321,7 @@ public class AdvancedRandomGeneratorTests {
 
 
         int sample = randomSims / numVerbs;
-        float toleranceFactor = 0.15f;
+        float toleranceFactor = 0.2f;
         int toleranceForSample = (int) (sample * toleranceFactor);
 
 
@@ -346,6 +348,33 @@ public class AdvancedRandomGeneratorTests {
         assertThat("Num nounId_4 Simulations", map.get(nounId4), lessThan(sample + toleranceForSample));
 
     }
+
+
+    /**
+     * testGetRestrictedRandomVerbID()
+     * -------------------------------
+     * Test for Selecting Verbs for Skill Level 1 in the Verb Game
+     * Gets A Random Selected Verb ID from a Restricted Verb List (confined to
+     * conj 1+2 and Esse Verb) and then gets the nearest Verb Id next to the random
+     * selected Verb (which will be used for the incorrect options in multiple choice).
+     * @return
+     */
+    @Test
+    public void testGetRestrictedRandomVerbID(){
+
+        List<Integer> listofIDs = new ArrayList<>();
+        for(int i=0; i<100; i++){
+            List<Integer> pairIDs = randomGenerator.getRestrictedRandomVerbID();  // run method for 100 times
+            listofIDs.add(pairIDs.get(0));
+            listofIDs.add(pairIDs.get(1));
+        }
+        assertThat(10, isIn(listofIDs));  // check sample pair
+        assertThat(7, isIn(listofIDs));
+
+    }
+
+
+
 
     @After
     public void breakDown() {

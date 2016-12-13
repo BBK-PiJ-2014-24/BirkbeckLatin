@@ -70,38 +70,44 @@ public class VerbGame {
      */
     public void runGame(){
 
-        int id = 0;
+    }
+
+
+    /**
+     * getVerbQuestions()
+     * ------------------
+     *
+     * @return
+     */
+    public List<Verb> getVerbQuestions(){
+
+
         String person = null;
         String number = null;
         String voice = null;
         String mood = null;
 
-        int esse_id = 10;
-        String conj = "4";
+
         String type = IRREGULAR;
         String tense = mRandomGenerator.getVerbTense();
 
         switch(mSkillLevel){
             case 1:
+                List<Integer> idList = mRandomGenerator.getRestrictedRandomVerbID(); // Two Verb IDs
                 person = mRandomGenerator.getVerbPerson();
                 number = mRandomGenerator.getVerbNumber();
-                while((Integer.parseInt(conj) <= 2 && type.equals(REGULAR)) || id == esse_id){
-                    conj = mDatabaseAccess.sqlVerbConjQuery(id);
-                    type = mDatabaseAccess.sqlVerbTypeQuery(id);
-                }
                 voice = VOICE_ACTIVE;
                 mood = MOOD_INDICATIVE;
 
-                mVerbQuestionList.add(makeGameVerb(type, id, person, number, TENSE_PRESENT, mood, voice));
-                mVerbQuestionList.add(makeGameVerb(type, id, person, number, TENSE_IMPERFECT, mood, voice));
-                mVerbQuestionList.add(makeGameVerb(type, id, person, number, TENSE_FUTURE, mood, voice));
-
-
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, TENSE_PRESENT, mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, TENSE_IMPERFECT, mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, TENSE_FUTURE, mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, TENSE_PRESENT, mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, TENSE_IMPERFECT, mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, TENSE_FUTURE, mood, voice));
         }
 
-        Verb correctVerb = makeGameVerb(type, id, person, number, tense, mood, voice);
-
-
+        return mVerbQuestionList;
     }
 
 
@@ -110,7 +116,6 @@ public class VerbGame {
      * --------------
      * Forms the correct Verb object (Regular, Deponent, Semi-Deponent, Irregular), given usual
      * verb arguments (person, number, etc.)
-     * @param type
      * @param id
      * @param person
      * @param number
@@ -119,10 +124,12 @@ public class VerbGame {
      * @param voice
      * @return Verb object (Not the underlying sub classes).
      */
-    public Verb makeGameVerb(String type, int id, String person, String number,
+    public Verb makeGameVerb(int id, String person, String number,
                              String tense, String mood, String voice){
 
         Verb gameVerb = null;
+        String type = mDatabaseAccess.sqlVerbTypeQuery(id);  // Find out What Type is the Verb
+
         switch (type) {
             case REGULAR:
                 VerbRegular verbRegular = (VerbRegular) mDatabaseAccess.sqlVerbListQuery(id);
