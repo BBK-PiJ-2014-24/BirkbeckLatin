@@ -330,9 +330,9 @@ public class RandomGenerator {
      * selected Verb (which will be used for the incorrect options in multiple choice).
      * @return List of two verb IDs
      */
-    public List<Integer> getRestrictedRandomVerbID(){
+    public List<Integer> getRestrictedRandomVerbID(int conjNum){
 
-        List<Integer> restrictedVerbList = databaseAccess.getVerbIDConjugationList(2);  // get the restricted verb list
+        List<Integer> restrictedVerbList = databaseAccess.getVerbIDConjugationList(conjNum);  // get the restricted verb list
         int numRestrictedList = restrictedVerbList.size();
         int randomSelectionFromList = randomGenerator.nextInt(numRestrictedList);  // make a random number for selection in list
 

@@ -17,6 +17,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * TESTS FOR CREATING LATIN VERBS FOR ALL PERSONS, MOODS, VOICES FOR 1st COJUGATIONS
@@ -35,7 +36,9 @@ public class GameVerbTests {
     int id_Deponent;  // id for Deponent
     int id_SemiDeponent;  // id for Semi Deponent
     int id_Irregular; // id for Irregular
+
     VerbGame verbGame1;
+    VerbGame verbGame2;
     VerbRegular mVerbRegular;
 
     int skillLevel1;
@@ -86,6 +89,7 @@ public class GameVerbTests {
         databaseAccess.open();                                  // OPEN THE DATABASE
 
         verbGame1 = new VerbGame(databaseAccess, 1); // Verb Skill 1
+        verbGame2 = new VerbGame(databaseAccess, 2);
 
         id_Regular = 1;
         id_Deponent = 8;
@@ -250,7 +254,7 @@ public class GameVerbTests {
 
 
     /**
-     * testGetVerbQuestions()
+     * testGetVerbQuestions() - Skill 1
      * ----------------------
      * Tests the List of Verb Questions Meet the Criteria of Skill 1
      *
@@ -272,6 +276,45 @@ public class GameVerbTests {
 
         assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
         assertEquals(v4.getId(), v5.getId());
+
+        assertTrue(v0.getLatin_ConjNum() <= 2);  // Tests Conj 1-2;
+        assertTrue(v1.getLatin_ConjNum() <= 2);
+
+        assertFalse(v0.getLatinEnding().equals(v1.getLatinEnding()));  // Tests Qu 0-2 have Diff.
+        assertFalse(v1.getLatinEnding().equals(v2.getLatinEnding()));  // verb endings.
+
+        assertFalse(v3.getLatinEnding().equals(v4.getLatinEnding()));  // Tests Qu 3-5 have Diff.
+        assertFalse(v4.getLatinEnding().equals(v5.getLatinEnding()));  // verb endings.
+
+    }
+
+    /**
+     * testGetVerbQuestions() - Skill 2
+     * ----------------------
+     * Tests the List of Verb Questions Meet the Criteria of Skill 2
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetVerbQuestions_Skill2() throws Exception {
+
+
+        List<Verb> list = verbGame2.getVerbQuestions();
+        Verb v0 = list.get(0);
+        Verb v1 = list.get(1);
+        Verb v2 = list.get(2);
+        Verb v3 = list.get(3);
+        Verb v4 = list.get(4);
+        Verb v5 = list.get(5);
+
+        assertEquals(v0.getId(), v1.getId());   // Tests Qu 0-2 have same Verb ID
+        assertEquals(v1.getId(), v2.getId());
+
+        assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
+        assertEquals(v4.getId(), v5.getId());
+
+        assertTrue(v0.getLatin_ConjNum() <= 4);  // Tests Conj 1-4;
+        assertTrue(v1.getLatin_ConjNum() <= 4);
 
         assertFalse(v0.getLatinEnding().equals(v1.getLatinEnding()));  // Tests Qu 0-2 have Diff.
         assertFalse(v1.getLatinEnding().equals(v2.getLatinEnding()));  // verb endings.

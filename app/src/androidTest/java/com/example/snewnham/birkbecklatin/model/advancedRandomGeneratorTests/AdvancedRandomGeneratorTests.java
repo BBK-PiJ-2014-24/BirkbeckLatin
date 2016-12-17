@@ -164,7 +164,7 @@ public class AdvancedRandomGeneratorTests {
 
         List<Integer> listofIDs = new ArrayList<>();
         for(int i=0; i<100; i++){
-            List<Integer> pairIDs = randomGenerator.getRestrictedRandomVerbID();  // run method for 100 times
+            List<Integer> pairIDs = randomGenerator.getRestrictedRandomVerbID(2);  // run method for 100 times
             listofIDs.add(pairIDs.get(0));
             listofIDs.add(pairIDs.get(1));
         }

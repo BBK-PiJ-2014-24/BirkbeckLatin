@@ -40,8 +40,8 @@ public class VerbGame {
     private final static String VOICE_PASSIVE = "Passive";
 
     private final static String MOOD_INDICATIVE = "Indicative";
-
-
+    private final static String MOOD_IMPERATIVE = "Imperative";
+    private final static String MOOD_SUBJUNCTIVE = "Subjunctive";
 
 
     private RandomGenerator mRandomGenerator;
@@ -85,10 +85,14 @@ public class VerbGame {
         String number = null;
         String voice = null;
         String mood = null;
+        List<Integer> idList;
+        List<String> tenseList0; // list of random tenses
+        List<String> tenseList1;
 
         switch(mSkillLevel){
             case 1:
-                List<Integer> idList = mRandomGenerator.getRestrictedRandomVerbID(); // Two Verb IDs
+                int conjNum1_2 = 2;
+                idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2); // Two Verb IDs
                 person = mRandomGenerator.getVerbPerson();
                 number = mRandomGenerator.getVerbNumber();
                 voice = VOICE_ACTIVE;
@@ -100,6 +104,26 @@ public class VerbGame {
                 mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, TENSE_PRESENT, mood, voice));
                 mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, TENSE_IMPERFECT, mood, voice));
                 mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, TENSE_FUTURE, mood, voice));
+                break;
+            case 2:
+                int conjNum1_4 = 4;
+                idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4); // Two Verb IDs
+                person = mRandomGenerator.getVerbPerson();
+                number = mRandomGenerator.getVerbNumber();
+                voice = VOICE_ACTIVE;
+                do {
+                    mood = mRandomGenerator.getVerbMood();   // Select only Indicative or Imperative
+                } while (mood.equals(MOOD_SUBJUNCTIVE));
+                tenseList0 = mRandomGenerator.getVerbTenseList();
+                tenseList1 = mRandomGenerator.getVerbTenseList();
+
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(0), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(1), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(2), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(0), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(1), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(2), mood, voice));
+                break;
         }
 
         return mVerbQuestionList;
