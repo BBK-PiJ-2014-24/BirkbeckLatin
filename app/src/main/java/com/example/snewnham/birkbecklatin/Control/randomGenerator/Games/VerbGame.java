@@ -88,10 +88,11 @@ public class VerbGame {
         List<Integer> idList;
         List<String> tenseList0; // list of random tenses
         List<String> tenseList1;
+        int conjNum1_2 = 2;
+        int conjNum1_4 = 4;
 
         switch(mSkillLevel){
             case 1:
-                int conjNum1_2 = 2;
                 idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2); // Two Verb IDs
                 person = mRandomGenerator.getVerbPerson();
                 number = mRandomGenerator.getVerbNumber();
@@ -106,7 +107,6 @@ public class VerbGame {
                 mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, TENSE_FUTURE, mood, voice));
                 break;
             case 2:
-                int conjNum1_4 = 4;
                 idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4); // Two Verb IDs
                 person = mRandomGenerator.getVerbPerson();
                 number = mRandomGenerator.getVerbNumber();
@@ -124,6 +124,46 @@ public class VerbGame {
                 mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(1), mood, voice));
                 mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(2), mood, voice));
                 break;
+            case 3:
+                idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4); // Two Verb IDs
+                person = mRandomGenerator.getVerbPerson();
+                number = mRandomGenerator.getVerbNumber();
+
+                voice = mRandomGenerator.getVerbVoice(); // Allow ACTIVE and PASSIVE
+                do {
+                    mood = mRandomGenerator.getVerbMood();   // Select only Indicative or Imperative
+                } while (mood.equals(MOOD_SUBJUNCTIVE));
+                tenseList0 = mRandomGenerator.getVerbTenseList();
+                tenseList1 = mRandomGenerator.getVerbTenseList();
+
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(0), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(1), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(2), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(0), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(1), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(2), mood, voice));
+                break;
+            case 4:
+                idList = mRandomGenerator.getUnrestrictedRandomVerbID();   // Unrestricted Two Verb IDs
+                person = mRandomGenerator.getVerbPerson();
+                number = mRandomGenerator.getVerbNumber();
+                voice = mRandomGenerator.getVerbVoice(); // Allow ACTIVE and PASSIVE
+                do {
+                    mood = mRandomGenerator.getVerbMood();   // Select only Indicative or Imperative
+                } while (mood.equals(MOOD_SUBJUNCTIVE));
+                tenseList0 = mRandomGenerator.getVerbTenseList();
+                tenseList1 = mRandomGenerator.getVerbTenseList();
+
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(0), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(1), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(2), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(0), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(1), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(2), mood, voice));
+                break;
+
+
+
         }
 
         return mVerbQuestionList;

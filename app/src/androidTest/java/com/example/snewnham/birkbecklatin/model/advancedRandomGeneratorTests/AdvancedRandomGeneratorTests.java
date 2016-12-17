@@ -149,11 +149,10 @@ public class AdvancedRandomGeneratorTests {
     }
 
 
-
     /**
      * testGetRestrictedRandomVerbID()
      * -------------------------------
-     * Test for Selecting Verbs for Skill Level 1 in the Verb Game
+     * Test for Selecting Verbs for Skill Level 1-3 in the Verb Game
      * Gets A Random Selected Verb ID from a Restricted Verb List (confined to
      * conj 1+2 and Esse Verb) and then gets the nearest Verb Id next to the random
      * selected Verb (which will be used for the incorrect options in multiple choice).
@@ -170,11 +169,44 @@ public class AdvancedRandomGeneratorTests {
         }
         assertThat(10, isIn(listofIDs));  // check sample pair
         assertThat(7, isIn(listofIDs));
+    }
+
+
+    /**
+     * testGetUnrestrictedRandomVerbID()
+     * ---------------------------------
+     * Tests for getUnrestrictedRandomVerbID(), which selects a random List of (unrestricted) verb IDs.
+     * Note that the verb IDs will be back to back.
+     */
+    @Test
+    public void testGetUnrestrictedRandomVerbID(){
+
+        List<Integer> listofIDs = new ArrayList<>();
+        for(int i=0; i<100; i++){
+            List<Integer> pairIDs = randomGenerator.getUnrestrictedRandomVerbID();  // run method for 100 times
+            listofIDs.add(pairIDs.get(0));
+            listofIDs.add(pairIDs.get(1));
+        }
+        assertThat(10, isIn(listofIDs));  // check sample pair
+        assertThat(9, isIn(listofIDs));
+        assertThat(8, isIn(listofIDs));
+        assertThat(7, isIn(listofIDs));
+        assertThat(6, isIn(listofIDs));
+        assertThat(5, isIn(listofIDs));
+        assertThat(4, isIn(listofIDs));
+        assertThat(3, isIn(listofIDs));
+        assertThat(2, isIn(listofIDs));
+        assertThat(1, isIn(listofIDs));
 
     }
 
 
-
+    /**
+     * testGetVerbTenseList()
+     * ----------------------
+     * Test for getVerbTenseList(), which generates a random list of three tenses.
+     *
+     */
     @Test
     public void testGetVerbTenseList(){
 
@@ -215,9 +247,10 @@ public class AdvancedRandomGeneratorTests {
 
         assertThat("Num VERB_TENSE_FUTURE_PERFECT Simulations", map.get(VERB_TENSE_FUTURE_PERFECT), greaterThan(sample - toleranceForSample));
         assertThat("Num VERB_TENSE_FUTURE_PERFECT Simulations", map.get(VERB_TENSE_FUTURE_PERFECT), lessThan(sample + toleranceForSample));
-
-
     }
+
+
+
 
 
     // --------------------------------- NOUN ------------------------------------------------------

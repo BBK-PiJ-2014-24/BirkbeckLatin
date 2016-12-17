@@ -324,9 +324,9 @@ public class RandomGenerator {
     /**
      * getRestrictedRandomVerbID()-
      * ---------------------------
-     * This is used for Selecting Verbs for Skill Level 1 in the Verb Game
+     * This is used for Selecting Verbs for Skill Levels 1-3 in the Verb Game
      * Gets A Random Selected Verb ID from a Restricted Verb List (confined to
-     * conj 1+2 and Esse Verb) and then gets the nearest Verb Id next to the random
+     * conj 1-2 or 1-4 and Esse Verb) and then gets the nearest Verb Id next to the random
      * selected Verb (which will be used for the incorrect options in multiple choice).
      * @return List of two verb IDs
      */
@@ -344,6 +344,29 @@ public class RandomGenerator {
             selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList+1));
 
         return selectedVerbIDlist;
+    }
+
+
+    /**
+     * getUnrestrictedRandomVerbID()
+     * -----------------------------
+     * Creates a list of two (unrestricted) verb IDs.
+     * @return
+     */
+    public List<Integer> getUnrestrictedRandomVerbID(){
+
+        int id1 = getRandomVerbID();  // generate an unrestricted verb ID
+        int id2;
+        if(id1 != 0)
+            id2 = id1 + 1;
+        else
+            id2 = id1 - 1;
+
+        List<Integer> unrestrictedVerbList = new ArrayList<>();  // add to verb list
+        unrestrictedVerbList.add(id1);
+        unrestrictedVerbList.add(id2);
+
+        return unrestrictedVerbList;
     }
 
 
