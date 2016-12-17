@@ -13,7 +13,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 /**
  * TESTS FOR CREATING LATIN VERBS FOR ALL PERSONS, MOODS, VOICES FOR 1st COJUGATIONS
@@ -32,7 +35,7 @@ public class GameVerbTests {
     int id_Deponent;  // id for Deponent
     int id_SemiDeponent;  // id for Semi Deponent
     int id_Irregular; // id for Irregular
-    VerbGame verbGame;
+    VerbGame verbGame1;
     VerbRegular mVerbRegular;
 
     int skillLevel1;
@@ -82,9 +85,7 @@ public class GameVerbTests {
         databaseAccess = DatabaseAccess.getInstance(appContext);  // CALL THE DATABASE STATICALY
         databaseAccess.open();                                  // OPEN THE DATABASE
 
-
-
-        verbGame = new VerbGame(databaseAccess, 1);
+        verbGame1 = new VerbGame(databaseAccess, 1); // Verb Skill 1
 
         id_Regular = 1;
         id_Deponent = 8;
@@ -169,7 +170,7 @@ public class GameVerbTests {
     @Test
     public void testMakeGameVerb_Regular() throws Exception {
 
-        Verb verb = verbGame.makeGameVerb(id_Regular, person3, numberSingular, tensePresent,
+        Verb verb = verbGame1.makeGameVerb(id_Regular, person3, numberSingular, tensePresent,
                                             moodIndicative, voiceActive);
         String latinWord = verb.getLatinVerb();
         assertEquals("Regular Latin Verb", "portat", latinWord );
@@ -190,7 +191,7 @@ public class GameVerbTests {
     @Test
     public void testMakeGameVerb_Deponent() throws Exception {
 
-        Verb verb = verbGame.makeGameVerb(id_Deponent, person3, numberSingular, tensePerfect,
+        Verb verb = verbGame1.makeGameVerb(id_Deponent, person3, numberSingular, tensePerfect,
                 moodIndicative, voiceActive);
         String latinWord = verb.getLatinVerb();
         assertEquals("Deponent Latin Verb", "visus est", latinWord );
@@ -210,7 +211,7 @@ public class GameVerbTests {
     @Test
     public void testMakeGameVerb_SemiDeponent() throws Exception {
 
-        Verb verb1 = verbGame.makeGameVerb(id_SemiDeponent, person3, numberSingular, tensePresent,
+        Verb verb1 = verbGame1.makeGameVerb(id_SemiDeponent, person3, numberSingular, tensePresent,
                 moodIndicative, voiceActive);
         String latinWord1 = verb1.getLatinVerb();
         assertEquals("Semi Deponent Latin Verb (Present)", "gaudet", latinWord1 );
@@ -219,7 +220,7 @@ public class GameVerbTests {
         assertEquals("Semi Deponent English Verb (Present)", "he/she rejoices", englishWord1 );
 
 
-        Verb verb2 = verbGame.makeGameVerb(id_SemiDeponent, person3, numberSingular, tensePerfect,
+        Verb verb2 = verbGame1.makeGameVerb(id_SemiDeponent, person3, numberSingular, tensePerfect,
                 moodIndicative, voiceActive);
         String latinWord2 = verb2.getLatinVerb();
         assertEquals("Semi Deponent Latin Verb (Present)", "gavisus est", latinWord2 );
@@ -238,13 +239,46 @@ public class GameVerbTests {
     @Test
     public void testMakeGameVerb_Irregular() throws Exception {
 
-        Verb verb = verbGame.makeGameVerb(id_Irregular, person3, numberSingular, tensePresent,
+        Verb verb = verbGame1.makeGameVerb(id_Irregular, person3, numberSingular, tensePresent,
                 moodIndicative, voiceActive);
         String latinWord = verb.getLatinVerb();
         assertEquals("Deponent Latin Verb", "est", latinWord );
 
         String englishWord = verb.getEnglishVerb();
         assertEquals("Deponent English Verb", "he/she is", englishWord );
+    }
+
+
+    /**
+     * testGetVerbQuestions()
+     * ----------------------
+     * Tests the List of Verb Questions Meet the Criteria of Skill 1
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetVerbQuestions_Skill1() throws Exception {
+
+        List<Verb> list = verbGame1.getVerbQuestions();
+        Verb v0 = list.get(0);
+        Verb v1 = list.get(1);
+        Verb v2 = list.get(2);
+        Verb v3 = list.get(3);
+        Verb v4 = list.get(4);
+        Verb v5 = list.get(5);
+
+        assertEquals(v0.getId(), v1.getId());   // Tests Qu 0-2 have same Verb ID
+        assertEquals(v1.getId(), v2.getId());
+
+        assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
+        assertEquals(v4.getId(), v5.getId());
+
+        assertFalse(v0.getLatinEnding().equals(v1.getLatinEnding()));  // Tests Qu 0-2 have Diff.
+        assertFalse(v1.getLatinEnding().equals(v2.getLatinEnding()));  // verb endings.
+
+        assertFalse(v3.getLatinEnding().equals(v4.getLatinEnding()));  // Tests Qu 3-5 have Diff.
+        assertFalse(v4.getLatinEnding().equals(v5.getLatinEnding()));  // verb endings.
+
     }
 
 

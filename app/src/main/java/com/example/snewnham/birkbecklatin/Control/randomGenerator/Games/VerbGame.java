@@ -36,10 +36,10 @@ public class VerbGame {
     private final static String TENSE_PLUPERFECT = "Pluperfect";
     private final static String TENSE_FUTURE_PERFECT = "Future Perfect";
 
-    private final static String VOICE_ACTIVE = "Indicative";
+    private final static String VOICE_ACTIVE = "Active";
     private final static String VOICE_PASSIVE = "Passive";
 
-    private final static String MOOD_INDICATIVE = "Active";
+    private final static String MOOD_INDICATIVE = "Indicative";
 
 
 
@@ -55,8 +55,8 @@ public class VerbGame {
     // Constructor
     // -----------
     public VerbGame(DatabaseAccess databaseAccess, int skillLevel){
-        mRandomGenerator = new RandomGenerator();
         mDatabaseAccess = databaseAccess;
+        mRandomGenerator = new RandomGenerator(mDatabaseAccess);
         mSkillLevel = skillLevel;
         mVerbQuestionList = new ArrayList<>();
     }
@@ -81,15 +81,10 @@ public class VerbGame {
      */
     public List<Verb> getVerbQuestions(){
 
-
         String person = null;
         String number = null;
         String voice = null;
         String mood = null;
-
-
-        String type = IRREGULAR;
-        String tense = mRandomGenerator.getVerbTense();
 
         switch(mSkillLevel){
             case 1:

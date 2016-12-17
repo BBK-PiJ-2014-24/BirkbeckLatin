@@ -6,6 +6,7 @@ import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -425,6 +426,46 @@ public class RandomGenerator {
         }
         return null;
     }
+
+    /**
+     * getVerbTenseList()
+     * ------------------
+     * Generates a random list of three tenses for the VerbGame.
+     * @return
+     */
+    public List<String> getVerbTenseList(){
+
+        String[] verbArr = new String[]{
+                VERB_TENSE_PRESENT,
+                VERB_TENSE_IMPERFECT,
+                VERB_TENSE_FUTURE,
+                VERB_TENSE_PERFECT,
+                VERB_TENSE_PLUPERFECT,
+                VERB_TENSE_FUTURE_PERFECT
+        };
+
+        // Implementing Adjusted Fisher–Yates to shuffle tenses
+        // ----------------------------------------------------
+
+        int indexStart = randomGenerator.nextInt(verbArr.length);
+        String t = verbArr[0];
+        verbArr[0] = verbArr[indexStart];
+        verbArr[indexStart] = t;
+
+        for(int i = verbArr.length - 1; i >= 0; i--) {
+            int index = randomGenerator.nextInt(verbArr.length);
+            String swap = verbArr[index];
+            verbArr[index] = verbArr[i];
+            verbArr[i] = swap;
+        }
+
+
+
+        String[] subArray = Arrays.copyOfRange(verbArr, 0, 3);  // subArray of first 3 tenses
+        List<String> shuffleList = Arrays.asList(subArray);  // convert to List
+       return shuffleList;
+    }
+
 
     /**
      * getVerbVoice()

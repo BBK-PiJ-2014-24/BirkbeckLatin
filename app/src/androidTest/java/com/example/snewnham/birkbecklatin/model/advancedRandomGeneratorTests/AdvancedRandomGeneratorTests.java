@@ -66,6 +66,13 @@ public class AdvancedRandomGeneratorTests {
     String ADVERB_COMPARATIVE = "AdverbComparative";
     String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
+    final String VERB_TENSE_PRESENT = "Present";
+    final String VERB_TENSE_IMPERFECT = "Imperfect";
+    final String VERB_TENSE_FUTURE = "Future";
+    final String VERB_TENSE_PERFECT = "Perfect";
+    final String VERB_TENSE_PLUPERFECT = "Pluperfect";
+    final String VERB_TENSE_FUTURE_PERFECT = "Future Perfect";
+
     RandomGenerator randomGenerator;
     DatabaseAccess databaseAccess;
     Context appContext;
@@ -138,6 +145,77 @@ public class AdvancedRandomGeneratorTests {
 
         assertThat("Num verbId_4 Simulations", map.get(verbId4), greaterThan(sample - toleranceForSample));
         assertThat("Num verbId_4 Simulations", map.get(verbId4), lessThan(sample + toleranceForSample));
+
+    }
+
+
+
+    /**
+     * testGetRestrictedRandomVerbID()
+     * -------------------------------
+     * Test for Selecting Verbs for Skill Level 1 in the Verb Game
+     * Gets A Random Selected Verb ID from a Restricted Verb List (confined to
+     * conj 1+2 and Esse Verb) and then gets the nearest Verb Id next to the random
+     * selected Verb (which will be used for the incorrect options in multiple choice).
+     * @return
+     */
+    @Test
+    public void testGetRestrictedRandomVerbID(){
+
+        List<Integer> listofIDs = new ArrayList<>();
+        for(int i=0; i<100; i++){
+            List<Integer> pairIDs = randomGenerator.getRestrictedRandomVerbID();  // run method for 100 times
+            listofIDs.add(pairIDs.get(0));
+            listofIDs.add(pairIDs.get(1));
+        }
+        assertThat(10, isIn(listofIDs));  // check sample pair
+        assertThat(7, isIn(listofIDs));
+
+    }
+
+
+
+    @Test
+    public void testGetVerbTenseList(){
+
+        int randomSims = 1200;
+        int numTenses = 6;
+
+        int sample = randomSims*3 / numTenses;
+        float toleranceFactor = 0.2f;
+        int toleranceForSample = (int) (sample * toleranceFactor);
+
+        Map<String, Integer> map = new HashMap<>();
+
+        for(int i=0; i<randomSims; i++) {
+            List<String> list = randomGenerator.getVerbTenseList(); // get a list of verbs
+            for(String ans : list) {
+                if (!map.containsKey(ans))
+                    map.put(ans, 1);
+                else
+                    map.put(ans, map.get(ans) + 1);
+            }
+        }
+
+        int x = 5;
+        assertThat("Num VERB_TENSE_PRESENT Simulations", map.get(VERB_TENSE_PRESENT), greaterThan(sample - toleranceForSample));
+        assertThat("Num VERB_TENSE_PRESENT Simulations", map.get(VERB_TENSE_PRESENT), lessThan(sample + toleranceForSample));
+
+        assertThat("Num VERB_TENSE_IMPERFECT Simulations", map.get(VERB_TENSE_IMPERFECT), greaterThan(sample - toleranceForSample));
+        assertThat("Num VERB_TENSE_IMPERFECT Simulations", map.get(VERB_TENSE_IMPERFECT), lessThan(sample + toleranceForSample));
+
+        assertThat("Num VERB_TENSE_FUTURE Simulations", map.get(VERB_TENSE_FUTURE), greaterThan(sample - toleranceForSample));
+        assertThat("Num VERB_TENSE_FUTURE Simulations", map.get(VERB_TENSE_FUTURE), lessThan(sample + toleranceForSample));
+
+        assertThat("Num VERB_TENSE_PERFECT Simulations", map.get(VERB_TENSE_PERFECT), greaterThan(sample - toleranceForSample));
+        assertThat("Num VERB_TENSE_PERFECT Simulations", map.get(VERB_TENSE_PERFECT), lessThan(sample + toleranceForSample));
+
+        assertThat("Num VERB_TENSE_PLUPERFECT Simulations", map.get(VERB_TENSE_PLUPERFECT), greaterThan(sample - toleranceForSample));
+        assertThat("Num VERB_TENSE_PLUPERFECT Simulations", map.get(VERB_TENSE_PLUPERFECT), lessThan(sample + toleranceForSample));
+
+        assertThat("Num VERB_TENSE_FUTURE_PERFECT Simulations", map.get(VERB_TENSE_FUTURE_PERFECT), greaterThan(sample - toleranceForSample));
+        assertThat("Num VERB_TENSE_FUTURE_PERFECT Simulations", map.get(VERB_TENSE_FUTURE_PERFECT), lessThan(sample + toleranceForSample));
+
 
     }
 
@@ -321,7 +399,7 @@ public class AdvancedRandomGeneratorTests {
 
 
         int sample = randomSims / numVerbs;
-        float toleranceFactor = 0.2f;
+        float toleranceFactor = 0.25f;
         int toleranceForSample = (int) (sample * toleranceFactor);
 
 
@@ -350,28 +428,7 @@ public class AdvancedRandomGeneratorTests {
     }
 
 
-    /**
-     * testGetRestrictedRandomVerbID()
-     * -------------------------------
-     * Test for Selecting Verbs for Skill Level 1 in the Verb Game
-     * Gets A Random Selected Verb ID from a Restricted Verb List (confined to
-     * conj 1+2 and Esse Verb) and then gets the nearest Verb Id next to the random
-     * selected Verb (which will be used for the incorrect options in multiple choice).
-     * @return
-     */
-    @Test
-    public void testGetRestrictedRandomVerbID(){
 
-        List<Integer> listofIDs = new ArrayList<>();
-        for(int i=0; i<100; i++){
-            List<Integer> pairIDs = randomGenerator.getRestrictedRandomVerbID();  // run method for 100 times
-            listofIDs.add(pairIDs.get(0));
-            listofIDs.add(pairIDs.get(1));
-        }
-        assertThat(10, isIn(listofIDs));  // check sample pair
-        assertThat(7, isIn(listofIDs));
-
-    }
 
 
 
