@@ -32,11 +32,11 @@ public class VerbRegular implements Verb {
     protected DatabaseAccess mDatabaseAccess;
     private String mLatinStem;
     private String mLatinEnding;
-    private String mLatinVerb;
+    protected String mLatinVerb;
     private String mEnglishPerson;
     private String mEnglishAuxiliaryVerb;
     private String mEnglishVerbEnding;
-    private String mEnglishVerb;
+    protected String mEnglishVerb;
 
 
 

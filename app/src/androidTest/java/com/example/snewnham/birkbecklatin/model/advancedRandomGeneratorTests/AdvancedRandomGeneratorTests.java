@@ -24,6 +24,7 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.isIn;
 import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -187,6 +188,7 @@ public class AdvancedRandomGeneratorTests {
             listofIDs.add(pairIDs.get(0));
             listofIDs.add(pairIDs.get(1));
         }
+
         assertThat(10, isIn(listofIDs));  // check sample pair
         assertThat(9, isIn(listofIDs));
         assertThat(8, isIn(listofIDs));
@@ -197,14 +199,13 @@ public class AdvancedRandomGeneratorTests {
         assertThat(3, isIn(listofIDs));
         assertThat(2, isIn(listofIDs));
         assertThat(1, isIn(listofIDs));
-
     }
 
 
     /**
      * testGetVerbTenseList()
      * ----------------------
-     * Test for getVerbTenseList(), which generates a random list of three tenses.
+     * Test for getVerbTenseList(), which generates a random list of three tenses (all different).
      *
      */
     @Test
@@ -221,7 +222,11 @@ public class AdvancedRandomGeneratorTests {
 
         for(int i=0; i<randomSims; i++) {
             List<String> list = randomGenerator.getVerbTenseList(); // get a list of verbs
-            for(String ans : list) {
+            assertFalse(list.get(0).equals(list.get(1)));   // test different tenses in the list
+            assertFalse(list.get(1).equals(list.get(2)));
+            assertFalse(list.get(0).equals(list.get(2)));
+
+            for(String ans : list) {                    // check for random distribution
                 if (!map.containsKey(ans))
                     map.put(ans, 1);
                 else

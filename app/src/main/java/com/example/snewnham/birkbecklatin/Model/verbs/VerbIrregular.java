@@ -45,6 +45,7 @@ public class VerbIrregular extends VerbRegular {
 
         String latinIrregularVerb = databaseAccess.sqlLatinIrregularVerb(irregularVerb,person,number,mood,voice,tense);
         setLatinVerb(latinIrregularVerb);  // set field of latin IrregularVerb
+        mLatinVerb = latinIrregularVerb;
 
         return latinIrregularVerb;
     }

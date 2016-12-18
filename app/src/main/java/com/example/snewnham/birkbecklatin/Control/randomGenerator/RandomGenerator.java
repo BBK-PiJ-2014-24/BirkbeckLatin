@@ -357,7 +357,7 @@ public class RandomGenerator {
 
         int id1 = getRandomVerbID();  // generate an unrestricted verb ID
         int id2;
-        if(id1 != 0)
+        if(id1 == 1)
             id2 = id1 + 1;
         else
             id2 = id1 - 1;
