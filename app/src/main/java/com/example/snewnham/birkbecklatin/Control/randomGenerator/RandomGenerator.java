@@ -482,11 +482,45 @@ public class RandomGenerator {
             verbArr[i] = swap;
         }
 
-
-
         String[] subArray = Arrays.copyOfRange(verbArr, 0, 3);  // subArray of first 3 tenses
         List<String> shuffleList = Arrays.asList(subArray);  // convert to List
        return shuffleList;
+    }
+
+    /**
+     * getSubjunctiveVerbTenseList()
+     * -----------------------------
+     * Generates a SPECIAL random list of three tenses for the VerbGame restricted to non-Future
+     * tenses. This is only for the subjunctives SQL queries.
+     * @return a random list of three tenses
+     */
+    public List<String> getSubjunctiveVerbTenseList(){
+
+        String[] verbArr = new String[]{
+                VERB_TENSE_PRESENT,
+                VERB_TENSE_IMPERFECT,
+                VERB_TENSE_PERFECT,
+                VERB_TENSE_PLUPERFECT,
+        };
+
+        // Implementing Adjusted Fisher–Yates to shuffle tenses
+        // ----------------------------------------------------
+
+        int indexStart = randomGenerator.nextInt(verbArr.length);
+        String t = verbArr[0];
+        verbArr[0] = verbArr[indexStart];
+        verbArr[indexStart] = t;
+
+        for(int i = verbArr.length - 1; i >= 0; i--) {
+            int index = randomGenerator.nextInt(verbArr.length);
+            String swap = verbArr[index];
+            verbArr[index] = verbArr[i];
+            verbArr[i] = swap;
+        }
+
+        String[] subArray = Arrays.copyOfRange(verbArr, 0, 3);  // subArray of first 3 tenses
+        List<String> shuffleList = Arrays.asList(subArray);  // convert to List
+        return shuffleList;
     }
 
 

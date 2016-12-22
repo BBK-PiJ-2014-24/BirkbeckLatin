@@ -94,6 +94,8 @@ public class VerbGame {
         String voice = null;
         String voice1 = null;
         String voice2 = null;
+        String type0 = null;
+        String type1 = null;
 
         String mood = null;
         List<Integer> idList;
@@ -146,17 +148,23 @@ public class VerbGame {
                 voice1 = mRandomGenerator.getVerbVoice(); // Allow ACTIVE and PASSIVE, but Checking for Deponent/Semi-Deponent or Esse Verb
                 voice2 = voice1;
                 if(voice1.equals(VOICE_PASSIVE)) {
-                    String type1 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(0));
-                    String type2 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(1));
-                    if(type1.equals(DEPONENT) || type1.equals(SEMI_DEPONENT) || idList.get(0) == esse_ID)
+                    type0 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(0));
+                    type1 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(1));
+                    if(type0.equals(DEPONENT) || type0.equals(SEMI_DEPONENT) || idList.get(0) == esse_ID)
                         voice1 = VOICE_ACTIVE;
-                    if(type2.equals(DEPONENT) || type2.equals(SEMI_DEPONENT) || idList.get(0) == esse_ID)
+                    if(type1.equals(DEPONENT) || type1.equals(SEMI_DEPONENT) || idList.get(1) == esse_ID)
                         voice2 = VOICE_ACTIVE;
                 }
 
                 do {
                     mood = mRandomGenerator.getVerbMood();   // Select only Indicative or Imperative
                 } while (mood.equals(MOOD_SUBJUNCTIVE));
+
+                if(mood.equals(MOOD_IMPERATIVE)){        // Early Break if Imperative
+                    mVerbQuestionList = makeImperativeQuestionList(idList);
+                    break;
+                }
+
                 tenseList0 = mRandomGenerator.getVerbTenseList();
                 tenseList1 = mRandomGenerator.getVerbTenseList();
 
@@ -170,21 +178,37 @@ public class VerbGame {
 
             case 4:
                 idList = mRandomGenerator.getUnrestrictedRandomVerbID();   // Unrestricted Two Verb IDs
+                type0 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(0));
+                type1 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(1));
                 person = mRandomGenerator.getVerbPerson();
                 number = mRandomGenerator.getVerbNumber();
-                voice1 = mRandomGenerator.getVerbVoice(); // Allow ACTIVE and PASSIVE, but Checking for Deponent/Semi-Deponent
+                voice1 = mRandomGenerator.getVerbVoice();
                 voice2 = voice1;
+
+
+                // Allow ACTIVE and PASSIVE, but Checking for Deponent/Semi-Deponent
                 if(voice1.equals(VOICE_PASSIVE)) {
-                    String type1 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(0));
-                    String type2 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(1));
-                    if(type1.equals(DEPONENT) || type1.equals(SEMI_DEPONENT) || idList.get(0) == esse_ID)
+                    if(type0.equals(DEPONENT) || type0.equals(SEMI_DEPONENT) || idList.get(0) == esse_ID)
                         voice1 = VOICE_ACTIVE;
-                    if(type2.equals(DEPONENT) || type2.equals(SEMI_DEPONENT) || idList.get(1) == esse_ID)
+                    if(type1.equals(DEPONENT) || type1.equals(SEMI_DEPONENT) || idList.get(1) == esse_ID)
                         voice2 = VOICE_ACTIVE;
                 }
-                do {
-                    mood = mRandomGenerator.getVerbMood();   // Select only Indicative or Imperative
-                } while (mood.equals(MOOD_SUBJUNCTIVE));
+
+                // Check that Irregular Verbs Have Mood = Indicative
+                if(type0.equals(IRREGULAR) || type1.equals(IRREGULAR)){
+                    mood = MOOD_INDICATIVE;
+                } else {
+                    do {
+                        mood = mRandomGenerator.getVerbMood();   // Select only Indicative or Imperative
+                    } while (mood.equals(MOOD_SUBJUNCTIVE));
+                }
+
+                // Special Verb Question List for Imperatives
+                if(mood.equals(MOOD_IMPERATIVE)){        // Early Break if Imperative
+                    mVerbQuestionList = makeImperativeQuestionList(idList);
+                    break;
+                }
+
                 tenseList0 = mRandomGenerator.getVerbTenseList();
                 tenseList1 = mRandomGenerator.getVerbTenseList();
 
@@ -198,26 +222,36 @@ public class VerbGame {
 
             case 5:
                 idList = mRandomGenerator.getUnrestrictedRandomVerbID();   // Unrestricted Two Verb IDs
+                type0 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(0));
+                type1 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(1));
                 person = mRandomGenerator.getVerbPerson();
                 number = mRandomGenerator.getVerbNumber();
-                voice1 = mRandomGenerator.getVerbVoice(); // Allow ACTIVE and PASSIVE, but Checking for Deponent/Semi-Deponent
+                mood = mRandomGenerator.getVerbMood();
+                voice1 = mRandomGenerator.getVerbVoice();
                 voice2 = voice1;
-                if(voice1.equals(VOICE_PASSIVE)) {
-                    String type1 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(0));
-                    String type2 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(1));
-                    if(type1.equals(DEPONENT) || type1.equals(SEMI_DEPONENT) || idList.get(0) == esse_ID)
-                        voice1 = VOICE_ACTIVE;
-                    if(type2.equals(DEPONENT) || type2.equals(SEMI_DEPONENT) || idList.get(1) == esse_ID)
-                        voice2 = VOICE_ACTIVE;
-                }
-
-                mood = mRandomGenerator.getVerbMood();   // Select only Indicative or Imperative IF AN INFINITIVE
                 tenseList0 = mRandomGenerator.getVerbTenseList();
                 tenseList1 = mRandomGenerator.getVerbTenseList();
 
-                // Alter MOOD Arguments for Infinitive - Cannot Have Number: Infinitive AND Mood: Subjunctive
-                if(number.equals(NUMBER_INFINITIVE) ) {  // OR Number: Infinitive AND Mood: Imperative
-                   mood = MOOD_INDICATIVE;
+                // Allow ACTIVE and PASSIVE, but Checking for Deponent/Semi-Deponent
+                if(voice1.equals(VOICE_PASSIVE)) {
+                    if(type0.equals(DEPONENT) || type0.equals(SEMI_DEPONENT) || idList.get(0) == esse_ID)
+                        voice1 = VOICE_ACTIVE;
+                    if(type1.equals(DEPONENT) || type1.equals(SEMI_DEPONENT) || idList.get(1) == esse_ID)
+                        voice2 = VOICE_ACTIVE;
+                }
+
+                // Check that Irregular Verbs Have Mood = Indicative
+                if(type0.equals(IRREGULAR) || type1.equals(IRREGULAR)){
+                    mood = MOOD_INDICATIVE;
+                }
+
+                // Special Verb Question List for Imperatives
+                if(mood.equals(MOOD_IMPERATIVE)){        // Early Break if Imperative
+                    mVerbQuestionList = makeImperativeQuestionList(idList);
+                    break;
+                } else if(mood.equals(MOOD_SUBJUNCTIVE)){
+                    tenseList0 = mRandomGenerator.getSubjunctiveVerbTenseList();  // Restricted to non-Future Tenses
+                    tenseList1 = mRandomGenerator.getSubjunctiveVerbTenseList();
                 }
 
                 mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(0), mood, voice1));
@@ -240,19 +274,37 @@ public class VerbGame {
      * are only 4 Imperatives for each Verb. So Need to have a special list to ensure full
      * population of 6 questions.
      * Note that Persons (1,2,3) and tenses are set to Null as they are not required
+     * ALSO note that we have to add 2 Infinitive questions to the list as DEPONENT verbs do not
+     * have passive IMPERATIVES.
      * @param idList - List of IDs
      * @return - List of Imperative Questions
      */
     public List<Verb> makeImperativeQuestionList(List<Integer> idList){
+
+        String type0 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(0));
+        String type1 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(1));
+
         List<Verb> imperativeQuestionList = new ArrayList<>();
 
+        // Verbs for id0
         imperativeQuestionList.add(makeGameVerb(idList.get(0), null, NUMBER_SINGULAR, null, MOOD_IMPERATIVE, VOICE_ACTIVE));
         imperativeQuestionList.add(makeGameVerb(idList.get(0), null, NUMBER_PLURAL, null, MOOD_IMPERATIVE, VOICE_ACTIVE));
-        imperativeQuestionList.add(makeGameVerb(idList.get(0), null, NUMBER_PLURAL, null, MOOD_IMPERATIVE, VOICE_PASSIVE));
-        imperativeQuestionList.add(makeGameVerb(idList.get(1), null, NUMBER_SINGULAR, null, MOOD_IMPERATIVE, VOICE_ACTIVE));
-        imperativeQuestionList.add(makeGameVerb(idList.get(1), null, NUMBER_SINGULAR, null, MOOD_IMPERATIVE, VOICE_PASSIVE));
-        imperativeQuestionList.add(makeGameVerb(idList.get(1), null, NUMBER_PLURAL, null, MOOD_IMPERATIVE, VOICE_PASSIVE));
 
+        // can't have passive Imperative for Deponents and Semi_Deponents. Replace with Infinitive
+        if(type0.equals(DEPONENT) || type0.equals(SEMI_DEPONENT)) {
+            imperativeQuestionList.add(makeGameVerb(idList.get(0), null, NUMBER_INFINITIVE, TENSE_PERFECT, MOOD_INDICATIVE, VOICE_ACTIVE));
+        } else {
+            imperativeQuestionList.add(makeGameVerb(idList.get(0), null, NUMBER_PLURAL, null, MOOD_IMPERATIVE, VOICE_PASSIVE));
+        }
+
+        // Verbs for id1
+        imperativeQuestionList.add(makeGameVerb(idList.get(1), null, NUMBER_SINGULAR, null, MOOD_IMPERATIVE, VOICE_ACTIVE));
+        imperativeQuestionList.add(makeGameVerb(idList.get(1), null, NUMBER_PLURAL, null, MOOD_IMPERATIVE, VOICE_ACTIVE));
+        if(type1.equals(DEPONENT) || type1.equals(SEMI_DEPONENT)) {  // can't passive Imperative
+            imperativeQuestionList.add(makeGameVerb(idList.get(1), null, NUMBER_INFINITIVE, TENSE_FUTURE, MOOD_INDICATIVE, VOICE_ACTIVE));
+        } else {
+            imperativeQuestionList.add(makeGameVerb(idList.get(1), null, NUMBER_PLURAL, null, MOOD_IMPERATIVE, VOICE_PASSIVE));
+        }
 
         return imperativeQuestionList;
     }

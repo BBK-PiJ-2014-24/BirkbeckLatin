@@ -249,7 +249,7 @@ public class GameVerbTests {
 
 
         Verb verb3 = verbGame5.makeGameVerb(id_SemiDeponent, person3, numberInfinitive, tensePerfect,
-                moodSubjunctive, voiceActive);
+                moodIndicative, voiceActive);
         String latinWord3 = verb3.getLatinVerb();
         assertEquals("Semi Deponent Latin Verb (Present)", "gavisus esse", latinWord3 );
 
@@ -290,8 +290,8 @@ public class GameVerbTests {
     public void testMakeImperativeQuestionList() throws Exception {
 
         List<Integer> imperativeIDs = new ArrayList<>();
-        imperativeIDs.add(10);
-        imperativeIDs.add(5);
+        imperativeIDs.add(8);
+        imperativeIDs.add(9);
 
         List<Verb> list = verbGame1.makeImperativeQuestionList(imperativeIDs);
         Verb v0 = list.get(0);
@@ -505,9 +505,6 @@ public class GameVerbTests {
 
             list.removeAll(list);
         }
-
-
-
     }
 
 
