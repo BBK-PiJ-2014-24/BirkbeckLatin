@@ -85,7 +85,8 @@ public class VerbGame {
      * getVerbQuestions()
      * ------------------
      *
-     * @return
+     * Generates a list of 6 verb questions given the skill level of the student.
+     * @return  a list of six Verb objects
      */
     public List<Verb> getVerbQuestions(){
 
@@ -129,8 +130,14 @@ public class VerbGame {
                 do {
                     mood = mRandomGenerator.getVerbMood();   // Select only Indicative or Imperative
                 } while (mood.equals(MOOD_SUBJUNCTIVE));
-                tenseList0 = mRandomGenerator.getVerbTenseList();
-                tenseList1 = mRandomGenerator.getVerbTenseList();
+
+                if(number.equals(NUMBER_INFINITIVE)) {   // Restrict Tenses for Infinitive
+                    tenseList0 = mRandomGenerator.getInfinitiveVerbTenseList();
+                    tenseList1 = mRandomGenerator.getInfinitiveVerbTenseList();
+                } else {
+                    tenseList0 = mRandomGenerator.getVerbTenseList();
+                    tenseList1 = mRandomGenerator.getVerbTenseList();
+                }
 
                 mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(0), mood, voice));
                 mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(1), mood, voice));
@@ -165,8 +172,13 @@ public class VerbGame {
                     break;
                 }
 
-                tenseList0 = mRandomGenerator.getVerbTenseList();
-                tenseList1 = mRandomGenerator.getVerbTenseList();
+                if(number.equals(NUMBER_INFINITIVE)) {   // Restrict Tenses for Infinitive
+                    tenseList0 = mRandomGenerator.getInfinitiveVerbTenseList();
+                    tenseList1 = mRandomGenerator.getInfinitiveVerbTenseList();
+                } else {
+                    tenseList0 = mRandomGenerator.getVerbTenseList();
+                    tenseList1 = mRandomGenerator.getVerbTenseList();
+                }
 
                 mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(0), mood, voice1));
                 mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(1), mood, voice1));
@@ -209,8 +221,13 @@ public class VerbGame {
                     break;
                 }
 
-                tenseList0 = mRandomGenerator.getVerbTenseList();
-                tenseList1 = mRandomGenerator.getVerbTenseList();
+                if(number.equals(NUMBER_INFINITIVE)) {   // Restrict Tenses for Infinitive
+                    tenseList0 = mRandomGenerator.getInfinitiveVerbTenseList();
+                    tenseList1 = mRandomGenerator.getInfinitiveVerbTenseList();
+                } else {
+                    tenseList0 = mRandomGenerator.getVerbTenseList();
+                    tenseList1 = mRandomGenerator.getVerbTenseList();
+                }
 
                 mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(0), mood, voice1));
                 mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(1), mood, voice1));
@@ -249,9 +266,17 @@ public class VerbGame {
                 if(mood.equals(MOOD_IMPERATIVE)){        // Early Break if Imperative
                     mVerbQuestionList = makeImperativeQuestionList(idList);
                     break;
-                } else if(mood.equals(MOOD_SUBJUNCTIVE)){
+                }
+
+                if(mood.equals(MOOD_SUBJUNCTIVE) && !number.equals(NUMBER_INFINITIVE)){
                     tenseList0 = mRandomGenerator.getSubjunctiveVerbTenseList();  // Restricted to non-Future Tenses
                     tenseList1 = mRandomGenerator.getSubjunctiveVerbTenseList();
+                } else if(number.equals(NUMBER_INFINITIVE)) {   // Restrict Tenses for Infinitive
+                    tenseList0 = mRandomGenerator.getInfinitiveVerbTenseList();
+                    tenseList1 = mRandomGenerator.getInfinitiveVerbTenseList();
+                } else {
+                    tenseList0 = mRandomGenerator.getVerbTenseList();
+                    tenseList1 = mRandomGenerator.getVerbTenseList();
                 }
 
                 mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(0), mood, voice1));

@@ -326,117 +326,10 @@ public class GameVerbTests {
     @Test
     public void testGetVerbQuestions_Skill1() throws Exception {
 
-        List<Verb> list = verbGame1.getVerbQuestions();
-        Verb v0 = list.get(0);
-        Verb v1 = list.get(1);
-        Verb v2 = list.get(2);
-        Verb v3 = list.get(3);
-        Verb v4 = list.get(4);
-        Verb v5 = list.get(5);
-
-        assertEquals(v0.getId(), v1.getId());   // Tests Qu 0-2 have same Verb ID
-        assertEquals(v1.getId(), v2.getId());
-
-        assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
-        assertEquals(v4.getId(), v5.getId());
-
-        assertTrue(v0.getLatin_ConjNum() <= 2);  // Tests Conj 1-2;
-        assertTrue(v1.getLatin_ConjNum() <= 2);
-
-        assertFalse(v0.getLatinVerb().equals(v1.getLatinVerb()));  // Tests Qu 0-2 have Diff.
-        assertFalse(v1.getLatinVerb().equals(v2.getLatinVerb()));  // verb endings.
-
-        assertFalse(v3.getLatinVerb().equals(v4.getLatinVerb()));  // Tests Qu 3-5 have Diff.
-        assertFalse(v4.getLatinVerb().equals(v5.getLatinVerb()));  // verb endings.
-
-    }
-
-    /**
-     * testGetVerbQuestions() - Skill 2
-     * ----------------------
-     * Tests the List of Verb Questions Meet the Criteria of Skill 2
-     *
-     * @throws Exception
-     */
-    @Test
-    public void testGetVerbQuestions_Skill2() throws Exception {
-
-        List<Verb> list = verbGame2.getVerbQuestions();
-        Verb v0 = list.get(0);
-        Verb v1 = list.get(1);
-        Verb v2 = list.get(2);
-        Verb v3 = list.get(3);
-        Verb v4 = list.get(4);
-        Verb v5 = list.get(5);
-
-        assertEquals(v0.getId(), v1.getId());   // Tests Qu 0-2 have same Verb ID
-        assertEquals(v1.getId(), v2.getId());
-
-        assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
-        assertEquals(v4.getId(), v5.getId());
-
-        assertTrue(v0.getLatin_ConjNum() <= 4);  // Tests Conj 1-4;
-        assertTrue(v1.getLatin_ConjNum() <= 4);
-
-        assertFalse(v0.getLatinVerb().equals(v1.getLatinVerb()));  // Tests Qu 0-2 have Diff.
-        assertFalse(v1.getLatinVerb().equals(v2.getLatinVerb()));  // verb endings.
-
-        assertFalse(v3.getLatinVerb().equals(v4.getLatinVerb()));  // Tests Qu 3-5 have Diff.
-        assertFalse(v4.getLatinVerb().equals(v5.getLatinVerb()));  // verb endings.
-
-    }
-
-
-    /**
-     * testGetVerbQuestions() - Skill 3
-     * ----------------------
-     * Tests the List of Verb Questions Meet the Criteria of Skill 3
-     *
-     * @throws Exception
-     */
-    @Test
-    public void testGetVerbQuestions_Skill3() throws Exception {
-
-        List<Verb> list = verbGame3.getVerbQuestions();
-        Verb v0 = list.get(0);
-        Verb v1 = list.get(1);
-        Verb v2 = list.get(2);
-        Verb v3 = list.get(3);
-        Verb v4 = list.get(4);
-        Verb v5 = list.get(5);
-
-        assertEquals(v0.getId(), v1.getId());   // Tests Qu 0-2 have same Verb ID
-        assertEquals(v1.getId(), v2.getId());
-
-        assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
-        assertEquals(v4.getId(), v5.getId());
-
-        assertTrue(v0.getLatin_ConjNum() <= 4);  // Tests Conj 1-4;
-        assertTrue(v1.getLatin_ConjNum() <= 4);
-
-        assertFalse(v0.getLatinVerb().equals(v1.getLatinVerb()));  // Tests Qu 0-2 have Diff.
-        assertFalse(v1.getLatinVerb().equals(v2.getLatinVerb()));  // verb endings.
-
-        assertFalse(v3.getLatinVerb().equals(v4.getLatinVerb()));  // Tests Qu 3-5 have Diff.
-        assertFalse(v4.getLatinVerb().equals(v5.getLatinVerb()));  // verb endings.
-    }
-
-    /**
-     * testGetVerbQuestions() - Skill 4
-     * ----------------------
-     * Tests the List of Verb Questions Meet the Criteria of Skill 4
-     *
-     * @throws Exception
-     */
-    @Test
-    public void testGetVerbQuestions_Skill4() throws Exception {
-
         List<Verb> list = null;
-        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < 5; i++) {
 
-
-        for(int i=0; i<5; i++) {  // limited checks as sqlite cannot cope with multiple queries
-            list = verbGame4.getVerbQuestions();
+            list = verbGame1.getVerbQuestions();
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
@@ -450,8 +343,8 @@ public class GameVerbTests {
             assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
             assertEquals(v4.getId(), v5.getId());
 
-            assertTrue(v0.getLatin_ConjNum() <= 4);  // Tests Conj 1-4;
-            assertTrue(v1.getLatin_ConjNum() <= 4);
+            assertTrue(v0.getLatin_ConjNum() <= 2);  // Tests Conj 1-2;
+            assertTrue(v1.getLatin_ConjNum() <= 2);
 
             assertFalse(v0.getLatinVerb().equals(v1.getLatinVerb()));  // Tests Qu 0-2 have Diff.
             assertFalse(v1.getLatinVerb().equals(v2.getLatinVerb()));  // verb endings.
@@ -459,28 +352,22 @@ public class GameVerbTests {
             assertFalse(v3.getLatinVerb().equals(v4.getLatinVerb()));  // Tests Qu 3-5 have Diff.
             assertFalse(v4.getLatinVerb().equals(v5.getLatinVerb()));  // verb endings.
 
-           list.removeAll(list);
-
-        }
-
+            list.removeAll(list);
+         }
     }
 
-
     /**
-     * testGetVerbQuestions() - Skill 5
+     * testGetVerbQuestions() - Skill 2
      * ----------------------
-     * Tests the List of Verb Questions Meet the Criteria of Skill 4
+     * Tests the List of Verb Questions Meet the Criteria of Skill 2
      *
      * @throws Exception
      */
     @Test
-    public void testGetVerbQuestions_Skill5() throws Exception {
-
+    public void testGetVerbQuestions_Skill2() throws Exception {
         List<Verb> list = null;
-        Map<String, Integer> map = new HashMap<>();
-
         for (int i = 0; i < 5; i++) {
-            list = verbGame5.getVerbQuestions();
+            list = verbGame2.getVerbQuestions();
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
@@ -508,11 +395,133 @@ public class GameVerbTests {
     }
 
 
+    /**
+     * testGetVerbQuestions() - Skill 3
+     * ----------------------
+     * Tests the List of Verb Questions Meet the Criteria of Skill 3
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetVerbQuestions_Skill3() throws Exception {
+
+        List<Verb> list = null;
+        for (int i = 0; i < 5; i++) {
+            list = verbGame3.getVerbQuestions();
+            Verb v0 = list.get(0);
+            Verb v1 = list.get(1);
+            Verb v2 = list.get(2);
+            Verb v3 = list.get(3);
+            Verb v4 = list.get(4);
+            Verb v5 = list.get(5);
+
+            assertEquals(v0.getId(), v1.getId());   // Tests Qu 0-2 have same Verb ID
+            assertEquals(v1.getId(), v2.getId());
+
+            assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
+            assertEquals(v4.getId(), v5.getId());
+
+            assertTrue(v0.getLatin_ConjNum() <= 4);  // Tests Conj 1-4;
+            assertTrue(v1.getLatin_ConjNum() <= 4);
+
+            assertFalse(v0.getLatinVerb().equals(v1.getLatinVerb()));  // Tests Qu 0-2 have Diff.
+            assertFalse(v1.getLatinVerb().equals(v2.getLatinVerb()));  // verb endings.
+
+            assertFalse(v3.getLatinVerb().equals(v4.getLatinVerb()));  // Tests Qu 3-5 have Diff.
+            assertFalse(v4.getLatinVerb().equals(v5.getLatinVerb()));  // verb endings.
+
+            list.removeAll(list);
+        }
+    }
+
+    /**
+     * testGetVerbQuestions() - Skill 4
+     * ----------------------
+     * Tests the List of Verb Questions Meet the Criteria of Skill 4
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetVerbQuestions_Skill4() throws Exception {
+
+        List<Verb> list = null;
+        Map<String, Integer> map = new HashMap<>();
+
+
+        for(int i=0; i<3; i++) {  // limited checks as sqlite cannot cope with multiple queries
+            list = verbGame4.getVerbQuestions();
+            Verb v0 = list.get(0);
+            Verb v1 = list.get(1);
+            Verb v2 = list.get(2);
+            Verb v3 = list.get(3);
+            Verb v4 = list.get(4);
+            Verb v5 = list.get(5);
+
+            assertEquals(v0.getId(), v1.getId());   // Tests Qu 0-2 have same Verb ID
+            assertEquals(v1.getId(), v2.getId());
+
+            assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
+            assertEquals(v4.getId(), v5.getId());
+
+            assertTrue(v0.getLatin_ConjNum() <= 4);  // Tests Conj 1-4;
+            assertTrue(v1.getLatin_ConjNum() <= 4);
+
+            assertFalse(v0.getLatinVerb().equals(v1.getLatinVerb()));  // Tests Qu 0-2 have Diff.
+            assertFalse(v1.getLatinVerb().equals(v2.getLatinVerb()));  // verb endings.
+
+            assertFalse(v3.getLatinVerb().equals(v4.getLatinVerb()));  // Tests Qu 3-5 have Diff.
+            assertFalse(v4.getLatinVerb().equals(v5.getLatinVerb()));  // verb endings.
+
+           list.removeAll(list);
+
+        }
+    }
+
+
+    /**
+     * testGetVerbQuestions() - Skill 5
+     * ----------------------
+     * Tests the List of Verb Questions Meet the Criteria of Skill 4
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetVerbQuestions_Skill5() throws Exception {
+
+        List<Verb> list = null;
+        Map<String, Integer> map = new HashMap<>();
+
+        for (int i = 0; i <3; i++) {
+            list = verbGame5.getVerbQuestions();
+            Verb v0 = list.get(0);
+            Verb v1 = list.get(1);
+            Verb v2 = list.get(2);
+            Verb v3 = list.get(3);
+            Verb v4 = list.get(4);
+            Verb v5 = list.get(5);
+
+            assertEquals(v0.getId(), v1.getId());   // Tests Qu 0-2 have same Verb ID
+            assertEquals(v1.getId(), v2.getId());
+
+            assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
+            assertEquals(v4.getId(), v5.getId());
+
+            assertTrue(v0.getLatin_ConjNum() <= 4);  // Tests Conj 1-4;
+            assertTrue(v1.getLatin_ConjNum() <= 4);
+
+            assertFalse(v0.getLatinVerb().equals(v1.getLatinVerb()));  // Tests Qu 0-2 have Diff.
+            assertFalse(v1.getLatinVerb().equals(v2.getLatinVerb()));  // verb endings.
+
+            assertFalse(v3.getLatinVerb().equals(v4.getLatinVerb()));  // Tests Qu 3-5 have Diff.
+            assertFalse(v4.getLatinVerb().equals(v5.getLatinVerb()));  // verb endings.
+
+            list.removeAll(list);
+        }
+    }
 
     @After
     public void breakDown() {
         databaseAccess.close();
     }
-
 
 }
