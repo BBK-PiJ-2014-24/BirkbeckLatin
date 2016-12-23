@@ -77,9 +77,41 @@ public class VerbGame {
      *
      */
     public void runGame(){
-
     }
 
+
+    /**
+     * getVerbIDs()
+     * ------------
+     * Generates a pair of Verb IDs given the Skill Level
+     *
+     * @return get Verb IDs
+     */
+    public List<Integer> getVerbIDs(){
+
+        List<Integer> idList = null;
+        int conjNum1_2 = 2;
+        int conjNum1_4 = 40;
+
+        switch(mSkillLevel) {
+            case 1:
+                idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2); // Conjs 1-2
+                break;
+            case 2:
+                idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4); // Two Verb IDs Conjs 1-4
+                break;
+            case 3:
+                idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4); // Two Verb IDs Conjs 1-4
+                break;
+            case 4:
+                idList = mRandomGenerator.getUnrestrictedRandomVerbID();   // Unrestricted Two Verb IDs Conjs 1-4, Deponents, Semi-Dep, Irregular
+                break;
+            case 5:
+                idList = mRandomGenerator.getUnrestrictedRandomVerbID();   // Unrestricted Two Verb IDs  Conjs 1-4, Deponents, Semi-Dep, Irregular
+                break;
+        }
+        return idList;
+    }
 
     /**
      * getVerbQuestions()
@@ -88,7 +120,7 @@ public class VerbGame {
      * Generates a list of 6 verb questions given the skill level of the student.
      * @return  a list of six Verb objects
      */
-    public List<Verb> getVerbQuestions(){
+    public List<Verb> getVerbQuestions(List<Integer> idList){
 
         String person = null;
         String number = null;
@@ -99,16 +131,16 @@ public class VerbGame {
         String type1 = null;
 
         String mood = null;
-        List<Integer> idList;
+       // List<Integer> idList;
         List<String> tenseList0; // list of random tenses
         List<String> tenseList1;
-        int conjNum1_2 = 2;
-        int conjNum1_4 = 4;
+       // int conjNum1_2 = 2;
+       // int conjNum1_4 = 4;
         int esse_ID = 10;  // Need to check that Esse Verbs Are only Active.
 
         switch(mSkillLevel){
             case 1:
-                idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2); // Two Verb IDs
+                //idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2); // Two Verb IDs
                 person = mRandomGenerator.getVerbPerson();
                 number = mRandomGenerator.getVerbNumber();
                 voice = VOICE_ACTIVE;
@@ -123,7 +155,7 @@ public class VerbGame {
                 break;
 
             case 2:
-                idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4); // Two Verb IDs
+              //  idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4); // Two Verb IDs
                 person = mRandomGenerator.getVerbPerson();
                 number = mRandomGenerator.getVerbNumber();
                 voice = VOICE_ACTIVE;
@@ -148,7 +180,7 @@ public class VerbGame {
                 break;
 
             case 3:
-                idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4); // Two Verb IDs
+              //  idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4); // Two Verb IDs
                 person = mRandomGenerator.getVerbPerson();
                 number = mRandomGenerator.getVerbNumber();
 
@@ -189,7 +221,7 @@ public class VerbGame {
                 break;
 
             case 4:
-                idList = mRandomGenerator.getUnrestrictedRandomVerbID();   // Unrestricted Two Verb IDs
+              //  idList = mRandomGenerator.getUnrestrictedRandomVerbID();   // Unrestricted Two Verb IDs
                 type0 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(0));
                 type1 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(1));
                 person = mRandomGenerator.getVerbPerson();
@@ -238,7 +270,7 @@ public class VerbGame {
                 break;
 
             case 5:
-                idList = mRandomGenerator.getUnrestrictedRandomVerbID();   // Unrestricted Two Verb IDs
+              //  idList = mRandomGenerator.getUnrestrictedRandomVerbID();   // Unrestricted Two Verb IDs
                 type0 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(0));
                 type1 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(1));
                 person = mRandomGenerator.getVerbPerson();
@@ -246,8 +278,7 @@ public class VerbGame {
                 mood = mRandomGenerator.getVerbMood();
                 voice1 = mRandomGenerator.getVerbVoice();
                 voice2 = voice1;
-                tenseList0 = mRandomGenerator.getVerbTenseList();
-                tenseList1 = mRandomGenerator.getVerbTenseList();
+
 
                 // Allow ACTIVE and PASSIVE, but Checking for Deponent/Semi-Deponent
                 if(voice1.equals(VOICE_PASSIVE)) {

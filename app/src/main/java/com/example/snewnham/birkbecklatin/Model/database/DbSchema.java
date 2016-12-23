@@ -171,6 +171,9 @@ public class DbSchema {
         public static final class Cols {
             public static final String _id = "_id";
             public static final String VERB_ID = "Verb_id";
+            public static final String VERB_TYPE = "Type";
+            public static final String VERB_CONJNUM = "ConjNum";
+
         }
     }
 

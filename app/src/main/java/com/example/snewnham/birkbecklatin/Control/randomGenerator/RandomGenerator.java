@@ -322,12 +322,13 @@ public class RandomGenerator {
     }
 
     /**
-     * getRestrictedRandomVerbID()-
-     * ---------------------------
+     * getRestrictedRandomVerbID(int conjNum)
+     * --------------------------------------
      * This is used for Selecting Verbs for Skill Levels 1-3 in the Verb Game
-     * Gets A Random Selected Verb ID from a Restricted Verb List (confined to
-     * conj 1-2 or 1-4 and Esse Verb) and then gets the nearest Verb Id next to the random
-     * selected Verb (which will be used for the incorrect options in multiple choice).
+     * Gets A Pair of Random Selected Verb ID from a Restricted Verb List (confined to
+     * conj 1-2 or 1-4 and Esse Verb). An ID is randomly selected from the restricted list
+     * and then the method gets the nearest Verb Id next to the random
+     * selected Verb in the list (which will be used for the incorrect options in multiple choice).
      * @return List of two verb IDs
      */
     public List<Integer> getRestrictedRandomVerbID(int conjNum){
@@ -345,6 +346,33 @@ public class RandomGenerator {
 
         return selectedVerbIDlist;
     }
+
+
+    /**
+     * getRestrictedRandomIncorrectVerbID(int conjNum, int id1)
+     * -----------------------------------------------
+     * Give the
+     */
+
+    public List<Integer> getRestrictedRandomIncorrectVerbID(int conjNum, int id1){
+
+        List<Integer> restrictedVerbList = databaseAccess.getVerbIDConjugationList(conjNum);  // get the restricted verb list
+        int numRestrictedList = restrictedVerbList.size();  // size of the restricted list
+
+        int randomSelectionFromList = restrictedVerbList.indexOf(id1);  // Find the index if ID in the list
+
+        List<Integer> selectedVerbIDlist = new ArrayList<>();
+        selectedVerbIDlist.add(id1); // Add the Incorrect Verb ID to the List.
+
+        if(randomSelectionFromList != 0)  // check condition so that don't overrun the list.
+            selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList-1)); // select the Verb ID next in the list.
+        else
+            selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList+1));
+
+        return selectedVerbIDlist;
+    }
+
+
 
 
     /**
