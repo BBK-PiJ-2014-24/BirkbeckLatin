@@ -58,8 +58,9 @@ public class VerbGame {
     private DatabaseAccess mDatabaseAccess;
     private int mSkillLevel;
     private List<Verb> mVerbQuestionList;
-    private List<Integer> mPreviousQuestionsList;
+    private List<Result> mResultList;
     private final int TIME_INCORRECT_QUESTION = 10;
+    private int mQuestionNumber;
 
     private Verb correctVerb;
 
@@ -71,7 +72,8 @@ public class VerbGame {
         mRandomGenerator = new RandomGenerator(mDatabaseAccess);
         mSkillLevel = skillLevel;
         mVerbQuestionList = new ArrayList<>();
-        mPreviousQuestionsList = new ArrayList<>();
+        mResultList = new ArrayList<>();
+        mQuestionNumber = 1;
     }
 
 
@@ -81,7 +83,35 @@ public class VerbGame {
      *
      *
      */
-    public void runGame(){
+    public List<Integer> runGame(){
+
+        List<Integer> idList = null;
+        if(mQuestionNumber%TIME_INCORRECT_QUESTION != 0)
+            idList = getVerbIDs();
+        else
+            idList = getIncorrectVerbIDs();
+
+
+        return idList;
+    }
+
+
+    /**
+     * repeatedQuestion()
+     * ------------------
+     *
+     *
+     * @param idList
+     * @return
+     */
+    public boolean repeatedQuestion(List<Integer> idList){
+        for(Result result : mResultList){
+            int resultId = result.id;
+            if(resultId == idList.get(0))
+                return true;
+        }
+        return false;
+
     }
 
 
@@ -127,7 +157,7 @@ public class VerbGame {
      *
      * @return List of a pair of verb_ids, one is from the incorrect table
      */
-    public List<Integer> getIncorrectVerbIDs(int skillLevel){
+    public List<Integer> getIncorrectVerbIDs(){
         int conjNum1_2 = 2;
         int conjNum1_4 = 40;
 
@@ -140,7 +170,7 @@ public class VerbGame {
         int verbId1 = mDatabaseAccess.sqlIncorrectVerb_GetId(randomIndex);  // Select id from Incorrect Table
         list.add(verbId1);
 
-        switch(skillLevel) {
+        switch(mSkillLevel) {
             case 1:
                 list = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2, verbId1);
                 break;
@@ -469,6 +499,32 @@ public class VerbGame {
         return gameVerb;
     }
 
+
+    /**
+     * RESULT - Inner Class
+     * --------------------
+     * A Container Class that contains the Results for a Question
+     * id - Verb ID
+     * answer - Correct 1, Incorrect 0
+     * difficulty -  RSI Question Difficulty Classification
+     *
+     */
+    private class Result{
+        // Fields
+        // ------
+        int id;
+        int answer;
+        int difficulty;
+
+        // Constructor
+        // -----------
+        void Result(int id, int answer, int difficulty){
+            this.id = id;
+            this.answer = answer;
+            this.difficulty = difficulty;
+        }
+
+    }
 
 
 }
