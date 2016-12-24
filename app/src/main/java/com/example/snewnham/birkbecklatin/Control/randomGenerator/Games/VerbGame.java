@@ -1,7 +1,5 @@
 package com.example.snewnham.birkbecklatin.Control.randomGenerator.Games;
 
-
-
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
@@ -61,8 +59,9 @@ public class VerbGame {
     private List<Result> mResultList;
     private final int TIME_INCORRECT_QUESTION = 10;
     private int mQuestionNumber;
+    private Verb mCorrectVerb;
+    private int mCorrectVerbIndex;
 
-    private Verb correctVerb;
 
 
     // Constructor
@@ -74,16 +73,18 @@ public class VerbGame {
         mVerbQuestionList = new ArrayList<>();
         mResultList = new ArrayList<>();
         mQuestionNumber = 1;
+        mCorrectVerb = null;
+        mCorrectVerbIndex = 100;
     }
 
 
     /**
-     * runGame
-     * -------
-     *
+     * runVerbQuestion()
+     * -----------------
+     * Generates a Question List of 6 Verbs, selects a correctVerb, shuffles the order.
      *
      */
-    public List<Integer> runGame(){
+    public void runVerbQuestion(){
 
         List<Integer> idList = null;
 
@@ -100,13 +101,13 @@ public class VerbGame {
 
         Random rnd = new Random();
         int rndIndex = rnd.nextInt(3);
-        Verb correctVerb = mVerbQuestionList.get(rndIndex); // Select rnd Verb from id1 as the correctVerb
 
+        mCorrectVerb = mVerbQuestionList.get(rndIndex); // Select rnd Verb from id1 as the correctVerb
 
+        mVerbQuestionList = mRandomGenerator.shuffleVerbList(mVerbQuestionList); // shuffle Question List
 
-
-
-        return idList;
+        mCorrectVerbIndex = mVerbQuestionList.indexOf(mCorrectVerb); // find the index of the Correct Verb
+                                                                   // in the shuffle list.
     }
 
 
@@ -514,6 +515,24 @@ public class VerbGame {
     }
 
 
+
+    // Getters
+    // -------
+
+    public List<Verb> getVerbQuestionList() {
+        return mVerbQuestionList;
+    }
+
+    public Verb getCorrectVerb() {
+        return mCorrectVerb;
+    }
+
+    public int getCorrectVerbIndex() {
+        return mCorrectVerbIndex;
+    }
+
+    // Inner Class
+    // -----------
     /**
      * RESULT - Inner Class
      * --------------------

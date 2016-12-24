@@ -628,7 +628,6 @@ public class RandomGenerator {
 
     }
 
-
     /**
      * getVerbMood()
      * --------------
