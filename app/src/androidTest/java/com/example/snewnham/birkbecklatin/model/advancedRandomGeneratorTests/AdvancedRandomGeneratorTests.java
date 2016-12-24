@@ -199,6 +199,48 @@ public class AdvancedRandomGeneratorTests {
 
 
 
+    @Test
+    public void testShuffleVerbList(){
+
+        int id1 = 1;
+        int id2 = 2;
+        int id3 = 3;
+        int id4 = 4;
+        int id5 = 5;
+        int id6 = 6;
+
+        Verb v1 =  databaseAccess.sqlVerbListQuery(id1);
+        Verb v2 =  databaseAccess.sqlVerbListQuery(id2);
+        Verb v3 =  databaseAccess.sqlVerbListQuery(id3);
+        Verb v4 =  databaseAccess.sqlVerbListQuery(id4);
+        Verb v5 =  databaseAccess.sqlVerbListQuery(id5);
+        Verb v6 =  databaseAccess.sqlVerbListQuery(id6);
+
+        List<Verb> list = new ArrayList<>();
+        list.add(v1);
+        list.add(v2);
+        list.add(v3);
+        list.add(v4);
+        list.add(v5);
+        list.add(v6);
+
+        List<Verb> shuffleList = randomGenerator.shuffleVerbList(list);
+
+        assertThat(v1, isIn(shuffleList));
+        assertThat(v2, isIn(shuffleList));
+        assertThat(v3, isIn(shuffleList));
+        assertThat(v4, isIn(shuffleList));
+        assertThat(v5, isIn(shuffleList));
+        assertThat(v6, isIn(shuffleList));
+
+
+
+
+    }
+
+
+
+
 
 
 

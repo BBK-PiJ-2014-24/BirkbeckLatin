@@ -651,14 +651,14 @@ public class RandomGenerator {
 
 
     /**
-     * mixVerbList()
-     * -------------
+     * shuffleVerbList()
+     * -----------------
      * Shuffles the verb list
      *
      * @param verbList - original Verb List
      * @return shuffled verb list
      */
-    public List<Verb> mixVerbList(List<Verb> verbList){
+    public List<Verb> shuffleVerbList(List<Verb> verbList){
 
         // Implementing Adjusted Fisher–Yates to shuffle tenses
         // ----------------------------------------------------
