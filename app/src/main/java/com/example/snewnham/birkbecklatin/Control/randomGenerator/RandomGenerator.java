@@ -650,6 +650,40 @@ public class RandomGenerator {
     }
 
 
+    /**
+     * mixVerbList()
+     * -------------
+     * Shuffles the verb list
+     *
+     * @param verbList - original Verb List
+     * @return shuffled verb list
+     */
+    public List<Verb> mixVerbList(List<Verb> verbList){
+
+        // Implementing Adjusted Fisher–Yates to shuffle tenses
+        // ----------------------------------------------------
+
+        Verb[] verbArr = new Verb[verbList.size()];  // initialize verb Array
+        verbArr = verbList.toArray(verbArr);         // convert List to Array
+
+        int indexStart = randomGenerator.nextInt(verbArr.length);
+        Verb v = verbArr[0];
+        verbArr[0] = verbArr[indexStart];
+        verbArr[indexStart] = v;
+
+        for(int i = verbArr.length - 1; i >= 0; i--) {
+            int index = randomGenerator.nextInt(verbArr.length);
+            Verb swap = verbArr[index];
+            verbArr[index] = verbArr[i];
+            verbArr[i] = swap;
+        }
+
+        List<Verb> shuffleList = Arrays.asList(verbArr);  // convert to List
+        return shuffleList;
+
+    }
+
+
     // ------------------------------INCORRECT VERB ID -------------------------------------------
 
 

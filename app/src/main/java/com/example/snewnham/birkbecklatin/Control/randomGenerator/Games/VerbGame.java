@@ -86,10 +86,24 @@ public class VerbGame {
     public List<Integer> runGame(){
 
         List<Integer> idList = null;
-        if(mQuestionNumber%TIME_INCORRECT_QUESTION != 0)
-            idList = getVerbIDs();
-        else
-            idList = getIncorrectVerbIDs();
+
+        int incorrectTableSize = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
+
+        do{
+            if(mQuestionNumber%TIME_INCORRECT_QUESTION == 0  && incorrectTableSize != 0)   // Time for Incorrect Question ...
+                idList = getIncorrectVerbIDs();                                            // if the Incorrect Table is Not empty
+            else
+                idList = getVerbIDs();
+        } while(repeatedQuestion(idList));  // repeat if the id has already been used in a question.
+
+        mVerbQuestionList = getVerbQuestions(idList);  // generate question list
+
+        Random rnd = new Random();
+        int rndIndex = rnd.nextInt(3);
+        Verb correctVerb = mVerbQuestionList.get(rndIndex); // Select rnd Verb from id1 as the correctVerb
+
+
+
 
 
         return idList;
@@ -99,7 +113,7 @@ public class VerbGame {
     /**
      * repeatedQuestion()
      * ------------------
-     *
+     * Check the Result List to see if the Verb Id1 has already been tested.
      *
      * @param idList
      * @return
