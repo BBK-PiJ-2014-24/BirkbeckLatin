@@ -528,6 +528,54 @@ public class GameVerbTests {
     }
 
 
+
+    @Test
+    public void testDetermineQuestionDifficulty(){
+
+        int id1 = 1;
+        verbGame5.setCorrectVerbMood(moodSubjunctive);
+        Verb v5 =  verbGame5.makeGameVerb(id1, person1, numberSingular,tensePresent, moodSubjunctive, voiceActive );
+        int diff5 = verbGame5.determineQuestionDifficulty();
+        assertEquals("Difficulty 5", 5, diff5);
+
+        Verb v4 = verbGame4.makeGameVerb(id_Deponent, person1, numberSingular,tensePresent, moodImperative, voiceActive);
+        verbGame4.setCorrectVerb(v4);
+        verbGame4.setCorrectVerbMood(moodImperative);
+        int diff4 = verbGame4.determineQuestionDifficulty();
+        assertEquals("Difficulty 4", 4, diff4);
+
+        Verb v3 = verbGame3.makeGameVerb(id_Regular, person1, numberSingular,tensePresent, moodIndicative, voicePassive);
+        verbGame3.setCorrectVerb(v3);
+        verbGame3.setCorrectVerbMood(moodImperative);
+        verbGame3.setCorrectVerbVoice(voicePassive);
+        int diff3 = verbGame3.determineQuestionDifficulty();
+        assertEquals("Difficulty 3", 3, diff3);
+
+        Verb v2 = verbGame2.makeGameVerb(4, person1, numberSingular,tensePresent, moodIndicative, voiceActive);
+        verbGame2.setCorrectVerb(v2);
+        verbGame2.setCorrectVerbMood(moodIndicative);
+        verbGame2.setCorrectVerbVoice(voiceActive);
+        int diff2 = verbGame2.determineQuestionDifficulty();
+        assertEquals("Difficulty 2", 2, diff2);
+
+        Verb v1 = verbGame1.makeGameVerb(id_Irregular, person1, numberSingular,tensePresent, moodIndicative, voiceActive);
+        verbGame1.setCorrectVerb(v1);
+        verbGame1.setCorrectVerbMood(moodIndicative);
+        verbGame1.setCorrectVerbVoice(voiceActive);
+        int diff1 = verbGame1.determineQuestionDifficulty();
+        assertEquals("Difficulty 1", 1, diff1);
+
+        Verb v11 = verbGame1.makeGameVerb(2, person1, numberSingular,tensePresent, moodIndicative, voiceActive);
+        verbGame1.setCorrectVerb(v11);
+        verbGame1.setCorrectVerbMood(moodIndicative);
+        verbGame1.setCorrectVerbVoice(voiceActive);
+        int diff11 = verbGame1.determineQuestionDifficulty();
+        assertEquals("Difficulty 1", 1, diff11);
+
+
+    }
+
+
     // ---------------------------------VERB INCORRECT ---------------------------------------------
 
     /**
@@ -562,7 +610,7 @@ public class GameVerbTests {
 
 
         int sample = randomSims / numVerbs;
-        float toleranceFactor = 0.15f;
+        float toleranceFactor = 0.2f;
         int toleranceForSample = (int) (sample * toleranceFactor);
 
 

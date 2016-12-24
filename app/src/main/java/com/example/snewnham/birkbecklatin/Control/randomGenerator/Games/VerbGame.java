@@ -29,6 +29,10 @@ public class VerbGame {
     private final static String SEMI_DEPONENT = "Semi Deponent";
     private final static String IRREGULAR = "Irregular";
 
+    private final static String ESSE = "esse";
+
+
+
     private final static String NUMBER_SINGULAR = "Singular";
     private final static String NUMBER_PLURAL = "Plural";
     private final static String NUMBER_INFINITIVE = "Infinitive";
@@ -56,11 +60,14 @@ public class VerbGame {
     private DatabaseAccess mDatabaseAccess;
     private int mSkillLevel;
     private List<Verb> mVerbQuestionList;
-    private List<Result> mResultList;
+    private List<Answer> mAnswerList;
     private final int TIME_INCORRECT_QUESTION = 10;
     private int mQuestionNumber;
     private Verb mCorrectVerb;
     private int mCorrectVerbIndex;
+    private int mCorrectVerbDifficulty;
+    private String mCorrectVerbMood;
+    private String mCorrectVerbVoice;
 
 
 
@@ -71,17 +78,22 @@ public class VerbGame {
         mRandomGenerator = new RandomGenerator(mDatabaseAccess);
         mSkillLevel = skillLevel;
         mVerbQuestionList = new ArrayList<>();
-        mResultList = new ArrayList<>();
+        mAnswerList = new ArrayList<>();
         mQuestionNumber = 1;
         mCorrectVerb = null;
         mCorrectVerbIndex = 100;
+        mCorrectVerbDifficulty = 100;
+        mCorrectVerbMood = null;
+        mCorrectVerbVoice = null;
+
+
     }
 
 
     /**
-     * runVerbQuestion()1
+     * runVerbQuestion()
      * -----------------
-     * Generates a Question List of 6 Verbs, selects a correctVerb, shuffles the order.
+     * Generates a Question List of 6 Verbs, selects a correctVerb, shuffles the order of the list.
      *
      */
     public void runVerbQuestion(){
@@ -101,27 +113,79 @@ public class VerbGame {
 
         Random rnd = new Random();
         int rndIndex = rnd.nextInt(3);
-
         mCorrectVerb = mVerbQuestionList.get(rndIndex); // Select rnd Verb from id1 as the correctVerb
 
         mVerbQuestionList = mRandomGenerator.shuffleVerbList(mVerbQuestionList); // shuffle Question List
 
         mCorrectVerbIndex = mVerbQuestionList.indexOf(mCorrectVerb); // find the index of the Correct Verb
-                                                                   // in the shuffle list.
+                                                                     // in the shuffle list.
+
+
+
     }
+
+
+
+
+
+    /**
+     * checkAnswer()
+     * -------------
+     *
+     * @param guessIndex
+     * @return
+     */
+    public int checkAnswer(int guessIndex){
+
+        Answer answer = new Answer(mCorrectVerb.getId(), 0, mCorrectVerbDifficulty);
+
+        if(guessIndex == mCorrectVerbIndex)
+                answer.correct = 1;
+
+
+
+
+        return 0;
+    }
+
+
+    /**
+     * determineQuestionDifficulty()
+     * -----------------------------
+     * Determines the skillLevel difficulty of the Correct Verb
+     * @return difficulty 1- 5
+     */
+    public int determineQuestionDifficulty(){
+
+        if(mCorrectVerbMood.equals(MOOD_SUBJUNCTIVE))
+            return 5;
+        else if(mCorrectVerb.getLatin_Type().equals(DEPONENT) || mCorrectVerb.getLatin_Type().equals(SEMI_DEPONENT) ||
+                mCorrectVerb.getLatin_Type().equals(IRREGULAR) && !mCorrectVerb.getLatin_Infinitive().equals(ESSE))
+            return 4;
+        else if(mCorrectVerbVoice.equals(VOICE_PASSIVE))
+            return 3;
+        else if(mCorrectVerb.getLatin_ConjNum() > 2)
+            return 2;
+        else
+            return 1;
+
+    }
+
+
 
 
     /**
      * repeatedQuestion()
      * ------------------
-     * Check the Result List to see if the Verb Id1 has already been tested.
+     * Check the Answer List to see if the Verb Id1 has already been tested.
+     * (Used in runVerbQuestion() )
      *
      * @param idList
      * @return
      */
     public boolean repeatedQuestion(List<Integer> idList){
-        for(Result result : mResultList){
-            int resultId = result.id;
+        for(Answer answer : mAnswerList){
+            int resultId = answer.id;
             if(resultId == idList.get(0))
                 return true;
         }
@@ -411,6 +475,8 @@ public class VerbGame {
                 break;
         }
 
+        mCorrectVerbMood = mood;
+        mCorrectVerbVoice = voice1;
         return mVerbQuestionList;
     }
 
@@ -516,8 +582,8 @@ public class VerbGame {
 
 
 
-    // Getters
-    // -------
+    // Getters/Setters
+    // ---------------
 
     public List<Verb> getVerbQuestionList() {
         return mVerbQuestionList;
@@ -527,11 +593,35 @@ public class VerbGame {
         return mCorrectVerb;
     }
 
+    public void setCorrectVerb(Verb correctVerb) {
+        mCorrectVerb = correctVerb;
+    }
+
+    public int getCorrectVerbDifficulty() {
+        return mCorrectVerbDifficulty;
+    }
+
     public int getCorrectVerbIndex() {
         return mCorrectVerbIndex;
     }
 
-    // Inner Class
+    public String getCorrectVerbMood() {
+        return mCorrectVerbMood;
+    }
+
+    public void setCorrectVerbMood(String correctVerbMood) {
+        mCorrectVerbMood = correctVerbMood;
+    }
+
+    public String getCorrectVerbVoice() {
+        return mCorrectVerbVoice;
+    }
+
+    public void setCorrectVerbVoice(String correctVerbVoice) {
+        mCorrectVerbVoice = correctVerbVoice;
+    }
+
+// Inner Class
     // -----------
     /**
      * RESULT - Inner Class
@@ -542,18 +632,18 @@ public class VerbGame {
      * difficulty -  RSI Question Difficulty Classification
      *
      */
-    private class Result{
+    private class Answer {
         // Fields
         // ------
         int id;
-        int answer;
+        int correct;
         int difficulty;
 
         // Constructor
         // -----------
-        void Result(int id, int answer, int difficulty){
+        public Answer(int id, int correct, int difficulty){
             this.id = id;
-            this.answer = answer;
+            this.correct = correct;
             this.difficulty = difficulty;
         }
 
