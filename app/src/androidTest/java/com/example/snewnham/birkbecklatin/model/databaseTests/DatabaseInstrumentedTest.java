@@ -13,6 +13,7 @@ import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
+import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
 
 import org.junit.After;
 import org.junit.Before;
@@ -437,23 +438,27 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testIncorrectLatinVerb(){
 
-        int verbId1 = 10;
-        int verbId2 = 20;
-        int verbId3 = 30;
-        int verbId4 = 40;
+        int id1 = 1;
+        Verb verb1 = databaseAccess.sqlVerbListQuery(id1);
+        int id2 = 2;
+        Verb verb2 = databaseAccess.sqlVerbListQuery(id2);
+        int id3 = 8;
+        Verb verb3 = databaseAccess.sqlVerbListQuery(id3);
+        int id4 = 10;
+        Verb verb4 = databaseAccess.sqlVerbListQuery(id4);
 
         databaseAccess.sqlIncorrectVerb_Reset();
 
         int originalSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
 
-        databaseAccess.sqlIncorrectVerb_Insert(verbId1);
-        databaseAccess.sqlIncorrectVerb_Insert(verbId2);
-        databaseAccess.sqlIncorrectVerb_Insert(verbId3);
-        databaseAccess.sqlIncorrectVerb_Insert(verbId3); // for test of duplication
+        databaseAccess.sqlIncorrectVerb_Insert(verb1);
+        databaseAccess.sqlIncorrectVerb_Insert(verb2);
+        databaseAccess.sqlIncorrectVerb_Insert(verb3);
+        databaseAccess.sqlIncorrectVerb_Insert(verb3); // for test of duplication
 
-        boolean testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(verbId3);
+        boolean testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(verb3.getId());
         assertTrue(testInsertionTrue);  // Test Entry Insertion in Table - TRUE
-        boolean testInsertionFalse = databaseAccess.sqlIncorrectVerb_TestInsertion(verbId4);
+        boolean testInsertionFalse = databaseAccess.sqlIncorrectVerb_TestInsertion(verb4.getId());
         assertFalse(testInsertionFalse);  // Test Entry Insertion in Table - FALSE
 
         int newSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
@@ -461,18 +466,18 @@ public class DatabaseInstrumentedTest {
 
 
         int verbId = databaseAccess.sqlIncorrectVerb_GetId(3);
-        assertEquals(verbId3, verbId);  // Test retrieve a verbId given the id (of the table)
+        assertEquals(verb3.getId(), verbId);  // Test retrieve a verbId given the id (of the table)
 
-        databaseAccess.sqlIncorrectVerb_Delete(verbId1);
-        databaseAccess.sqlIncorrectVerb_Delete(verbId2);
-        databaseAccess.sqlIncorrectVerb_Delete(verbId3);
+        databaseAccess.sqlIncorrectVerb_Delete(verb1.getId());
+        databaseAccess.sqlIncorrectVerb_Delete(verb2.getId());
+        databaseAccess.sqlIncorrectVerb_Delete(verb3.getId());
 
         int postDeleteSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
         assertEquals(originalSize, postDeleteSize); // Test delete a verbId given the id
 
-        databaseAccess.sqlIncorrectVerb_Insert(verbId1);
-        databaseAccess.sqlIncorrectVerb_Insert(verbId2);
-        databaseAccess.sqlIncorrectVerb_Insert(verbId3);
+        databaseAccess.sqlIncorrectVerb_Insert(verb1);
+        databaseAccess.sqlIncorrectVerb_Insert(verb2);
+        databaseAccess.sqlIncorrectVerb_Insert(verb3);
 
         int ReinsertionSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
         assertEquals(3, ReinsertionSize - postDeleteSize);  // RETEST the size of table has increased by 3.

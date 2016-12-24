@@ -347,38 +347,38 @@ public class RandomGenerator {
         return selectedVerbIDlist;
     }
 
-
     /**
-     * getRestrictedRandomIncorrectVerbID(int conjNum, int id1)
+     * @Overload
+     * getRestrictedRandomVerbID(int conjNum, int id1)
      * -----------------------------------------------
-     * Give the
+     * Given verb ID1, find the next consecutive verbID in the restricted list.
+     * Generates A Pair of Verb IDs from a Restricted Verb List (confined to
+     * conj 1-2 or 1-4 and Esse Verb). id1 is passed as an argument
+     * and then the method gets the nearest Verb Id next to the random
+     * selected Verb in the list (which will be used for the incorrect options in multiple choice).
+     * @return List of two verb IDs
      */
-
-    public List<Integer> getRestrictedRandomIncorrectVerbID(int conjNum, int id1){
-
-        List<Integer> restrictedVerbList = databaseAccess.getVerbIDConjugationList(conjNum);  // get the restricted verb list
-        int numRestrictedList = restrictedVerbList.size();  // size of the restricted list
-
-        int randomSelectionFromList = restrictedVerbList.indexOf(id1);  // Find the index if ID in the list
+    public List<Integer> getRestrictedRandomVerbID(int conjNum, int id1){
 
         List<Integer> selectedVerbIDlist = new ArrayList<>();
-        selectedVerbIDlist.add(id1); // Add the Incorrect Verb ID to the List.
+        selectedVerbIDlist.add(id1);    // add ID1 to the List
 
-        if(randomSelectionFromList != 0)  // check condition so that don't overrun the list.
-            selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList-1)); // select the Verb ID next in the list.
+        List<Integer> restrictedVerbList = databaseAccess.getVerbIDConjugationList(conjNum);  // get the restricted verb list
+        int indexOfId1 = restrictedVerbList.indexOf(id1);  // find index of verb ID1 in the list
+
+
+        if(indexOfId1 != 0)  // check condition so that don't overrun the list.
+            selectedVerbIDlist.add(indexOfId1-1); // select the Verb ID next in the list.
         else
-            selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList+1));
+            selectedVerbIDlist.add(indexOfId1+1);
 
         return selectedVerbIDlist;
     }
 
-
-
-
     /**
      * getUnrestrictedRandomVerbID()
      * -----------------------------
-     * Creates a list of two (unrestricted) verb IDs.
+     * Creates a list of two consecutive (unrestricted) verb IDs.
      * @return
      */
     public List<Integer> getUnrestrictedRandomVerbID(){
@@ -396,6 +396,30 @@ public class RandomGenerator {
 
         return unrestrictedVerbList;
     }
+
+    /**
+     * @Overload
+     * getUnrestrictedRandomVerbID(int id)
+     * -----------------------------------
+     * Creates a list of two consecutive (unrestricted) verb IDs with the first ID
+     * passed as an argument.
+     * @return
+     */
+    public List<Integer> getUnrestrictedRandomVerbID(int id1){
+
+        int id2;
+        if(id1 == 1)
+            id2 = id1 + 1;
+        else
+            id2 = id1 - 1;
+
+        List<Integer> unrestrictedVerbList = new ArrayList<>();  // add to verb list
+        unrestrictedVerbList.add(id1);
+        unrestrictedVerbList.add(id2);
+
+        return unrestrictedVerbList;
+    }
+
 
 
     /**
@@ -625,21 +649,9 @@ public class RandomGenerator {
             return VERB_MOOD_IMPERATIVE;
     }
 
-    /**
-     * getIncorrectVerbId()
-     * --------------------
-     * Generate a random verb_id from the INCORRECT_VERB_TABLE
-     * @return the verb_id
-     */
-    public int getIncorrectVerbId(){
 
-        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
-        int randomGenderNumber = randomGenerator.nextInt(numVerbs) + 1;  // +1 as rand = [0,n-1]
+    // ------------------------------INCORRECT VERB ID -------------------------------------------
 
-        int verbId = databaseAccess.sqlIncorrectVerb_GetId(randomGenderNumber);
-
-        return verbId;
-    }
 
 
 }

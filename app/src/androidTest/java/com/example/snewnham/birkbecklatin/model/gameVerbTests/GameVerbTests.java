@@ -329,7 +329,8 @@ public class GameVerbTests {
         List<Verb> list = null;
         for (int i = 0; i < 5; i++) {
 
-            list = verbGame1.getVerbQuestions();
+            List<Integer> idList = verbGame1.getVerbIDs();
+            list = verbGame1.getVerbQuestions(idList);
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
@@ -367,7 +368,8 @@ public class GameVerbTests {
     public void testGetVerbQuestions_Skill2() throws Exception {
         List<Verb> list = null;
         for (int i = 0; i < 5; i++) {
-            list = verbGame2.getVerbQuestions();
+            List<Integer> idList = verbGame2.getVerbIDs();
+            list = verbGame2.getVerbQuestions(idList);
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
@@ -407,7 +409,8 @@ public class GameVerbTests {
 
         List<Verb> list = null;
         for (int i = 0; i < 5; i++) {
-            list = verbGame3.getVerbQuestions();
+            List<Integer> idList = verbGame3.getVerbIDs();
+            list = verbGame3.getVerbQuestions(idList);
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
@@ -449,7 +452,8 @@ public class GameVerbTests {
 
 
         for(int i=0; i<3; i++) {  // limited checks as sqlite cannot cope with multiple queries
-            list = verbGame4.getVerbQuestions();
+            List<Integer> idList = verbGame4.getVerbIDs();
+            list = verbGame4.getVerbQuestions(idList);
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
@@ -492,7 +496,8 @@ public class GameVerbTests {
         Map<String, Integer> map = new HashMap<>();
 
         for (int i = 0; i <3; i++) {
-            list = verbGame5.getVerbQuestions();
+            List<Integer> idList = verbGame5.getVerbIDs();
+            list = verbGame5.getVerbQuestions(idList);
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);

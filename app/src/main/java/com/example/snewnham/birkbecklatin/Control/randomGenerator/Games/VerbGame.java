@@ -4,6 +4,7 @@ package com.example.snewnham.birkbecklatin.Control.randomGenerator.Games;
 
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbDeponent;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbIrregular;
@@ -12,6 +13,7 @@ import com.example.snewnham.birkbecklatin.Model.verbs.VerbSemiDeponent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by snewnham on 10/12/2016.
@@ -56,6 +58,8 @@ public class VerbGame {
     private DatabaseAccess mDatabaseAccess;
     private int mSkillLevel;
     private List<Verb> mVerbQuestionList;
+    private List<Integer> mPreviousQuestionsList;
+    private final int TIME_INCORRECT_QUESTION = 10;
 
     private Verb correctVerb;
 
@@ -67,6 +71,7 @@ public class VerbGame {
         mRandomGenerator = new RandomGenerator(mDatabaseAccess);
         mSkillLevel = skillLevel;
         mVerbQuestionList = new ArrayList<>();
+        mPreviousQuestionsList = new ArrayList<>();
     }
 
 
@@ -111,6 +116,48 @@ public class VerbGame {
                 break;
         }
         return idList;
+    }
+
+
+    /**
+     * getIncorrectVerbId()
+     * --------------------
+     * Generate a random verb_ID from the INCORRECT_VERB_TABLE and then find its
+     * consecutive pair in the Verb_List Table
+     *
+     * @return List of a pair of verb_ids, one is from the incorrect table
+     */
+    public List<Integer> getIncorrectVerbIDs(int skillLevel){
+        int conjNum1_2 = 2;
+        int conjNum1_4 = 40;
+
+        List<Integer> list = new ArrayList<>();
+
+        int numVerbs = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);  // Count Number of Verbs in Table
+        Random rnd = new Random();
+        int randomIndex = rnd.nextInt(numVerbs) + 1;  //
+
+        int verbId1 = mDatabaseAccess.sqlIncorrectVerb_GetId(randomIndex);  // Select id from Incorrect Table
+        list.add(verbId1);
+
+        switch(skillLevel) {
+            case 1:
+                list = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2, verbId1);
+                break;
+            case 2:
+                list = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4, verbId1);
+                break;
+            case 3:
+                list = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4, verbId1);
+                break;
+            case 4:
+                list = mRandomGenerator.getUnrestrictedRandomVerbID(verbId1);
+                break;
+            case 5:
+                list = mRandomGenerator.getUnrestrictedRandomVerbID(verbId1);
+                break;
+        }
+        return list;
     }
 
     /**

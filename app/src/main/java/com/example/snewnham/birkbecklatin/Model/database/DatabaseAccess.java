@@ -621,6 +621,8 @@ public class DatabaseAccess {
     }
 
     // ------------------------------- INCORRECT VERBS -------------------------------------
+
+
     /**
      * sqlIncorrectVerb_GetId()
      * ------------------------
@@ -642,17 +644,19 @@ public class DatabaseAccess {
         cursor.moveToFirst();
 
         int verbId = cursor.getInt(cursor.getColumnIndex(columnName));
+        cursor.close();
 
         return verbId;
     }
+
 
     /**
      * sqlIncorrectVerb_Insert()
      * -------------------------
      * Inserts a verbId into INCORRECT_VERB_TABLE.
-     * @param verbId
+     * @param verb - verb object
      */
-    public void sqlIncorrectVerb_Insert(int verbId) {
+    public void sqlIncorrectVerb_Insert(Verb verb) {
 
         // check if table is empty
         int tableSize = sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
@@ -660,7 +664,9 @@ public class DatabaseAccess {
 
         ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
         contentValues.put(DbSchema.Incorrect_Verb_Table.Cols._id, id); // manual _id insert for first record
-        contentValues.put(DbSchema.Incorrect_Verb_Table.Cols.VERB_ID, verbId);  // use key-value
+        contentValues.put(DbSchema.Incorrect_Verb_Table.Cols.VERB_ID, verb.getId());  // use key-value
+        contentValues.put(DbSchema.Incorrect_Verb_Table.Cols.VERB_TYPE, verb.getLatin_Type());  // use key-value
+        contentValues.put(DbSchema.Incorrect_Verb_Table.Cols.VERB_CONJNUM, verb.getLatin_ConjNum());  // use key-value
 
         if (this.mSQLiteDatabase == null)
             open();
@@ -669,7 +675,7 @@ public class DatabaseAccess {
     }
 
     /**
-     * sqlIncorrectNounEtc_TestInsertion()
+     * sqlIncorrectVerb_TestInsertion()
      * -----------------------------------
      * Test if A Record Entry has been properly inserted in the INCORRECT_NOUNETC_TABLE.
      * @param verbId
@@ -710,6 +716,37 @@ public class DatabaseAccess {
             open();
 
         this.mSQLiteDatabase.delete(table, whereClause, whereArgs);
+    }
+
+    /**
+     * @Overload
+     * sqlIncorrectVerb_Delete(String type, int conjNum)
+     * -------------------------------------------------
+     * If skillLevel is dropped, then Certain Verb Types or Conjugations may
+     * need to be scrapped from the list.
+     * @param type Verb Type NOT to be deleted
+     * @param conjNum Verb Conjucations and Above to be deleted
+     */
+    public void sqlIncorrectVerb_Delete(String type, int conjNum){
+
+        String whereClause = null;
+        String[] whereArgs = null;
+
+        String table = DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE;
+        if(conjNum == 0) {
+            whereClause = DbSchema.Incorrect_Verb_Table.Cols.VERB_TYPE + "!=?";
+            whereArgs = new String[]{"Regular"};
+        } else {
+            whereClause = DbSchema.Incorrect_Verb_Table.Cols.VERB_TYPE + "!=?" + " AND " +
+                                 DbSchema.Incorrect_Verb_Table.Cols.VERB_CONJNUM + ">?";
+            whereArgs = new String[]{"Regular", Integer.toString(conjNum)};
+        }
+
+        if (this.mSQLiteDatabase == null)
+            open();
+
+        this.mSQLiteDatabase.delete(table, whereClause, whereArgs);
+
     }
 
     /**

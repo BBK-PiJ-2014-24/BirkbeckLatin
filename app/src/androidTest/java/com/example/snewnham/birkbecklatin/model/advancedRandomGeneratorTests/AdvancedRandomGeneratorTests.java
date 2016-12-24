@@ -9,6 +9,8 @@ import com.example.snewnham.birkbecklatin.Control.randomGenerator.IncorrectNounO
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
+import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
+import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
 
 import org.junit.After;
 import org.junit.Before;
@@ -90,65 +92,6 @@ public class AdvancedRandomGeneratorTests {
 
     // --------------------------------- VERB ------------------------------------------------------
 
-    /**
-     * testRandomVerbIncorrectTable()
-     * ------------------------------
-     * Test for random selection of a verb_id from the IncorrectVerb Table.
-     *
-     * @throws Exception
-     */
-    @Test
-    public void testRandomVerbIncorrectTable() throws Exception {
-
-        int id1 = 1;
-        int verbId1 = 10;
-        int id2 = 2;
-        int verbId2 = 20;
-        int id3 = 3;
-        int verbId3 = 30;
-        int id4 = 4;
-        int verbId4 = 40;
-
-        int randomSims = 800;
-
-        // load the table
-        databaseAccess.sqlIncorrectVerb_Reset();
-        databaseAccess.sqlIncorrectVerb_Insert(verbId1);
-        databaseAccess.sqlIncorrectVerb_Insert(verbId2);
-        databaseAccess.sqlIncorrectVerb_Insert(verbId3);
-        databaseAccess.sqlIncorrectVerb_Insert(verbId4);
-        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
-
-
-        int sample = randomSims / numVerbs;
-        float toleranceFactor = 0.15f;
-        int toleranceForSample = (int) (sample * toleranceFactor);
-
-
-        Map<Integer, Integer> map = new HashMap<>();
-
-        for(int i=0; i<randomSims; i++) {
-            int ans = randomGenerator.getIncorrectVerbId();
-            if (!map.containsKey(ans))
-                map.put(ans, 1);
-            else
-                map.put(ans, map.get(ans) + 1);
-        }
-        int x = 5;
-        assertThat("Num verbId_1 Simulations", map.get(verbId1), greaterThan(sample - toleranceForSample));
-        assertThat("Num verbId_1 Simulations", map.get(verbId1), lessThan(sample + toleranceForSample));
-
-        assertThat("Num verbId_2 Simulations", map.get(verbId2), greaterThan(sample - toleranceForSample));
-        assertThat("Num verbId_2 Simulations", map.get(verbId2), lessThan(sample + toleranceForSample));
-
-        assertThat("Num verbId_3 Simulations", map.get(verbId3), greaterThan(sample - toleranceForSample));
-        assertThat("Num verbId_3 Simulations", map.get(verbId3), lessThan(sample + toleranceForSample));
-
-        assertThat("Num verbId_4 Simulations", map.get(verbId4), greaterThan(sample - toleranceForSample));
-        assertThat("Num verbId_4 Simulations", map.get(verbId4), lessThan(sample + toleranceForSample));
-
-    }
-
 
     /**
      * testGetRestrictedRandomVerbID()
@@ -200,6 +143,9 @@ public class AdvancedRandomGeneratorTests {
         assertThat(2, isIn(listofIDs));
         assertThat(1, isIn(listofIDs));
     }
+
+
+
 
 
     /**
@@ -256,6 +202,71 @@ public class AdvancedRandomGeneratorTests {
 
 
 
+    // ---------------------------------VERB INCORRECT ---------------------------------------------
+
+    /**
+     * testRandomVerbIncorrectTable()
+     * ------------------------------
+     * Test for random selection of a verb_id from the IncorrectVerb Table.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testRandomVerbIncorrectTable() throws Exception {
+
+        int skillLevel = 5;
+        int id1 = 1;
+        Verb verb1 = databaseAccess.sqlVerbListQuery(id1);
+        int id2 = 2;
+        Verb verb2 = databaseAccess.sqlVerbListQuery(id2);
+        int id3 = 8;
+        Verb verb3 = databaseAccess.sqlVerbListQuery(id3);
+        int id4 = 10;
+        Verb verb4 = databaseAccess.sqlVerbListQuery(id4);
+
+
+
+        int randomSims = 800;
+
+        // load the table
+        databaseAccess.sqlIncorrectVerb_Reset();
+        databaseAccess.sqlIncorrectVerb_Insert(verb1);
+        databaseAccess.sqlIncorrectVerb_Insert(verb2);
+        databaseAccess.sqlIncorrectVerb_Insert(verb3);
+        databaseAccess.sqlIncorrectVerb_Insert(verb4);
+        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
+
+
+        int sample = randomSims / numVerbs;
+        float toleranceFactor = 0.15f;
+        int toleranceForSample = (int) (sample * toleranceFactor);
+
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for(int i=0; i<randomSims; i++) {
+            List<Integer> list = randomGenerator.getIncorrectVerbId(skillLevel);
+            int ans = list.get(0);
+            if (!map.containsKey(ans))
+                map.put(ans, 1);
+            else
+                map.put(ans, map.get(ans) + 1);
+
+        }
+        int x = 5;
+        assertThat("Num verbId_1 Simulations", map.get(id1), greaterThan(sample - toleranceForSample));
+        assertThat("Num verbId_1 Simulations", map.get(id1), lessThan(sample + toleranceForSample));
+
+        assertThat("Num verbId_2 Simulations", map.get(id2), greaterThan(sample - toleranceForSample));
+        assertThat("Num verbId_2 Simulations", map.get(id2), lessThan(sample + toleranceForSample));
+
+        assertThat("Num verbId_3 Simulations", map.get(id3), greaterThan(sample - toleranceForSample));
+        assertThat("Num verbId_3 Simulations", map.get(id3), lessThan(sample + toleranceForSample));
+
+        assertThat("Num verbId_4 Simulations", map.get(id4), greaterThan(sample - toleranceForSample));
+        assertThat("Num verbId_4 Simulations", map.get(id4), lessThan(sample + toleranceForSample));
+
+    }
 
 
     // --------------------------------- NOUN ------------------------------------------------------
