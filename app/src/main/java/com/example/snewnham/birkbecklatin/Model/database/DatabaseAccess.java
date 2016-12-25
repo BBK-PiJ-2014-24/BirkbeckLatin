@@ -247,6 +247,7 @@ public class DatabaseAccess {
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
         cursor.moveToFirst();
         String verbType = cursor.getString(cursor.getColumnIndex(DbSchema.VerbListTable.Cols.LATIN_TYPE));
+        cursor.close();
         return verbType;
     }
 
@@ -268,6 +269,7 @@ public class DatabaseAccess {
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
         cursor.moveToFirst();
         String verbConj = cursor.getString(cursor.getColumnIndex(DbSchema.VerbListTable.Cols.LATIN_CONJNUM));
+        cursor.close();
         return verbConj;
     }
 
@@ -293,6 +295,7 @@ public class DatabaseAccess {
         VerbListCursor verbListCursor = (VerbListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
         verbListCursor.moveToFirst();
         Verb verb = verbListCursor.makeVerbObject();  // Convert Query from Cursor to Verb Object.
+        verbListCursor.close();
         return verb;
     }
 
@@ -330,6 +333,7 @@ public class DatabaseAccess {
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
         cursor.moveToFirst();
         String stem = cursor.getString(cursor.getColumnIndex(DbSchema.VerbStemTable.Cols.STEM));
+        cursor.close();
         return stem;
     }
 
@@ -382,7 +386,7 @@ public class DatabaseAccess {
         cursor.moveToFirst();
 
         String verbEnding = cursor.getString(cursor.getColumnIndex(DbSchema.VerbConjugationTable.Cols.CONJ));
-
+        cursor.close();
         return verbEnding;
     }
 
@@ -436,9 +440,8 @@ public class DatabaseAccess {
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
         cursor.moveToFirst();
 
-
         String verb = cursor.getString(cursor.getColumnIndex(irregularVerb));
-
+        cursor.close();
         return verb;
     }
 
@@ -465,7 +468,7 @@ public class DatabaseAccess {
         cursor.moveToFirst();
 
         String engPersonWord = cursor.getString(cursor.getColumnIndex(DbSchema.EnglishPersonsTable.Cols.ENGLISH_PERSON_WORD));
-
+        cursor.close();
         return engPersonWord;
     }
 
@@ -516,7 +519,7 @@ public class DatabaseAccess {
         cursor.moveToFirst();
 
         String engAuxVerb = cursor.getString(cursor.getColumnIndex(DbSchema.EnglishAuxillaryVerbTable.Cols.ENG_AUX_VERB));
-
+        cursor.close();
         return engAuxVerb;
     }
 
@@ -558,7 +561,7 @@ public class DatabaseAccess {
         cursor.moveToFirst();
 
         String engPersonWord = cursor.getString(cursor.getColumnIndex(DbSchema.EnglishVerbEndingTable.Cols.ENG_VERB_ENDING));
-
+        cursor.close();
         return engPersonWord;
     }
 
@@ -613,6 +616,7 @@ public class DatabaseAccess {
             cursor.moveToFirst();
 
             String verb = cursor.getString(cursor.getColumnIndex(columnName));
+            cursor.close();
             return verb;
 
         } else {
@@ -785,6 +789,7 @@ public class DatabaseAccess {
         NounListCursor nounListCursor = (NounListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
         nounListCursor.moveToFirst();
         NounRegular noun = nounListCursor.makeNounObject();  // Convert Query from Cursor to Verb Object.
+        nounListCursor.close();
         return noun;
     }
 
@@ -818,6 +823,7 @@ public class DatabaseAccess {
         cursor.moveToFirst();
 
         String nounEnding = cursor.getString(cursor.getColumnIndex(columnName));
+        cursor.close();
         return nounEnding;
     }
 
@@ -853,6 +859,7 @@ public class DatabaseAccess {
 
 
         String latinNounIrregular = cursor.getString(cursor.getColumnIndex(nounIrregular));
+        cursor.close();
         return latinNounIrregular;
     }
 
@@ -875,6 +882,7 @@ public class DatabaseAccess {
         AdjectiveListCursor adjectiveListCursor = (AdjectiveListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
         adjectiveListCursor.moveToFirst();
         Adjective adjective = adjectiveListCursor.makeAdjectiveObject();  // Convert Query from Cursor to Verb Object.
+        adjectiveListCursor.close();
         return adjective;
     }
 
@@ -908,6 +916,7 @@ public class DatabaseAccess {
         cursor.moveToFirst();
 
         String adjEnding = cursor.getString(cursor.getColumnIndex(columnName));
+        cursor.close();
         return adjEnding;
     }
 
@@ -930,6 +939,7 @@ public class DatabaseAccess {
         PrepositionListCursor prepositionListCursor = (PrepositionListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
         prepositionListCursor.moveToFirst();
         Preposition preposition = prepositionListCursor.makePrepositionObject();  // Convert Query from Cursor to Verb Object.
+        prepositionListCursor.close();
         return preposition;
     }
 
@@ -952,6 +962,7 @@ public class DatabaseAccess {
         ConjunctionListCursor conjunctionListCursor = (ConjunctionListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
         conjunctionListCursor.moveToFirst();
         Conjunction conjunction = conjunctionListCursor.makeConjunctionObject();  // Convert Query from Cursor to Verb Object.
+        conjunctionListCursor.close();
         return conjunction;
     }
 
@@ -974,6 +985,7 @@ public class DatabaseAccess {
         AdverbListCursor adverbListTable = (AdverbListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
         adverbListTable.moveToFirst();
         Adverb adverb = adverbListTable.makeAdverbObject();  // Convert Query from Cursor to Verb Object.
+
         return adverb;
     }
 
@@ -1006,7 +1018,7 @@ public class DatabaseAccess {
             cursor.moveToFirst();
             nounId = cursor.getInt(cursor.getColumnIndex(columnName));
         }
-
+        cursor.close();
         return nounId;
     }
 
@@ -1033,7 +1045,7 @@ public class DatabaseAccess {
         cursor.moveToFirst();
 
         String nounType = cursor.getString(cursor.getColumnIndex(columnName));
-
+        cursor.close();
         return nounType;
     }
 

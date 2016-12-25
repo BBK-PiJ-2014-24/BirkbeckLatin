@@ -51,6 +51,7 @@ public class GameVerbTests {
     VerbGame verbGame3;
     VerbGame verbGame4;
     VerbGame verbGame5;
+    VerbGame verbGameSkill;
 
 
     VerbRegular mVerbRegular;
@@ -108,6 +109,8 @@ public class GameVerbTests {
         verbGame3 = new VerbGame(databaseAccess, 3);
         verbGame4 = new VerbGame(databaseAccess, 4);
         verbGame5 = new VerbGame(databaseAccess, 5);
+
+        verbGameSkill = new VerbGame(databaseAccess, 1); // Verb Skill 1
 
         id_Regular = 1;
         id_Deponent = 8;
@@ -640,6 +643,90 @@ public class GameVerbTests {
 
     }
 
+
+    @Test
+    public void testUpdateSkillLevel(){
+
+        List<VerbGame.Answer> answerList = new ArrayList<>();
+
+        VerbGame.Answer ans1 = verbGameSkill.new Answer(1,1,1);
+        VerbGame.Answer ans2 = verbGameSkill.new Answer(2,1,1);
+        VerbGame.Answer ans3 = verbGameSkill.new Answer(3,1,1);
+        VerbGame.Answer ans4 = verbGameSkill.new Answer(4,1,1);
+        VerbGame.Answer ans5 = verbGameSkill.new Answer(5,1,1);
+        VerbGame.Answer ans6 = verbGameSkill.new Answer(6,1,1);
+        VerbGame.Answer ans7 = verbGameSkill.new Answer(7,1,1);
+        VerbGame.Answer ans8 = verbGameSkill.new Answer(8,1,1);
+        VerbGame.Answer ans9 = verbGameSkill.new Answer(9,1,1);
+        VerbGame.Answer ans10 = verbGameSkill.new Answer(10,1,1);
+        VerbGame.Answer ans11 = verbGameSkill.new Answer(11,1,1);
+        VerbGame.Answer ans12 = verbGameSkill.new Answer(12,1,1);
+        VerbGame.Answer ans13 = verbGameSkill.new Answer(13,1,1);
+        VerbGame.Answer ans14 = verbGameSkill.new Answer(14,1,1);
+        VerbGame.Answer ans15 = verbGameSkill.new Answer(15,1,1);
+        VerbGame.Answer ans16 = verbGameSkill.new Answer(16,1,1);
+        VerbGame.Answer ans17 = verbGameSkill.new Answer(17,1,1);
+        VerbGame.Answer ans18 = verbGameSkill.new Answer(18,1,1);
+        VerbGame.Answer ans19 = verbGameSkill.new Answer(19,1,1);
+        VerbGame.Answer ans20 = verbGameSkill.new Answer(20,1,1);
+
+        answerList.add(ans1);
+        answerList.add(ans2);
+        answerList.add(ans3);
+        answerList.add(ans4);
+        answerList.add(ans5);
+        answerList.add(ans6);
+        answerList.add(ans7);
+        answerList.add(ans8);
+        answerList.add(ans9);
+        answerList.add(ans10);
+        answerList.add(ans11);
+        answerList.add(ans12);
+        answerList.add(ans13);
+        answerList.add(ans14);
+        answerList.add(ans15);
+        answerList.add(ans16);
+        answerList.add(ans17);
+        answerList.add(ans18);
+        answerList.add(ans19);
+        answerList.add(ans20);
+
+        int newSkillLevel = verbGameSkill.updateSkillLevel(answerList);
+
+        assertEquals(2, newSkillLevel);  // Full Marks -> SKillLevel Up!
+
+        for(VerbGame.Answer ans : answerList){  // Change to All Wrong Marks
+            ans.correct = 0;
+        }
+
+        newSkillLevel = verbGameSkill.updateSkillLevel(answerList);
+
+        assertEquals(1, newSkillLevel);  // ALL WRONG -> SKillLevel Down!
+
+        for(int i=0; i<15; i++){    // 75% Correct
+            VerbGame.Answer ans = answerList.get(i);
+            ans.correct = 1;
+        }
+
+        newSkillLevel = verbGameSkill.updateSkillLevel(answerList);
+
+        ans16.correct = 1;
+        ans17.correct = 1;
+
+        newSkillLevel = verbGameSkill.updateSkillLevel(answerList);
+
+        ans18.correct = 1;
+
+        newSkillLevel = verbGameSkill.updateSkillLevel(answerList);
+
+        ans19.correct = 1;
+        ans20.correct = 1;
+
+        newSkillLevel = verbGameSkill.updateSkillLevel(answerList);
+
+        assertEquals(2, newSkillLevel); // 75% Correct -> SKillLevel Up!
+
+    }
 
     @After
     public void breakDown() {

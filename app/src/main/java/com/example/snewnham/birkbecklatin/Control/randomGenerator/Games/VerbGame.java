@@ -1,5 +1,7 @@
 package com.example.snewnham.birkbecklatin.Control.randomGenerator.Games;
 
+import com.example.snewnham.birkbecklatin.Control.randomGenerator.Item;
+import com.example.snewnham.birkbecklatin.Control.randomGenerator.ItemResponseTheory;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
@@ -58,7 +60,8 @@ public class VerbGame {
 
     private RandomGenerator mRandomGenerator;
     private DatabaseAccess mDatabaseAccess;
-    private int mSkillLevel;
+    private int mSkillLevel; // skillLevel of Game
+    private double mTheta;  // IRT skill level
     private List<Verb> mVerbQuestionList;
     private List<Answer> mAnswerList;
     private final int TIME_INCORRECT_QUESTION = 10;
@@ -77,6 +80,7 @@ public class VerbGame {
         mDatabaseAccess = databaseAccess;
         mRandomGenerator = new RandomGenerator(mDatabaseAccess);
         mSkillLevel = skillLevel;
+        mTheta = skillLevel - 3.0;
         mVerbQuestionList = new ArrayList<>();
         mAnswerList = new ArrayList<>();
         mQuestionNumber = 1;
@@ -88,7 +92,6 @@ public class VerbGame {
 
 
     }
-
 
     /**
      * runVerbQuestion()
@@ -120,12 +123,7 @@ public class VerbGame {
         mCorrectVerbIndex = mVerbQuestionList.indexOf(mCorrectVerb); // find the index of the Correct Verb
                                                                      // in the shuffle list.
 
-
-
     }
-
-
-
 
 
     /**
@@ -170,7 +168,6 @@ public class VerbGame {
             return 1;
 
     }
-
 
 
 
@@ -581,6 +578,41 @@ public class VerbGame {
     }
 
 
+    /**
+     * updateSkillLevel()
+     * ------------------
+     * updates the skillLevel of the student by processing the results of the Test
+     * through the Item Response Theory Algo.
+     *
+     * If the student's updated theta is >+2, the skillLevel is increased
+     * If the student's updated theta is <-2, the skillLevel is decreased.
+     *
+     * @return the updated skill level of the student.
+     */
+    public int updateSkillLevel(List<Answer> answerList){
+
+        double c = 1/6;    // Number of Questions
+        double lambda = 0.5;    // Discrimination
+
+        List<Item> itemList = new ArrayList<>();
+
+        for(Answer answer : answerList){   // go through answer list
+            double alpha = answer.difficulty - 3.0;
+            int mark = answer.correct;
+            Item item = new Item(c, mTheta, alpha, lambda, mark); // convert each answer to IRT Item
+            itemList.add(item);  // Build Item List
+        }
+
+       mTheta = ItemResponseTheory.calcNewTheta(itemList); // Calc new Theta.
+
+        if(mTheta > 2 && mSkillLevel < 5)
+            mSkillLevel = mSkillLevel + 1;
+        else if (mTheta < -2 && mSkillLevel > 1)
+            mSkillLevel = mSkillLevel - 1;
+
+        return mSkillLevel;
+    }
+
 
     // Getters/Setters
     // ---------------
@@ -632,12 +664,12 @@ public class VerbGame {
      * difficulty -  RSI Question Difficulty Classification
      *
      */
-    private class Answer {
+    public class Answer {
         // Fields
         // ------
-        int id;
-        int correct;
-        int difficulty;
+        public int id;
+        public int correct;
+        public int difficulty;
 
         // Constructor
         // -----------
