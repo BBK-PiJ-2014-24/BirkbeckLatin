@@ -884,6 +884,32 @@ public class DatabaseInstrumentedTest {
     }
 
 
+    // ----------------------------- META TABLE --------------------------------------
+
+
+    /**
+     *  testSqlMeta()
+     *  -------------
+     *  tests inserts and query of the Meta Table.
+     */
+    @Test
+    public void testSqlMeta(){
+
+        String key = "skillLevel";
+        int value = 3;
+        databaseAccess.sqlMeta_Insertion(key,value);
+
+        int size = databaseAccess.sqlTableCountQuery(DbSchema.Meta_Table.META_TABLE);
+
+        assertEquals(1, size);  // Check Insertion
+
+        int valueGuess = databaseAccess.sqlMetaQuery(key);
+
+      //  assertEquals(value, valueGuess);
+
+    }
+
+
 
 
 

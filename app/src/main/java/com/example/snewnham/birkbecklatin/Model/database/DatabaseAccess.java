@@ -1145,7 +1145,58 @@ public class DatabaseAccess {
         this.mSQLiteDatabase.delete(table,null,null);
     }
 
+// ----------------------------- META TABLE --------------------------------------
 
+
+    /**
+     * sqlMeta_Insertion()
+     * -------------------
+     * inserts a key-value into the Meta Table.
+     * @param key  Variable (e.g. skill Level)
+     * @param value Value (e.g. 3)
+     *
+     */
+    public void sqlMeta_Insertion(String key, int value){
+        // check if table is empty
+        int tableSize = sqlTableCountQuery(DbSchema.Meta_Table.META_TABLE);
+        int id = tableSize + 1;  // increment the table's id / primary key - Autoincrement will not do this properly following a reset
+
+        ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
+        contentValues.put(DbSchema.Meta_Table.Cols._id, id); // manual _id insert for first record
+        contentValues.put(DbSchema.Meta_Table.Cols.KEY, key); // Key
+        contentValues.put(DbSchema.Meta_Table.Cols.VALUE, value); // Value
+
+        if (this.mSQLiteDatabase == null)
+            open();
+
+        this.mSQLiteDatabase.insert(DbSchema.Meta_Table.META_TABLE, null, contentValues);
+    }
+
+
+    /**
+     * sqlMetaQuery()
+     * --------------
+     * Does a SQL query on Meta Table using a Key-Value system.
+     * @param key
+     * @return Corresponding Value for the Key.
+     */
+    public int sqlMetaQuery(String key){
+
+        String table = DbSchema.Meta_Table.META_TABLE;  // FROM Meta Table
+        String[] column = new String[]{DbSchema.Meta_Table.Cols.VALUE};  // SELECT KEY
+
+        String[] whereArgs;
+        String whereClause;
+
+        whereClause = DbSchema.Meta_Table.Cols.KEY + "=?"; // WHERE
+        whereArgs = new String[]{key};
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
+        int value = cursor.getInt(cursor.getColumnIndex(DbSchema.Meta_Table.Cols.VALUE));
+        cursor.close();
+        return value;
+    }
 
 
 

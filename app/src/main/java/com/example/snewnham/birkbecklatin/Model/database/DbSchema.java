@@ -357,7 +357,7 @@ public class DbSchema {
         public static final class Cols {
             public static final String _id = "_id";
             public static final String KEY = "Key";
-            public static final String VALUE = "NounEtc_id";
+            public static final String VALUE = "Value";
         }
     }
 
