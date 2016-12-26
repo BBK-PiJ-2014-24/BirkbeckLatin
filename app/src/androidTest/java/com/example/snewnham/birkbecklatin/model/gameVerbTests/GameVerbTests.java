@@ -52,7 +52,7 @@ public class GameVerbTests {
     VerbGame verbGame4;
     VerbGame verbGame5;
     VerbGame verbGameSkill;
-
+    VerbGame verbGameIncorrect;
 
     VerbRegular mVerbRegular;
 
@@ -111,6 +111,7 @@ public class GameVerbTests {
         verbGame5 = new VerbGame(databaseAccess, 5);
 
         verbGameSkill = new VerbGame(databaseAccess, 1); // Verb Skill 1
+        verbGameIncorrect = new VerbGame(databaseAccess,1);
 
         id_Regular = 1;
         id_Deponent = 8;
@@ -644,6 +645,33 @@ public class GameVerbTests {
     }
 
 
+
+    @Test
+    public void testAddToTheIncorrectVerbTable(){
+
+        VerbGame.Answer ans1 = verbGameIncorrect.new Answer(1,1,1);
+        VerbGame.Answer ans2 = verbGameIncorrect.new Answer(2,0,1);
+        VerbGame.Answer ans8 = verbGameIncorrect.new Answer(8,0,1);
+        VerbGame.Answer ans10 = verbGameIncorrect.new Answer(10,1,1);
+
+        List<VerbGame.Answer> answerList = new ArrayList<>();
+        answerList.add(ans1);
+        answerList.add(ans2);
+        answerList.add(ans8);
+        answerList.add(ans10);
+
+        databaseAccess.sqlIncorrectVerb_Reset();
+        int count = verbGameIncorrect.addToTheIncorrectVerbTable(answerList);
+
+        assertEquals(2, count);
+
+    }
+
+    /**
+     * testUpdateSkillLevel()
+     * ----------------------
+     * Test that skill level can be changed after IRT update
+     */
     @Test
     public void testUpdateSkillLevel(){
 
@@ -724,7 +752,7 @@ public class GameVerbTests {
 
         newSkillLevel = verbGameSkill.updateSkillLevel(answerList);
 
-        assertEquals(2, newSkillLevel); // 75% Correct -> SKillLevel Up!
+        assertEquals(3, newSkillLevel); // 75% Correct -> SKillLevel Up!
 
     }
 

@@ -577,7 +577,6 @@ public class VerbGame {
         return gameVerb;
     }
 
-
     /**
      * updateSkillLevel()
      * ------------------
@@ -613,6 +612,31 @@ public class VerbGame {
         return mSkillLevel;
     }
 
+    /**
+     * addToTheIncorrectVerbTable()
+     * ----------------------------
+     * Adds the Incorrect Answers to the Incorrect Table and keeps a
+     * tally of the number.
+     *
+     * @return the number of verbs added to the Incorrect Table
+     */
+    public int addToTheIncorrectVerbTable(List<Answer> answerList){
+        int count = 0;
+        List<Integer> incorrectList = new ArrayList<>();
+
+        for(Answer answer : answerList){  // select the ID's of all Incorrect Verb Answers
+           if(answer.correct == 0){
+               incorrectList.add(answer.id);
+               count++;
+           }
+        }
+
+        for(Integer id : incorrectList){    // convert ids to verbs add to table
+            Verb verb = mDatabaseAccess.sqlVerbListQuery(id);
+            mDatabaseAccess.sqlIncorrectVerb_Insert(verb);
+        }
+        return count;
+    }
 
     // Getters/Setters
     // ---------------

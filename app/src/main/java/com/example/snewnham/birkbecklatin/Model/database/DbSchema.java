@@ -347,6 +347,21 @@ public class DbSchema {
         }
     }
 
+    // inner STATIC class - Incorrect_Verb_Table
+    // ----------------------------------------------
+    public static final class Meta_Table {
+        public static final String META_TABLE = "Meta";
+
+        // inner inner STATIC class of the Table - Attributes
+        // --------------------------------------
+        public static final class Cols {
+            public static final String _id = "_id";
+            public static final String KEY = "Key";
+            public static final String VALUE = "NounEtc_id";
+        }
+    }
+
+
 
 
 }
