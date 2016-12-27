@@ -16,7 +16,22 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Created by snewnham on 10/12/2016.
+ * CLASS: VerbGame
+ * ----------------
+ *  RandomGenerator - Random Generator Class;
+ *  mDatabaseAccess - Database;
+ *  mSkillLevel - skillLevel of Game
+ *  mTheta - IRT skill level
+ *  List<Verb> mVerbQuestionList - List of 6 Verbs
+ *  List<Answer> mAnswerList - List of Results for each question
+ *  TIME_INCORRECT_QUESTION - The Number of Questions Asked Before Testing an Incorrect Question
+ *  mQuestionNumber - The Counter for Questions
+ *  mCorrectVerb - The Correct Verb in the List of 6 Verbs
+ *  mCorrectVerbIndex - The Index of the Correct Verb in the list of Six Verbs
+ *  mCorrectVerbDifficulty - The IRT difficulty of the Correct Verb
+ *  mCorrectVerbMood - The Mood of the Correct Verb
+ *  mCorrectVerbVoice The Voice of the Correct Verb
+ *
  */
 
 public class VerbGame {
@@ -35,8 +50,6 @@ public class VerbGame {
     private final static String IRREGULAR = "Irregular";
 
     private final static String ESSE = "esse";
-
-
 
     private final static String NUMBER_SINGULAR = "Singular";
     private final static String NUMBER_PLURAL = "Plural";
@@ -61,13 +74,14 @@ public class VerbGame {
     private final static String MOOD_SUBJUNCTIVE = "Subjunctive";
 
 
+    private final int TIME_INCORRECT_QUESTION = 10;
+
     private RandomGenerator mRandomGenerator;
     private DatabaseAccess mDatabaseAccess;
     private int mSkillLevel; // skillLevel of Game
     private double mTheta;  // IRT skill level
     private List<Verb> mVerbQuestionList;
     private List<Answer> mAnswerList;
-    private final int TIME_INCORRECT_QUESTION = 10;
     private int mQuestionNumber;
     private Verb mCorrectVerb;
     private int mCorrectVerbIndex;
@@ -77,9 +91,9 @@ public class VerbGame {
 
 
 
-    // Constructor
-    // -----------
-    public VerbGame(DatabaseAccess databaseAccess, int skillLevel){
+    // Constructors
+    // ------------
+    public VerbGame(DatabaseAccess databaseAccess, int skillLevel){   // Used for Testing
         mDatabaseAccess = databaseAccess;
         mRandomGenerator = new RandomGenerator(mDatabaseAccess);
         mSkillLevel = skillLevel;
@@ -92,8 +106,21 @@ public class VerbGame {
         mCorrectVerbDifficulty = 100;
         mCorrectVerbMood = null;
         mCorrectVerbVoice = null;
+    }
 
-
+    public VerbGame(DatabaseAccess databaseAccess){     // Actual Game Constructor
+        mDatabaseAccess = databaseAccess;
+        mRandomGenerator = new RandomGenerator(mDatabaseAccess);
+        mSkillLevel = (int) mDatabaseAccess.sqlMetaQuery(VERB_SKILL_LEVEL);  // Access From Database
+        mTheta = mDatabaseAccess.sqlMetaQuery(VERB_THETA);
+        mVerbQuestionList = new ArrayList<>();
+        mAnswerList = new ArrayList<>();
+        mQuestionNumber = 1;
+        mCorrectVerb = null;
+        mCorrectVerbIndex = 100;
+        mCorrectVerbDifficulty = 100;
+        mCorrectVerbMood = null;
+        mCorrectVerbVoice = null;
     }
 
     /**
