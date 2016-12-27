@@ -15,9 +15,8 @@ import com.example.snewnham.birkbecklatin.R;
 
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
-    protected abstract Fragment createFragment();  // subclasses will create diff fragments
 
-
+    // Boiler Plate Code to Add a Fragment to An Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +27,14 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);  // bind fragment to xml fragment container (framelayout)
 
         if (fragment == null) {     // if fragment does not exist, Create a new transaction
-            fragment = createFragment();
+            fragment = createFragment();   // ABSTRACT METHOD
             fm.beginTransaction()
                     .add(R.id.fragment_container, fragment)
                     .commit();
         }
     }
+
+    // Abstract Method to Create Differenn Fragments
+    protected abstract Fragment createFragment();
 
 }

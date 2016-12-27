@@ -44,10 +44,8 @@ public class VerbPagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verb_pager);
 
-
         int verbConj =  (int) getIntent().getSerializableExtra(EXTRA_CONJ_ID);  // Pull the Extra from the Intent
         // serializable from activity to Fragment
-
 
         mViewPager = (ViewPager) findViewById(R.id.activity_verb_pager); // wire View Pager to XML
         databaseAccess = DatabaseAccess.getInstance(this);

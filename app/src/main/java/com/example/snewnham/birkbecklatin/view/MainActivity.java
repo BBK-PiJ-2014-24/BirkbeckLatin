@@ -12,15 +12,16 @@ public class MainActivity extends AppCompatActivity {
 
     // Fields
     // ------
-    Button mButton;
+    Button mButtonVerbPager;
+    Button mButtonVerbGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mButton = (Button) findViewById(R.id.button);
+        mButtonVerbPager = (Button) findViewById(R.id.buttonPager);
 
-        mButton.setOnClickListener(new View.OnClickListener() {
+        mButtonVerbPager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = VerbPagerActivity.newIntent(MainActivity.this, 1);
@@ -28,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mButtonVerbPager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = VerbGameActivity.newIntent(MainActivity.this);
+                startActivity(intent);
+            }
+        });
 
     }
 
