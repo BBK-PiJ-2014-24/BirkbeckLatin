@@ -1156,7 +1156,7 @@ public class DatabaseAccess {
      * @param value Value (e.g. 3)
      *
      */
-    public void sqlMeta_Insertion(String key, int value){
+    public <T> void sqlMeta_Insertion(String key, double value){
         // check if table is empty
         int tableSize = sqlTableCountQuery(DbSchema.Meta_Table.META_TABLE);
         int id = tableSize + 1;  // increment the table's id / primary key - Autoincrement will not do this properly following a reset
@@ -1169,7 +1169,7 @@ public class DatabaseAccess {
         if (this.mSQLiteDatabase == null)
             open();
 
-        this.mSQLiteDatabase.insert(DbSchema.Meta_Table.META_TABLE, null, contentValues);
+        this.mSQLiteDatabase.insertWithOnConflict(DbSchema.Meta_Table.META_TABLE, null, contentValues, SQLiteDatabase.CONFLICT_IGNORE);
     }
 
 

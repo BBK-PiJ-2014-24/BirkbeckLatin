@@ -25,6 +25,9 @@ public class VerbGame {
     // Fields
     // ------
 
+    private final static String VERB_SKILL_LEVEL = "Verb_Skill_Level";
+    private final static String VERB_THETA = "Verb Theta";
+
     private final static int NUM_CHOICES = 6; // 1 Correct Verb, 5 Incorrect Verbs
     private final static String REGULAR = "Regular";
     private final static String DEPONENT = "Deponent";
@@ -122,15 +125,14 @@ public class VerbGame {
 
         mCorrectVerbIndex = mVerbQuestionList.indexOf(mCorrectVerb); // find the index of the Correct Verb
                                                                      // in the shuffle list.
-
     }
 
 
     /**
      * checkAnswer()
      * -------------
-     * Determines if the answer to a question is correct. Creates Answer object and adds to
-     * Answer List
+     * Determines if the answer to a question is correct. Creates Answer object to contain data
+     * for the question and adds to Answer List.
      * @param guessIndex  index of the Verb Selected by the student
      * @return If answer is correct/incorrect (1 or 0)
      */
@@ -146,6 +148,23 @@ public class VerbGame {
         return answer.correct;  // Return if answer is correct/incorrect
     }
 
+
+    /**
+     * endGame()
+     * ---------
+     * Run at the end of the game:
+     * 1) updates the students IRT Theta and game skill level.
+     * 2) Stores Theta and SkillLevel in the Meta Table.
+     * 2) Add Incorrect Answers to the IncorrectVerb Table.
+     *
+     */
+    public void endGame(){
+        updateSkillLevel(mAnswerList); // update the Skill Level after the Test
+        mDatabaseAccess.sqlMeta_Insertion(VERB_SKILL_LEVEL, mSkillLevel*1.0); // Add skill, Theta to meta table
+        mDatabaseAccess.sqlMeta_Insertion(VERB_THETA, mTheta);
+
+        addToTheIncorrectVerbTable(mAnswerList); // add wrong answers to incorrect Verb Table
+    }
 
     /**
      * determineQuestionDifficulty()
