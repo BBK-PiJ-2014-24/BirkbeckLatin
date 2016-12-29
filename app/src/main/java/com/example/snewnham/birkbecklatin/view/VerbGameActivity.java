@@ -10,14 +10,12 @@ import com.example.snewnham.birkbecklatin.R;
 
 public class VerbGameActivity extends SingleFragmentActivity {
 
-    // STATIC call of the VerbGameActivity's Intent
-    // ---------------------------------------------
+    // newIntent() - STATIC call of the VerbGameActivity's Intent  ( MAIN_ACTIVITY -> )
+    // -----------
     public static Intent newIntent(Context packageContext){
         Intent intent = new Intent(packageContext, VerbGameActivity.class);
         return intent;
     }
-
-
 
     // Override for Abstract Method in SingleFragmentActivity
     // ------------------------------------------------------
@@ -27,12 +25,13 @@ public class VerbGameActivity extends SingleFragmentActivity {
     }
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);   // Call the SUPER SingleFragmentActivity
+
         setContentView(R.layout.generic_fragment_holder);
-
-
     }
 
 

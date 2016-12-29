@@ -24,8 +24,8 @@ import java.util.Random;
  *  mTheta - IRT skill level
  *  List<Verb> mVerbQuestionList - List of 6 Verbs
  *  List<Answer> mAnswerList - List of Results for each question
- *  TIME_INCORRECT_QUESTION - The Number of Questions Asked Before Testing an Incorrect Question
- *  mQuestionNumber - The Counter for Questions
+ *  TIME_FOR_INCORRECT_QUESTION - The Number of Questions Asked Before Testing an Incorrect Question
+ *  mQuestionNumber - The Counter for Questions. Keeps TALLY to determine when to test Incorrect Question
  *  mCorrectVerb - The Correct Verb in the List of 6 Verbs
  *  mCorrectVerbIndex - The Index of the Correct Verb in the list of Six Verbs
  *  mCorrectVerbDifficulty - The IRT difficulty of the Correct Verb
@@ -41,7 +41,7 @@ public class VerbGame {
     // ------
 
     private final static String VERB_SKILL_LEVEL = "Verb_Skill_Level";
-    private final static String VERB_THETA = "Verb Theta";
+    private final static String VERB_THETA = "Verb_Theta";
 
     private final static int NUM_CHOICES = 6; // 1 Correct Verb, 5 Incorrect Verbs
     private final static String REGULAR = "Regular";
@@ -74,7 +74,7 @@ public class VerbGame {
     private final static String MOOD_SUBJUNCTIVE = "Subjunctive";
 
 
-    private final int TIME_INCORRECT_QUESTION = 10;
+    private final int TIME_FOR_INCORRECT_QUESTION = 10;
 
     private RandomGenerator mRandomGenerator;
     private DatabaseAccess mDatabaseAccess;
@@ -100,7 +100,7 @@ public class VerbGame {
         mTheta = skillLevel - 3.0;
         mVerbQuestionList = new ArrayList<>();
         mAnswerList = new ArrayList<>();
-        mQuestionNumber = 1;
+        mQuestionNumber = 0;
         mCorrectVerb = null;
         mCorrectVerbIndex = 100;
         mCorrectVerbDifficulty = 100;
@@ -115,7 +115,7 @@ public class VerbGame {
         mTheta = mDatabaseAccess.sqlMetaQuery(VERB_THETA);
         mVerbQuestionList = new ArrayList<>();
         mAnswerList = new ArrayList<>();
-        mQuestionNumber = 1;
+        mQuestionNumber = 0;
         mCorrectVerb = null;
         mCorrectVerbIndex = 100;
         mCorrectVerbDifficulty = 100;
@@ -132,11 +132,11 @@ public class VerbGame {
     public void runVerbQuestion(){
 
         List<Integer> idList = null;
-
+        mQuestionNumber++; // Increase Counter
         int incorrectTableSize = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
 
         do{
-            if(mQuestionNumber%TIME_INCORRECT_QUESTION == 0  && incorrectTableSize != 0)   // Time for Incorrect Question ...
+            if(mQuestionNumber% TIME_FOR_INCORRECT_QUESTION == 0  && incorrectTableSize != 0)   // Time for Incorrect Question ...
                 idList = getIncorrectVerbIDs();                                            // if the Incorrect Table is Not empty
             else
                 idList = getVerbIDs();
@@ -158,8 +158,8 @@ public class VerbGame {
     /**
      * checkAnswer()
      * -------------
-     * Determines if the answer to a question is correct. Creates Answer object to contain data
-     * for the question and adds to Answer List.
+     * 1) Determines if the answer to a question is correct;
+     * 2) Creates Answer object to contain data for the question and adds to Answer List.
      * @param guessIndex  index of the Verb Selected by the student
      * @return If answer is correct/incorrect (1 or 0)
      */
@@ -212,7 +212,6 @@ public class VerbGame {
             return 2;
         else
             return 1;
-
     }
 
 
@@ -233,7 +232,6 @@ public class VerbGame {
                 return true;
         }
         return false;
-
     }
 
 

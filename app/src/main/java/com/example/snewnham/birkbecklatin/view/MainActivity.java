@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mButtonVerbPager = (Button) findViewById(R.id.buttonPager);
 
+        mButtonVerbPager = (Button) findViewById(R.id.buttonPager);
         mButtonVerbPager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mButtonVerbPager.setOnClickListener(new View.OnClickListener() {
+        mButtonVerbGame = (Button) findViewById(R.id.buttonVerbGame);
+        mButtonVerbGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = VerbGameActivity.newIntent(MainActivity.this);

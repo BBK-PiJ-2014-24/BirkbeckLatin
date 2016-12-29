@@ -24,17 +24,17 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
 
 
         FragmentManager fm  = getSupportFragmentManager();  // Set Fragment Manager
-        Fragment fragment = fm.findFragmentById(R.id.fragment_container);  // bind fragment to xml fragment container (framelayout)
+        Fragment fragment = fm.findFragmentById(R.id.generic_fragment_holder);  // bind fragment to xml fragment container (framelayout)
 
         if (fragment == null) {     // if fragment does not exist, Create a new transaction
             fragment = createFragment();   // ABSTRACT METHOD
             fm.beginTransaction()
-                    .add(R.id.fragment_container, fragment)
+                    .add(R.id.generic_fragment_holder, fragment)  // drop the fragment into the holder
                     .commit();
         }
     }
 
-    // Abstract Method to Create Differenn Fragments
+    // Abstract Method to Create Different Fragments
     protected abstract Fragment createFragment();
 
 }

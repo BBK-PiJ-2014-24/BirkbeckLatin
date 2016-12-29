@@ -28,7 +28,7 @@ public class VerbPagerActivity extends AppCompatActivity {
     private DatabaseAccess databaseAccess;
     private ViewPager mViewPager;
     private List<Verb> mVerbList;
-    private static final String EXTRA_CONJ_ID = "com.example.snewnham.criminalintent.crime_id";
+    private static final String EXTRA_CONJ_ID = "Conj_Number";
 
     // STATIC call on the Intent
     // -------------------------
