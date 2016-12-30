@@ -28,17 +28,27 @@ public class VerbGameFragment extends Fragment {
     // ------
     private static final int NUM_QUIZ_QUESTIONS = 20;
     private static final int NUM_MULTIPLE_CHOICES = 6;
+    private static final String COUNTER = "counter";
 
-    DatabaseAccess mDatabaseAccess;
-    VerbGame mVerbGame;
-    Verb mCorrectVerb;
-    int mCorrectVerbIndex;
-    TextView mQuestionText;
-    List<Verb> mQuestionList;
-    List<Button> mButtonList;
-    int mCounter;
 
-    RefreshListener mRefreshListener;
+    private DatabaseAccess mDatabaseAccess;
+    private  VerbGame mVerbGame;
+    private  Verb mCorrectVerb;
+    private int mCorrectVerbIndex;
+    private TextView mQuestionText;
+    private List<Verb> mQuestionList;
+    private List<Button> mButtonList;
+    private int mCounter;
+    private TextView mQuestionNumber;
+    private Button button1;
+    private Button button2;
+    private Button button3;
+    private Button button4;
+    private Button button5;
+    private Button button6;
+    private Button buttonNext;
+
+    private RefreshListener mRefreshListener;
 
 
 
@@ -54,12 +64,27 @@ public class VerbGameFragment extends Fragment {
         return new VerbGameFragment();
     }
 
-    // RefreshListener Interface
-    // -------------------------
+
+    /**
+     * RefreshListener
+     * ---------------
+     * Implements the RefreshListener Interface, which allows the VerbGame Fragment to
+     * request the VerbGameActivity to Refresh the Fragment screen.
+     */
+
     public interface RefreshListener{
         void refresh();
     }
 
+
+    // onSaveInstanceState()
+    // --------------------
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        //Log.i(TAG, "onSavedInstanceState");
+        savedInstanceState.putInt(COUNTER, mCounter);  // Key -> Value
+    }
 
     // onAttach
     // --------
@@ -69,25 +94,37 @@ public class VerbGameFragment extends Fragment {
         mRefreshListener = (RefreshListener) context;   // Store the Refresh Listener into the
     }
 
+    // OnCreate
+    // --------
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mDatabaseAccess = DatabaseAccess.getInstance(getContext());  // Connect Database
+        mVerbGame = new VerbGame(mDatabaseAccess);                   // Instantiate Verb Game
+        mCounter = 1;
+        mButtonList = new ArrayList<>();   // Add Buttons to List
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        if(savedInstanceState != null){
+            mCounter = savedInstanceState.getInt(COUNTER);
+        }
+
         View view = inflater.inflate(R.layout.fragment_verb_game, container, false);  // Inflate the layout for this mFragment
 
-        mDatabaseAccess = DatabaseAccess.getInstance(getContext());  // Connect Database
-        mVerbGame = new VerbGame(mDatabaseAccess);                   // Instantiate Verb Game
-        mCounter = 1;
         mQuestionText = (TextView) view.findViewById(R.id.questionText); // Wire the Question
 
-        Button button1 = (Button) view.findViewById(R.id.button1);  // Wire Buttons to View
-        Button button2 = (Button) view.findViewById(R.id.button2);
-        Button button3 = (Button) view.findViewById(R.id.button3);
-        Button button4 = (Button) view.findViewById(R.id.button4);
-        Button button5 = (Button) view.findViewById(R.id.button5);
-        Button button6 = (Button) view.findViewById(R.id.button6);
+        button1 = (Button) view.findViewById(R.id.button1);  // Wire Buttons to View
+        button2 = (Button) view.findViewById(R.id.button2);
+        button3 = (Button) view.findViewById(R.id.button3);
+        button4 = (Button) view.findViewById(R.id.button4);
+        button5 = (Button) view.findViewById(R.id.button5);
+        button6 = (Button) view.findViewById(R.id.button6);
 
-        mButtonList = new ArrayList<>();   // Add Buttons to List
         mButtonList.add(button1);
         mButtonList.add(button2);
         mButtonList.add(button3);
@@ -95,26 +132,25 @@ public class VerbGameFragment extends Fragment {
         mButtonList.add(button5);
         mButtonList.add(button6);
 
+        mQuestionNumber = (TextView) view.findViewById(R.id.questionNumber);  // Wire Question Number Counter
+        setTextQuestionNumber(mCounter);  // set Counter
+
         setUpQuestion(); // set up a Multiple Choice Question
 
-        for(int i=0; i<NUM_MULTIPLE_CHOICES; i++){
+        for(int i=0; i<NUM_MULTIPLE_CHOICES; i++){        // Wire onClicks to Buttons
             if(i==mCorrectVerbIndex)
                 mButtonList.get(i).setOnClickListener(new ButtonCorrectClickListener());
             else
                 mButtonList.get(i).setOnClickListener(new ButtonIncorrectClickListener());
         }
 
-        Button buttonNext = (Button) view.findViewById(R.id.buttonNext);
+        buttonNext = (Button) view.findViewById(R.id.buttonNext);  // Wire next Button and it's onClick()
         buttonNext.setOnClickListener(new ButtonNextClickListener());
 
  //       mVerbGame.endGame();
 
         return view;
     }
-
-
-
-
 
     /**
      * setUpQuestion()
@@ -139,6 +175,23 @@ public class VerbGameFragment extends Fragment {
 
     }
 
+    /**
+     * setTextQuestionNumber()
+     * -----------------------
+     * Sets the Counter for the Number of Questions Taken So Far
+     * @param count
+     */
+    public void setTextQuestionNumber(int count){
+        String questionOutOfMaxQuestions = Integer.toString(mCounter) + "/" + NUM_QUIZ_QUESTIONS;
+        mQuestionNumber.setText(questionOutOfMaxQuestions);
+    }
+
+    /**
+     * makeAnswerToast()
+     * -----------------
+     * Forms the Toast for a Correct or Incorrect Answer
+     * @param answer Correct Answer(1), Incorrect Answer(0)
+     */
     public void makeAnswerToast(int answer){
         if(answer == 1)
             Toast.makeText(getContext(), R.string.correct_toast, Toast.LENGTH_SHORT).show();
@@ -168,6 +221,10 @@ public class VerbGameFragment extends Fragment {
             mButtonList.get(i).setTag(1);
         }
     }
+
+
+
+    // ------------------------------ INNER CLASSES -------------------------------------------
 
 
     // Inner Class
@@ -211,7 +268,10 @@ public class VerbGameFragment extends Fragment {
             }
             setUpQuestion();  // Set Up Next Question
             mCounter++;
-            mRefreshListener.refresh();   // Trigger the Listener in the Activity to REFRESH!
+            setTextQuestionNumber(mCounter);
+
+          //  mRefreshListener.refresh();   // Trigger the Listener in the Activity to REFRESH SCREEN
+                                          // For Next Question
         }
     }
 

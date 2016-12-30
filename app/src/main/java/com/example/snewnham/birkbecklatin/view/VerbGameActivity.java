@@ -34,6 +34,13 @@ public class VerbGameActivity extends SingleFragmentActivity implements VerbGame
         setContentView(R.layout.generic_fragment_holder);
     }
 
+    /**
+     * refresh()
+     * ---------
+     *
+     * Implements the RefreshListener Interface, which allows the VerbGame Fragment to
+     * request the VerbGameActivity to Refresh the Fragment screen.
+     */
     @Override
     public void refresh(){
         getSupportFragmentManager()
