@@ -132,6 +132,8 @@ public class VerbGame {
     public void runVerbQuestion(){
 
         List<Integer> idList = null;
+        List<Verb> newVerbList = new ArrayList<>(6);
+        mVerbQuestionList = newVerbList; // Reset The Verb Question List
         mQuestionNumber++; // Increase Counter
         int incorrectTableSize = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
 
@@ -142,7 +144,7 @@ public class VerbGame {
                 idList = getVerbIDs();
         } while(repeatedQuestion(idList));  // repeat if the id has already been used in a question.
 
-        mVerbQuestionList = getVerbQuestions(idList);  // generate question list
+        mVerbQuestionList = getVerbQuestions(idList);  //++++++++ generate question list
 
         Random rnd = new Random();
         int rndIndex = rnd.nextInt(3);

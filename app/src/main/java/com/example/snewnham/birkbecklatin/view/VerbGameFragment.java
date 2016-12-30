@@ -1,6 +1,7 @@
 package com.example.snewnham.birkbecklatin.view;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -35,6 +36,10 @@ public class VerbGameFragment extends Fragment {
     TextView mQuestionText;
     List<Verb> mQuestionList;
     List<Button> mButtonList;
+    int mCounter;
+
+    RefreshListener mRefreshListener;
+
 
 
     // Constructor
@@ -49,16 +54,30 @@ public class VerbGameFragment extends Fragment {
         return new VerbGameFragment();
     }
 
+    // RefreshListener Interface
+    // -------------------------
+    public interface RefreshListener{
+        void refresh();
+    }
+
+
+    // onAttach
+    // --------
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        mRefreshListener = (RefreshListener) context;   // Store the Refresh Listener into the
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_verb_game, container, false);  // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_verb_game, container, false);  // Inflate the layout for this mFragment
 
         mDatabaseAccess = DatabaseAccess.getInstance(getContext());  // Connect Database
         mVerbGame = new VerbGame(mDatabaseAccess);                   // Instantiate Verb Game
-
+        mCounter = 1;
         mQuestionText = (TextView) view.findViewById(R.id.questionText); // Wire the Question
 
         Button button1 = (Button) view.findViewById(R.id.button1);  // Wire Buttons to View
@@ -86,11 +105,15 @@ public class VerbGameFragment extends Fragment {
         }
 
         Button buttonNext = (Button) view.findViewById(R.id.buttonNext);
+        buttonNext.setOnClickListener(new ButtonNextClickListener());
 
  //       mVerbGame.endGame();
 
         return view;
     }
+
+
+
 
 
     /**
@@ -179,13 +202,17 @@ public class VerbGameFragment extends Fragment {
 
     // Inner Class
     // -----------
-    class ButtonNullClickListener implements View.OnClickListener {
+    class ButtonNextClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-
+            int status = (Integer) mButtonList.get(0).getTag();
+            if(status == 1){
+                // i.e. if Question Was Skipped MAKE ANSWER FAIL
+            }
+            setUpQuestion();  // Set Up Next Question
+            mCounter++;
+            mRefreshListener.refresh();   // Trigger the Listener in the Activity to REFRESH!
         }
-
-
     }
 
 

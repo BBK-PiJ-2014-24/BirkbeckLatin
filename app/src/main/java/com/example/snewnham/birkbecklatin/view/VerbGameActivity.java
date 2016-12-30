@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.example.snewnham.birkbecklatin.R;
 
-public class VerbGameActivity extends SingleFragmentActivity {
+public class VerbGameActivity extends SingleFragmentActivity implements VerbGameFragment.RefreshListener{
 
     // newIntent() - STATIC call of the VerbGameActivity's Intent  ( MAIN_ACTIVITY -> )
     // -----------
@@ -34,8 +34,17 @@ public class VerbGameActivity extends SingleFragmentActivity {
         setContentView(R.layout.generic_fragment_holder);
     }
 
+    @Override
+    public void refresh(){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .detach(mFragment)
+                .commitNowAllowingStateLoss();
 
-
-
+        getSupportFragmentManager()
+                .beginTransaction()
+                .attach(mFragment)
+                .commitAllowingStateLoss();
+    }
 
 }

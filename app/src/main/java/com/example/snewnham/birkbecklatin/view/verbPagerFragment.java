@@ -37,7 +37,7 @@ public class VerbPagerFragment extends Fragment {
      * @return
      */
     public static VerbPagerFragment newInstance(int verbId) {
-        Bundle args = new Bundle();  // pass the crimeId in the activity Intent to the fragment
+        Bundle args = new Bundle();  // pass the crimeId in the activity Intent to the mFragment
         args.putSerializable(VERB_ID, verbId);
 
         VerbPagerFragment fragment = new VerbPagerFragment();
@@ -62,7 +62,7 @@ public class VerbPagerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
+        // Inflate the layout for this mFragment
         View view = inflater.inflate(R.layout.fragment_verb_pager, container, false);
 
 

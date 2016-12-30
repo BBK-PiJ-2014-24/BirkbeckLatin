@@ -15,6 +15,7 @@ import com.example.snewnham.birkbecklatin.R;
 
 public abstract class SingleFragmentActivity extends AppCompatActivity {
 
+    protected Fragment mFragment;
 
     // Boiler Plate Code to Add a Fragment to An Activity
     @Override
@@ -24,12 +25,12 @@ public abstract class SingleFragmentActivity extends AppCompatActivity {
 
 
         FragmentManager fm  = getSupportFragmentManager();  // Set Fragment Manager
-        Fragment fragment = fm.findFragmentById(R.id.generic_fragment_holder);  // bind fragment to xml fragment container (framelayout)
+        mFragment = fm.findFragmentById(R.id.generic_fragment_holder);  // bind mFragment to xml mFragment container (framelayout)
 
-        if (fragment == null) {     // if fragment does not exist, Create a new transaction
-            fragment = createFragment();   // ABSTRACT METHOD
+        if (mFragment == null) {     // if mFragment does not exist, Create a new transaction
+            mFragment = createFragment();   // ABSTRACT METHOD
             fm.beginTransaction()
-                    .add(R.id.generic_fragment_holder, fragment)  // drop the fragment into the holder
+                    .add(R.id.generic_fragment_holder, mFragment)  // drop the mFragment into the holder
                     .commit();
         }
     }
