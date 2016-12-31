@@ -40,12 +40,12 @@ public class VerbGameFragment extends Fragment {
     private List<Button> mButtonList;
     private int mCounter;
     private TextView mQuestionNumber;
+    private Button button0;
     private Button button1;
     private Button button2;
     private Button button3;
     private Button button4;
     private Button button5;
-    private Button button6;
     private Button buttonNext;
 
     private RefreshListener mRefreshListener;
@@ -118,31 +118,24 @@ public class VerbGameFragment extends Fragment {
 
         mQuestionText = (TextView) view.findViewById(R.id.questionText); // Wire the Question
 
-        button1 = (Button) view.findViewById(R.id.button1);  // Wire Buttons to View
+        button0 = (Button) view.findViewById(R.id.button0);// Wire Buttons to View
+        button1 = (Button) view.findViewById(R.id.button1);
         button2 = (Button) view.findViewById(R.id.button2);
         button3 = (Button) view.findViewById(R.id.button3);
         button4 = (Button) view.findViewById(R.id.button4);
         button5 = (Button) view.findViewById(R.id.button5);
-        button6 = (Button) view.findViewById(R.id.button6);
 
+        mButtonList.add(button0);
         mButtonList.add(button1);
         mButtonList.add(button2);
         mButtonList.add(button3);
         mButtonList.add(button4);
         mButtonList.add(button5);
-        mButtonList.add(button6);
 
         mQuestionNumber = (TextView) view.findViewById(R.id.questionNumber);  // Wire Question Number Counter
         setTextQuestionNumber(mCounter);  // set Counter
 
         setUpQuestion(); // set up a Multiple Choice Question
-
-        for(int i=0; i<NUM_MULTIPLE_CHOICES; i++){        // Wire onClicks to Buttons
-            if(i==mCorrectVerbIndex)
-                mButtonList.get(i).setOnClickListener(new ButtonCorrectClickListener());
-            else
-                mButtonList.get(i).setOnClickListener(new ButtonIncorrectClickListener());
-        }
 
         buttonNext = (Button) view.findViewById(R.id.buttonNext);  // Wire next Button and it's onClick()
         buttonNext.setOnClickListener(new ButtonNextClickListener());
@@ -166,10 +159,16 @@ public class VerbGameFragment extends Fragment {
         mCorrectVerbIndex = mVerbGame.getCorrectVerbIndex(); // get the index of the Correct Verb in the Question List.
         mQuestionText.setText(mCorrectVerb.getEnglishVerb()); // Place the Question in the TextView
 
-        for(int i = 0; i< NUM_MULTIPLE_CHOICES; i++) {  // Set Latin Text on each Button
+        for(int i = 0; i< NUM_MULTIPLE_CHOICES; i++) {
             Verb verb = mQuestionList.get(i);
             String latinWord = verb.getLatinVerb();
-            mButtonList.get(i).setText(latinWord);
+            mButtonList.get(i).setText(latinWord);    // Set Latin Text on each Button
+
+            if(i==mCorrectVerbIndex)
+                mButtonList.get(i).setOnClickListener(new ButtonCorrectClickListener());  // Wire onClicks to Buttons
+            else
+                mButtonList.get(i).setOnClickListener(new ButtonIncorrectClickListener());
+
             mButtonList.get(i).setTag(1);  // Set Tag Flags
         }
 

@@ -80,7 +80,7 @@ public class VerbGame {
     private DatabaseAccess mDatabaseAccess;
     private int mSkillLevel; // skillLevel of Game
     private double mTheta;  // IRT skill level
-    private List<Verb> mVerbQuestionList;
+    private List<Verb> mVerbQuestionList;  // List of 6 Verbs for a Multiple Choice Questions
     private List<Answer> mAnswerList;
     private int mQuestionNumber;
     private Verb mCorrectVerb;
@@ -127,13 +127,16 @@ public class VerbGame {
      * runVerbQuestion()
      * -----------------
      * Generates a Question List of 6 Verbs, selects a correctVerb, shuffles the order of the list.
+     * The verb IDs are either selected from the Verb Table or the IncorrectVerb Table (If it is scheduled for a
+     * Incorrect Question). Furthermore, a defence check is inserted in order to prevent verbs that have already been
+     * tested in the quiz to be repeated.
      *
      */
     public void runVerbQuestion(){
 
         List<Integer> idList = null;
         List<Verb> newVerbList = new ArrayList<>(6);
-        mVerbQuestionList = newVerbList; // Reset The Verb Question List
+        mVerbQuestionList = newVerbList; // Hack to Reset The Verb Question List
         mQuestionNumber++; // Increase Counter
         int incorrectTableSize = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
 
@@ -222,16 +225,24 @@ public class VerbGame {
      * repeatedQuestion()
      * ------------------
      * Check the Answer List to see if the Verb Id1 has already been tested.
-     * (Used in runVerbQuestion() )
+     * (Used in runVerbQuestion()). Note that a defence check is inserted so that if
+     * if ALL verbs have already been tested then default return TRUE.
      *
      * @param idList
      * @return
      */
     public boolean repeatedQuestion(List<Integer> idList){
-        for(Answer answer : mAnswerList){
-            int resultId = answer.id;
-            if(resultId == idList.get(0))
-                return true;
+
+        int verbTableSize = mDatabaseAccess.sqlTableCountQuery(DbSchema.VerbListTable.VERB_LIST_TABLE);
+
+        if(idList.size() == verbTableSize){  // defence check - if ALL verbs have already been tested then return TRUE
+            return true;
+        } else {
+            for (Answer answer : mAnswerList) {
+                int resultId = answer.id;
+                if (resultId == idList.get(0))
+                    return true;
+            }
         }
         return false;
     }
