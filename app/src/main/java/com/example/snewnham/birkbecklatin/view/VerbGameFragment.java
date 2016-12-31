@@ -106,6 +106,8 @@ public class VerbGameFragment extends Fragment {
     }
 
 
+    // On CreateView
+    // -------------
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -159,7 +161,7 @@ public class VerbGameFragment extends Fragment {
         mCorrectVerbIndex = mVerbGame.getCorrectVerbIndex(); // get the index of the Correct Verb in the Question List.
         mQuestionText.setText(mCorrectVerb.getEnglishVerb()); // Place the Question in the TextView
 
-        for(int i = 0; i< NUM_MULTIPLE_CHOICES; i++) {
+        for(int i = 0; i< NUM_MULTIPLE_CHOICES; i++) {  // set Up Buttons
             Verb verb = mQuestionList.get(i);
             String latinWord = verb.getLatinVerb();
             mButtonList.get(i).setText(latinWord);    // Set Latin Text on each Button

@@ -361,16 +361,21 @@ public class RandomGenerator {
     public List<Integer> getRestrictedRandomVerbID(int conjNum, int id1){
 
         List<Integer> selectedVerbIDlist = new ArrayList<>();
-        selectedVerbIDlist.add(id1);    // add ID1 to the List
+
 
         List<Integer> restrictedVerbList = databaseAccess.getVerbIDConjugationList(conjNum);  // get the restricted verb list
         int indexOfId1 = restrictedVerbList.indexOf(id1);  // find index of verb ID1 in the list
 
-
+        int indexOfId2;     // determine the neighbouring index of ID2
         if(indexOfId1 != 0)  // check condition so that don't overrun the list.
-            selectedVerbIDlist.add(indexOfId1-1); // select the Verb ID next in the list.
+            indexOfId2 = indexOfId1-1;
         else
-            selectedVerbIDlist.add(indexOfId1+1);
+            indexOfId2 = indexOfId1+1;
+
+        int id2 = restrictedVerbList.get(indexOfId2); // retrieve the Verb ID2
+
+        selectedVerbIDlist.add(id1);    // add ID1 to the List
+        selectedVerbIDlist.add(id2);    // add ID2 to the List
 
         return selectedVerbIDlist;
     }
