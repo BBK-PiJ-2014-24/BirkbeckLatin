@@ -161,23 +161,17 @@ public class VerbGame {
 
 
     /**
-     * checkAnswer()
+     * storeAnswer()
      * -------------
-     * 1) Determines if the answer to a question is correct;
-     * 2) Creates Answer object to contain data for the question and adds to Answer List.
-     * @param guessIndex  index of the Verb Selected by the student
-     * @return If answer is correct/incorrect (1 or 0)
+     * 1) Stores the guess in an answer Object, correct/incorrect (1 or 0).
+     * 2) Adds to Answer List.index of the Verb Selected by the student
      */
-    public int checkAnswer(int guessIndex){
+    public void storeAnswer(int guessAnswer){
 
-        int ans = (guessIndex == mCorrectVerbIndex) ? 1 :0;  // determine correct/incorrect answer
-        mCorrectVerbDifficulty = determineQuestionDifficulty(); // determine Difficulty of Question
-
-        Answer answer = new Answer(mCorrectVerb.getId(), ans, mCorrectVerbDifficulty);  // Set Answer Object
-
-        mAnswerList.add(answer); // Add to buffer mAnswer List
-
-        return answer.correct;  // Return if answer is correct/incorrect
+       mCorrectVerbDifficulty = determineQuestionDifficulty(); // determine Difficulty of Question
+        //mCorrectVerbDifficulty = 1;
+       Answer answer = new Answer( 1, guessAnswer, mCorrectVerbDifficulty);  // Set Answer Object
+       mAnswerList.add(answer); // Add to buffer mAnswer List
     }
 
 
@@ -220,7 +214,6 @@ public class VerbGame {
     }
 
 
-
     /**
      * repeatedQuestion()
      * ------------------
@@ -235,7 +228,7 @@ public class VerbGame {
 
         int verbTableSize = mDatabaseAccess.sqlTableCountQuery(DbSchema.VerbListTable.VERB_LIST_TABLE);
 
-        if(idList.size() == verbTableSize){  // defence check - if ALL verbs have already been tested then return TRUE
+        if(idList.size() >= verbTableSize){  // defence check - if ALL verbs have already been tested then return TRUE
             return true;
         } else {
             for (Answer answer : mAnswerList) {
@@ -334,7 +327,6 @@ public class VerbGame {
 
         String person = null;
         String number = null;
-        String voice = null;
         String voice1 = null;
         String voice2 = null;
         String type0 = null;
@@ -353,22 +345,22 @@ public class VerbGame {
                 //idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2); // Two Verb IDs
                 person = mRandomGenerator.getVerbPerson();
                 number = mRandomGenerator.getVerbNumber();
-                voice = VOICE_ACTIVE;
+                voice1 = VOICE_ACTIVE;
                 mood = MOOD_INDICATIVE;
 
-                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, TENSE_PRESENT, mood, voice));
-                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, TENSE_IMPERFECT, mood, voice));
-                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, TENSE_FUTURE, mood, voice));
-                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, TENSE_PRESENT, mood, voice));
-                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, TENSE_IMPERFECT, mood, voice));
-                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, TENSE_FUTURE, mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, TENSE_PRESENT, mood, voice1));
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, TENSE_IMPERFECT, mood, voice1));
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, TENSE_FUTURE, mood, voice1));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, TENSE_PRESENT, mood, voice1));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, TENSE_IMPERFECT, mood, voice1));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, TENSE_FUTURE, mood, voice1));
                 break;
 
             case 2:
               //  idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4); // Two Verb IDs
                 person = mRandomGenerator.getVerbPerson();
                 number = mRandomGenerator.getVerbNumber();
-                voice = VOICE_ACTIVE;
+                voice1 = VOICE_ACTIVE;
                 do {
                     mood = mRandomGenerator.getVerbMood();   // Select only Indicative or Imperative
                 } while (mood.equals(MOOD_SUBJUNCTIVE));
@@ -381,12 +373,12 @@ public class VerbGame {
                     tenseList1 = mRandomGenerator.getVerbTenseList();
                 }
 
-                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(0), mood, voice));
-                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(1), mood, voice));
-                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(2), mood, voice));
-                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(0), mood, voice));
-                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(1), mood, voice));
-                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(2), mood, voice));
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(0), mood, voice1));
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(1), mood, voice1));
+                mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, tenseList0.get(2), mood, voice1));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(0), mood, voice1));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(1), mood, voice1));
+                mVerbQuestionList.add(makeGameVerb(idList.get(1), person, number, tenseList1.get(2), mood, voice1));
                 break;
 
             case 3:

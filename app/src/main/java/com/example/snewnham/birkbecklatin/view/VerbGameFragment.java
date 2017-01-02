@@ -2,6 +2,7 @@ package com.example.snewnham.birkbecklatin.view;
 
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -135,14 +136,12 @@ public class VerbGameFragment extends Fragment {
         mButtonList.add(button5);
 
         mQuestionNumber = (TextView) view.findViewById(R.id.questionNumber);  // Wire Question Number Counter
-        setTextQuestionNumber(mCounter);  // set Counter
+        displayTextQuestionNumber();  // set Counter
 
         setUpQuestion(); // set up a Multiple Choice Question
 
         buttonNext = (Button) view.findViewById(R.id.buttonNext);  // Wire next Button and it's onClick()
         buttonNext.setOnClickListener(new ButtonNextClickListener());
-
- //       mVerbGame.endGame();
 
         return view;
     }
@@ -173,16 +172,14 @@ public class VerbGameFragment extends Fragment {
 
             mButtonList.get(i).setTag(1);  // Set Tag Flags
         }
-
     }
 
     /**
-     * setTextQuestionNumber()
+     * displayTextQuestionNumber()
      * -----------------------
-     * Sets the Counter for the Number of Questions Taken So Far
-     * @param count
+     * Sets the Counter on the Screen for the Number of Questions Taken So Far
      */
-    public void setTextQuestionNumber(int count){
+    public void displayTextQuestionNumber(){
         String questionOutOfMaxQuestions = Integer.toString(mCounter) + "/" + NUM_QUIZ_QUESTIONS;
         mQuestionNumber.setText(questionOutOfMaxQuestions);
     }
@@ -194,10 +191,15 @@ public class VerbGameFragment extends Fragment {
      * @param answer Correct Answer(1), Incorrect Answer(0)
      */
     public void makeAnswerToast(int answer){
+
+        String incorrectString = null;
         if(answer == 1)
             Toast.makeText(getContext(), R.string.correct_toast, Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(getContext(), R.string.incorrect_toast, Toast.LENGTH_SHORT).show();
+        else {
+            Resources res = getResources();  // Set Up A Resouces Object, then use it help format string
+            incorrectString = String.format(res.getString(R.string.incorrect_toast), mCorrectVerb.getLatinVerb());
+            Toast.makeText(getContext(), incorrectString, Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -235,7 +237,7 @@ public class VerbGameFragment extends Fragment {
         public void onClick(View view) {
             int status = (Integer) mButtonList.get(0).getTag();  // Check If Buttons are Live
             if(status==1) {
-                //mVerbGame.checkAnswer(mCorrectVerbIndex); // record the answer
+                mVerbGame.storeAnswer(1); // record the answer as correct
                 makeAnswerToast(1);
                 setButtonsNull();   // Turn Off the Button onClick()
             }
@@ -250,8 +252,7 @@ public class VerbGameFragment extends Fragment {
         public void onClick(View view) {
             int status = (Integer) mButtonList.get(0).getTag();  // Check If Buttons are Live
             if(status==1) {
-                int otherIndex = (mCorrectVerbIndex == 0) ? 1 : 0; // make up dummy index as cannot pass to anom function
-                //mVerbGame.checkAnswer(otherIndex);    // record the answer
+                mVerbGame.storeAnswer(0);    // record the answer as incorrect
                 makeAnswerToast(0);
                 setButtonsNull();   // Turn Off the Button onClick()
             }
@@ -263,14 +264,19 @@ public class VerbGameFragment extends Fragment {
     class ButtonNextClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            int status = (Integer) mButtonList.get(0).getTag();
-            if(status == 1){
-                // i.e. if Question Was Skipped MAKE ANSWER FAIL
+            if(mCounter == NUM_QUIZ_QUESTIONS){   // Check if end of the game
+                mVerbGame.endGame();   // Run The End of the Game
+                Toast.makeText(getContext(),R.string.game_over, Toast.LENGTH_SHORT).show();
+            } else {
+                int status = (Integer) mButtonList.get(0).getTag(); // Temp Neutralize Button Clicks
+                if (status == 1) {   // i.e. if Question Was Skipped MAKE ANSWER FAIL
+                    mVerbGame.storeAnswer(0);    // record the answer as incorrect
+                    makeAnswerToast(0); // Set up Toasts
+                }
+                mCounter++;
+                displayTextQuestionNumber(); // update next question number
+                setUpQuestion();  // Set Up Next Question
             }
-            setUpQuestion();  // Set Up Next Question
-            mCounter++;
-            setTextQuestionNumber(mCounter);
-
           //  mRefreshListener.refresh();   // Trigger the Listener in the Activity to REFRESH SCREEN
                                           // For Next Question
         }
