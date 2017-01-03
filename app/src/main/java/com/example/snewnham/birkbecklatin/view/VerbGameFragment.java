@@ -2,6 +2,7 @@ package com.example.snewnham.birkbecklatin.view;
 
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -193,8 +194,11 @@ public class VerbGameFragment extends Fragment {
     public void makeAnswerToast(int answer){
         if(answer == 1)
             Toast.makeText(getContext(), R.string.correct_toast, Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(getContext(), R.string.incorrect_toast, Toast.LENGTH_SHORT).show();
+        else {
+            Resources res = getResources();
+            String inCorrectString = String.format(res.getString(R.string.incorrect_toast), mCorrectVerb.getLatinVerb());
+            Toast.makeText(getContext(), inCorrectString, Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -262,6 +266,7 @@ public class VerbGameFragment extends Fragment {
         public void onClick(View view) {
             int status = (Integer) mButtonList.get(0).getTag();
             if(status == 1){
+                makeAnswerToast(0);
                 // i.e. if Question Was Skipped MAKE ANSWER FAIL
             }
             setUpQuestion();  // Set Up Next Question
