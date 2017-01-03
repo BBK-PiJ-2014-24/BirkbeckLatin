@@ -141,6 +141,7 @@ public class VerbGameFragment extends Fragment {
 
         buttonNext = (Button) view.findViewById(R.id.buttonNext);  // Wire next Button and it's onClick()
         buttonNext.setOnClickListener(new ButtonNextClickListener());
+        buttonNext.setTag(1);
 
         return view;
     }
@@ -171,7 +172,6 @@ public class VerbGameFragment extends Fragment {
 
             mButtonList.get(i).setTag(1);  // Set Tag Flags
         }
-
     }
 
     /**
@@ -264,14 +264,16 @@ public class VerbGameFragment extends Fragment {
     class ButtonNextClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            int status = (Integer) mButtonList.get(0).getTag();
-            if(status == 1){
-                makeAnswerToast(0);
-                // i.e. if Question Was Skipped MAKE ANSWER FAIL
+            if((Integer) buttonNext.getTag() == 1) {
+                int status = (Integer) mButtonList.get(0).getTag();
+                if (status == 1) {
+                    makeAnswerToast(0);
+                    // i.e. if Question Was Skipped MAKE ANSWER FAIL
+                }
+                setUpQuestion();  // Set Up Next Question
+                mCounter++;
+                setTextQuestionNumber(mCounter);
             }
-            setUpQuestion();  // Set Up Next Question
-            mCounter++;
-            setTextQuestionNumber(mCounter);
 
           //  mRefreshListener.refresh();   // Trigger the Listener in the Activity to REFRESH SCREEN
                                           // For Next Question
