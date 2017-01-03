@@ -235,7 +235,7 @@ public class VerbGame {
 
         int verbTableSize = mDatabaseAccess.sqlTableCountQuery(DbSchema.VerbListTable.VERB_LIST_TABLE);
 
-        if(idList.size() == verbTableSize){  // defence check - if ALL verbs have already been tested then return TRUE
+        if(idList.size() >= verbTableSize){  // defence check - if ALL verbs have already been tested then return TRUE
             return true;
         } else {
             for (Answer answer : mAnswerList) {

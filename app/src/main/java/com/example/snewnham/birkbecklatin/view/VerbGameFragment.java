@@ -82,7 +82,6 @@ public class VerbGameFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        //Log.i(TAG, "onSavedInstanceState");
         savedInstanceState.putInt(COUNTER, mCounter);  // Key -> Value
     }
 
@@ -141,8 +140,6 @@ public class VerbGameFragment extends Fragment {
 
         buttonNext = (Button) view.findViewById(R.id.buttonNext);  // Wire next Button and it's onClick()
         buttonNext.setOnClickListener(new ButtonNextClickListener());
-
- //       mVerbGame.endGame();
 
         return view;
     }
