@@ -135,7 +135,7 @@ public class VerbGameFragment extends Fragment {
         mButtonList.add(button5);
 
         mQuestionNumber = (TextView) view.findViewById(R.id.questionNumber);  // Wire Question Number Counter
-        setTextQuestionNumber(mCounter);  // set Counter
+        displayTextQuestionNumber();  // set Counter
 
         setUpQuestion(); // set up a Multiple Choice Question
 
@@ -178,9 +178,8 @@ public class VerbGameFragment extends Fragment {
      * setTextQuestionNumber()
      * -----------------------
      * Sets the Counter for the Number of Questions Taken So Far
-     * @param count
      */
-    public void setTextQuestionNumber(int count){
+    public void displayTextQuestionNumber(){
         String questionOutOfMaxQuestions = Integer.toString(mCounter) + "/" + NUM_QUIZ_QUESTIONS;
         mQuestionNumber.setText(questionOutOfMaxQuestions);
     }
@@ -264,15 +263,18 @@ public class VerbGameFragment extends Fragment {
     class ButtonNextClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            if((Integer) buttonNext.getTag() == 1) {
-                int status = (Integer) mButtonList.get(0).getTag();
-                if (status == 1) {
-                    makeAnswerToast(0);
-                    // i.e. if Question Was Skipped MAKE ANSWER FAIL
+            if(mCounter == NUM_QUIZ_QUESTIONS){   // Check if end of the game
+                mVerbGame.endGame();   // Run The End of the Game
+                Toast.makeText(getContext(),R.string.game_over, Toast.LENGTH_SHORT).show();
+            } else {
+                int status = (Integer) mButtonList.get(0).getTag(); // Temp Neutralize Button Clicks
+                if (status == 1) {   // i.e. if Question Was Skipped MAKE ANSWER FAIL
+             //       mVerbGame.storeAnswer(0);    // record the answer as incorrect
+                    makeAnswerToast(0); // Set up Toasts
                 }
-                setUpQuestion();  // Set Up Next Question
                 mCounter++;
-                setTextQuestionNumber(mCounter);
+                displayTextQuestionNumber(); // update next question number
+                setUpQuestion();  // Set Up Next Question
             }
 
           //  mRefreshListener.refresh();   // Trigger the Listener in the Activity to REFRESH SCREEN
@@ -283,3 +285,5 @@ public class VerbGameFragment extends Fragment {
 
 
 }
+
+
