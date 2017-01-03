@@ -137,11 +137,10 @@ public class VerbGameFragment extends Fragment {
         mQuestionNumber = (TextView) view.findViewById(R.id.questionNumber);  // Wire Question Number Counter
         displayTextQuestionNumber();  // set Counter
 
-        setUpQuestion(); // set up a Multiple Choice Question
-
         buttonNext = (Button) view.findViewById(R.id.buttonNext);  // Wire next Button and it's onClick()
         buttonNext.setOnClickListener(new ButtonNextClickListener());
-        buttonNext.setTag(1);
+
+        setUpQuestion(); // set up a Multiple Choice Question
 
         return view;
     }
@@ -172,6 +171,7 @@ public class VerbGameFragment extends Fragment {
 
             mButtonList.get(i).setTag(1);  // Set Tag Flags
         }
+        buttonNext.setTag(1);
     }
 
     /**
@@ -235,7 +235,7 @@ public class VerbGameFragment extends Fragment {
         public void onClick(View view) {
             int status = (Integer) mButtonList.get(0).getTag();  // Check If Buttons are Live
             if(status==1) {
-                //mVerbGame.checkAnswer(mCorrectVerbIndex); // record the answer
+                mVerbGame.storeAnswer(1); // record the correct answer
                 makeAnswerToast(1);
                 setButtonsNull();   // Turn Off the Button onClick()
             }
@@ -250,8 +250,7 @@ public class VerbGameFragment extends Fragment {
         public void onClick(View view) {
             int status = (Integer) mButtonList.get(0).getTag();  // Check If Buttons are Live
             if(status==1) {
-                int otherIndex = (mCorrectVerbIndex == 0) ? 1 : 0; // make up dummy index as cannot pass to anom function
-                //mVerbGame.checkAnswer(otherIndex);    // record the answer
+                mVerbGame.storeAnswer(0);    // record the incorrect answer
                 makeAnswerToast(0);
                 setButtonsNull();   // Turn Off the Button onClick()
             }
@@ -263,18 +262,21 @@ public class VerbGameFragment extends Fragment {
     class ButtonNextClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            if(mCounter == NUM_QUIZ_QUESTIONS){   // Check if end of the game
-                mVerbGame.endGame();   // Run The End of the Game
-                Toast.makeText(getContext(),R.string.game_over, Toast.LENGTH_SHORT).show();
-            } else {
-                int status = (Integer) mButtonList.get(0).getTag(); // Temp Neutralize Button Clicks
-                if (status == 1) {   // i.e. if Question Was Skipped MAKE ANSWER FAIL
-             //       mVerbGame.storeAnswer(0);    // record the answer as incorrect
-                    makeAnswerToast(0); // Set up Toasts
+            if((Integer) buttonNext.getTag() == 1) {
+                if (mCounter >= NUM_QUIZ_QUESTIONS) {   // Check if end of the game
+                    buttonNext.setTag(0);  // Deactivate NextButton after End of Game
+                    mVerbGame.endGame();   // Run The End of the Game
+                    Toast.makeText(getContext(), R.string.game_over, Toast.LENGTH_SHORT).show();  // End Game Toast
+                } else {
+                    int status = (Integer) mButtonList.get(0).getTag(); // Temp Neutralize Button Clicks
+                    if (status == 1) {   // Check if Question Was Skipped -> MAKE AUTO ANSWER FAIL
+                        //       mVerbGame.storeAnswer(0);    // record the answer as incorrect
+                        makeAnswerToast(0); // Set up Toasts
+                    }
+                    mCounter++;
+                    displayTextQuestionNumber(); // update next question number
+                    setUpQuestion();  // Set Up Next Question
                 }
-                mCounter++;
-                displayTextQuestionNumber(); // update next question number
-                setUpQuestion();  // Set Up Next Question
             }
 
           //  mRefreshListener.refresh();   // Trigger the Listener in the Activity to REFRESH SCREEN

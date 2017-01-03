@@ -161,20 +161,16 @@ public class VerbGame {
 
 
     /**
-     * checkAnswer()
+     * storeAnswer()
      * -------------
-     * 1) Determines if the answer to a question is correct;
-     * 2) Creates Answer object to contain data for the question and adds to Answer List.
-     * @param guessIndex  index of the Verb Selected by the student
+     * Creates Answer object to contain data for the question and adds to Answer List.
+     * @param ans answer flag - correct/incorrect (1 or 0)
      * @return If answer is correct/incorrect (1 or 0)
      */
-    public int checkAnswer(int guessIndex){
+    public int storeAnswer(int ans){
 
-        int ans = (guessIndex == mCorrectVerbIndex) ? 1 :0;  // determine correct/incorrect answer
         mCorrectVerbDifficulty = determineQuestionDifficulty(); // determine Difficulty of Question
-
         Answer answer = new Answer(mCorrectVerb.getId(), ans, mCorrectVerbDifficulty);  // Set Answer Object
-
         mAnswerList.add(answer); // Add to buffer mAnswer List
 
         return answer.correct;  // Return if answer is correct/incorrect
