@@ -169,9 +169,9 @@ public class VerbGameFragment extends Fragment {
             else
                 mButtonList.get(i).setOnClickListener(new ButtonIncorrectClickListener());
 
-            mButtonList.get(i).setTag(1);  // Set Tag Flags
+            mButtonList.get(i).setTag(1);  // Set Button Tag Flags
         }
-        buttonNext.setTag(1);
+        buttonNext.setTag(1);  // Set Next Button Tag Live
     }
 
     /**

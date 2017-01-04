@@ -756,6 +756,32 @@ public class GameVerbTests {
 
     }
 
+    @Test
+    public void testRunVerbQuestion() throws Exception{
+
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+
+    }
+
     @After
     public void breakDown() {
         databaseAccess.close();
