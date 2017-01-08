@@ -151,7 +151,7 @@ public class VerbGame {
 
         do{
             if(mQuestionNumber % TIME_FOR_INCORRECT_QUESTION == 0  && incorrectTableSize != 0
-                    && numSearchLoopsIncorrectTable < incorrectTableSize) {  // Time for Incorrect Question ...
+                   && checkForValidIncorrectVerb() && numSearchLoopsIncorrectTable < incorrectTableSize) {  // Time for Incorrect Question ...
                 idList = getIncorrectVerbIDs();                              // if the Incorrect Table is Not empty
                 numSearchLoopsIncorrectTable++;                              // & Not All Verbs in Incorrect Table been tested
             } else
@@ -317,14 +317,23 @@ public class VerbGame {
     public List<Integer> getIncorrectVerbIDs(){
         int conjNum1_2 = 2;
         int conjNum1_4 = 40;
+        Random rnd = new Random();
 
         List<Integer> list = new ArrayList<>();
 
-        int numVerbs = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);  // Count Number of Verbs in Table
-        Random rnd = new Random();
-        int randomTableID = rnd.nextInt(numVerbs) + 1;  //
+        int verbId1;
 
-        int verbId1 = mDatabaseAccess.sqlIncorrectVerb_GetId(randomTableID);  // Select id from Incorrect Table
+        // Defence Check for restricting Verbs for skillLevel 1 or 2
+        if(mSkillLevel < 3){  // Restrict the List to VerbIDs with Conj 1 or 2.
+            List<Integer> restrictVerbIDlist = mDatabaseAccess.getRestrictedIncorrectVerbList(conjNum1_2); // get a restricted list of incorrect VerbIds
+            int randomVerbID = rnd.nextInt(list.size());
+            verbId1 = restrictVerbIDlist.get(randomVerbID);
+        } else {
+            int numVerbs = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);  // Count Number of Verbs in Table
+            int randomTableID = rnd.nextInt(numVerbs) + 1;
+            verbId1 = mDatabaseAccess.sqlIncorrectVerb_GetId(randomTableID);  // Select id from Incorrect Table
+        }
+
         list.add(verbId1);
 
         switch(mSkillLevel) {
