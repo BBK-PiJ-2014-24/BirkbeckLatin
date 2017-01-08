@@ -226,13 +226,22 @@ public class VerbGame {
             return 1;
     }
 
+    /**
+     * checkForValidIncorrectVerb()
+     * ----------------------------
+     * Check within IncorrectVerb Table that:
+     *    1) there is an ID that meets skillLevel 1 or 2
+     *    2) the ID has not been used yet.
+     * @return TRUE if OK and that there is suitable Verb ID that has NOT been used yet
+     */
     public boolean checkForValidIncorrectVerb(){
-        int numVerbs = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);  // Count Number of Verbs in Table
+        int conjNum1_2 = 2;
+        List<Integer> list = mDatabaseAccess.getRestrictedIncorrectVerbList(conjNum1_2);
 
-
-        int verbId1 = mDatabaseAccess.sqlIncorrectVerb_GetId(randomTableID);  // Select id from Incorrect Table
-        list.add(verbId1);
-
+        if(list.size() == 0)
+            return false;   // check if no IncorrectVerb has No Verbs lower than 1-2 Conj
+        else
+            return !repeatedQuestion(list); // return True if NOT repeated (hence the !)
     }
 
     /**

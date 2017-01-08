@@ -641,7 +641,6 @@ public class DatabaseAccess {
         String whereClause = DbSchema.VerbListTable.Cols.LATIN_CONJNUM + "=?";
         String[] whereArgs = new String[]{Integer.toString(conj)};
 
-
         List<Integer> verbIDList = new ArrayList<>();
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs);  // set up cursor pointing at db
 
