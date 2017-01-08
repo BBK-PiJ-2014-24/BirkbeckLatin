@@ -333,7 +333,7 @@ public class DbSchema {
     }
 
 
-    // inner STATIC class - Incorrect_Verb_Table
+    // inner STATIC class - Incorrect_Noun_Table
     // ----------------------------------------------
     public static final class Incorrect_NounEtc_Table {
         public static final String INCORRECT_NOUNETC_TABLE = "Incorrect_NounEtc_Table";

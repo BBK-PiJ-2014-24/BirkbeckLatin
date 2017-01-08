@@ -141,6 +141,14 @@ public class VerbGame {
         int incorrectTableSize = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
         int numSearchLoopsIncorrectTable = 0;
 
+        // check
+        // 1) Time for an incorrect Question
+        // 2) inCorrectTableSize > 0
+        // 3) There is an ID that meets skillLevel -
+        // 4) That ID has not been used yet. -
+        // 5) Find ID Pair
+
+
         do{
             if(mQuestionNumber % TIME_FOR_INCORRECT_QUESTION == 0  && incorrectTableSize != 0
                     && numSearchLoopsIncorrectTable < incorrectTableSize) {  // Time for Incorrect Question ...
@@ -218,6 +226,14 @@ public class VerbGame {
             return 1;
     }
 
+    public boolean checkForValidIncorrectVerb(){
+        int numVerbs = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);  // Count Number of Verbs in Table
+
+
+        int verbId1 = mDatabaseAccess.sqlIncorrectVerb_GetId(randomTableID);  // Select id from Incorrect Table
+        list.add(verbId1);
+
+    }
 
     /**
      * repeatedQuestion()
@@ -297,9 +313,9 @@ public class VerbGame {
 
         int numVerbs = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);  // Count Number of Verbs in Table
         Random rnd = new Random();
-        int randomIndex = rnd.nextInt(numVerbs) + 1;  //
+        int randomTableID = rnd.nextInt(numVerbs) + 1;  //
 
-        int verbId1 = mDatabaseAccess.sqlIncorrectVerb_GetId(randomIndex);  // Select id from Incorrect Table
+        int verbId1 = mDatabaseAccess.sqlIncorrectVerb_GetId(randomTableID);  // Select id from Incorrect Table
         list.add(verbId1);
 
         switch(mSkillLevel) {

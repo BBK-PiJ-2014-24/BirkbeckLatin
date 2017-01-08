@@ -626,6 +626,38 @@ public class DatabaseAccess {
 
     // ------------------------------- INCORRECT VERBS -------------------------------------
 
+    /**
+     * getRestrictedIncorrectVerbList()
+     * --------------------------------
+     * Gets a list of all Verb IDs from the IncorrecVerbList that
+     * are restricted to a max Conj.
+     * @param conj - Restricted
+     * @return  List<Integer> of VerbIDs from the
+     */
+    public List<Integer> getRestrictedIncorrectVerbList(int conj){
+
+        String table = DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE;  // FROM Incorrect_Verb_Table
+        String[] column = new String[]{DbSchema.Incorrect_Verb_Table.Cols.VERB_ID};   // Select VerbIDs
+        String whereClause = DbSchema.VerbListTable.Cols.LATIN_CONJNUM + "=?";
+        String[] whereArgs = new String[]{Integer.toString(conj)};
+
+
+        List<Integer> verbIDList = new ArrayList<>();
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs);  // set up cursor pointing at db
+
+        try {
+            cursor.moveToFirst();    // move cursor to first element of db
+            while (!cursor.isAfterLast()) {  // while NOT after last element
+                verbIDList.add(cursor.getInt(0));  // getID
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();  // CLOSE CURSOR  !!
+        }
+        return verbIDList;
+    }
+
+
 
     /**
      * sqlIncorrectVerb_GetId()
