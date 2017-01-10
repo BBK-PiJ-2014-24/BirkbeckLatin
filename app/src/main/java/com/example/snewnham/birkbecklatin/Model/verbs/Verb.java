@@ -385,6 +385,7 @@ public interface Verb {
 
     /**
      * getEnglishVerb()
+     * ================
      * @return The Complete English Verb
      */
     public String getEnglishVerb();
@@ -396,5 +397,34 @@ public interface Verb {
      * @param englishVerb
      */
     public void setEnglishVerb(String englishVerb);
+
+
+    /**
+     * setAnswer()
+     * ===========
+     * @param answer
+     */
+    public void setAnswer(int answer);
+
+
+    /**
+     * getAnswer()
+     * ===========
+     * @return
+     */
+    public int getAnswer();
+
+    /**
+     * setIncorrect()
+     * ==============
+     * @param incorrect
+     */
+    public void setIncorrect(int incorrect);
+
+    /**
+     * getIncorrect()
+     * ==============
+     */
+    public int getIncorrect();
 
 }

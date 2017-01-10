@@ -316,6 +316,9 @@ public class DatabaseInstrumentedTest {
         String english_Perfect = "warned, advised";
         String english_Participle = "warning, advising";
 
+        int answer = 0;
+        int incorrect = 0;
+
         // Run Query
         // ---------
         Verb verbRegular = databaseAccess.sqlVerbListQuery(id);
@@ -343,6 +346,9 @@ public class DatabaseInstrumentedTest {
         assertEquals( english_Present_3rdPerson, verbRegular.getEnglish_Present_3rdPerson() );
         assertEquals( english_Perfect, verbRegular.getEnglish_Perfect() );
         assertEquals( english_Participle, verbRegular.getEnglish_Participle() );
+
+        assertEquals( answer, verbRegular.getAnswer());
+        assertEquals( incorrect, verbRegular.getIncorrect() );
 
     }
 
@@ -895,17 +901,17 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testSqlMeta(){
 
-        String key = "skillLevel";
+        String key = "Verb_Skill_Level";
         int value = 3;
         databaseAccess.sqlMeta_Insertion(key,value);
 
         int size = databaseAccess.sqlTableCountQuery(DbSchema.Meta_Table.META_TABLE);
 
-        assertEquals(1, size);  // Check Insertion
+        assertEquals(2, size);  // Check Insertion
 
         int valueGuess = databaseAccess.sqlMetaQuery(key);
 
-      //  assertEquals(value, valueGuess);
+        assertEquals(value, valueGuess);
 
     }
 

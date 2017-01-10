@@ -39,6 +39,10 @@ public class DbSchema {
             public static final String ENGLISH_PRESENT_3RDPERSON = "English_Present_3rdPerson";
             public static final String ENGLISH_PERFECT = "English_Perfect";
             public static final String ENGLISH_PARTICIPLE = "English_Participle";
+
+            public static final String ASKED = "Asked";
+            public static final String INCORRECT = "Incorrect";
+
         }
 
     }

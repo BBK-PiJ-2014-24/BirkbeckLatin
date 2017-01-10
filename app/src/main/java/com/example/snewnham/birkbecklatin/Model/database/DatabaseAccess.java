@@ -1200,7 +1200,7 @@ public class DatabaseAccess {
         if (this.mSQLiteDatabase == null)
             open();
 
-        this.mSQLiteDatabase.insertWithOnConflict(DbSchema.Meta_Table.META_TABLE, null, contentValues, SQLiteDatabase.CONFLICT_IGNORE);
+        this.mSQLiteDatabase.insertWithOnConflict(DbSchema.Meta_Table.META_TABLE, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
     }
 
 

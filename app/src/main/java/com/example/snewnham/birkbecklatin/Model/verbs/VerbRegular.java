@@ -11,32 +11,37 @@ public class VerbRegular implements Verb {
 
     // Fields
     // ------
-    private int mId;
-    private String mLatin_Type;
-    private int mLatin_ConjNum;
-    private String mLatin_Present;
-    private String mLatin_Infinitive;
-    private String mLatin_Perfect;
-    private String mLatin_Participle;
-    private String mLatin_Present_Stem;
-    private String mLatin_Infinitive_Stem;
-    private String mLatin_Infinitive_PassiveStem;
-    private String mLatin_Present_SubjuncStem;
-    private String mLatin_Perfect_Stem;
-    private String mLatin_Participle_Stem;
-    private String mEnglish_Infinitive;
-    private String mEnglish_Present_3rdPerson;
-    private String mEnglish_Perfect;
-    private String mEnglish_Participle;
+    protected int mId;
+    protected String mLatin_Type;
+    protected int mLatin_ConjNum;
+    protected String mLatin_Present;
+    protected String mLatin_Infinitive;
+    protected String mLatin_Perfect;
+    protected String mLatin_Participle;
+    protected String mLatin_Present_Stem;
+    protected String mLatin_Infinitive_Stem;
+    protected String mLatin_Infinitive_PassiveStem;
+    protected String mLatin_Present_SubjuncStem;
+    protected String mLatin_Perfect_Stem;
+    protected String mLatin_Participle_Stem;
+    protected String mEnglish_Infinitive;
+    protected String mEnglish_Present_3rdPerson;
+    protected String mEnglish_Perfect;
+    protected String mEnglish_Participle;
 
     protected DatabaseAccess mDatabaseAccess;
-    private String mLatinStem;
-    private String mLatinEnding;
+    protected String mLatinStem;
+    protected String mLatinEnding;
     protected String mLatinVerb;
-    private String mEnglishPerson;
-    private String mEnglishAuxiliaryVerb;
-    private String mEnglishVerbEnding;
+    protected String mEnglishPerson;
+    protected String mEnglishAuxiliaryVerb;
+    protected String mEnglishVerbEnding;
     protected String mEnglishVerb;
+
+    protected int mAnswer;
+    protected int mIncorrect;
+
+
 
 
 
@@ -424,5 +429,26 @@ public class VerbRegular implements Verb {
     @Override
     public void setEnglishVerb(String englishVerb) {
         mEnglishVerb = englishVerb;
+    }
+
+
+    @Override
+    public int getAnswer() {
+        return mAnswer;
+    }
+
+    @Override
+    public void setAnswer(int answer) {
+        mAnswer = answer;
+    }
+
+    @Override
+    public int getIncorrect() {
+        return mIncorrect;
+    }
+
+    @Override
+    public void setIncorrect(int incorrect) {
+        mIncorrect = incorrect;
     }
 }
