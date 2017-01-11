@@ -38,7 +38,7 @@ public class VerbRegular implements Verb {
     protected String mEnglishVerbEnding;
     protected String mEnglishVerb;
 
-    protected int mAnswer;
+    protected int mAsked;
     protected int mIncorrect;
 
 
@@ -432,14 +432,12 @@ public class VerbRegular implements Verb {
     }
 
 
-    @Override
-    public int getAnswer() {
-        return mAnswer;
+    public int getAsked() {
+        return mAsked;
     }
 
-    @Override
-    public void setAnswer(int answer) {
-        mAnswer = answer;
+    public void setAsked(int asked) {
+        mAsked = asked;
     }
 
     @Override

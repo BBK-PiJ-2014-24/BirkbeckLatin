@@ -182,7 +182,7 @@ public class VerbGame {
 
         mCorrectVerbDifficulty = determineQuestionDifficulty(); // determine Difficulty of Question
         Answer answer = new Answer(mCorrectVerb.getId(), ans, mCorrectVerbDifficulty);  // Set Answer Object
-        mAnswerList.add(answer); // Add to buffer mAnswer List
+        mAnswerList.add(answer); // Add to buffer mAsked List
 
         return answer.correct;  // Return if answer is correct/incorrect
     }
@@ -722,7 +722,7 @@ public class VerbGame {
 
         for(Integer id : incorrectList){    // convert ids to verbs add to table
             Verb verb = mDatabaseAccess.sqlVerbListQuery(id);
-            mDatabaseAccess.sqlIncorrectVerb_Insert(verb);
+     //       mDatabaseAccess.sqlIncorrectVerb_Insert(verb);
         }
         return count;
     }

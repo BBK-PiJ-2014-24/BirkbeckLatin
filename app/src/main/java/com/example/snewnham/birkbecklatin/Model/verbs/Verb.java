@@ -400,19 +400,19 @@ public interface Verb {
 
 
     /**
-     * setAnswer()
+     * setAsked()
      * ===========
-     * @param answer
+     * @param asked
      */
-    public void setAnswer(int answer);
+    public void setAsked(int asked);
 
 
     /**
-     * getAnswer()
+     * getAsked()
      * ===========
      * @return
      */
-    public int getAnswer();
+    public int getAsked();
 
     /**
      * setIncorrect()

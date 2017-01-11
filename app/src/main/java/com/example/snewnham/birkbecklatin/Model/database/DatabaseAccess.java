@@ -199,7 +199,9 @@ public class DatabaseAccess {
         );
 
 
-        if (table.equals(DbSchema.VerbListTable.VERB_LIST_TABLE))
+        if (table.equals(DbSchema.VerbListTable.VERB_LIST_TABLE) && column == null)
+//                !column[0].equals(DbSchema.VerbListTable.Cols.INCORRECT) &&
+//                !column[0].equals(DbSchema.VerbListTable.Cols.ASKED))
             return new VerbListCursor(cursor);
         else if (table.equals(DbSchema.NounListTable.NOUN_LIST_TABLE))
             return new NounListCursor(cursor);
@@ -513,8 +515,6 @@ public class DatabaseAccess {
                           DbSchema.EnglishAuxillaryVerbTable.Cols.TENSE + "=?";
         }
 
-
-
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
         cursor.moveToFirst();
 
@@ -555,7 +555,6 @@ public class DatabaseAccess {
                           DbSchema.EnglishVerbEndingTable.Cols.MOOD + "=?" + " AND " +
                           DbSchema.EnglishVerbEndingTable.Cols.VOICE + "=?";
         }
-
 
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
         cursor.moveToFirst();
@@ -688,115 +687,79 @@ public class DatabaseAccess {
     /**
      * sqlIncorrectVerb_Insert()
      * -------------------------
-     * Inserts a verbId into INCORRECT_VERB_TABLE.
-     * @param verb - verb object
+     * Updates the 'Incorrect' Field in the_VERB_LIST_TABLE t
+     * @param verbID - verb ID to update
+     * @param  attribute - The Field to be Reset, 'Incorrect' or 'Answer'
+     * @param incorrectFlag - Insert 0 (for Correct Answer) and 1 (for Incorrect Answer)
      */
-    public void sqlIncorrectVerb_Insert(Verb verb) {
-
-        // check if table is empty
-        int tableSize = sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
-        int id = tableSize + 1;  // increment the table's id / primary key - Autoincrement will not do this properly following a reset
+    public void sqlIncorrectVerb_Insert(String attribute, int verbID, int incorrectFlag) {
 
         ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
-        contentValues.put(DbSchema.Incorrect_Verb_Table.Cols._id, id); // manual _id insert for first record
-        contentValues.put(DbSchema.Incorrect_Verb_Table.Cols.VERB_ID, verb.getId());  // use key-value
-        contentValues.put(DbSchema.Incorrect_Verb_Table.Cols.VERB_TYPE, verb.getLatin_Type());  // use key-value
-        contentValues.put(DbSchema.Incorrect_Verb_Table.Cols.VERB_CONJNUM, verb.getLatin_ConjNum());  // use key-value
+        contentValues.put(attribute, incorrectFlag); // manual _id insert for first record
 
         if (this.mSQLiteDatabase == null)
             open();
 
-        this.mSQLiteDatabase.insert(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE, null, contentValues);
+        String table = DbSchema.VerbListTable.VERB_LIST_TABLE;
+        String whereClause = DbSchema.VerbListTable.Cols._id + "=?";
+        String[] whereArgument = new String[]{Integer.toString(verbID)}; // WHERE ROW of ID = Verb ID
+
+        this.mSQLiteDatabase.update(table, contentValues, whereClause, whereArgument);  // CV is the Update (Field, Value)
+                                                                                        // whereClause tells which row to update
     }
 
     /**
      * sqlIncorrectVerb_TestInsertion()
-     * -----------------------------------
-     * Test if A Record Entry has been properly inserted in the INCORRECT_NOUNETC_TABLE.
-     * @param verbId
-     * @return True if verbId is in Table
+     * --------------------------------
+     * Test if A Record Entry of 'Incorrect' or 'Answer' Field has been properly inserted in the Verb_List Table
+     * @param verbID - verb ID to test update
+     * @param  attribute - The Field to test, 'Incorrect' or 'Answer'
+     * @param incorrectFlag - the right value for the Attribute.
+     * @return True if check matches incorrectFlag
      */
-    public boolean sqlIncorrectVerb_TestInsertion(int verbId){
-        String table = DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE;
+    public boolean sqlIncorrectVerb_TestInsertion(String attribute, int verbID, int incorrectFlag){
+        String table = DbSchema.VerbListTable.VERB_LIST_TABLE;
 
-        String[] column = null; // Select *
+        String[] column = new String[]{attribute}; // Select Column
 
-        String whereClause = DbSchema.Incorrect_Verb_Table.Cols.VERB_ID + "=?";
-
-        String strId = Integer.toString(verbId);
+        String whereClause = DbSchema.VerbListTable.Cols._id + "=?";  // Where
+        String strId = Integer.toString(verbID);
         String[] whereArgs = new String[]{strId};
 
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
-        if (cursor.getCount() == 0) // Cursor is empty, so no record exists
-            return false;
-        else
-            return true;
-    }
+        cursor.moveToFirst();
+        int answer = cursor.getInt(cursor.getColumnIndex(attribute));
 
-    /**
-     * sqlIncorrectVerb_Delete()
-     * -------------------------
-     * Deletes row from INCORRECT_VERB_TABLE  WHERE VerbId is given as argument.
-     * @param verbId
-     */
-    public void sqlIncorrectVerb_Delete(int verbId){
 
-        String table = DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE;
+        int x = cursor.getCount();
+        String[] cols = cursor.getColumnNames();
 
-        String whereClause = DbSchema.Incorrect_Verb_Table.Cols.VERB_ID + "=?"; // WHERE _id =
-        String strId = Integer.toString(verbId);
-        String[] whereArgs = new String[]{strId};
-
-        if (this.mSQLiteDatabase == null)
-            open();
-
-        this.mSQLiteDatabase.delete(table, whereClause, whereArgs);
-    }
-
-    /**
-     * @Overload
-     * sqlIncorrectVerb_Delete(String type, int conjNum)
-     * -------------------------------------------------
-     * If skillLevel is dropped, then Certain Verb Types or Conjugations may
-     * need to be scrapped from the list.
-     * @param type Verb Type NOT to be deleted
-     * @param conjNum Verb Conjucations and Above to be deleted
-     */
-    public void sqlIncorrectVerb_Delete(String type, int conjNum){
-
-        String whereClause = null;
-        String[] whereArgs = null;
-
-        String table = DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE;
-        if(conjNum == 0) {
-            whereClause = DbSchema.Incorrect_Verb_Table.Cols.VERB_TYPE + "!=?";
-            whereArgs = new String[]{"Regular"};
-        } else {
-            whereClause = DbSchema.Incorrect_Verb_Table.Cols.VERB_TYPE + "!=?" + " AND " +
-                                 DbSchema.Incorrect_Verb_Table.Cols.VERB_CONJNUM + ">?";
-            whereArgs = new String[]{"Regular", Integer.toString(conjNum)};
-        }
-
-        if (this.mSQLiteDatabase == null)
-            open();
-
-        this.mSQLiteDatabase.delete(table, whereClause, whereArgs);
+        return (answer == incorrectFlag) ? true : false;
 
     }
+
+
 
     /**
      * sqlIncorrectVerb_Reset()
      * ------------------------
-     * Clears all records from the INCORRECT_VERB_TABLE. That is, wipes all Incorrect Verbs
+     * Resets the Incorrect Fields, 'Incorrect' OR 'Answer' to zero, for ALL rows in the Verb_List Table
+     * @param  attribute - The Field to be Reset, 'Incorrect' or 'Answer'
      */
-    public void sqlIncorrectVerb_Reset(){
+    public void sqlIncorrectVerb_Reset(String attribute){
 
-        String table = DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE;
+        int zeroInt = 0;
+        ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
+        contentValues.put(attribute, zeroInt ); // manual _id insert for first record
 
         if (this.mSQLiteDatabase == null)
             open();
 
-        this.mSQLiteDatabase.delete(table,null,null);
+        String table = DbSchema.VerbListTable.VERB_LIST_TABLE;
+        String whereClause =  null;
+        String[] whereArgument = null; // Select *
+
+        this.mSQLiteDatabase.update(table, contentValues, whereClause, whereArgument);
     }
 
 

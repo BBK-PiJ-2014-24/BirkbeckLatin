@@ -13,7 +13,6 @@ import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
-import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
 
 import org.junit.After;
 import org.junit.Before;
@@ -347,7 +346,7 @@ public class DatabaseInstrumentedTest {
         assertEquals( english_Perfect, verbRegular.getEnglish_Perfect() );
         assertEquals( english_Participle, verbRegular.getEnglish_Participle() );
 
-        assertEquals( answer, verbRegular.getAnswer());
+        assertEquals( answer, verbRegular.getAsked());
         assertEquals( incorrect, verbRegular.getIncorrect() );
 
     }
@@ -437,9 +436,9 @@ public class DatabaseInstrumentedTest {
     }
 
     /**
-     * testIncorrectLatinVerbTable() - Tests general access to the IncorrectLatinVerb Table - add, delete, retrieve
+     * testIncorrectLatinVerbTable() - Tests access to the Incorrect FIELD - Insert, Reset
      * =============================
-     * Test sqlIncorrectVerbTable
+     *
      */
     @Test
     public void testIncorrectLatinVerb(){
@@ -453,45 +452,117 @@ public class DatabaseInstrumentedTest {
         int id4 = 10;
         Verb verb4 = databaseAccess.sqlVerbListQuery(id4);
 
-        databaseAccess.sqlIncorrectVerb_Reset();
+        databaseAccess.sqlIncorrectVerb_Reset(Cols.INCORRECT);
 
-        int originalSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id1, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id2, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id3, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id4, 1); // for test of duplication
 
-        databaseAccess.sqlIncorrectVerb_Insert(verb1);
-        databaseAccess.sqlIncorrectVerb_Insert(verb2);
-        databaseAccess.sqlIncorrectVerb_Insert(verb3);
-        databaseAccess.sqlIncorrectVerb_Insert(verb3); // for test of duplication
+        boolean testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id1, 1);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
+        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id2, 1);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
+        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id3, 1);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
+        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id4, 1);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
 
-        boolean testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(verb3.getId());
-        assertTrue(testInsertionTrue);  // Test Entry Insertion in Table - TRUE
-        boolean testInsertionFalse = databaseAccess.sqlIncorrectVerb_TestInsertion(verb4.getId());
-        assertFalse(testInsertionFalse);  // Test Entry Insertion in Table - FALSE
+        verb1.setIncorrect(1);  // YOU MUST UPDATE THE VERB OBJECT MANUALLY
+        verb2.setIncorrect(1);  // SO THAT IT IS CONSISTENT WITH DATABASE
+        verb3.setIncorrect(1);
+        verb4.setIncorrect(1);
 
-        int newSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
-        assertEquals(3, newSize - originalSize);  // Test the size of table has increased by 3.
+        assertEquals(1, verb1.getIncorrect());  // Test retrieve a Incorrect = 1 given the verbid
+        assertEquals(1, verb2.getIncorrect());
+        assertEquals(1, verb3.getIncorrect());
+        assertEquals(1, verb4.getIncorrect());
 
+        databaseAccess.sqlIncorrectVerb_Reset(Cols.INCORRECT);
 
-        int verbId = databaseAccess.sqlIncorrectVerb_GetId(3);
-        assertEquals(verb3.getId(), verbId);  // Test retrieve a verbId given the id (of the table)
+        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id1, 0);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
+        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id2, 0);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
+        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id3, 0);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
+        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id4, 0);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
 
-        databaseAccess.sqlIncorrectVerb_Delete(verb1.getId());
-        databaseAccess.sqlIncorrectVerb_Delete(verb2.getId());
-        databaseAccess.sqlIncorrectVerb_Delete(verb3.getId());
+        verb1.setIncorrect(0);  // YOU MUST SET THE VERB OBJECT MANUALLY
+        verb2.setIncorrect(0);  // SO THAT IT IS CONSISTENT WITH DATABASE
+        verb3.setIncorrect(0);
+        verb4.setIncorrect(0);
 
-        int postDeleteSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
-        assertEquals(originalSize, postDeleteSize); // Test delete a verbId given the id
+        assertEquals(0, verb1.getIncorrect());  // Test retrieve a Incorrect = 0 given the verbid
+        assertEquals(0, verb2.getIncorrect());
+        assertEquals(0, verb3.getIncorrect());
+        assertEquals(0, verb4.getIncorrect());
+    }
 
-        databaseAccess.sqlIncorrectVerb_Insert(verb1);
-        databaseAccess.sqlIncorrectVerb_Insert(verb2);
-        databaseAccess.sqlIncorrectVerb_Insert(verb3);
+    /**
+     * testAskedLatinVerb() - Tests access to the ASKED FIELD - Insert, Reset
+     * ====================
+     * Test sqlIncorrectVerbTable
+     */
+    @Test
+    public void testAskedLatinVerb(){
 
-        int ReinsertionSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
-        assertEquals(3, ReinsertionSize - postDeleteSize);  // RETEST the size of table has increased by 3.
+        int id1 = 1;
+        Verb verb1 = databaseAccess.sqlVerbListQuery(id1);
+        int id2 = 2;
+        Verb verb2 = databaseAccess.sqlVerbListQuery(id2);
+        int id3 = 8;
+        Verb verb3 = databaseAccess.sqlVerbListQuery(id3);
+        int id4 = 10;
+        Verb verb4 = databaseAccess.sqlVerbListQuery(id4);
 
-        databaseAccess.sqlIncorrectVerb_Reset();
-        int postResetSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
-        assertEquals(0, postResetSize); // Test RESET has cleared all records.
+        databaseAccess.sqlIncorrectVerb_Reset(Cols.ASKED);
 
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id1, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id2, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id3, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id4, 1); // for test of duplication
+
+        boolean testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id1, 1);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
+        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id2, 1);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
+        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id3, 1);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
+        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id4, 1);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
+
+        verb1.setAsked(1);  // YOU MUST UPDATE THE VERB OBJECT MANUALLY
+        verb2.setAsked(1);  // SO THAT IT IS CONSISTENT WITH DATABASE
+        verb3.setAsked(1);
+        verb4.setAsked(1);
+
+        assertEquals(1, verb1.getAsked());  // Test retrieve a Incorrect = 1 given the verbid
+        assertEquals(1, verb2.getAsked());
+        assertEquals(1, verb3.getAsked());
+        assertEquals(1, verb4.getAsked());
+
+        databaseAccess.sqlIncorrectVerb_Reset(Cols.ASKED);
+
+        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id1, 0);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
+        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id2, 0);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
+        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id3, 0);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
+        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id4, 0);
+        assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
+
+        verb1.setAsked(0);  // YOU MUST SET THE VERB OBJECT MANUALLY
+        verb2.setAsked(0);  // SO THAT IT IS CONSISTENT WITH DATABASE
+        verb3.setAsked(0);
+        verb4.setAsked(0);
+
+        assertEquals(0, verb1.getAsked());  // Test retrieve a Incorrect = 0 given the verbid
+        assertEquals(0, verb2.getAsked());
+        assertEquals(0, verb3.getAsked());
+        assertEquals(0, verb4.getAsked());
     }
 
     // =================== ENGLISH VERB TESTS ==================================================
