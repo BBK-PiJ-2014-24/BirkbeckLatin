@@ -145,7 +145,7 @@ public class DatabaseAccess {
      */
     public List<Integer> getVerbIDConjugationList(int maxConj){
 
-        String table = DbSchema.VerbListTable.VERB_LIST_TABLE;  // FROM VerbStemTable
+        String table = DbSchema.VerbListTable.VERB_LIST_TABLE;  // FROM VerbListTable
         String[] column = new String[]{DbSchema.VerbListTable.Cols._id}; // SELECT _id
         String whereClause = DbSchema.VerbListTable.Cols.LATIN_CONJNUM + "<=? AND " +
                              DbSchema.VerbListTable.Cols.LATIN_TYPE + "=? OR " +
@@ -157,6 +157,60 @@ public class DatabaseAccess {
         List<Integer> verbIDList = new ArrayList<>();
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs);  // set up cursor pointing at db
 
+        try {
+            cursor.moveToFirst();    // move cursor to first element of db
+            while (!cursor.isAfterLast()) {  // while NOT after last element
+                verbIDList.add(cursor.getInt(cursor.getColumnIndex(DbSchema.VerbListTable.Cols._id)));  // getCrime from cursorWrapper takes db tuple -> Java Crime object
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();  // CLOSE CURSOR  !!
+        }
+        return verbIDList;
+    }
+
+
+    /**
+     * getVerbIDList()
+     * ===============
+     * Runs a SQL on VerbList Table retrieving a list of (Not Yet ASKED)Verb IDs, which can be restricted
+     * for a given skillLevels and left unrestricted.
+     * It can be also set so to retrieve a list of Verb IDs that are INCORRECTLY Answered.
+     * @param maxConj - max level of Conj Number
+     * @param inCorrect - 0: Correct Answer, 1: inCorrect
+     * @param restricted - Boolean flag: restricted: true, unrestricted: false
+     * @return List<integer> of IDs
+     */
+    public List<Integer> getVerbIDList(int maxConj, int inCorrect, boolean restricted){
+
+        String table = DbSchema.VerbListTable.VERB_LIST_TABLE;  // FROM VerbListTable
+        String[] column = new String[]{DbSchema.VerbListTable.Cols._id}; // SELECT _id
+
+        String whereClause = DbSchema.VerbListTable.Cols.ASKED + "=? AND " +  // UNRESTRICTED LIST
+                             DbSchema.VerbListTable.Cols.INCORRECT + "=?";
+
+        if(restricted) {                                                      // RESTRICTED
+             whereClause =  whereClause + " AND " +
+                            DbSchema.VerbListTable.Cols.LATIN_CONJNUM + "<=? AND " +
+                            DbSchema.VerbListTable.Cols.LATIN_TYPE + "=? OR " +
+                            DbSchema.VerbListTable.Cols.LATIN_INFINITIVE + "=?";
+        }
+
+        String[] whereArgs;
+        if(!restricted){
+            whereArgs = new String[]{Integer.toString(0),        // ASKED
+                                     Integer.toString(inCorrect)};// INCORRECT
+        } else {
+            whereArgs = new String[]{Integer.toString(0),        // ASKED
+                                    Integer.toString(inCorrect),// INCORRECT
+                                    Integer.toString(maxConj),  // CONJNUM
+                                    "Regular",                  // LATIN TYPE
+                                    "esse"};                    // LATIN INFINITIVE
+        }
+
+        List<Integer> verbIDList = new ArrayList<>();
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs);  // set up cursor pointing at db
         try {
             cursor.moveToFirst();    // move cursor to first element of db
             while (!cursor.isAfterLast()) {  // while NOT after last element
@@ -382,7 +436,6 @@ public class DatabaseAccess {
                           DbSchema.VerbConjugationTable.Cols.TENSE + "=?" + " AND " +
                           DbSchema.VerbConjugationTable.Cols.CONJNUM + "=?";
         }
-
 
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
         cursor.moveToFirst();
@@ -734,10 +787,10 @@ public class DatabaseAccess {
         int x = cursor.getCount();
         String[] cols = cursor.getColumnNames();
 
+        cursor.close();  // CLOSE CURSOR  !!
         return (answer == incorrectFlag) ? true : false;
 
     }
-
 
 
     /**

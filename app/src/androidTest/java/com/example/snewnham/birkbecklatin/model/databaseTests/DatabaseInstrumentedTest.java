@@ -26,6 +26,7 @@ import static com.example.snewnham.birkbecklatin.Model.database.DbSchema.VerbLis
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.isIn;
 import static org.junit.Assert.*;
 
@@ -348,6 +349,127 @@ public class DatabaseInstrumentedTest {
 
         assertEquals( answer, verbRegular.getAsked());
         assertEquals( incorrect, verbRegular.getIncorrect() );
+
+    }
+
+
+    @Test
+    public void testGetVerbIDList() throws Exception{
+
+        int id1 = 1;
+        int id2 = 2;
+        int id3 = 3;
+        int id4 = 4;
+        int id5 = 5;
+        int id6 = 6;
+        int id7 = 7;
+        int id8 = 8;
+        int id9 = 9;
+        int id10 = 10;
+
+        int conjNum1_2 = 2;
+        int conjNum1_4 = 40;
+
+        databaseAccess.sqlIncorrectVerb_Reset(Cols.INCORRECT);
+
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id1, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id1, 0);
+        boolean testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id1, 0);
+        boolean testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id1, 0);
+        assertTrue(testINCORRECT);
+        assertTrue(testANSWER);
+
+
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id2, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id2, 0);
+        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id2, 1);
+        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id2, 0);
+        assertTrue(testINCORRECT);
+        assertTrue(testANSWER);
+
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id3, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id3, 1);
+        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id3, 0);
+        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id3, 1);
+        assertTrue(testINCORRECT);
+        assertTrue(testANSWER);
+
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id4, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id4, 1);
+        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id4, 1);
+        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id4, 1);
+        assertTrue(testINCORRECT);
+        assertTrue(testANSWER);
+
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id5, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id5, 0);
+        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id5, 0);
+        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id5, 0);
+        assertTrue(testINCORRECT);
+        assertTrue(testANSWER);
+
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id6, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id6, 0);
+        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id6, 1);
+        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id6, 0);
+        assertTrue(testINCORRECT);
+        assertTrue(testANSWER);
+
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id7, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id7, 1);
+        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id7, 0);
+        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id7, 1);
+        assertTrue(testINCORRECT);
+        assertTrue(testANSWER);
+
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id8, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id8, 0);
+        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id8, 1);
+        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id8, 0);
+        assertTrue(testINCORRECT);
+        assertTrue(testANSWER);
+
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id9, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id9, 1);
+        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id9, 0);
+        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id9, 1);
+        assertTrue(testINCORRECT);
+        assertTrue(testANSWER);
+
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id10, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id10, 0);
+        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id10, 0);
+        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id10, 0);
+        assertTrue(testINCORRECT);
+        assertTrue(testANSWER);
+
+        List<Integer> list;
+
+        list = databaseAccess.getVerbIDList(conjNum1_2,0,true);
+        assertThat(list, hasItems(1,5,10));
+        list = databaseAccess.getVerbIDList(conjNum1_2,1,true);
+        assertThat(list, hasItems(2));
+
+
+        list = databaseAccess.getVerbIDList(conjNum1_2,0,false);
+        assertThat(list, hasItems(1,5,10));
+        list = databaseAccess.getVerbIDList(conjNum1_2,1,false);
+        assertThat(list, hasItems(2));
+
+
+        list = databaseAccess.getVerbIDList(conjNum1_4,0,true);
+        assertThat(list, hasItems(1,5,10));
+        list = databaseAccess.getVerbIDList(conjNum1_4,1,true);
+        assertThat(list, hasItems(2,6));
+
+
+        list = databaseAccess.getVerbIDList(conjNum1_4,0,false);
+        assertThat(list, hasItems(1,5,10));
+        list = databaseAccess.getVerbIDList(conjNum1_4,1,false);
+        assertThat(list, hasItems(2,6,8));
+
+        databaseAccess.sqlIncorrectVerb_Reset(Cols.INCORRECT);
+        databaseAccess.sqlIncorrectVerb_Reset(Cols.ASKED);
 
     }
 
