@@ -43,6 +43,9 @@ public class VerbGame {
     private final static String VERB_SKILL_LEVEL = "Verb_Skill_Level";
     private final static String VERB_THETA = "Verb_Theta";
 
+    private static final int CONJNUM1_2 = 2;
+    private static final int CONJNUM1_4 = 40;
+
     private final static int NUM_CHOICES = 6; // 1 Correct Verb, 5 Incorrect Verbs
     private final static String REGULAR = "Regular";
     private final static String DEPONENT = "Deponent";
@@ -126,43 +129,63 @@ public class VerbGame {
     /**
      * runVerbQuestion()
      * -----------------
-     * Generates a Question List of 6 Verbs, selects a correctVerb, shuffles the order of the list.
-     * The verb IDs are either selected from the Verb Table or the IncorrectVerb Table (If it is scheduled for a
-     * Incorrect Question). Furthermore, a defence check is inserted in order to prevent verbs that have already been
-     * tested in the quiz to be repeated.
+     * Generates:
+     * 1) a pair of Verb IDs, restricted according to skillLevel and either from Correct or Incorrect Lists
+     *    (If it is counter signals a scheduled Incorrect Verb or Not)
+     * 2) Forms a Question List of 6 Verbs from the pair of Verb IDs
+     * 3) Randomly selects a correctVerb
+     * 4) Shuffles the order of the list.
      *
      */
     public void runVerbQuestion(){
 
-        List<Integer> idList = null;
+
         List<Verb> newVerbList = new ArrayList<>(6);
         mVerbQuestionList = newVerbList; // Hack to Reset The Verb Question List
         mQuestionNumber++; // Increase Counter
-        int incorrectTableSize = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
-        int numSearchLoopsIncorrectTable = 0;
 
-        // check
-        // 1) Time for an incorrect Question
-        // 2) inCorrectTableSize > 0
-        // 3) There is an ID that meets skillLevel -
-        // 4) That ID has not been used yet. -
-        // 5) Find ID Pair
+        int conj = CONJNUM1_2;
+        boolean restricted = true;
+        switch(mSkillLevel) {      // Find out what Verb Restrictions are required, given Skill Level
+            case 1:
+                conj = CONJNUM1_2;
+                restricted = true;
+                break;
+            case 2:
+                conj = CONJNUM1_4;
+                restricted = true;
+                break;
+            case 3:
+                conj = CONJNUM1_4;
+                restricted = true;
+                break;
+            case 4:
+                conj = CONJNUM1_4;
+                restricted = false;
+                break;
+            case 5:
+                conj = CONJNUM1_4;
+                restricted = false;
+                break;
+        }
 
 
-        do{
-            if(mQuestionNumber % TIME_FOR_INCORRECT_QUESTION == 0  && incorrectTableSize != 0
-                   && checkForValidIncorrectVerb() && numSearchLoopsIncorrectTable < incorrectTableSize) {  // Time for Incorrect Question ...
-                idList = getIncorrectVerbIDs();                              // if the Incorrect Table is Not empty
-                numSearchLoopsIncorrectTable++;                              // & Not All Verbs in Incorrect Table been tested
-            } else
-                idList = getVerbIDs();
-        } while(repeatedQuestion(idList));  // repeat if the id has already been used in a question.
+        List<Integer> incorrectTable = mDatabaseAccess.getVerbIDList(conj,1, restricted);  // defence test
+        int incorrectTableSize = incorrectTable.size();                                 // to see if any (Unasked) Incorrect Verbs
 
-        mVerbQuestionList = getVerbQuestions(idList);  //++++++++ generate question list
+        int inCorrect;
+        if(mQuestionNumber % TIME_FOR_INCORRECT_QUESTION == 0  && incorrectTableSize !=0 )   // Test time for Incorrect Question ...
+            inCorrect = 1;                              // Yes. Not All Verbs in Incorrect Table been tested
+        else
+            inCorrect = 0;
+
+        List<Integer> idPairList = mRandomGenerator.getRandomVerbIDpair( conj ,inCorrect, restricted ); // generate pair of Verb ID
+
+        mVerbQuestionList = getVerbQuestions(idPairList);  //++++++++ generate question list
 
         Random rnd = new Random();
         int rndIndex = rnd.nextInt(3);
-        mCorrectVerb = mVerbQuestionList.get(rndIndex); // Select rnd Verb from id1 as the correctVerb
+        mCorrectVerb = mVerbQuestionList.get(rndIndex); // Select a correctVerb Verb from id1 randomly
 
         mVerbQuestionList = mRandomGenerator.shuffleVerbList(mVerbQuestionList); // shuffle Question List
 
@@ -226,135 +249,135 @@ public class VerbGame {
             return 1;
     }
 
-    /**
-     * checkForValidIncorrectVerb()
-     * ----------------------------
-     * Check within IncorrectVerb Table that:
-     *    1) there is an ID that meets skillLevel 1 or 2
-     *    2) the ID has not been used yet.
-     * @return TRUE if OK and that there is suitable Verb ID that has NOT been used yet
-     */
-    public boolean checkForValidIncorrectVerb(){
-        int conjNum1_2 = 2;
-        List<Integer> list = mDatabaseAccess.getRestrictedIncorrectVerbList(conjNum1_2);
+//    /**
+//     * checkForValidIncorrectVerb()
+//     * ----------------------------
+//     * Check within IncorrectVerb Table that:
+//     *    1) there is an ID that meets skillLevel 1 or 2
+//     *    2) the ID has not been used yet.
+//     * @return TRUE if OK and that there is suitable Verb ID that has NOT been used yet
+//     */
+//    public boolean checkForValidIncorrectVerb(){
+//        int conjNum1_2 = 2;
+//        List<Integer> list = mDatabaseAccess.getRestrictedIncorrectVerbList(conjNum1_2);
+//
+//        if(list.size() == 0)
+//            return false;   // check if no IncorrectVerb has No Verbs lower than 1-2 Conj
+//        else
+//            return !repeatedQuestion(list); // return True if NOT repeated (hence the !)
+//    }
 
-        if(list.size() == 0)
-            return false;   // check if no IncorrectVerb has No Verbs lower than 1-2 Conj
-        else
-            return !repeatedQuestion(list); // return True if NOT repeated (hence the !)
-    }
-
-    /**
-     * repeatedQuestion()
-     * ------------------
-     * Check the Answer List to see if the Verb Id1 has already been tested.
-     * (Used in runVerbQuestion()). Note that a defence check is inserted so that if
-     * if ALL verbs have already been tested then default return TRUE.
-     *
-     * @param idList
-     * @return
-     */
-    public boolean repeatedQuestion(List<Integer> idList){
-
-        int verbTableSize = mDatabaseAccess.sqlTableCountQuery(DbSchema.VerbListTable.VERB_LIST_TABLE);
-
-        if(idList.size() >= verbTableSize){  // defence check - if ALL verbs have already been tested then return False
-            return false;                    // and allow overflow
-        } else {
-            for (Answer answer : mAnswerList) {
-                int resultId = answer.id;
-                if (resultId == idList.get(0))
-                    return true;
-            }
-        }
-        return false;
-    }
-
-
-
-    /**
-     * getVerbIDs()
-     * ------------
-     * Generates a pair of Verb IDs given the Skill Level
-     *
-     * @return get Verb IDs
-     */
-    public List<Integer> getVerbIDs(int inCorrect){
-
-        List<Integer> idList = null;
-        int conjNum1_2 = 2;
-        int conjNum1_4 = 40;
-
-        switch(mSkillLevel) {
-            case 1:
-                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_2, inCorrect, true); // Conjs 1-2
-                break;
-            case 2:
-                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, true); // Two Verb IDs Conjs 1-4
-                break;
-            case 3:
-                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, true); // Two Verb IDs Conjs 1-4
-                break;
-            case 4:
-                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, false);   // Unrestricted Two Verb IDs Conjs 1-4, Deponents, Semi-Dep, Irregular
-                break;
-            case 5:
-                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, false);   // Unrestricted Two Verb IDs  Conjs 1-4, Deponents, Semi-Dep, Irregular
-                break;
-        }
-        return idList;
-    }
+//    /**
+//     * repeatedQuestion()
+//     * ------------------
+//     * Check the Answer List to see if the Verb Id1 has already been tested.
+//     * (Used in runVerbQuestion()). Note that a defence check is inserted so that if
+//     * if ALL verbs have already been tested then default return TRUE.
+//     *
+//     * @param idList
+//     * @return
+//     */
+//    public boolean repeatedQuestion(List<Integer> idList){
+//
+//        int verbTableSize = mDatabaseAccess.sqlTableCountQuery(DbSchema.VerbListTable.VERB_LIST_TABLE);
+//
+//        if(idList.size() >= verbTableSize){  // defence check - if ALL verbs have already been tested then return False
+//            return false;                    // and allow overflow
+//        } else {
+//            for (Answer answer : mAnswerList) {
+//                int resultId = answer.id;
+//                if (resultId == idList.get(0))
+//                    return true;
+//            }
+//        }
+//        return false;
+//    }
 
 
-    /**
-     * getIncorrectVerbId()
-     * --------------------
-     * Generate a random verb_ID from the INCORRECT_VERB_TABLE and then find its
-     * consecutive pair in the Verb_List Table
-     *
-     * @return List of a pair of verb_ids, one is from the incorrect table
-     */
-    public List<Integer> getIncorrectVerbIDs(){
-        int conjNum1_2 = 2;
-        int conjNum1_4 = 40;
-        Random rnd = new Random();
 
-        List<Integer> list = new ArrayList<>();
+//    /**
+//     * getVerbIDs()
+//     * ------------
+//     * Generates a pair of Verb IDs given the Skill Level
+//     *
+//     * @return get Verb IDs
+//     */
+//    public List<Integer> getVerbIDs(int inCorrect){
+//
+//        List<Integer> idList = null;
+//        int conjNum1_2 = 2;
+//        int conjNum1_4 = 40;
+//
+//        switch(mSkillLevel) {
+//            case 1:
+//                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_2, inCorrect, true); // Conjs 1-2
+//                break;
+//            case 2:
+//                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, true); // Two Verb IDs Conjs 1-4
+//                break;
+//            case 3:
+//                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, true); // Two Verb IDs Conjs 1-4
+//                break;
+//            case 4:
+//                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, false);   // Unrestricted Two Verb IDs Conjs 1-4, Deponents, Semi-Dep, Irregular
+//                break;
+//            case 5:
+//                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, false);   // Unrestricted Two Verb IDs  Conjs 1-4, Deponents, Semi-Dep, Irregular
+//                break;
+//        }
+//        return idList;
+//    }
 
-        int verbId1;
 
-        // Defence Check for restricting Verbs for skillLevel 1 or 2
-        if(mSkillLevel < 3){  // Restrict the List to VerbIDs with Conj 1 or 2.
-            List<Integer> restrictVerbIDlist = mDatabaseAccess.getRestrictedIncorrectVerbList(conjNum1_2); // get a restricted list of incorrect VerbIds
-            int randomVerbID = rnd.nextInt(list.size());
-            verbId1 = restrictVerbIDlist.get(randomVerbID);
-        } else {
-            int numVerbs = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);  // Count Number of Verbs in Table
-            int randomTableID = rnd.nextInt(numVerbs) + 1;
-            verbId1 = mDatabaseAccess.sqlIncorrectVerb_GetId(randomTableID);  // Select id from Incorrect Table
-        }
-
-        list.add(verbId1);
-
-        switch(mSkillLevel) {
-            case 1:
-                list = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2, verbId1);
-                break;
-            case 2:
-                list = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4, verbId1);
-                break;
-            case 3:
-                list = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4, verbId1);
-                break;
-            case 4:
-                list = mRandomGenerator.getUnrestrictedRandomVerbID(verbId1);
-                break;
-            case 5:
-                list = mRandomGenerator.getUnrestrictedRandomVerbID(verbId1);
-                break;
-        }
-        return list;
-    }
+//    /**
+//     * getIncorrectVerbId()
+//     * --------------------
+//     * Generate a random verb_ID from the INCORRECT_VERB_TABLE and then find its
+//     * consecutive pair in the Verb_List Table
+//     *
+//     * @return List of a pair of verb_ids, one is from the incorrect table
+//     */
+//    public List<Integer> getIncorrectVerbIDs(){
+//        int conjNum1_2 = 2;
+//        int conjNum1_4 = 40;
+//        Random rnd = new Random();
+//
+//        List<Integer> list = new ArrayList<>();
+//
+//        int verbId1;
+//
+//        // Defence Check for restricting Verbs for skillLevel 1 or 2
+//        if(mSkillLevel < 3){  // Restrict the List to VerbIDs with Conj 1 or 2.
+//            List<Integer> restrictVerbIDlist = mDatabaseAccess.getRestrictedIncorrectVerbList(conjNum1_2); // get a restricted list of incorrect VerbIds
+//            int randomVerbID = rnd.nextInt(list.size());
+//            verbId1 = restrictVerbIDlist.get(randomVerbID);
+//        } else {
+//            int numVerbs = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);  // Count Number of Verbs in Table
+//            int randomTableID = rnd.nextInt(numVerbs) + 1;
+//            verbId1 = mDatabaseAccess.sqlIncorrectVerb_GetId(randomTableID);  // Select id from Incorrect Table
+//        }
+//
+//        list.add(verbId1);
+//
+//        switch(mSkillLevel) {
+//            case 1:
+//                list = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2, verbId1);
+//                break;
+//            case 2:
+//                list = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4, verbId1);
+//                break;
+//            case 3:
+//                list = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4, verbId1);
+//                break;
+//            case 4:
+//                list = mRandomGenerator.getUnrestrictedRandomVerbID(verbId1);
+//                break;
+//            case 5:
+//                list = mRandomGenerator.getUnrestrictedRandomVerbID(verbId1);
+//                break;
+//        }
+//        return list;
+//    }
 
     /**
      * getVerbQuestions()
