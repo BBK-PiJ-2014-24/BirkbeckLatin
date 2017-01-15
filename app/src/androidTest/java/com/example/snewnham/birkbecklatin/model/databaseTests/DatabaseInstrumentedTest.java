@@ -352,7 +352,13 @@ public class DatabaseInstrumentedTest {
 
     }
 
-
+    /**
+     * testGetVerbIDList()
+     * -------------------
+     *
+     *
+     * @throws Exception
+     */
     @Test
     public void testGetVerbIDList() throws Exception{
 
@@ -370,76 +376,76 @@ public class DatabaseInstrumentedTest {
         int conjNum1_2 = 2;
         int conjNum1_4 = 40;
 
-        databaseAccess.sqlIncorrectVerb_Reset(Cols.INCORRECT);
+        databaseAccess.sqlVerbList_Reset(Cols.INCORRECT);
 
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id1, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id1, 0);
-        boolean testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id1, 0);
-        boolean testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id1, 0);
+        databaseAccess.sqlVerbList_Insert(Cols.INCORRECT, id1, 0);
+        databaseAccess.sqlVerbList_Insert(Cols.ASKED, id1, 0);
+        boolean testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id1, 0);
+        boolean testANSWER = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id1, 0);
         assertTrue(testINCORRECT);
         assertTrue(testANSWER);
 
 
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id2, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id2, 0);
-        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id2, 1);
-        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id2, 0);
+        databaseAccess.sqlVerbList_Insert(Cols.INCORRECT, id2, 1);
+        databaseAccess.sqlVerbList_Insert(Cols.ASKED, id2, 0);
+        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id2, 1);
+        testANSWER = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id2, 0);
         assertTrue(testINCORRECT);
         assertTrue(testANSWER);
 
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id3, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id3, 1);
-        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id3, 0);
-        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id3, 1);
+        databaseAccess.sqlVerbList_Insert(Cols.INCORRECT, id3, 0);
+        databaseAccess.sqlVerbList_Insert(Cols.ASKED, id3, 1);
+        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id3, 0);
+        testANSWER = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id3, 1);
         assertTrue(testINCORRECT);
         assertTrue(testANSWER);
 
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id4, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id4, 1);
-        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id4, 1);
-        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id4, 1);
+        databaseAccess.sqlVerbList_Insert(Cols.INCORRECT, id4, 1);
+        databaseAccess.sqlVerbList_Insert(Cols.ASKED, id4, 1);
+        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id4, 1);
+        testANSWER = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id4, 1);
         assertTrue(testINCORRECT);
         assertTrue(testANSWER);
 
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id5, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id5, 0);
-        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id5, 0);
-        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id5, 0);
+        databaseAccess.sqlVerbList_Insert(Cols.INCORRECT, id5, 0);
+        databaseAccess.sqlVerbList_Insert(Cols.ASKED, id5, 0);
+        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id5, 0);
+        testANSWER = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id5, 0);
         assertTrue(testINCORRECT);
         assertTrue(testANSWER);
 
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id6, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id6, 0);
-        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id6, 1);
-        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id6, 0);
+        databaseAccess.sqlVerbList_Insert(Cols.INCORRECT, id6, 1);
+        databaseAccess.sqlVerbList_Insert(Cols.ASKED, id6, 0);
+        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id6, 1);
+        testANSWER = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id6, 0);
         assertTrue(testINCORRECT);
         assertTrue(testANSWER);
 
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id7, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id7, 1);
-        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id7, 0);
-        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id7, 1);
+        databaseAccess.sqlVerbList_Insert(Cols.INCORRECT, id7, 0);
+        databaseAccess.sqlVerbList_Insert(Cols.ASKED, id7, 1);
+        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id7, 0);
+        testANSWER = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id7, 1);
         assertTrue(testINCORRECT);
         assertTrue(testANSWER);
 
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id8, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id8, 0);
-        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id8, 1);
-        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id8, 0);
+        databaseAccess.sqlVerbList_Insert(Cols.INCORRECT, id8, 1);
+        databaseAccess.sqlVerbList_Insert(Cols.ASKED, id8, 0);
+        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id8, 1);
+        testANSWER = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id8, 0);
         assertTrue(testINCORRECT);
         assertTrue(testANSWER);
 
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id9, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id9, 1);
-        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id9, 0);
-        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id9, 1);
+        databaseAccess.sqlVerbList_Insert(Cols.INCORRECT, id9, 0);
+        databaseAccess.sqlVerbList_Insert(Cols.ASKED, id9, 1);
+        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id9, 0);
+        testANSWER = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id9, 1);
         assertTrue(testINCORRECT);
         assertTrue(testANSWER);
 
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id10, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id10, 0);
-        testINCORRECT = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id10, 0);
-        testANSWER = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id10, 0);
+        databaseAccess.sqlVerbList_Insert(Cols.INCORRECT, id10, 0);
+        databaseAccess.sqlVerbList_Insert(Cols.ASKED, id10, 0);
+        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id10, 0);
+        testANSWER = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id10, 0);
         assertTrue(testINCORRECT);
         assertTrue(testANSWER);
 
@@ -468,8 +474,13 @@ public class DatabaseInstrumentedTest {
         list = databaseAccess.getVerbIDList(conjNum1_4,1,false);
         assertThat(list, hasItems(2,6,8));
 
-        databaseAccess.sqlIncorrectVerb_Reset(Cols.INCORRECT);
-        databaseAccess.sqlIncorrectVerb_Reset(Cols.ASKED);
+
+        databaseAccess.sqlVerbList_AnswerReset(1); // Reset Incorrects = 0
+        list = databaseAccess.getVerbIDList(conjNum1_2,0,true);
+        assertThat(list, hasItems(1,3,4,5,7,10));
+
+        databaseAccess.sqlVerbList_Reset(Cols.INCORRECT);
+        databaseAccess.sqlVerbList_Reset(Cols.ASKED);
 
     }
 
@@ -574,20 +585,20 @@ public class DatabaseInstrumentedTest {
         int id4 = 10;
         Verb verb4 = databaseAccess.sqlVerbListQuery(id4);
 
-        databaseAccess.sqlIncorrectVerb_Reset(Cols.INCORRECT);
+        databaseAccess.sqlVerbList_Reset(Cols.INCORRECT);
 
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id1, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id2, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id3, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.INCORRECT, id4, 1); // for test of duplication
+        databaseAccess.sqlVerbList_Insert(Cols.INCORRECT, id1, 1);
+        databaseAccess.sqlVerbList_Insert(Cols.INCORRECT, id2, 1);
+        databaseAccess.sqlVerbList_Insert(Cols.INCORRECT, id3, 1);
+        databaseAccess.sqlVerbList_Insert(Cols.INCORRECT, id4, 1); // for test of duplication
 
-        boolean testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id1, 1);
+        boolean testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id1, 1);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
-        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id2, 1);
+        testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id2, 1);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
-        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id3, 1);
+        testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id3, 1);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
-        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id4, 1);
+        testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id4, 1);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
 
         verb1.setIncorrect(1);  // YOU MUST UPDATE THE VERB OBJECT MANUALLY
@@ -600,15 +611,15 @@ public class DatabaseInstrumentedTest {
         assertEquals(1, verb3.getIncorrect());
         assertEquals(1, verb4.getIncorrect());
 
-        databaseAccess.sqlIncorrectVerb_Reset(Cols.INCORRECT);
+        databaseAccess.sqlVerbList_Reset(Cols.INCORRECT);
 
-        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id1, 0);
+        testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id1, 0);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
-        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id2, 0);
+        testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id2, 0);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
-        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id3, 0);
+        testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id3, 0);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
-        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.INCORRECT, id4, 0);
+        testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.INCORRECT, id4, 0);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
 
         verb1.setIncorrect(0);  // YOU MUST SET THE VERB OBJECT MANUALLY
@@ -639,20 +650,20 @@ public class DatabaseInstrumentedTest {
         int id4 = 10;
         Verb verb4 = databaseAccess.sqlVerbListQuery(id4);
 
-        databaseAccess.sqlIncorrectVerb_Reset(Cols.ASKED);
+        databaseAccess.sqlVerbList_Reset(Cols.ASKED);
 
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id1, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id2, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id3, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(Cols.ASKED, id4, 1); // for test of duplication
+        databaseAccess.sqlVerbList_Insert(Cols.ASKED, id1, 1);
+        databaseAccess.sqlVerbList_Insert(Cols.ASKED, id2, 1);
+        databaseAccess.sqlVerbList_Insert(Cols.ASKED, id3, 1);
+        databaseAccess.sqlVerbList_Insert(Cols.ASKED, id4, 1); // for test of duplication
 
-        boolean testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id1, 1);
+        boolean testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id1, 1);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
-        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id2, 1);
+        testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id2, 1);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
-        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id3, 1);
+        testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id3, 1);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
-        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id4, 1);
+        testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id4, 1);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 1
 
         verb1.setAsked(1);  // YOU MUST UPDATE THE VERB OBJECT MANUALLY
@@ -665,15 +676,15 @@ public class DatabaseInstrumentedTest {
         assertEquals(1, verb3.getAsked());
         assertEquals(1, verb4.getAsked());
 
-        databaseAccess.sqlIncorrectVerb_Reset(Cols.ASKED);
+        databaseAccess.sqlVerbList_Reset(Cols.ASKED);
 
-        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id1, 0);
+        testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id1, 0);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
-        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id2, 0);
+        testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id2, 0);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
-        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id3, 0);
+        testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id3, 0);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
-        testInsertionTrue = databaseAccess.sqlIncorrectVerb_TestInsertion(Cols.ASKED, id4, 0);
+        testInsertionTrue = databaseAccess.sqlVerbList_TestInsertion(Cols.ASKED, id4, 0);
         assertTrue(testInsertionTrue);  // Test Entry Insertion for Incorrect = 0
 
         verb1.setAsked(0);  // YOU MUST SET THE VERB OBJECT MANUALLY

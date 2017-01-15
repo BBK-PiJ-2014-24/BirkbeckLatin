@@ -4,7 +4,6 @@ import com.example.snewnham.birkbecklatin.Control.randomGenerator.Item;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.ItemResponseTheory;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
-import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbDeponent;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbIrregular;
@@ -45,6 +44,8 @@ public class VerbGame {
 
     private static final int CONJNUM1_2 = 2;
     private static final int CONJNUM1_4 = 40;
+
+    private final static String ASKED = "Asked";
 
     private final static int NUM_CHOICES = 6; // 1 Correct Verb, 5 Incorrect Verbs
     private final static String REGULAR = "Regular";
@@ -168,6 +169,13 @@ public class VerbGame {
                 restricted = false;
                 break;
         }
+
+        List<Integer> correctTable = mDatabaseAccess.getVerbIDList(conj,0, restricted);  // defence test
+        int correctTableSize = correctTable.size();                                      // to see if any (Unasked) Correct Verbs
+        if(correctTableSize == 0)                        // If all VerbIDs have have been asked RESET
+            mDatabaseAccess.sqlVerbList_Reset(ASKED);
+
+
 
 
         List<Integer> incorrectTable = mDatabaseAccess.getVerbIDList(conj,1, restricted);  // defence test
@@ -745,7 +753,7 @@ public class VerbGame {
 
         for(Integer id : incorrectList){    // convert ids to verbs add to table
             Verb verb = mDatabaseAccess.sqlVerbListQuery(id);
-     //       mDatabaseAccess.sqlIncorrectVerb_Insert(verb);
+     //       mDatabaseAccess.sqlVerbList_Insert(verb);
         }
         return count;
     }

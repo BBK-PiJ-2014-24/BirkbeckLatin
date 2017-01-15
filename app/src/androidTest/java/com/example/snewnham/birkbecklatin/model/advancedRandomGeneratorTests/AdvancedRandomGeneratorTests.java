@@ -1,7 +1,6 @@
 package com.example.snewnham.birkbecklatin.model.advancedRandomGeneratorTests;
 
 import android.content.Context;
-import android.provider.ContactsContract;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -10,7 +9,6 @@ import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerato
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
-import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
 
 import org.junit.After;
 import org.junit.Before;
@@ -121,38 +119,38 @@ public class AdvancedRandomGeneratorTests {
         int conjNum1_2 = 2;
         int conjNum1_4 = 40;
 
-        databaseAccess.sqlIncorrectVerb_Reset(DbSchema.VerbListTable.Cols.ASKED);
-        databaseAccess.sqlIncorrectVerb_Reset(DbSchema.VerbListTable.Cols.INCORRECT);
+        databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.ASKED);
+        databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.INCORRECT);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id1, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id1, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id1, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id1, 0);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id2, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id2, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id2, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id2, 0);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id3, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id3, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id3, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id3, 1);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id4, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id4, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id4, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id4, 1);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id5, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id5, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id5, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id5, 0);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id6, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id6, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id6, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id6, 0);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id7, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id7, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id7, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id7, 1);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id8, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id8, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id8, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id8, 0);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id9, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id9, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id9, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id9, 1);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id10, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id10, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id10, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id10, 0);
 
 
 
@@ -193,38 +191,38 @@ public class AdvancedRandomGeneratorTests {
         int conjNum1_2 = 2;
         int conjNum1_4 = 40;
 
-        databaseAccess.sqlIncorrectVerb_Reset(DbSchema.VerbListTable.Cols.ASKED);
-        databaseAccess.sqlIncorrectVerb_Reset(DbSchema.VerbListTable.Cols.INCORRECT);
+        databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.ASKED);
+        databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.INCORRECT);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id1, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id1, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id1, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id1, 0);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id2, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id2, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id2, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id2, 0);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id3, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id3, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id3, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id3, 1);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id4, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id4, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id4, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id4, 1);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id5, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id5, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id5, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id5, 0);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id6, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id6, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id6, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id6, 0);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id7, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id7, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id7, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id7, 1);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id8, 1);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id8, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id8, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id8, 0);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id9, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id9, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id9, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id9, 1);
 
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id10, 0);
-        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id10, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id10, 0);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id10, 0);
 
         List<Integer> listofIDs = new ArrayList<>();
         for(int i=0; i<100; i++){

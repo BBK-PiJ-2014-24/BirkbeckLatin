@@ -708,42 +708,42 @@ public class DatabaseAccess {
 
 
 
+//    /**
+//     * sqlIncorrectVerb_GetId()
+//     * ------------------------
+//     * Retrieves the verbId from the INCORRECT_VERB_TABLE. This is the 'Incorrect Verb' that corresponds with the Table's id (passed as argument)
+//     * @param id the id of the Incorrect_Verb Table
+//     * @return the verbId
+//     */
+//    public int sqlIncorrectVerb_GetId(int id){
+//
+//        String table = DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE;
+//        String columnName = DbSchema.Incorrect_Verb_Table.Cols.VERB_ID;  // SELECT verb_Id
+//        String[] column = new String[]{columnName};
+//
+//        String whereClause = DbSchema.Incorrect_Verb_Table.Cols._id + "=?"; // WHERE _id =
+//        String strId = Integer.toString(id);
+//        String[] whereArgs = new String[]{strId};
+//
+//        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+//        cursor.moveToFirst();
+//
+//        int verbId = cursor.getInt(cursor.getColumnIndex(columnName));
+//        cursor.close();
+//
+//        return verbId;
+//    }
+
+
     /**
-     * sqlIncorrectVerb_GetId()
-     * ------------------------
-     * Retrieves the verbId from the INCORRECT_VERB_TABLE. This is the 'Incorrect Verb' that corresponds with the Table's id (passed as argument)
-     * @param id the id of the Incorrect_Verb Table
-     * @return the verbId
-     */
-    public int sqlIncorrectVerb_GetId(int id){
-
-        String table = DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE;
-        String columnName = DbSchema.Incorrect_Verb_Table.Cols.VERB_ID;  // SELECT verb_Id
-        String[] column = new String[]{columnName};
-
-        String whereClause = DbSchema.Incorrect_Verb_Table.Cols._id + "=?"; // WHERE _id =
-        String strId = Integer.toString(id);
-        String[] whereArgs = new String[]{strId};
-
-        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
-        cursor.moveToFirst();
-
-        int verbId = cursor.getInt(cursor.getColumnIndex(columnName));
-        cursor.close();
-
-        return verbId;
-    }
-
-
-    /**
-     * sqlIncorrectVerb_Insert()
+     * sqlVerbList_Insert()
      * -------------------------
      * Updates the 'Incorrect' Field in the_VERB_LIST_TABLE t
      * @param verbID - verb ID to update
      * @param  attribute - The Field to be Reset, 'Incorrect' or 'Answer'
      * @param incorrectFlag - Insert 0 (for Correct Answer) and 1 (for Incorrect Answer)
      */
-    public void sqlIncorrectVerb_Insert(String attribute, int verbID, int incorrectFlag) {
+    public void sqlVerbList_Insert(String attribute, int verbID, int incorrectFlag) {
 
         ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
         contentValues.put(attribute, incorrectFlag); // manual _id insert for first record
@@ -760,7 +760,7 @@ public class DatabaseAccess {
     }
 
     /**
-     * sqlIncorrectVerb_TestInsertion()
+     * sqlVerbList_TestInsertion()
      * --------------------------------
      * Test if A Record Entry of 'Incorrect' or 'Answer' Field has been properly inserted in the Verb_List Table
      * @param verbID - verb ID to test update
@@ -768,7 +768,7 @@ public class DatabaseAccess {
      * @param incorrectFlag - the right value for the Attribute.
      * @return True if check matches incorrectFlag
      */
-    public boolean sqlIncorrectVerb_TestInsertion(String attribute, int verbID, int incorrectFlag){
+    public boolean sqlVerbList_TestInsertion(String attribute, int verbID, int incorrectFlag){
         String table = DbSchema.VerbListTable.VERB_LIST_TABLE;
 
         String[] column = new String[]{attribute}; // Select Column
@@ -792,12 +792,13 @@ public class DatabaseAccess {
 
 
     /**
-     * sqlIncorrectVerb_Reset()
-     * ------------------------
-     * Resets the Incorrect Fields, 'Incorrect' OR 'Answer' to zero, for ALL rows in the Verb_List Table
+     * sqlVerbList_Reset()
+     * -------------------
+     * Resets ALL ROWS of 'Incorrect' OR 'Answer' Fields to zero
+     * in the Verb_List Table
      * @param  attribute - The Field to be Reset, 'Incorrect' or 'Answer'
      */
-    public void sqlIncorrectVerb_Reset(String attribute){
+    public void sqlVerbList_Reset(String attribute){
 
         int zeroInt = 0;
         ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
@@ -809,6 +810,32 @@ public class DatabaseAccess {
         String table = DbSchema.VerbListTable.VERB_LIST_TABLE;
         String whereClause =  null;
         String[] whereArgument = null; // Select *
+
+        this.mSQLiteDatabase.update(table, contentValues, whereClause, whereArgument);
+    }
+
+    /**
+     * sqlVerbList_AnswerReset()
+     * ------------------------
+     * Resets the 'Answer' Field in VebList to zero,
+     * WHERE INCORRECT = 0 or 1 depending on which list of Verbs
+     * to reset.
+     *
+     * @param  inCorrect - The Field to be Reset, 'Incorrect' or 'Answer'
+     */
+    public void sqlVerbList_AnswerReset(int inCorrect){
+
+        int zeroInt = 0;
+        String attribute = DbSchema.VerbListTable.Cols.ASKED;
+        ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
+        contentValues.put( attribute, zeroInt ); // manual _id insert for first record
+
+        if (this.mSQLiteDatabase == null)
+            open();
+
+        String table = DbSchema.VerbListTable.VERB_LIST_TABLE;
+        String whereClause =  DbSchema.VerbListTable.Cols.INCORRECT + "=?";
+        String[] whereArgument = new String[]{Integer.toString(inCorrect)}; // Select *
 
         this.mSQLiteDatabase.update(table, contentValues, whereClause, whereArgument);
     }
