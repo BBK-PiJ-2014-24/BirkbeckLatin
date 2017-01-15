@@ -279,7 +279,7 @@ public class VerbGame {
      *
      * @return get Verb IDs
      */
-    public List<Integer> getVerbIDs(){
+    public List<Integer> getVerbIDs(int inCorrect){
 
         List<Integer> idList = null;
         int conjNum1_2 = 2;
@@ -287,19 +287,19 @@ public class VerbGame {
 
         switch(mSkillLevel) {
             case 1:
-                idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2); // Conjs 1-2
+                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_2, inCorrect, true); // Conjs 1-2
                 break;
             case 2:
-                idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4); // Two Verb IDs Conjs 1-4
+                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, true); // Two Verb IDs Conjs 1-4
                 break;
             case 3:
-                idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4); // Two Verb IDs Conjs 1-4
+                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, true); // Two Verb IDs Conjs 1-4
                 break;
             case 4:
-                idList = mRandomGenerator.getUnrestrictedRandomVerbID();   // Unrestricted Two Verb IDs Conjs 1-4, Deponents, Semi-Dep, Irregular
+                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, false);   // Unrestricted Two Verb IDs Conjs 1-4, Deponents, Semi-Dep, Irregular
                 break;
             case 5:
-                idList = mRandomGenerator.getUnrestrictedRandomVerbID();   // Unrestricted Two Verb IDs  Conjs 1-4, Deponents, Semi-Dep, Irregular
+                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, false);   // Unrestricted Two Verb IDs  Conjs 1-4, Deponents, Semi-Dep, Irregular
                 break;
         }
         return idList;
