@@ -87,6 +87,51 @@ public class DatabaseAccess {
 
 
     /**
+     * sqlQuery()
+     * ==========
+     * Runs a SQL query on the DB.
+     * @param table
+     * @param column
+     * @param whereClause
+     * @param whereArgs
+     * @return returns a cursor that has an option to be wrapped.
+     *         Either a VerbListCursor - which converts db data to Java Verb object
+     *         or a NounListCursor - which convertsdb data to a Java NounEtc object.
+     */
+
+    public Cursor sqlQuery(String table, String[] column, String whereClause, String[] whereArgs) {
+
+        if(this.mSQLiteDatabase == null)
+            open();
+
+        Cursor cursor = this.mSQLiteDatabase.query(
+                table,  // FROM TABLE
+                column, // SELECT *
+                whereClause,
+                whereArgs,
+                null, // GROUP BY
+                null, // HAVING
+                null // ORDER BY
+        );
+
+        if (table.equals(DbSchema.VerbListTable.VERB_LIST_TABLE) && column == null)
+            return new VerbListCursor(cursor);
+        else if (table.equals(DbSchema.NounListTable.NOUN_LIST_TABLE))
+            return new NounListCursor(cursor);
+        else if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE))
+            return new AdjectiveListCursor(cursor);
+        else if (table.equals(DbSchema.PrepositionListTable.PREPOSITION_TABLE))
+            return new PrepositionListCursor(cursor);
+        else if (table.equals(DbSchema.ConjunctionListTable.CONJUNCTION_TABLE))
+            return new ConjunctionListCursor(cursor);
+        else if (table.equals(DbSchema.AdverbListTable.ADVERB_TABLE))
+            return new AdverbListCursor(cursor);
+        else
+            return cursor;
+    }
+
+
+    /**
      * Read all quotes from the mSQLiteDatabase.
      *
      * @return a List of quotes
@@ -224,53 +269,6 @@ public class DatabaseAccess {
     }
 
 
-    /**
-     * sqlQuery()
-     * ==========
-     * Runs a SQL query on the DB.
-     * @param table
-     * @param column
-     * @param whereClause
-     * @param whereArgs
-     * @return returns a cursor that has an option to be wrapped.
-     *         Either a VerbListCursor - which converts db data to Java Verb object
-     *         or a NounListCursor - which convertsdb data to a Java NounEtc object.
-     */
-
-    public Cursor sqlQuery(String table, String[] column, String whereClause, String[] whereArgs) {
-
-        if(this.mSQLiteDatabase == null)
-            open();
-
-        Cursor cursor = this.mSQLiteDatabase.query(
-                table,  // FROM TABLE
-                column, // SELECT *
-                whereClause,
-                whereArgs,
-                null, // GROUP BY
-                null, // HAVING
-                null // ORDER BY
-        );
-
-
-        if (table.equals(DbSchema.VerbListTable.VERB_LIST_TABLE) && column == null)
-//                !column[0].equals(DbSchema.VerbListTable.Cols.INCORRECT) &&
-//                !column[0].equals(DbSchema.VerbListTable.Cols.ASKED))
-            return new VerbListCursor(cursor);
-        else if (table.equals(DbSchema.NounListTable.NOUN_LIST_TABLE))
-            return new NounListCursor(cursor);
-        else if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE))
-            return new AdjectiveListCursor(cursor);
-        else if (table.equals(DbSchema.PrepositionListTable.PREPOSITION_TABLE))
-            return new PrepositionListCursor(cursor);
-        else if (table.equals(DbSchema.ConjunctionListTable.CONJUNCTION_TABLE))
-            return new ConjunctionListCursor(cursor);
-        else if (table.equals(DbSchema.AdverbListTable.ADVERB_TABLE))
-            return new AdverbListCursor(cursor);
-        else
-            return cursor;
-
-    }
 
     /**
      * sqlTableCountQuery()

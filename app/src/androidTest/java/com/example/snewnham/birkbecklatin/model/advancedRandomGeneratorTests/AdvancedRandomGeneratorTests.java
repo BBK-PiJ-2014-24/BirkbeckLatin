@@ -23,11 +23,13 @@ import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.isIn;
 import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * TESTS FOR CREATING LATIN VERBS FOR ALL PERSONS, MOODS, VOICES FOR 1st COJUGATIONS
@@ -105,14 +107,65 @@ public class AdvancedRandomGeneratorTests {
     @Test
     public void testGetRestrictedRandomVerbID(){
 
+        int id1 = 1;
+        int id2 = 2;
+        int id3 = 3;
+        int id4 = 4;
+        int id5 = 5;
+        int id6 = 6;
+        int id7 = 7;
+        int id8 = 8;
+        int id9 = 9;
+        int id10 = 10;
+
+        int conjNum1_2 = 2;
+        int conjNum1_4 = 40;
+
+        databaseAccess.sqlIncorrectVerb_Reset(DbSchema.VerbListTable.Cols.ASKED);
+        databaseAccess.sqlIncorrectVerb_Reset(DbSchema.VerbListTable.Cols.INCORRECT);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id1, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id1, 0);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id2, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id2, 0);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id3, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id3, 1);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id4, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id4, 1);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id5, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id5, 0);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id6, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id6, 0);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id7, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id7, 1);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id8, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id8, 0);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id9, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id9, 1);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id10, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id10, 0);
+
+
+
+
         List<Integer> listofIDs = new ArrayList<>();
         for(int i=0; i<100; i++){
-            List<Integer> pairIDs = randomGenerator.getRestrictedRandomVerbID(2);  // run method for 100 times
+            List<Integer> pairIDs = randomGenerator.getRandomVerbIDpair(2,0,true);  // run method for 100 times
             listofIDs.add(pairIDs.get(0));
             listofIDs.add(pairIDs.get(1));
         }
-        assertThat(10, isIn(listofIDs));  // check sample pair
-        assertThat(7, isIn(listofIDs));
+
+        assertThat(listofIDs, hasItems(1,5,10));
+
     }
 
 
@@ -125,22 +178,70 @@ public class AdvancedRandomGeneratorTests {
     @Test
     public void testGetUnrestrictedRandomVerbID(){
 
+
+        int id1 = 1;
+        int id2 = 2;
+        int id3 = 3;
+        int id4 = 4;
+        int id5 = 5;
+        int id6 = 6;
+        int id7 = 7;
+        int id8 = 8;
+        int id9 = 9;
+        int id10 = 10;
+
+        int conjNum1_2 = 2;
+        int conjNum1_4 = 40;
+
+        databaseAccess.sqlIncorrectVerb_Reset(DbSchema.VerbListTable.Cols.ASKED);
+        databaseAccess.sqlIncorrectVerb_Reset(DbSchema.VerbListTable.Cols.INCORRECT);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id1, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id1, 0);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id2, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id2, 0);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id3, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id3, 1);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id4, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id4, 1);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id5, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id5, 0);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id6, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id6, 0);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id7, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id7, 1);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id8, 1);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id8, 0);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id9, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id9, 1);
+
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id10, 0);
+        databaseAccess.sqlIncorrectVerb_Insert(DbSchema.VerbListTable.Cols.ASKED, id10, 0);
+
         List<Integer> listofIDs = new ArrayList<>();
         for(int i=0; i<100; i++){
-            List<Integer> pairIDs = randomGenerator.getUnrestrictedRandomVerbID();  // run method for 100 times
+            List<Integer> pairIDs = randomGenerator.getRandomVerbIDpair(conjNum1_4, 0, false);  // run method for 100 times
             listofIDs.add(pairIDs.get(0));
             listofIDs.add(pairIDs.get(1));
         }
 
         assertThat(10, isIn(listofIDs));  // check sample pair
         assertThat(9, isIn(listofIDs));
-        assertThat(8, isIn(listofIDs));
+        // assertThat(8, isIn(listofIDs));
         assertThat(7, isIn(listofIDs));
-        assertThat(6, isIn(listofIDs));
+        // assertThat(6, isIn(listofIDs));
         assertThat(5, isIn(listofIDs));
-        assertThat(4, isIn(listofIDs));
+        // assertThat(4, isIn(listofIDs));
         assertThat(3, isIn(listofIDs));
-        assertThat(2, isIn(listofIDs));
+        // assertThat(2, isIn(listofIDs));
         assertThat(1, isIn(listofIDs));
     }
 

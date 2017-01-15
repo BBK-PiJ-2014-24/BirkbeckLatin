@@ -23,61 +23,64 @@ public class RandomGenerator {
     private Random randomGenerator;
     private DatabaseAccess databaseAccess;
 
-    private final String NOUN_TABLE = "Noun_List";
-    private final String ADJECTIVE_TABLE = "Adjective_List";
-    private final String ADVERB_TABLE = "Adverb_List";
-    private final String PREPOSITION_TABLE = "Preposition_List";
-    private final String CONJUNCTION_TABLE = "Conjunction_List";
+    private static final int CONJNUM1_2 = 2;
+    private static final int CONJNUM1_4 = 40;
 
-    private final String NOUN = "Noun";
-    private final String ADJECTIVE = "Adjective";
-    private final String PREPOSITION = "Preposition";
-    private final String CONJUNCTION = "Conjunction";
-    private final String ADVERB = "Adverb";
+    private static final String NOUN_TABLE = "Noun_List";
+    private static final String ADJECTIVE_TABLE = "Adjective_List";
+    private static final String ADVERB_TABLE = "Adverb_List";
+    private static final String PREPOSITION_TABLE = "Preposition_List";
+    private static final String CONJUNCTION_TABLE = "Conjunction_List";
 
-    private final int ADVERB_NUM_OUTCOMES= 4;
-    private final int ADVERB_CUTOFF = 1;
-    private final int ADVERB_COMPARATIVE_CUTOFF = 2;
-    private final int ADVERB_SUPERLATIVE_CUTOFF = 3;
-    private final String ADVERB_COMPARATIVE = "AdverbComparative";
-    private final String ADVERB_SUPERLATIVE = "AdverbSuperlative";
+    private static final String NOUN = "Noun";
+    private static final String ADJECTIVE = "Adjective";
+    private static final String PREPOSITION = "Preposition";
+    private static final String CONJUNCTION = "Conjunction";
+    private static final String ADVERB = "Adverb";
 
-
-    private final int ADJECTIVE_NUM_OUTCOMES= 4;
-    private final int ADJECTIVE_CUTOFF = 1;
-    private final int ADJECTIVE_COMPARATIVE_CUTOFF = 2;
-    private final int ADJECTIVE_SUPERLATIVE_CUTOFF = 3;
-    private final String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
-    private final String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
+    private static final int ADVERB_NUM_OUTCOMES= 4;
+    private static final int ADVERB_CUTOFF = 1;
+    private static final int ADVERB_COMPARATIVE_CUTOFF = 2;
+    private static final int ADVERB_SUPERLATIVE_CUTOFF = 3;
+    private static final String ADVERB_COMPARATIVE = "AdverbComparative";
+    private static final String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
 
-    private final int NOUN_NUMBER_NUM_OUTCOMES = 2;
-    private final String NOUN_SINGULAR = "Singular";
-    private final String NOUN_PLURAL = "Plural";
+    private static final int ADJECTIVE_NUM_OUTCOMES= 4;
+    private static final int ADJECTIVE_CUTOFF = 1;
+    private static final int ADJECTIVE_COMPARATIVE_CUTOFF = 2;
+    private static final int ADJECTIVE_SUPERLATIVE_CUTOFF = 3;
+    private static final String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
+    private static final String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
 
 
-    private final int NOUN_CASE_NUM_OUTCOMES = 52;
-    private final int NOUN_CUTOFF_NOMINATIVE = 10;
-    private final int NOUN_CUTOFF_ACCUSATIVE = 20;
-    private final int NOUN_CUTOFF_GENITIVE = 30;
-    private final int NOUN_CUTOFF_DATIVE = 40;
-    private final int NOUN_CUTOFF_ABLATIVE = 50;
-    private final int NOUN_CUTOFF_VOCATIVE = 52;
+    private static final int NOUN_NUMBER_NUM_OUTCOMES = 2;
+    private static final String NOUN_SINGULAR = "Singular";
+    private static final String NOUN_PLURAL = "Plural";
 
-    private final int GENDER_NUM_OUTCOMES = 3;
-    private final int GENDER_CUTOFF_MALE = 0;
-    private final int GENDER_CUTOFF_FEMALE = 1;
-    private final int GENDER_CUTOFF_NEUTER = 2;
-    private final String GENDER_MALE = "m";
-    private final String GENDER_FEMALE = "f";
-    private final String GENDER_NEUTER = "n";
 
-    private final String NOMINATIVE = "Nominative";
-    private final String ACCUSATIVE = "Accusative";
-    private final String GENITIVE = "Genitive";
-    private final String DATIVE = "Dative";
-    private final String ABLATIVE = "Ablative";
-    private final String VOCATIVE = "Vocative";
+    private static final int NOUN_CASE_NUM_OUTCOMES = 52;
+    private static final int NOUN_CUTOFF_NOMINATIVE = 10;
+    private static final int NOUN_CUTOFF_ACCUSATIVE = 20;
+    private static final int NOUN_CUTOFF_GENITIVE = 30;
+    private static final int NOUN_CUTOFF_DATIVE = 40;
+    private static final int NOUN_CUTOFF_ABLATIVE = 50;
+    private static final int NOUN_CUTOFF_VOCATIVE = 52;
+
+    private static final int GENDER_NUM_OUTCOMES = 3;
+    private static final int GENDER_CUTOFF_MALE = 0;
+    private static final int GENDER_CUTOFF_FEMALE = 1;
+    private static final int GENDER_CUTOFF_NEUTER = 2;
+    private static final String GENDER_MALE = "m";
+    private static final String GENDER_FEMALE = "f";
+    private static final String GENDER_NEUTER = "n";
+
+    private static final String NOMINATIVE = "Nominative";
+    private static final String ACCUSATIVE = "Accusative";
+    private static final String GENITIVE = "Genitive";
+    private static final String DATIVE = "Dative";
+    private static final String ABLATIVE = "Ablative";
+    private static final String VOCATIVE = "Vocative";
 
 
     private final int VERB_PERSON_NUM_OUTCOMES = 3;
@@ -306,65 +309,61 @@ public class RandomGenerator {
 
 
     //  -------------------------------- VERBS ------------------------------------------------
+//
+//    /**
+//     * getRandomVerbID()
+//     * ----------------
+//     * Generate a random Verb ID from the VerbList
+//     * @return
+//     */
+//    public int getRandomVerbID(){
+//
+//        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.VerbListTable.VERB_LIST_TABLE);
+//        int randomVerbIDNumber = randomGenerator.nextInt(numVerbs) + 1;  // +1 as rand = [0,n-1]
+//
+//        return randomVerbIDNumber;
+//    }
+
+//    /**
+//     * getRestrictedRandomVerbID(int conjNum)
+//     * --------------------------------------
+//     * This is used for Selecting Verbs for Skill Levels 1-3 in the Verb Game
+//     * Gets A Pair of Random Selected Verb ID from a Restricted Verb List (confined to
+//     * conj 1-2 or 1-4 and Esse Verb). An ID is randomly selected from the restricted list
+//     * and then the method gets the nearest Verb Id next to the random
+//     * selected Verb in the list (which will be used for the incorrect options in multiple choice).
+//     * @return List of two verb IDs
+//     */
+//    public List<Integer> getRestrictedRandomVerbID(int conjNum){
+//
+//        List<Integer> restrictedVerbList = databaseAccess.getVerbIDConjugationList(conjNum);  // get the restricted verb list
+//        int numRestrictedList = restrictedVerbList.size();
+//        int randomSelectionFromList = randomGenerator.nextInt(numRestrictedList);  // make a random number for selection in list
+//
+//        List<Integer> selectedVerbIDlist = new ArrayList<>();
+//        selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList));  // select the Verb ID of that item in the list.s
+//        if(randomSelectionFromList != 0)  // check condition so that don't overrun the list.
+//            selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList-1)); // select the Verb ID next in the list.
+//        else
+//            selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList+1));
+//
+//        return selectedVerbIDlist;
+//    }
 
     /**
-     * getRandomVerbID()
-     * ----------------
-     * Generate a random Verb ID from the VerbList
-     * @return
-     */
-    public int getRandomVerbID(){
-
-        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.VerbListTable.VERB_LIST_TABLE);
-        int randomVerbIDNumber = randomGenerator.nextInt(numVerbs) + 1;  // +1 as rand = [0,n-1]
-
-        return randomVerbIDNumber;
-    }
-
-    /**
-     * getRestrictedRandomVerbID(int conjNum)
-     * --------------------------------------
-     * This is used for Selecting Verbs for Skill Levels 1-3 in the Verb Game
-     * Gets A Pair of Random Selected Verb ID from a Restricted Verb List (confined to
-     * conj 1-2 or 1-4 and Esse Verb). An ID is randomly selected from the restricted list
-     * and then the method gets the nearest Verb Id next to the random
-     * selected Verb in the list (which will be used for the incorrect options in multiple choice).
-     * @return List of two verb IDs
-     */
-    public List<Integer> getRestrictedRandomVerbID(int conjNum){
-
-        List<Integer> restrictedVerbList = databaseAccess.getVerbIDConjugationList(conjNum);  // get the restricted verb list
-        int numRestrictedList = restrictedVerbList.size();
-        int randomSelectionFromList = randomGenerator.nextInt(numRestrictedList);  // make a random number for selection in list
-
-        List<Integer> selectedVerbIDlist = new ArrayList<>();
-        selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList));  // select the Verb ID of that item in the list.s
-        if(randomSelectionFromList != 0)  // check condition so that don't overrun the list.
-            selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList-1)); // select the Verb ID next in the list.
-        else
-            selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList+1));
-
-        return selectedVerbIDlist;
-    }
-
-    /**
-     * @Overload
-     * getRestrictedRandomVerbID(int conjNum, int id1)
+     * getRandomVerbIDpair(int conjNum, int inCorrect, boolean restricted)
      * -----------------------------------------------
-     * Given verb ID1, find the next consecutive verbID in the restricted list.
-     * Generates A Pair of Verb IDs from a Restricted Verb List (confined to
-     * conj 1-2 or 1-4 and Esse Verb). id1 is passed as an argument
-     * and then the method gets the nearest Verb Id next to the random
-     * selected Verb in the list (which will be used for the incorrect options in multiple choice).
+     * Selects a list of two random verb IDs subject to restrictions, conjNum, inCorrect, restricted
+     * @param conjNum - conj Num restriction
+     * @param inCorrect - Select incorrect (1) or correct verb ID (0)
+     * @param restricted - verb Type restrictions (Deponent, Semi Deponent, Irregulars)
      * @return List of two verb IDs
      */
-    public List<Integer> getRestrictedRandomVerbID(int conjNum, int id1){
+    public List<Integer> getRandomVerbIDpair(int conjNum, int inCorrect, boolean restricted){
 
-        List<Integer> selectedVerbIDlist = new ArrayList<>();
+        List<Integer> list = databaseAccess.getVerbIDList(conjNum, inCorrect, restricted);
 
-
-        List<Integer> restrictedVerbList = databaseAccess.getVerbIDConjugationList(conjNum);  // get the restricted verb list
-        int indexOfId1 = restrictedVerbList.indexOf(id1);  // find index of verb ID1 in the list
+        int indexOfId1 = randomGenerator.nextInt(list.size());
 
         int indexOfId2;     // determine the neighbouring index of ID2
         if(indexOfId1 != 0)  // check condition so that don't overrun the list.
@@ -372,58 +371,63 @@ public class RandomGenerator {
         else
             indexOfId2 = indexOfId1+1;
 
-        int id2 = restrictedVerbList.get(indexOfId2); // retrieve the Verb ID2
+        int id1 = list.get(indexOfId1);
+        int id2 = list.get(indexOfId2); // retrieve the Verb ID2
 
-        selectedVerbIDlist.add(id1);    // add ID1 to the List
-        selectedVerbIDlist.add(id2);    // add ID2 to the List
+        List<Integer> verbIDlist = new ArrayList<>();
+        verbIDlist.add(id1);    // add ID1 to the List
+        verbIDlist.add(id2);    // add ID2 to the List
 
-        return selectedVerbIDlist;
+        return verbIDlist;
     }
 
-    /**
-     * getUnrestrictedRandomVerbID()
-     * -----------------------------
-     * Creates a list of two consecutive (unrestricted) verb IDs.
-     * @return
-     */
-    public List<Integer> getUnrestrictedRandomVerbID(){
-
-        int id1 = getRandomVerbID();  // generate an unrestricted verb ID
-        int id2;
-        if(id1 == 1)
-            id2 = id1 + 1;
-        else
-            id2 = id1 - 1;
-
-        List<Integer> unrestrictedVerbList = new ArrayList<>();  // add to verb list
-        unrestrictedVerbList.add(id1);
-        unrestrictedVerbList.add(id2);
-
-        return unrestrictedVerbList;
-    }
-
-    /**
-     * @Overload
-     * getUnrestrictedRandomVerbID(int id)
-     * -----------------------------------
-     * Creates a list of two consecutive (unrestricted) verb IDs with the first ID
-     * passed as an argument.
-     * @return
-     */
-    public List<Integer> getUnrestrictedRandomVerbID(int id1){
-
-        int id2;
-        if(id1 == 1)
-            id2 = id1 + 1;
-        else
-            id2 = id1 - 1;
-
-        List<Integer> unrestrictedVerbList = new ArrayList<>();  // add to verb list
-        unrestrictedVerbList.add(id1);
-        unrestrictedVerbList.add(id2);
-
-        return unrestrictedVerbList;
-    }
+//    /**
+//     * getUnrestrictedRandomVerbID()
+//     * -----------------------------
+//     * Creates a list of two consecutive (unrestricted) verb IDs.
+//     * @param  inCorrect - Determines whether to select from a inCorrect IDs (1) or Correct (0)
+//     * @return list<Integer> of unrestricted IDs.
+//     */
+//    public List<Integer> getUnrestrictedRandomVerbID(int inCorrect){
+//
+//        List<Integer> unrestrictedList = databaseAccess.getVerbIDList(CONJNUM1_4, inCorrect ,false)
+//        int id1 = randomGenerator.nextInt(unrestrictedList.size());
+//
+//        int id2;
+//        if(id1 == 1)
+//            id2 = id1 + 1;
+//        else
+//            id2 = id1 - 1;
+//
+//        List<Integer> unrestrictedVerbList = new ArrayList<>();  // add to verb list
+//        unrestrictedVerbList.add(id1);
+//        unrestrictedVerbList.add(id2);
+//
+//        return unrestrictedVerbList;
+//    }
+//
+//    /**
+//     * @Overload
+//     * getUnrestrictedRandomVerbID(int id)
+//     * -----------------------------------
+//     * Creates a list of two consecutive (unrestricted) verb IDs with the first ID
+//     * passed as an argument.
+//     * @return
+//     */
+//    public List<Integer> getUnrestrictedRandomVerbID(int id1){
+//
+//        int id2;
+//        if(id1 == 1)
+//            id2 = id1 + 1;
+//        else
+//            id2 = id1 - 1;
+//
+//        List<Integer> unrestrictedVerbList = new ArrayList<>();  // add to verb list
+//        unrestrictedVerbList.add(id1);
+//        unrestrictedVerbList.add(id2);
+//
+//        return unrestrictedVerbList;
+//    }
 
 
 
