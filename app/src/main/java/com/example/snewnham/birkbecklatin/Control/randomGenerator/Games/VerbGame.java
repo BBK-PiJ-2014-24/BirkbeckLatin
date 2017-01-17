@@ -230,15 +230,12 @@ public class VerbGame {
      * Run at the end of the game:
      * 1) updates the students IRT Theta and game skill level.
      * 2) Stores Theta and SkillLevel in the Meta Table.
-     * 2) Add Incorrect Answers to the IncorrectVerb Table.
      *
      */
     public void endGame(){
         updateSkillLevel(mAnswerList); // update the Skill Level after the Test
         mDatabaseAccess.sqlMeta_Insertion(VERB_SKILL_LEVEL, mSkillLevel*1.0); // Add skill, Theta to meta table
         mDatabaseAccess.sqlMeta_Insertion(VERB_THETA, mTheta);
-
-        addToTheIncorrectVerbTable(mAnswerList); // add wrong answers to incorrect Verb Table
     }
 
     /**
@@ -737,31 +734,31 @@ public class VerbGame {
         return mSkillLevel;
     }
 
-    /**
-     * addToTheIncorrectVerbTable()
-     * ----------------------------
-     * Adds the Incorrect Answers to the Incorrect Table and keeps a
-     * tally of the number.
-     *
-     * @return the number of verbs added to the Incorrect Table
-     */
-    public int addToTheIncorrectVerbTable(List<Answer> answerList){
-        int count = 0;
-        List<Integer> incorrectList = new ArrayList<>();
-
-        for(Answer answer : answerList){  // select the ID's of all Incorrect Verb Answers
-           if(answer.correct == 0){
-               incorrectList.add(answer.id);
-               count++;
-           }
-        }
-
-        for(Integer id : incorrectList){    // convert ids to verbs add to table
-            Verb verb = mDatabaseAccess.sqlVerbListQuery(id);
-     //       mDatabaseAccess.sqlVerbList_Insert(verb);
-        }
-        return count;
-    }
+//    /**
+//     * addToTheIncorrectVerbTable()
+//     * ----------------------------
+//     * Adds the Incorrect Answers to the Incorrect Table and keeps a
+//     * tally of the number.
+//     *
+//     * @return the number of verbs added to the Incorrect Table
+//     */
+//    public int addToTheIncorrectVerbTable(List<Answer> answerList){
+//        int count = 0;
+//        List<Integer> incorrectList = new ArrayList<>();
+//
+//        for(Answer answer : answerList){  // select the ID's of all Incorrect Verb Answers
+//           if(answer.correct == 0){
+//               incorrectList.add(answer.id);
+//               count++;
+//           }
+//        }
+//
+//        for(Integer id : incorrectList){    // convert ids to verbs add to table
+//            Verb verb = mDatabaseAccess.sqlVerbListQuery(id);
+//     //       mDatabaseAccess.sqlVerbList_Insert(verb);
+//        }
+//        return count;
+//    }
 
     // Getters/Setters
     // ---------------

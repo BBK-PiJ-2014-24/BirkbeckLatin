@@ -355,13 +355,13 @@ public class RandomGenerator {
      * -----------------------------------------------
      * Selects a list of two random verb IDs subject to restrictions, conjNum, inCorrect, restricted
      * @param conjNum - conj Num restriction
-     * @param inCorrect - Select incorrect (1) or correct verb ID (0)
+     * @param correct - Select correct (1) or incorrect verb ID (0)
      * @param restricted - verb Type restrictions (Deponent, Semi Deponent, Irregulars)
      * @return List of two verb IDs
      */
-    public List<Integer> getRandomVerbIDpair(int conjNum, int inCorrect, boolean restricted){
+    public List<Integer> getRandomVerbIDpair(int conjNum, int correct, boolean restricted){
 
-        List<Integer> list = databaseAccess.getVerbIDList(conjNum, inCorrect, restricted);
+        List<Integer> list = databaseAccess.getVerbIDList(conjNum, correct, restricted);
 
         int indexOfId1 = randomGenerator.nextInt(list.size());
 
