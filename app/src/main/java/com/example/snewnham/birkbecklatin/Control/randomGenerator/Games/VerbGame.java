@@ -4,6 +4,7 @@ import com.example.snewnham.birkbecklatin.Control.randomGenerator.Item;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.ItemResponseTheory;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbDeponent;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbIrregular;
@@ -140,10 +141,10 @@ public class VerbGame {
      */
     public void runVerbQuestion(){
 
+        mQuestionNumber++; // Increase Counter
 
         List<Verb> newVerbList = new ArrayList<>(6);
         mVerbQuestionList = newVerbList; // Hack to Reset The Verb Question List
-        mQuestionNumber++; // Increase Counter
 
         int conj = CONJNUM1_2;
         boolean restricted = true;
@@ -173,9 +174,7 @@ public class VerbGame {
         List<Integer> correctTable = mDatabaseAccess.getVerbIDList(conj,0, restricted);  // defence test
         int correctTableSize = correctTable.size();                                      // to see if any (Unasked) Correct Verbs
         if(correctTableSize == 0)                        // If all VerbIDs have have been asked RESET
-            mDatabaseAccess.sqlVerbList_Reset(ASKED);
-
-
+            mDatabaseAccess.sqlVerbList_AnswerReset(0);  // Then Reset all ASKED Fields for CORRECT VERBS;
 
 
         List<Integer> incorrectTable = mDatabaseAccess.getVerbIDList(conj,1, restricted);  // defence test
@@ -205,12 +204,18 @@ public class VerbGame {
     /**
      * storeAnswer()
      * -------------
-     * Creates Answer object to contain data for the question and adds to Answer List.
+     * 1) Updates ViewList Table, updating ASKED and CORRECT Fields
+     * 2) Creates Answer object to contain data for the question and adds to Answer List.
      * @param ans answer flag - correct/incorrect (1 or 0)
      * @return If answer is correct/incorrect (1 or 0)
      */
     public int storeAnswer(int ans){
 
+        // Update Database
+        mDatabaseAccess.sqlVerbList_Insert(mCorrectVerb.getId(), DbSchema.VerbListTable.Cols.ASKED, 1 );
+        mDatabaseAccess.sqlVerbList_Insert(mCorrectVerb.getId(), DbSchema.VerbListTable.Cols.CORRECT, ans);
+
+        // Form Answer Object and Add to Lists
         mCorrectVerbDifficulty = determineQuestionDifficulty(); // determine Difficulty of Question
         Answer answer = new Answer(mCorrectVerb.getId(), ans, mCorrectVerbDifficulty);  // Set Answer Object
         mAnswerList.add(answer); // Add to buffer mAsked List

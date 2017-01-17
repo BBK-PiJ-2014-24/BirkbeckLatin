@@ -41,7 +41,7 @@ public class DbSchema {
             public static final String ENGLISH_PARTICIPLE = "English_Participle";
 
             public static final String ASKED = "Asked";
-            public static final String INCORRECT = "Incorrect";
+            public static final String CORRECT = "Correct";
 
         }
 

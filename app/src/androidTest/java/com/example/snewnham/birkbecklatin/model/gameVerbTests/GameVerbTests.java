@@ -578,7 +578,7 @@ public class GameVerbTests {
     }
 
 
-    // ---------------------------------VERB INCORRECT ---------------------------------------------
+    // ---------------------------------VERB CORRECT ---------------------------------------------
 
     /**
      * testRandomVerbIncorrectTable()
@@ -603,11 +603,11 @@ public class GameVerbTests {
         int randomSims = 800;
 
         // load the table
-        databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.INCORRECT);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id1, 1);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id2, 1);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id3, 1);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.INCORRECT, id4, 1);
+        databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.CORRECT);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id1, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id2, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id3, 1);
+        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id4, 1);
         int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
 
 
@@ -658,7 +658,7 @@ public class GameVerbTests {
 //        answerList.add(ans8);
 //        answerList.add(ans10);
 //
-//        databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.INCORRECT);
+//        databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.CORRECT);
 //        int count = verbGameIncorrect.addToTheIncorrectVerbTable(answerList);
 //
 //        assertEquals(2, count);

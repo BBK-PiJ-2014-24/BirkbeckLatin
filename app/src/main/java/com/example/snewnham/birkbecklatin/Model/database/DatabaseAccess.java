@@ -13,10 +13,6 @@ import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
-import com.example.snewnham.birkbecklatin.Model.verbs.VerbDeponent;
-import com.example.snewnham.birkbecklatin.Model.verbs.VerbIrregular;
-import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
-import com.example.snewnham.birkbecklatin.Model.verbs.VerbSemiDeponent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -232,7 +228,7 @@ public class DatabaseAccess {
         String[] column = new String[]{DbSchema.VerbListTable.Cols._id}; // SELECT _id
 
         String whereClause = DbSchema.VerbListTable.Cols.ASKED + "=? AND " +  // UNRESTRICTED LIST
-                             DbSchema.VerbListTable.Cols.INCORRECT + "=?";
+                             DbSchema.VerbListTable.Cols.CORRECT + "=?";
 
         if(restricted) {                                                      // RESTRICTED
              whereClause =  whereClause + " AND " +
@@ -244,10 +240,10 @@ public class DatabaseAccess {
         String[] whereArgs;
         if(!restricted){
             whereArgs = new String[]{Integer.toString(0),        // ASKED
-                                     Integer.toString(inCorrect)};// INCORRECT
+                                     Integer.toString(inCorrect)};// CORRECT
         } else {
             whereArgs = new String[]{Integer.toString(0),        // ASKED
-                                    Integer.toString(inCorrect),// INCORRECT
+                                    Integer.toString(inCorrect),// CORRECT
                                     Integer.toString(maxConj),  // CONJNUM
                                     "Regular",                  // LATIN TYPE
                                     "esse"};                    // LATIN INFINITIVE
@@ -674,37 +670,37 @@ public class DatabaseAccess {
         }
     }
 
-    // ------------------------------- INCORRECT VERBS -------------------------------------
+    // ------------------------------- CORRECT VERBS -------------------------------------
 
-    /**
-     * getRestrictedIncorrectVerbList()
-     * --------------------------------
-     * Gets a list of all Verb IDs from the IncorrecVerbList that
-     * are restricted to a max Conj.
-     * @param conj - Restricted
-     * @return  List<Integer> of VerbIDs from the
-     */
-    public List<Integer> getRestrictedIncorrectVerbList(int conj){
-
-        String table = DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE;  // FROM Incorrect_Verb_Table
-        String[] column = new String[]{DbSchema.Incorrect_Verb_Table.Cols.VERB_ID};   // Select VerbIDs
-        String whereClause = DbSchema.VerbListTable.Cols.LATIN_CONJNUM + "=?";
-        String[] whereArgs = new String[]{Integer.toString(conj)};
-
-        List<Integer> verbIDList = new ArrayList<>();
-        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs);  // set up cursor pointing at db
-
-        try {
-            cursor.moveToFirst();    // move cursor to first element of db
-            while (!cursor.isAfterLast()) {  // while NOT after last element
-                verbIDList.add(cursor.getInt(0));  // getID
-                cursor.moveToNext();
-            }
-        } finally {
-            cursor.close();  // CLOSE CURSOR  !!
-        }
-        return verbIDList;
-    }
+//    /**
+//     * getRestrictedIncorrectVerbList()
+//     * --------------------------------
+//     * Gets a list of all Verb IDs from the IncorrecVerbList that
+//     * are restricted to a max Conj.
+//     * @param conj - Restricted
+//     * @return  List<Integer> of VerbIDs from the
+//     */
+//    public List<Integer> getRestrictedIncorrectVerbList(int conj){
+//
+//        String table = DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE;  // FROM Incorrect_Verb_Table
+//        String[] column = new String[]{DbSchema.Incorrect_Verb_Table.Cols.VERB_ID};   // Select VerbIDs
+//        String whereClause = DbSchema.VerbListTable.Cols.LATIN_CONJNUM + "=?";
+//        String[] whereArgs = new String[]{Integer.toString(conj)};
+//
+//        List<Integer> verbIDList = new ArrayList<>();
+//        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs);  // set up cursor pointing at db
+//
+//        try {
+//            cursor.moveToFirst();    // move cursor to first element of db
+//            while (!cursor.isAfterLast()) {  // while NOT after last element
+//                verbIDList.add(cursor.getInt(0));  // getID
+//                cursor.moveToNext();
+//            }
+//        } finally {
+//            cursor.close();  // CLOSE CURSOR  !!
+//        }
+//        return verbIDList;
+//    }
 
 
 
@@ -740,13 +736,13 @@ public class DatabaseAccess {
      * -------------------------
      * Updates the 'Incorrect' Field in the_VERB_LIST_TABLE t
      * @param verbID - verb ID to update
-     * @param  attribute - The Field to be Reset, 'Incorrect' or 'Answer'
-     * @param incorrectFlag - Insert 0 (for Correct Answer) and 1 (for Incorrect Answer)
+     * @param  fieldName - The Field to be Reset, 'Incorrect' or 'Answer'
+     * @param fieldValue - Insert 0 (for Correct Answer) and 1 (for Incorrect Answer)
      */
-    public void sqlVerbList_Insert(String attribute, int verbID, int incorrectFlag) {
+    public void sqlVerbList_Insert( int verbID, String fieldName, int fieldValue ) {
 
         ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
-        contentValues.put(attribute, incorrectFlag); // manual _id insert for first record
+        contentValues.put(fieldName, fieldValue); // manual _id insert for first record
 
         if (this.mSQLiteDatabase == null)
             open();
@@ -764,14 +760,14 @@ public class DatabaseAccess {
      * --------------------------------
      * Test if A Record Entry of 'Incorrect' or 'Answer' Field has been properly inserted in the Verb_List Table
      * @param verbID - verb ID to test update
-     * @param  attribute - The Field to test, 'Incorrect' or 'Answer'
-     * @param incorrectFlag - the right value for the Attribute.
+     * @param  fieldName - The Field to test, 'Incorrect' or 'Answer'
+     * @param fieldValue - the right value for the Attribute.
      * @return True if check matches incorrectFlag
      */
-    public boolean sqlVerbList_TestInsertion(String attribute, int verbID, int incorrectFlag){
+    public boolean sqlVerbList_TestInsertion( int verbID, String fieldName, int fieldValue ){
         String table = DbSchema.VerbListTable.VERB_LIST_TABLE;
 
-        String[] column = new String[]{attribute}; // Select Column
+        String[] column = new String[]{fieldName}; // Select Column
 
         String whereClause = DbSchema.VerbListTable.Cols._id + "=?";  // Where
         String strId = Integer.toString(verbID);
@@ -779,14 +775,14 @@ public class DatabaseAccess {
 
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
         cursor.moveToFirst();
-        int answer = cursor.getInt(cursor.getColumnIndex(attribute));
+        int answer = cursor.getInt(cursor.getColumnIndex(fieldName));
 
 
         int x = cursor.getCount();
         String[] cols = cursor.getColumnNames();
 
         cursor.close();  // CLOSE CURSOR  !!
-        return (answer == incorrectFlag) ? true : false;
+        return (answer == fieldValue) ? true : false;
 
     }
 
@@ -818,7 +814,7 @@ public class DatabaseAccess {
      * sqlVerbList_AnswerReset()
      * ------------------------
      * Resets the 'Answer' Field in VebList to zero,
-     * WHERE INCORRECT = 0 or 1 depending on which list of Verbs
+     * WHERE CORRECT = 0 or 1 depending on which list of Verbs
      * to reset.
      *
      * @param  inCorrect - The Field to be Reset, 'Incorrect' or 'Answer'
@@ -834,7 +830,7 @@ public class DatabaseAccess {
             open();
 
         String table = DbSchema.VerbListTable.VERB_LIST_TABLE;
-        String whereClause =  DbSchema.VerbListTable.Cols.INCORRECT + "=?";
+        String whereClause =  DbSchema.VerbListTable.Cols.CORRECT + "=?";
         String[] whereArgument = new String[]{Integer.toString(inCorrect)}; // Select *
 
         this.mSQLiteDatabase.update(table, contentValues, whereClause, whereArgument);
@@ -1062,7 +1058,7 @@ public class DatabaseAccess {
     }
 
 
-    // ------------------------------- INCORRECT NOUNS -------------------------------------
+    // ------------------------------- CORRECT NOUNS -------------------------------------
     /**
      * sqlIncorrectVerb_GetId()
      * ------------------------

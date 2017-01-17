@@ -415,16 +415,16 @@ public interface Verb {
     public int getAsked();
 
     /**
-     * setIncorrect()
+     * setCorrect()
      * ==============
-     * @param incorrect
+     * @param correct
      */
-    public void setIncorrect(int incorrect);
+    public void setCorrect(int correct);
 
     /**
-     * getIncorrect()
+     * getCorrect()
      * ==============
      */
-    public int getIncorrect();
+    public int getCorrect();
 
 }

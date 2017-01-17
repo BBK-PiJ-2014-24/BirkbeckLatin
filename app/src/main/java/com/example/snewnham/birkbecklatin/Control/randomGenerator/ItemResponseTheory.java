@@ -37,7 +37,7 @@ public class ItemResponseTheory {
      * --------------
      * Calculates a newly updated Theta (the student's ability), given new
      * question's results. Border Cases are confined to [-3,+3] for
-     * (ALL INCORRECT items, ALL CORRECT items).
+     * (ALL CORRECT items, ALL CORRECT items).
      *
      * @param list - List of Items
      * Note that an item object contains:

@@ -39,7 +39,7 @@ public class VerbRegular implements Verb {
     protected String mEnglishVerb;
 
     protected int mAsked;
-    protected int mIncorrect;
+    protected int mCorrect;
 
 
 
@@ -440,13 +440,11 @@ public class VerbRegular implements Verb {
         mAsked = asked;
     }
 
-    @Override
-    public int getIncorrect() {
-        return mIncorrect;
+    public int getCorrect() {
+        return mCorrect;
     }
 
-    @Override
-    public void setIncorrect(int incorrect) {
-        mIncorrect = incorrect;
+    public void setCorrect(int correct) {
+        mCorrect = correct;
     }
 }
