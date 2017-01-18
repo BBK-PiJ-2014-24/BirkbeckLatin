@@ -116,7 +116,7 @@ public class VerbGame {
     public VerbGame(DatabaseAccess databaseAccess){     // Actual Game Constructor
         mDatabaseAccess = databaseAccess;
         mRandomGenerator = new RandomGenerator(mDatabaseAccess);
-        mSkillLevel = (int) mDatabaseAccess.sqlMetaQuery(VERB_SKILL_LEVEL);  // Access From Database
+        mSkillLevel = mDatabaseAccess.sqlMetaQuery(VERB_SKILL_LEVEL);  // Access From Database
         mTheta = mDatabaseAccess.sqlMetaQuery(VERB_THETA);
         mVerbQuestionList = new ArrayList<>();
         mAnswerList = new ArrayList<>();
@@ -133,10 +133,11 @@ public class VerbGame {
      * -----------------
      * Generates:
      * 1) a pair of Verb IDs, restricted according to skillLevel and either from Correct or Incorrect Lists
-     *    (If it is counter signals a scheduled Incorrect Verb or Not)
-     * 2) Forms a Question List of 6 Verbs from the pair of Verb IDs
-     * 3) Randomly selects a correctVerb
-     * 4) Shuffles the order of the list.
+     *    (If the game counter signals a scheduled Incorrect Verb or Not)
+     * 2) Updates the VerbList Table, updating the ASKED FIELD == 1
+     * 3) Forms a Question List of 6 Verbs from the pair of Verb IDs
+     * 4) Randomly selects a correctVerb
+     * 5) Shuffles the order of the list.
      *
      */
     public void runVerbQuestion(){
@@ -171,13 +172,13 @@ public class VerbGame {
                 break;
         }
 
-        List<Integer> correctTable = mDatabaseAccess.getVerbIDList(conj,0, restricted);  // defence test
+        List<Integer> correctTable = mDatabaseAccess.getVerbIDList(conj, 0 , restricted);  // defence test
         int correctTableSize = correctTable.size();                                      // to see if any (Unasked) Correct Verbs
         if(correctTableSize == 0)                        // If all VerbIDs have have been asked RESET
             mDatabaseAccess.sqlVerbList_AnswerReset(0);  // Then Reset all ASKED Fields for CORRECT VERBS;
 
 
-        List<Integer> incorrectTable = mDatabaseAccess.getVerbIDList(conj,1, restricted);  // defence test
+        List<Integer> incorrectTable = mDatabaseAccess.getVerbIDList(conj, 1 , restricted);  // defence test
         int incorrectTableSize = incorrectTable.size();                                 // to see if any (Unasked) Incorrect Verbs
 
         int inCorrect;
@@ -186,7 +187,10 @@ public class VerbGame {
         else
             inCorrect = 0;
 
-        List<Integer> idPairList = mRandomGenerator.getRandomVerbIDpair( conj ,inCorrect, restricted ); // generate pair of Verb ID
+        List<Integer> idPairList = mRandomGenerator.getRandomVerbIDpair(conj, inCorrect, restricted); // generate pair of Verb ID
+
+        mDatabaseAccess.sqlVerbList_Insert(idPairList.get(0), DbSchema.VerbListTable.Cols.ASKED, 1 );  // Updates the Database that verb IDs have been used
+        mDatabaseAccess.sqlVerbList_Insert(idPairList.get(1), DbSchema.VerbListTable.Cols.ASKED, 1 );
 
         mVerbQuestionList = getVerbQuestions(idPairList);  //++++++++ generate question list
 
@@ -200,11 +204,10 @@ public class VerbGame {
                                                                      // in the shuffle list.
     }
 
-
     /**
      * storeAnswer()
      * -------------
-     * 1) Updates ViewList Table, updating ASKED and CORRECT Fields
+     * 1) Updates ViewList Table, updating CORRECT Field
      * 2) Creates Answer object to contain data for the question and adds to Answer List.
      * @param ans answer flag - correct/incorrect (1 or 0)
      * @return If answer is correct/incorrect (1 or 0)
@@ -212,7 +215,6 @@ public class VerbGame {
     public int storeAnswer(int ans){
 
         // Update Database
-        mDatabaseAccess.sqlVerbList_Insert(mCorrectVerb.getId(), DbSchema.VerbListTable.Cols.ASKED, 1 );
         mDatabaseAccess.sqlVerbList_Insert(mCorrectVerb.getId(), DbSchema.VerbListTable.Cols.CORRECT, ans);
 
         // Form Answer Object and Add to Lists
