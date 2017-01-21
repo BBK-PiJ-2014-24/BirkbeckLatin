@@ -122,42 +122,42 @@ public class AdvancedRandomGeneratorTests {
         databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.ASKED);
         databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.CORRECT);
 
-        databaseAccess.sqlVerbList_Insert(id1, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id1, DbSchema.VerbListTable.Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id1, DbSchema.VerbListTable.Cols.CORRECT, 1);
 
-        databaseAccess.sqlVerbList_Insert(id2, DbSchema.VerbListTable.Cols.CORRECT, 1);
         databaseAccess.sqlVerbList_Insert(id2, DbSchema.VerbListTable.Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id2, DbSchema.VerbListTable.Cols.CORRECT, 0);
 
-        databaseAccess.sqlVerbList_Insert(id3, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id3, DbSchema.VerbListTable.Cols.ASKED, 1);
+        databaseAccess.sqlVerbList_Insert(id3, DbSchema.VerbListTable.Cols.CORRECT, 1);
 
-        databaseAccess.sqlVerbList_Insert(id4, DbSchema.VerbListTable.Cols.CORRECT, 1);
         databaseAccess.sqlVerbList_Insert(id4, DbSchema.VerbListTable.Cols.ASKED, 1);
+        databaseAccess.sqlVerbList_Insert(id4, DbSchema.VerbListTable.Cols.CORRECT, 0);
 
-        databaseAccess.sqlVerbList_Insert(id5, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id5, DbSchema.VerbListTable.Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id5, DbSchema.VerbListTable.Cols.CORRECT, 1);
 
-        databaseAccess.sqlVerbList_Insert(id6, DbSchema.VerbListTable.Cols.CORRECT,  1);
         databaseAccess.sqlVerbList_Insert(id6, DbSchema.VerbListTable.Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id6, DbSchema.VerbListTable.Cols.CORRECT, 0);
 
-        databaseAccess.sqlVerbList_Insert(id7, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id7, DbSchema.VerbListTable.Cols.ASKED, 1);
+        databaseAccess.sqlVerbList_Insert(id7, DbSchema.VerbListTable.Cols.CORRECT, 1);
 
-        databaseAccess.sqlVerbList_Insert(id8, DbSchema.VerbListTable.Cols.CORRECT, 1);
         databaseAccess.sqlVerbList_Insert(id8, DbSchema.VerbListTable.Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id8, DbSchema.VerbListTable.Cols.CORRECT, 0);
 
-        databaseAccess.sqlVerbList_Insert(id9, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id9, DbSchema.VerbListTable.Cols.ASKED, 1);
+        databaseAccess.sqlVerbList_Insert(id9, DbSchema.VerbListTable.Cols.CORRECT, 1);
 
-        databaseAccess.sqlVerbList_Insert(id10, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id10, DbSchema.VerbListTable.Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id10, DbSchema.VerbListTable.Cols.CORRECT, 1);
 
 
 
 
         List<Integer> listofIDs = new ArrayList<>();
         for(int i=0; i<100; i++){
-            List<Integer> pairIDs = randomGenerator.getRandomVerbIDpair(2,0,true);  // run method for 100 times
+            List<Integer> pairIDs = randomGenerator.getRandomVerbIDpair(2,1,true);  // run method for 100 times
             listofIDs.add(pairIDs.get(0));
             listofIDs.add(pairIDs.get(1));
         }
@@ -194,51 +194,51 @@ public class AdvancedRandomGeneratorTests {
         databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.ASKED);
         databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.CORRECT);
 
-        databaseAccess.sqlVerbList_Insert(id1, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id1, DbSchema.VerbListTable.Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id1, DbSchema.VerbListTable.Cols.CORRECT, 1);
 
-        databaseAccess.sqlVerbList_Insert(id2, DbSchema.VerbListTable.Cols.CORRECT, 1);
         databaseAccess.sqlVerbList_Insert(id2, DbSchema.VerbListTable.Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id2, DbSchema.VerbListTable.Cols.CORRECT, 0);
 
-        databaseAccess.sqlVerbList_Insert(id3, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id3, DbSchema.VerbListTable.Cols.ASKED, 1);
+        databaseAccess.sqlVerbList_Insert(id3, DbSchema.VerbListTable.Cols.CORRECT, 1);
 
-        databaseAccess.sqlVerbList_Insert(id4, DbSchema.VerbListTable.Cols.CORRECT, 1);
         databaseAccess.sqlVerbList_Insert(id4, DbSchema.VerbListTable.Cols.ASKED, 1);
+        databaseAccess.sqlVerbList_Insert(id4, DbSchema.VerbListTable.Cols.CORRECT, 0);
 
-        databaseAccess.sqlVerbList_Insert(id5, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id5, DbSchema.VerbListTable.Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id5, DbSchema.VerbListTable.Cols.CORRECT, 1);
 
-        databaseAccess.sqlVerbList_Insert(id6, DbSchema.VerbListTable.Cols.CORRECT,  1);
         databaseAccess.sqlVerbList_Insert(id6, DbSchema.VerbListTable.Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id6, DbSchema.VerbListTable.Cols.CORRECT, 0);
 
-        databaseAccess.sqlVerbList_Insert(id7, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id7, DbSchema.VerbListTable.Cols.ASKED, 1);
+        databaseAccess.sqlVerbList_Insert(id7, DbSchema.VerbListTable.Cols.CORRECT, 1);
 
-        databaseAccess.sqlVerbList_Insert(id8, DbSchema.VerbListTable.Cols.CORRECT, 1);
         databaseAccess.sqlVerbList_Insert(id8, DbSchema.VerbListTable.Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id8, DbSchema.VerbListTable.Cols.CORRECT, 0);
 
-        databaseAccess.sqlVerbList_Insert(id9, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id9, DbSchema.VerbListTable.Cols.ASKED, 1);
+        databaseAccess.sqlVerbList_Insert(id9, DbSchema.VerbListTable.Cols.CORRECT, 1);
 
-        databaseAccess.sqlVerbList_Insert(id10, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id10, DbSchema.VerbListTable.Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id10, DbSchema.VerbListTable.Cols.CORRECT, 1);
 
         List<Integer> listofIDs = new ArrayList<>();
         for(int i=0; i<100; i++){
-            List<Integer> pairIDs = randomGenerator.getRandomVerbIDpair(conjNum1_4, 0, false);  // run method for 100 times
+            List<Integer> pairIDs = randomGenerator.getRandomVerbIDpair(conjNum1_4, 1, false);  // Select WHERE CORRECT = 1
             listofIDs.add(pairIDs.get(0));
             listofIDs.add(pairIDs.get(1));
         }
 
         assertThat(10, isIn(listofIDs));  // check sample pair
-        assertThat(9, isIn(listofIDs));
+        // assertThat(9, isIn(listofIDs));
         // assertThat(8, isIn(listofIDs));
-        assertThat(7, isIn(listofIDs));
+        // assertThat(7, isIn(listofIDs));
         // assertThat(6, isIn(listofIDs));
         assertThat(5, isIn(listofIDs));
         // assertThat(4, isIn(listofIDs));
-        assertThat(3, isIn(listofIDs));
+        // assertThat(3, isIn(listofIDs));
         // assertThat(2, isIn(listofIDs));
         assertThat(1, isIn(listofIDs));
     }
