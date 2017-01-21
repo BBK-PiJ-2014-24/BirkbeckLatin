@@ -46,6 +46,11 @@ public class VerbGame {
     private static final int CONJNUM1_2 = 2;
     private static final int CONJNUM1_4 = 40;
 
+    private static final int VALUE_CORRECT = 1;
+    private static final int VALUE_INCORRECT = 0;
+    private static final int ASKED_YES = 1;
+    private static final int ASKED_NO = 0;
+
     private final static String ASKED = "Asked";
 
     private final static int NUM_CHOICES = 6; // 1 Correct Verb, 5 Incorrect Verbs
@@ -172,31 +177,39 @@ public class VerbGame {
                 break;
         }
 
-        List<Integer> correctTable = mDatabaseAccess.getVerbIDList(conj, 0 , restricted);  // defence test
-        int correctTableSize = correctTable.size();                                      // to see if any (Unasked) Correct Verbs
-        if(correctTableSize == 0)                        // If all VerbIDs have have been asked RESET
-            mDatabaseAccess.sqlVerbList_AskedReset(0);  // Then Reset all ASKED Fields for CORRECT VERBS;
+        // defence check to see how many (Unasked) CORRECT Verbs left
+        List<Integer> correctTable = mDatabaseAccess.getVerbIDList(conj, VALUE_CORRECT , restricted);
+        int correctTableSize = correctTable.size();
+        if(correctTableSize == 0)                        // If all CORRECT VerbIDs have have been asked  ...
+            mDatabaseAccess.sqlVerbList_AskedReset(VALUE_CORRECT);  // ...then Reset all ASKED Fields = 0 for CORRECT VERBS;
 
 
-        List<Integer> incorrectTable = mDatabaseAccess.getVerbIDList(conj, 1 , restricted);  // defence test
-        int incorrectTableSize = incorrectTable.size();                                 // to see if any (Unasked) Incorrect Verbs
+        // defence check to see how many (Unasked) INCORRECT Verbs left
+        List<Integer> incorrectTable = mDatabaseAccess.getVerbIDList(conj, VALUE_INCORRECT , restricted);
+        int incorrectTableSize = incorrectTable.size();
 
-        int correct;
-        if(mQuestionNumber % TIME_FOR_INCORRECT_QUESTION == 0  && incorrectTableSize !=0 )   // Test time for Incorrect Question ...
-            correct = 1;                              // Yes. Not All Verbs in Incorrect Table been tested
+
+        // Check if time for Incorrect Question ...
+        int correctValue;
+        if(mQuestionNumber % TIME_FOR_INCORRECT_QUESTION == 0  && incorrectTableSize !=0 )
+            correctValue = VALUE_CORRECT;                              // Yes. Not All Verbs in Incorrect Table been tested
         else
-            correct = 0;
+            correctValue = VALUE_INCORRECT;
 
-        List<Integer> idPairList = mRandomGenerator.getRandomVerbIDpair(conj, correct, restricted); // generate pair of Verb ID
+        // generate pair of Verb ID
+        List<Integer> idPairList = mRandomGenerator.getRandomVerbIDpair(conj, correctValue, restricted);
 
-        mDatabaseAccess.sqlVerbList_Insert(idPairList.get(0), DbSchema.VerbListTable.Cols.ASKED, 1 );  // Updates the Database that verb IDs have been used
-        mDatabaseAccess.sqlVerbList_Insert(idPairList.get(1), DbSchema.VerbListTable.Cols.ASKED, 1 );
+        // Updates the Database that verb IDs have been used
+        mDatabaseAccess.sqlVerbList_Insert(idPairList.get(0), DbSchema.VerbListTable.Cols.ASKED, ASKED_YES );
+        mDatabaseAccess.sqlVerbList_Insert(idPairList.get(1), DbSchema.VerbListTable.Cols.ASKED, ASKED_YES );
 
-        mVerbQuestionList = getVerbQuestions(idPairList);  //++++++++ generate question list
+        // Generate question list
+        mVerbQuestionList = getVerbQuestions(idPairList);
 
+        // Select a correctVerb Verb from id1 randomly
         Random rnd = new Random();
         int rndIndex = rnd.nextInt(3);
-        mCorrectVerb = mVerbQuestionList.get(rndIndex); // Select a correctVerb Verb from id1 randomly
+        mCorrectVerb = mVerbQuestionList.get(rndIndex);
 
         mVerbQuestionList = mRandomGenerator.shuffleVerbList(mVerbQuestionList); // shuffle Question List
 
