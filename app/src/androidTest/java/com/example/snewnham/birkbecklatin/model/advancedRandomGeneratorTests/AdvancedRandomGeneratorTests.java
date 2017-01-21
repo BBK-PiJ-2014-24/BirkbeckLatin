@@ -122,35 +122,35 @@ public class AdvancedRandomGeneratorTests {
         databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.ASKED);
         databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.CORRECT);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id1, 0);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id1, 0);
+        databaseAccess.sqlVerbList_Insert(id1, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id1, DbSchema.VerbListTable.Cols.ASKED, 0);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id2, 1);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id2, 0);
+        databaseAccess.sqlVerbList_Insert(id2, DbSchema.VerbListTable.Cols.CORRECT, 1);
+        databaseAccess.sqlVerbList_Insert(id2, DbSchema.VerbListTable.Cols.ASKED, 0);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id3, 0);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id3, 1);
+        databaseAccess.sqlVerbList_Insert(id3, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id3, DbSchema.VerbListTable.Cols.ASKED, 1);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id4, 1);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id4, 1);
+        databaseAccess.sqlVerbList_Insert(id4, DbSchema.VerbListTable.Cols.CORRECT, 1);
+        databaseAccess.sqlVerbList_Insert(id4, DbSchema.VerbListTable.Cols.ASKED, 1);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id5, 0);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id5, 0);
+        databaseAccess.sqlVerbList_Insert(id5, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id5, DbSchema.VerbListTable.Cols.ASKED, 0);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id6, 1);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id6, 0);
+        databaseAccess.sqlVerbList_Insert(id6, DbSchema.VerbListTable.Cols.CORRECT,  1);
+        databaseAccess.sqlVerbList_Insert(id6, DbSchema.VerbListTable.Cols.ASKED, 0);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id7, 0);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id7, 1);
+        databaseAccess.sqlVerbList_Insert(id7, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id7, DbSchema.VerbListTable.Cols.ASKED, 1);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id8, 1);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id8, 0);
+        databaseAccess.sqlVerbList_Insert(id8, DbSchema.VerbListTable.Cols.CORRECT, 1);
+        databaseAccess.sqlVerbList_Insert(id8, DbSchema.VerbListTable.Cols.ASKED, 0);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id9, 0);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id9, 1);
+        databaseAccess.sqlVerbList_Insert(id9, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id9, DbSchema.VerbListTable.Cols.ASKED, 1);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id10, 0);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id10, 0);
+        databaseAccess.sqlVerbList_Insert(id10, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id10, DbSchema.VerbListTable.Cols.ASKED, 0);
 
 
 
@@ -194,35 +194,35 @@ public class AdvancedRandomGeneratorTests {
         databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.ASKED);
         databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.CORRECT);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id1, 0);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id1, 0);
+        databaseAccess.sqlVerbList_Insert(id1, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id1, DbSchema.VerbListTable.Cols.ASKED, 0);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id2, 1);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id2, 0);
+        databaseAccess.sqlVerbList_Insert(id2, DbSchema.VerbListTable.Cols.CORRECT, 1);
+        databaseAccess.sqlVerbList_Insert(id2, DbSchema.VerbListTable.Cols.ASKED, 0);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id3, 0);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id3, 1);
+        databaseAccess.sqlVerbList_Insert(id3, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id3, DbSchema.VerbListTable.Cols.ASKED, 1);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id4, 1);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id4, 1);
+        databaseAccess.sqlVerbList_Insert(id4, DbSchema.VerbListTable.Cols.CORRECT, 1);
+        databaseAccess.sqlVerbList_Insert(id4, DbSchema.VerbListTable.Cols.ASKED, 1);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id5, 0);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id5, 0);
+        databaseAccess.sqlVerbList_Insert(id5, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id5, DbSchema.VerbListTable.Cols.ASKED, 0);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id6, 1);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id6, 0);
+        databaseAccess.sqlVerbList_Insert(id6, DbSchema.VerbListTable.Cols.CORRECT,  1);
+        databaseAccess.sqlVerbList_Insert(id6, DbSchema.VerbListTable.Cols.ASKED, 0);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id7, 0);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id7, 1);
+        databaseAccess.sqlVerbList_Insert(id7, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id7, DbSchema.VerbListTable.Cols.ASKED, 1);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id8, 1);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id8, 0);
+        databaseAccess.sqlVerbList_Insert(id8, DbSchema.VerbListTable.Cols.CORRECT, 1);
+        databaseAccess.sqlVerbList_Insert(id8, DbSchema.VerbListTable.Cols.ASKED, 0);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id9, 0);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id9, 1);
+        databaseAccess.sqlVerbList_Insert(id9, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id9, DbSchema.VerbListTable.Cols.ASKED, 1);
 
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id10, 0);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.ASKED, id10, 0);
+        databaseAccess.sqlVerbList_Insert(id10, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id10, DbSchema.VerbListTable.Cols.ASKED, 0);
 
         List<Integer> listofIDs = new ArrayList<>();
         for(int i=0; i<100; i++){
@@ -488,67 +488,67 @@ public class AdvancedRandomGeneratorTests {
     }
 
 
-    /**
-     * testRandomNounIncorrectTable()
-     * ------------------------------
-     * Test for random selection of a noun_id + Noun_Type from the IncorrectVerb Table
-     * using the IncorrectNounOutput class to take the (Noun_Type, NounID) pair.
-     *
-     * @throws Exception
-     */
-    @Test
-    public void testRandomNounIncorrectTable() throws Exception {
-
-        String noun = "NOUN";
-        String irregularNoun = "IRREGULAR_NOUN";
-        String adjective = "ADJECTIVE";
-        String conjunction = "CONJUNCTION";
-        String preposition = "PREPOSITION";
-
-        int nounId1 = 10;
-        int nounId2 = 20;
-        int nounId3 = 30;
-        int nounId4 = 40;
-
-        int randomSims = 400;
-
-        // load the table
-        databaseAccess.sqlIncorrectNounEtc_Reset();
-        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId1);
-        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId2);
-        databaseAccess.sqlIncorrectNounEtc_Insert(adjective, nounId3);
-        databaseAccess.sqlIncorrectNounEtc_Insert(adjective, nounId4);
-        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
-
-
-        int sample = randomSims / numVerbs;
-        float toleranceFactor = 0.25f;
-        int toleranceForSample = (int) (sample * toleranceFactor);
-
-
-        Map<Integer, Integer> map = new HashMap<>();
-
-        for(int i=0; i<randomSims; i++) {
-            IncorrectNounOutput ans = randomGenerator.getIncorrectNounOutput();
-            if (!map.containsKey(ans.getNounId()))
-                map.put(ans.getNounId(), 1);
-            else
-                map.put(ans.getNounId(), map.get(ans.getNounId()) + 1);
-        }
-        int x = 5;
-        assertThat("Num nounId_1 Simulations", map.get(nounId1), greaterThan(sample - toleranceForSample));
-        assertThat("Num nounId_1 Simulations", map.get(nounId1), lessThan(sample + toleranceForSample));
-
-        assertThat("Num nounId_2 Simulations", map.get(nounId2), greaterThan(sample - toleranceForSample));
-        assertThat("Num nounId_2 Simulations", map.get(nounId2), lessThan(sample + toleranceForSample));
-
-        assertThat("Num nounId_3 Simulations", map.get(nounId3), greaterThan(sample - toleranceForSample));
-        assertThat("Num nounId_3 Simulations", map.get(nounId3), lessThan(sample + toleranceForSample));
-
-        assertThat("Num nounId_4 Simulations", map.get(nounId4), greaterThan(sample - toleranceForSample));
-        assertThat("Num nounId_4 Simulations", map.get(nounId4), lessThan(sample + toleranceForSample));
-
-    }
+//    /**
+//     * testRandomNounIncorrectTable()
+//     * ------------------------------
+//     * Test for random selection of a noun_id + Noun_Type from the IncorrectVerb Table
+//     * using the IncorrectNounOutput class to take the (Noun_Type, NounID) pair.
+//     *
+//     * @throws Exception
+//     */
+//    @Test
+//    public void testRandomNounIncorrectTable() throws Exception {
+//
+//        String noun = "NOUN";
+//        String irregularNoun = "IRREGULAR_NOUN";
+//        String adjective = "ADJECTIVE";
+//        String conjunction = "CONJUNCTION";
+//        String preposition = "PREPOSITION";
+//
+//        int nounId1 = 10;
+//        int nounId2 = 20;
+//        int nounId3 = 30;
+//        int nounId4 = 40;
+//
+//        int randomSims = 400;
+//
+//        // load the table
+//        databaseAccess.sqlIncorrectNounEtc_Reset();
+//        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId1);
+//        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId2);
+//        databaseAccess.sqlIncorrectNounEtc_Insert(adjective, nounId3);
+//        databaseAccess.sqlIncorrectNounEtc_Insert(adjective, nounId4);
+//        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
+//
+//
+//        int sample = randomSims / numVerbs;
+//        float toleranceFactor = 0.25f;
+//        int toleranceForSample = (int) (sample * toleranceFactor);
+//
+//
+//        Map<Integer, Integer> map = new HashMap<>();
+//
+//        for(int i=0; i<randomSims; i++) {
+//            IncorrectNounOutput ans = randomGenerator.getIncorrectNounOutput();
+//            if (!map.containsKey(ans.getNounId()))
+//                map.put(ans.getNounId(), 1);
+//            else
+//                map.put(ans.getNounId(), map.get(ans.getNounId()) + 1);
+//        }
+//        int x = 5;
+//        assertThat("Num nounId_1 Simulations", map.get(nounId1), greaterThan(sample - toleranceForSample));
+//        assertThat("Num nounId_1 Simulations", map.get(nounId1), lessThan(sample + toleranceForSample));
+//
+//        assertThat("Num nounId_2 Simulations", map.get(nounId2), greaterThan(sample - toleranceForSample));
+//        assertThat("Num nounId_2 Simulations", map.get(nounId2), lessThan(sample + toleranceForSample));
+//
+//        assertThat("Num nounId_3 Simulations", map.get(nounId3), greaterThan(sample - toleranceForSample));
+//        assertThat("Num nounId_3 Simulations", map.get(nounId3), lessThan(sample + toleranceForSample));
+//
+//        assertThat("Num nounId_4 Simulations", map.get(nounId4), greaterThan(sample - toleranceForSample));
+//        assertThat("Num nounId_4 Simulations", map.get(nounId4), lessThan(sample + toleranceForSample));
+//
+//    }
 
 
 

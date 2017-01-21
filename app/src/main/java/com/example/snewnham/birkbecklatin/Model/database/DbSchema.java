@@ -42,9 +42,7 @@ public class DbSchema {
 
             public static final String ASKED = "Asked";
             public static final String CORRECT = "Correct";
-
         }
-
     }
 
     // inner STATIC class - VerbStem Table
@@ -106,7 +104,6 @@ public class DbSchema {
         }
     }
 
-
     // inner STATIC class - EnglishPersons Table
     // ------------------------------------------
     public static final class EnglishPersonsTable {
@@ -138,7 +135,6 @@ public class DbSchema {
             public static final String TENSE = "Tense";
             public static final String MOOD = "Mood";
             public static final String VOICE = "Voice";
-
             public static final String ENG_VERB_ENDING = "Eng_Verb_Ending";
         }
     }
@@ -183,7 +179,6 @@ public class DbSchema {
 
 // ===================================== NOUN ======================================================
 
-
     // inner STATIC class - NounListTable
     // ----------------------------------
     public static final class NounListTable {
@@ -203,6 +198,8 @@ public class DbSchema {
             public static final String LATIN_NOUN_STEM = "Latin_Noun_Stem";
             public static final String ENGLISH_NOUN_SINGULAR = "English_Noun_Singular";
             public static final String ENGLISH_NOUN_PLURAL = "English_Noun_Plural";
+            public static final String ASKED = "Asked";
+            public static final String CORRECT = "Correct";
         }
     }
 
@@ -243,7 +240,6 @@ public class DbSchema {
     }
 
 
-
     // inner STATIC class - AdjectiveListTable
     // ---------------------------------------
     public static final class AdjectiveListTable {
@@ -264,6 +260,8 @@ public class DbSchema {
             public static final String ENGLISH_COMPARATIVE = "English_Comparative";
             public static final String LATIN_SUPERLATIVE_STEM = "Latin_Superlative_Stem";
             public static final String ENGLISH_SUPERLATIVE = "English_Superlative";
+            public static final String ASKED = "Asked";
+            public static final String CORRECT = "Correct";
         }
     }
 
@@ -298,6 +296,8 @@ public class DbSchema {
             public static final String _id = "_id";
             public static final String LATIN_PREPOSITION = "Latin_Preposition";
             public static final String ENGLISH_PRESPOSITION = "English_Preposition";
+            public static final String ASKED = "Asked";
+            public static final String CORRECT = "Correct";
         }
     }
 
@@ -314,6 +314,8 @@ public class DbSchema {
             public static final String _id = "_id";
             public static final String LATIN_CONJUNCTION = "Latin_Conjunction";
             public static final String ENGLISH_CONJUNCTION = "English_Conjunction";
+            public static final String ASKED = "Asked";
+            public static final String CORRECT = "Correct";
         }
     }
 
@@ -333,25 +335,27 @@ public class DbSchema {
             public static final String ENGLISH_ADVERB = "English_Adverb";
             public static final String ENGLISH_ADVERB_COMPARATIVE = "English_Adverb_Comparative";
             public static final String ENGLISH_ADVERB_SUPERLATIVE = "English_Adverb_Superlative";
+            public static final String ASKED = "Asked";
+            public static final String CORRECT = "Correct";
         }
     }
 
 
-    // inner STATIC class - Incorrect_Noun_Table
-    // ----------------------------------------------
-    public static final class Incorrect_NounEtc_Table {
-        public static final String INCORRECT_NOUNETC_TABLE = "Incorrect_NounEtc_Table";
-
-        // inner inner STATIC class of the Table - Attributes
-        // --------------------------------------
-        public static final class Cols {
-            public static final String _id = "_id";
-            public static final String NOUNETC_TYPE = "NounEtc_Type";
-            public static final String NOUNETC_ID = "NounEtc_id";
-        }
-    }
-
-    // inner STATIC class - Incorrect_Verb_Table
+//    // inner STATIC class - Incorrect_Noun_Table
+//    // ----------------------------------------------
+//    public static final class Incorrect_NounEtc_Table {
+//        public static final String INCORRECT_NOUNETC_TABLE = "Incorrect_NounEtc_Table";
+//
+//        // inner inner STATIC class of the Table - Attributes
+//        // --------------------------------------
+//        public static final class Cols {
+//            public static final String _id = "_id";
+//            public static final String NOUNETC_TYPE = "NounEtc_Type";
+//            public static final String NOUNETC_ID = "NounEtc_id";
+//        }
+//    }
+//
+    // inner STATIC class - Meta_Table
     // ----------------------------------------------
     public static final class Meta_Table {
         public static final String META_TABLE = "Meta";
@@ -364,9 +368,6 @@ public class DbSchema {
             public static final String VALUE = "Value";
         }
     }
-
-
-
 
 }
 

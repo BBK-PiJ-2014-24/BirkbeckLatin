@@ -5,6 +5,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.Games.VerbGame;
+import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
@@ -38,6 +39,7 @@ public class GameVerbTests {
     // ------
     Context appContext;
     DatabaseAccess databaseAccess;
+    RandomGenerator randomGenerator;
 
     int id_Regular;  // id for Regular
     int id_Deponent;  // id for Deponent
@@ -95,12 +97,20 @@ public class GameVerbTests {
     String conjNum4;
     String conjNull;
 
+    private static final int CONJNUM1_2 = 2;
+    private static final int CONJNUM1_4 = 40;
+
+    int correct;
+    boolean restricted;
+
 
     @Before
     public void setUp() {
         appContext = InstrumentationRegistry.getTargetContext();
         databaseAccess = DatabaseAccess.getInstance(appContext);  // CALL THE DATABASE STATICALY
         databaseAccess.open();                                  // OPEN THE DATABASE
+        randomGenerator = new RandomGenerator();
+
 
         verbGame1 = new VerbGame(databaseAccess, 1); // Verb Skill 1
         verbGame2 = new VerbGame(databaseAccess, 2);
@@ -174,6 +184,8 @@ public class GameVerbTests {
         conjNum3 = "3";
         conjNum4 = "4";
         conjNull = null;
+
+        correct = 1;
     }
 
 
@@ -333,9 +345,10 @@ public class GameVerbTests {
 
         List<Verb> list = null;
         for (int i = 0; i < 5; i++) {
+            restricted = true;
+            List<Integer> idPairList = randomGenerator.getRandomVerbIDpair(CONJNUM1_2, correct, restricted);
+            list = verbGame1.getVerbQuestions(idPairList);
 
-            List<Integer> idList = verbGame1.getVerbIDs();
-            list = verbGame1.getVerbQuestions(idList);
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
@@ -373,8 +386,9 @@ public class GameVerbTests {
     public void testGetVerbQuestions_Skill2() throws Exception {
         List<Verb> list = null;
         for (int i = 0; i < 5; i++) {
-            List<Integer> idList = verbGame2.getVerbIDs();
-            list = verbGame2.getVerbQuestions(idList);
+            restricted = true;
+            List<Integer> idPairList = randomGenerator.getRandomVerbIDpair(CONJNUM1_4, correct, restricted);
+            list = verbGame1.getVerbQuestions(idPairList);
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
@@ -414,8 +428,9 @@ public class GameVerbTests {
 
         List<Verb> list = null;
         for (int i = 0; i < 5; i++) {
-            List<Integer> idList = verbGame3.getVerbIDs();
-            list = verbGame3.getVerbQuestions(idList);
+            restricted = true;
+            List<Integer> idPairList = randomGenerator.getRandomVerbIDpair(CONJNUM1_4, correct, restricted);
+            list = verbGame1.getVerbQuestions(idPairList);
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
@@ -457,8 +472,9 @@ public class GameVerbTests {
 
 
         for(int i=0; i<3; i++) {  // limited checks as sqlite cannot cope with multiple queries
-            List<Integer> idList = verbGame4.getVerbIDs();
-            list = verbGame4.getVerbQuestions(idList);
+            restricted = false;
+            List<Integer> idPairList = randomGenerator.getRandomVerbIDpair(CONJNUM1_4, correct, restricted);
+            list = verbGame1.getVerbQuestions(idPairList);
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
@@ -501,8 +517,9 @@ public class GameVerbTests {
         Map<String, Integer> map = new HashMap<>();
 
         for (int i = 0; i <3; i++) {
-            List<Integer> idList = verbGame5.getVerbIDs();
-            list = verbGame5.getVerbQuestions(idList);
+            restricted = false;
+            List<Integer> idPairList = randomGenerator.getRandomVerbIDpair(CONJNUM1_4, correct, restricted);
+            list = verbGame1.getVerbQuestions(idPairList);
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
@@ -604,11 +621,11 @@ public class GameVerbTests {
 
         // load the table
         databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.CORRECT);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id1, 1);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id2, 1);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id3, 1);
-        databaseAccess.sqlVerbList_Insert(DbSchema.VerbListTable.Cols.CORRECT, id4, 1);
-        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
+        databaseAccess.sqlVerbList_Insert(id1, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id2, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id3, DbSchema.VerbListTable.Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id4, DbSchema.VerbListTable.Cols.CORRECT, 0);
+//        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
 
 
 //        int sample = randomSims / numVerbs;

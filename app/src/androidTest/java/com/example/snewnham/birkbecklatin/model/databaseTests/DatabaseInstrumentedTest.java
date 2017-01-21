@@ -379,106 +379,106 @@ public class DatabaseInstrumentedTest {
 
         databaseAccess.sqlVerbList_Reset(Cols.CORRECT);
 
-        databaseAccess.sqlVerbList_Insert(id1, Cols.CORRECT, 0);
-        databaseAccess.sqlVerbList_Insert(id1, Cols.CORRECT, 0);
-        boolean testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(id1, Cols.CORRECT, 0);
-        boolean testANSWER = databaseAccess.sqlVerbList_TestInsertion(id1, Cols.CORRECT, 0);
-        assertTrue(testINCORRECT);
-        assertTrue(testANSWER);
+        databaseAccess.sqlVerbList_Insert(id1, Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id1, Cols.CORRECT, 1);
+        boolean testCORRECT = databaseAccess.sqlVerbList_TestInsertion(id1, Cols.ASKED, 0);
+        boolean testASKED = databaseAccess.sqlVerbList_TestInsertion(id1, Cols.CORRECT, 1);
+        assertTrue(testCORRECT);
+        assertTrue(testASKED);
 
 
-        databaseAccess.sqlVerbList_Insert(id2, Cols.CORRECT, 1);
+        databaseAccess.sqlVerbList_Insert(id2, Cols.ASKED, 0);
         databaseAccess.sqlVerbList_Insert(id2, Cols.CORRECT, 0);
-        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(id2, Cols.CORRECT, 1);
-        testANSWER = databaseAccess.sqlVerbList_TestInsertion(id2, Cols.CORRECT, 0);
-        assertTrue(testINCORRECT);
-        assertTrue(testANSWER);
+        testCORRECT = databaseAccess.sqlVerbList_TestInsertion(id2, Cols.ASKED, 0);
+        testASKED = databaseAccess.sqlVerbList_TestInsertion(id2, Cols.CORRECT, 0);
+        assertTrue(testCORRECT);
+        assertTrue(testASKED);
 
-        databaseAccess.sqlVerbList_Insert(id3, Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id3, Cols.ASKED, 1);
         databaseAccess.sqlVerbList_Insert(id3, Cols.CORRECT, 1);
-        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(id3, Cols.CORRECT, 0);
-        testANSWER = databaseAccess.sqlVerbList_TestInsertion(id3, Cols.CORRECT, 1);
-        assertTrue(testINCORRECT);
-        assertTrue(testANSWER);
+        testCORRECT = databaseAccess.sqlVerbList_TestInsertion(id3, Cols.ASKED, 1);
+        testASKED = databaseAccess.sqlVerbList_TestInsertion(id3, Cols.CORRECT, 1);
+        assertTrue(testCORRECT);
+        assertTrue(testASKED);
 
-        databaseAccess.sqlVerbList_Insert(id4, Cols.CORRECT, 1);
-        databaseAccess.sqlVerbList_Insert(id4, Cols.CORRECT, 1);
-        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(id4, Cols.CORRECT, 1);
-        testANSWER = databaseAccess.sqlVerbList_TestInsertion(id4, Cols.CORRECT, 1);
-        assertTrue(testINCORRECT);
-        assertTrue(testANSWER);
+        databaseAccess.sqlVerbList_Insert(id4, Cols.ASKED, 1);
+        databaseAccess.sqlVerbList_Insert(id4, Cols.CORRECT, 0);
+        testCORRECT = databaseAccess.sqlVerbList_TestInsertion(id4, Cols.ASKED, 1);
+        testASKED = databaseAccess.sqlVerbList_TestInsertion(id4, Cols.CORRECT, 0);
+        assertTrue(testCORRECT);
+        assertTrue(testASKED);
 
-        databaseAccess.sqlVerbList_Insert(id5, Cols.CORRECT, 0);
-        databaseAccess.sqlVerbList_Insert(id5, Cols.CORRECT, 0);
-        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(id5, Cols.CORRECT, 0);
-        testANSWER = databaseAccess.sqlVerbList_TestInsertion(id5, Cols.CORRECT, 0);
-        assertTrue(testINCORRECT);
-        assertTrue(testANSWER);
+        databaseAccess.sqlVerbList_Insert(id5, Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id5, Cols.CORRECT, 1);
+        testCORRECT = databaseAccess.sqlVerbList_TestInsertion(id5, Cols.ASKED, 0);
+        testASKED = databaseAccess.sqlVerbList_TestInsertion(id5, Cols.CORRECT, 1);
+        assertTrue(testCORRECT);
+        assertTrue(testASKED);
 
-        databaseAccess.sqlVerbList_Insert(id6, Cols.CORRECT, 1);
+        databaseAccess.sqlVerbList_Insert(id6, Cols.ASKED, 0);
         databaseAccess.sqlVerbList_Insert(id6, Cols.CORRECT, 0);
-        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(id6, Cols.CORRECT, 1);
-        testANSWER = databaseAccess.sqlVerbList_TestInsertion(id6, Cols.CORRECT, 0);
-        assertTrue(testINCORRECT);
-        assertTrue(testANSWER);
+        testCORRECT = databaseAccess.sqlVerbList_TestInsertion(id6, Cols.ASKED, 0);
+        testASKED = databaseAccess.sqlVerbList_TestInsertion(id6, Cols.CORRECT, 0);
+        assertTrue(testCORRECT);
+        assertTrue(testASKED);
 
-        databaseAccess.sqlVerbList_Insert(id7, Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id7, Cols.ASKED, 1);
         databaseAccess.sqlVerbList_Insert(id7, Cols.CORRECT, 1);
-        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(id7, Cols.CORRECT, 0);
-        testANSWER = databaseAccess.sqlVerbList_TestInsertion(id7, Cols.CORRECT, 1);
-        assertTrue(testINCORRECT);
-        assertTrue(testANSWER);
+        testCORRECT = databaseAccess.sqlVerbList_TestInsertion(id7, Cols.ASKED, 1);
+        testASKED = databaseAccess.sqlVerbList_TestInsertion(id7, Cols.CORRECT, 1);
+        assertTrue(testCORRECT);
+        assertTrue(testASKED);
 
-        databaseAccess.sqlVerbList_Insert(id8, Cols.CORRECT, 1);
+        databaseAccess.sqlVerbList_Insert(id8, Cols.ASKED, 0);
         databaseAccess.sqlVerbList_Insert(id8, Cols.CORRECT, 0);
-        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(id8, Cols.CORRECT, 1);
-        testANSWER = databaseAccess.sqlVerbList_TestInsertion(id8, Cols.CORRECT, 0);
-        assertTrue(testINCORRECT);
-        assertTrue(testANSWER);
+        testCORRECT = databaseAccess.sqlVerbList_TestInsertion(id8, Cols.ASKED, 0);
+        testASKED = databaseAccess.sqlVerbList_TestInsertion(id8, Cols.CORRECT, 0);
+        assertTrue(testCORRECT);
+        assertTrue(testASKED);
 
-        databaseAccess.sqlVerbList_Insert(id9, Cols.CORRECT, 0);
+        databaseAccess.sqlVerbList_Insert(id9, Cols.ASKED, 1);
         databaseAccess.sqlVerbList_Insert(id9, Cols.CORRECT, 1);
-        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(id9, Cols.CORRECT, 0);
-        testANSWER = databaseAccess.sqlVerbList_TestInsertion(id9, Cols.CORRECT, 1);
-        assertTrue(testINCORRECT);
-        assertTrue(testANSWER);
+        testCORRECT = databaseAccess.sqlVerbList_TestInsertion(id9, Cols.ASKED, 1);
+        testASKED = databaseAccess.sqlVerbList_TestInsertion(id9, Cols.CORRECT, 1);
+        assertTrue(testCORRECT);
+        assertTrue(testASKED);
 
-        databaseAccess.sqlVerbList_Insert(id10, Cols.CORRECT, 0);
-        databaseAccess.sqlVerbList_Insert(id10, Cols.CORRECT, 0);
-        testINCORRECT = databaseAccess.sqlVerbList_TestInsertion(id10, Cols.CORRECT, 0);
-        testANSWER = databaseAccess.sqlVerbList_TestInsertion(id10, Cols.CORRECT, 0);
-        assertTrue(testINCORRECT);
-        assertTrue(testANSWER);
+        databaseAccess.sqlVerbList_Insert(id10, Cols.ASKED, 0);
+        databaseAccess.sqlVerbList_Insert(id10, Cols.CORRECT, 1);
+        testCORRECT = databaseAccess.sqlVerbList_TestInsertion(id10, Cols.ASKED, 0);
+        testASKED = databaseAccess.sqlVerbList_TestInsertion(id10, Cols.CORRECT, 1);
+        assertTrue(testCORRECT);
+        assertTrue(testASKED);
 
         List<Integer> list;
 
-        list = databaseAccess.getVerbIDList(conjNum1_2,0,true);
-        assertThat(list, hasItems(1,5,10));
         list = databaseAccess.getVerbIDList(conjNum1_2,1,true);
+        assertThat(list, hasItems(1,5,10));
+        list = databaseAccess.getVerbIDList(conjNum1_2,0,true);
         assertThat(list, hasItems(2));
 
 
-        list = databaseAccess.getVerbIDList(conjNum1_2,0,false);
-        assertThat(list, hasItems(1,5,10));
         list = databaseAccess.getVerbIDList(conjNum1_2,1,false);
+        assertThat(list, hasItems(1,5,10));
+        list = databaseAccess.getVerbIDList(conjNum1_2,0,false);
         assertThat(list, hasItems(2));
 
 
-        list = databaseAccess.getVerbIDList(conjNum1_4,0,true);
-        assertThat(list, hasItems(1,5,10));
         list = databaseAccess.getVerbIDList(conjNum1_4,1,true);
+        assertThat(list, hasItems(1,5,10));
+        list = databaseAccess.getVerbIDList(conjNum1_4,0,true);
         assertThat(list, hasItems(2,6));
 
 
-        list = databaseAccess.getVerbIDList(conjNum1_4,0,false);
-        assertThat(list, hasItems(1,5,10));
         list = databaseAccess.getVerbIDList(conjNum1_4,1,false);
+        assertThat(list, hasItems(1,5,10));
+        list = databaseAccess.getVerbIDList(conjNum1_4,0,false);
         assertThat(list, hasItems(2,6,8));
 
 
-        databaseAccess.sqlVerbList_AnswerReset(1); // Reset Incorrects = 0
-        list = databaseAccess.getVerbIDList(conjNum1_2,0,true);
-        assertThat(list, hasItems(1,3,4,5,7,10));
+        databaseAccess.sqlVerbList_AskedReset(1); // Reset ASKED Fields WHERE Corrects = 1
+        list = databaseAccess.getVerbIDList(conjNum1_4, 1, false);
+        assertThat(list, hasItems(1,3,5,7,9,10));
 
         databaseAccess.sqlVerbList_Reset(Cols.CORRECT);
         databaseAccess.sqlVerbList_Reset(Cols.ASKED);
@@ -1012,87 +1012,87 @@ public class DatabaseInstrumentedTest {
     }
 
 
-    /**
-     * testIncorrectLatinNounTable() - Tests general access to the IncorrectLatinNounEtc Table
-     * =============================
-     * Test sqlIncorrectNounEtcTable - add, delete, retrieve, reset, testInsertion
-     */
-    @Test
-    public void testIncorrectLatinNoun(){
-
-        String noun = "NOUN";
-        String irregularNoun = "IRREGULAR_NOUN";
-        String adjective = "ADJECTIVE";
-        String conjunction = "CONJUNCTION";
-        String preposition = "PREPOSITION";
-
-        int nounId1 = 10;
-        int nounId2 = 20;
-        int nounId3 = 30;
-        int nounId4 = 40;
-
-
-        databaseAccess.sqlIncorrectNounEtc_Reset();
-
-        int originalSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
-
-        databaseAccess.sqlIncorrectNounEtc_Insert(noun ,nounId1);
-        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId2);
-        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId3);
-        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId3);  // test for duplication
-
-        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun ,nounId1);
-        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId2);
-        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);
-        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);  // test for duplication
-
-        boolean testInsertionTrue = databaseAccess.sqlIncorrectNounEtc_TestInsertion(noun, nounId3);
-        assertTrue(testInsertionTrue);  // Test Entry Insertion in Table - TRUE
-        boolean testInsertionFalse = databaseAccess.sqlIncorrectNounEtc_TestInsertion(noun, nounId4);
-        assertFalse(testInsertionFalse);  // Test Entry Insertion in Table - FALSE
-
-
-        int newSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
-        assertEquals(6, newSize - originalSize);  // Test the size of table has increased by 6.
-
-
-        int nounId = databaseAccess.sqlIncorrectNounEtc_GetId(3);
-        assertEquals(nounId3, nounId);  // Test retrieve a verbId given the id (of the table)
-        String nounType = databaseAccess.sqlIncorrectNounEtc_GetType(3);
-        assertEquals(noun, nounType);  // Test retrieve a verbId given the id (of the table)
-
-        int nounNull = databaseAccess.sqlIncorrectNounEtc_GetId(100);
-        assertEquals(-1, nounNull);  // Test for a NULL retrieve for a id NOT in the table
-
-        databaseAccess.sqlIncorrectNounEtc_Delete(noun ,nounId1);
-        databaseAccess.sqlIncorrectNounEtc_Delete(noun, nounId2);
-        databaseAccess.sqlIncorrectNounEtc_Delete(noun, nounId3);
-        databaseAccess.sqlIncorrectNounEtc_Delete(noun, nounId3);  // test for duplication
-
-        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun ,nounId1);
-        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun, nounId2);
-        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun, nounId3);
-        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun, nounId3);  // test for duplication
-
-        int postDeleteSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
-        assertEquals(originalSize, postDeleteSize); // Test delete a verbId given the id
-
-        databaseAccess.sqlIncorrectNounEtc_Insert(noun ,nounId1);
-        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId2);
-        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId3);
-
-        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun ,nounId1);
-        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId2);
-        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);
-
-        int ReinsertionSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
-        assertEquals(6, ReinsertionSize - postDeleteSize);  // RETEST the size of table has increased by 3.
-
-        databaseAccess.sqlIncorrectNounEtc_Reset();
-        int postResetSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
-        assertEquals(0, postResetSize); // Test RESET has cleared all records.
-
-    }
+//    /**
+//     * testIncorrectLatinNounTable() - Tests general access to the IncorrectLatinNounEtc Table
+//     * =============================
+//     * Test sqlIncorrectNounEtcTable - add, delete, retrieve, reset, testInsertion
+//     */
+//    @Test
+//    public void testIncorrectLatinNoun(){
+//
+//        String noun = "NOUN";
+//        String irregularNoun = "IRREGULAR_NOUN";
+//        String adjective = "ADJECTIVE";
+//        String conjunction = "CONJUNCTION";
+//        String preposition = "PREPOSITION";
+//
+//        int nounId1 = 10;
+//        int nounId2 = 20;
+//        int nounId3 = 30;
+//        int nounId4 = 40;
+//
+//
+//        databaseAccess.sqlIncorrectNounEtc_Reset();
+//
+//        int originalSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
+//
+//        databaseAccess.sqlIncorrectNounEtc_Insert(noun ,nounId1);
+//        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId2);
+//        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId3);
+//        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId3);  // test for duplication
+//
+//        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun ,nounId1);
+//        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId2);
+//        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);
+//        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);  // test for duplication
+//
+//        boolean testInsertionTrue = databaseAccess.sqlIncorrectNounEtc_TestInsertion(noun, nounId3);
+//        assertTrue(testInsertionTrue);  // Test Entry Insertion in Table - TRUE
+//        boolean testInsertionFalse = databaseAccess.sqlIncorrectNounEtc_TestInsertion(noun, nounId4);
+//        assertFalse(testInsertionFalse);  // Test Entry Insertion in Table - FALSE
+//
+//
+//        int newSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
+//        assertEquals(6, newSize - originalSize);  // Test the size of table has increased by 6.
+//
+//
+//        int nounId = databaseAccess.sqlIncorrectNounEtc_GetId(3);
+//        assertEquals(nounId3, nounId);  // Test retrieve a verbId given the id (of the table)
+//        String nounType = databaseAccess.sqlIncorrectNounEtc_GetType(3);
+//        assertEquals(noun, nounType);  // Test retrieve a verbId given the id (of the table)
+//
+//        int nounNull = databaseAccess.sqlIncorrectNounEtc_GetId(100);
+//        assertEquals(-1, nounNull);  // Test for a NULL retrieve for a id NOT in the table
+//
+//        databaseAccess.sqlIncorrectNounEtc_Delete(noun ,nounId1);
+//        databaseAccess.sqlIncorrectNounEtc_Delete(noun, nounId2);
+//        databaseAccess.sqlIncorrectNounEtc_Delete(noun, nounId3);
+//        databaseAccess.sqlIncorrectNounEtc_Delete(noun, nounId3);  // test for duplication
+//
+//        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun ,nounId1);
+//        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun, nounId2);
+//        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun, nounId3);
+//        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun, nounId3);  // test for duplication
+//
+//        int postDeleteSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
+//        assertEquals(originalSize, postDeleteSize); // Test delete a verbId given the id
+//
+//        databaseAccess.sqlIncorrectNounEtc_Insert(noun ,nounId1);
+//        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId2);
+//        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId3);
+//
+//        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun ,nounId1);
+//        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId2);
+//        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);
+//
+//        int ReinsertionSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
+//        assertEquals(6, ReinsertionSize - postDeleteSize);  // RETEST the size of table has increased by 3.
+//
+//        databaseAccess.sqlIncorrectNounEtc_Reset();
+//        int postResetSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
+//        assertEquals(0, postResetSize); // Test RESET has cleared all records.
+//
+//    }
 
 
     // ----------------------------- META TABLE --------------------------------------

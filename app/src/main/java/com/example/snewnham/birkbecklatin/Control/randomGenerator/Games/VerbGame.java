@@ -175,19 +175,19 @@ public class VerbGame {
         List<Integer> correctTable = mDatabaseAccess.getVerbIDList(conj, 0 , restricted);  // defence test
         int correctTableSize = correctTable.size();                                      // to see if any (Unasked) Correct Verbs
         if(correctTableSize == 0)                        // If all VerbIDs have have been asked RESET
-            mDatabaseAccess.sqlVerbList_AnswerReset(0);  // Then Reset all ASKED Fields for CORRECT VERBS;
+            mDatabaseAccess.sqlVerbList_AskedReset(0);  // Then Reset all ASKED Fields for CORRECT VERBS;
 
 
         List<Integer> incorrectTable = mDatabaseAccess.getVerbIDList(conj, 1 , restricted);  // defence test
         int incorrectTableSize = incorrectTable.size();                                 // to see if any (Unasked) Incorrect Verbs
 
-        int inCorrect;
+        int correct;
         if(mQuestionNumber % TIME_FOR_INCORRECT_QUESTION == 0  && incorrectTableSize !=0 )   // Test time for Incorrect Question ...
-            inCorrect = 1;                              // Yes. Not All Verbs in Incorrect Table been tested
+            correct = 1;                              // Yes. Not All Verbs in Incorrect Table been tested
         else
-            inCorrect = 0;
+            correct = 0;
 
-        List<Integer> idPairList = mRandomGenerator.getRandomVerbIDpair(conj, inCorrect, restricted); // generate pair of Verb ID
+        List<Integer> idPairList = mRandomGenerator.getRandomVerbIDpair(conj, correct, restricted); // generate pair of Verb ID
 
         mDatabaseAccess.sqlVerbList_Insert(idPairList.get(0), DbSchema.VerbListTable.Cols.ASKED, 1 );  // Updates the Database that verb IDs have been used
         mDatabaseAccess.sqlVerbList_Insert(idPairList.get(1), DbSchema.VerbListTable.Cols.ASKED, 1 );
@@ -396,6 +396,7 @@ public class VerbGame {
      * ------------------
      *
      * Generates a list of 6 verb questions given the skill level of the student.
+     * @param idList - Pair of IDs
      * @return  a list of six Verb objects
      */
     public List<Verb> getVerbQuestions(List<Integer> idList){
@@ -667,7 +668,7 @@ public class VerbGame {
         switch (type) {
             case REGULAR:
                 VerbRegular verbRegular = (VerbRegular) mDatabaseAccess.sqlVerbListQuery(id);
-                verbRegular.makeLatinVerb(mDatabaseAccess,person, number, tense,
+                verbRegular.makeLatinVerb(mDatabaseAccess, person, number, tense,
                         mood, voice, Integer.toString(verbRegular.getLatin_ConjNum()));
                 verbRegular.makeEnglishVerb(mDatabaseAccess, person, number, tense,
                         mood, voice);
@@ -675,7 +676,7 @@ public class VerbGame {
                 break;
             case DEPONENT:
                 VerbDeponent verbDeponent = (VerbDeponent) mDatabaseAccess.sqlVerbListQuery(id);
-                verbDeponent.makeLatinVerb(mDatabaseAccess,person, number, tense,
+                verbDeponent.makeLatinVerb(mDatabaseAccess, person, number, tense,
                         mood, voice, Integer.toString(verbDeponent.getLatin_ConjNum()));
                 verbDeponent.makeEnglishVerb(mDatabaseAccess, person, number, tense,
                         mood, voice);
@@ -683,7 +684,7 @@ public class VerbGame {
                 break;
             case SEMI_DEPONENT:
                 VerbSemiDeponent verbSemiDeponent = (VerbSemiDeponent) mDatabaseAccess.sqlVerbListQuery(id);
-                verbSemiDeponent.makeLatinVerb(mDatabaseAccess,person, number, tense,
+                verbSemiDeponent.makeLatinVerb(mDatabaseAccess, person, number, tense,
                         mood, voice, Integer.toString(verbSemiDeponent.getLatin_ConjNum()));
                 verbSemiDeponent.makeEnglishVerb(mDatabaseAccess, person, number, tense,
                         mood, voice);
@@ -691,7 +692,7 @@ public class VerbGame {
                 break;
             case IRREGULAR:
                 VerbIrregular verbIrregular = (VerbIrregular) mDatabaseAccess.sqlVerbListQuery(id);
-                verbIrregular.makeLatinVerb(mDatabaseAccess,person, number, tense,
+                verbIrregular.makeLatinVerb(mDatabaseAccess, person, number, tense,
                         mood, voice, Integer.toString(verbIrregular.getLatin_ConjNum()));
                 verbIrregular.makeEnglishVerb(mDatabaseAccess, person, number, tense,
                         mood, voice);
