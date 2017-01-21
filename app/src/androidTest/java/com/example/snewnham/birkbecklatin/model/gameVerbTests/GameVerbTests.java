@@ -782,26 +782,68 @@ public class GameVerbTests {
     @Test
     public void testRunVerbQuestion() throws Exception{
 
-//        verbGame1.runVerbQuestion();
-//        verbGame1.storeAnswer(0);
-//
-//        verbGame1.runVerbQuestion();
-//        verbGame1.storeAnswer(0);
-//
-//        verbGame1.runVerbQuestion();
-//        verbGame1.storeAnswer(0);
-//
-//        verbGame1.runVerbQuestion();
-//        verbGame1.storeAnswer(0);
-//
-//        verbGame1.runVerbQuestion();
-//        verbGame1.storeAnswer(0);
-//
-//        verbGame1.runVerbQuestion();
-//        verbGame1.storeAnswer(0);
-//
-//        verbGame1.runVerbQuestion();
-//        verbGame1.storeAnswer(0);
+
+
+        // 1
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 2
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 3
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 4
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 5
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 6
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 7
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 8
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 9
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 10
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 11
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 12
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 13
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 14
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 15
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 16
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 17
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 18
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 19
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
+        // 20
+        verbGame1.runVerbQuestion();
+        verbGame1.storeAnswer(0);
 
     }
 

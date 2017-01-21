@@ -214,7 +214,7 @@ public class DatabaseAccess {
     /**
      * getVerbIDList()
      * ===============
-     * Runs a SQL on VerbList Table retrieving a list of (Not Yet ASKED)Verb IDs, which can be restricted
+     * Runs a SQL on VerbList Table retrieving a WHOLE list of (Not Yet ASKED) Verb IDs, which can be restricted
      * for a given skillLevels and left unrestricted.
      * It can be also set so to retrieve a list of Verb IDs that are INCORRECTLY Answered.
      * @param maxConj - max level of Conj Number
@@ -822,7 +822,7 @@ public class DatabaseAccess {
      * WHERE CORRECT = 0 or 1 depending on which list of Verbs
      * to reset.
      *
-     * @param  correct - The ASKED Field to be Reset
+     * @param  correct - The ASKED Field to be Reset. WHERE CORRECT = 0 {Incorrect Answers} or WHERE CORRECT = 1 {Correct Answers}
      */
     public void sqlVerbList_AskedReset(int correct){
 

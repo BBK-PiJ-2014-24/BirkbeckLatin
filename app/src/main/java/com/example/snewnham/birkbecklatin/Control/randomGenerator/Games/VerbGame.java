@@ -180,21 +180,21 @@ public class VerbGame {
         // defence check to see how many (Unasked) CORRECT Verbs left
         List<Integer> correctTable = mDatabaseAccess.getVerbIDList(conj, VALUE_CORRECT , restricted);
         int correctTableSize = correctTable.size();
-        if(correctTableSize == 0)                        // If all CORRECT VerbIDs have have been asked  ...
+        if(correctTableSize < 2)                        // If all but 1 CORRECT VerbIDs have have been asked  ...
             mDatabaseAccess.sqlVerbList_AskedReset(VALUE_CORRECT);  // ...then Reset all ASKED Fields = 0 for CORRECT VERBS;
 
 
         // defence check to see how many (Unasked) INCORRECT Verbs left
         List<Integer> incorrectTable = mDatabaseAccess.getVerbIDList(conj, VALUE_INCORRECT , restricted);
-        int incorrectTableSize = incorrectTable.size();
+        int incorrectTableSize = incorrectTable.size(); // must have than 1 for a pair
 
 
         // Check if time for Incorrect Question ...
         int correctValue;
-        if(mQuestionNumber % TIME_FOR_INCORRECT_QUESTION == 0  && incorrectTableSize !=0 )
-            correctValue = VALUE_CORRECT;                              // Yes. Not All Verbs in Incorrect Table been tested
+        if(mQuestionNumber % TIME_FOR_INCORRECT_QUESTION == 0  && incorrectTableSize  > 1 )
+            correctValue = VALUE_INCORRECT;                              // Yes. Not All Verbs in Correct Table been tested
         else
-            correctValue = VALUE_INCORRECT;
+            correctValue = VALUE_CORRECT;
 
         // generate pair of Verb ID
         List<Integer> idPairList = mRandomGenerator.getRandomVerbIDpair(conj, correctValue, restricted);
