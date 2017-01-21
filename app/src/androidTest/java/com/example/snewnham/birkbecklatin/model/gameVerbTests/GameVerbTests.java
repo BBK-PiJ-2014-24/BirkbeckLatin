@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.Matchers.isIn;
+import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.number.OrderingComparison.greaterThan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -109,7 +111,8 @@ public class GameVerbTests {
         appContext = InstrumentationRegistry.getTargetContext();
         databaseAccess = DatabaseAccess.getInstance(appContext);  // CALL THE DATABASE STATICALY
         databaseAccess.open();                                  // OPEN THE DATABASE
-        randomGenerator = new RandomGenerator();
+        databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.CORRECT);  // Reset CORRECT = 1
+        randomGenerator = new RandomGenerator(databaseAccess);
 
 
         verbGame1 = new VerbGame(databaseAccess, 1); // Verb Skill 1
@@ -272,9 +275,6 @@ public class GameVerbTests {
 
         String englishWord3 = verb3.getEnglishVerb();
         assertEquals("Semi Deponent English Verb (Present)", "to have rejoiced", englishWord3 );
-
-
-
     }
 
     /**
@@ -598,7 +598,7 @@ public class GameVerbTests {
     // ---------------------------------VERB CORRECT ---------------------------------------------
 
     /**
-     * testRandomVerbIncorrectTable()
+     * testRandomVerbCorrectTable()
      * ------------------------------
      * Test for random selection of a verb_id from the IncorrectVerb Table.
      *
@@ -619,44 +619,46 @@ public class GameVerbTests {
 
         int randomSims = 800;
 
-        // load the table
+        // Reset the table
+        databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.ASKED);
         databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.CORRECT);
+
+        // load the table
         databaseAccess.sqlVerbList_Insert(id1, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id2, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id3, DbSchema.VerbListTable.Cols.CORRECT, 0);
         databaseAccess.sqlVerbList_Insert(id4, DbSchema.VerbListTable.Cols.CORRECT, 0);
-//        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);
+
+        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.VerbListTable.VERB_LIST_TABLE);
+
+        int sample = randomSims / numVerbs;
+        float toleranceFactor = 0.2f;
+        int toleranceForSample = (int) (sample * toleranceFactor);
 
 
-//        int sample = randomSims / numVerbs;
-//        float toleranceFactor = 0.2f;
-//        int toleranceForSample = (int) (sample * toleranceFactor);
-//
-//
-//        Map<Integer, Integer> map = new HashMap<>();
-//
-//        for(int i=0; i<randomSims; i++) {
-//            List<Integer> list = verbGame5.getIncorrectVerbIDs();
-//            int ans = list.get(0);
-//            if (!map.containsKey(ans))
-//                map.put(ans, 1);
-//            else
-//                map.put(ans, map.get(ans) + 1);
-//
-//        }
-//        int x = 5;
-//        assertThat("Num verbId_1 Simulations", map.get(id1), greaterThan(sample - toleranceForSample));
-//        assertThat("Num verbId_1 Simulations", map.get(id1), lessThan(sample + toleranceForSample));
-//
-//        assertThat("Num verbId_2 Simulations", map.get(id2), greaterThan(sample - toleranceForSample));
-//        assertThat("Num verbId_2 Simulations", map.get(id2), lessThan(sample + toleranceForSample));
-//
-//        assertThat("Num verbId_3 Simulations", map.get(id3), greaterThan(sample - toleranceForSample));
-//        assertThat("Num verbId_3 Simulations", map.get(id3), lessThan(sample + toleranceForSample));
-//
-//        assertThat("Num verbId_4 Simulations", map.get(id4), greaterThan(sample - toleranceForSample));
-//        assertThat("Num verbId_4 Simulations", map.get(id4), lessThan(sample + toleranceForSample));
+        Map<Integer, Integer> map = new HashMap<>();
 
+        for(int i=0; i<randomSims; i++) {
+            List<Integer> list = randomGenerator.getRandomVerbIDpair(CONJNUM1_4, 0, false);
+            int ans = list.get(0);
+            if (!map.containsKey(ans))
+                map.put(ans, 1);
+            else
+                map.put(ans, map.get(ans) + 1);
+        }
+
+        int x = 5;
+        assertThat("Num verbId_1 Simulations", map.get(id1), greaterThan(sample - toleranceForSample));
+        assertThat("Num verbId_1 Simulations", map.get(id1), lessThan(sample + toleranceForSample));
+
+        assertThat("Num verbId_2 Simulations", map.get(id2), greaterThan(sample - toleranceForSample));
+        assertThat("Num verbId_2 Simulations", map.get(id2), lessThan(sample + toleranceForSample));
+
+        assertThat("Num verbId_3 Simulations", map.get(id3), greaterThan(sample - toleranceForSample));
+        assertThat("Num verbId_3 Simulations", map.get(id3), lessThan(sample + toleranceForSample));
+
+        assertThat("Num verbId_4 Simulations", map.get(id4), greaterThan(sample - toleranceForSample));
+        assertThat("Num verbId_4 Simulations", map.get(id4), lessThan(sample + toleranceForSample));
     }
 
 

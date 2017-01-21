@@ -796,9 +796,14 @@ public class DatabaseAccess {
      */
     public void sqlVerbList_Reset(String attribute){
 
-        int zeroInt = 0;
+        int fieldValue;
+        if(attribute.equals(DbSchema.VerbListTable.Cols.CORRECT))
+            fieldValue = 1;  // SET CORRECT = 1
+        else
+            fieldValue = 0;  // SET ASKED = 0
+
         ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
-        contentValues.put(attribute, zeroInt ); // manual _id insert for first record
+        contentValues.put(attribute, fieldValue );
 
         if (this.mSQLiteDatabase == null)
             open();
