@@ -218,11 +218,11 @@ public class DatabaseAccess {
      * for a given skillLevels and left unrestricted.
      * It can be also set so to retrieve a list of Verb IDs that are INCORRECTLY Answered.
      * @param maxConj - max level of Conj Number
-     * @param inCorrect - 0: Correct Answer, 1: inCorrect
+     * @param correct - WHERE CORRECT = 1: Correct Answers, 0: Incorrect Answers
      * @param restricted - Boolean flag: restricted: true, unrestricted: false
      * @return List<integer> of IDs
      */
-    public List<Integer> getVerbIDList(int maxConj, int inCorrect, boolean restricted){
+    public List<Integer> getVerbIDList(int maxConj, int correct, boolean restricted){
 
         String table = DbSchema.VerbListTable.VERB_LIST_TABLE;  // FROM VerbListTable
         String[] column = new String[]{DbSchema.VerbListTable.Cols._id}; // SELECT _id
@@ -240,10 +240,10 @@ public class DatabaseAccess {
         String[] whereArgs;
         if(!restricted){
             whereArgs = new String[]{Integer.toString(0),        // ASKED
-                                     Integer.toString(inCorrect)};// CORRECT
+                                     Integer.toString(correct)};// CORRECT
         } else {
             whereArgs = new String[]{Integer.toString(0),        // ASKED
-                                    Integer.toString(inCorrect),// CORRECT
+                                    Integer.toString(correct),// CORRECT
                                     Integer.toString(maxConj),  // CONJNUM
                                     "Regular",                  // LATIN TYPE
                                     "esse"};                    // LATIN INFINITIVE
@@ -845,9 +845,54 @@ public class DatabaseAccess {
     // =============================== LATIN NOUNS =================================================
 
     // TODO: getNounEtc_IDlist (String table, int Correct) - Generates list of Noun given Table or
-    public List<Integer> getNounEtcIDlist(String table, int Correct){
 
-        return null;
+    /**
+     * getNounEtcIDlist()
+     * -----------------
+     * Generates a list of NounEtc IDs, given table, CORRECT selection, and option for constrained
+     * restrictions on Declension
+     * @param table - NounList, PrepositionList, ConjunctionList
+     * @param correct - Select WHERE CORRECT = 0 or CORRECT = 1;
+     * @param restricted - True: Restrict Declensions to 3 or under.
+     * @return List<Integer> of Noun IDs subject to conditions.
+     *
+     * */
+    public List<Integer> getNounEtcIDlist(String table, int correct, boolean restricted){
+
+        int maxDecl = 3;
+        String[] column = new String[]{DbSchema.NounListTable.Cols._id}; // SELECT _id
+
+        String whereClause = DbSchema.NounListTable.Cols.ASKED + "=? AND " +  // UNRESTRICTED LIST
+                             DbSchema.NounListTable.Cols.CORRECT + "=?";
+
+        if(restricted) {                                                      // RESTRICTED
+            whereClause =  whereClause + " AND " +
+                    DbSchema.NounListTable.Cols.DECLENSION + "<=?";
+        }
+
+        String[] whereArgs;
+        if(!restricted){
+            whereArgs = new String[]{Integer.toString(0),        // ASKED
+                    Integer.toString(correct)};// CORRECT
+        } else {
+            whereArgs = new String[]{Integer.toString(0),        // ASKED
+                    Integer.toString(correct),// CORRECT
+                    Integer.toString(maxDecl) }; // DECLENSION
+        }
+
+        List<Integer> nounIDList = new ArrayList<>();
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs);  // set up cursor pointing at db
+        try {
+            cursor.moveToFirst();    // move cursor to first element of db
+            while (!cursor.isAfterLast()) {  // while NOT after last element
+                nounIDList.add(cursor.getInt(cursor.getColumnIndex(DbSchema.VerbListTable.Cols._id)));  // getCrime from cursorWrapper takes db tuple -> Java Crime object
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();  // CLOSE CURSOR  !!
+        }
+        return  nounIDList;
     }
 
 

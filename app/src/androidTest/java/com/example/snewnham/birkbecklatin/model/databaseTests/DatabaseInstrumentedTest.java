@@ -1090,6 +1090,45 @@ public class DatabaseInstrumentedTest {
         assertEquals(adverbEnglishSuperlative, adverb.getEnglishAdverbSuperlative());
     }
 
+    /**
+     * testNounIDLists()
+     * -----------------
+     * Tests getNounEtcIDlist() in order to check that the correct lists
+     * are drawn under given argument constraints.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testNounIDLists() throws Exception {
+
+        String nounTable = DbSchema.NounListTable.NOUN_LIST_TABLE;
+        String askedField = DbSchema.NounListTable.Cols.ASKED;
+        String correctField = DbSchema.NounListTable.Cols.CORRECT;
+
+        // Reset ASKED and CORRECT
+        databaseAccess.sqlNounEtcList_Reset(nounTable, askedField);
+        databaseAccess.sqlNounEtcList_Reset(nounTable, correctField);
+
+        List<Integer> list = null;
+        // Full Access WHERE CORRECT = 1
+        list = databaseAccess.getNounEtcIDlist(nounTable, 1, false);
+        assertThat(list, hasItems(1,2,3,4,5,6,7,8,9,10,11,12,13));
+
+        // Restricted Access WHERE CORRECT = 1
+        list = databaseAccess.getNounEtcIDlist(nounTable, 1, true);
+        assertThat(list, hasItems(1,2,3,4,5,7,8,9,10,11,12,13));
+
+        // Test After Set ID=1 to ASKED = 1;
+        databaseAccess.sqlNounEtcList_Insert(nounTable, 1, askedField, 1);
+        list = databaseAccess.getNounEtcIDlist(nounTable, 1, false);
+        assertThat(list, hasItems(2,3,4,5,6,7,8,9,10,11,12,13));
+
+        // Reset ASKED and CORRECT
+        databaseAccess.sqlNounEtcList_Reset(nounTable, askedField);
+        databaseAccess.sqlNounEtcList_Reset(nounTable, correctField);
+
+    }
+
 
     /**
      * testNounEtcInsertions()
