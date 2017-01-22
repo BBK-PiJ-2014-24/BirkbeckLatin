@@ -91,7 +91,7 @@ public class VerbGameFragment extends Fragment {
     @Override
     public void onAttach(Context context){
         super.onAttach(context);
-        mRefreshListener = (RefreshListener) context;   // Store the Refresh Listener into the
+//        mRefreshListener = (RefreshListener) context;   // Store the Refresh Listener into the
     }
 
     // OnCreate
@@ -263,16 +263,17 @@ public class VerbGameFragment extends Fragment {
         @Override
         public void onClick(View view) {
             if((Integer) buttonNext.getTag() == 1) {
+                int status = (Integer) mButtonList.get(0).getTag(); // Temp Neutralize Button Clicks
+                if (status == 1) {   // Check if Question Was Skipped -> MAKE AUTO ANSWER FAIL
+                    //       mVerbGame.storeAnswer(0);    // record the answer as incorrect
+                    makeAnswerToast(0); // Set up Toasts
+                }
+
                 if (mCounter >= NUM_QUIZ_QUESTIONS) {   // Check if end of the game
                     buttonNext.setTag(0);  // Deactivate NextButton after End of Game
-                    mVerbGame.endGame();   // Run The End of the Game
+                    mVerbGame.endGame();   // Run The End of the Game Method
                     Toast.makeText(getContext(), R.string.game_over, Toast.LENGTH_SHORT).show();  // End Game Toast
                 } else {
-                    int status = (Integer) mButtonList.get(0).getTag(); // Temp Neutralize Button Clicks
-                    if (status == 1) {   // Check if Question Was Skipped -> MAKE AUTO ANSWER FAIL
-                        //       mVerbGame.storeAnswer(0);    // record the answer as incorrect
-                        makeAnswerToast(0); // Set up Toasts
-                    }
                     mCounter++;
                     displayTextQuestionNumber(); // update next question number
                     setUpQuestion();  // Set Up Next Question

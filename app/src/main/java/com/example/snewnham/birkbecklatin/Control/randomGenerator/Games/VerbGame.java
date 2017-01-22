@@ -180,9 +180,15 @@ public class VerbGame {
         // defence check to see how many (Unasked) CORRECT Verbs left
         List<Integer> correctTable = mDatabaseAccess.getVerbIDList(conj, VALUE_CORRECT , restricted);
         int correctTableSize = correctTable.size();
-        if(correctTableSize < 2)                        // If all but 1 CORRECT VerbIDs have have been asked  ...
+        if(correctTableSize < 2) {                    // If all but 1 CORRECT VerbIDs have have been asked  ...
             mDatabaseAccess.sqlVerbList_AskedReset(VALUE_CORRECT);  // ...then Reset all ASKED Fields = 0 for CORRECT VERBS;
-
+            correctTable = mDatabaseAccess.getVerbIDList(conj, VALUE_CORRECT , restricted);
+            correctTableSize = correctTable.size();
+            if(correctTableSize < 2) {  // If still small table -> Then ALL verbs have been answered INCORRECT
+                mDatabaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.CORRECT); // Reset CORRECT FIELD
+                mDatabaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.ASKED);
+            }
+        }
 
         // defence check to see how many (Unasked) INCORRECT Verbs left
         List<Integer> incorrectTable = mDatabaseAccess.getVerbIDList(conj, VALUE_INCORRECT , restricted);
@@ -191,7 +197,7 @@ public class VerbGame {
 
         // Check if time for Incorrect Question ...
         int correctValue;
-        if(mQuestionNumber % TIME_FOR_INCORRECT_QUESTION == 0  && incorrectTableSize  > 1 )
+        if(mQuestionNumber % TIME_FOR_INCORRECT_QUESTION == 0  && incorrectTableSize  > 2 )
             correctValue = VALUE_INCORRECT;                              // Yes. Not All Verbs in Correct Table been tested
         else
             correctValue = VALUE_CORRECT;
@@ -251,6 +257,7 @@ public class VerbGame {
         updateSkillLevel(mAnswerList); // update the Skill Level after the Test
         mDatabaseAccess.sqlMeta_Insertion(VERB_SKILL_LEVEL, mSkillLevel*1.0); // Add skill, Theta to meta table
         mDatabaseAccess.sqlMeta_Insertion(VERB_THETA, mTheta);
+        mDatabaseAccess.close();
     }
 
     /**
@@ -814,6 +821,15 @@ public class VerbGame {
     public void setCorrectVerbVoice(String correctVerbVoice) {
         mCorrectVerbVoice = correctVerbVoice;
     }
+
+    public int getQuestionNumber() {
+        return mQuestionNumber;
+    }
+
+    public void setQuestionNumber(int questionNumber) {
+        mQuestionNumber = questionNumber;
+    }
+
 
 // Inner Class
     // -----------

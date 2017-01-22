@@ -457,7 +457,7 @@ public class DatabaseAccess {
 
         // Ensure First Letter is Upper Case in order to pick up the Correct Column in the mSQLiteDatabase
         irregularVerb = irregularVerb.substring(0,1).toUpperCase() + irregularVerb.substring(1);
-
+        voice = "Active";
 
         String table = DbSchema.VerbConjugation_Irregular_Table.VERB_IRREGULAR_CONJ_TABLE;  // FROM VerbConjugation_Irregular_Table Table
         String[] column = new String[]{irregularVerb};  // SELECT the Column with the Irregular Verb
