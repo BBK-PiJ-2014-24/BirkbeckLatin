@@ -1072,8 +1072,117 @@ public class DatabaseAccess {
     // ------------------------------- CORRECT NOUNS -------------------------------------
 
 
-    // TODO sqlNounEtcList_Insert(Table, Attribute, )
+    /**
+     * sqlNounEtcList_Insert()
+     * -----------------------
+     * SQL update of ASKED and CORRECT Fields for ANY NounEtc Table (NounList, Adjective Table, etc.)
+     * @param table Database table. Either NounList or Smaller Tables, Adjectives, Adverb, etc.
+     * @param nounEtcID Row to be updated, identified by NounEtcID of the given table
+     * @param fieldName attribute to be updated:  ASKED or CORRECT
+     * @param fieldValue updated value of attribute.
+     */
+    public void sqlNounEtcList_Insert(String table, int nounEtcID, String fieldName, int fieldValue ) {
 
+        ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
+        contentValues.put(fieldName, fieldValue); // manual _id insert for first record
+
+        if (this.mSQLiteDatabase == null)
+            open();
+
+        String whereClause = DbSchema.NounListTable.Cols._id + "=?";  // ID for
+        String[] whereArgument = new String[]{Integer.toString(nounEtcID)}; // WHERE ROW of ID = Verb ID
+
+        this.mSQLiteDatabase.update(table, contentValues, whereClause, whereArgument);  // CV is the Update (Field, Value)
+        // whereClause tells which row to update
+    }
+
+
+
+    /**
+     * sqlVerbList_TestInsertion()
+     * --------------------------------
+     * Test if A Record Entry of 'Incorrect' or 'Answer' Field has been properly inserted in the Verb_List Table
+     * @param table Database table. Either NounList or Smaller Tables, Adjectives, Adverb, etc.
+     * @param NounEtcID - NounEtc ID to test update
+     * @param  fieldName - The Field to test, 'Incorrect' or 'Answer'
+     * @param fieldValue - the right value for the Attribute.
+     * @return True if check matches fieldValue
+     */
+    public boolean sqlNounEtc_TestInsertion( String table, int NounEtcID, String fieldName, int fieldValue ){
+
+        String[] column = new String[]{fieldName}; // Select Column
+
+        String whereClause = DbSchema.NounListTable.Cols._id + "=?";  // Where
+        String strId = Integer.toString(NounEtcID);
+        String[] whereArgs = new String[]{strId};
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
+        int answer = cursor.getInt(cursor.getColumnIndex(fieldName));
+
+
+        int x = cursor.getCount();
+        String[] cols = cursor.getColumnNames();
+
+        cursor.close();  // CLOSE CURSOR  !!
+        return (answer == fieldValue) ? true : false;
+
+    }
+
+
+
+    /**
+     * sqlNounEtcList_Reset()
+     * ----------------------
+     * Resets ALL ROWS of 'Incorrect' OR 'Answer' Fields to zero
+     * in the NounEtc Tables
+     * @param table Database table. Either NounList or Smaller Tables, Adjectives, Adverb, etc.
+     * @param  attribute - The Field to be Reset, 'Incorrect' or 'Answer'
+     */
+    public void sqlNounEtcList_Reset(String table, String attribute){
+
+        int fieldValue;
+        if(attribute.equals(DbSchema.NounListTable.Cols.CORRECT))
+            fieldValue = 1;  // SET CORRECT = 1
+        else
+            fieldValue = 0;  // SET ASKED = 0
+
+        ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
+        contentValues.put(attribute, fieldValue );
+
+        if (this.mSQLiteDatabase == null)
+            open();
+
+        String whereClause =  null;
+        String[] whereArgument = null; // Select *
+
+        this.mSQLiteDatabase.update(table, contentValues, whereClause, whereArgument);
+    }
+
+    /**
+     * sqlNounEtcList_AskedReset()
+     * ------------------------
+     * Resets the 'ASKED' Field in a NounEtc table to zero,
+     * WHERE CORRECT = 0 or 1 depending on which list of Verbs
+     * to reset.
+     *
+     * @param  correct - UPDATE WHERE CORRECT = 0 {Incorrect Answers} or WHERE CORRECT = 1 {Correct Answers}
+     */
+    public void sqlNounEtcList_AskedReset(String table, int correct){
+
+        int zeroInt = 0;
+        String attribute = DbSchema.NounListTable.Cols.ASKED;
+        ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
+        contentValues.put( attribute, zeroInt ); // manual _id insert for first record
+
+        if (this.mSQLiteDatabase == null)
+            open();
+
+        String whereClause =  DbSchema.NounListTable.Cols.CORRECT + "=?";
+        String[] whereArgument = new String[]{Integer.toString(correct)}; // Select *
+
+        this.mSQLiteDatabase.update(table, contentValues, whereClause, whereArgument);
+    }
 
 //    /**
 //     * sqlIncorrectVerb_GetId()
@@ -1235,25 +1344,24 @@ public class DatabaseAccess {
     /**
      * sqlMeta_Insertion()
      * -------------------
-     * inserts a key-value into the Meta Table.
-     * @param key  Variable (e.g. skill Level)
-     * @param value Value (e.g. 3)
+     * Updates a Field in the Meta Table using a key-value set up.
+     * @param key  Field: Variable (e.g. skill Level)
+     * @param value Field Value (e.g. 3)
      *
      */
-    public <T> void sqlMeta_Insertion(String key, double value){
-        // check if table is empty
-        int tableSize = sqlTableCountQuery(DbSchema.Meta_Table.META_TABLE);
-        int id = tableSize + 1;  // increment the table's id / primary key - Autoincrement will not do this properly following a reset
+    public void sqlMeta_Insertion(String key, double value){
 
+        String table = DbSchema.Meta_Table.META_TABLE;   // UPDATE META-TABLE
         ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
-        contentValues.put(DbSchema.Meta_Table.Cols._id, id); // manual _id insert for first record
-        contentValues.put(DbSchema.Meta_Table.Cols.KEY, key); // Key
         contentValues.put(DbSchema.Meta_Table.Cols.VALUE, value); // Value
+
+        String whereClause = DbSchema.Meta_Table.Cols.KEY + "=?";
+        String[] whereArgument = new String[]{key}; // WHERE ROW  = Key
 
         if (this.mSQLiteDatabase == null)
             open();
-
-        this.mSQLiteDatabase.insertWithOnConflict(DbSchema.Meta_Table.META_TABLE, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
+        this.mSQLiteDatabase.update(table, contentValues, whereClause, whereArgument);  // CV is the Update (Field, Value)
+                                                                                        // whereClause tells which row to update
     }
 
 

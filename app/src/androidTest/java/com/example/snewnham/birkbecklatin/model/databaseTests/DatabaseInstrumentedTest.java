@@ -1091,87 +1091,116 @@ public class DatabaseInstrumentedTest {
     }
 
 
-//    /**
-//     * testIncorrectLatinNounTable() - Tests general access to the IncorrectLatinNounEtc Table
-//     * =============================
-//     * Test sqlIncorrectNounEtcTable - add, delete, retrieve, reset, testInsertion
-//     */
-//    @Test
-//    public void testIncorrectLatinNoun(){
-//
-//        String noun = "NOUN";
-//        String irregularNoun = "IRREGULAR_NOUN";
-//        String adjective = "ADJECTIVE";
-//        String conjunction = "CONJUNCTION";
-//        String preposition = "PREPOSITION";
-//
-//        int nounId1 = 10;
-//        int nounId2 = 20;
-//        int nounId3 = 30;
-//        int nounId4 = 40;
-//
-//
-//        databaseAccess.sqlIncorrectNounEtc_Reset();
-//
-//        int originalSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
-//
-//        databaseAccess.sqlIncorrectNounEtc_Insert(noun ,nounId1);
-//        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId2);
-//        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId3);
-//        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId3);  // test for duplication
-//
-//        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun ,nounId1);
-//        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId2);
-//        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);
-//        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);  // test for duplication
-//
-//        boolean testInsertionTrue = databaseAccess.sqlIncorrectNounEtc_TestInsertion(noun, nounId3);
-//        assertTrue(testInsertionTrue);  // Test Entry Insertion in Table - TRUE
-//        boolean testInsertionFalse = databaseAccess.sqlIncorrectNounEtc_TestInsertion(noun, nounId4);
-//        assertFalse(testInsertionFalse);  // Test Entry Insertion in Table - FALSE
-//
-//
-//        int newSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
-//        assertEquals(6, newSize - originalSize);  // Test the size of table has increased by 6.
-//
-//
-//        int nounId = databaseAccess.sqlIncorrectNounEtc_GetId(3);
-//        assertEquals(nounId3, nounId);  // Test retrieve a verbId given the id (of the table)
-//        String nounType = databaseAccess.sqlIncorrectNounEtc_GetType(3);
-//        assertEquals(noun, nounType);  // Test retrieve a verbId given the id (of the table)
-//
-//        int nounNull = databaseAccess.sqlIncorrectNounEtc_GetId(100);
-//        assertEquals(-1, nounNull);  // Test for a NULL retrieve for a id NOT in the table
-//
-//        databaseAccess.sqlIncorrectNounEtc_Delete(noun ,nounId1);
-//        databaseAccess.sqlIncorrectNounEtc_Delete(noun, nounId2);
-//        databaseAccess.sqlIncorrectNounEtc_Delete(noun, nounId3);
-//        databaseAccess.sqlIncorrectNounEtc_Delete(noun, nounId3);  // test for duplication
-//
-//        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun ,nounId1);
-//        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun, nounId2);
-//        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun, nounId3);
-//        databaseAccess.sqlIncorrectNounEtc_Delete(irregularNoun, nounId3);  // test for duplication
-//
-//        int postDeleteSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
-//        assertEquals(originalSize, postDeleteSize); // Test delete a verbId given the id
-//
-//        databaseAccess.sqlIncorrectNounEtc_Insert(noun ,nounId1);
-//        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId2);
-//        databaseAccess.sqlIncorrectNounEtc_Insert(noun, nounId3);
-//
-//        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun ,nounId1);
-//        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId2);
-//        databaseAccess.sqlIncorrectNounEtc_Insert(irregularNoun, nounId3);
-//
-//        int ReinsertionSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
-//        assertEquals(6, ReinsertionSize - postDeleteSize);  // RETEST the size of table has increased by 3.
-//
-//        databaseAccess.sqlIncorrectNounEtc_Reset();
-//        int postResetSize = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
-//        assertEquals(0, postResetSize); // Test RESET has cleared all records.
-//
-//    }
+    /**
+     * testNounEtcInsertions()
+     * ======================
+     * Tests general access to FIELD and ASKED Updates to All NounEtc Tables
+     */
+    @Test
+    public void testNounEtcInsertions(){
+
+        String nounTable = DbSchema.NounListTable.NOUN_LIST_TABLE;
+        String adjectiveTable = DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE;
+        String adverbTable = DbSchema.AdverbListTable.ADVERB_TABLE;
+        String conjunctionTable = DbSchema.ConjunctionListTable.CONJUNCTION_TABLE;
+        String prepositionTable = DbSchema.PrepositionListTable.PREPOSITION_TABLE;
+
+        String ASKED_FIELD = "Asked";
+        String CORRECT_FIELD = "Correct";
+
+        int nounId1 = 1;
+        int nounId2 = 2;
+        int nounId3 = 3;
+        int nounId4 = 4;
+
+        boolean testInsertOfAsked;
+        boolean testInsertOfCorrect;
+
+        // Initial Reset
+        databaseAccess.sqlNounEtcList_Reset(nounTable, ASKED_FIELD);
+        databaseAccess.sqlNounEtcList_Reset(nounTable, CORRECT_FIELD);
+        databaseAccess.sqlNounEtcList_Reset(adverbTable, ASKED_FIELD);
+        databaseAccess.sqlNounEtcList_Reset(adverbTable, CORRECT_FIELD);
+        databaseAccess.sqlNounEtcList_Reset(adjectiveTable, ASKED_FIELD);
+        databaseAccess.sqlNounEtcList_Reset(adjectiveTable, CORRECT_FIELD);
+        databaseAccess.sqlNounEtcList_Reset(conjunctionTable, ASKED_FIELD);
+        databaseAccess.sqlNounEtcList_Reset(conjunctionTable, CORRECT_FIELD);
+        databaseAccess.sqlNounEtcList_Reset(prepositionTable, ASKED_FIELD);
+        databaseAccess.sqlNounEtcList_Reset(prepositionTable, CORRECT_FIELD);
+
+
+        databaseAccess.sqlNounEtc_TestInsertion(nounTable, nounId1, ASKED_FIELD, 1 );
+        databaseAccess.sqlNounEtc_TestInsertion(nounTable, nounId1, CORRECT_FIELD, 0 );
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(nounTable, nounId1, ASKED_FIELD, 1 );
+        testInsertOfCorrect = databaseAccess.sqlNounEtc_TestInsertion(nounTable, nounId1, CORRECT_FIELD, 1 );
+        assertTrue(testInsertOfAsked);
+        assertTrue(testInsertOfCorrect);
+
+        databaseAccess.sqlNounEtc_TestInsertion(adverbTable, nounId1, ASKED_FIELD, 1 );
+        databaseAccess.sqlNounEtc_TestInsertion(adverbTable, nounId1, CORRECT_FIELD, 0 );
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(adverbTable, nounId1, ASKED_FIELD, 1 );
+        testInsertOfCorrect = databaseAccess.sqlNounEtc_TestInsertion(adverbTable, nounId1, CORRECT_FIELD, 1 );
+        assertTrue(testInsertOfAsked);
+        assertTrue(testInsertOfCorrect);
+
+        databaseAccess.sqlNounEtc_TestInsertion(adjectiveTable, nounId1, ASKED_FIELD, 1 );
+        databaseAccess.sqlNounEtc_TestInsertion(adjectiveTable, nounId1, CORRECT_FIELD, 0 );
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(adjectiveTable, nounId1, ASKED_FIELD, 1 );
+        testInsertOfCorrect = databaseAccess.sqlNounEtc_TestInsertion(adjectiveTable, nounId1, CORRECT_FIELD, 1 );
+        assertTrue(testInsertOfAsked);
+        assertTrue(testInsertOfCorrect);
+
+        databaseAccess.sqlNounEtc_TestInsertion(conjunctionTable, nounId1, ASKED_FIELD, 1 );
+        databaseAccess.sqlNounEtc_TestInsertion(conjunctionTable, nounId1, CORRECT_FIELD, 0 );
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(conjunctionTable, nounId1, ASKED_FIELD, 1 );
+        testInsertOfCorrect = databaseAccess.sqlNounEtc_TestInsertion(conjunctionTable, nounId1, CORRECT_FIELD, 1 );
+        assertTrue(testInsertOfAsked);
+        assertTrue(testInsertOfCorrect);
+
+        databaseAccess.sqlNounEtc_TestInsertion(prepositionTable, nounId1, ASKED_FIELD, 1 );
+        databaseAccess.sqlNounEtc_TestInsertion(prepositionTable, nounId1, CORRECT_FIELD, 0 );
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(prepositionTable, nounId1, ASKED_FIELD, 1 );
+        testInsertOfCorrect = databaseAccess.sqlNounEtc_TestInsertion(prepositionTable, nounId1, CORRECT_FIELD, 1 );
+        assertTrue(testInsertOfAsked);
+        assertTrue(testInsertOfCorrect);
+
+
+        // Reset ASKED = 0 for All CORRECT = 0;
+        databaseAccess.sqlNounEtcList_AskedReset(nounTable, 0);
+        databaseAccess.sqlNounEtcList_AskedReset(adjectiveTable, 0);
+        databaseAccess.sqlNounEtcList_AskedReset(adverbTable, 0);
+        databaseAccess.sqlNounEtcList_AskedReset(conjunctionTable, 0);
+        databaseAccess.sqlNounEtcList_AskedReset(prepositionTable, 0);
+
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(nounTable, nounId1, ASKED_FIELD, 0 );
+        assertTrue(testInsertOfAsked);
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(adjectiveTable, nounId1, ASKED_FIELD, 0 );
+        assertTrue(testInsertOfAsked);
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(adverbTable, nounId1, ASKED_FIELD, 0 );
+        assertTrue(testInsertOfAsked);
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(conjunctionTable, nounId1, ASKED_FIELD, 0 );
+        assertTrue(testInsertOfAsked);
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(prepositionTable, nounId1, ASKED_FIELD, 0 );
+        assertTrue(testInsertOfAsked);
+
+        // General Reset for ALL CORRECT FIELDS
+        databaseAccess.sqlNounEtcList_Reset(nounTable, CORRECT_FIELD);
+        databaseAccess.sqlNounEtcList_Reset(adjectiveTable, CORRECT_FIELD);
+        databaseAccess.sqlNounEtcList_Reset(adverbTable, CORRECT_FIELD);
+        databaseAccess.sqlNounEtcList_Reset(conjunctionTable, CORRECT_FIELD);
+        databaseAccess.sqlNounEtcList_Reset(prepositionTable, CORRECT_FIELD);
+
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(nounTable, nounId1, CORRECT_FIELD, 1 );
+        assertTrue(testInsertOfAsked);
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(adjectiveTable, nounId1, CORRECT_FIELD, 1 );
+        assertTrue(testInsertOfAsked);
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(adverbTable, nounId1, CORRECT_FIELD, 1 );
+        assertTrue(testInsertOfAsked);
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(conjunctionTable, nounId1, CORRECT_FIELD, 1 );
+        assertTrue(testInsertOfAsked);
+        testInsertOfAsked = databaseAccess.sqlNounEtc_TestInsertion(prepositionTable, nounId1, CORRECT_FIELD, 1 );
+        assertTrue(testInsertOfAsked);
+    }
 
 
     // ----------------------------- META TABLE --------------------------------------
@@ -1189,14 +1218,13 @@ public class DatabaseInstrumentedTest {
         int value = 3;
         databaseAccess.sqlMeta_Insertion(key,value);
 
-        int size = databaseAccess.sqlTableCountQuery(DbSchema.Meta_Table.META_TABLE);
-
-        assertEquals(2, size);  // Check Insertion
-
         int valueGuess = databaseAccess.sqlMetaQuery(key);
-
         assertEquals(value, valueGuess);
 
+        value = 1;
+        databaseAccess.sqlMeta_Insertion(key,value);
+        valueGuess = databaseAccess.sqlMetaQuery(key);
+        assertEquals(value, valueGuess);
     }
 
 
