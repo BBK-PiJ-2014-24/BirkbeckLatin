@@ -196,6 +196,68 @@ public class RandomGenerator {
     }
 
     /**
+     * getNounEtcType(int skillLevel)
+     * --------------
+     * Randomly select a NounType constrained by skillLevel
+     * Level 1: Nouns Only
+     * Level 2: Nouns Only
+     * Level 3: Nouns or Prepositions or Conjunctions
+     * Level 4: Nouns or Prepositions or Conjunctions or Adjectives
+     * Level 5: Nouns or Prepositions or Conjunctions or Adjectives or Adverbs
+     *
+     * @param skillLevel Noun Skill Level
+     * @return NounEtc Type - Noun, Preposition, etc.
+     */
+    public String getNounEtcType(int skillLevel) {
+
+        int numNouns = databaseAccess.sqlTableCountQuery(NOUN_TABLE);
+        int numPreposition = databaseAccess.sqlTableCountQuery(PREPOSITION_TABLE);
+        int numConjunction = databaseAccess.sqlTableCountQuery(CONJUNCTION_TABLE);
+        int numAdjective = databaseAccess.sqlTableCountQuery(ADJECTIVE_TABLE);
+        int numAdverb = databaseAccess.sqlTableCountQuery(ADJECTIVE_TABLE);
+
+        int totalOutcomes = 0;
+        switch(skillLevel){
+            case 1:
+                totalOutcomes = numNouns;
+                break;
+            case 2:
+                totalOutcomes = numNouns;
+                break;
+            case 3:
+                totalOutcomes = numNouns + numPreposition + numConjunction;
+                break;
+            case 4:
+                totalOutcomes = numNouns + numPreposition + numConjunction + numAdjective;
+                break;
+            case 5:
+                totalOutcomes = numNouns + numPreposition + numConjunction + numAdjective + numAdverb;
+                break;
+        }
+
+        int randomNounEtcNumber = randomGenerator.nextInt(totalOutcomes);
+
+        int cumulNouns = numNouns;
+        int cumulPreposition = numNouns + numPreposition;
+        int cumulConjunction = numNouns + numPreposition + numConjunction;
+        int cumulAdjective = numNouns + numPreposition + numConjunction + numAdjective;
+        int cumulAdverb = numNouns + numPreposition + numConjunction + numAdjective + numAdverb;
+
+        if (randomNounEtcNumber <= cumulNouns)
+            return NOUN;
+        else if (randomNounEtcNumber <= cumulPreposition)
+            return PREPOSITION;
+        else if (randomNounEtcNumber <= cumulConjunction)
+            return CONJUNCTION;
+        else if (randomNounEtcNumber <= cumulAdjective)
+            return ADJECTIVE;
+        else if (randomNounEtcNumber <= cumulAdverb)
+            return ADVERB;
+        else
+            return null;
+    }
+
+    /**
      * getAdjectiveType()
      * ------------------
      * Generate a random Adjective Type (Standard, Comparative, Superlative)

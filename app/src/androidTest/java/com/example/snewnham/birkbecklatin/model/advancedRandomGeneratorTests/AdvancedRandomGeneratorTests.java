@@ -354,7 +354,7 @@ public class AdvancedRandomGeneratorTests {
     public void testRandomNounEtcType() throws Exception {
 
         Map<String, Integer> map = new HashMap<>();
-        int randomSims = 100000;
+        int randomSims = 10000;
         int numNouns = databaseAccess.sqlTableCountQuery(NOUN_TABLE);
         int numAdjective = databaseAccess.sqlTableCountQuery(ADJECTIVE_TABLE);
         int numPreposition = databaseAccess.sqlTableCountQuery(PREPOSITION_TABLE);
@@ -400,6 +400,73 @@ public class AdvancedRandomGeneratorTests {
         assertThat("Num ADVERB Simulations", map.get(ADVERB), lessThan(sampleAdverb + toleranceAdverb));
 
     }
+
+    /**
+     * testConstrainedRandomNounEtcType()
+     * -----------------------
+     * Tests the randomness of Generating a NounEtc (Noun, Pronoun, Adjective, Preposition etc.)
+     * subject to Skill Level.
+     * @throws Exception
+     */
+    @Test
+    public void testConstrainedRandomNounEtcType() throws Exception {
+
+
+        int randomSims = 10000;
+        int numNouns = databaseAccess.sqlTableCountQuery(NOUN_TABLE);
+        int numPreposition = databaseAccess.sqlTableCountQuery(PREPOSITION_TABLE);
+        int numConjunction = databaseAccess.sqlTableCountQuery(CONJUNCTION_TABLE);
+        int total = numNouns +  numPreposition + numConjunction;
+
+        int sampleNouns = (randomSims * numNouns)/total;
+        int samplePreposition = (randomSims * numPreposition)/total;
+        int sampleConjunction = (randomSims * numConjunction)/total;
+
+        float toleranceFactor = 0.15f;
+        int toleranceNoun = (int) (sampleNouns * toleranceFactor);
+        int tolerancePreposition = (int) (samplePreposition * toleranceFactor);
+        int toleranceConjunction = (int) (sampleConjunction * toleranceFactor);
+
+
+        // Test for Skill Level 1, where only Nouns are Accepted
+        int skillLevel1 = 1;
+        Map<String, Integer> map1 = new HashMap<>();
+        for(int i=0; i<randomSims; i++) {
+            String ans = randomGenerator.getNounEtcType(skillLevel1);
+            if (!map1.containsKey(ans))
+                map1.put(ans, 1);
+            else
+                map1.put(ans, map1.get(ans) + 1);
+        }
+
+        assertEquals("Size of Map1", 1, map1.size());
+        assertEquals("Num NOUN Simulations", map1.get(NOUN), randomSims, 2);
+
+        // Test for Skill Level 3, where only Nouns, Prepositions and Conjunctions are Accepted
+        skillLevel1 = 3;
+        Map<String, Integer> map3 = new HashMap<>();
+        for(int i=0; i<randomSims; i++) {
+            String ans = randomGenerator.getNounEtcType(skillLevel1);
+            if (!map3.containsKey(ans))
+                map3.put(ans, 1);
+            else
+                map3.put(ans, map3.get(ans) + 1);
+        }
+
+        assertEquals("Size of map3", 3, map3.size());
+
+        assertThat("Num NOUN Simulations", map3.get(NOUN), greaterThan(sampleNouns - toleranceNoun));
+        assertThat("Num NOUN Simulations", map3.get(NOUN), lessThan(sampleNouns + toleranceNoun));
+
+        assertThat("Num PREPOSITION Simulations", map3.get(PREPOSITION), greaterThan(samplePreposition - tolerancePreposition));
+        assertThat("Num PREPOSITION Simulations", map3.get(PREPOSITION), lessThan(samplePreposition + tolerancePreposition));
+
+        assertThat("Num CONJUNCTION Simulations", map3.get(CONJUNCTION), greaterThan(sampleConjunction - toleranceConjunction));
+        assertThat("Num CONJUNCTION Simulations", map3.get(CONJUNCTION), lessThan(sampleConjunction + toleranceConjunction));
+
+    }
+
+
 
     /**
      * testRandomAdjectiveType()
