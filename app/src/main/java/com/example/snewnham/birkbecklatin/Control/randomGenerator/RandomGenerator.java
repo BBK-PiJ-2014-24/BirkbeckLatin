@@ -150,9 +150,35 @@ public class RandomGenerator {
 
     // TODO getRandomNounEtcIDlist() - Generates a list of 6 NounEtc IDs
 
-    public List<Integer> getRandomNounEtcIDlist(int skillLevel, int correct){
+    /**
+     * getRandomNounEtcIDlist()
+     * ------------------------
+     * Random Selection of six NounEtc IDs from a NounEtc table, given argument constraints of
+     * skill level and Field CORRECT.
+     * @param table - NounEtc tables, NounList, Adjective etc.
+     * @param skillLevel - Game SkillLevel. Restrict Declensions if skill == 1
+     * @param correct - Select WHERE CORRECT = 0 {Incorrect}, CORRECT = 1 {Correct}
+     * @return List<Integer> of Six NounEtc IDs
+     */
+    public List<Integer> getRandomNounEtcIDlist(String table, int skillLevel, int correct){
 
-        return null;
+        int numQuestions = 6;
+
+        // determine restriction given skillLevel for
+        boolean restricted = (skillLevel < 2) ? true : false;
+
+        // random selection of index of a NounList
+        List<Integer> nounList = databaseAccess.getNounEtcIDlist(table, correct, restricted);
+        int listSize = nounList.size();
+        int indexID1 = randomGenerator.nextInt(listSize-6);
+
+        // Select six consecutive Noun IDs from the given index
+        List<Integer> idList =  new ArrayList<>(6);
+        for(int i=0; i<numQuestions; i++){
+            int index = indexID1 + i;        // iterate the index
+            idList.add(nounList.get(index)); // select the corresponding NounID from nounList
+        }
+        return idList;
     }
 
 

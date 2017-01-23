@@ -152,9 +152,6 @@ public class AdvancedRandomGeneratorTests {
         databaseAccess.sqlVerbList_Insert(id10, DbSchema.VerbListTable.Cols.ASKED, 0);
         databaseAccess.sqlVerbList_Insert(id10, DbSchema.VerbListTable.Cols.CORRECT, 1);
 
-
-
-
         List<Integer> listofIDs = new ArrayList<>();
         for(int i=0; i<100; i++){
             List<Integer> pairIDs = randomGenerator.getRandomVerbIDpair(2,1,true);  // run method for 100 times
@@ -332,9 +329,6 @@ public class AdvancedRandomGeneratorTests {
         assertThat(v5, isIn(shuffleList));
         assertThat(v6, isIn(shuffleList));
 
-
-
-
     }
 
 
@@ -403,7 +397,7 @@ public class AdvancedRandomGeneratorTests {
 
     /**
      * testConstrainedRandomNounEtcType()
-     * -----------------------
+     * ----------------------------------
      * Tests the randomness of Generating a NounEtc (Noun, Pronoun, Adjective, Preposition etc.)
      * subject to Skill Level.
      * @throws Exception
@@ -466,6 +460,40 @@ public class AdvancedRandomGeneratorTests {
 
     }
 
+    /**
+     * testGetRandomNounEtcIDlist()
+     * ----------------------------
+     * Tests getRandomNounEtcIDlist() can generate six random NounEtc IDs
+     * @throws Exception
+     */
+    @Test
+    public void testGetRandomNounEtcIDlist() throws Exception {
+
+
+        databaseAccess.sqlNounEtcList_Reset(NOUN_TABLE, "Correct");
+        databaseAccess.sqlNounEtcList_Reset(NOUN_TABLE, "Asked");
+
+        int skillLevel = 4;
+        int correct = 1;
+        List<Integer> listofIDs = new ArrayList<>();
+        for(int i=0; i<100; i++){
+            List<Integer> randomIDs = randomGenerator.getRandomNounEtcIDlist(NOUN_TABLE, skillLevel, correct );  // Select WHERE CORRECT = 1
+            listofIDs.add(randomIDs.get(0));
+            listofIDs.add(randomIDs.get(1));
+            listofIDs.add(randomIDs.get(2));
+            listofIDs.add(randomIDs.get(3));
+            listofIDs.add(randomIDs.get(4));
+            listofIDs.add(randomIDs.get(5));
+        }
+
+        assertThat( listofIDs, hasItems(1,2,3,4,5,6,7,8,9,10,11,12,13) );  // check all IDs are included
+
+
+
+
+
+
+    }
 
 
     /**
