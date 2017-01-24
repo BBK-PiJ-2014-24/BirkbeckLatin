@@ -169,13 +169,15 @@ public class RandomGenerator {
 
         // random selection of index of a NounList
         List<Integer> nounList = databaseAccess.getNounEtcIDlist(table, correct, restricted);
-        int listSize = nounList.size();
-        int indexID1 = randomGenerator.nextInt(listSize-6);
+        int nounListSize = nounList.size();
+        int indexID1 = randomGenerator.nextInt(nounListSize);
 
         // Select six consecutive Noun IDs from the given index
         List<Integer> idList =  new ArrayList<>(6);
         for(int i=0; i<numQuestions; i++){
             int index = indexID1 + i;        // iterate the index
+            if(index > nounListSize - 1)         // check for overflow of loop
+                index = index - nounListSize; // loop back to the beginning if overflow
             idList.add(nounList.get(index)); // select the corresponding NounID from nounList
         }
         return idList;

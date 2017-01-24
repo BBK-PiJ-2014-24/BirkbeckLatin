@@ -112,15 +112,15 @@ public class DatabaseAccess {
 
         if (table.equals(DbSchema.VerbListTable.VERB_LIST_TABLE) && column == null)
             return new VerbListCursor(cursor);
-        else if (table.equals(DbSchema.NounListTable.NOUN_LIST_TABLE))
+        else if (table.equals(DbSchema.NounListTable.NOUN_LIST_TABLE) && column == null )
             return new NounListCursor(cursor);
-        else if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE))
+        else if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE) && column == null)
             return new AdjectiveListCursor(cursor);
-        else if (table.equals(DbSchema.PrepositionListTable.PREPOSITION_TABLE))
+        else if (table.equals(DbSchema.PrepositionListTable.PREPOSITION_TABLE) && column == null)
             return new PrepositionListCursor(cursor);
-        else if (table.equals(DbSchema.ConjunctionListTable.CONJUNCTION_TABLE))
+        else if (table.equals(DbSchema.ConjunctionListTable.CONJUNCTION_TABLE) && column == null)
             return new ConjunctionListCursor(cursor);
-        else if (table.equals(DbSchema.AdverbListTable.ADVERB_TABLE))
+        else if (table.equals(DbSchema.AdverbListTable.ADVERB_TABLE) && column == null)
             return new AdverbListCursor(cursor);
         else
             return cursor;

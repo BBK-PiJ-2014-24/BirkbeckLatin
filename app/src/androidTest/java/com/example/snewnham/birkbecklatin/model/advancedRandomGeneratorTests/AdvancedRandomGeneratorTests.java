@@ -416,7 +416,7 @@ public class AdvancedRandomGeneratorTests {
         int samplePreposition = (randomSims * numPreposition)/total;
         int sampleConjunction = (randomSims * numConjunction)/total;
 
-        float toleranceFactor = 0.15f;
+        float toleranceFactor = 0.2f;
         int toleranceNoun = (int) (sampleNouns * toleranceFactor);
         int tolerancePreposition = (int) (samplePreposition * toleranceFactor);
         int toleranceConjunction = (int) (sampleConjunction * toleranceFactor);
@@ -469,7 +469,6 @@ public class AdvancedRandomGeneratorTests {
     @Test
     public void testGetRandomNounEtcIDlist() throws Exception {
 
-
         databaseAccess.sqlNounEtcList_Reset(NOUN_TABLE, "Correct");
         databaseAccess.sqlNounEtcList_Reset(NOUN_TABLE, "Asked");
 
@@ -485,13 +484,8 @@ public class AdvancedRandomGeneratorTests {
             listofIDs.add(randomIDs.get(4));
             listofIDs.add(randomIDs.get(5));
         }
-
+        int x=5;
         assertThat( listofIDs, hasItems(1,2,3,4,5,6,7,8,9,10,11,12,13) );  // check all IDs are included
-
-
-
-
-
 
     }
 
