@@ -43,6 +43,7 @@ public class VerbGame {
     private final static String VERB_SKILL_LEVEL = "Verb_Skill_Level";
     private final static String VERB_THETA = "Verb_Theta";
 
+
     private static final int CONJNUM1_2 = 2;
     private static final int CONJNUM1_4 = 40;
 

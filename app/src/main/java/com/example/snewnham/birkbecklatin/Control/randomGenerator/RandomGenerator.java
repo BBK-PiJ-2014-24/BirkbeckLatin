@@ -147,9 +147,6 @@ public class RandomGenerator {
 
     // ------------------------------- NOUNS ----------------------------------------------
 
-
-    // TODO getRandomNounEtcIDlist() - Generates a list of 6 NounEtc IDs
-
     /**
      * getRandomNounEtcIDlist()
      * ------------------------

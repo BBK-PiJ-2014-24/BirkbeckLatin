@@ -5,4 +5,6 @@ package com.example.snewnham.birkbecklatin.Control.randomGenerator.Games;
  */
 
 public interface NounEtcGame {
+
+
 }

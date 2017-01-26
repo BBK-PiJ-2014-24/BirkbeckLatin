@@ -844,8 +844,6 @@ public class DatabaseAccess {
 
     // =============================== LATIN NOUNS =================================================
 
-    // TODO: getNounEtc_IDlist (String table, int Correct) - Generates list of Noun given Table or
-
     /**
      * getNounEtcIDlist()
      * -----------------
