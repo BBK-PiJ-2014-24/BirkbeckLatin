@@ -263,6 +263,26 @@ public class GameNounEtcTests {
         assertEquals("Adjective_Comparative EnglishWord", "better", englishWord );
     }
 
+
+    /**
+     * testMakeGameNoun_Adjective_Comparative()
+     * ========================================
+     * test if makeGameNounEtc() Can Make The Right Type of Noun - Adjective_Comparative.
+     * @throws Exception
+     */
+
+    @Test
+    public void testMakeGameNoun_Adjective_Superlative() throws Exception {
+
+        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADJECTIVE_SUPERLATIVE, id_Adjective, numberSingular, NOMINATIVE );
+
+        String latinWord = nounEtc.getLatinWord();
+        assertEquals("Adjective_Superlative LatinWord ", "optimus", latinWord );
+
+        String englishWord = nounEtc.getEnglishWordSingular();
+        assertEquals("Adjective_Superlative EnglishWord", "best", englishWord );
+    }
+
     /**
      * testMakeGameNoun_Adverb()
      * ============================
@@ -280,6 +300,31 @@ public class GameNounEtcTests {
 
         String englishWord = nounEtc.getEnglishWordSingular();
         assertEquals("Adverb EnglishWord", "happily", englishWord );
+    }
+
+    @Test
+    public void testMakeGameNoun_AdverbComparative() throws Exception {
+
+        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADVERB_COMPARATIVE, id_Adjective, numberSingular, NOMINATIVE );
+
+        String latinWord = nounEtc.getLatinWord();
+        assertEquals("Adverb Comparative LatinWord ", "laetius", latinWord );
+
+        String englishWord = nounEtc.getEnglishWordSingular();
+        assertEquals("Adverb Comparative EnglishWord ", "more happily", englishWord );
+    }
+
+
+    @Test
+    public void testMakeGameNoun_AdverbSuperlative() throws Exception {
+
+        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADVERB_SUPERLATIVE, id_Adjective, numberSingular, NOMINATIVE );
+
+        String latinWord = nounEtc.getLatinWord();
+        assertEquals("Adverb Superlative LatinWord ", "laetissime", latinWord );
+
+        String englishWord = nounEtc.getEnglishWordSingular();
+        assertEquals("Adverb Superlative EnglishWord ", "very happily", englishWord );
     }
 //
 //    /**

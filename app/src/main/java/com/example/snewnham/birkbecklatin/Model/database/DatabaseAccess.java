@@ -37,6 +37,10 @@ public class DatabaseAccess {
     private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
     private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
 
+    private final static String ADVERB = "Adverb";
+    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
+    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
+
     //
 
     /**
@@ -126,7 +130,7 @@ public class DatabaseAccess {
         else if (table.equals(DbSchema.ConjunctionListTable.CONJUNCTION_TABLE) && column == null)
             return new ConjunctionListCursor(cursor);
         else if (table.equals(DbSchema.AdverbListTable.ADVERB_TABLE) && column == null)
-            return new AdverbListCursor(cursor);
+            return new AdverbListCursor(cursor, ADVERB);
         else
             return cursor;
     }
@@ -170,6 +174,10 @@ public class DatabaseAccess {
             return new AdjectiveListCursor(cursor, ADJECTIVE_COMPARATIVE );
         else if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE) && subClassType.equals(ADJECTIVE_SUPERLATIVE))
             return new AdjectiveListCursor(cursor, ADJECTIVE_SUPERLATIVE );
+        else if (table.equals(DbSchema.AdverbListTable.ADVERB_TABLE) && subClassType.equals(ADVERB_COMPARATIVE))
+            return new AdverbListCursor(cursor, ADVERB_COMPARATIVE );
+        else if (table.equals(DbSchema.AdverbListTable.ADVERB_TABLE) && subClassType.equals(ADVERB_SUPERLATIVE))
+            return new AdverbListCursor(cursor, ADVERB_SUPERLATIVE );
         else
             return cursor;
     }
@@ -1051,7 +1059,7 @@ public class DatabaseAccess {
 
         AdjectiveListCursor adjectiveListCursor = (AdjectiveListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
         adjectiveListCursor.moveToFirst();
-        Adjective adjective = adjectiveListCursor.makeAdjectiveObject(ADJECTIVE);  // Convert Query from Cursor to Verb Object.
+        Adjective adjective = adjectiveListCursor.makeAdjectiveObject();  // Convert Query from Cursor to Verb Object.
         adjectiveListCursor.close();
         return adjective;
     }
@@ -1077,7 +1085,7 @@ public class DatabaseAccess {
         AdjectiveListCursor adjectiveListCursor = (AdjectiveListCursor) sqlQuery(subClassType, table, column, whereClause, whereArgs  ); // Run SQL query
         adjectiveListCursor.moveToFirst();
 
-        Adjective subClassAdjective = adjectiveListCursor.makeAdjectiveObject(subClassType);  // Convert Query from Cursor to Verb Object.
+        Adjective subClassAdjective = adjectiveListCursor.makeAdjectiveObject();  // Convert Query from Cursor to Verb Object.
         adjectiveListCursor.close();
         return subClassAdjective;
     }
@@ -1183,6 +1191,33 @@ public class DatabaseAccess {
         Adverb adverb = adverbListTable.makeAdverbObject();  // Convert Query from Cursor to Verb Object.
 
         return adverb;
+    }
+
+
+    /**
+     * sqlAdverbSubClassListQuery(String subClassType,int id)
+     * -----------------------------
+     * SQL query for SubClasses of Adverb, using a cursor to collect data on a row
+     * and convert to Adverb. Note that the sql Query Downcasts into the SubClass
+     * for you.
+     * Object
+     * @param subClassType - Adverb Comparative or Superlative
+     * @param id - Row Refernce
+     * @return Adverb Object
+     */
+    public Adverb sqlAdverbSubClassListQuery(String subClassType, int id) {
+        String strId = Integer.toString(id);
+        String table = DbSchema.AdverbListTable.ADVERB_TABLE;           // FROM Table = AdjectiveList
+        String[] column = null;             // SELECT *
+        String whereClause = "_id=?";
+        String[] whereArgs = new String[]{strId}; // WHERE _id =
+
+        AdverbListCursor adverbListCursor = (AdverbListCursor) sqlQuery(subClassType, table, column, whereClause, whereArgs  ); // Run SQL query
+        adverbListCursor.moveToFirst();
+
+        Adverb subClassAdverb = adverbListCursor.makeAdverbObject();  // Convert Query from Cursor to Verb Object.
+        adverbListCursor.close();
+        return subClassAdverb;
     }
 
 

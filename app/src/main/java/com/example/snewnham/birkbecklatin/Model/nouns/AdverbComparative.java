@@ -39,8 +39,8 @@ public class AdverbComparative extends Adverb {
 
     @Override
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
-        mLatinWord = mEnglishAdverbComparative;
-        return mLatinWord;
+        mEnglishWord = mEnglishAdverbComparative;
+        return mEnglishWord;
     }
 
 

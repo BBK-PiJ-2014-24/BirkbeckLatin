@@ -140,7 +140,7 @@ public class NounEtcGameImpl implements NounEtcGame {
                 gameNounEtc = adjectiveComparative;
                 break;
             case ADJECTIVE_SUPERLATIVE:
-                AdjectiveSuperlative adjectiveSuperlative = (AdjectiveSuperlative) mDatabaseAccess.sqlAdjectiveListQuery(id);
+                Adjective adjectiveSuperlative = mDatabaseAccess.sqlAdjectiveSubClassListQuery(ADJECTIVE_SUPERLATIVE, id);
                 adjectiveSuperlative.makeLatinWord(mDatabaseAccess, number, declension);
                 adjectiveSuperlative.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = adjectiveSuperlative;
@@ -152,19 +152,18 @@ public class NounEtcGameImpl implements NounEtcGame {
                 gameNounEtc = adverb;
                 break;
             case ADVERB_COMPARATIVE:
-                AdverbComparative adverbComparative = (AdverbComparative) mDatabaseAccess.sqlAdverbListQuery(id);
+                Adverb adverbComparative = mDatabaseAccess.sqlAdverbSubClassListQuery(ADVERB_COMPARATIVE, id);
                 adverbComparative.makeLatinWord(mDatabaseAccess, number, declension);
                 adverbComparative.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = adverbComparative;
                 break;
             case ADVERB_SUPERLATIVE:
-                AdverbSuperlative adverbSuperlative = (AdverbSuperlative)  mDatabaseAccess.sqlAdverbListQuery(id);
+                Adverb adverbSuperlative =  mDatabaseAccess.sqlAdverbSubClassListQuery(ADVERB_SUPERLATIVE, id);
                 adverbSuperlative.makeLatinWord(mDatabaseAccess, number, declension);
                 adverbSuperlative.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = adverbSuperlative;
                 break;
         }
-
         return gameNounEtc;
     }
 

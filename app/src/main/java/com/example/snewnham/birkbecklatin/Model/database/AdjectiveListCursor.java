@@ -19,13 +19,13 @@ import com.example.snewnham.birkbecklatin.Model.nouns.AdjectiveSuperlative;
 
 public class AdjectiveListCursor extends CursorWrapper{
 
-    // Constructor
-    // -----------
-
     // Field
     // -----
     String adjective_type;
 
+
+    // Constructor
+    // -----------
     public AdjectiveListCursor(Cursor cursor, String adjective_type) {
         super(cursor);
         this.adjective_type = adjective_type;
@@ -42,7 +42,7 @@ public class AdjectiveListCursor extends CursorWrapper{
      * Converts a Cursor into a NounEtc Object
      * @return
      */
-    public <T extends Adjective> T makeAdjectiveObject(String adjective_type) {
+    public <T extends Adjective> T makeAdjectiveObject() {
 
         // Pull data from the Cursor
         //--------------------------
@@ -58,7 +58,7 @@ public class AdjectiveListCursor extends CursorWrapper{
         String latinSuplerlativeStem = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.LATIN_SUPERLATIVE_STEM));
         String englishSuperlative = getString(getColumnIndex(DbSchema.AdjectiveListTable.Cols.ENGLISH_SUPERLATIVE));
 
-        Adjective adjective = getTypeObject(adjective_type, id);
+        Adjective adjective = getTypeObject(id);
 
         // Transfer db data to a Adjective object
         // --------------------------------------
@@ -82,11 +82,10 @@ public class AdjectiveListCursor extends CursorWrapper{
      * getTypeObject()
      * ---------------
      * Returns the Correct Class/SubClass of the Adjective Object
-     * @param adjective_type - Adjective, Comparative, Superlative
      * @param id - id of the NounEtc
      * @return -  Adjective Object or Comparative, Superlative Objects
      */
-    public Adjective getTypeObject(String adjective_type, int id){
+    public Adjective getTypeObject(int id){
 
         switch(adjective_type){
             case ADJECTIVE:
