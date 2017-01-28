@@ -1008,6 +1008,28 @@ public class DatabaseAccess {
         return adjective;
     }
 
+    /**
+     * sqlAdjectiveComparativeList(int id)
+     * -----------------------------------
+     * SQL query on Adjective_List, using a cursor to collect data on a row and convert to Adjective
+     * Object
+     * @param id
+     * @return
+     */
+    public <T extends Adjective> T sqlAdjectiveGeneralListQuery(int id) {
+        String strId = Integer.toString(id);
+        String table = DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE;           // FROM Table = AdjectiveList
+        String[] column = null;             // SELECT *
+        String whereClause = "_id=?";
+        String[] whereArgs = new String[]{strId}; // WHERE _id =
+
+        AdjectiveListCursor adjectiveListCursor = (AdjectiveListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        adjectiveListCursor.moveToFirst();
+        Adjective adjective = adjectiveListCursor.makeAdjectiveObject();  // Convert Query from Cursor to Verb Object.
+        adjectiveListCursor.close();
+        return (T) adjective;
+    }
+
 
     /**
      * sqlAdjectiveEnding()

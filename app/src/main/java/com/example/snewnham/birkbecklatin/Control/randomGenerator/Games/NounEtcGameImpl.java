@@ -135,7 +135,8 @@ public class NounEtcGameImpl implements NounEtcGame {
                 gameNounEtc = adjective;
                 break;
             case ADJECTIVE_COMPARATIVE:
-                AdjectiveComparative adjectiveComparative = (AdjectiveComparative) mDatabaseAccess.sqlAdjectiveListQuery(id);
+                Adjective adjectiveCom =  mDatabaseAccess.sqlAdjectiveListQuery(id);
+                AdjectiveComparative adjectiveComparative = (AdjectiveComparative) adjectiveCom;
                 adjectiveComparative.makeLatinWord(mDatabaseAccess, number, declension);
                 adjectiveComparative.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = adjectiveComparative;

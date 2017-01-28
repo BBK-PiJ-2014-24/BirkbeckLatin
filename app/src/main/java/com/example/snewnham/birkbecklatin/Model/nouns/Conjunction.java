@@ -35,7 +35,7 @@ public class Conjunction implements NounEtc {
     // --------------
 
     @Override
-    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String Declension) {
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
         return mLatinConjuction;
     }
 

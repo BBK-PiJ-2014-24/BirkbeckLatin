@@ -44,29 +44,34 @@ public class NounRegular implements NounEtc {
      * sql query for making the Latin NounEtc From the stem and ending, given the case, number and declension
      * @param databaseAccess
      * @param number
-     * @param declension
+     * @param noun_Case
      * @return
      */
     @Override
-    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String declension) {
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
 
-            // Override for 3rd Declension Nominative and Singular (Singular) && Genitive Plural
-            if( mDeclension == 3 ) {
-                if( (declension.equals("Nominative") || declension.equals("Vocative")) && number.equals("Singular") ) {
+        // Override for 2nd Declension Nominative and Singular
+        if( mDeclension == 2 && noun_Case.equals("Nominative") && number.equals("Singular") ) {
+                mLatin_Noun_Ending = "";
+                mLatinNoun = mNominative;
+                return mLatinNoun;
+            } else if( mDeclension == 3 ) { // Override for 3rd Declension Nominative and Singular (Singular) && Genitive Plural
+
+                if( (noun_Case.equals("Nominative") || noun_Case.equals("Vocative")) && number.equals("Singular") ) {
                     mLatin_Noun_Ending = "";
                     mLatinNoun = mNominative;
                     return mLatinNoun;
-                } else if( declension.equals("Accusative") && mGender.equals("n") && number.equals("Singular") ){
+                } else if( noun_Case.equals("Accusative") && mGender.equals("n") && number.equals("Singular") ){
                     mLatin_Noun_Ending = "";
                     mLatinNoun = mNominative;
                     return mLatinNoun;
-                } else if (declension.equals("Genitive") && number.equals("Plural") && mGenitive_Plural != null) {
+                } else if (noun_Case.equals("Genitive") && number.equals("Plural") && mGenitive_Plural != null) {
                     mLatin_Noun_Ending = "";
                     mLatinNoun = mGenitive_Plural;
                     return mLatinNoun;
                 }
             }
-            mLatin_Noun_Ending = databaseAccess.sqlNounEndingQuery( Integer.toString(mDeclension), number, mGender, declension );
+            mLatin_Noun_Ending = databaseAccess.sqlNounEndingQuery( Integer.toString(mDeclension), number, mGender, noun_Case);
             mLatinNoun = mLatin_Noun_Stem + mLatin_Noun_Ending;
             return mLatinNoun;
     }

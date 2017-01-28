@@ -27,11 +27,11 @@ public class NounIrregular extends NounRegular {
     }
 
     @Override
-    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String declension){
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case){
 
         mLatin_Noun_Stem = null;
         mLatin_Noun_Ending = null;
-        mLatinNoun = databaseAccess.sqlNounIrregularQuery(mNominative, mGender, number, declension);
+        mLatinNoun = databaseAccess.sqlNounIrregularQuery(mNominative, mGender, number, noun_Case);
 
         return mLatinNoun;
     }

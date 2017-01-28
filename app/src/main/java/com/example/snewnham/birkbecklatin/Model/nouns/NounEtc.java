@@ -16,10 +16,10 @@ public interface NounEtc {
      * Create the latin word from the stem and ending
      * @param databaseAccess
      * @param number
-     * @param Declension
+     * @param noun_Case
      * @return
      */
-    String makeLatinWord(DatabaseAccess databaseAccess, String number, String Declension);
+    String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case);
 
     /**
      * makeEnglishWord()

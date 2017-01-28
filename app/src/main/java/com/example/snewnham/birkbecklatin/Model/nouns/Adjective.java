@@ -47,47 +47,47 @@ public class Adjective implements NounEtc {
     }
 
     @Override
-    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String latin_case) {
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
 
         if(mDeclension == 333) { // M or F 333
             if(mGender.equals("m") || mGender.equals("f")) {
-                if (latin_case.equals("Nominative") && number.equals("Singular")) {  // Adjective 333 Nominatives can be Irregular
+                if (noun_Case.equals("Nominative") && number.equals("Singular")) {  // Adjective 333 Nominatives can be Irregular
                     int stemLength = mLatinAdjectiveStem.length();
                     mLatin_Adjective_Ending = mNominative.substring(stemLength);  // Calc ending
                     mLatinAdjective = mNominative;
-                } else if (latin_case.equals("Vocative") && number.equals("Singular")) {
+                } else if (noun_Case.equals("Vocative") && number.equals("Singular")) {
                     int stemLength = mLatinAdjectiveStem.length();
                     mLatin_Adjective_Ending = mNominative.substring(stemLength);  // Calc ending
                     mLatinAdjective = mNominative;
                 } else {
-                    mLatin_Adjective_Ending = databaseAccess.sqlAdjectiveEnding(Integer.toString(mDeclension), mGender, number, latin_case);
+                    mLatin_Adjective_Ending = databaseAccess.sqlAdjectiveEnding(Integer.toString(mDeclension), mGender, number, noun_Case);
                     mLatinAdjective = mLatinAdjectiveStem + mLatin_Adjective_Ending;
                 }
             } else { // Neuter 333
-                if (latin_case.equals("Nominative") && number.equals("Singular")) {  // Adjective 333 Nominatives can be Irregular
+                if (noun_Case.equals("Nominative") && number.equals("Singular")) {  // Adjective 333 Nominatives can be Irregular
                     int stemLength = mLatinAdjectiveStem.length();
                     mLatin_Adjective_Ending = mNominative_Neuter.substring(stemLength);  // Calc ending
                     mLatinAdjective = mNominative_Neuter;
-                } else if (latin_case.equals("Accusative") && number.equals("Singular")) {
+                } else if (noun_Case.equals("Accusative") && number.equals("Singular")) {
                     int stemLength = mLatinAdjectiveStem.length();
                     mLatin_Adjective_Ending = mNominative_Neuter.substring(stemLength);  // Calc ending
                     mLatinAdjective = mNominative_Neuter;
-                } else if (latin_case.equals("Vocative") && number.equals("Singular")) {
+                } else if (noun_Case.equals("Vocative") && number.equals("Singular")) {
                     int stemLength = mLatinAdjectiveStem.length();
                     mLatin_Adjective_Ending = mNominative_Neuter.substring(stemLength);  // Calc ending
                     mLatinAdjective = mNominative_Neuter;
                 } else {
-                    mLatin_Adjective_Ending = databaseAccess.sqlAdjectiveEnding(Integer.toString(mDeclension), mGender, number, latin_case);
+                    mLatin_Adjective_Ending = databaseAccess.sqlAdjectiveEnding(Integer.toString(mDeclension), mGender, number, noun_Case);
                     mLatinAdjective = mLatinAdjectiveStem + mLatin_Adjective_Ending;
                 }
             }
         } else { // 212
-            if(latin_case.equals("Nominative") && number.equals("Singular") && mGender.equals("m")){
+            if(noun_Case.equals("Nominative") && number.equals("Singular") && mGender.equals("m")){
                 int stemLength = mLatinAdjectiveStem.length();
                 mLatin_Adjective_Ending = mNominative.substring(stemLength);  // Calc ending
                 mLatinAdjective = mNominative;
             } else {
-                mLatin_Adjective_Ending = databaseAccess.sqlAdjectiveEnding(Integer.toString(mDeclension), mGender, number, latin_case);
+                mLatin_Adjective_Ending = databaseAccess.sqlAdjectiveEnding(Integer.toString(mDeclension), mGender, number, noun_Case);
                 mLatinAdjective = mLatinAdjectiveStem + mLatin_Adjective_Ending;
             }
         }

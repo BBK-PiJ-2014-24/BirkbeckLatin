@@ -38,11 +38,11 @@ public class Preposition implements NounEtc {
      * Simply returns the preposition in the Latin_Other attribute of the Noun_list Table
      * @param databaseAccess
      * @param number = null
-     * @param Declension = null
+     * @param noun_Case = null
      * @return
      */
     @Override
-    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String Declension) {
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
         return mLatin_Preposition;
     }
 

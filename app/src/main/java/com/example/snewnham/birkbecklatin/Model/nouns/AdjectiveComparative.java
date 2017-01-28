@@ -33,35 +33,35 @@ public class AdjectiveComparative extends Adjective {
      * Note that we use sqlNounEndingQuery() as we are using the standard 3rd Declension Noun Endings
      * @param databaseAccess
      * @param number
-     * @param latin_case
+     * @param noun_Case
      * @return
      */
     @Override
-    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String latin_case) {
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
 
             if(mGender.equals("m") || mGender.equals("f")) {
-                if (latin_case.equals("Nominative") && number.equals("Singular")) {
+                if (noun_Case.equals("Nominative") && number.equals("Singular")) {
                     mLatinComparativeEnding = null;  // Set to Null
                     mLatinComparative = mLatinComparativeStem;
-                } else if (latin_case.equals("Vocative") && number.equals("Singular")) {
+                } else if (noun_Case.equals("Vocative") && number.equals("Singular")) {
                     mLatinComparativeEnding = null;  // Calc ending
                     mLatinComparative = mLatinComparativeStem;
                 } else {
-                    mLatinComparativeEnding = databaseAccess.sqlNounEndingQuery(DECLENSION3, number, mGender, latin_case);
+                    mLatinComparativeEnding = databaseAccess.sqlNounEndingQuery(DECLENSION3, number, mGender, noun_Case);
                     mLatinComparative = mLatinComparativeStem + mLatinComparativeEnding;
                 }
             } else { // Neuter
-                if (latin_case.equals("Nominative") && number.equals("Singular")) {  // Adjective 333 Nominatives can be Irregular
+                if (noun_Case.equals("Nominative") && number.equals("Singular")) {  // Adjective 333 Nominatives can be Irregular
                     mLatinComparativeEnding = NEUTER_INFIX;  // Set to Null
                     mLatinComparative = mLatinAdjectiveStem + NEUTER_INFIX;
-                } else if (latin_case.equals("Accusative") && number.equals("Singular")) {
+                } else if (noun_Case.equals("Accusative") && number.equals("Singular")) {
                     mLatinComparativeEnding = NEUTER_INFIX;  // Set to Null
                     mLatinComparative = mLatinAdjectiveStem + NEUTER_INFIX;
-                } else if (latin_case.equals("Vocative") && number.equals("Singular")) {
+                } else if (noun_Case.equals("Vocative") && number.equals("Singular")) {
                     mLatinComparativeEnding = NEUTER_INFIX;  // Set to Null
                     mLatinComparative = mLatinAdjectiveStem + NEUTER_INFIX;
                 } else {
-                    mLatinComparativeEnding = databaseAccess.sqlNounEndingQuery(DECLENSION3, number, mGender, latin_case);
+                    mLatinComparativeEnding = databaseAccess.sqlNounEndingQuery(DECLENSION3, number, mGender, noun_Case);
                     mLatinComparative = mLatinComparativeStem + mLatinComparativeEnding;
                 }
             }

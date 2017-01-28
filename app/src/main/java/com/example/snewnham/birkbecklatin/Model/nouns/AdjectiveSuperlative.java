@@ -35,16 +35,16 @@ public class AdjectiveSuperlative extends Adjective {
      * Note that we use sqlNounEndingQuery() as we are using the standard 212 Declension Noun Endings
      * @param databaseAccess
      * @param number
-     * @param latin_case
+     * @param noun_Case
      * @return
      */
     @Override
-    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String latin_case) {
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
 
         if(mGender.equals("m") || mGender.equals("n") ) {
-            mLatinSuperlativeEnding = databaseAccess.sqlNounEndingQuery(DECLENSION2, number, mGender, latin_case);
+            mLatinSuperlativeEnding = databaseAccess.sqlNounEndingQuery(DECLENSION2, number, mGender, noun_Case);
         } else if(mGender.equals("f")) {
-            mLatinSuperlativeEnding = databaseAccess.sqlNounEndingQuery(DECLENSION1, number, mGender, latin_case);
+            mLatinSuperlativeEnding = databaseAccess.sqlNounEndingQuery(DECLENSION1, number, mGender, noun_Case);
         }
         mLatinSuperlative = mLatinSuperlativeStem + mLatinSuperlativeEnding;
         return mLatinSuperlative;

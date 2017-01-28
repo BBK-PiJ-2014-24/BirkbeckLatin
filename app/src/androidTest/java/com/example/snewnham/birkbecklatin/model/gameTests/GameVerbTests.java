@@ -1,4 +1,4 @@
-package com.example.snewnham.birkbecklatin.model.gameVerbTests;
+package com.example.snewnham.birkbecklatin.model.gameTests;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
