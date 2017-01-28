@@ -262,6 +262,7 @@ public class GameNounEtcTests {
         String englishWord = nounEtc.getEnglishWordSingular();
         assertEquals("Adjective_Comparative EnglishWord", "better", englishWord );
     }
+
     /**
      * testMakeGameNoun_Adverb()
      * ============================

@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
+import com.example.snewnham.birkbecklatin.Model.nouns.AdjectiveComparative;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adverb;
 import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
@@ -31,6 +32,10 @@ public class DatabaseAccess {
     private static DatabaseAccess sDatabaseAccess;
 
     private Context mContext;
+
+    private final static String ADJECTIVE = "Adjective";
+    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
+    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
 
     //
 
@@ -115,13 +120,56 @@ public class DatabaseAccess {
         else if (table.equals(DbSchema.NounListTable.NOUN_LIST_TABLE) && column == null )
             return new NounListCursor(cursor);
         else if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE) && column == null)
-            return new AdjectiveListCursor(cursor);
+            return new AdjectiveListCursor(cursor, ADJECTIVE );
         else if (table.equals(DbSchema.PrepositionListTable.PREPOSITION_TABLE) && column == null)
             return new PrepositionListCursor(cursor);
         else if (table.equals(DbSchema.ConjunctionListTable.CONJUNCTION_TABLE) && column == null)
             return new ConjunctionListCursor(cursor);
         else if (table.equals(DbSchema.AdverbListTable.ADVERB_TABLE) && column == null)
             return new AdverbListCursor(cursor);
+        else
+            return cursor;
+    }
+
+    /**
+     * sqlQuery(String subClassType)
+     * ==========
+     * @Overload Runs a SQL query on the DB for SubClasses of Adjective and Adverb.
+     * (i.e. The Comparatives and Superlatives). An extra parameter, subClassType, is
+     * used to set the appropriate sub-class.
+     * NOTE that the CursorWrapper will handle the Instantiation of the correct
+     * Subclass
+     *
+     * @param subClassType - The SubClass to Be Instantiated from the Cursor
+     * @param table - DB Table
+     * @param column - SELECT Attributes
+     * @param whereClause - WHERE CONDITIONS
+     * @param whereArgs
+     * @return returns a cursor that has an option to be wrapped.
+     *         Either a VerbListCursor - which converts db data to Java Verb object
+     *         or a NounListCursor - which convertsdb data to a Java NounEtc object.
+     */
+
+    //@Overload
+    public Cursor sqlQuery(String subClassType, String table, String[] column, String whereClause, String[] whereArgs) {
+
+        if(this.mSQLiteDatabase == null)
+            open();
+
+        Cursor cursor = this.mSQLiteDatabase.query(
+                table,  // FROM TABLE
+                column, // SELECT *
+                whereClause,
+                whereArgs,
+                null, // GROUP BY
+                null, // HAVING
+                null // ORDER BY
+        );
+
+        if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE)  && subClassType.equals(ADJECTIVE_COMPARATIVE))
+            return new AdjectiveListCursor(cursor, ADJECTIVE_COMPARATIVE );
+        else if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE) && subClassType.equals(ADJECTIVE_SUPERLATIVE))
+            return new AdjectiveListCursor(cursor, ADJECTIVE_SUPERLATIVE );
         else
             return cursor;
     }
@@ -1003,31 +1051,35 @@ public class DatabaseAccess {
 
         AdjectiveListCursor adjectiveListCursor = (AdjectiveListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
         adjectiveListCursor.moveToFirst();
-        Adjective adjective = adjectiveListCursor.makeAdjectiveObject();  // Convert Query from Cursor to Verb Object.
+        Adjective adjective = adjectiveListCursor.makeAdjectiveObject(ADJECTIVE);  // Convert Query from Cursor to Verb Object.
         adjectiveListCursor.close();
         return adjective;
     }
 
     /**
-     * sqlAdjectiveComparativeList(int id)
-     * -----------------------------------
-     * SQL query on Adjective_List, using a cursor to collect data on a row and convert to Adjective
+     * sqlAdjectiveSubClassListQuery(String subClassType,int id)
+     * -----------------------------
+     * SQL query for SubClasses of Adjective, using a cursor to collect data on a row
+     * and convert to Adjective. Note that the sql Query Downcasts into the SubClass
+     * for you.
      * Object
-     * @param id
-     * @return
+     * @param subClassType - Adjective Comparative or Superlative
+     * @param id - Row Refernce
+     * @return Adjective Object
      */
-    public <T extends Adjective> T sqlAdjectiveGeneralListQuery(int id) {
+    public Adjective sqlAdjectiveSubClassListQuery(String subClassType, int id) {
         String strId = Integer.toString(id);
         String table = DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE;           // FROM Table = AdjectiveList
         String[] column = null;             // SELECT *
         String whereClause = "_id=?";
         String[] whereArgs = new String[]{strId}; // WHERE _id =
 
-        AdjectiveListCursor adjectiveListCursor = (AdjectiveListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        AdjectiveListCursor adjectiveListCursor = (AdjectiveListCursor) sqlQuery(subClassType, table, column, whereClause, whereArgs  ); // Run SQL query
         adjectiveListCursor.moveToFirst();
-        Adjective adjective = adjectiveListCursor.makeAdjectiveObject();  // Convert Query from Cursor to Verb Object.
+
+        Adjective subClassAdjective = adjectiveListCursor.makeAdjectiveObject(subClassType);  // Convert Query from Cursor to Verb Object.
         adjectiveListCursor.close();
-        return (T) adjective;
+        return subClassAdjective;
     }
 
 

@@ -3,7 +3,6 @@ package com.example.snewnham.birkbecklatin.Control.randomGenerator.Games;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
-import com.example.snewnham.birkbecklatin.Model.nouns.AdjectiveComparative;
 import com.example.snewnham.birkbecklatin.Model.nouns.AdjectiveSuperlative;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adverb;
 import com.example.snewnham.birkbecklatin.Model.nouns.AdverbComparative;
@@ -135,8 +134,7 @@ public class NounEtcGameImpl implements NounEtcGame {
                 gameNounEtc = adjective;
                 break;
             case ADJECTIVE_COMPARATIVE:
-                Adjective adjectiveCom =  mDatabaseAccess.sqlAdjectiveListQuery(id);
-                AdjectiveComparative adjectiveComparative = (AdjectiveComparative) adjectiveCom;
+                Adjective adjectiveComparative =  mDatabaseAccess.sqlAdjectiveSubClassListQuery(ADJECTIVE_COMPARATIVE, id);
                 adjectiveComparative.makeLatinWord(mDatabaseAccess, number, declension);
                 adjectiveComparative.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = adjectiveComparative;

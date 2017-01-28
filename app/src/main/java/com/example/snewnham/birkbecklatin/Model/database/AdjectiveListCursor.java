@@ -10,8 +10,8 @@ import com.example.snewnham.birkbecklatin.Model.nouns.AdjectiveSuperlative;
  * AdjectiveListCursor
  * --------------
  * Takes a DB query on the Adjective_List table, which is in the form of a cursor, and converts
- * that data into a Adjective Object. A mini internal 'factory' is used to create the correct NounEtc class(i.e.,
- * NounRegular, Pronoun etc.)
+ * that data into a Adjective Object. A mini internal 'factory' is used to create the correct
+ * Adjective class or subclass(i.e., Adjective, Comparative, Superlative etc.)
  *
  *
  * Created by snewnham on 05/11/2016.
@@ -21,8 +21,14 @@ public class AdjectiveListCursor extends CursorWrapper{
 
     // Constructor
     // -----------
-    public AdjectiveListCursor(Cursor cursor) {
+
+    // Field
+    // -----
+    String adjective_type;
+
+    public AdjectiveListCursor(Cursor cursor, String adjective_type) {
         super(cursor);
+        this.adjective_type = adjective_type;
     }
 
     private final static String ADJECTIVE = "Adjective";
