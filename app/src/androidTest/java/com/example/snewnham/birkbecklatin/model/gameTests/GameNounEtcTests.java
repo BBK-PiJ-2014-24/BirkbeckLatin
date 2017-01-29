@@ -83,6 +83,8 @@ public class GameNounEtcTests {
     private final static String GENITIVE = "Genitive";
     private final static String ABLATIVE = "Ablative";
 
+    private final static String GENDER_MALE = "m";
+
     String numberSingular;
     String numberPlural;
 
@@ -157,7 +159,7 @@ public class GameNounEtcTests {
     @Test
     public void testMakeGameNoun_Regular() throws Exception {
 
-        NounEtc nounEtc = nounGame1.makeGameNounEtc(NOUN_REGULAR, id_Regular, numberSingular, NOMINATIVE );
+        NounEtc nounEtc = nounGame1.makeGameNounEtc(NOUN_REGULAR, id_Regular, numberSingular, NOMINATIVE, GENDER_MALE);
 
         String latinWord = nounEtc.getLatinWord();
         assertEquals("Regular Noun LatinWord ", "ager", latinWord );
@@ -166,28 +168,26 @@ public class GameNounEtcTests {
         assertEquals("Regular Noun EnglishWord", "field", englishWord );
     }
 
+    /**
+     * testMakeGameVerb_Regular()
+     * ==========================
+     * test if makeGameNounEtc() Can Make The Right Type of Noun - Regular.
+     * @throws Exception
+     */
 
-//
-//    /**
-//     * testMakeGameNoun_Irregular()
-//     * ==========================
-//     * test if MakeGameVerb Can Make The Right Type of Verb - Deponent.
-//     * @throws Exception
-//     */
-//
-//    @Test
-//    public void testMakeGameNoun_Irregular() throws Exception {
-//
-//        Verb verb = verbGame1.makeGameVerb(id_Deponent, person3, numberSingular, tensePerfect,
-//                moodIndicative, voiceActive);
-//        String latinWord = verb.getLatinVerb();
-//        assertEquals("Deponent Latin Verb", "visus est", latinWord );
-//
-//        String englishWord = verb.getEnglishVerb();
-//        assertEquals("Deponent English Verb", "he/she has seemed", englishWord );
-//    }
-//
-//
+    @Test
+    public void testMakeGameNoun_Irregular() throws Exception {
+
+        NounEtc nounEtc = nounGame1.makeGameNounEtc(NOUN_IRREGULAR, id_Irregular, numberSingular, NOMINATIVE, GENDER_MALE );
+
+        String latinWord = nounEtc.getLatinWord();
+        assertEquals("Regular Noun LatinWord ", "hic", latinWord );
+
+        String englishWord = nounEtc.getEnglishWordSingular();
+        assertEquals("Regular Noun EnglishWord", "this", englishWord );
+    }
+
+
     /**
      * testMakeGameNoun_Conjunction()
      * ===============================
@@ -198,7 +198,7 @@ public class GameNounEtcTests {
     @Test
     public void testMakeGameNoun_Conjunction() throws Exception {
 
-        NounEtc nounEtc = nounGame1.makeGameNounEtc(CONJUNCTION, id_Conjunction, numberSingular, NOMINATIVE );
+        NounEtc nounEtc = nounGame1.makeGameNounEtc(CONJUNCTION, id_Conjunction, numberSingular, NOMINATIVE, GENDER_MALE );
 
         String latinWord = nounEtc.getLatinWord();
         assertEquals("Conjunction LatinWord ", "sed", latinWord );
@@ -217,7 +217,7 @@ public class GameNounEtcTests {
     @Test
     public void testMakeGameNoun_Preposition() throws Exception {
 
-        NounEtc nounEtc = nounGame1.makeGameNounEtc(PREPOSITION, id_Preposition, numberSingular, NOMINATIVE );
+        NounEtc nounEtc = nounGame1.makeGameNounEtc(PREPOSITION, id_Preposition, numberSingular, NOMINATIVE, GENDER_MALE );
 
         String latinWord = nounEtc.getLatinWord();
         assertEquals("Preposition LatinWord ", "circum", latinWord );
@@ -235,7 +235,7 @@ public class GameNounEtcTests {
     @Test
     public void testMakeGameNoun_Adjective() throws Exception {
 
-        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADJECTIVE, id_Adjective, numberSingular, NOMINATIVE );
+        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADJECTIVE, id_Adjective, numberSingular, NOMINATIVE, GENDER_MALE );
 
         String latinWord = nounEtc.getLatinWord();
         assertEquals("Adjective LatinWord ", "bonus", latinWord );
@@ -254,7 +254,7 @@ public class GameNounEtcTests {
     @Test
     public void testMakeGameNoun_Adjective_Comparative() throws Exception {
 
-        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADJECTIVE_COMPARATIVE, id_Adjective, numberSingular, NOMINATIVE );
+        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADJECTIVE_COMPARATIVE, id_Adjective, numberSingular, NOMINATIVE, GENDER_MALE );
 
         String latinWord = nounEtc.getLatinWord();
         assertEquals("Adjective_Comparative LatinWord ", "melior", latinWord );
@@ -274,7 +274,7 @@ public class GameNounEtcTests {
     @Test
     public void testMakeGameNoun_Adjective_Superlative() throws Exception {
 
-        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADJECTIVE_SUPERLATIVE, id_Adjective, numberSingular, NOMINATIVE );
+        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADJECTIVE_SUPERLATIVE, id_Adjective, numberSingular, NOMINATIVE, GENDER_MALE );
 
         String latinWord = nounEtc.getLatinWord();
         assertEquals("Adjective_Superlative LatinWord ", "optimus", latinWord );
@@ -293,7 +293,7 @@ public class GameNounEtcTests {
     @Test
     public void testMakeGameNoun_Adverb() throws Exception {
 
-        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADVERB, id_Adjective, numberSingular, NOMINATIVE );
+        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADVERB, id_Adverb, numberSingular, NOMINATIVE, GENDER_MALE );
 
         String latinWord = nounEtc.getLatinWord();
         assertEquals("Adverb LatinWord ", "laete", latinWord );
@@ -305,7 +305,7 @@ public class GameNounEtcTests {
     @Test
     public void testMakeGameNoun_AdverbComparative() throws Exception {
 
-        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADVERB_COMPARATIVE, id_Adjective, numberSingular, NOMINATIVE );
+        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADVERB_COMPARATIVE, id_Adverb, numberSingular, NOMINATIVE, GENDER_MALE );
 
         String latinWord = nounEtc.getLatinWord();
         assertEquals("Adverb Comparative LatinWord ", "laetius", latinWord );
@@ -318,7 +318,7 @@ public class GameNounEtcTests {
     @Test
     public void testMakeGameNoun_AdverbSuperlative() throws Exception {
 
-        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADVERB_SUPERLATIVE, id_Adjective, numberSingular, NOMINATIVE );
+        NounEtc nounEtc = nounGame1.makeGameNounEtc(ADVERB_SUPERLATIVE, id_Adverb, numberSingular, NOMINATIVE, GENDER_MALE );
 
         String latinWord = nounEtc.getLatinWord();
         assertEquals("Adverb Superlative LatinWord ", "laetissime", latinWord );

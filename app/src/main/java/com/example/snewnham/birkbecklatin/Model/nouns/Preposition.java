@@ -41,17 +41,24 @@ public class Preposition implements NounEtc {
      * @param noun_Case = null
      * @return
      */
+
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
+        return mLatin_Preposition;
+    }
+    @Override
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case, String gender ) {
         return mLatin_Preposition;
     }
 
     @Override
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
         return mEnglish_Presposition;
-
     }
 
+
+    // GETTER/SETTERS
+    // --------------
     @Override
     public int getId() {
         return mId;

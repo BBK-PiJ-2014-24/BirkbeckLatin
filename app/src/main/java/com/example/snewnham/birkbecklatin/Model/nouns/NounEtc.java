@@ -22,6 +22,18 @@ public interface NounEtc {
     String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case);
 
     /**
+     * makeLatinWord()
+     * ---------------
+     * Create the latin word from the stem and ending and gender (For Adjectives, Adverbs etc.)
+     * @param databaseAccess
+     * @param number
+     * @param noun_Case
+     * @param gender
+     * @return
+     */
+    String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case, String gender);
+
+    /**
      * makeEnglishWord()
      * -----------------
      * Create the english word from the stem and ending

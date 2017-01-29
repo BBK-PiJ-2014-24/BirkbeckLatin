@@ -48,6 +48,13 @@ public class Adjective implements NounEtc {
 
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
+        return makeLatinWord(databaseAccess, number, noun_Case, mGender);
+    }
+
+    @Override
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case, String gender) {
+
+        mGender = gender;  // Set Gender
 
         if(mDeclension == 333) { // M or F 333
             if(mGender.equals("m") || mGender.equals("f")) {
@@ -91,7 +98,6 @@ public class Adjective implements NounEtc {
                 mLatinAdjective = mLatinAdjectiveStem + mLatin_Adjective_Ending;
             }
         }
-
         return mLatinAdjective;
     }
 

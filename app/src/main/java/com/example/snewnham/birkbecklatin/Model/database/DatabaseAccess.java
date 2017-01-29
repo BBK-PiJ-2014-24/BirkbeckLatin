@@ -33,6 +33,9 @@ public class DatabaseAccess {
 
     private Context mContext;
 
+    private final static String NOUN_REGULAR = "NounRegular";
+    private final static String NOUN_IRREGULAR = "NounIrregular";
+
     private final static String ADJECTIVE = "Adjective";
     private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
     private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
@@ -122,7 +125,7 @@ public class DatabaseAccess {
         if (table.equals(DbSchema.VerbListTable.VERB_LIST_TABLE) && column == null)
             return new VerbListCursor(cursor);
         else if (table.equals(DbSchema.NounListTable.NOUN_LIST_TABLE) && column == null )
-            return new NounListCursor(cursor);
+            return new NounListCursor(cursor, NOUN_REGULAR);
         else if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE) && column == null)
             return new AdjectiveListCursor(cursor, ADJECTIVE );
         else if (table.equals(DbSchema.PrepositionListTable.PREPOSITION_TABLE) && column == null)
@@ -169,8 +172,9 @@ public class DatabaseAccess {
                 null, // HAVING
                 null // ORDER BY
         );
-
-        if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE)  && subClassType.equals(ADJECTIVE_COMPARATIVE))
+        if (table.equals(DbSchema.NounListTable.NOUN_LIST_TABLE)  && subClassType.equals(NOUN_IRREGULAR))
+            return new NounListCursor(cursor, NOUN_IRREGULAR );
+        else if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE)  && subClassType.equals(ADJECTIVE_COMPARATIVE))
             return new AdjectiveListCursor(cursor, ADJECTIVE_COMPARATIVE );
         else if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE) && subClassType.equals(ADJECTIVE_SUPERLATIVE))
             return new AdjectiveListCursor(cursor, ADJECTIVE_SUPERLATIVE );
@@ -954,18 +958,26 @@ public class DatabaseAccess {
      * sqlNounListQuery()
      * ------------------
      *  A sql inquiry on the Noun List Table given the id. Returns the NounRegular object.
-     * @param id
-     * @return
+     * or its SubClass Noun_Irregular.
+     * @param nounType - REGULAR or IRREGULAR
+     * @param id - Row ID
+     * @return NounRegular (which can be DownCast to NounIrregular).
      */
-    public NounRegular sqlNounListQuery(int id){
+    public NounRegular sqlNounListQuery(String nounType, int id){
         String strId = Integer.toString(id);
         String table = DbSchema.NounListTable.NOUN_LIST_TABLE;           // FROM Table = VerbListCursor
         String[] column = null;             // SELECT *
         String whereClause = "_id=?";
         String[] whereArgs = new String[]{strId}; // WHERE _id =
 
-        NounListCursor nounListCursor = (NounListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        NounListCursor nounListCursor;
+        if(nounType.equals(NOUN_REGULAR))
+            nounListCursor = (NounListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        else  // NOUN IRREGULAR
+            nounListCursor = (NounListCursor) sqlQuery(nounType, table, column, whereClause, whereArgs  ); // Run SQL query
+
         nounListCursor.moveToFirst();
+
         NounRegular noun = nounListCursor.makeNounObject();  // Convert Query from Cursor to Verb Object.
         nounListCursor.close();
         return noun;
@@ -1016,7 +1028,7 @@ public class DatabaseAccess {
      * @param latin_Case
      * @return
      */
-    public String sqlNounIrregularQuery(String nounIrregular, String gender, String number, String latin_Case) {
+    public String sqlNounIrregularQuery(String nounIrregular, String number, String latin_Case, String gender) {
 
         nounIrregular = nounIrregular.substring(0,1).toUpperCase() + nounIrregular.substring(1); // make First Letter Upper Case.
 
@@ -1027,10 +1039,10 @@ public class DatabaseAccess {
         String[] whereArgs;
         String whereClause;
 
-        whereArgs = new String[]{ gender, number, latin_Case };
-        whereClause = DbSchema.NounIrregularTable.Cols.GENDER + "=?" + " AND " +  // WHERE ... AND
-                DbSchema.NounIrregularTable.Cols.NUMBER + "=?" + " AND " +
-                DbSchema.NounIrregularTable.Cols.LATIN_CASE + "=?";
+        whereArgs = new String[]{  number, latin_Case, gender };
+        whereClause = DbSchema.NounIrregularTable.Cols.NUMBER + "=?" + " AND " +  // WHERE ... AND
+                DbSchema.NounIrregularTable.Cols.LATIN_CASE + "=?" + " AND " +
+                DbSchema.NounIrregularTable.Cols.GENDER + "=?";
 
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
         cursor.moveToFirst();

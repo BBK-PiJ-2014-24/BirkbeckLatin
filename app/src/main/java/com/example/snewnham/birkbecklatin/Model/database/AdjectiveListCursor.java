@@ -23,6 +23,10 @@ public class AdjectiveListCursor extends CursorWrapper{
     // -----
     String adjective_type;
 
+    private final static String ADJECTIVE = "Adjective";
+    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
+    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
+
 
     // Constructor
     // -----------
@@ -30,10 +34,6 @@ public class AdjectiveListCursor extends CursorWrapper{
         super(cursor);
         this.adjective_type = adjective_type;
     }
-
-    private final static String ADJECTIVE = "Adjective";
-    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
-    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
 
 
     /**

@@ -31,11 +31,12 @@ public class Conjunction implements NounEtc {
     }
 
 
-    // GETTER/SETTERS
-    // --------------
-
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
+        return mLatinConjuction;
+    }
+    @Override
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case, String gender) {
         return mLatinConjuction;
     }
 
@@ -44,6 +45,8 @@ public class Conjunction implements NounEtc {
         return mEnglishConjunction;
     }
 
+    // GETTER/SETTERS
+    // --------------
     @Override
     public int getId() {
         return mId;

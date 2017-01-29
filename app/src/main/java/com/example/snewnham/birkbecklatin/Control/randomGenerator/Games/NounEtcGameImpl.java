@@ -44,6 +44,7 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final static String ADVERB_COMPARATIVE = "AdverbComparative";
     private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
+    private final static String GENDER_MALE = "m";
 
     private RandomGenerator mRandomGenerator;
     private DatabaseAccess mDatabaseAccess;
@@ -55,7 +56,6 @@ public class NounEtcGameImpl implements NounEtcGame {
     private Verb mCorrectNounEtc;
     private int mCorrectNounEtcIndex;
     private int mCorrectNounEtcDifficulty;
-
 
 
 
@@ -95,71 +95,72 @@ public class NounEtcGameImpl implements NounEtcGame {
      * @param type - Type of NounEtc - Regular, Adjective, etc.
      * @param id - id number within Table
      * @param number - "Singular" or "Plural"
-     * @param declension -
+     * @param noun_Case -
      * @return - generic NounEtc object.
      */
-    public NounEtc makeGameNounEtc(String type, int id, String number, String declension ){
+    @Override
+    public NounEtc makeGameNounEtc(String type, int id, String number, String noun_Case, String gender ){
 
         NounEtc gameNounEtc = null;
 
         switch(type){
             case NOUN_REGULAR:
-                NounRegular nounRegular =  mDatabaseAccess.sqlNounListQuery(id);
-                nounRegular.makeLatinWord(mDatabaseAccess, number, declension);
+                NounRegular nounRegular =  mDatabaseAccess.sqlNounListQuery(NOUN_REGULAR, id);
+                nounRegular.makeLatinWord(mDatabaseAccess, number, noun_Case);
                 nounRegular.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = nounRegular;
                 break;
             case NOUN_IRREGULAR:
-                NounIrregular nounIrregular =  (NounIrregular) mDatabaseAccess.sqlNounListQuery(id);
-                nounIrregular.makeLatinWord(mDatabaseAccess, number, declension);
-                nounIrregular.makeLatinWord(mDatabaseAccess, number, declension);
+                NounRegular nounIrregular = mDatabaseAccess.sqlNounListQuery(NOUN_IRREGULAR, id);
+                nounIrregular.makeLatinWord(mDatabaseAccess, number, noun_Case, gender);
+                nounIrregular.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = nounIrregular;
                 break;
             case CONJUNCTION:
                 Conjunction conjunction = mDatabaseAccess.sqlConjunctionListQuery(id);
-                conjunction.makeLatinWord(mDatabaseAccess, number, declension);
+                conjunction.makeLatinWord(mDatabaseAccess, number, noun_Case);
                 conjunction.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = conjunction;
                 break;
             case PREPOSITION:
                 Preposition preposition = mDatabaseAccess.sqlPrepositionListQuery(id);
-                preposition.makeLatinWord(mDatabaseAccess, number, declension);
+                preposition.makeLatinWord(mDatabaseAccess, number, noun_Case);
                 preposition.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = preposition;
                 break;
             case ADJECTIVE:
                 Adjective adjective = mDatabaseAccess.sqlAdjectiveListQuery(id);
-                adjective.makeLatinWord(mDatabaseAccess, number, declension);
+                adjective.makeLatinWord(mDatabaseAccess, number, noun_Case, gender);
                 adjective.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = adjective;
                 break;
             case ADJECTIVE_COMPARATIVE:
                 Adjective adjectiveComparative =  mDatabaseAccess.sqlAdjectiveSubClassListQuery(ADJECTIVE_COMPARATIVE, id);
-                adjectiveComparative.makeLatinWord(mDatabaseAccess, number, declension);
+                adjectiveComparative.makeLatinWord(mDatabaseAccess, number, noun_Case, gender);
                 adjectiveComparative.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = adjectiveComparative;
                 break;
             case ADJECTIVE_SUPERLATIVE:
                 Adjective adjectiveSuperlative = mDatabaseAccess.sqlAdjectiveSubClassListQuery(ADJECTIVE_SUPERLATIVE, id);
-                adjectiveSuperlative.makeLatinWord(mDatabaseAccess, number, declension);
+                adjectiveSuperlative.makeLatinWord(mDatabaseAccess, number, noun_Case, gender);
                 adjectiveSuperlative.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = adjectiveSuperlative;
                 break;
             case ADVERB:
                 Adverb adverb = mDatabaseAccess.sqlAdverbListQuery(id);
-                adverb.makeLatinWord(mDatabaseAccess, number, declension);
+                adverb.makeLatinWord(mDatabaseAccess, number, noun_Case, gender);
                 adverb.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = adverb;
                 break;
             case ADVERB_COMPARATIVE:
                 Adverb adverbComparative = mDatabaseAccess.sqlAdverbSubClassListQuery(ADVERB_COMPARATIVE, id);
-                adverbComparative.makeLatinWord(mDatabaseAccess, number, declension);
+                adverbComparative.makeLatinWord(mDatabaseAccess, number, noun_Case, gender);
                 adverbComparative.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = adverbComparative;
                 break;
             case ADVERB_SUPERLATIVE:
                 Adverb adverbSuperlative =  mDatabaseAccess.sqlAdverbSubClassListQuery(ADVERB_SUPERLATIVE, id);
-                adverbSuperlative.makeLatinWord(mDatabaseAccess, number, declension);
+                adverbSuperlative.makeLatinWord(mDatabaseAccess, number, noun_Case, gender);
                 adverbSuperlative.makeEnglishWord(mDatabaseAccess, number);
                 gameNounEtc = adverbSuperlative;
                 break;

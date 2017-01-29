@@ -27,6 +27,13 @@ public class AdverbSuperlative extends Adverb {
 
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
+        return makeLatinWord(databaseAccess, number, noun_Case, mGender);
+    }
+
+    @Override
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case, String gender) {
+
+        mGender = gender;  // Set Gender
         if(mDeclension != 0) {
             mLatinWordEnding = ADVERB_SUPERLATIVE_ENDING;
             mLatinWord = mLatinAdverbStem + mLatinWordEnding;

@@ -77,6 +77,11 @@ public class NounRegular implements NounEtc {
     }
 
     @Override
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case, String gender) {
+        return makeLatinWord(databaseAccess,number, noun_Case);
+    }
+
+    @Override
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
 
         if(number.equals("Singular")){

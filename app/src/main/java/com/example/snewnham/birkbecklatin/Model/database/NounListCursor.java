@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.CursorWrapper;
 
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
+import com.example.snewnham.birkbecklatin.Model.nouns.NounIrregular;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 
 /**
@@ -19,10 +20,19 @@ import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 
 public class NounListCursor extends CursorWrapper{
 
+    // Field
+    // -----
+    String noun_type;
+
+
+    private final static String NOUN_REGULAR = "NounRegular";
+    private final static String NOUN_IRREGULAR = "NounIrregular";
+
     // Constructor
     // -----------
-    public NounListCursor(Cursor cursor) {
+    public NounListCursor(Cursor cursor, String noun_type) {
         super(cursor);
+        this.noun_type = noun_type;
     }
 
 
@@ -32,7 +42,7 @@ public class NounListCursor extends CursorWrapper{
      * Converts a Cursor into a NounEtc Object
      * @return
      */
-    public NounRegular makeNounObject() {
+    public <T extends NounRegular> T makeNounObject() {
 
         // Pull data from the Cursor
         //--------------------------
@@ -50,8 +60,7 @@ public class NounListCursor extends CursorWrapper{
 
         // Mini Factory - Create Verb Object
         //----------------------------------
-        NounRegular noun = new NounRegular(id);
-
+        NounRegular noun = getTypeObject(id);
 
 
         // Transfer db data to a NounEtc object
@@ -66,6 +75,28 @@ public class NounListCursor extends CursorWrapper{
         noun.setLatinWordStem(latinNounStem);
         noun.setEnglishWordSingular(englishNounSingular);
         noun.setEnglishWordPlural(englishNounPlural);
-        return noun;
+        return (T) noun;
     }
+
+    /**
+     * getTypeObject()
+     * ---------------
+     * Returns the Correct Class/SubClass of the Noun Object
+     * @param id - id of the NounEtc
+     * @return -  Regular or Irregular Noun
+     */
+    public NounRegular getTypeObject(int id){
+
+        switch(this.noun_type){
+            case NOUN_REGULAR:
+                return new NounRegular(id);
+            case NOUN_IRREGULAR:
+                return new NounIrregular(id);
+        }
+        return null;
+    }
+
+
+
+
 }

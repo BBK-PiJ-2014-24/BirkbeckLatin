@@ -19,7 +19,8 @@ public interface NounEtcGame {
      * @param declension -
      * @return - generic NounEtc object.
      */
-    NounEtc makeGameNounEtc(String type, int id, String number, String declension);
+    NounEtc makeGameNounEtc(String type, int id, String number, String declension, String gender);
+
 
 
 }

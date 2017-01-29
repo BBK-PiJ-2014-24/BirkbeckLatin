@@ -27,11 +27,19 @@ public class NounIrregular extends NounRegular {
     }
 
     @Override
-    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case){
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
+        return makeLatinWord(databaseAccess, number, noun_Case,mGender);
+    }
 
+    @Override
+    public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case, String gender){
+
+        mGender = gender;  // Set Gender
         mLatin_Noun_Stem = null;
         mLatin_Noun_Ending = null;
-        mLatinNoun = databaseAccess.sqlNounIrregularQuery(mNominative, mGender, number, noun_Case);
+
+        String nounColumnName = mNominative.substring(0,1).toUpperCase()+mNominative.substring(1); // Convert to Upper Case
+        mLatinNoun = databaseAccess.sqlNounIrregularQuery(nounColumnName, number, noun_Case, mGender);
 
         return mLatinNoun;
     }

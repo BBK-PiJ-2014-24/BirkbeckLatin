@@ -117,7 +117,7 @@ public class DatabaseInstrumentedTest {
     String adverbEnglishComparative;
     String adverbEnglishSuperlative;
 
-
+    private final static String NOUN_REGULAR = "NounRegular";
 
     @Before
     public void setUp() {
@@ -912,7 +912,7 @@ public class DatabaseInstrumentedTest {
 
         // Run Query
         // ---------
-        NounRegular noun = databaseAccess.sqlNounListQuery(noun_id);
+        NounRegular noun = databaseAccess.sqlNounListQuery(NOUN_REGULAR, noun_id);
 
         // test the VerbRegular Fields
         // --------------------
