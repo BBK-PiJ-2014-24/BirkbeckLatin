@@ -1198,11 +1198,34 @@ public class DatabaseAccess {
         String whereClause = "_id=?";
         String[] whereArgs = new String[]{strId}; // WHERE _id =
 
-        AdverbListCursor adverbListTable = (AdverbListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
-        adverbListTable.moveToFirst();
-        Adverb adverb = adverbListTable.makeAdverbObject();  // Convert Query from Cursor to Verb Object.
-
+        AdverbListCursor adverbListCursor = (AdverbListCursor) sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
+        adverbListCursor.moveToFirst();
+        Adverb adverb = adverbListCursor.makeAdverbObject();  // Convert Query from Cursor to Verb Object.
+        adverbListCursor.close();
         return adverb;
+    }
+
+
+    /**
+     * sqlAdverbCheckStem()
+     * --------------------
+     * Boolean check to see if Adverb has a  stem. This will determoine if
+     * the Adverb can be formed to create Noun Cases or
+     * Comparartive or Superlatives Sub Classes
+     *
+     * @param id - Row ID
+     * @return True if Adverb Stem Exists.
+     */
+    public boolean sqlAdverbCheckStem(int id) {
+        String strId = Integer.toString(id);
+        String table = DbSchema.AdverbListTable.ADVERB_TABLE;
+        String[] column = new String[]{DbSchema.AdverbListTable.Cols.LATIN_ADVERB_STEM};
+        String whereClause = "_id=?";
+        String[] whereArgs = new String[]{strId}; // WHERE _id =
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs);
+        int x = cursor.getCount();
+        return (x>0) ? true : false;
     }
 
 

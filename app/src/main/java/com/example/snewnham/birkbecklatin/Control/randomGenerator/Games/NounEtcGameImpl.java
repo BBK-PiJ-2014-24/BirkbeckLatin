@@ -3,13 +3,9 @@ package com.example.snewnham.birkbecklatin.Control.randomGenerator.Games;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
-import com.example.snewnham.birkbecklatin.Model.nouns.AdjectiveSuperlative;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adverb;
-import com.example.snewnham.birkbecklatin.Model.nouns.AdverbComparative;
-import com.example.snewnham.birkbecklatin.Model.nouns.AdverbSuperlative;
 import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
-import com.example.snewnham.birkbecklatin.Model.nouns.NounIrregular;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
@@ -50,7 +46,7 @@ public class NounEtcGameImpl implements NounEtcGame {
     private DatabaseAccess mDatabaseAccess;
     private int mSkillLevel; // skillLevel of Game
     private double mTheta;  // IRT skill level
-    private List<Verb> mVerbQuestionList;  // List of 6 Verbs for a Multiple Choice Questions
+    private List<NounEtc> mNounQuestionList;  // List of 6 Verbs for a Multiple Choice Questions
     private List<VerbGame.Answer> mAnswerList;
     private int mQuestionNumber;
     private Verb mCorrectNounEtc;
@@ -66,7 +62,7 @@ public class NounEtcGameImpl implements NounEtcGame {
         mRandomGenerator = new RandomGenerator(mDatabaseAccess);
         mSkillLevel = skillLevel;
         mTheta = skillLevel - 3.0;
-        mVerbQuestionList = new ArrayList<>();
+        mNounQuestionList = new ArrayList<>();
         mAnswerList = new ArrayList<>();
         mQuestionNumber = 0;
         mCorrectNounEtc = null;
@@ -79,7 +75,7 @@ public class NounEtcGameImpl implements NounEtcGame {
         mRandomGenerator = new RandomGenerator(mDatabaseAccess);
         mSkillLevel = mDatabaseAccess.sqlMetaQuery(NOUN_SKILL_LEVEL);  // Access From Database
         mTheta = mDatabaseAccess.sqlMetaQuery(NOUN_THETA);
-        mVerbQuestionList = new ArrayList<>();
+        mNounQuestionList = new ArrayList<>();
         mAnswerList = new ArrayList<>();
         mQuestionNumber = 0;
         mCorrectNounEtc = null;
@@ -87,6 +83,43 @@ public class NounEtcGameImpl implements NounEtcGame {
         mCorrectNounEtcDifficulty = 100;
     }
 
+    /**
+     * getNounEtcQuestions()
+     * ---------------------
+     * Generates a list of 6 verb questions given the Table and Ids and skillLevel
+     * @param idList - Pair of IDs
+     * @return  a list of six NounEtc objects
+     */
+    @Override
+    public List<NounEtc> getNounEtcQuestions(String nounType, List<Integer> idList){
+
+        String number1 = mRandomGenerator.getNounNumber();
+        String number2 = mRandomGenerator.getNounNumber();
+        String number3 = mRandomGenerator.getNounNumber();
+        String noun_Case1 = mRandomGenerator.getNounCase();
+        String noun_Case2 = mRandomGenerator.getNounCase();
+        String noun_Case3 = mRandomGenerator.getNounCase();
+        String gender1 = mRandomGenerator.getAdjectiveGender();
+        String gender2 = mRandomGenerator.getAdjectiveGender();
+        String gender3 = mRandomGenerator.getAdjectiveGender();
+
+        if(mSkillLevel == 5) {
+            if (nounType.equals(ADJECTIVE))
+                nounType = mRandomGenerator.getAdjectiveType();
+            else if (nounType.equals(ADVERB)) {
+                nounType = mRandomGenerator.getAdverbType();
+            }
+        }
+
+        mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(0), number1, noun_Case1, gender1));
+        mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(1), number2, noun_Case2, gender2));
+        mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(2), number3, noun_Case3, gender3));
+        mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(3), number1, noun_Case1, gender1));
+        mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(4), number2, noun_Case2, gender2));
+        mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(5), number3, noun_Case3, gender3));
+
+        return mNounQuestionList;
+    }
 
     /**
      * makeGameNounEtc()
@@ -168,7 +201,7 @@ public class NounEtcGameImpl implements NounEtcGame {
         return gameNounEtc;
     }
 
-    // TODO getNounEtcQuestions() -> generates 6x random NounEtc type, id, given skillLevel
+
 
     // TODO storeAnswer()
 
@@ -176,7 +209,6 @@ public class NounEtcGameImpl implements NounEtcGame {
 
     // TODO determineQuestionDifficulty()
 
-    // TODO makeGameNounEtc()  -> makes a Generic NounEtc (id, )
 
     // TODO updateSkillLevel()
 

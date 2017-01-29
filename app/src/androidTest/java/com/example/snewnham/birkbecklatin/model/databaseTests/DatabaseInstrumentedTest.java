@@ -937,14 +937,14 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testNounIrregularQuery() throws Exception{
 
-        String nounIrregular = "hic";
+        String nounIrregular = "Hic";
         noun_Gender = "m";
         noun_number = "Singular";
         noun_Latin_Case = "Accusative";
 
         // Run Query
         // ---------
-        String query = databaseAccess.sqlNounIrregularQuery(nounIrregular, noun_Gender, noun_number, noun_Latin_Case);
+        String query = databaseAccess.sqlNounIrregularQuery(nounIrregular, noun_number, noun_Latin_Case, noun_Gender);
 
         assertEquals("hunc", query);
     }
@@ -1062,12 +1062,12 @@ public class DatabaseInstrumentedTest {
 
 
     /**
-     * testAdverbListQuery()
-     * --------------------------
+     * testAdverbQuery()
+     * ----------------
      * test the sql query on Adverb_List table.
      */
     @Test
-    public void testAdverbListQuery(){
+    public void testAdverbQuery(){
 
         adverbId = 1;
         adverbDeclension = 212;
@@ -1088,6 +1088,22 @@ public class DatabaseInstrumentedTest {
         assertEquals(adverbEnglishAdverb, adverb.getEnglishAdverb());
         assertEquals(adverbEnglishComparative, adverb.getEnglishAdverbComparative());
         assertEquals(adverbEnglishSuperlative, adverb.getEnglishAdverbSuperlative());
+    }
+
+    /**
+     * testSqlAdverbStem()
+     * Test if Adverb has a Stem.
+     * @throws Exception
+     */
+    @Test
+    public void testSqlAdverbStem() throws Exception{
+
+        int id_Stem = 1;
+        int id_NoStem = 3;
+        boolean ans = databaseAccess.sqlAdverbCheckStem(id_Stem);
+        assertTrue(ans);
+        ans = databaseAccess.sqlAdverbCheckStem(id_NoStem);
+        assertTrue(ans);
     }
 
     /**

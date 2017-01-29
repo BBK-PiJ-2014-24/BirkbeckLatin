@@ -36,7 +36,6 @@ import java.util.Random;
 
 public class VerbGame {
 
-
     // Fields
     // ------
 
@@ -83,7 +82,6 @@ public class VerbGame {
     private final static String MOOD_INDICATIVE = "Indicative";
     private final static String MOOD_IMPERATIVE = "Imperative";
     private final static String MOOD_SUBJUNCTIVE = "Subjunctive";
-
 
     private final int TIME_FOR_INCORRECT_QUESTION = 3;
 
@@ -211,7 +209,7 @@ public class VerbGame {
         mDatabaseAccess.sqlVerbList_Insert(idPairList.get(1), DbSchema.VerbListTable.Cols.ASKED, ASKED_YES );
 
         // Generate question list
-        mVerbQuestionList = getVerbQuestions(idPairList);
+        mVerbQuestionList = getVerbQuestionSet(idPairList);
 
         // Select a correctVerb Verb from id1 randomly
         Random rnd = new Random();
@@ -413,14 +411,14 @@ public class VerbGame {
 //    }
 
     /**
-     * getVerbQuestions()
-     * ------------------
+     * getVerbQuestionSet()
+     * --------------------
      *
      * Generates a list of 6 verb questions given the skill level of the student.
      * @param idList - Pair of IDs
      * @return  a list of six Verb objects
      */
-    public List<Verb> getVerbQuestions(List<Integer> idList){
+    public List<Verb> getVerbQuestionSet(List<Integer> idList){
 
         String person = null;
         String number = null;

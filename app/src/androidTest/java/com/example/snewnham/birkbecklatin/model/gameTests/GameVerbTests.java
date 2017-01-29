@@ -352,7 +352,7 @@ public class GameVerbTests {
 //            List<Integer> idPairList = new ArrayList<>();
 //            idPairList.add(10);
 //            idPairList.add(7);
-            list = verbGame1.getVerbQuestions(idPairList);
+            list = verbGame1.getVerbQuestionSet(idPairList);
 
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
@@ -393,7 +393,7 @@ public class GameVerbTests {
         for (int i = 0; i < 5; i++) {
             restricted = true;
             List<Integer> idPairList = randomGenerator.getRandomVerbIDpair(CONJNUM1_4, correct, restricted);
-            list = verbGame1.getVerbQuestions(idPairList);
+            list = verbGame1.getVerbQuestionSet(idPairList);
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
@@ -435,7 +435,7 @@ public class GameVerbTests {
         for (int i = 0; i < 5; i++) {
             restricted = true;
             List<Integer> idPairList = randomGenerator.getRandomVerbIDpair(CONJNUM1_4, correct, restricted);
-            list = verbGame1.getVerbQuestions(idPairList);
+            list = verbGame1.getVerbQuestionSet(idPairList);
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
@@ -479,7 +479,7 @@ public class GameVerbTests {
         for(int i=0; i<3; i++) {  // limited checks as sqlite cannot cope with multiple queries
             restricted = false;
             List<Integer> idPairList = randomGenerator.getRandomVerbIDpair(CONJNUM1_4, correct, restricted);
-            list = verbGame1.getVerbQuestions(idPairList);
+            list = verbGame1.getVerbQuestionSet(idPairList);
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
@@ -524,7 +524,7 @@ public class GameVerbTests {
         for (int i = 0; i <3; i++) {
             restricted = false;
             List<Integer> idPairList = randomGenerator.getRandomVerbIDpair(CONJNUM1_4, correct, restricted);
-            list = verbGame1.getVerbQuestions(idPairList);
+            list = verbGame1.getVerbQuestionSet(idPairList);
             Verb v0 = list.get(0);
             Verb v1 = list.get(1);
             Verb v2 = list.get(2);
