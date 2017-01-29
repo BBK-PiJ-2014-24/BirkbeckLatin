@@ -113,7 +113,6 @@ public class GameNounEtcTests {
         databaseAccess.sqlNounEtcList_Reset(DbSchema.AdverbListTable.ADVERB_TABLE, DbSchema.NounListTable.Cols.CORRECT);  // Reset CORRECT = 1
         databaseAccess.sqlNounEtcList_Reset(DbSchema.AdverbListTable.ADVERB_TABLE, DbSchema.NounListTable.Cols.ASKED);  // Reset ASKED = 0
 
-
         randomGenerator = new RandomGenerator(databaseAccess);
 
         nounGame1 = new NounEtcGameImpl(databaseAccess, 1); // Verb Skill 1
@@ -128,7 +127,6 @@ public class GameNounEtcTests {
         id_Preposition = 3;
         id_Adjective = 1;
         id_Adverb = 1;
-
 
         skillLevel1 = 1;
         skillLevel2 = 2;
@@ -326,6 +324,62 @@ public class GameNounEtcTests {
         String englishWord = nounEtc.getEnglishWordSingular();
         assertEquals("Adverb Superlative EnglishWord ", "very happily", englishWord );
     }
+
+    /**
+     * testGetNounEtcQuestions() - LEVEL 1
+     * -------------------------
+     * Test that getNounEtcQuestions() can generate 6 NounEtc Objects of the correct Type
+     * @throws Exception
+     */
+    @Test
+    public void testGetNounEtcQuestions_Level1() throws Exception {
+
+        List<Integer> idList = randomGenerator.getRandomNounEtcIDlist(DbSchema.NounListTable.NOUN_LIST_TABLE, 1, 1);
+
+        List<NounEtc> questionList = nounGame1.getNounEtcQuestionSet(NOUN_REGULAR, idList);
+
+        for(NounEtc n : questionList){
+            int id = n.getId();
+            if(id != 14) {
+                String nounType = n.getType();
+                assertEquals("Noun", nounType);
+            }
+        }
+    }
+
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testAdverbComparative() throws Exception {
+
+
+
+    }
+
+
+
+    /**
+     * testGetNounEtcQuestions() - LEVEL 5
+     * -------------------------
+     * Test that getNounEtcQuestions() can generate 6 NounEtc Objects of the correct Type
+     * @throws Exception
+     */
+    @Test
+    public void testGetNounEtcQuestions_Level5() throws Exception {
+
+        List<Integer> idList = randomGenerator.getRandomNounEtcIDlist(DbSchema.AdverbListTable.ADVERB_TABLE, 5, 1);
+
+        List<NounEtc> questionList = nounGame1.getNounEtcQuestionSet(ADVERB, idList);
+
+        for(NounEtc n : questionList){
+                String nounType = n.getType();
+                assertEquals("Adverb", nounType);
+        }
+    }
+
+
 //
 //    /**
 //     * testGetVerbQuestions() - Skill 2

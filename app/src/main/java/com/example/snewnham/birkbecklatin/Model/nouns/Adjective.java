@@ -29,10 +29,6 @@ public class Adjective implements NounEtc {
     protected String mLatinAdjective;
 
 
-
-
-
-
     // Constructor
     // -----------
     public Adjective(int id){

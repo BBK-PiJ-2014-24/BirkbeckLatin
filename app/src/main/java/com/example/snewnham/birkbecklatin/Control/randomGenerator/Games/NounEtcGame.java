@@ -34,7 +34,7 @@ public interface NounEtcGame {
      * @return a list of six NounEtc objects
      */
 
-    List<NounEtc> getNounEtcQuestions(String nounType, List<Integer> idList);
+    List<NounEtc> getNounEtcQuestionSet(String nounType, List<Integer> idList);
 
 
 }

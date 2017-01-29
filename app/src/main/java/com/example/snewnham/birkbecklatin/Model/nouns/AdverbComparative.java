@@ -34,7 +34,7 @@ public class AdverbComparative extends Adverb {
 
         mGender = gender;  // Set Gender
 
-        if(mDeclension != 0) {
+        if(mLatinAdverbStem != null) {
             mLatinWordEnding = ADVERB_COMPARATIVE_ENDING;
             mLatinWord = mLatinAdverbStem + mLatinWordEnding;
         } else {

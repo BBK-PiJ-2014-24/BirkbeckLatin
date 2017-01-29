@@ -12,6 +12,7 @@ public class Adverb implements NounEtc {
     // ------
     protected int mId;
     protected DatabaseAccess mDatabaseAccess;
+    protected String mType;
     protected String mGender;
     protected int mDeclension;
     protected String mLatinAdverbStem;
@@ -30,12 +31,14 @@ public class Adverb implements NounEtc {
     public Adverb(int id){
         mId = id;
         mGender = "m";   // default
+        mType = "Adverb";
     }
 
     public Adverb(int id, DatabaseAccess databaseAccess){
         mId = id;
         mDatabaseAccess = databaseAccess;
         mGender = "m";   // default
+        mType = "Adverb";
     }
 
     // GETTER/SETTERS
@@ -70,12 +73,12 @@ public class Adverb implements NounEtc {
 
     @Override
     public String getType() {
-        return null;
+        return mType;
     }
 
     @Override
     public void setType(String type) {
-
+        mType = type;
     }
 
     @Override

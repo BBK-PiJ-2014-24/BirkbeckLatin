@@ -84,14 +84,16 @@ public class NounEtcGameImpl implements NounEtcGame {
     }
 
     /**
-     * getNounEtcQuestions()
+     * getNounEtcQuestionSet()
      * ---------------------
-     * Generates a list of 6 verb questions given the Table and Ids and skillLevel
+     * Generates a list of 6 verb questions given the Table and Ids and skillLevel.
+     * Note that Adverb SubClasses need special screening as not all Adverbs can be
+     * converted into Comparatives or Superlatives.
      * @param idList - Pair of IDs
      * @return  a list of six NounEtc objects
      */
     @Override
-    public List<NounEtc> getNounEtcQuestions(String nounType, List<Integer> idList){
+    public List<NounEtc> getNounEtcQuestionSet(String nounType, List<Integer> idList){
 
         String number1 = mRandomGenerator.getNounNumber();
         String number2 = mRandomGenerator.getNounNumber();
@@ -103,21 +105,33 @@ public class NounEtcGameImpl implements NounEtcGame {
         String gender2 = mRandomGenerator.getAdjectiveGender();
         String gender3 = mRandomGenerator.getAdjectiveGender();
 
-        if(mSkillLevel == 5) {
-            if (nounType.equals(ADJECTIVE))
+        if(mSkillLevel < 4){
+            mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(0), number1, noun_Case1, gender1));
+            mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(1), number2, noun_Case2, gender2));
+            mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(2), number3, noun_Case3, gender3));
+            mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(3), number1, noun_Case1, gender1));
+            mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(4), number2, noun_Case2, gender2));
+            mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(5), number3, noun_Case3, gender3));
+        } else if (mSkillLevel == 4){
+            if (nounType.equals(ADJECTIVE))  // If Adjective -> Select Type - Adjective, Comparative, Superlative
                 nounType = mRandomGenerator.getAdjectiveType();
-            else if (nounType.equals(ADVERB)) {
+            mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(0), number1, noun_Case1, gender1));
+            mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(1), number2, noun_Case2, gender2));
+            mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(2), number3, noun_Case3, gender3));
+            mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(3), number1, noun_Case1, gender1));
+            mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(4), number2, noun_Case2, gender2));
+            mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(5), number3, noun_Case3, gender3));
+        } else { // mSkillLevel == 5
+            if (nounType.equals(ADVERB)) // If Adverb Select Type - Adverb, Comparative, Superlative
                 nounType = mRandomGenerator.getAdverbType();
+            for(Integer i : idList){
+                boolean hasStem = mDatabaseAccess.sqlAdverbCheckStem(idList.get(i));  // Check if Adverb has Stem to build Comparative, Superlative
+                if(hasStem)
+                    mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(0), number1, noun_Case1, gender1));
+                else
+                    mNounQuestionList.add(makeGameNounEtc(ADVERB, idList.get(0), number1, noun_Case1, gender1));
             }
         }
-
-        mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(0), number1, noun_Case1, gender1));
-        mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(1), number2, noun_Case2, gender2));
-        mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(2), number3, noun_Case3, gender3));
-        mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(3), number1, noun_Case1, gender1));
-        mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(4), number2, noun_Case2, gender2));
-        mNounQuestionList.add(makeGameNounEtc(nounType, idList.get(5), number3, noun_Case3, gender3));
-
         return mNounQuestionList;
     }
 

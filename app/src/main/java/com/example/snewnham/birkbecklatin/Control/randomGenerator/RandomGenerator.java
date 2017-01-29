@@ -181,7 +181,6 @@ public class RandomGenerator {
     }
 
 
-
     /**
      * getNounEtc()
      * ------------

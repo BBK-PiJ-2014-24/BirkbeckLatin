@@ -96,8 +96,6 @@ public class LatinNoun_InstrumentTests_AdverbComparative {
 
     }
 
-
-
     /**
      * testEnglishAdverbComparative()
      * ----------------------------
@@ -105,9 +103,10 @@ public class LatinNoun_InstrumentTests_AdverbComparative {
      */
     @Test
     public void testEnglishNounTranslation() throws Exception{
+        adverbComparative.makeEnglishWord(databaseAccess, null);
         String s = adverbComparative.getEnglishWordPlural();
-        assertEquals("happily", adverbComparative.getEnglishWordSingular() );
-        assertEquals("happily", adverbComparative.getEnglishWordPlural() );
+        assertEquals("more happily", adverbComparative.getEnglishWordSingular() );
+        assertEquals("more happily", adverbComparative.getEnglishWordPlural() );
     }
 
     @After

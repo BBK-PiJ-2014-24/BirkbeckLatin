@@ -49,7 +49,7 @@ public class LatinNoun_InstrumentTests_Adverb {
         int id = 1;
         gender = "m";
         declension = 212;
-        latinAdverbStem = null;
+        latinAdverbStem = "laet";
         latinAdverb = "laete";
         englishAdverb = "happily";
         englishAdverbComparative = "more happily";
@@ -58,7 +58,7 @@ public class LatinNoun_InstrumentTests_Adverb {
         adverb = new Adverb(id, databaseAccess);
             adverb.setId(id);
             adverb.setGender(gender);
-            adverb.setLatinAdverbStem(null);  // SET DECLENSION
+            adverb.setLatinAdverbStem(latinAdverbStem);  // SET DECLENSION
             adverb.setLatinAdverb(latinAdverb);       // SET GENDER
             adverb.setEnglishAdverb(englishAdverb);
             adverb.setEnglishAdverbComparative(englishAdverbComparative);
@@ -86,9 +86,8 @@ public class LatinNoun_InstrumentTests_Adverb {
 
         adverb.makeLatinWord(databaseAccess, null, null);
 
-        assertEquals(null, adverb.getLatinWordStem());
+        assertEquals("laet", adverb.getLatinWordStem());
         assertEquals("laete", adverb.getLatinWord());
-
     }
 
 
@@ -100,6 +99,7 @@ public class LatinNoun_InstrumentTests_Adverb {
      */
     @Test
     public void testEnglishNounTranslation() throws Exception{
+        adverb.makeEnglishWord(databaseAccess, null);
         String s = adverb.getEnglishWordPlural();
         assertEquals("happily", adverb.getEnglishWordSingular() );
         assertEquals("happily", adverb.getEnglishWordPlural() );
