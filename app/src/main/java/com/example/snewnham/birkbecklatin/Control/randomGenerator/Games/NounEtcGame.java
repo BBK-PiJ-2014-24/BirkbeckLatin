@@ -77,6 +77,17 @@ public interface NounEtcGame {
      */
     int storeAnswer(String table, int ans);
 
+
+    /**
+     * endGame()
+     * ---------
+     * Run at the end of the game:
+     * 1) updates the students IRT Theta and game skill level.
+     * 2) Stores Theta and SkillLevel in the Meta Table.
+     *
+     */
+    void endGame();
+
     // GETTER/SETTERS
     // --------------
 

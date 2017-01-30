@@ -248,7 +248,6 @@ public class NounEtcGameImpl implements NounEtcGame {
 
 
     // 4. TODO endGame() - UpdateSkillLevel(); MetaInsertion - SkillLevel, VerbTheta
-    // 3. TODO storeAnswer() - Update Database for CORRECT or INCORRECT; determineQuestionDifficulty(); Form Answer Object and Add to Lists
 
     /**
      * storeAnswer()
@@ -306,6 +305,22 @@ public class NounEtcGameImpl implements NounEtcGame {
             mSkillLevel = mSkillLevel - 1;
 
         return mSkillLevel;
+    }
+
+    /**
+     * endGame()
+     * ---------
+     * Run at the end of the game:
+     * 1) updates the students IRT Theta and game skill level.
+     * 2) Stores Theta and SkillLevel in the Meta Table.
+     *
+     */
+    @Override
+    public void endGame(){
+        updateSkillLevel(mAnswerList); // update the Skill Level after the Test
+        mDatabaseAccess.sqlMeta_Insertion(NOUN_SKILL_LEVEL, mSkillLevel*1.0); // Add skill, Theta to meta table
+        mDatabaseAccess.sqlMeta_Insertion(NOUN_THETA, mTheta);
+        mDatabaseAccess.close();
     }
 
     // Getter/Setters
