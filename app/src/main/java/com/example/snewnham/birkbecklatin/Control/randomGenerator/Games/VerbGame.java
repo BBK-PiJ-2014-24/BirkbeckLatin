@@ -133,8 +133,8 @@ public class VerbGame {
     }
 
     /**
-     * runVerbQuestion()
-     * -----------------
+     * runVerbGame()
+     * -------------
      * Generates:
      * 1) a pair of Verb IDs, restricted according to skillLevel and either from Correct or Incorrect Lists
      *    (If the game counter signals a scheduled Incorrect Verb or Not)
@@ -144,7 +144,7 @@ public class VerbGame {
      * 5) Shuffles the order of the list.
      *
      */
-    public void runVerbQuestion(){
+    public void runVerbGame(){
 
         mQuestionNumber++; // Increase Counter
 
@@ -302,7 +302,7 @@ public class VerbGame {
 //     * repeatedQuestion()
 //     * ------------------
 //     * Check the Answer List to see if the Verb Id1 has already been tested.
-//     * (Used in runVerbQuestion()). Note that a defence check is inserted so that if
+//     * (Used in runVerbGame()). Note that a defence check is inserted so that if
 //     * if ALL verbs have already been tested then default return TRUE.
 //     *
 //     * @param idList

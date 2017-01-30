@@ -14,6 +14,7 @@ import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by snewnham on 20/01/2017.
@@ -44,6 +45,12 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final static String GENDER_MALE = "m";
     private final static int DECLENSION3 = 3;
 
+    private final static int CORRECT = 1;
+    private final static int INCORRECT = 0;
+    private final static int ASKED = 1;
+    private final static int NOT_ASKED = 0;
+
+
     private RandomGenerator mRandomGenerator;
     private DatabaseAccess mDatabaseAccess;
     private int mSkillLevel; // skillLevel of Game
@@ -54,6 +61,7 @@ public class NounEtcGameImpl implements NounEtcGame {
     private NounEtc mCorrectNounEtc;
     private int mCorrectNounEtcIndex;
     private int mCorrectNounEtcDifficulty;
+    private int mNumChoicesInQuestion;
 
 
 
@@ -83,6 +91,106 @@ public class NounEtcGameImpl implements NounEtcGame {
         mCorrectNounEtc = null;
         mCorrectNounEtcIndex = 100;
         mCorrectNounEtcDifficulty = 100;
+    }
+
+
+    // TODO  - runNounGame()
+    /**
+     * runNounGame()
+     * -------------
+     * Generates:
+     * 1) Generate Random NounType given skillLevel.
+     * 2) Generate set of NounEtc IDs, updating the ASKED FIELD == 1
+     * 3) Forms a Question List of 6 NounEtc
+     * 4) Randomly selects a correctNoun
+     * 5) Shuffles the order of the Noun QuestionSet.
+     *
+     */
+    public void runNounGame(){
+
+        // Pre-Game Preparations
+        mQuestionNumber++; // Increase Counter
+        List<NounEtc> newNounList = new ArrayList<>(6);
+        mNounQuestionList = newNounList; // Hack to Reset The Verb Question List
+        boolean restricted = (mSkillLevel == 1) ? true : false; // restriction Noun Declensions
+
+
+        // Generate Random NounType given skillLevel and its Database Table Name
+        String nounType = mRandomGenerator.getNounEtcType(mSkillLevel);
+        String table = getTableName(nounType);
+
+
+        // defence check to see if there is enough UNASKED, CORRECT Nouns Left.
+        List<Integer> listCorrectNounIDs = mDatabaseAccess.getNounEtcIDlist(table, CORRECT, restricted );
+        int correctTableSize = listCorrectNounIDs.size();
+        if(correctTableSize < mNumChoicesInQuestion){ // If less than 6 CORRECT VerbIDs have not been asked  ...
+            mDatabaseAccess.sqlNounEtcTable_AskedReset(table, CORRECT); // ...then Reset all ASKED Fields = 0 for CORRECT VERBS;
+            listCorrectNounIDs = mDatabaseAccess.getNounEtcIDlist(table, CORRECT, restricted );
+            correctTableSize = listCorrectNounIDs.size();
+            if(correctTableSize < mNumChoicesInQuestion){  // If still small table -> Then ALL verbs have been answered INCORRECT
+                mDatabaseAccess.sqlNounEtcTable_Reset(table, DbSchema.NounListTable.Cols.CORRECT);
+                mDatabaseAccess.sqlNounEtcTable_Reset(table, DbSchema.NounListTable.Cols.ASKED);
+            }
+        }
+
+        // Check if time for Incorrect Question ...
+        // But first preparation for a defence check to see how many (Unasked) INCORRECT Verbs left
+        List<Integer> listIncorrectNounIDs = mDatabaseAccess.getNounEtcIDlist(table, INCORRECT, restricted );
+        int incorrectTableSize = listIncorrectNounIDs.size(); // must have than 1 for a pair
+
+        int correctValue;
+        if(mQuestionNumber % TIME_FOR_INCORRECT_QUESTION == 0  && incorrectTableSize  > mNumChoicesInQuestion )
+            correctValue = INCORRECT;                              // Yes. Not All Verbs in Correct Table been tested
+        else
+            correctValue = CORRECT;
+
+
+        // generate set of NounEtc IDs
+        List<Integer> idList = mRandomGenerator.getRandomNounEtcIDlist(table, mSkillLevel, correctValue);
+
+
+        // Updates the Database that the NounEtc IDs have been used
+        for(Integer i : idList){
+            mDatabaseAccess.sqlNounEtcTable_Insert(table, idList.get(i), DbSchema.NounListTable.Cols.ASKED, ASKED);
+        }
+
+        // Generate question set
+        mNounQuestionList = getNounEtcQuestionSet(nounType, idList);
+
+        // Select a correctVerb Verb from id1 randomly
+        Random rnd = new Random();
+        int rndIndex = rnd.nextInt(mNumChoicesInQuestion);
+        mCorrectNounEtc = mNounQuestionList.get(rndIndex);
+
+        mNounQuestionList = mRandomGenerator.shuffleNounList(mNounQuestionList); // shuffle Question List
+
+        mCorrectNounEtcIndex = mNounQuestionList.indexOf(mCorrectNounEtc); // find the index of the Correct Verb
+        // in the shuffle list.
+    }
+
+    /**
+     * getTableName()
+     * --------------
+     * Maps the Database Table Name to a given NounEtc Type
+     * @param type - NounEtc Type
+     * @return  -  Name of Database Table
+     */
+    public String getTableName(String type){
+        switch(type){
+            case(NOUN_REGULAR):
+                return DbSchema.NounListTable.NOUN_LIST_TABLE;
+            case(NOUN_IRREGULAR):
+                return DbSchema.NounListTable.NOUN_LIST_TABLE;
+            case(PREPOSITION):
+                return DbSchema.PrepositionListTable.PREPOSITION_TABLE;
+            case(CONJUNCTION):
+                return DbSchema.ConjunctionListTable.CONJUNCTION_TABLE;
+            case(ADJECTIVE):
+                return DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE;
+            case(ADVERB):
+                return DbSchema.AdverbListTable.ADVERB_TABLE;
+        }
+        return null;
     }
 
     /**
@@ -247,8 +355,6 @@ public class NounEtcGameImpl implements NounEtcGame {
     }
 
 
-    // 4. TODO endGame() - UpdateSkillLevel(); MetaInsertion - SkillLevel, VerbTheta
-
     /**
      * storeAnswer()
      * -------------
@@ -322,6 +428,8 @@ public class NounEtcGameImpl implements NounEtcGame {
         mDatabaseAccess.sqlMeta_Insertion(NOUN_THETA, mTheta);
         mDatabaseAccess.close();
     }
+
+
 
     // Getter/Setters
     // --------------

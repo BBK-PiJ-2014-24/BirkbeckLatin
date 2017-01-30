@@ -152,7 +152,7 @@ public class VerbGameFragment extends Fragment {
      * Place the Question in the TextView; Set Latin Text on each Button
      */
     public void setUpQuestion(){
-        mVerbGame.runVerbQuestion();  // Generates a Question List of 6 Verbs, selects a correctVerb, shuffles the order of the list.
+        mVerbGame.runVerbGame();  // Generates a Question List of 6 Verbs, selects a correctVerb, shuffles the order of the list.
 
         mQuestionList = mVerbGame.getVerbQuestionList();   // Get Question List
         mCorrectVerb = mVerbGame.getCorrectVerb();   // get Correct Verb

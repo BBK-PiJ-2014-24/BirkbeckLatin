@@ -3,6 +3,7 @@ package com.example.snewnham.birkbecklatin.Control.randomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
+import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 
 import java.util.ArrayList;
@@ -382,6 +383,39 @@ public class RandomGenerator {
             return GENDER_FEMALE;
         else
             return GENDER_NEUTER;
+    }
+
+
+    /**
+     * shuffleNounEtcList()
+     * --------------------
+     * Shuffles the nounEtc list
+     *
+     * @param nounEtcList - original NounEtc List
+     * @return shuffled verb list
+     */
+    public List<NounEtc> shuffleNounList(List<NounEtc> nounEtcList){
+
+        // Implementing Adjusted Fisher–Yates to shuffle NounEtc
+        // -------------------------------------------------------
+
+        NounEtc[] nounArr = new NounEtc[nounEtcList.size()];  // initialize verb Array
+        nounArr = nounEtcList.toArray(nounArr);         // convert List to Array
+
+        int indexStart = randomGenerator.nextInt(nounArr.length);
+        NounEtc n = nounArr[0];
+        nounArr[0] = nounArr[indexStart];
+        nounArr[indexStart] = n;
+
+        for(int i = nounArr.length - 1; i >= 0; i--) {
+            int index = randomGenerator.nextInt(nounArr.length);
+            NounEtc swap = nounArr[index];
+            nounArr[index] = nounArr[i];
+            nounArr[i] = swap;
+        }
+
+        List<NounEtc> shuffleList = Arrays.asList(nounArr);  // convert to List
+        return shuffleList;
     }
 
 //    /**
@@ -786,6 +820,10 @@ public class RandomGenerator {
         return shuffleList;
 
     }
+
+
+
+
 
 
     // ------------------------------CORRECT VERB ID -------------------------------------------
