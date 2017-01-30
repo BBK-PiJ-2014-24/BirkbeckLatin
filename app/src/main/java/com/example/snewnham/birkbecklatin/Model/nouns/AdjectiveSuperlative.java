@@ -8,12 +8,15 @@ import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
 public class AdjectiveSuperlative extends Adjective {
 
+    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
+
+
     // Fields
     // ------
+
     private String mLatinSuperlativeEnding;
     private String mLatinSuperlative;
-    private final static String DECLENSION1 = "1";
-    private final static String DECLENSION2 = "2";
+
 
 
 
@@ -21,10 +24,12 @@ public class AdjectiveSuperlative extends Adjective {
     // -----------
     public AdjectiveSuperlative(int id){
         super(id);
+        mType = ADJECTIVE_SUPERLATIVE;
     }
 
     public AdjectiveSuperlative(int id, DatabaseAccess databaseAccess){
         super(id, databaseAccess);
+        mType = ADJECTIVE_SUPERLATIVE;
     }
 
     /**
@@ -47,11 +52,12 @@ public class AdjectiveSuperlative extends Adjective {
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case, String gender) {
 
         mGender = gender;  // Set Gender
+        mType = ADJECTIVE_SUPERLATIVE;
 
-        if(mGender.equals("m") || mGender.equals("n") ) {
-            mLatinSuperlativeEnding = databaseAccess.sqlNounEndingQuery(DECLENSION2, number, mGender, noun_Case);
-        } else if(mGender.equals("f")) {
-            mLatinSuperlativeEnding = databaseAccess.sqlNounEndingQuery(DECLENSION1, number, mGender, noun_Case);
+        if(mGender.equals(GENDER_MALE) || mGender.equals(GENDER_NEUTER) ) {
+            mLatinSuperlativeEnding = databaseAccess.sqlNounEndingQuery(Integer.toString(DECLENSION2), number, mGender, noun_Case);
+        } else if(mGender.equals(GENDER_FEMALE)) {
+            mLatinSuperlativeEnding = databaseAccess.sqlNounEndingQuery(Integer.toString(DECLENSION1), number, mGender, noun_Case);
         }
         mLatinSuperlative = mLatinSuperlativeStem + mLatinSuperlativeEnding;
         return mLatinSuperlative;

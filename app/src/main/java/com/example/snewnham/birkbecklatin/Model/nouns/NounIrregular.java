@@ -18,12 +18,12 @@ public class NounIrregular extends NounRegular {
     // -----------
     public NounIrregular(int id) {
         super(id);
-        mGender = "m";  // default
+        mGender = GENDER_MALE;  // default
     }
 
     public NounIrregular(int id, DatabaseAccess databaseAccess) {
         super(id, databaseAccess);
-        mGender = "m";   // default
+        mGender = GENDER_MALE;   // default
     }
 
     @Override

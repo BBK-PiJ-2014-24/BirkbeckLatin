@@ -36,5 +36,29 @@ public interface NounEtcGame {
 
     List<NounEtc> getNounEtcQuestionSet(String nounType, List<Integer> idList);
 
+    /**
+     * determineQuestionDifficulty()
+     * -----------------------------
+     * Level 1: Nouns 1,2,3 Decl.
+     * Level 2: Nouns including Irregular.
+     * Level 3: Nouns or Prepositions or Conjunctions
+     * Level 4: Nouns or Prepositions or Conjunctions or Adjectives
+     * Level 5: Nouns or Prepositions or Conjunctions or Adjectives or
+     *          Adverbs (inc. Comparatives, Superlatives)
+     *
+     * @return skillLevel of question
+     */
+
+    int determineQuestionDifficulty();
+
+
+
+    // GETTER/SETTERS
+    // --------------
+
+    public NounEtc getCorrectNounEtc();
+
+    public void setCorrectNounEtc(NounEtc correctNounEtc);
+
 
 }

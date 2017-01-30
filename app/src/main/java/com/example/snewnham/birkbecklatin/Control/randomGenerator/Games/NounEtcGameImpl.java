@@ -41,6 +41,7 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
     private final static String GENDER_MALE = "m";
+    private final static int DECLENSION3 = 3;
 
     private RandomGenerator mRandomGenerator;
     private DatabaseAccess mDatabaseAccess;
@@ -49,7 +50,7 @@ public class NounEtcGameImpl implements NounEtcGame {
     private List<NounEtc> mNounQuestionList;  // List of 6 Verbs for a Multiple Choice Questions
     private List<VerbGame.Answer> mAnswerList;
     private int mQuestionNumber;
-    private Verb mCorrectNounEtc;
+    private NounEtc mCorrectNounEtc;
     private int mCorrectNounEtcIndex;
     private int mCorrectNounEtcDifficulty;
 
@@ -135,6 +136,8 @@ public class NounEtcGameImpl implements NounEtcGame {
         return mNounQuestionList;
     }
 
+
+
     /**
      * makeGameNounEtc()
      * -----------------
@@ -215,15 +218,49 @@ public class NounEtcGameImpl implements NounEtcGame {
         return gameNounEtc;
     }
 
+    /**
+     * determineQuestionDifficulty()
+     * -----------------------------
+     * Level 1: Nouns 1,2,3 Decl.
+     * Level 2: Nouns including Irregular.
+     * Level 3: Nouns or Prepositions or Conjunctions
+     * Level 4: Nouns or Prepositions or Conjunctions or Adjectives
+     * Level 5: Nouns or Prepositions or Conjunctions or Adjectives or
+     *          Adverbs (incl. Comparatives, Superlatives)
+     *
+     * @return skillLevel of question
+     */
+    @Override
+    public int determineQuestionDifficulty(){
+
+        if(mCorrectNounEtc.getType().equals(NOUN_REGULAR) && mCorrectNounEtc.getDeclension() <= DECLENSION3)
+            return 1;
+        else if(mCorrectNounEtc.getType().equals(NOUN_REGULAR) || mCorrectNounEtc.getType().equals(NOUN_IRREGULAR))
+            return 2;
+        else if(mCorrectNounEtc.getType().equals(CONJUNCTION) || mCorrectNounEtc.getType().equals(PREPOSITION))
+            return 3;
+        else if(mCorrectNounEtc.getType().equals(ADJECTIVE))
+            return 4;
+        else
+            return 5;
+    }
 
 
-    // TODO storeAnswer()
-
-    // TODO endGame()
-
-    // TODO determineQuestionDifficulty()
+    // 4. TODO endGame() - UpdateSkillLevel(); MetaInsertion - SkillLevel, VerbTheta
 
 
-    // TODO updateSkillLevel()
+    // 3. TODO storeAnswer() - Update Database for CORRECT or INCORRECT; determineQuestionDifficulty(); Form Answer Object and Add to Lists
 
+// 1. TODO updateSkillLevel() - case{}
+
+
+    @Override
+    public NounEtc getCorrectNounEtc() {
+        return mCorrectNounEtc;
+    }
+
+    @Override
+    public void setCorrectNounEtc(NounEtc correctNounEtc) {
+        mCorrectNounEtc = correctNounEtc;
+    }
 }

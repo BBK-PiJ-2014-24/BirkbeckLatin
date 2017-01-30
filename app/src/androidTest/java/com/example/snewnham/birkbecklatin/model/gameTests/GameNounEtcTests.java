@@ -300,6 +300,13 @@ public class GameNounEtcTests {
         assertEquals("Adverb EnglishWord", "happily", englishWord );
     }
 
+    /**
+     * testMakeGameNoun_AdverbComparative()
+     * ====================================
+     * test if makeGameNounEtc() Can Make The Right Type of Noun - AdverbComparative.
+     * @throws Exception
+     */
+
     @Test
     public void testMakeGameNoun_AdverbComparative() throws Exception {
 
@@ -313,6 +320,12 @@ public class GameNounEtcTests {
     }
 
 
+    /**
+     * testMakeGameNoun_AdverbSuperlative()
+     * ====================================
+     * test if makeGameNounEtc() Can Make The Right Type of Noun - AdverbComparative.
+     * @throws Exception
+     */
     @Test
     public void testMakeGameNoun_AdverbSuperlative() throws Exception {
 
@@ -342,18 +355,17 @@ public class GameNounEtcTests {
             int id = n.getId();
             if(id != 14) {
                 String nounType = n.getType();
-                assertEquals("Noun", nounType);
+                assertEquals(NOUN_REGULAR, nounType);
             }
         }
     }
 
     /**
-     *
+     * Test whether can Form A AdverbComparative
      * @throws Exception
      */
     @Test
     public void testAdverbComparative() throws Exception {
-
 
 
     }
@@ -375,229 +387,50 @@ public class GameNounEtcTests {
 
         for(NounEtc n : questionList){
                 String nounType = n.getType();
-                assertEquals("Adverb", nounType);
+                assertEquals(ADVERB, nounType);
         }
     }
 
 
-//
-//    /**
-//     * testGetVerbQuestions() - Skill 2
-//     * ----------------------
-//     * Tests the List of Verb Questions Meet the Criteria of Skill 2
-//     *
-//     * @throws Exception
-//     */
-//    @Test
-//    public void testGetVerbQuestions_Skill2() throws Exception {
-//        List<Verb> list = null;
-//        for (int i = 0; i < 5; i++) {
-//            restricted = true;
-//            List<Integer> idPairList = randomGenerator.getRandomVerbIDpair(CONJNUM1_4, correct, restricted);
-//            list = verbGame1.getVerbQuestionSet(idPairList);
-//            Verb v0 = list.get(0);
-//            Verb v1 = list.get(1);
-//            Verb v2 = list.get(2);
-//            Verb v3 = list.get(3);
-//            Verb v4 = list.get(4);
-//            Verb v5 = list.get(5);
-//
-//            assertEquals(v0.getId(), v1.getId());   // Tests Qu 0-2 have same Verb ID
-//            assertEquals(v1.getId(), v2.getId());
-//
-//            assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
-//            assertEquals(v4.getId(), v5.getId());
-//
-//            assertTrue(v0.getLatin_ConjNum() <= 4);  // Tests Conj 1-4;
-//            assertTrue(v1.getLatin_ConjNum() <= 4);
-//
-//            assertFalse(v0.getLatinVerb().equals(v1.getLatinVerb()));  // Tests Qu 0-2 have Diff.
-//            assertFalse(v1.getLatinVerb().equals(v2.getLatinVerb()));  // verb endings.
-//
-//            assertFalse(v3.getLatinVerb().equals(v4.getLatinVerb()));  // Tests Qu 3-5 have Diff.
-//            assertFalse(v4.getLatinVerb().equals(v5.getLatinVerb()));  // verb endings.
-//
-//            list.removeAll(list);
-//        }
-//    }
-//
-//
-//    /**
-//     * testGetVerbQuestions() - Skill 3
-//     * ----------------------
-//     * Tests the List of Verb Questions Meet the Criteria of Skill 3
-//     *
-//     * @throws Exception
-//     */
-//    @Test
-//    public void testGetVerbQuestions_Skill3() throws Exception {
-//
-//        List<Verb> list = null;
-//        for (int i = 0; i < 5; i++) {
-//            restricted = true;
-//            List<Integer> idPairList = randomGenerator.getRandomVerbIDpair(CONJNUM1_4, correct, restricted);
-//            list = verbGame1.getVerbQuestionSet(idPairList);
-//            Verb v0 = list.get(0);
-//            Verb v1 = list.get(1);
-//            Verb v2 = list.get(2);
-//            Verb v3 = list.get(3);
-//            Verb v4 = list.get(4);
-//            Verb v5 = list.get(5);
-//
-//            assertEquals(v0.getId(), v1.getId());   // Tests Qu 0-2 have same Verb ID
-//            assertEquals(v1.getId(), v2.getId());
-//
-//            assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
-//            assertEquals(v4.getId(), v5.getId());
-//
-//            assertTrue(v0.getLatin_ConjNum() <= 4);  // Tests Conj 1-4;
-//            assertTrue(v1.getLatin_ConjNum() <= 4);
-//
-//            assertFalse(v0.getLatinVerb().equals(v1.getLatinVerb()));  // Tests Qu 0-2 have Diff.
-//            assertFalse(v1.getLatinVerb().equals(v2.getLatinVerb()));  // verb endings.
-//
-//            assertFalse(v3.getLatinVerb().equals(v4.getLatinVerb()));  // Tests Qu 3-5 have Diff.
-//            assertFalse(v4.getLatinVerb().equals(v5.getLatinVerb()));  // verb endings.
-//
-//            list.removeAll(list);
-//        }
-//    }
-//
-//    /**
-//     * testGetVerbQuestions() - Skill 4
-//     * ----------------------
-//     * Tests the List of Verb Questions Meet the Criteria of Skill 4
-//     *
-//     * @throws Exception
-//     */
-//    @Test
-//    public void testGetVerbQuestions_Skill4() throws Exception {
-//
-//        List<Verb> list = null;
-//        Map<String, Integer> map = new HashMap<>();
-//
-//
-//        for(int i=0; i<3; i++) {  // limited checks as sqlite cannot cope with multiple queries
-//            restricted = false;
-//            List<Integer> idPairList = randomGenerator.getRandomVerbIDpair(CONJNUM1_4, correct, restricted);
-//            list = verbGame1.getVerbQuestionSet(idPairList);
-//            Verb v0 = list.get(0);
-//            Verb v1 = list.get(1);
-//            Verb v2 = list.get(2);
-//            Verb v3 = list.get(3);
-//            Verb v4 = list.get(4);
-//            Verb v5 = list.get(5);
-//
-//            assertEquals(v0.getId(), v1.getId());   // Tests Qu 0-2 have same Verb ID
-//            assertEquals(v1.getId(), v2.getId());
-//
-//            assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
-//            assertEquals(v4.getId(), v5.getId());
-//
-//            assertTrue(v0.getLatin_ConjNum() <= 4);  // Tests Conj 1-4;
-//            assertTrue(v1.getLatin_ConjNum() <= 4);
-//
-//            assertFalse(v0.getLatinVerb().equals(v1.getLatinVerb()));  // Tests Qu 0-2 have Diff.
-//            assertFalse(v1.getLatinVerb().equals(v2.getLatinVerb()));  // verb endings.
-//
-//            assertFalse(v3.getLatinVerb().equals(v4.getLatinVerb()));  // Tests Qu 3-5 have Diff.
-//            assertFalse(v4.getLatinVerb().equals(v5.getLatinVerb()));  // verb endings.
-//
-//           list.removeAll(list);
-//
-//        }
-//    }
-//
-//
-//    /**
-//     * testGetVerbQuestions() - Skill 5
-//     * ----------------------
-//     * Tests the List of Verb Questions Meet the Criteria of Skill 4
-//     *
-//     * @throws Exception
-//     */
-//    @Test
-//    public void testGetVerbQuestions_Skill5() throws Exception {
-//
-//        List<Verb> list = null;
-//        Map<String, Integer> map = new HashMap<>();
-//
-//        for (int i = 0; i <3; i++) {
-//            restricted = false;
-//            List<Integer> idPairList = randomGenerator.getRandomVerbIDpair(CONJNUM1_4, correct, restricted);
-//            list = verbGame1.getVerbQuestionSet(idPairList);
-//            Verb v0 = list.get(0);
-//            Verb v1 = list.get(1);
-//            Verb v2 = list.get(2);
-//            Verb v3 = list.get(3);
-//            Verb v4 = list.get(4);
-//            Verb v5 = list.get(5);
-//
-//            assertEquals(v0.getId(), v1.getId());   // Tests Qu 0-2 have same Verb ID
-//            assertEquals(v1.getId(), v2.getId());
-//
-//            assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
-//            assertEquals(v4.getId(), v5.getId());
-//
-//            assertTrue(v0.getLatin_ConjNum() <= 4);  // Tests Conj 1-4;
-//            assertTrue(v1.getLatin_ConjNum() <= 4);
-//
-//            assertFalse(v0.getLatinVerb().equals(v1.getLatinVerb()));  // Tests Qu 0-2 have Diff.
-//            assertFalse(v1.getLatinVerb().equals(v2.getLatinVerb()));  // verb endings.
-//
-//            assertFalse(v3.getLatinVerb().equals(v4.getLatinVerb()));  // Tests Qu 3-5 have Diff.
-//            assertFalse(v4.getLatinVerb().equals(v5.getLatinVerb()));  // verb endings.
-//
-//            list.removeAll(list);
-//        }
-//    }
-//
-//
-//
-//    @Test
-//    public void testDetermineQuestionDifficulty(){
-//
-//        int id1 = 1;
-//        verbGame5.setCorrectVerbMood(moodSubjunctive);
-//        Verb v5 =  verbGame5.makeGameVerb(id1, person1, numberSingular,tensePresent, moodSubjunctive, voiceActive );
-//        int diff5 = verbGame5.determineQuestionDifficulty();
-//        assertEquals("Difficulty 5", 5, diff5);
-//
-//        Verb v4 = verbGame4.makeGameVerb(id_Deponent, person1, numberSingular,tensePresent, moodImperative, voiceActive);
-//        verbGame4.setCorrectVerb(v4);
-//        verbGame4.setCorrectVerbMood(moodImperative);
-//        int diff4 = verbGame4.determineQuestionDifficulty();
-//        assertEquals("Difficulty 4", 4, diff4);
-//
-//        Verb v3 = verbGame3.makeGameVerb(id_Regular, person1, numberSingular,tensePresent, moodIndicative, voicePassive);
-//        verbGame3.setCorrectVerb(v3);
-//        verbGame3.setCorrectVerbMood(moodImperative);
-//        verbGame3.setCorrectVerbVoice(voicePassive);
-//        int diff3 = verbGame3.determineQuestionDifficulty();
-//        assertEquals("Difficulty 3", 3, diff3);
-//
-//        Verb v2 = verbGame2.makeGameVerb(4, person1, numberSingular,tensePresent, moodIndicative, voiceActive);
-//        verbGame2.setCorrectVerb(v2);
-//        verbGame2.setCorrectVerbMood(moodIndicative);
-//        verbGame2.setCorrectVerbVoice(voiceActive);
-//        int diff2 = verbGame2.determineQuestionDifficulty();
-//        assertEquals("Difficulty 2", 2, diff2);
-//
-//        Verb v1 = verbGame1.makeGameVerb(id_Irregular, person1, numberSingular,tensePresent, moodIndicative, voiceActive);
-//        verbGame1.setCorrectVerb(v1);
-//        verbGame1.setCorrectVerbMood(moodIndicative);
-//        verbGame1.setCorrectVerbVoice(voiceActive);
-//        int diff1 = verbGame1.determineQuestionDifficulty();
-//        assertEquals("Difficulty 1", 1, diff1);
-//
-//        Verb v11 = verbGame1.makeGameVerb(2, person1, numberSingular,tensePresent, moodIndicative, voiceActive);
-//        verbGame1.setCorrectVerb(v11);
-//        verbGame1.setCorrectVerbMood(moodIndicative);
-//        verbGame1.setCorrectVerbVoice(voiceActive);
-//        int diff11 = verbGame1.determineQuestionDifficulty();
-//        assertEquals("Difficulty 1", 1, diff11);
-//
-//    }
+    /**
+     * testDetermineQuestionDifficulty()
+     * =================================
+     * testing determineQuestionDifficulty() to determine question difficulty
+     */
+    @Test
+    public void testDetermineQuestionDifficulty() {
+
+        NounEtc nounEtc1 = nounGame1.makeGameNounEtc(NOUN_REGULAR, id_Regular, numberSingular, NOMINATIVE, GENDER_MALE );
+        nounGame1.setCorrectNounEtc(nounEtc1);
+        int ansDiff1 = nounGame1.determineQuestionDifficulty();
+        assertEquals("Question Difficulty 1: ", 1, ansDiff1);
+
+        NounEtc nounEtc2 = nounGame2.makeGameNounEtc(NOUN_IRREGULAR, id_Irregular, numberSingular, NOMINATIVE, GENDER_MALE );
+        nounGame2.setCorrectNounEtc(nounEtc2);
+        int ansDiff2 = nounGame2.determineQuestionDifficulty();
+        assertEquals("Question Difficulty 2: ", 2, ansDiff2);
+
+        NounEtc nounEtc3 = nounGame3.makeGameNounEtc(CONJUNCTION, id_Conjunction, numberSingular, NOMINATIVE, GENDER_MALE );
+        nounGame3.setCorrectNounEtc(nounEtc3);
+        int ansDiff3 = nounGame3.determineQuestionDifficulty();
+        assertEquals("Question Difficulty 3: ", 3, ansDiff3);
+
+        NounEtc nounEtc4 = nounGame4.makeGameNounEtc(ADJECTIVE, id_Adjective, numberSingular, NOMINATIVE, GENDER_MALE );
+        nounGame4.setCorrectNounEtc(nounEtc4);
+        int ansDiff4 = nounGame4.determineQuestionDifficulty();
+        assertEquals("Question Difficulty 4: ", 4, ansDiff4);
+
+        NounEtc nounEtc5a = nounGame5.makeGameNounEtc(ADVERB, id_Adverb, numberSingular, NOMINATIVE, GENDER_MALE );
+        nounGame5.setCorrectNounEtc(nounEtc5a);
+        int ansDiff5a = nounGame5.determineQuestionDifficulty();
+        assertEquals("Question Difficulty 5: ", 5, ansDiff5a);
+
+        NounEtc nounEtc5b = nounGame5.makeGameNounEtc(ADJECTIVE_COMPARATIVE, id_Adjective, numberSingular, NOMINATIVE, GENDER_MALE );
+        nounGame5.setCorrectNounEtc(nounEtc5b);
+        int ansDiff5b = nounGame5.determineQuestionDifficulty();
+        assertEquals("Question Difficulty 5: ", 5, ansDiff5b);
+
+    }
 //
 //
 //    // ---------------------------------VERB CORRECT ---------------------------------------------

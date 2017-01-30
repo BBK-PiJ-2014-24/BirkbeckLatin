@@ -25,20 +25,22 @@ public class Adverb implements NounEtc {
     protected String mLatinWord;
     protected String mEnglishWord;
 
+    protected final static String ADVERB = "Adverb";
+
 
     // Constructor
     // -----------
     public Adverb(int id){
         mId = id;
-        mGender = "m";   // default
-        mType = "Adverb";
+        mGender = GENDER_MALE;   // default
+        mType = ADVERB;
     }
 
     public Adverb(int id, DatabaseAccess databaseAccess){
         mId = id;
         mDatabaseAccess = databaseAccess;
-        mGender = "m";   // default
-        mType = "Adverb";
+        mGender = GENDER_MALE;   // default
+        mType = ADVERB;
     }
 
     // GETTER/SETTERS

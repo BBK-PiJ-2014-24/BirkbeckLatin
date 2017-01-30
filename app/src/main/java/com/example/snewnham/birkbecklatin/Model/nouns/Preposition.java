@@ -16,8 +16,11 @@ public class Preposition implements NounEtc {
     // ------
     private DatabaseAccess mDatabaseAccess;
     private int mId;
+    private String mType;
     private String mLatin_Preposition;
     private String mEnglish_Presposition;
+
+    protected final static String PREPOSITION= "Preposition";
 
 
 
@@ -26,11 +29,13 @@ public class Preposition implements NounEtc {
     public Preposition(int id){
         mId = id;
         mDatabaseAccess = null;
+        mType = PREPOSITION;
     }
 
     public Preposition(int id, DatabaseAccess databaseAccess){
         mId = id;
         mDatabaseAccess = databaseAccess;
+        mType = PREPOSITION;
     }
 
 
@@ -71,7 +76,7 @@ public class Preposition implements NounEtc {
 
     @Override
     public String getType() {
-        return "Preposition";
+        return mType;
     }
 
     @Override

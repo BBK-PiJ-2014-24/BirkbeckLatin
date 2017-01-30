@@ -8,6 +8,7 @@ import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
 public class NounRegular implements NounEtc {
 
+
     // Fields
     // ------
     protected DatabaseAccess mDatabaseAccess;
@@ -51,21 +52,21 @@ public class NounRegular implements NounEtc {
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
 
         // Override for 2nd Declension Nominative and Singular
-        if( mDeclension == 2 && noun_Case.equals("Nominative") && number.equals("Singular") ) {
+        if( mDeclension == 2 && noun_Case.equals(NOMINATIVE) && number.equals(SINGULAR) ) {
                 mLatin_Noun_Ending = "";
                 mLatinNoun = mNominative;
                 return mLatinNoun;
             } else if( mDeclension == 3 ) { // Override for 3rd Declension Nominative and Singular (Singular) && Genitive Plural
 
-                if( (noun_Case.equals("Nominative") || noun_Case.equals("Vocative")) && number.equals("Singular") ) {
+                if( (noun_Case.equals(NOMINATIVE) || noun_Case.equals(VOCATIVE)) && number.equals(SINGULAR) ) {
                     mLatin_Noun_Ending = "";
                     mLatinNoun = mNominative;
                     return mLatinNoun;
-                } else if( noun_Case.equals("Accusative") && mGender.equals("n") && number.equals("Singular") ){
+                } else if( noun_Case.equals(ACCUSATIVE) && mGender.equals(GENDER_NEUTER) && number.equals(SINGULAR) ){
                     mLatin_Noun_Ending = "";
                     mLatinNoun = mNominative;
                     return mLatinNoun;
-                } else if (noun_Case.equals("Genitive") && number.equals("Plural") && mGenitive_Plural != null) {
+                } else if (noun_Case.equals(GENITIVE) && number.equals(PLURAL) && mGenitive_Plural != null) {
                     mLatin_Noun_Ending = "";
                     mLatinNoun = mGenitive_Plural;
                     return mLatinNoun;
@@ -84,7 +85,7 @@ public class NounRegular implements NounEtc {
     @Override
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
 
-        if(number.equals("Singular")){
+        if(number.equals(SINGULAR)){
             return mEnglishNounSingular;
         } else {
             return mEnglishNounPlural;

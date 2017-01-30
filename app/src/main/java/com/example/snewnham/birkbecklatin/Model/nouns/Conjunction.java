@@ -15,19 +15,24 @@ public class Conjunction implements NounEtc {
 
     private int mId;
     private DatabaseAccess mDatabaseAccess;
+    private String mType;
     private String mLatinConjuction;
     private String mEnglishConjunction;
+
+    protected final static String CONJUNCTION = "Conjunction";
 
 
     // Constructor
     // -----------
     public Conjunction(int id){
         mId = id;
+        mType = CONJUNCTION;
     }
 
     public Conjunction(int id, DatabaseAccess databaseAccess){
         mId = id;
         mDatabaseAccess = databaseAccess;
+        mType = CONJUNCTION;
     }
 
 
@@ -59,7 +64,7 @@ public class Conjunction implements NounEtc {
 
     @Override
     public String getType() {
-        return "Conjunction";
+        return mType;
     }
 
     @Override

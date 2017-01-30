@@ -33,13 +33,13 @@ public class Adjective implements NounEtc {
     // -----------
     public Adjective(int id){
         mId = id;
-        mGender = "m";   // default
+        mGender = GENDER_MALE;   // default
     }
 
     public Adjective(int id, DatabaseAccess databaseAccess){
         mId = id;
         mDatabaseAccess = databaseAccess;
-        mGender = "m";   // default
+        mGender = GENDER_MALE;   // default
     }
 
     @Override
@@ -52,13 +52,13 @@ public class Adjective implements NounEtc {
 
         mGender = gender;  // Set Gender
 
-        if(mDeclension == 333) { // M or F 333
-            if(mGender.equals("m") || mGender.equals("f")) {
-                if (noun_Case.equals("Nominative") && number.equals("Singular")) {  // Adjective 333 Nominatives can be Irregular
+        if(mDeclension == DECLENSION333) { // M or F 333
+            if(mGender.equals(GENDER_MALE) || mGender.equals(GENDER_FEMALE)) {
+                if (noun_Case.equals(NOMINATIVE) && number.equals(SINGULAR)) {  // Adjective 333 Nominatives can be Irregular
                     int stemLength = mLatinAdjectiveStem.length();
                     mLatin_Adjective_Ending = mNominative.substring(stemLength);  // Calc ending
                     mLatinAdjective = mNominative;
-                } else if (noun_Case.equals("Vocative") && number.equals("Singular")) {
+                } else if (noun_Case.equals(VOCATIVE) && number.equals(SINGULAR)) {
                     int stemLength = mLatinAdjectiveStem.length();
                     mLatin_Adjective_Ending = mNominative.substring(stemLength);  // Calc ending
                     mLatinAdjective = mNominative;
@@ -67,15 +67,15 @@ public class Adjective implements NounEtc {
                     mLatinAdjective = mLatinAdjectiveStem + mLatin_Adjective_Ending;
                 }
             } else { // Neuter 333
-                if (noun_Case.equals("Nominative") && number.equals("Singular")) {  // Adjective 333 Nominatives can be Irregular
+                if (noun_Case.equals(NOMINATIVE) && number.equals(SINGULAR)) {  // Adjective 333 Nominatives can be Irregular
                     int stemLength = mLatinAdjectiveStem.length();
                     mLatin_Adjective_Ending = mNominative_Neuter.substring(stemLength);  // Calc ending
                     mLatinAdjective = mNominative_Neuter;
-                } else if (noun_Case.equals("Accusative") && number.equals("Singular")) {
+                } else if (noun_Case.equals(ACCUSATIVE) && number.equals(SINGULAR)) {
                     int stemLength = mLatinAdjectiveStem.length();
                     mLatin_Adjective_Ending = mNominative_Neuter.substring(stemLength);  // Calc ending
                     mLatinAdjective = mNominative_Neuter;
-                } else if (noun_Case.equals("Vocative") && number.equals("Singular")) {
+                } else if (noun_Case.equals(VOCATIVE) && number.equals(SINGULAR)) {
                     int stemLength = mLatinAdjectiveStem.length();
                     mLatin_Adjective_Ending = mNominative_Neuter.substring(stemLength);  // Calc ending
                     mLatinAdjective = mNominative_Neuter;
@@ -85,7 +85,7 @@ public class Adjective implements NounEtc {
                 }
             }
         } else { // 212
-            if(noun_Case.equals("Nominative") && number.equals("Singular") && mGender.equals("m")){
+            if(noun_Case.equals(NOMINATIVE) && number.equals(SINGULAR) && mGender.equals(GENDER_MALE)){
                 int stemLength = mLatinAdjectiveStem.length();
                 mLatin_Adjective_Ending = mNominative.substring(stemLength);  // Calc ending
                 mLatinAdjective = mNominative;
