@@ -830,7 +830,7 @@ public class VerbGame {
     }
 
 
-// Inner Class
+    // Inner Class
     // -----------
     /**
      * RESULT - Inner Class
@@ -855,7 +855,6 @@ public class VerbGame {
             this.correct = correct;
             this.difficulty = difficulty;
         }
-
     }
 
 

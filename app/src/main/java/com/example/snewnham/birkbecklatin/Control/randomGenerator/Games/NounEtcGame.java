@@ -52,13 +52,39 @@ public interface NounEtcGame {
     int determineQuestionDifficulty();
 
 
+    /**
+     * updateSkillLevel()
+     * ------------------
+     * updates the skillLevel of the student by processing the results of the Test
+     * through the Item Response Theory Algo.
+     *
+     * If the student's updated theta is >+2, the skillLevel is increased
+     * If the student's updated theta is <-2, the skillLevel is decreased.
+     *
+     * @return the updated skill level of the student.
+     */
+    int updateSkillLevel(List<NounEtcGameImpl.Answer> answerList);
+
+
+
+    /**
+     * storeAnswer()
+     * -------------
+     * 1) Updates the Correct NounEtc Table, updating CORRECT Field
+     * 2) Creates an Answer object to contain data for the question and adds to Answer List.
+     * @param ans answer flag - correct/incorrect (1 or 0)
+     * @return If answer is correct/incorrect (1 or 0)
+     */
+    int storeAnswer(String table, int ans);
 
     // GETTER/SETTERS
     // --------------
 
-    public NounEtc getCorrectNounEtc();
+    NounEtc getCorrectNounEtc();
 
-    public void setCorrectNounEtc(NounEtc correctNounEtc);
+    void setCorrectNounEtc(NounEtc correctNounEtc);
+
+    List<NounEtcGameImpl.Answer> getAnswerList();
 
 
 }

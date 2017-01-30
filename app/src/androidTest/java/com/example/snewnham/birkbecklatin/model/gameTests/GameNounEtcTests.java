@@ -6,26 +6,18 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.Games.NounEtcGame;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.Games.NounEtcGameImpl;
-import com.example.snewnham.birkbecklatin.Control.randomGenerator.Games.VerbGame;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
-import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
-import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static org.hamcrest.Matchers.lessThan;
-import static org.hamcrest.number.OrderingComparison.greaterThan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -102,16 +94,16 @@ public class GameNounEtcTests {
         databaseAccess = DatabaseAccess.getInstance(appContext);  // CALL THE DATABASE STATICALY
         databaseAccess.open();                                  // OPEN THE DATABASE
 
-        databaseAccess.sqlNounEtcList_Reset(DbSchema.NounListTable.NOUN_LIST_TABLE, DbSchema.NounListTable.Cols.CORRECT);  // Reset CORRECT = 1
-        databaseAccess.sqlNounEtcList_Reset(DbSchema.NounListTable.NOUN_LIST_TABLE, DbSchema.NounListTable.Cols.ASKED);  // Reset ASKED = 0
-        databaseAccess.sqlNounEtcList_Reset(DbSchema.ConjunctionListTable.CONJUNCTION_TABLE, DbSchema.NounListTable.Cols.CORRECT);  // Reset CORRECT = 1
-        databaseAccess.sqlNounEtcList_Reset(DbSchema.ConjunctionListTable.CONJUNCTION_TABLE, DbSchema.NounListTable.Cols.ASKED);  // Reset ASKED = 0
-        databaseAccess.sqlNounEtcList_Reset(DbSchema.PrepositionListTable.PREPOSITION_TABLE, DbSchema.NounListTable.Cols.CORRECT);  // Reset CORRECT = 1
-        databaseAccess.sqlNounEtcList_Reset(DbSchema.PrepositionListTable.PREPOSITION_TABLE, DbSchema.NounListTable.Cols.ASKED);  // Reset ASKED = 0
-        databaseAccess.sqlNounEtcList_Reset(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE, DbSchema.NounListTable.Cols.CORRECT);  // Reset CORRECT = 1
-        databaseAccess.sqlNounEtcList_Reset(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE, DbSchema.NounListTable.Cols.CORRECT);  // Reset ASKED = 0
-        databaseAccess.sqlNounEtcList_Reset(DbSchema.AdverbListTable.ADVERB_TABLE, DbSchema.NounListTable.Cols.CORRECT);  // Reset CORRECT = 1
-        databaseAccess.sqlNounEtcList_Reset(DbSchema.AdverbListTable.ADVERB_TABLE, DbSchema.NounListTable.Cols.ASKED);  // Reset ASKED = 0
+        databaseAccess.sqlNounEtcTable_Reset(DbSchema.NounListTable.NOUN_LIST_TABLE, DbSchema.NounListTable.Cols.CORRECT);  // Reset CORRECT = 1
+        databaseAccess.sqlNounEtcTable_Reset(DbSchema.NounListTable.NOUN_LIST_TABLE, DbSchema.NounListTable.Cols.ASKED);  // Reset ASKED = 0
+        databaseAccess.sqlNounEtcTable_Reset(DbSchema.ConjunctionListTable.CONJUNCTION_TABLE, DbSchema.NounListTable.Cols.CORRECT);  // Reset CORRECT = 1
+        databaseAccess.sqlNounEtcTable_Reset(DbSchema.ConjunctionListTable.CONJUNCTION_TABLE, DbSchema.NounListTable.Cols.ASKED);  // Reset ASKED = 0
+        databaseAccess.sqlNounEtcTable_Reset(DbSchema.PrepositionListTable.PREPOSITION_TABLE, DbSchema.NounListTable.Cols.CORRECT);  // Reset CORRECT = 1
+        databaseAccess.sqlNounEtcTable_Reset(DbSchema.PrepositionListTable.PREPOSITION_TABLE, DbSchema.NounListTable.Cols.ASKED);  // Reset ASKED = 0
+        databaseAccess.sqlNounEtcTable_Reset(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE, DbSchema.NounListTable.Cols.CORRECT);  // Reset CORRECT = 1
+        databaseAccess.sqlNounEtcTable_Reset(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE, DbSchema.NounListTable.Cols.CORRECT);  // Reset ASKED = 0
+        databaseAccess.sqlNounEtcTable_Reset(DbSchema.AdverbListTable.ADVERB_TABLE, DbSchema.NounListTable.Cols.CORRECT);  // Reset CORRECT = 1
+        databaseAccess.sqlNounEtcTable_Reset(DbSchema.AdverbListTable.ADVERB_TABLE, DbSchema.NounListTable.Cols.ASKED);  // Reset ASKED = 0
 
         randomGenerator = new RandomGenerator(databaseAccess);
 
@@ -429,6 +421,32 @@ public class GameNounEtcTests {
         nounGame5.setCorrectNounEtc(nounEtc5b);
         int ansDiff5b = nounGame5.determineQuestionDifficulty();
         assertEquals("Question Difficulty 5: ", 5, ansDiff5b);
+    }
+
+    /**
+     * testStoreAnswer()
+     * -----------------
+     * Tests storeAnswer() to see if the Answer object is correctly instantiated and
+     * added to the List.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testStoreAnswer() throws Exception {
+        int ans = 0;
+        NounEtc nounEtc5 = nounGame5.makeGameNounEtc(ADJECTIVE_COMPARATIVE, id_Adjective, numberSingular, NOMINATIVE, GENDER_MALE );
+        nounGame5.setCorrectNounEtc(nounEtc5);
+        int testAns = nounGame5.storeAnswer(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE, ans);
+        assertEquals(ans, testAns);
+
+        List<NounEtcGameImpl.Answer> list = nounGame5.getAnswerList();
+        NounEtcGameImpl.Answer answer = list.get(0);
+
+
+        assertEquals("Answer.TABLE", ADJECTIVE_COMPARATIVE, answer.type);
+        assertEquals("Answer.ID", id_Adjective, answer.id);
+        assertEquals("Answer.CORRECT", 0, answer.correct);
+        assertEquals("Answer.DIFFICULTY", 5, answer.difficulty);
 
     }
 //

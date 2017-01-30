@@ -207,7 +207,6 @@ public class GameVerbTests {
      * test if MakeGameVerb Can Make The Right Type of Verb - Regular.
      * @throws Exception
      */
-
     @Test
     public void testMakeGameVerb_Regular() throws Exception {
 
@@ -228,7 +227,6 @@ public class GameVerbTests {
      * test if MakeGameVerb Can Make The Right Type of Verb - Deponent.
      * @throws Exception
      */
-
     @Test
     public void testMakeGameVerb_Deponent() throws Exception {
 
@@ -248,7 +246,6 @@ public class GameVerbTests {
      * test if MakeGameVerb Can Make The Right Type of Verb - SemiDeponent.
      * @throws Exception
      */
-
     @Test
     public void testMakeGameVerb_SemiDeponent() throws Exception {
 
@@ -552,7 +549,14 @@ public class GameVerbTests {
     }
 
 
-
+    /**
+     * testDetermineQuestionDifficulty()
+     * ---------------------------------
+     *
+     * Tests determineQuestionDifficulty() to see if it can detect the correct Difficulty level of
+     * a question.
+     *
+     */
     @Test
     public void testDetermineQuestionDifficulty(){
 

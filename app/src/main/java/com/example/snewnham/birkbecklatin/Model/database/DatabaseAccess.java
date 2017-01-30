@@ -1260,7 +1260,7 @@ public class DatabaseAccess {
 
 
     /**
-     * sqlNounEtcList_Insert()
+     * sqlNounEtcTable_Insert()
      * -----------------------
      * SQL update of ASKED and CORRECT Fields for ANY NounEtc Table (NounList, Adjective Table, etc.)
      * @param table Database table. Either NounList or Smaller Tables, Adjectives, Adverb, etc.
@@ -1268,7 +1268,7 @@ public class DatabaseAccess {
      * @param fieldName attribute to be updated:  ASKED or CORRECT
      * @param fieldValue updated value of attribute.
      */
-    public void sqlNounEtcList_Insert(String table, int nounEtcID, String fieldName, int fieldValue ) {
+    public void sqlNounEtcTable_Insert(String table, int nounEtcID, String fieldName, int fieldValue ) {
 
         ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
         contentValues.put(fieldName, fieldValue); // manual _id insert for first record
@@ -1295,7 +1295,7 @@ public class DatabaseAccess {
      * @param fieldValue - the right value for the Attribute.
      * @return True if check matches fieldValue
      */
-    public boolean sqlNounEtc_TestInsertion( String table, int NounEtcID, String fieldName, int fieldValue ){
+    public boolean sqlNounEtcTable_TestInsertion(String table, int NounEtcID, String fieldName, int fieldValue ){
 
         String[] column = new String[]{fieldName}; // Select Column
 
@@ -1319,14 +1319,14 @@ public class DatabaseAccess {
 
 
     /**
-     * sqlNounEtcList_Reset()
+     * sqlNounEtcTable_Reset()
      * ----------------------
      * Resets ALL ROWS of 'Incorrect' OR 'Answer' Fields to zero
      * in the NounEtc Tables
      * @param table Database table. Either NounList or Smaller Tables, Adjectives, Adverb, etc.
      * @param  attribute - The Field to be Reset, 'Incorrect' or 'Answer'
      */
-    public void sqlNounEtcList_Reset(String table, String attribute){
+    public void sqlNounEtcTable_Reset(String table, String attribute){
 
         int fieldValue;
         if(attribute.equals(DbSchema.NounListTable.Cols.CORRECT))
@@ -1347,7 +1347,7 @@ public class DatabaseAccess {
     }
 
     /**
-     * sqlNounEtcList_AskedReset()
+     * sqlNounEtcTable_AskedReset()
      * ------------------------
      * Resets the 'ASKED' Field in a NounEtc table to zero,
      * WHERE CORRECT = 0 or 1 depending on which list of Verbs
@@ -1355,7 +1355,7 @@ public class DatabaseAccess {
      *
      * @param  correct - UPDATE WHERE CORRECT = 0 {Incorrect Answers} or WHERE CORRECT = 1 {Correct Answers}
      */
-    public void sqlNounEtcList_AskedReset(String table, int correct){
+    public void sqlNounEtcTable_AskedReset(String table, int correct){
 
         int zeroInt = 0;
         String attribute = DbSchema.NounListTable.Cols.ASKED;

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.example.snewnham.birkbecklatin.Control.randomGenerator.IncorrectNounOutput;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
@@ -469,8 +468,8 @@ public class AdvancedRandomGeneratorTests {
     @Test
     public void testGetRandomNounEtcIDlist() throws Exception {
 
-        databaseAccess.sqlNounEtcList_Reset(NOUN_TABLE, "Correct");
-        databaseAccess.sqlNounEtcList_Reset(NOUN_TABLE, "Asked");
+        databaseAccess.sqlNounEtcTable_Reset(NOUN_TABLE, "Correct");
+        databaseAccess.sqlNounEtcTable_Reset(NOUN_TABLE, "Asked");
 
         int skillLevel = 4;
         int correct = 1;
