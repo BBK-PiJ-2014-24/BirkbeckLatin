@@ -17,7 +17,7 @@ import java.util.Random;
  * Created by snewnham on 19/11/2016.
  */
 
-public class RandomGenerator {
+public class RandomGenerator<T> {
 
     // Fields
     // ------
@@ -389,7 +389,7 @@ public class RandomGenerator {
     /**
      * shuffleNounEtcList()
      * --------------------
-     * Shuffles the nounEtc list
+     * Shuffles the nounEtc list.
      *
      * @param nounEtcList - original NounEtc List
      * @return shuffled verb list
@@ -417,6 +417,9 @@ public class RandomGenerator {
         List<NounEtc> shuffleList = Arrays.asList(nounArr);  // convert to List
         return shuffleList;
     }
+
+
+
 
 //    /**
 //     * getIncorrectNounOutput()

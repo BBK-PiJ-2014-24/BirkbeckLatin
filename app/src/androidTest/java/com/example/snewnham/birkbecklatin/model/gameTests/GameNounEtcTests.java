@@ -609,78 +609,78 @@ public class GameNounEtcTests {
 //
 //    }
 //
-//    @Test
-//    public void testRunVerbQuestion() throws Exception{
-//
-//        for(int i=0; i<10; i++) {
-//
-//            // 1
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 2
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 3
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 4
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 5
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 6
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 7
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 8
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 9
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 10
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 11
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 12
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 13
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 14
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 15
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 16
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 17
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 18
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 19
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//            // 20
-//            verbGame1.runVerbGame();
-//            verbGame1.storeAnswer(0);
-//
-//            databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.CORRECT);
-//            databaseAccess.sqlVerbList_Reset(DbSchema.VerbListTable.Cols.CORRECT);
-//            verbGame1.setQuestionNumber(0);
-//        }
-//
-//    }
+    @Test
+    public void testRunVerbQuestion() throws Exception{
+
+        for(int i=0; i<1; i++) {
+
+            // 1
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 2
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 3
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 4
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 5
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 6
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 7
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 8
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 9
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 10
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 11
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 12
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 13
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 14
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 15
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 16
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 17
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 18
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 19
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+            // 20
+            nounGame1.runNounGame();
+            nounGame1.storeAnswer(DbSchema.NounListTable.NOUN_LIST_TABLE, 0);
+
+            databaseAccess.sqlVerbList_Reset(DbSchema.NounListTable.Cols.CORRECT);
+            databaseAccess.sqlVerbList_Reset(DbSchema.NounListTable.Cols.CORRECT);
+            nounGame1.setQuestionNumber(0);
+        }
+
+    }
 
     @After
     public void breakDown() {

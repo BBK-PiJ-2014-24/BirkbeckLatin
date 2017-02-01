@@ -31,6 +31,7 @@ public class NounEtcGameImpl implements NounEtcGame {
 
     private final static String NOMINATIVE = "Nominative";
 
+    private final static String NOUN = "Noun";
     private final static String NOUN_REGULAR = "NounRegular";
     private final static String NOUN_IRREGULAR = "NounIrregular";
     private final static String PREPOSITION = "Preposition";
@@ -78,6 +79,7 @@ public class NounEtcGameImpl implements NounEtcGame {
         mCorrectNounEtc = null;
         mCorrectNounEtcIndex = 100;
         mCorrectNounEtcDifficulty = 100;
+        mNumChoicesInQuestion = 6;
     }
 
     public NounEtcGameImpl(DatabaseAccess databaseAccess){
@@ -91,6 +93,7 @@ public class NounEtcGameImpl implements NounEtcGame {
         mCorrectNounEtc = null;
         mCorrectNounEtcIndex = 100;
         mCorrectNounEtcDifficulty = 100;
+        mNumChoicesInQuestion = 6;
     }
 
 
@@ -106,6 +109,7 @@ public class NounEtcGameImpl implements NounEtcGame {
      * 5) Shuffles the order of the Noun QuestionSet.
      *
      */
+    @Override
     public void runNounGame(){
 
         // Pre-Game Preparations
@@ -151,7 +155,7 @@ public class NounEtcGameImpl implements NounEtcGame {
 
         // Updates the Database that the NounEtc IDs have been used
         for(Integer i : idList){
-            mDatabaseAccess.sqlNounEtcTable_Insert(table, idList.get(i), DbSchema.NounListTable.Cols.ASKED, ASKED);
+            mDatabaseAccess.sqlNounEtcTable_Insert(table, i, DbSchema.NounListTable.Cols.ASKED, ASKED);
         }
 
         // Generate question set
@@ -177,6 +181,8 @@ public class NounEtcGameImpl implements NounEtcGame {
      */
     public String getTableName(String type){
         switch(type){
+            case(NOUN):
+                return DbSchema.NounListTable.NOUN_LIST_TABLE;
             case(NOUN_REGULAR):
                 return DbSchema.NounListTable.NOUN_LIST_TABLE;
             case(NOUN_IRREGULAR):
@@ -449,7 +455,13 @@ public class NounEtcGameImpl implements NounEtcGame {
         return mAnswerList;
     }
 
-// Inner Class
+
+    @Override
+    public void setQuestionNumber(int questionNumber) {
+        mQuestionNumber = questionNumber;
+    }
+
+    // Inner Class
     // -----------
     /**
      * RESULT - Inner Class

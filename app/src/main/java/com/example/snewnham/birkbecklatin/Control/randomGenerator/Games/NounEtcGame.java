@@ -12,6 +12,20 @@ public interface NounEtcGame {
 
 
     /**
+     * runNounGame()
+     * -------------
+     * Generates:
+     * 1) Generate Random NounType given skillLevel.
+     * 2) Generate set of NounEtc IDs, updating the ASKED FIELD == 1
+     * 3) Forms a Question List of 6 NounEtc
+     * 4) Randomly selects a correctNoun
+     * 5) Shuffles the order of the Noun QuestionSet.
+     *
+     */
+    void runNounGame();
+
+
+    /**
      * makeGameNounEtc()
      * -----------------
      * Make a generic NounEtc for the game, given the Noun Type, Table id, and declension
@@ -96,6 +110,8 @@ public interface NounEtcGame {
     void setCorrectNounEtc(NounEtc correctNounEtc);
 
     List<NounEtcGameImpl.Answer> getAnswerList();
+
+    void setQuestionNumber(int questionNumber);
 
 
 }

@@ -118,6 +118,7 @@ public class DatabaseInstrumentedTest {
     String adverbEnglishSuperlative;
 
     private final static String NOUN_REGULAR = "NounRegular";
+    private final static String NOUN_IRREGULAR = "NounIrregular";
 
     @Before
     public void setUp() {
@@ -900,7 +901,7 @@ public class DatabaseInstrumentedTest {
         // NOUN FIELDS
         // -----------
         noun_id = 2;
-        noun_Type = "Noun";
+        noun_Type = "NounRegular";
         noun_Declension = 2;
         noun_Gender = "m";
         noun_Nominative = "amicus";
@@ -947,6 +948,22 @@ public class DatabaseInstrumentedTest {
         String query = databaseAccess.sqlNounIrregularQuery(nounIrregular, noun_number, noun_Latin_Case, noun_Gender);
 
         assertEquals("hunc", query);
+    }
+
+    /**
+     * testSqlNounTypeCount
+     * --------------------
+     * Test if sqlNounTypeCount() can count
+     */
+    public void testSqlNounTypeCount() {
+
+        int countRegular = databaseAccess.sqlNounTypeCount(NOUN_REGULAR);
+        assertEquals("NOUN_REGULAR", 12 , countRegular);
+
+        int countIrregular = databaseAccess.sqlNounTypeCount(NOUN_IRREGULAR);
+        assertEquals("NOUN_REGULAR", 1 , countIrregular);
+
+
     }
 
 
