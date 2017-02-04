@@ -476,7 +476,6 @@ public class AdvancedNounRandomGeneratorTests {
 
 
 
-
     @After
     public void breakDown() {
         databaseAccess.close();

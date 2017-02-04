@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -49,6 +50,8 @@ public class GameNounEtcTests {
     NounEtcGame nounGame3;
     NounEtcGame nounGame4;
     NounEtcGame nounGame5;
+    NounEtcGameImpl nounGameSkill;
+
 
 
     int skillLevel1;
@@ -108,10 +111,11 @@ public class GameNounEtcTests {
         randomGenerator = new RandomGenerator(databaseAccess);
 
         nounGame1 = new NounEtcGameImpl(databaseAccess, 1); // Verb Skill 1
-        nounGame2 = new NounEtcGameImpl(databaseAccess, 2); // Verb Skill 1
-        nounGame3 = new NounEtcGameImpl(databaseAccess, 3); // Verb Skill 1
-        nounGame4 = new NounEtcGameImpl(databaseAccess, 4); // Verb Skill 1
-        nounGame5 = new NounEtcGameImpl(databaseAccess, 5); // Verb Skill 1
+        nounGame2 = new NounEtcGameImpl(databaseAccess, 2); // Verb Skill 2
+        nounGame3 = new NounEtcGameImpl(databaseAccess, 3); // Verb Skill 3
+        nounGame4 = new NounEtcGameImpl(databaseAccess, 4); // Verb Skill 4
+        nounGame5 = new NounEtcGameImpl(databaseAccess, 5); // Verb Skill 5
+        nounGameSkill =  new NounEtcGameImpl(databaseAccess, 5);
 
         id_Regular = 1;
         id_Irregular = 14;
@@ -451,7 +455,6 @@ public class GameNounEtcTests {
     }
 //
 //
-//    // ---------------------------------VERB CORRECT ---------------------------------------------
 //
 //    /**
 //     * testRandomVerbCorrectTable()
@@ -519,100 +522,109 @@ public class GameNounEtcTests {
 //    }
 //
 //
-//
-//    /**
-//     * testUpdateSkillLevel()
-//     * ----------------------
-//     * Test that skill level can be changed after IRT update
-//     */
-//    @Test
-//    public void testUpdateSkillLevel(){
-//
-//        List<VerbGame.Answer> answerList = new ArrayList<>();
-//
-//        VerbGame.Answer ans1 = verbGameSkill.new Answer(1,1,1);
-//        VerbGame.Answer ans2 = verbGameSkill.new Answer(2,1,1);
-//        VerbGame.Answer ans3 = verbGameSkill.new Answer(3,1,1);
-//        VerbGame.Answer ans4 = verbGameSkill.new Answer(4,1,1);
-//        VerbGame.Answer ans5 = verbGameSkill.new Answer(5,1,1);
-//        VerbGame.Answer ans6 = verbGameSkill.new Answer(6,1,1);
-//        VerbGame.Answer ans7 = verbGameSkill.new Answer(7,1,1);
-//        VerbGame.Answer ans8 = verbGameSkill.new Answer(8,1,1);
-//        VerbGame.Answer ans9 = verbGameSkill.new Answer(9,1,1);
-//        VerbGame.Answer ans10 = verbGameSkill.new Answer(10,1,1);
-//        VerbGame.Answer ans11 = verbGameSkill.new Answer(11,1,1);
-//        VerbGame.Answer ans12 = verbGameSkill.new Answer(12,1,1);
-//        VerbGame.Answer ans13 = verbGameSkill.new Answer(13,1,1);
-//        VerbGame.Answer ans14 = verbGameSkill.new Answer(14,1,1);
-//        VerbGame.Answer ans15 = verbGameSkill.new Answer(15,1,1);
-//        VerbGame.Answer ans16 = verbGameSkill.new Answer(16,1,1);
-//        VerbGame.Answer ans17 = verbGameSkill.new Answer(17,1,1);
-//        VerbGame.Answer ans18 = verbGameSkill.new Answer(18,1,1);
-//        VerbGame.Answer ans19 = verbGameSkill.new Answer(19,1,1);
-//        VerbGame.Answer ans20 = verbGameSkill.new Answer(20,1,1);
-//
-//        answerList.add(ans1);
-//        answerList.add(ans2);
-//        answerList.add(ans3);
-//        answerList.add(ans4);
-//        answerList.add(ans5);
-//        answerList.add(ans6);
-//        answerList.add(ans7);
-//        answerList.add(ans8);
-//        answerList.add(ans9);
-//        answerList.add(ans10);
-//        answerList.add(ans11);
-//        answerList.add(ans12);
-//        answerList.add(ans13);
-//        answerList.add(ans14);
-//        answerList.add(ans15);
-//        answerList.add(ans16);
-//        answerList.add(ans17);
-//        answerList.add(ans18);
-//        answerList.add(ans19);
-//        answerList.add(ans20);
-//
-//        int newSkillLevel = verbGameSkill.updateSkillLevel(answerList);
-//
-//        assertEquals(2, newSkillLevel);  // Full Marks -> SKillLevel Up!
-//
-//        for(VerbGame.Answer ans : answerList){  // Change to All Wrong Marks
-//            ans.correct = 0;
-//        }
-//
-//        newSkillLevel = verbGameSkill.updateSkillLevel(answerList);
-//
-//        assertEquals(1, newSkillLevel);  // ALL WRONG -> SKillLevel Down!
-//
-//        for(int i=0; i<15; i++){    // 75% Correct
-//            VerbGame.Answer ans = answerList.get(i);
-//            ans.correct = 1;
-//        }
-//
-//        newSkillLevel = verbGameSkill.updateSkillLevel(answerList);
-//
-//        ans16.correct = 1;
-//        ans17.correct = 1;
-//
-//        newSkillLevel = verbGameSkill.updateSkillLevel(answerList);
-//
-//        ans18.correct = 1;
-//
-//        newSkillLevel = verbGameSkill.updateSkillLevel(answerList);
-//
-//        ans19.correct = 1;
-//        ans20.correct = 1;
-//
-//        newSkillLevel = verbGameSkill.updateSkillLevel(answerList);
-//
-//        assertEquals(3, newSkillLevel); // 75% Correct -> SKillLevel Up!
-//
-//    }
-//
-    @Test
-    public void testRunVerbQuestion() throws Exception{
 
-        for(int i=0; i<1; i++) {
+    /**
+     * testUpdateSkillLevel()
+     * ----------------------
+     * Test that skill level can be changed after IRT update
+     */
+    @Test
+    public void testUpdateSkillLevel(){
+
+        List<NounEtcGameImpl.Answer> answerList = new ArrayList<>();
+
+        NounEtcGameImpl.Answer ans1 = nounGameSkill.new Answer(NOUN_REGULAR, 1,1,1);
+        NounEtcGameImpl.Answer ans2 = nounGameSkill.new Answer(NOUN_REGULAR, 2,1,1);
+        NounEtcGameImpl.Answer ans3 = nounGameSkill.new Answer(NOUN_REGULAR, 3,1,1);
+        NounEtcGameImpl.Answer ans4 = nounGameSkill.new Answer(NOUN_REGULAR, 4,1,1);
+        NounEtcGameImpl.Answer ans5 = nounGameSkill.new Answer(NOUN_REGULAR, 5,1,1);
+        NounEtcGameImpl.Answer ans6 = nounGameSkill.new Answer(NOUN_REGULAR, 6,1,1);
+        NounEtcGameImpl.Answer ans7 = nounGameSkill.new Answer(NOUN_REGULAR, 7,1,1);
+        NounEtcGameImpl.Answer ans8 = nounGameSkill.new Answer(NOUN_REGULAR, 8,1,1);
+        NounEtcGameImpl.Answer ans9 = nounGameSkill.new Answer(NOUN_REGULAR, 9,1,1);
+        NounEtcGameImpl.Answer ans10 = nounGameSkill.new Answer(NOUN_REGULAR, 10,1,1);
+        NounEtcGameImpl.Answer ans11 = nounGameSkill.new Answer(NOUN_REGULAR, 11,1,1);
+        NounEtcGameImpl.Answer ans12 = nounGameSkill.new Answer(NOUN_REGULAR, 12,1,1);
+        NounEtcGameImpl.Answer ans13 = nounGameSkill.new Answer(ADJECTIVE, 1,1,1);
+        NounEtcGameImpl.Answer ans14 = nounGameSkill.new Answer(ADJECTIVE, 2,1,1);
+        NounEtcGameImpl.Answer ans15 = nounGameSkill.new Answer(ADJECTIVE, 3,1,1);
+        NounEtcGameImpl.Answer ans16 = nounGameSkill.new Answer(ADJECTIVE, 4,1,1);
+        NounEtcGameImpl.Answer ans17 = nounGameSkill.new Answer(ADJECTIVE, 5,1,1);
+        NounEtcGameImpl.Answer ans18 = nounGameSkill.new Answer(CONJUNCTION, 1,1,1);
+        NounEtcGameImpl.Answer ans19 = nounGameSkill.new Answer(CONJUNCTION, 2,1,1);
+        NounEtcGameImpl.Answer ans20 = nounGameSkill.new Answer(CONJUNCTION, 3,1,1);
+
+        answerList.add(ans1);
+        answerList.add(ans2);
+        answerList.add(ans3);
+        answerList.add(ans4);
+        answerList.add(ans5);
+        answerList.add(ans6);
+        answerList.add(ans7);
+        answerList.add(ans8);
+        answerList.add(ans9);
+        answerList.add(ans10);
+        answerList.add(ans11);
+        answerList.add(ans12);
+        answerList.add(ans13);
+        answerList.add(ans14);
+        answerList.add(ans15);
+        answerList.add(ans16);
+        answerList.add(ans17);
+        answerList.add(ans18);
+        answerList.add(ans19);
+        answerList.add(ans20);
+
+        // Full Marks -> SKillLevel Up!
+        int newSkillLevel = nounGameSkill.updateSkillLevel(answerList);
+        assertEquals(5, newSkillLevel);
+
+        // ALL WRONG -> SKillLevel Down!
+        for(NounEtcGameImpl.Answer ans : answerList){  // Change to All Wrong Marks
+            ans.correct = 0;
+        }
+        newSkillLevel = nounGameSkill.updateSkillLevel(answerList);
+        assertEquals(4, newSkillLevel);
+
+        int x=5;
+        // 75% Correct
+        for(int i=0; i<15; i++){
+            NounEtcGameImpl.Answer ans = answerList.get(i);
+            ans.correct = 1;
+        }
+        newSkillLevel = nounGameSkill.updateSkillLevel(answerList);
+
+
+        ans16.correct = 1;
+        ans17.correct = 1;
+
+        newSkillLevel = nounGameSkill.updateSkillLevel(answerList);
+
+        ans18.correct = 1;
+
+        newSkillLevel = nounGameSkill.updateSkillLevel(answerList);
+
+        ans19.correct = 1;
+        ans20.correct = 1;
+
+        newSkillLevel = nounGameSkill.updateSkillLevel(answerList);
+
+        assertEquals(5, newSkillLevel); // 75% Correct -> SKillLevel Up!
+
+    }
+
+
+    /**
+     * testRunNounGame()
+     * -----------------
+     * Tests Multiple Runs of runNounGame
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testRunNounGame() throws Exception{
+
+        for(int i=0; i<10; i++) {
 
             // 1
             nounGame1.runNounGame();
