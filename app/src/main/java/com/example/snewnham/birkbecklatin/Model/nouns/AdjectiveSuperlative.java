@@ -65,6 +65,7 @@ public class AdjectiveSuperlative extends Adjective {
 
     @Override
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
+        mEnglishWord = mEnglishSuperlative;
         return mEnglishSuperlative;
     }
 

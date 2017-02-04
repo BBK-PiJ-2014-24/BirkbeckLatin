@@ -82,6 +82,7 @@ public class AdjectiveComparative extends Adjective {
 
     @Override
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
+        mEnglishWord = mEnglishComparative;
         return mEnglishComparative;
     }
 

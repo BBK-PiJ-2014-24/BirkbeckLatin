@@ -107,7 +107,11 @@ public interface NounEtcGame {
 
     NounEtc getCorrectNounEtc();
 
+    int getCorrectNounEtcIndex();
+
     void setCorrectNounEtc(NounEtc correctNounEtc);
+
+    List<NounEtc> getNounQuestionList();
 
     List<NounEtcGameImpl.Answer> getAnswerList();
 

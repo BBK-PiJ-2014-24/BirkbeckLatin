@@ -96,6 +96,9 @@ public interface NounEtc {
     String getLatinWord();
     void setLatinWord(String latinWord);
 
+    String getEnglishWord();
+    void setEnglishWord(String englishWord);
+
     String getEnglishWordSingular();
     void setEnglishWordSingular(String englishWordSingular);
 

@@ -22,6 +22,7 @@ public class NounRegular implements NounEtc {
     protected String mLatin_Noun_Stem;
     protected String mLatin_Noun_Ending;
     protected String mLatinNoun;
+    protected String mEnglishWord;
     protected String mEnglishNounSingular;
     protected  String mEnglishNounPlural;
 
@@ -86,10 +87,12 @@ public class NounRegular implements NounEtc {
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
 
         if(number.equals(SINGULAR)){
-            return mEnglishNounSingular;
+            mEnglishWord = mEnglishNounSingular;
         } else {
-            return mEnglishNounPlural;
+            mEnglishWord = mEnglishNounPlural;
         }
+
+        return mEnglishWord;
     }
 
 
@@ -187,6 +190,14 @@ public class NounRegular implements NounEtc {
     @Override
     public void setLatinWord(String latinNoun) { mLatinNoun = latinNoun; }
 
+    @Override
+    public String getEnglishWord() {
+        return mEnglishWord;
+    }
+    @Override
+    public void setEnglishWord(String englishWord) {
+        mEnglishWord = englishWord;
+    }
 
     @Override
     public String getEnglishWordSingular() {

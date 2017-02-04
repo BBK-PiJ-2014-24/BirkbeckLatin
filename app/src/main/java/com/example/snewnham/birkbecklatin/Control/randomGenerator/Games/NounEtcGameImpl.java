@@ -164,11 +164,12 @@ public class NounEtcGameImpl implements NounEtcGame {
         Random rnd = new Random();
         int rndIndex = rnd.nextInt(mNumChoicesInQuestion);
         mCorrectNounEtc = mNounQuestionList.get(rndIndex);
+       // mCorrectNounEtc.set
 
         mNounQuestionList = mRandomGenerator.shuffleNounList(mNounQuestionList); // shuffle Question List
 
         mCorrectNounEtcIndex = mNounQuestionList.indexOf(mCorrectNounEtc); // find the index of the Correct Verb
-        // in the shuffle list.
+                                                                           // in the shuffle list.
     }
 
     /**
@@ -448,6 +449,16 @@ public class NounEtcGameImpl implements NounEtcGame {
     }
 
     @Override
+    public int getCorrectNounEtcIndex() {
+        return mCorrectNounEtcIndex;
+    }
+
+    @Override
+    public List<NounEtc> getNounQuestionList() {
+        return mNounQuestionList;
+    }
+
+    @Override
     public List<Answer> getAnswerList() {
         return mAnswerList;
     }
@@ -457,6 +468,9 @@ public class NounEtcGameImpl implements NounEtcGame {
     public void setQuestionNumber(int questionNumber) {
         mQuestionNumber = questionNumber;
     }
+
+
+
 
     // Inner Class
     // -----------

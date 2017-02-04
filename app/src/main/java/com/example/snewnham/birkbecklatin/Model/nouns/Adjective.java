@@ -18,6 +18,7 @@ public class Adjective implements NounEtc {
     protected String mNominative;
     protected String mNominative_Neuter;
     protected String mLatinAdjectiveStem;
+    protected String mEnglishWord;
     protected String mEnglishAdjective;
     protected String mLatinComparativeStem;
     protected String mEnglishComparative;
@@ -99,6 +100,7 @@ public class Adjective implements NounEtc {
 
     @Override
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
+        mEnglishWord = mEnglishAdjective;
         return mEnglishAdjective;
     }
 
@@ -173,6 +175,15 @@ public class Adjective implements NounEtc {
     @Override
     public void setLatinWord(String latinWord) {
         mLatinAdjective = latinWord;
+    }
+
+    @Override
+    public String getEnglishWord() {
+        return mEnglishWord;
+    }
+    @Override
+    public void setEnglishWord(String englishWord) {
+        mEnglishWord = englishWord;
     }
 
     @Override

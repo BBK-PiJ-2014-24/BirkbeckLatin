@@ -144,6 +144,15 @@ public class Adverb implements NounEtc {
     }
 
     @Override
+    public String getEnglishWord() {
+        return mEnglishWord;
+    }
+    @Override
+    public void setEnglishWord(String englishWord) {
+        mEnglishWord = englishWord;
+    }
+
+    @Override
     public String getEnglishWordSingular() {
         return mEnglishWord;
     }

@@ -17,6 +17,7 @@ public class Conjunction implements NounEtc {
     private DatabaseAccess mDatabaseAccess;
     private String mType;
     private String mLatinConjuction;
+    private String mEnglishWord;
     private String mEnglishConjunction;
 
     protected final static String CONJUNCTION = "Conjunction";
@@ -47,6 +48,7 @@ public class Conjunction implements NounEtc {
 
     @Override
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
+        mEnglishWord = mEnglishConjunction;
         return mEnglishConjunction;
     }
 
@@ -130,6 +132,15 @@ public class Conjunction implements NounEtc {
     @Override
     public void setLatinWord(String latinWord) {
         mLatinConjuction = latinWord;
+    }
+
+    @Override
+    public String getEnglishWord() {
+        return mEnglishWord;
+    }
+    @Override
+    public void setEnglishWord(String englishWord) {
+        mEnglishWord = englishWord;
     }
 
     @Override

@@ -18,7 +18,9 @@ public class Preposition implements NounEtc {
     private int mId;
     private String mType;
     private String mLatin_Preposition;
-    private String mEnglish_Presposition;
+    private String mEnglish_Preposition;
+    private String mEnglishWord;
+
 
     protected final static String PREPOSITION= "Preposition";
 
@@ -58,7 +60,8 @@ public class Preposition implements NounEtc {
 
     @Override
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
-        return mEnglish_Presposition;
+        mEnglishWord = mEnglish_Preposition;
+        return mEnglish_Preposition;
     }
 
 
@@ -145,23 +148,32 @@ public class Preposition implements NounEtc {
     }
 
     @Override
+    public String getEnglishWord() {
+        return mEnglishWord;
+    }
+    @Override
+    public void setEnglishWord(String englishWord) {
+        mEnglishWord = englishWord;
+    }
+
+    @Override
     public String getEnglishWordSingular() {
-        return mEnglish_Presposition;
+        return mEnglish_Preposition;
     }
 
     @Override
     public void setEnglishWordSingular(String englishWordSingular) {
-        mEnglish_Presposition = englishWordSingular;
+        mEnglish_Preposition = englishWordSingular;
     }
 
     @Override
     public String getEnglishWordPlural() {
-        return mEnglish_Presposition;
+        return mEnglish_Preposition;
     }
 
     @Override
     public void setEnglishWordPlural(String englishWordPlural) {
-        mEnglish_Presposition = englishWordPlural;
+        mEnglish_Preposition = englishWordPlural;
     }
 
 
