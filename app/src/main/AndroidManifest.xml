@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".view.VerbGameActivity">
         </activity>
+        <activity android:name=".view.NounGameActivity">
+        </activity>
     </application>
 
 </manifest>

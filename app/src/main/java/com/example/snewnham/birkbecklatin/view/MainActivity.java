@@ -14,7 +14,10 @@ public class MainActivity extends AppCompatActivity {
     // ------
     Button mButtonVerbPager;
     Button mButtonVerbGame;
+    Button mButtonNounGame;
 
+    // OnCreate()
+    // ----------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +37,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = VerbGameActivity.newIntent(MainActivity.this);
+                startActivity(intent);
+            }
+        });
+
+        mButtonNounGame = (Button) findViewById(R.id.buttonNounGame);
+        mButtonNounGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = NounGameActivity.newIntent(MainActivity.this);
                 startActivity(intent);
             }
         });
