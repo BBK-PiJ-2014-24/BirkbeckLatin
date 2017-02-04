@@ -181,8 +181,6 @@ public class NounEtcGameImpl implements NounEtcGame {
      */
     public String getTableName(String type){
         switch(type){
-            case(NOUN):
-                return DbSchema.NounListTable.NOUN_LIST_TABLE;
             case(NOUN_REGULAR):
                 return DbSchema.NounListTable.NOUN_LIST_TABLE;
             case(NOUN_IRREGULAR):

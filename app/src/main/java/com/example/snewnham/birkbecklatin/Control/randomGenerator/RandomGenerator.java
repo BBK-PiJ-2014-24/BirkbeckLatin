@@ -33,7 +33,8 @@ public class RandomGenerator<T> {
     private static final String PREPOSITION_TABLE = "Preposition_List";
     private static final String CONJUNCTION_TABLE = "Conjunction_List";
 
-    private static final String NOUN = "Noun";
+    private static final String NOUN_REGULAR = "NounRegular";
+    private static final String NOUN_IRREGULAR = "NounIrregular";
     private static final String ADJECTIVE = "Adjective";
     private static final String PREPOSITION = "Preposition";
     private static final String CONJUNCTION = "Conjunction";
@@ -191,30 +192,36 @@ public class RandomGenerator<T> {
      */
     public String getNounEtcType() {
 
-        int numNouns = databaseAccess.sqlTableCountQuery(NOUN_TABLE);
+        int numNounRegular = databaseAccess.sqlNounTypeCount(NOUN_REGULAR);
+        int numNounIrregular = databaseAccess.sqlNounTypeCount(NOUN_IRREGULAR);
+        int numNouns = numNounRegular + numNounIrregular;
         int numAdjective = databaseAccess.sqlTableCountQuery(ADJECTIVE_TABLE);
         int numPreposition = databaseAccess.sqlTableCountQuery(PREPOSITION_TABLE);
         int numConjunction = databaseAccess.sqlTableCountQuery(CONJUNCTION_TABLE);
         int numAdverb = databaseAccess.sqlTableCountQuery(ADJECTIVE_TABLE);
         int totalOutcomes = numNouns + numAdjective + numPreposition + numConjunction + numAdverb;
 
-        int cumulNouns = numNouns;
+        int cumulRegularNouns = numNounRegular;
+        int cumulIrregularNouns = numNouns;
         int cumulAdjective = numNouns + numAdjective;
         int cumulPreposition = numNouns + numAdjective + numPreposition;
         int cumulConjunction = numNouns + numAdjective + numPreposition + numConjunction;
         int cumulAdverb = numNouns + numAdjective + numPreposition + numConjunction + numAdverb;
 
-        int randomNounEtcNumber = randomGenerator.nextInt(totalOutcomes);
+        int randomNounEtcNumber = randomGenerator.nextInt(totalOutcomes)+1;
 
-        if (randomNounEtcNumber <= cumulNouns)
-            return NOUN;
+
+        if(randomNounEtcNumber <= cumulRegularNouns)
+            return NOUN_REGULAR;
+        else if (randomNounEtcNumber <= cumulIrregularNouns)
+            return NOUN_IRREGULAR;
         else if (randomNounEtcNumber <= cumulAdjective)
             return ADJECTIVE;
-        if (randomNounEtcNumber <= cumulPreposition)
+        else if (randomNounEtcNumber <= cumulPreposition)
             return PREPOSITION;
-        if (randomNounEtcNumber <= cumulConjunction)
+        else if (randomNounEtcNumber <= cumulConjunction)
             return CONJUNCTION;
-        if (randomNounEtcNumber <= cumulAdverb)
+        else if (randomNounEtcNumber <= cumulAdverb)
             return ADVERB;
         else
             return null;
@@ -235,7 +242,10 @@ public class RandomGenerator<T> {
      */
     public String getNounEtcType(int skillLevel) {
 
-        int numNouns = databaseAccess.sqlTableCountQuery(NOUN_TABLE);
+        int numNounRegular = databaseAccess.sqlNounTypeCount(NOUN_REGULAR);
+        int numNounIrregular = databaseAccess.sqlNounTypeCount(NOUN_IRREGULAR);
+        int numNouns = numNounRegular + numNounIrregular;
+
         int numPreposition = databaseAccess.sqlTableCountQuery(PREPOSITION_TABLE);
         int numConjunction = databaseAccess.sqlTableCountQuery(CONJUNCTION_TABLE);
         int numAdjective = databaseAccess.sqlTableCountQuery(ADJECTIVE_TABLE);
@@ -244,7 +254,7 @@ public class RandomGenerator<T> {
         int totalOutcomes = 0;
         switch(skillLevel){
             case 1:
-                totalOutcomes = numNouns;
+                totalOutcomes = numNounRegular;
                 break;
             case 2:
                 totalOutcomes = numNouns;
@@ -260,16 +270,19 @@ public class RandomGenerator<T> {
                 break;
         }
 
-        int randomNounEtcNumber = randomGenerator.nextInt(totalOutcomes);
+        int randomNounEtcNumber = randomGenerator.nextInt(totalOutcomes)+1;
 
-        int cumulNouns = numNouns;
+        int cumulRegularNouns = numNounRegular;
+        int cumulIrregularNouns = numNouns;
         int cumulPreposition = numNouns + numPreposition;
         int cumulConjunction = numNouns + numPreposition + numConjunction;
         int cumulAdjective = numNouns + numPreposition + numConjunction + numAdjective;
         int cumulAdverb = numNouns + numPreposition + numConjunction + numAdjective + numAdverb;
 
-        if (randomNounEtcNumber <= cumulNouns)
-            return NOUN;
+        if (randomNounEtcNumber <= cumulRegularNouns)
+            return NOUN_REGULAR;
+        else if (randomNounEtcNumber <= cumulIrregularNouns)
+            return NOUN_IRREGULAR;
         else if (randomNounEtcNumber <= cumulPreposition)
             return PREPOSITION;
         else if (randomNounEtcNumber <= cumulConjunction)
@@ -493,6 +506,12 @@ public class RandomGenerator<T> {
      * @return List of two verb IDs
      */
     public List<Integer> getRandomVerbIDpair(int conjNum, int correct, boolean restricted){
+
+        try{
+            Thread.sleep(1500);
+        }catch(InterruptedException e){
+            System.out.println("got interrupted!");
+        }
 
         List<Integer> list = databaseAccess.getVerbIDList(conjNum, correct, restricted);
 

@@ -325,7 +325,6 @@ public class DatabaseAccess {
     }
 
 
-
     /**
      * sqlTableCountQuery()
      * ====================
@@ -340,8 +339,6 @@ public class DatabaseAccess {
     }
 
 
-    // TODO DO A COUNT FOR NOUN_REGULAR and NOUN_IRREGULAR
-
     /**
      * sqlNounTypeCount()
      * ------------------
@@ -351,12 +348,14 @@ public class DatabaseAccess {
     public int sqlNounTypeCount(String type){
 
         String table = DbSchema.NounListTable.NOUN_LIST_TABLE;
-        String[] column = null;            // SELECT *
-        String whereClause = DbSchema.NounListTable.Cols.TYPE;
+        String[] column = new String[]{DbSchema.NounListTable.Cols.TYPE};            // SELECT *
+        String whereClause = DbSchema.NounListTable.Cols.TYPE + "=?";
         String[] whereArgs = new String[]{type};    // WHERE _id =
 
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs  ); // Run SQL query
-        return cursor.getCount();
+        int count = cursor.getCount();
+        cursor.close();
+        return count;
     }
 
 
