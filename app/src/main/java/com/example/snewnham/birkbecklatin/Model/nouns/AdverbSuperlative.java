@@ -20,11 +20,13 @@ public class AdverbSuperlative extends Adverb {
     public AdverbSuperlative(int id){
         super(id);
         mType = ADVERB_SUPERLATIVE;
+        mEnglishWord = mEnglishAdverbSuperlative;
     }
 
     public AdverbSuperlative(int id, DatabaseAccess databaseAccess){
         super(id, databaseAccess);
         mType = ADVERB_SUPERLATIVE;
+        mEnglishWord = mEnglishAdverbSuperlative;
     }
 
     // GETTER/SETTERS
@@ -34,6 +36,7 @@ public class AdverbSuperlative extends Adverb {
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
         return makeLatinWord(databaseAccess, number, noun_Case, mGender);
     }
+
 
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case, String gender) {
@@ -50,6 +53,7 @@ public class AdverbSuperlative extends Adverb {
         }
         return mLatinWord;
     }
+
 
     @Override
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {

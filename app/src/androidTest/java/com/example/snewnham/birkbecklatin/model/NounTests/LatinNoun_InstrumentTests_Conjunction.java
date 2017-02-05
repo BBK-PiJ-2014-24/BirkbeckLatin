@@ -84,13 +84,16 @@ public class LatinNoun_InstrumentTests_Conjunction {
     }
 
     /**
-     * testEnglishPrespositionTranslation()
-     * ----------------------------
+     * testEnglishConjunctionTranslation()
+     * -----------------------------------
      * Test to get the English NounEtc
      */
     @Test
     public void testEnglishConjunctionTranslation(){
         assertEquals("however", conjunction.getEnglishWordSingular() );
+
+        conjunction.makeEnglishWord(databaseAccess, "Plural");
+        assertEquals("however", conjunction.getEnglishWord());
     }
 
 

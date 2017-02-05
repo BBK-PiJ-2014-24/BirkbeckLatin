@@ -109,6 +109,8 @@ public class LatinNoun_InstrumentTests_AdverbSuperlative {
         String s = adverbSuperlative.getEnglishWordPlural();
         assertEquals("very happily", adverbSuperlative.getEnglishWordSingular() );
         assertEquals("very happily", adverbSuperlative.getEnglishWordPlural() );
+
+        assertEquals("very happily", adverbSuperlative.getEnglishWord());
     }
 
     @After

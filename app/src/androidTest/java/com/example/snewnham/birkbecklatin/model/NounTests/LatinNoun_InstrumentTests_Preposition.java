@@ -92,12 +92,15 @@ public class LatinNoun_InstrumentTests_Preposition {
 
     /**
      * testEnglishPrespositionTranslation()
-     * ----------------------------
+     * -------------------------------------
      * Test to get the English NounEtc
      */
     @Test
-    public void testEnglishPrespositionTranslation(){
+    public void testEnglishPrepositionTranslation(){
         assertEquals("around", preposition.getEnglishWordSingular() );
+
+        preposition.makeEnglishWord(databaseAccess, "Plural");
+        assertEquals("around", preposition.getEnglishWord());
     }
 
 

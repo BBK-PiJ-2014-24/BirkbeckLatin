@@ -160,11 +160,10 @@ public class NounEtcGameImpl implements NounEtcGame {
         // Generate question set
         mNounQuestionList = getNounEtcQuestionSet(nounType, idList);
 
-        // Select a correctVerb Verb from id1 randomly
+        // Select a correctVerb NounEtc randomly
         Random rnd = new Random();
         int rndIndex = rnd.nextInt(mNumChoicesInQuestion);
         mCorrectNounEtc = mNounQuestionList.get(rndIndex);
-       // mCorrectNounEtc.set
 
         mNounQuestionList = mRandomGenerator.shuffleNounList(mNounQuestionList); // shuffle Question List
 

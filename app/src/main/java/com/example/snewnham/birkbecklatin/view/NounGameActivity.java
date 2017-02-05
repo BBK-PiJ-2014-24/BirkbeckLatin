@@ -7,8 +7,6 @@ import android.os.Bundle;
 
 import com.example.snewnham.birkbecklatin.R;
 
-import layout.NounGameFragment;
-
 public class NounGameActivity extends SingleFragmentActivity {
 
     // newIntent() - STATIC call of the NounGameActivity's Intent  ( MAIN_ACTIVITY -> )

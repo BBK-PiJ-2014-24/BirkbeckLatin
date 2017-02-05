@@ -64,8 +64,7 @@ public class LatinNoun_InstrumentTests_Adverb {
             adverb.setEnglishAdverbComparative(englishAdverbComparative);
             adverb.setEnglishAdverbSuperlative(englishAdverbSuperlative);
     }
-
-
+    
     @Test
     public void useAppContext() throws Exception {
         // Context of the app under test.
@@ -91,7 +90,6 @@ public class LatinNoun_InstrumentTests_Adverb {
     }
 
 
-
     /**
      * testEnglishAdverbTranslation()
      * ----------------------------
@@ -103,6 +101,9 @@ public class LatinNoun_InstrumentTests_Adverb {
         String s = adverb.getEnglishWordPlural();
         assertEquals("happily", adverb.getEnglishWordSingular() );
         assertEquals("happily", adverb.getEnglishWordPlural() );
+
+        adverb.makeEnglishWord(databaseAccess, "Plural");
+        assertEquals("happily", adverb.getEnglishWord());
     }
 
     @After

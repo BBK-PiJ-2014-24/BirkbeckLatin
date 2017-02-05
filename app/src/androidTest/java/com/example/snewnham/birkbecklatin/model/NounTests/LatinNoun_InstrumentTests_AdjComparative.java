@@ -433,6 +433,9 @@ public class LatinNoun_InstrumentTests_AdjComparative {
         String s = adjectiveComparative.getEnglishWordPlural();
         assertEquals("more longer", adjectiveComparative.getEnglishWordSingular() );
         assertEquals("more longer", adjectiveComparative.getEnglishWordPlural() );
+
+        adjectiveComparative.makeEnglishWord(databaseAccess, numberPlural);
+        assertEquals("more longer", adjectiveComparative.getEnglishWord());
     }
 
     @After

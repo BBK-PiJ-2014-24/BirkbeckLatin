@@ -93,6 +93,16 @@ public interface NounEtcGame {
 
 
     /**
+     * getTableName()
+     * --------------
+     * Maps the Database Table Name to a given NounEtc Type
+     * @param type - NounEtc Type
+     * @return  -  Name of Database Table
+     */
+     String getTableName(String type);
+
+
+    /**
      * endGame()
      * ---------
      * Run at the end of the game:

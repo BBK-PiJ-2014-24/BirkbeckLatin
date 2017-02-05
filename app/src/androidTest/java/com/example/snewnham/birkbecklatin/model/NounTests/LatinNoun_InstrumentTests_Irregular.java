@@ -226,6 +226,9 @@ public class LatinNoun_InstrumentTests_Irregular {
     public void testEnglishNounTranslation() throws Exception{
         assertEquals("this", nounIrregular.getEnglishWordSingular() );
         assertEquals("these", nounIrregular.getEnglishWordPlural() );
+
+        nounIrregular.makeEnglishWord(databaseAccess, numberPlural);
+        assertEquals("these", nounIrregular.getEnglishWord());
     }
 
 

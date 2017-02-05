@@ -429,6 +429,9 @@ public class LatinNoun_InstrumentTests_Adjective212 {
         String s = adjective.getEnglishWordPlural();
         assertEquals("good", adjective.getEnglishWordSingular() );
         assertEquals("good", adjective.getEnglishWordPlural() );
+
+        adjective.makeEnglishWord(databaseAccess, numberPlural);
+        assertEquals("good", adjective.getEnglishWord());
     }
 
     @After

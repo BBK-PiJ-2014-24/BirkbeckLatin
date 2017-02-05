@@ -20,11 +20,13 @@ public class AdverbComparative extends Adverb {
     public AdverbComparative(int id){
         super(id);
         mType = ADVERB_COMPARATIVE;
+        mEnglishWord = mEnglishAdverbComparative;
     }
 
     public AdverbComparative(int id, DatabaseAccess databaseAccess){
         super(id, databaseAccess);
         mType = ADVERB_COMPARATIVE;
+        mEnglishWord = mEnglishAdverbComparative;
     }
 
     // GETTER/SETTERS

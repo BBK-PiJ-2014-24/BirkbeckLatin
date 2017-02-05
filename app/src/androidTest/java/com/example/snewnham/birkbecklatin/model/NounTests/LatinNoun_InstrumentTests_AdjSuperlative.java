@@ -448,6 +448,9 @@ public class LatinNoun_InstrumentTests_AdjSuperlative {
         String s = adjectiveSuperlative.getEnglishWordPlural();
         assertEquals("longest", adjectiveSuperlative.getEnglishWordSingular() );
         assertEquals("longest", adjectiveSuperlative.getEnglishWordPlural() );
+
+        adjectiveSuperlative.makeEnglishWord(databaseAccess, numberPlural);
+        assertEquals("longest", adjectiveSuperlative.getEnglishWord());
     }
 
     @After
