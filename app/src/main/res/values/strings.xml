@@ -1,8 +1,33 @@
 <resources>
-    <string name="app_name">BirkbeckLatin</string>
 
+    <string name="app_name">BirkbeckLatin</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="correct_toast">Correct</string>
     <string name="incorrect_toast">Incorrect. The Right Answer was %1$s</string>
     <string name="game_over"> GAME OVER</string>
+
+    <string name="statistics"><b>Statistics</b></string>
+    <string name="skillLevel">SKILL LEVEL: </string>
+    <string name="conjugation"><u>Conjugation</u></string>
+    <string name="tense"><u>Tense</u></string>
+    <string name="mood"><u>Mood</u></string>
+    <string name="voice"><u>Voice</u></string>
+    <string name="conj_1st"> - 1st </string>
+    <string name="conj_2nd"> - 2nd </string>
+    <string name="conj_3rd"> - 3rd </string>
+    <string name="conj_4th"> - 4th </string>
+    <string name="present"> - Present </string>
+    <string name="imperfect"> - Imperfect </string>
+    <string name="future"> - Future </string>
+    <string name="perfect"> - Perfect </string>
+    <string name="pluperfect"> - Pluperfect </string>
+    <string name="futurePerfect"> - Future Perfect </string>
+    <string name="indicative"> - Indicative </string>
+    <string name="imperative"> - Imperative </string>
+    <string name="subjunctive"> - Subjunctive </string>
+    <string name="active"> - Active </string>
+    <string name="passive"> - Passive </string>
+
+
+
 </resources>
