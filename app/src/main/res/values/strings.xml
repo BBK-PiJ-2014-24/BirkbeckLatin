@@ -7,6 +7,9 @@
     <string name="game_over"> GAME OVER</string>
 
     <string name="statistics"><b>Statistics</b></string>
+    <string name="latestTest"><b>Latest Test</b></string>
+    <string name="history"><b>History</b></string>
+
     <string name="skillLevel">SKILL LEVEL: </string>
     <string name="conjugation"><u>Conjugation</u></string>
     <string name="tense"><u>Tense</u></string>

@@ -19,6 +19,7 @@ import com.example.snewnham.birkbecklatin.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -222,7 +223,6 @@ public class VerbGameFragment extends Fragment {
             mButtonList.get(i).setTag(1);
         }
     }
-
 
 
     // ------------------------------ INNER CLASSES -------------------------------------------

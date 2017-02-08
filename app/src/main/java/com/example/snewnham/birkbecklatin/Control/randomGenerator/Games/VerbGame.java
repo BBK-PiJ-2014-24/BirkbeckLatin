@@ -5,6 +5,7 @@ import com.example.snewnham.birkbecklatin.Control.randomGenerator.ItemResponseTh
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
+import com.example.snewnham.birkbecklatin.Model.verbs.Answer;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbDeponent;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbIrregular;
@@ -13,6 +14,7 @@ import com.example.snewnham.birkbecklatin.Model.verbs.VerbSemiDeponent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -237,7 +239,7 @@ public class VerbGame {
 
         // Form Answer Object and Add to Lists
         mCorrectVerbDifficulty = determineQuestionDifficulty(); // determine Difficulty of Question
-        Answer answer = new Answer(mCorrectVerb.getId(), ans, mCorrectVerbDifficulty);  // Set Answer Object
+        Answer answer = new Answer(mCorrectVerb.getId(), ans, mCorrectVerbDifficulty, mCorrectVerb);  // Set Answer Object
         mAnswerList.add(answer); // Add to buffer mAsked List
 
         return answer.correct;  // Return if answer is correct/incorrect
@@ -756,6 +758,12 @@ public class VerbGame {
         return mSkillLevel;
     }
 
+
+    public Map<String, Integer> calcStatistics(List<Answer> list){
+
+    }
+
+
 //    /**
 //     * addToTheIncorrectVerbTable()
 //     * ----------------------------
@@ -827,34 +835,6 @@ public class VerbGame {
 
     public void setQuestionNumber(int questionNumber) {
         mQuestionNumber = questionNumber;
-    }
-
-
-    // Inner Class
-    // -----------
-    /**
-     * RESULT - Inner Class
-     * --------------------
-     * A Container Class that contains the Results for a Question
-     * id - Verb ID
-     * answer - Correct 1, Incorrect 0
-     * difficulty -  RSI Question Difficulty Classification
-     *
-     */
-    public class Answer {
-        // Fields
-        // ------
-        public int id;
-        public int correct;
-        public int difficulty;
-
-        // Constructor
-        // -----------
-        public Answer(int id, int correct, int difficulty){
-            this.id = id;
-            this.correct = correct;
-            this.difficulty = difficulty;
-        }
     }
 
 

@@ -490,6 +490,7 @@ public class NounEtcGameImpl implements NounEtcGame {
         public int id;
         public int correct;
         public int difficulty;
+        NounEtc noun;
 
         // Constructor
         // -----------
@@ -498,6 +499,14 @@ public class NounEtcGameImpl implements NounEtcGame {
             this.id = id;
             this.correct = correct;
             this.difficulty = difficulty;
+        }
+
+        public Answer(String type, int id, int correct, int difficulty, NounEtc noun){
+            this.type = type;
+            this.id = id;
+            this.correct = correct;
+            this.difficulty = difficulty;
+            this.noun = noun;
         }
     }
 }
