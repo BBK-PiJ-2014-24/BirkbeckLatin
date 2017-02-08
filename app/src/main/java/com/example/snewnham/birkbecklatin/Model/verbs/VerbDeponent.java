@@ -37,6 +37,10 @@ public class VerbDeponent extends VerbRegular {
     public String makeLatinVerb(DatabaseAccess databaseAccess, String person, String number, String tense,
                                 String mood, String voice, String conjNum) {
 
+        mTense = tense;
+        mVoice = voice;
+        mMood = mood;
+
         if( voice.equals("Active") ){
             String voicePassive = "Passive"; // Override to Ensure that Deponent Latin Verbs ALWAYS HAVE PASSIVE ENDINGS
             return super.makeLatinVerb(databaseAccess,person,number,tense,mood, voicePassive, conjNum);

@@ -37,6 +37,10 @@ public class VerbSemiDeponent extends VerbRegular {
     public String makeLatinVerb(DatabaseAccess databaseAccess, String person, String number, String tense,
                                 String mood, String voice, String conjNum) {
 
+        mTense = tense;
+        mVoice = voice;
+        mMood = mood;
+
         if (voice.equals("Passive")) { // SemiDeponent Verbs cannot be Passive!
             setLatinStem(null);
             setLatinEnding(null);

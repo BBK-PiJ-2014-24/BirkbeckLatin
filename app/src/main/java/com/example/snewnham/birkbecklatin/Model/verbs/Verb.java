@@ -427,4 +427,18 @@ public interface Verb {
      */
     public int getCorrect();
 
+
+
+    String getTense();
+
+    void setTense(String tense);
+
+    String getMood();
+
+    void setMood(String mood);
+
+    String getVoice();
+
+    void setVoice(String voice);
+
 }

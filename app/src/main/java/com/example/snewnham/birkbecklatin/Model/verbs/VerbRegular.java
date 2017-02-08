@@ -41,7 +41,9 @@ public class VerbRegular implements Verb {
     protected int mAsked;
     protected int mCorrect;
 
-
+    protected String mTense;
+    protected String mMood;
+    protected String mVoice;
 
 
 
@@ -77,6 +79,10 @@ public class VerbRegular implements Verb {
     @Override
     public String makeLatinVerb(DatabaseAccess databaseAccess, String person, String number, String tense,
                                 String mood, String voice, String conjNum) {
+
+        mTense = tense;
+        mVoice = voice;
+        mMood = mood;
 
         if(mDatabaseAccess == null) {
             this.mDatabaseAccess = databaseAccess;
@@ -446,5 +452,30 @@ public class VerbRegular implements Verb {
 
     public void setCorrect(int correct) {
         mCorrect = correct;
+    }
+
+    @Override
+    public String getTense() {
+        return mTense;
+    }
+    @Override
+    public void setTense(String tense) {
+        mTense = tense;
+    }
+    @Override
+    public String getMood() {
+        return mMood;
+    }
+    @Override
+    public void setMood(String mood) {
+        mMood = mood;
+    }
+    @Override
+    public String getVoice() {
+        return mVoice;
+    }
+    @Override
+    public void setVoice(String voice) {
+        mVoice = voice;
     }
 }

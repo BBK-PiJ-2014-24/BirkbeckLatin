@@ -35,6 +35,10 @@ public class VerbIrregular extends VerbRegular {
     public String makeLatinVerb(DatabaseAccess databaseAccess, String person, String number, String tense,
                                 String mood, String voice, String conjNum) {
 
+        mTense = tense;
+        mVoice = voice;
+        mMood = mood;
+
         if(mDatabaseAccess == null) {
             this.mDatabaseAccess = databaseAccess;
         }

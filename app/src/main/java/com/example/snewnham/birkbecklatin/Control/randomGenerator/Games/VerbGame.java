@@ -13,6 +13,7 @@ import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbSemiDeponent;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -47,6 +48,14 @@ public class VerbGame {
 
     private static final int CONJNUM1_2 = 2;
     private static final int CONJNUM1_4 = 40;
+
+
+    private static final String CONJNUM1 = "ConjNum1";
+    private static final String CONJNUM2 = "ConjNum2";
+    private static final String CONJNUM3 = "ConjNum3";
+    private static final String CONJNUM31 = "ConjNum31";
+    private static final String CONJNUM4 = "ConjNum4";
+
 
     private static final int VALUE_CORRECT = 1;
     private static final int VALUE_INCORRECT = 0;
@@ -760,6 +769,41 @@ public class VerbGame {
 
 
     public Map<String, Integer> calcStatistics(List<Answer> list){
+
+        int conj1 = 0;
+        int conj2 = 0;
+        int conj3 = 0;
+        int conj4 = 0;
+
+        Map<String, Integer> map = new HashMap<>();
+
+        for(Answer ans : list){
+            Verb verb = ans.verb;
+            if(verb.getCorrect() == 1){
+                switch(verb.getLatin_ConjNum()) {
+                    case 1:
+                        conj1++;
+                        break;
+                    case 2:
+                        conj2++;
+                        break;
+                    case 3:
+                        conj3++;
+                        break;
+                    case 4:
+                        conj4++;
+                        break;
+                    default:
+                        conj3++;  // For Alternatives of the Conj 3rd
+                        break;
+                }
+
+                switch(verb.getT)
+
+                }
+            }
+
+        }
 
     }
 
