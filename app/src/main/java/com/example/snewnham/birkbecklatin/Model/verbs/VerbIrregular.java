@@ -94,6 +94,11 @@ public class VerbIrregular extends VerbRegular {
                 if (englishVerb == null) {
                     englishVerb = "";
                 }
+                if(tense == null)  // For Imperatives
+                    setEnglishAuxiliaryVerb("");
+                else if(tense.equals("Imperfect") && mood.equals("Indicative"))  // For Imperfect Indicatives
+                    setEnglishAuxiliaryVerb(" ");
+
                 setEnglishVerbEnding(englishVerb);  // Reset Verb Ending
                 setEnglishVerb(getEnglishPerson() + getEnglishAuxiliaryVerb() + englishVerb); // Reset Complete Verb
             }

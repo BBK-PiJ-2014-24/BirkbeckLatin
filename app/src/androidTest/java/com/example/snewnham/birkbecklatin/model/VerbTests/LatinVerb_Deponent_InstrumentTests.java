@@ -151,6 +151,10 @@ public class LatinVerb_Deponent_InstrumentTests {
         assertEquals("eor", verbDeponent.getLatinEnding());
         assertEquals("videor", verbDeponent.getLatinVerb());
 
+        assertEquals(tensePresent, verbDeponent.getTense());
+        assertEquals(moodIndicative, verbDeponent.getMood());
+        assertEquals(voiceActive, verbDeponent.getVoice());
+
         verbDeponent.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
                 moodIndicative, voiceActive, conjNum2);
 

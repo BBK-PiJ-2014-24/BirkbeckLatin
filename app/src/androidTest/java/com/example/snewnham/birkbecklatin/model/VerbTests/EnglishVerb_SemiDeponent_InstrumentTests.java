@@ -140,6 +140,10 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
         assertEquals("rejoice", verbSemiDeponent.getEnglishVerbEnding());
         assertEquals("I rejoice", verbSemiDeponent.getEnglishVerb());
 
+        assertEquals(tensePresent, verbSemiDeponent.getTense());
+        assertEquals(moodIndicative, verbSemiDeponent.getMood());
+        assertEquals(voiceActive, verbSemiDeponent.getVoice());
+
         verbSemiDeponent.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePresent, moodIndicative, voiceActive);
 

@@ -141,6 +141,10 @@ public class LatinVerb_InstrumentTests_Irregular {
 
         assertEquals("malo", mVerbIrregular.getLatinVerb());
 
+        assertEquals(tensePresent, mVerbIrregular.getTense());
+        assertEquals(moodIndicative, mVerbIrregular.getMood());
+        assertEquals(voiceActive, mVerbIrregular.getVoice());
+
         mVerbIrregular.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
                 moodIndicative, voiceActive, conjNum4);
 

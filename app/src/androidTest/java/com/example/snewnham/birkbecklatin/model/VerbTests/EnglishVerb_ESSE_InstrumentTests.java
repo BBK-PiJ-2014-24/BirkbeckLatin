@@ -130,6 +130,10 @@ public class EnglishVerb_ESSE_InstrumentTests {
         mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberSingular,
                 tensePresent, moodIndicative, voiceActive);
 
+        assertEquals(tensePresent, mVerbEsse.getTense());
+        assertEquals(moodIndicative, mVerbEsse.getMood());
+        assertEquals(voiceActive, mVerbEsse.getVoice());
+
         assertEquals("I", mVerbEsse.getEnglishPerson());
         assertEquals(" ", mVerbEsse.getEnglishAuxiliaryVerb());
         assertEquals("am", mVerbEsse.getEnglishVerbEnding());
@@ -192,49 +196,49 @@ public class EnglishVerb_ESSE_InstrumentTests {
                 tenseImPerfect, moodIndicative, voiceActive);
 
         assertEquals("I", mVerbEsse.getEnglishPerson());
-        assertEquals(" was ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("I was ", mVerbEsse.getEnglishVerb());
+        assertEquals(" ", mVerbEsse.getEnglishAuxiliaryVerb());
+        assertEquals("was", mVerbEsse.getEnglishVerbEnding());
+        assertEquals("I was", mVerbEsse.getEnglishVerb());
 
         mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tenseImPerfect, moodIndicative, voiceActive);
 
         assertEquals("you(s)", mVerbEsse.getEnglishPerson());
-        assertEquals(" were ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(s) were ", mVerbEsse.getEnglishVerb());
+        assertEquals(" ", mVerbEsse.getEnglishAuxiliaryVerb());
+        assertEquals("were", mVerbEsse.getEnglishVerbEnding());
+        assertEquals("you(s) were", mVerbEsse.getEnglishVerb());
 
         mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tenseImPerfect, moodIndicative, voiceActive);
 
         assertEquals("he/she", mVerbEsse.getEnglishPerson());
-        assertEquals(" was ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("he/she was ", mVerbEsse.getEnglishVerb());
+        assertEquals(" ", mVerbEsse.getEnglishAuxiliaryVerb());
+        assertEquals("was", mVerbEsse.getEnglishVerbEnding());
+        assertEquals("he/she was", mVerbEsse.getEnglishVerb());
 
         mVerbEsse.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tenseImPerfect, moodIndicative, voiceActive);
 
         assertEquals("we", mVerbEsse.getEnglishPerson());
-        assertEquals(" were ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("we were ", mVerbEsse.getEnglishVerb());
+        assertEquals(" ", mVerbEsse.getEnglishAuxiliaryVerb());
+        assertEquals("were", mVerbEsse.getEnglishVerbEnding());
+        assertEquals("we were", mVerbEsse.getEnglishVerb());
 
         mVerbEsse.makeEnglishVerb(databaseAccess, person2, numberPlural,
                 tenseImPerfect, moodIndicative, voiceActive);
 
         assertEquals("you(pl)", mVerbEsse.getEnglishPerson());
-        assertEquals(" were ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("you(pl) were ", mVerbEsse.getEnglishVerb());
+        assertEquals(" ", mVerbEsse.getEnglishAuxiliaryVerb());
+        assertEquals("were", mVerbEsse.getEnglishVerbEnding());
+        assertEquals("you(pl) were", mVerbEsse.getEnglishVerb());
 
         mVerbEsse.makeEnglishVerb(databaseAccess, person3, numberPlural,
                 tenseImPerfect, moodIndicative, voiceActive);
 
         assertEquals("they", mVerbEsse.getEnglishPerson());
-        assertEquals(" were ", mVerbEsse.getEnglishAuxiliaryVerb());
-        assertEquals("", mVerbEsse.getEnglishVerbEnding());
-        assertEquals("they were ", mVerbEsse.getEnglishVerb());
+        assertEquals(" ", mVerbEsse.getEnglishAuxiliaryVerb());
+        assertEquals("were", mVerbEsse.getEnglishVerbEnding());
+        assertEquals("they were", mVerbEsse.getEnglishVerb());
 
     }
 
