@@ -151,6 +151,10 @@ public class LatinVerb_InstrumentTests_1st_Conj {
         assertEquals("o", mVerbRegular.getLatinEnding());
         assertEquals("amo", mVerbRegular.getLatinVerb());
 
+        assertEquals(tensePresent, mVerbRegular.getTense());
+        assertEquals(moodIndicative, mVerbRegular.getMood());
+        assertEquals(voiceActive, mVerbRegular.getVoice());
+
         mVerbRegular.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
                 moodIndicative, voiceActive, conjNum1);
 

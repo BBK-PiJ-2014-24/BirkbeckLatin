@@ -8,6 +8,7 @@ import com.example.snewnham.birkbecklatin.Control.randomGenerator.Games.VerbGame
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
+import com.example.snewnham.birkbecklatin.Model.verbs.Answer;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
 
@@ -702,28 +703,28 @@ public class GameVerbTests {
     @Test
     public void testUpdateSkillLevel(){
 
-        List<VerbGame.Answer> answerList = new ArrayList<>();
+        List<Answer> answerList = new ArrayList<>();
 
-        VerbGame.Answer ans1 = verbGameSkill.new Answer(1,1,1);
-        VerbGame.Answer ans2 = verbGameSkill.new Answer(2,1,1);
-        VerbGame.Answer ans3 = verbGameSkill.new Answer(3,1,1);
-        VerbGame.Answer ans4 = verbGameSkill.new Answer(4,1,1);
-        VerbGame.Answer ans5 = verbGameSkill.new Answer(5,1,1);
-        VerbGame.Answer ans6 = verbGameSkill.new Answer(6,1,1);
-        VerbGame.Answer ans7 = verbGameSkill.new Answer(7,1,1);
-        VerbGame.Answer ans8 = verbGameSkill.new Answer(8,1,1);
-        VerbGame.Answer ans9 = verbGameSkill.new Answer(9,1,1);
-        VerbGame.Answer ans10 = verbGameSkill.new Answer(10,1,1);
-        VerbGame.Answer ans11 = verbGameSkill.new Answer(11,1,1);
-        VerbGame.Answer ans12 = verbGameSkill.new Answer(12,1,1);
-        VerbGame.Answer ans13 = verbGameSkill.new Answer(13,1,1);
-        VerbGame.Answer ans14 = verbGameSkill.new Answer(14,1,1);
-        VerbGame.Answer ans15 = verbGameSkill.new Answer(15,1,1);
-        VerbGame.Answer ans16 = verbGameSkill.new Answer(16,1,1);
-        VerbGame.Answer ans17 = verbGameSkill.new Answer(17,1,1);
-        VerbGame.Answer ans18 = verbGameSkill.new Answer(18,1,1);
-        VerbGame.Answer ans19 = verbGameSkill.new Answer(19,1,1);
-        VerbGame.Answer ans20 = verbGameSkill.new Answer(20,1,1);
+        Answer ans1 = new Answer(1,1,1);
+        Answer ans2 = new Answer(2,1,1);
+        Answer ans3 = new Answer(3,1,1);
+        Answer ans4 = new Answer(4,1,1);
+        Answer ans5 = new Answer(5,1,1);
+        Answer ans6 = new Answer(6,1,1);
+        Answer ans7 = new Answer(7,1,1);
+        Answer ans8 = new Answer(8,1,1);
+        Answer ans9 = new Answer(9,1,1);
+        Answer ans10 = new Answer(10,1,1);
+        Answer ans11 = new Answer(11,1,1);
+        Answer ans12 = new Answer(12,1,1);
+        Answer ans13 = new Answer(13,1,1);
+        Answer ans14 = new Answer(14,1,1);
+        Answer ans15 = new Answer(15,1,1);
+        Answer ans16 = new Answer(16,1,1);
+        Answer ans17 = new Answer(17,1,1);
+        Answer ans18 = new Answer(18,1,1);
+        Answer ans19 = new Answer(19,1,1);
+        Answer ans20 = new Answer(20,1,1);
 
         answerList.add(ans1);
         answerList.add(ans2);
@@ -750,7 +751,7 @@ public class GameVerbTests {
 
         assertEquals(2, newSkillLevel);  // Full Marks -> SKillLevel Up!
 
-        for(VerbGame.Answer ans : answerList){  // Change to All Wrong Marks
+        for(Answer ans : answerList){  // Change to All Wrong Marks
             ans.correct = 0;
         }
 
@@ -759,7 +760,7 @@ public class GameVerbTests {
         assertEquals(1, newSkillLevel);  // ALL WRONG -> SKillLevel Down!
 
         for(int i=0; i<15; i++){    // 75% Correct
-            VerbGame.Answer ans = answerList.get(i);
+            Answer ans = answerList.get(i);
             ans.correct = 1;
         }
 

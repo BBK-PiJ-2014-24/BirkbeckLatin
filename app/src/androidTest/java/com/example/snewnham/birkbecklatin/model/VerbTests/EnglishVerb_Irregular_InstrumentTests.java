@@ -135,6 +135,10 @@ public class EnglishVerb_Irregular_InstrumentTests {
         assertEquals("prefer", mVerbIrregular.getEnglishVerbEnding());
         assertEquals("I prefer", mVerbIrregular.getEnglishVerb());
 
+        assertEquals(tensePresent, mVerbIrregular.getTense());
+        assertEquals(moodIndicative, mVerbIrregular.getMood());
+        assertEquals(voiceActive, mVerbIrregular.getVoice());
+
         mVerbIrregular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePresent, moodIndicative, voiceActive);
 

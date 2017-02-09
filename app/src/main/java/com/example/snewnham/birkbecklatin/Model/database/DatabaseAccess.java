@@ -522,7 +522,9 @@ public class DatabaseAccess {
     /**
      * sqlLatinIrregularVerb(String irregularVerb, String person, String number, String mood, String voice, String tense)
      * =====================
-     * sql query on Irregular Latin Words
+     * sql query on Irregular Latin Words. Note that sometimes the cell in the database table is Null. Normally
+     * this is because the Voice = Passive
+     * In these situations,  we check the count of the cursor to determine a Null entry.
      * @param irregularVerb
      * @param person
      * @param number
@@ -536,7 +538,6 @@ public class DatabaseAccess {
 
         // Ensure First Letter is Upper Case in order to pick up the Correct Column in the mSQLiteDatabase
         irregularVerb = irregularVerb.substring(0,1).toUpperCase() + irregularVerb.substring(1);
-        voice = "Active";
 
         String table = DbSchema.VerbConjugation_Irregular_Table.VERB_IRREGULAR_CONJ_TABLE;  // FROM VerbConjugation_Irregular_Table Table
         String[] column = new String[]{irregularVerb};  // SELECT the Column with the Irregular Verb
@@ -566,6 +567,10 @@ public class DatabaseAccess {
         }
 
         Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+
+        if(cursor.getCount() == 0)
+            return null;          // The Element in the table is Null. Possibly because Voice = Passive
+
         cursor.moveToFirst();
 
         String verb = cursor.getString(cursor.getColumnIndex(irregularVerb));

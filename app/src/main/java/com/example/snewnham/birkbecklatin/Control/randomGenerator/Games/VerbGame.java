@@ -768,6 +768,13 @@ public class VerbGame {
     }
 
 
+    /**
+     * calcStatistics()
+     * ----------------
+     *
+     * @param list - List of Answers
+     * @return
+     */
     public Map<String, Integer> calcStatistics(List<Answer> list){
 
         int conj1 = 0;
@@ -798,13 +805,11 @@ public class VerbGame {
                         break;
                 }
 
-                switch(verb.getT)
 
-                }
             }
 
         }
-
+        return map;
     }
 
 
