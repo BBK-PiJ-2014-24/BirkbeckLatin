@@ -1,5 +1,7 @@
 package com.example.snewnham.birkbecklatin.Control.randomGenerator.Games;
 
+import android.content.Intent;
+
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.Item;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.ItemResponseTheory;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
@@ -11,6 +13,7 @@ import com.example.snewnham.birkbecklatin.Model.verbs.VerbDeponent;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbIrregular;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbSemiDeponent;
+import com.example.snewnham.birkbecklatin.view.VerbStatisticsActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -178,6 +181,7 @@ public class VerbGame {
     private int mCorrectVerbDifficulty;
     private String mCorrectVerbMood;
     private String mCorrectVerbVoice;
+    private Map<String, Integer> mStatMap;  // KeyValue Map of Score Statistics
 
 
 
@@ -331,6 +335,7 @@ public class VerbGame {
      * Run at the end of the game:
      * 1) updates the students IRT Theta and game skill level.
      * 2) Stores Theta and SkillLevel in the Meta Table.
+     * 3) Run CalcStatics()
      *
      */
     public void endGame(){
@@ -338,6 +343,9 @@ public class VerbGame {
         mDatabaseAccess.sqlMeta_Insertion(VERB_SKILL_LEVEL, mSkillLevel*1.0); // Add skill, Theta to meta table
         mDatabaseAccess.sqlMeta_Insertion(VERB_THETA, mTheta);
         mDatabaseAccess.close();
+
+        mStatMap = calcStatistics(mAnswerList);  // Calc Statistics
+
     }
 
     /**
@@ -361,135 +369,6 @@ public class VerbGame {
             return 1;
     }
 
-//    /**
-//     * checkForValidIncorrectVerb()
-//     * ----------------------------
-//     * Check within IncorrectVerb Table that:
-//     *    1) there is an ID that meets skillLevel 1 or 2
-//     *    2) the ID has not been used yet.
-//     * @return TRUE if OK and that there is suitable Verb ID that has NOT been used yet
-//     */
-//    public boolean checkForValidIncorrectVerb(){
-//        int conjNum1_2 = 2;
-//        List<Integer> list = mDatabaseAccess.getRestrictedIncorrectVerbList(conjNum1_2);
-//
-//        if(list.size() == 0)
-//            return false;   // check if no IncorrectVerb has No Verbs lower than 1-2 Conj
-//        else
-//            return !repeatedQuestion(list); // return True if NOT repeated (hence the !)
-//    }
-
-//    /**
-//     * repeatedQuestion()
-//     * ------------------
-//     * Check the Answer List to see if the Verb Id1 has already been tested.
-//     * (Used in runVerbGame()). Note that a defence check is inserted so that if
-//     * if ALL verbs have already been tested then default return TRUE.
-//     *
-//     * @param idList
-//     * @return
-//     */
-//    public boolean repeatedQuestion(List<Integer> idList){
-//
-//        int verbTableSize = mDatabaseAccess.sqlTableCountQuery(DbSchema.VerbListTable.VERB_LIST_TABLE);
-//
-//        if(idList.size() >= verbTableSize){  // defence check - if ALL verbs have already been tested then return False
-//            return false;                    // and allow overflow
-//        } else {
-//            for (Answer answer : mAnswerList) {
-//                int resultId = answer.id;
-//                if (resultId == idList.get(0))
-//                    return true;
-//            }
-//        }
-//        return false;
-//    }
-
-
-
-//    /**
-//     * getVerbIDs()
-//     * ------------
-//     * Generates a pair of Verb IDs given the Skill Level
-//     *
-//     * @return get Verb IDs
-//     */
-//    public List<Integer> getVerbIDs(int inCorrect){
-//
-//        List<Integer> idList = null;
-//        int conjNum1_2 = 2;
-//        int conjNum1_4 = 40;
-//
-//        switch(mSkillLevel) {
-//            case 1:
-//                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_2, inCorrect, true); // Conjs 1-2
-//                break;
-//            case 2:
-//                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, true); // Two Verb IDs Conjs 1-4
-//                break;
-//            case 3:
-//                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, true); // Two Verb IDs Conjs 1-4
-//                break;
-//            case 4:
-//                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, false);   // Unrestricted Two Verb IDs Conjs 1-4, Deponents, Semi-Dep, Irregular
-//                break;
-//            case 5:
-//                idList = mRandomGenerator.getRandomVerbIDpair(conjNum1_4, inCorrect, false);   // Unrestricted Two Verb IDs  Conjs 1-4, Deponents, Semi-Dep, Irregular
-//                break;
-//        }
-//        return idList;
-//    }
-
-
-//    /**
-//     * getIncorrectVerbId()
-//     * --------------------
-//     * Generate a random verb_ID from the INCORRECT_VERB_TABLE and then find its
-//     * consecutive pair in the Verb_List Table
-//     *
-//     * @return List of a pair of verb_ids, one is from the incorrect table
-//     */
-//    public List<Integer> getIncorrectVerbIDs(){
-//        int conjNum1_2 = 2;
-//        int conjNum1_4 = 40;
-//        Random rnd = new Random();
-//
-//        List<Integer> list = new ArrayList<>();
-//
-//        int verbId1;
-//
-//        // Defence Check for restricting Verbs for skillLevel 1 or 2
-//        if(mSkillLevel < 3){  // Restrict the List to VerbIDs with Conj 1 or 2.
-//            List<Integer> restrictVerbIDlist = mDatabaseAccess.getRestrictedIncorrectVerbList(conjNum1_2); // get a restricted list of incorrect VerbIds
-//            int randomVerbID = rnd.nextInt(list.size());
-//            verbId1 = restrictVerbIDlist.get(randomVerbID);
-//        } else {
-//            int numVerbs = mDatabaseAccess.sqlTableCountQuery(DbSchema.Incorrect_Verb_Table.INCORRECT_VERB_TABLE);  // Count Number of Verbs in Table
-//            int randomTableID = rnd.nextInt(numVerbs) + 1;
-//            verbId1 = mDatabaseAccess.sqlIncorrectVerb_GetId(randomTableID);  // Select id from Incorrect Table
-//        }
-//
-//        list.add(verbId1);
-//
-//        switch(mSkillLevel) {
-//            case 1:
-//                list = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2, verbId1);
-//                break;
-//            case 2:
-//                list = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4, verbId1);
-//                break;
-//            case 3:
-//                list = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4, verbId1);
-//                break;
-//            case 4:
-//                list = mRandomGenerator.getUnrestrictedRandomVerbID(verbId1);
-//                break;
-//            case 5:
-//                list = mRandomGenerator.getUnrestrictedRandomVerbID(verbId1);
-//                break;
-//        }
-//        return list;
-//    }
 
     /**
      * getVerbQuestionSet()
@@ -1165,31 +1044,6 @@ public class VerbGame {
     }
 
 
-//    /**
-//     * addToTheIncorrectVerbTable()
-//     * ----------------------------
-//     * Adds the Incorrect Answers to the Incorrect Table and keeps a
-//     * tally of the number.
-//     *
-//     * @return the number of verbs added to the Incorrect Table
-//     */
-//    public int addToTheIncorrectVerbTable(List<Answer> answerList){
-//        int count = 0;
-//        List<Integer> incorrectList = new ArrayList<>();
-//
-//        for(Answer answer : answerList){  // select the ID's of all Incorrect Verb Answers
-//           if(answer.correct == 0){
-//               incorrectList.add(answer.id);
-//               count++;
-//           }
-//        }
-//
-//        for(Integer id : incorrectList){    // convert ids to verbs add to table
-//            Verb verb = mDatabaseAccess.sqlVerbListQuery(id);
-//     //       mDatabaseAccess.sqlVerbList_Insert(verb);
-//        }
-//        return count;
-//    }
 
     // Getters/Setters
     // ---------------
@@ -1238,5 +1092,7 @@ public class VerbGame {
         mQuestionNumber = questionNumber;
     }
 
-
+    public Map<String, Integer> getStatMap() {
+        return mStatMap;
+    }
 }

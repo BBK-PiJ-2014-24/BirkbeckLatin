@@ -2,6 +2,7 @@ package com.example.snewnham.birkbecklatin.view;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,7 @@ import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 import com.example.snewnham.birkbecklatin.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -225,6 +227,19 @@ public class VerbGameFragment extends Fragment {
     }
 
 
+    /**
+     * moveToStatisticsActivity()
+     * --------------------------
+     * Collects the Map including statistics and opens VerbStatisticsActivity with an
+     * intent. The map passed as an argument.
+     */
+    public void moveToStatisticsActivity(){
+        HashMap<String, Integer> map = (HashMap<String, Integer>) mVerbGame.getStatMap();
+        Intent intent = VerbStatisticsActivity.newIntent(getContext(), map);
+        startActivity(intent);
+    }
+
+
     // ------------------------------ INNER CLASSES -------------------------------------------
 
 
@@ -265,20 +280,22 @@ public class VerbGameFragment extends Fragment {
             if((Integer) buttonNext.getTag() == 1) {
                 int status = (Integer) mButtonList.get(0).getTag(); // Temp Neutralize Button Clicks
                 if (status == 1) {   // Check if Question Was Skipped -> MAKE AUTO ANSWER FAIL
-                    //       mVerbGame.storeAnswer(0);    // record the answer as incorrect
+                    mVerbGame.storeAnswer(0);    // record the answer as incorrect
                     makeAnswerToast(0); // Set up Toasts
                 }
 
                 if (mCounter >= NUM_QUIZ_QUESTIONS) {   // Check if end of the game
                     buttonNext.setTag(0);  // Deactivate NextButton after End of Game
-                    mVerbGame.endGame();   // Run The End of the Game Method
                     Toast.makeText(getContext(), R.string.game_over, Toast.LENGTH_SHORT).show();  // End Game Toast
+                    mVerbGame.endGame();   // Run The End of the Game Method
+                    moveToStatisticsActivity(); // Move to Statistics Activity Page
                 } else {
                     mCounter++;
                     displayTextQuestionNumber(); // update next question number
                     setUpQuestion();  // Set Up Next Question
                 }
             }
+
 
           //  mRefreshListener.refresh();   // Trigger the Listener in the Activity to REFRESH SCREEN
                                           // For Next Question
