@@ -2,6 +2,8 @@ package com.example.snewnham.birkbecklatin.Model.verbs;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
+import java.net.PasswordAuthentication;
+
 /**
  * Created by snewnham on 23/10/2016.
  */
@@ -17,6 +19,10 @@ public class VerbDeponent extends VerbRegular {
     public VerbDeponent(int id, DatabaseAccess databaseAccess) {
         super(id, databaseAccess);
     }
+
+
+    protected final static String ACTIVE = "Active";
+    protected final static String PASSIVE = "Passive";
 
 
     /**
@@ -41,9 +47,11 @@ public class VerbDeponent extends VerbRegular {
         mVoice = voice;
         mMood = mood;
 
-        if( voice.equals("Active") ){
-            String voicePassive = "Passive"; // Override to Ensure that Deponent Latin Verbs ALWAYS HAVE PASSIVE ENDINGS
-            return super.makeLatinVerb(databaseAccess,person,number,tense,mood, voicePassive, conjNum);
+        if( voice.equals(ACTIVE) ){
+            // Override to Ensure that Deponent Latin Verbs ALWAYS HAVE PASSIVE ENDINGS
+            String latinWord = super.makeLatinVerb(databaseAccess,person,number,tense,mood, PASSIVE, conjNum);
+            mVoice = ACTIVE;  // Override again to Ensure that Voice = Acive
+            return latinWord;
         } else {
             setLatinStem(null);
             setLatinEnding(null);

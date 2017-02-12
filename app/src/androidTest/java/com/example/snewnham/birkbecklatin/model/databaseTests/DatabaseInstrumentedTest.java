@@ -1295,6 +1295,43 @@ public class DatabaseInstrumentedTest {
         assertEquals(value, valueGuess);
     }
 
+    /**
+     * testSqlMeta_Reset()
+     * -------------------
+     * Tests sqlMeta_Reset() can reset rows in MetaTable to Default values
+     */
+    @Test
+    public void testSqlMeta_Reset(){
+
+
+        final String PRESENT_TALLY = "PresentTally";
+        int value = 10;
+        final String VERB_SKILL = "Verb_Skill_Level";
+        final String VERB_THETA = "Verb_Theta";
+        final String NOUN_SKILL = "Noun_Skill_Level";
+        final String NOUN_THETA = "Noun_Theta";
+
+        databaseAccess.sqlMeta_Reset();
+
+        databaseAccess.sqlMeta_Insertion(PRESENT_TALLY, value);
+        int ans = databaseAccess.sqlMetaQuery(PRESENT_TALLY);
+        assertEquals(value, ans);
+
+        databaseAccess.sqlMeta_Reset();
+
+        ans = databaseAccess.sqlMetaQuery(PRESENT_TALLY);
+        assertEquals(0, ans);
+
+        ans = databaseAccess.sqlMetaQuery(NOUN_SKILL);
+        assertEquals(1, ans);
+
+        ans = databaseAccess.sqlMetaQuery(NOUN_THETA);
+        assertEquals(-2, ans);
+
+
+
+    }
+
 
 
 

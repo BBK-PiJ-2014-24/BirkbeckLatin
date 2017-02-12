@@ -94,6 +94,76 @@ public class VerbGame {
     private final static String MOOD_IMPERATIVE = "Imperative";
     private final static String MOOD_SUBJUNCTIVE = "Subjunctive";
 
+    // CONSTANTS FOR KEYS IN DATABASE and StatisticsMap
+    //-------------------------------------------------
+
+    private static final String CONJNUM1_SCORE = "ConjScore1";  // Historical Score of Correct Con# Questions
+    private static final String CONJNUM2_SCORE = "ConjScore2";  // Key for Meta Table in DB
+    private static final String CONJNUM3_SCORE = "ConjScore3";
+    private static final String CONJNUM4_SCORE = "ConjScore4";
+
+    private final String CONJ1_TALLY = "ConjTally1";  // Tally of All Conj# Questions Asked
+    private final String CONJ2_TALLY = "ConjTally2";  // Key for Meta Table in DB
+    private final String CONJ3_TALLY = "ConjTally3";
+    private final String CONJ4_TALLY = "ConjTally4";
+
+    private final String CONJNUM1_HIST_PERC = "Conj1_Hist%";  // % of Correctly Answered Conj# Questions
+    private final String CONJNUM2_HIST_PERC = "Conj2_Hist%";  // Key For statisticsMap
+    private final String CONJNUM3_HIST_PERC = "Conj3_Hist%";
+    private final String CONJNUM4_HIST_PERC = "Conj4_Hist%";
+
+
+    private final String PRESENT_SCORE = "PresentScore";   // Historical Score of Correct Tense Questions
+    private final String IMPERFECT_SCORE = "ImperfectScore";  // Key for Meta Table in DB
+    private final String FUTURE_SCORE = "FutureScore";
+    private final String PERFECT_SCORE = "PerfectScore";
+    private final String PLUPERFECT_SCORE = "PluperfectScore";
+    private final String FUT_PERFECT_SCORE = "FutPerfectScore";
+
+    private final String PRESENT_TALLY = "PresentTally";   // Tally of All Tense Questions Asked
+    private final String IMPERFECT_TALLY = "ImperfectTally"; // Key for Meta Table in DB
+    private final String FUTURE_TALLY = "FutureTally";
+    private final String PERFECT_TALLY = "PerfectTally";
+    private final String PLUPERFECT_TALLY = "PluperfectTally";
+    private final String FUT_PERFECT_TALLY = "FutPerfectTally";
+
+
+    private final static String TENSE_PRESENT_HIST = "Present_Hist%";    // % of Correctly Answered Tense Questions
+    private final static String TENSE_IMPERFECT_HIST = "Imperfect_Hist%";  // Key For statisticsMap
+    private final static String TENSE_FUTURE_HIST = "Future_Hist%";
+    private final static String TENSE_PERFECT_HIST = "Perfect_Hist%";
+    private final static String TENSE_PLUPERFECT_HIST = "Pluperfect_Hist%";
+    private final static String TENSE_FUTURE_PERFECT_HIST = "Future Perfect_Hist%";
+
+    private final String INDICATIVE_SCORE = "IndicativeScore";    // Historical Score of Correct Mood Questions
+    private final String SUBJUNCTIVE_SCORE = "SubjunctiveScore";  // Key for Meta Table in DB
+    private final String IMPERATIVE_SCORE = "ImperativeScore";
+
+    private final String INDICATIVE_TALLY = "IndicativeTally";  // Tally of All Mood Questions Asked
+    private final String SUBJUNCTIVE_TALLY = "SubjunctiveTally";   // Key for Meta Table in DB
+    private final String IMPERATIVE_TALLY = "ImperativeTally";
+
+    private final static String MOOD_INDICATIVE_HIST = "Indicative_Hist%";   // % of Correctly Answered Mood Questions
+    private final static String MOOD_IMPERATIVE_HIST = "Imperative_Hist%";   // Key For statisticsMap
+    private final static String MOOD_SUBJUNCTIVE_HIST = "Subjunctive_Hist%";
+
+    private final String ACTIVE_SCORE = "ActiveScore";    // Historical Score of Correct Voice Questions
+    private final String PASSIVE_SCORE = "PassiveScore";  // Key for Meta Table in DB
+
+    private final String ACTIVE_TALLY = "ActiveTally";    // Tally of All Voice Questions Asked
+    private final String PASSIVE_TALLY = "PassiveTally";  // Key for Meta Table in DB
+
+    private final static String VOICE_ACTIVE_HIST = "Active_Hist%";   // % of Correctly Answered Voice Questions
+    private final static String VOICE_PASSIVE_HIST = "Passive_Hist%";  // Key For statisticsMap
+
+
+    private final static String TOTAL = "Total";  // Historical Score of ALL Correct Questions
+    private final static String TOTAL_SCORE = "TotalScore";  // Historical Score of ALL Correct Questions
+    private final static String TOTAL_TALLY = "TotalTally";  // Tally of All Correct Questions Asked
+    private final static String TOTAL_HIST = "Total_Hist%";  // Key For statisticsMap
+
+
+
     private final int TIME_FOR_INCORRECT_QUESTION = 3;
 
     private RandomGenerator mRandomGenerator;
@@ -772,8 +842,9 @@ public class VerbGame {
      * calcStatistics()
      * ----------------
      *
-     * @param list - List of Answers
-     * @return
+     * Calcs the Statistics for the % of Correct Answers in the Current Quiz and Running (Historical) Score
+     * @param list - List of Answers from the Quiz
+     * @return map storing statistics of Current Game and and of all games.
      */
     public Map<String, Integer> calcStatistics(List<Answer> list){
 
@@ -782,34 +853,315 @@ public class VerbGame {
         int conj3 = 0;
         int conj4 = 0;
 
-        Map<String, Integer> map = new HashMap<>();
+        int present = 0;
+        int imperfect = 0;
+        int future = 0;
+        int perfect = 0;
+        int pluperfect = 0;
+        int futurePerfect = 0;
 
+        int indicative = 0;
+        int subjunctive = 0;
+        int imperative = 0;
+
+        int active = 0;
+        int passive = 0;
+
+        int total = 0;
+
+        int conj1Tally = 0;
+        int conj2Tally = 0;
+        int conj3Tally = 0;
+        int conj4Tally = 0;
+
+        int presentTally = 0;
+        int imperfectTally = 0;
+        int futureTally = 0;
+        int perfectTally = 0;
+        int pluperfectTally = 0;
+        int futurePerfectTally = 0;
+
+        int indicativeTally = 0;
+        int subjunctiveTally = 0;
+        int imperativeTally = 0;
+
+        int activeTally = 0;
+        int passiveTally = 0;
+
+
+
+        int numQuizQuestions = list.size();
+        int conj1perc;
+        int conj2perc;
+        int conj3perc;
+        int conj4perc;
+
+        int presentPerc;
+        int imperfectPerc;
+        int futurePerc;
+        int perfectPerc;
+        int pluperfectPerc;
+        int futPerfectPerc;
+
+        int indicativePerc;
+        int imperativePerc;
+        int subjunctivePerc;
+
+        int totalPerc;
+
+
+
+        int activerPerc;
+        int passivePerc;
+
+        int conj1percHist;
+        int conj2percHist;
+        int conj3percHist;
+        int conj4percHist;
+
+        int presentPercHist;
+        int imperfectPercHist;
+        int futurePercHist;
+        int perfectPercHist;
+        int pluperfectPercHist;
+        int futPerfectPercHist;
+
+        int indicativePercHist;
+        int imperativePercHist;
+        int subjunctivePercHist;
+
+        int activePercHist;
+        int passivePercHist;
+
+        int totalPercHist;
+
+
+
+        Map<String, Integer> mapStatistics = new HashMap<>();
+
+
+        // Tally Data
+        // ----------
         for(Answer ans : list){
             Verb verb = ans.verb;
-            if(verb.getCorrect() == 1){
-                switch(verb.getLatin_ConjNum()) {
-                    case 1:
+            if(ans.correct == 1)
+                total++;  //  total Correct
+            switch(verb.getLatin_ConjNum()) {
+                case 1:
+                    if(ans.correct == 1)
                         conj1++;
-                        break;
-                    case 2:
+                    conj1Tally++;
+                    break;
+                case 2:
+                    if(ans.correct == 1)
                         conj2++;
-                        break;
-                    case 3:
+                    conj2Tally++;
+                    break;
+                case 3:
+                    if(ans.correct == 1)
                         conj3++;
-                        break;
-                    case 4:
+                    conj3Tally++;
+                    break;
+                case 4:
+                    if(ans.correct == 1)
                         conj4++;
-                        break;
-                    default:
+                    conj4Tally++;
+                    break;
+                default:
+                    if(ans.correct == 1)
                         conj3++;  // For Alternatives of the Conj 3rd
-                        break;
-                }
-
-
+                    conj3Tally++;
+                    break;
             }
 
+            switch (verb.getTense()) {
+                case TENSE_PRESENT:
+                    if(ans.correct == 1)
+                        present++;
+                    presentTally++;
+                    break;
+                case TENSE_IMPERFECT:
+                    if(ans.correct == 1)
+                        imperfect++;
+                    imperfectTally++;
+                    break;
+                case TENSE_FUTURE:
+                    if(ans.correct == 1)
+                        future++;
+                    futureTally++;
+                    break;
+                case TENSE_PERFECT:
+                    if(ans.correct == 1)
+                        perfect++;
+                    perfectTally++;
+                    break;
+                case TENSE_PLUPERFECT:
+                    if(ans.correct == 1)
+                        pluperfect++;
+                    pluperfectTally++;
+                    break;
+                case TENSE_FUTURE_PERFECT:
+                    if(ans.correct == 1)
+                        futurePerfect++;
+                    futurePerfectTally++;
+                    break;
+            }
+
+            switch (verb.getMood()) {
+                case MOOD_INDICATIVE:
+                    if(ans.correct == 1)
+                        indicative++;
+                    indicativeTally++;
+                    break;
+                case MOOD_IMPERATIVE:
+                    if(ans.correct == 1)
+                        imperative++;
+                    imperativeTally++;
+                    break;
+                case MOOD_SUBJUNCTIVE:
+                    if(ans.correct == 1)
+                        subjunctive++;
+                    subjunctiveTally++;
+                    break;
+            }
+
+            switch (verb.getVoice()) {
+                case VOICE_ACTIVE:
+                    if(ans.correct == 1)
+                        active++;
+                    activeTally++;
+                    break;
+                case VOICE_PASSIVE:
+                    if(ans.correct == 1)
+                        passive++;
+                    passiveTally++;
+                    break;
+            }
         }
-        return map;
+
+
+        // Calc Current Quiz Results
+        // -------------------------
+        conj1perc = (conj1Tally>0) ? conj1/conj1Tally*100 : 0;
+        conj2perc = (conj2Tally>0) ? conj2/conj2Tally*100 : 0;
+        conj3perc = (conj3Tally>0) ? conj3/conj3Tally*100 : 0;
+        conj4perc = (conj4Tally>0) ? conj4/conj4Tally*100 : 0;
+
+        presentPerc = (presentTally>0) ? present*100/presentTally : 0;
+        imperfectPerc = (imperfectTally>0) ? imperfect*100/imperfectTally : 0;
+        futurePerc = (futureTally>0) ? future*100/futureTally: 0;
+        perfectPerc = (perfectTally>0) ? perfect*100/perfectTally : 0;
+        pluperfectPerc = (pluperfectTally>0) ? pluperfect*100/pluperfectTally : 0;
+        futPerfectPerc = (futureTally>0) ? futurePerfect*100/futureTally : 0;
+
+        indicativePerc = (indicativeTally>0) ? indicative*100/indicativeTally : 0;
+        subjunctivePerc = (subjunctiveTally>0) ? subjunctive*100/subjunctiveTally : 0;
+        imperativePerc = (imperativeTally>0) ? imperative*100/imperativeTally : 0;
+
+        activerPerc = (activeTally>0) ? active*100/activeTally : 0;
+        passivePerc = (passiveTally>0) ? passive*100/passiveTally : 0;
+
+        totalPerc = total*100/numQuizQuestions;
+
+
+        // Insert Current Quiz Scores Into Map
+        // -----------------------------------
+        mapStatistics.put( CONJNUM1, conj1perc );
+        mapStatistics.put( CONJNUM2, conj2perc );
+        mapStatistics.put( CONJNUM3, conj3perc );
+        mapStatistics.put( CONJNUM4, conj4perc );
+
+        mapStatistics.put( TENSE_PRESENT, presentPerc );
+        mapStatistics.put( TENSE_IMPERFECT, imperfectPerc );
+        mapStatistics.put( TENSE_FUTURE, futurePerc );
+        mapStatistics.put( TENSE_PERFECT, perfectPerc );
+        mapStatistics.put( TENSE_PLUPERFECT, pluperfectPerc );
+        mapStatistics.put( TENSE_FUTURE_PERFECT, futPerfectPerc );
+
+        mapStatistics.put( MOOD_INDICATIVE, indicativePerc );
+        mapStatistics.put( MOOD_SUBJUNCTIVE, subjunctivePerc );
+        mapStatistics.put( MOOD_IMPERATIVE, imperativePerc );
+
+        mapStatistics.put( VOICE_ACTIVE, activerPerc );
+        mapStatistics.put( VOICE_PASSIVE, passivePerc );
+
+        mapStatistics.put( TOTAL, totalPerc);
+
+        // Calc Total Historical Scores and Update in Map
+        // ----------------------------------------------
+        conj1percHist = calcHistoryStatistics(CONJNUM1_SCORE, CONJ1_TALLY, conj1, conj1Tally);
+        mapStatistics.put(CONJNUM1_HIST_PERC, conj1percHist);
+
+        conj2percHist = calcHistoryStatistics(CONJNUM2_SCORE, CONJ2_TALLY, conj2, conj2Tally);
+        mapStatistics.put(CONJNUM2_HIST_PERC, conj2percHist);
+
+        conj3percHist = calcHistoryStatistics(CONJNUM3_SCORE, CONJ3_TALLY, conj3, conj3Tally);
+        mapStatistics.put(CONJNUM3_HIST_PERC, conj3percHist);
+
+        conj4percHist = calcHistoryStatistics(CONJNUM4_SCORE, CONJ4_TALLY, conj4, conj4Tally);
+        mapStatistics.put(CONJNUM4_HIST_PERC, conj4percHist);
+
+        presentPercHist = calcHistoryStatistics(PRESENT_SCORE, PRESENT_TALLY, present, presentTally);
+        mapStatistics.put(TENSE_PRESENT_HIST, presentPercHist);
+
+        imperfectPercHist = calcHistoryStatistics(IMPERFECT_SCORE, IMPERFECT_TALLY, imperfect, imperfectTally);
+        mapStatistics.put(TENSE_IMPERFECT_HIST, imperfectPercHist);
+
+        futurePercHist = calcHistoryStatistics(FUTURE_SCORE, FUTURE_TALLY, future, futureTally);
+        mapStatistics.put(TENSE_FUTURE_HIST, futurePercHist);
+
+        perfectPercHist = calcHistoryStatistics(PERFECT_SCORE, PERFECT_TALLY, perfect, perfectTally);
+        mapStatistics.put(TENSE_PERFECT_HIST, perfectPercHist);
+
+        pluperfectPercHist = calcHistoryStatistics(PLUPERFECT_SCORE, PLUPERFECT_TALLY, pluperfect, pluperfectTally);
+        mapStatistics.put(TENSE_PLUPERFECT_HIST, pluperfectPercHist);
+
+        futPerfectPercHist = calcHistoryStatistics(FUT_PERFECT_SCORE, FUT_PERFECT_TALLY, futurePerfect, futurePerfectTally);
+        mapStatistics.put(TENSE_FUTURE_PERFECT_HIST, futPerfectPercHist);
+
+        indicativePercHist = calcHistoryStatistics(INDICATIVE_SCORE, INDICATIVE_TALLY, indicative, indicativeTally);
+        mapStatistics.put(MOOD_INDICATIVE_HIST, indicativePercHist);
+
+        subjunctivePercHist = calcHistoryStatistics(SUBJUNCTIVE_SCORE, SUBJUNCTIVE_TALLY, subjunctive, subjunctiveTally);
+        mapStatistics.put(MOOD_SUBJUNCTIVE_HIST, subjunctivePercHist);
+
+        imperativePercHist = calcHistoryStatistics(IMPERATIVE_SCORE, IMPERATIVE_TALLY, imperative, imperativeTally);
+        mapStatistics.put(MOOD_IMPERATIVE_HIST, imperativePercHist);
+
+        activePercHist = calcHistoryStatistics(ACTIVE_SCORE, ACTIVE_TALLY, active, activeTally);
+        mapStatistics.put(VOICE_ACTIVE_HIST, activePercHist);
+
+        passivePercHist = calcHistoryStatistics(PASSIVE_SCORE, PASSIVE_TALLY, passive, passiveTally);
+        mapStatistics.put(VOICE_PASSIVE_HIST, passivePercHist);
+
+        totalPercHist = calcHistoryStatistics(TOTAL_SCORE, TOTAL_TALLY, total, numQuizQuestions);
+        mapStatistics.put(TOTAL_HIST, totalPercHist);
+
+        return mapStatistics;
+    }
+
+
+    /**
+     * calcHistoryStatistics()
+     * -----------------------
+     * Helper method for calcStatistics.
+     * 1) Retrieves Historical Score and Tally from Meta Table
+     * 2) Updates MetaTable with Updated Score and Tally
+     *
+     * @param dbHistScore - KEY for Score
+     * @param dbHistTally - KEY for Tally
+     * @param currentScore - The Score of The Current Game for this type of verb
+     * @param numQuizQuestions - Number of Quiz Questions.
+     */
+
+    public int calcHistoryStatistics(String dbHistScore, String dbHistTally, int currentScore, int numQuizQuestions){
+
+        int totalScore = mDatabaseAccess.sqlMetaQuery(dbHistScore);  // Get Historical Score
+        int tally = mDatabaseAccess.sqlMetaQuery(dbHistTally); // Get Histortical Tally of Questions
+
+        mDatabaseAccess.sqlMeta_Insertion(dbHistScore, totalScore + currentScore);  // Update Database of Historical Score
+        mDatabaseAccess.sqlMeta_Insertion(dbHistTally, tally + numQuizQuestions); // Update Database of Historical Tally
+        return (tally + numQuizQuestions > 0) ? ((totalScore + currentScore)*100)/(tally + numQuizQuestions) : 0 ;  // Calc New Historical %
     }
 
 

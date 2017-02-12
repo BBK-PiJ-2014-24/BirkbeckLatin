@@ -1601,6 +1601,49 @@ public class DatabaseAccess {
         return value;
     }
 
+    /**
+     * sqlMeta_Reset()
+     * ---------------
+     *
+     * Resets the Meta Table to its default settings.
+     * VERB_SKILL_LEVEL = 1
+     * VERB_THETA = -2
+     * NOUN_SKILL_LEVEL = 1
+     * NOUN_THETA = -2
+     * Over Rows = 0
+     */
+    public void sqlMeta_Reset(){
+
+        final String VERB_SKILL_LEVEL = "Verb_Skill_Level";
+        final String VERB_THETA = "Verb_Theta";
+        final String NOUN_SKILL_LEVEL = "Noun_Skill_Level";
+        final String NOUN_THETA = "Noun_Theta";
+
+
+        String fieldName = "Value";
+        String fieldValue = "0";
+
+        ContentValues contentValues = new ContentValues(); // ContentValues is a class to help format insertion
+        contentValues.put(fieldName, fieldValue); // manual _id insert for first record
+
+        if (this.mSQLiteDatabase == null)
+            open();
+
+        String table = DbSchema.Meta_Table.META_TABLE;
+        String whereClause = null;
+        String[] whereArgument = null;
+
+        this.mSQLiteDatabase.update(table, contentValues, whereClause, whereArgument);  // CV is the Update (Field, Value)
+
+        sqlMeta_Insertion(VERB_SKILL_LEVEL, 1);
+        sqlMeta_Insertion(VERB_THETA, -2);
+        sqlMeta_Insertion(NOUN_SKILL_LEVEL, 1);
+        sqlMeta_Insertion(NOUN_THETA, -2);
+
+
+
+
+    }
 
 
 

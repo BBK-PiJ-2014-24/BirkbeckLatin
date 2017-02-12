@@ -10,7 +10,7 @@
     <string name="latestTest"><b>Latest Test</b></string>
     <string name="history"><b>History</b></string>
 
-    <string name="skillLevel">SKILL LEVEL: </string>
+    <string name="total">TOTAL: </string>
     <string name="conjugation"><u>Conjugation</u></string>
     <string name="tense"><u>Tense</u></string>
     <string name="mood"><u>Mood</u></string>
