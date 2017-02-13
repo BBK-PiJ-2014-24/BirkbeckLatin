@@ -399,9 +399,12 @@ public class VerbGame {
             case 1:
                 //idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2); // Two Verb IDs
                 person = mRandomGenerator.getVerbPerson();
-                number = mRandomGenerator.getVerbNumber();
+                do {
+                    number = mRandomGenerator.getVerbNumber();  // NO INFINTIVES - Cannot Handle IMPERFECT TENSE!!!
+                } while (number.equals(NUMBER_INFINITIVE));
                 voice1 = VOICE_ACTIVE;
                 mood = MOOD_INDICATIVE;
+
 
                 mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, TENSE_PRESENT, mood, voice1));
                 mVerbQuestionList.add(makeGameVerb(idList.get(0), person, number, TENSE_IMPERFECT, mood, voice1));
