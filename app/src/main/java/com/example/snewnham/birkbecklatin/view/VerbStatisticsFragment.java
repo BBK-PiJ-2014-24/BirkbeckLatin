@@ -117,11 +117,12 @@ public class VerbStatisticsFragment extends Fragment {
 
     // newInstance()  - VerbStatisticsActivity -> VerbStatisticsFragment
     // -------------
-    public static VerbStatisticsFragment newInstance(HashMap<String, Integer> map){
-        Bundle args = new Bundle();
-        args.putSerializable(STATMAP, map);
+    public static VerbStatisticsFragment newInstance(){
+   // public static VerbStatisticsFragment newInstance(HashMap<String, Integer> map){
+      //  Bundle args = new Bundle();
+      //  args.putSerializable(STATMAP, map);
         VerbStatisticsFragment statFragment = new VerbStatisticsFragment();
-        statFragment.setArguments(args);
+      //  statFragment.setArguments(args);
         return new VerbStatisticsFragment();
     }
 
@@ -132,7 +133,7 @@ public class VerbStatisticsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        statMap = (Map<String, Integer>) getArguments().getSerializable(STATMAP);
+     //   statMap = (Map<String, Integer>) getArguments().getSerializable(STATMAP);
     }
 
     // OnCreateView
@@ -180,7 +181,7 @@ public class VerbStatisticsFragment extends Fragment {
         mActiveHist = (TextView) view.findViewById(R.id.activeHist);
         mPassiveHist = (TextView) view.findViewById(R.id.passiveHist);
 
-        mConj1.setText(statMap.get(CONJNUM1));
+     //   mConj1.setText(statMap.get(CONJNUM1));
 
         return view;
     }

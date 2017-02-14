@@ -1,6 +1,7 @@
 package com.example.snewnham.birkbecklatin.view;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.Games.VerbGame;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 import com.example.snewnham.birkbecklatin.R;
 
@@ -30,7 +32,7 @@ public class VerbGameFragment extends Fragment {
 
     // Fields
     // ------
-    private static final int NUM_QUIZ_QUESTIONS = 20;
+    private static final int NUM_QUIZ_QUESTIONS = 3;
     private static final int NUM_MULTIPLE_CHOICES = 6;
     private static final String COUNTER = "counter";
 
@@ -235,7 +237,10 @@ public class VerbGameFragment extends Fragment {
      */
     public void moveToStatisticsActivity(){
         HashMap<String, Integer> map = (HashMap<String, Integer>) mVerbGame.getStatMap();
-        Intent intent = VerbStatisticsActivity.newIntent(getContext(), map);
+        Activity activity = getActivity();
+//        Intent intent = VerbStatisticsActivity.newIntent(getActivity(), map);
+        int x = 5;
+        Intent intent = VerbStatisticsActivity.newIntent(getActivity(), x);
         startActivity(intent);
     }
 

@@ -342,7 +342,6 @@ public class VerbGame {
         updateSkillLevel(mAnswerList); // update the Skill Level after the Test
         mDatabaseAccess.sqlMeta_Insertion(VERB_SKILL_LEVEL, mSkillLevel*1.0); // Add skill, Theta to meta table
         mDatabaseAccess.sqlMeta_Insertion(VERB_THETA, mTheta);
-        mDatabaseAccess.close();
 
         mStatMap = calcStatistics(mAnswerList);  // Calc Statistics
 
