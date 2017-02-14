@@ -238,9 +238,9 @@ public class VerbGameFragment extends Fragment {
     public void moveToStatisticsActivity(){
         HashMap<String, Integer> map = (HashMap<String, Integer>) mVerbGame.getStatMap();
         Activity activity = getActivity();
-//        Intent intent = VerbStatisticsActivity.newIntent(getActivity(), map);
+        Intent intent = VerbStatisticsActivity.newIntent(getActivity(), map);
         int x = 5;
-        Intent intent = VerbStatisticsActivity.newIntent(getActivity(), x);
+//        Intent intent = VerbStatisticsActivity.newIntent(getActivity(), x);
         startActivity(intent);
     }
 

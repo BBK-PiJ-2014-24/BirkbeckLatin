@@ -30,8 +30,8 @@ public class VerbStatisticsActivity extends SingleFragmentActivity {
 
     // newIntent() - STATIC call of the VerbGameActivity's Intent  ( VerbGameFragment -> VerbStatisticsActivity)
     // -----------
-    public static Intent newIntent(Context packageContext, int x){
-  //  public static Intent newIntent(Context packageContext, HashMap<String,Integer> map){
+ //   public static Intent newIntent(Context packageContext, int x){
+      public static Intent newIntent(Context packageContext, HashMap<String,Integer> map){
         Intent intent = new Intent(packageContext, VerbStatisticsActivity.class);
 //        intent.putExtra(STATMAP, map);
 //        for(Map.Entry<String, Integer> entry : map.entrySet()){
