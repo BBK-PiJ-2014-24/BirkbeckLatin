@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -168,6 +169,8 @@ public class VerbGameFragment extends Fragment {
             Verb verb = mQuestionList.get(i);
             String latinWord = verb.getLatinVerb();
             mButtonList.get(i).setText(latinWord);    // Set Latin Text on each Button
+            mButtonList.get(i).setBackgroundColor(Color.GRAY);
+            mButtonList.get(i).setTextColor(Color.BLACK);
 
             if(i==mCorrectVerbIndex)
                 mButtonList.get(i).setOnClickListener(new ButtonCorrectClickListener());  // Wire onClicks to Buttons
@@ -237,10 +240,7 @@ public class VerbGameFragment extends Fragment {
      */
     public void moveToStatisticsActivity(){
         HashMap<String, Integer> map = (HashMap<String, Integer>) mVerbGame.getStatMap();
-        Activity activity = getActivity();
         Intent intent = VerbStatisticsActivity.newIntent(getActivity(), map);
-        int x = 5;
-//        Intent intent = VerbStatisticsActivity.newIntent(getActivity(), x);
         startActivity(intent);
     }
 
@@ -256,7 +256,10 @@ public class VerbGameFragment extends Fragment {
             int status = (Integer) mButtonList.get(0).getTag();  // Check If Buttons are Live
             if(status==1) {
                 mVerbGame.storeAnswer(1); // record the correct answer
-                makeAnswerToast(1);
+                Button clickedButton = (Button) view;
+                clickedButton.setBackgroundColor(Color.GREEN);
+                clickedButton.setTextColor(Color.DKGRAY);
+                //makeAnswerToast(1);
                 setButtonsNull();   // Turn Off the Button onClick()
             }
 
@@ -271,7 +274,13 @@ public class VerbGameFragment extends Fragment {
             int status = (Integer) mButtonList.get(0).getTag();  // Check If Buttons are Live
             if(status==1) {
                 mVerbGame.storeAnswer(0);    // record the incorrect answer
-                makeAnswerToast(0);
+                Button clickedButton = (Button) view; // Find the Clicked Button
+                clickedButton.setBackgroundColor(Color.RED);
+                clickedButton.setTextColor(Color.WHITE);
+                Button correctButton = mButtonList.get(mCorrectVerbIndex);  // Find the Correct Button
+                correctButton.setBackgroundColor(Color.GREEN);
+                correctButton.setTextColor(Color.DKGRAY);
+                //makeAnswerToast(0);
                 setButtonsNull();   // Turn Off the Button onClick()
             }
         }
@@ -286,7 +295,7 @@ public class VerbGameFragment extends Fragment {
                 int status = (Integer) mButtonList.get(0).getTag(); // Temp Neutralize Button Clicks
                 if (status == 1) {   // Check if Question Was Skipped -> MAKE AUTO ANSWER FAIL
                     mVerbGame.storeAnswer(0);    // record the answer as incorrect
-                    makeAnswerToast(0); // Set up Toasts
+                    //makeAnswerToast(0); // Set up Toasts
                 }
 
                 if (mCounter >= NUM_QUIZ_QUESTIONS) {   // Check if end of the game

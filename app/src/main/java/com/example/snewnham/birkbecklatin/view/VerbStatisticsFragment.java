@@ -63,11 +63,12 @@ public class VerbStatisticsFragment extends Fragment {
     private final static String VOICE_ACTIVE_HIST = "Active_Hist%";   // % of Correctly Answered Voice Questions
     private final static String VOICE_PASSIVE_HIST = "Passive_Hist%";  // Key For statisticsMap
 
+    private final static String TOTAL = "Total";  // Historical Score of ALL Correct Questions
     private final static String TOTAL_HIST = "Total_Hist%";  // Key For statisticsMap
 
-
-
     public final static String STATMAP = "statMap";
+    public final static String PCT = " %";
+
 
     // Fields
     // ------
@@ -109,6 +110,10 @@ public class VerbStatisticsFragment extends Fragment {
     TextView mActiveHist;
     TextView mPassiveHist;
 
+    TextView mTotal;
+    TextView mTotalHist;
+
+
     // Constructor
     // -----------
     public VerbStatisticsFragment() {
@@ -117,13 +122,13 @@ public class VerbStatisticsFragment extends Fragment {
 
     // newInstance()  - VerbStatisticsActivity -> VerbStatisticsFragment
     // -------------
-    public static VerbStatisticsFragment newInstance(){
-   // public static VerbStatisticsFragment newInstance(HashMap<String, Integer> map){
-      //  Bundle args = new Bundle();
-      //  args.putSerializable(STATMAP, map);
-        VerbStatisticsFragment statFragment = new VerbStatisticsFragment();
-      //  statFragment.setArguments(args);
-        return new VerbStatisticsFragment();
+   //public static VerbStatisticsFragment newInstance(){
+   public static VerbStatisticsFragment newInstance(HashMap<String, Integer> map){
+       Bundle args = new Bundle();
+       args.putSerializable(STATMAP, map);
+       VerbStatisticsFragment verbStatFragment = new VerbStatisticsFragment();
+       verbStatFragment.setArguments(args);
+       return verbStatFragment;
     }
 
 
@@ -133,7 +138,7 @@ public class VerbStatisticsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-     //   statMap = (Map<String, Integer>) getArguments().getSerializable(STATMAP);
+        statMap = (Map<String, Integer>) getArguments().getSerializable(STATMAP);
     }
 
     // OnCreateView
@@ -145,6 +150,7 @@ public class VerbStatisticsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_verb_statistics, container, false);
 
         // Wire TextViews to Java Variables
+        // --------------------------------
         mConj1 = (TextView) view.findViewById(R.id.conj1);
         mConj2 = (TextView) view.findViewById(R.id.conj2);
         mConj3 = (TextView) view.findViewById(R.id.conj3);
@@ -181,7 +187,52 @@ public class VerbStatisticsFragment extends Fragment {
         mActiveHist = (TextView) view.findViewById(R.id.activeHist);
         mPassiveHist = (TextView) view.findViewById(R.id.passiveHist);
 
-     //   mConj1.setText(statMap.get(CONJNUM1));
+        mTotal = (TextView) view.findViewById(R.id.total);
+        mTotalHist = (TextView) view.findViewById(R.id.totalHist);
+
+
+        // Set TextViews From StatMaps
+        // ---------------------------
+        mConj1.setText(Integer.toString(statMap.get(CONJNUM1))+PCT);
+        mConj2.setText(Integer.toString(statMap.get(CONJNUM2))+PCT);
+        mConj3.setText(Integer.toString(statMap.get(CONJNUM3))+PCT);
+        mConj4.setText(Integer.toString(statMap.get(CONJNUM4))+PCT);
+
+        mConj1Hist.setText(Integer.toString(statMap.get(CONJNUM1_HIST_PERC))+PCT);
+        mConj2Hist.setText(Integer.toString(statMap.get(CONJNUM2_HIST_PERC))+PCT);
+        mConj3Hist.setText(Integer.toString(statMap.get(CONJNUM3_HIST_PERC))+PCT);
+        mConj4Hist.setText(Integer.toString(statMap.get(CONJNUM4_HIST_PERC))+PCT);
+
+        mPresent.setText(Integer.toString(statMap.get(TENSE_PRESENT))+PCT);
+        mImperfect.setText(Integer.toString(statMap.get(TENSE_IMPERFECT))+PCT);
+        mFuture.setText(Integer.toString(statMap.get(TENSE_FUTURE))+PCT);
+        mPerfect.setText(Integer.toString(statMap.get(TENSE_PERFECT))+PCT);
+        mPluperfect.setText(Integer.toString(statMap.get(TENSE_PLUPERFECT))+PCT);
+        mFutPerfect.setText(Integer.toString(statMap.get(TENSE_FUTURE_PERFECT))+PCT);
+
+        mPresentHist.setText(Integer.toString(statMap.get(TENSE_PRESENT_HIST))+PCT);
+        mImperfectHist.setText(Integer.toString(statMap.get(TENSE_IMPERFECT_HIST))+PCT);
+        mFutureHist.setText(Integer.toString(statMap.get(TENSE_FUTURE_HIST))+PCT);
+        mPerfectHist.setText(Integer.toString(statMap.get(TENSE_PERFECT_HIST))+PCT);
+        mPluperfectHist.setText(Integer.toString(statMap.get(TENSE_PLUPERFECT_HIST))+PCT);
+        mFutPerfectHist.setText(Integer.toString(statMap.get(TENSE_FUTURE_PERFECT_HIST))+PCT);
+
+        mIndicative.setText(Integer.toString(statMap.get(MOOD_INDICATIVE))+PCT);
+        mSubjunctive.setText(Integer.toString(statMap.get(MOOD_SUBJUNCTIVE))+PCT);
+        mImperative.setText(Integer.toString(statMap.get(MOOD_IMPERATIVE))+PCT);
+
+        mIndicativeHist.setText(Integer.toString(statMap.get(MOOD_INDICATIVE_HIST))+PCT);
+        mSubjunctiveHist.setText(Integer.toString(statMap.get(MOOD_SUBJUNCTIVE_HIST))+PCT);
+        mImperativeHist.setText(Integer.toString(statMap.get(MOOD_IMPERATIVE_HIST))+PCT);
+
+        mActive.setText(Integer.toString(statMap.get(VOICE_ACTIVE))+PCT);
+        mPassive.setText(Integer.toString(statMap.get(VOICE_PASSIVE))+PCT);
+
+        mPassiveHist.setText(Integer.toString(statMap.get(VOICE_PASSIVE_HIST))+PCT);
+        mPassiveHist.setText(Integer.toString(statMap.get(VOICE_PASSIVE_HIST))+PCT);
+
+        mTotal.setText(Integer.toString(statMap.get(TOTAL))+PCT);
+        mTotalHist.setText(Integer.toString(statMap.get(TOTAL_HIST))+PCT);
 
         return view;
     }

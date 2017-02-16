@@ -11,10 +11,10 @@
     <string name="history"><b>History</b></string>
 
     <string name="total">TOTAL: </string>
-    <string name="conjugation"><u>Conjugation</u></string>
-    <string name="tense"><u>Tense</u></string>
-    <string name="mood"><u>Mood</u></string>
-    <string name="voice"><u>Voice</u></string>
+    <string name="conjugation"><u><b>Conjugation</b></u></string>
+    <string name="tense"><u><b>Tense</b></u></string>
+    <string name="mood"><u><b>Mood</b></u></string>
+    <string name="voice"><u><b>Voice</b></u></string>
     <string name="conj_1st"> - 1st </string>
     <string name="conj_2nd"> - 2nd </string>
     <string name="conj_3rd"> - 3rd </string>
