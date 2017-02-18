@@ -21,7 +21,7 @@ public class Answer {
     public int id;
     public int correct;
     public int difficulty;
-    NounEtc noun;
+    public NounEtc noun;
 
     // Constructor
     // -----------

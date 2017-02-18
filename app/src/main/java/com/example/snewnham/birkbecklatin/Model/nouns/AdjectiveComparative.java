@@ -49,6 +49,7 @@ public class AdjectiveComparative extends Adjective {
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case, String gender) {
 
         mGender = gender;  // Set Gender
+        mNounCase = noun_Case; // Set noun case
         mType = ADJECTIVE_COMPARATIVE;
 
         if(mGender.equals(GENDER_MALE) || mGender.equals(GENDER_FEMALE)) {

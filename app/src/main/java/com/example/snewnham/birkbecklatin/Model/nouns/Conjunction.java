@@ -16,6 +16,7 @@ public class Conjunction implements NounEtc {
     private int mId;
     private DatabaseAccess mDatabaseAccess;
     private String mType;
+    private String mNounCase;
     private String mLatinConjuction;
     private String mEnglishWord;
     private String mEnglishConjunction;
@@ -28,12 +29,14 @@ public class Conjunction implements NounEtc {
     public Conjunction(int id){
         mId = id;
         mType = CONJUNCTION;
+        mNounCase = NOMINATIVE;
     }
 
     public Conjunction(int id, DatabaseAccess databaseAccess){
         mId = id;
         mDatabaseAccess = databaseAccess;
         mType = CONJUNCTION;
+        mNounCase = NOMINATIVE;
     }
 
 
@@ -70,9 +73,7 @@ public class Conjunction implements NounEtc {
     }
 
     @Override
-    public void setType(String type) {
-
-    }
+    public void setType(String type) {}
 
     @Override
     public int getDeclension() {
@@ -81,8 +82,10 @@ public class Conjunction implements NounEtc {
 
     @Override
     public void setDeclension(int declension) {
-
     }
+
+    @Override
+    public String getCase(){ return mNounCase;}
 
     @Override
     public String getGender() {

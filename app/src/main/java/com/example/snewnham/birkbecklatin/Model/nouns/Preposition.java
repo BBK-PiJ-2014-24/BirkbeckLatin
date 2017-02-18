@@ -20,6 +20,7 @@ public class Preposition implements NounEtc {
     private String mLatin_Preposition;
     private String mEnglish_Preposition;
     private String mEnglishWord;
+    private String mNounCase;
 
 
     protected final static String PREPOSITION= "Preposition";
@@ -32,12 +33,14 @@ public class Preposition implements NounEtc {
         mId = id;
         mDatabaseAccess = null;
         mType = PREPOSITION;
+        mNounCase = NOMINATIVE;
     }
 
     public Preposition(int id, DatabaseAccess databaseAccess){
         mId = id;
         mDatabaseAccess = databaseAccess;
         mType = PREPOSITION;
+        mNounCase = NOMINATIVE;
     }
 
 
@@ -93,9 +96,10 @@ public class Preposition implements NounEtc {
     }
 
     @Override
-    public void setDeclension(int declension) {
+    public void setDeclension(int declension) {}
 
-    }
+    @Override
+    public String getCase(){ return mNounCase;}
 
     @Override
     public String getGender() {

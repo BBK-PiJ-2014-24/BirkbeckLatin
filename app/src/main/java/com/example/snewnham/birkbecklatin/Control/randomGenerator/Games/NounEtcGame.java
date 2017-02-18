@@ -1,5 +1,6 @@
 package com.example.snewnham.birkbecklatin.Control.randomGenerator.Games;
 
+import com.example.snewnham.birkbecklatin.Model.nouns.Answer;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 
 import java.util.List;
@@ -77,7 +78,7 @@ public interface NounEtcGame {
      *
      * @return the updated skill level of the student.
      */
-    int updateSkillLevel(List<NounEtcGameImpl.Answer> answerList);
+    int updateSkillLevel(List<Answer> answerList);
 
 
 
@@ -123,7 +124,7 @@ public interface NounEtcGame {
 
     List<NounEtc> getNounQuestionList();
 
-    List<NounEtcGameImpl.Answer> getAnswerList();
+    List<Answer> getAnswerList();
 
     void setQuestionNumber(int questionNumber);
 

@@ -68,8 +68,6 @@ public interface NounEtc {
      */
     String makeEnglishWord(DatabaseAccess databaseAccess, String number);
 
-
-
     // getter/setters
     // --------------
     int getId();
@@ -80,6 +78,8 @@ public interface NounEtc {
 
     int getDeclension();
     void setDeclension(int declension);
+
+    String getCase();
 
     String getGender();
     void setGender(String gender);

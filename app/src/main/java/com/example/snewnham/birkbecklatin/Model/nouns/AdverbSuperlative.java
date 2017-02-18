@@ -14,7 +14,6 @@ public class AdverbSuperlative extends Adverb {
     private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
 
-
     // Constructor
     // -----------
     public AdverbSuperlative(int id){
@@ -31,7 +30,6 @@ public class AdverbSuperlative extends Adverb {
 
     // GETTER/SETTERS
     // --------------
-
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
         return makeLatinWord(databaseAccess, number, noun_Case, mGender);

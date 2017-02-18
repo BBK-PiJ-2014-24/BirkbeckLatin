@@ -12,7 +12,7 @@ import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 import com.example.snewnham.birkbecklatin.Model.nouns.Answer;
-import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,13 +33,6 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final static String NOUN_SKILL_LEVEL = "Noun_Skill_Level";
     private final static String NOUN_THETA = "Noun_Theta";
 
-    private final static String NOMINATIVE = "Nominative";
-    private final static String ACCUSTATIVE = "Accusative";
-    private final static String GENITIVE = "Genitive";
-    private final static String DATIVE = "Dative";
-    private final static String ABLATIVE = "Ablative";
-    private final static String VOCATIVE = "Vocative";
-
     private final static String NOUN = "Noun";
     private final static String NOUN_REGULAR = "NounRegular";
     private final static String NOUN_IRREGULAR = "NounIrregular";
@@ -52,8 +45,101 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final static String ADVERB_COMPARATIVE = "AdverbComparative";
     private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
-    private final static String GENDER_MALE = "m";
+
+    private final static String NOUN_SCORE = "NounScore";
+    private final static String NOUN_REGULAR_SCORE= "NounRegularScore";
+    private final static String NOUN_IRREGULAR_SCORE = "NounIrregularScore";
+    private final static String PREPOSITION_SCORE = "PrepositionScore";
+    private final static String CONJUNCTION_SCORE = "ConjunctionScore";
+    private final static String ADJECTIVE_SCORE = "AdjectiveScore";
+    private final static String ADJECTIVE_COMPARATIVE_SCORE = "AdjectiveComparativeScore";
+    private final static String ADJECTIVE_SUPERLATIVE_SCORE = "AdjectiveSuperlativeScore";
+    private final static String ADVERB_SCORE = "AdverbScore";
+    private final static String ADVERB_COMPARATIVE_SCORE = "AdverbComparativeScore";
+    private final static String ADVERB_SUPERLATIVE_SCORE = "AdverbSuperlativeScore";
+
+    private final static String NOUN_TALLY = "NounTally";
+    private final static String NOUN_REGULAR_TALLY = "NounRegularTally";
+    private final static String NOUN_IRREGULAR_TALLY = "NounIrregularTally";
+    private final static String PREPOSITION_TALLY = "PrepositionTally";
+    private final static String CONJUNCTION_TALLY = "ConjunctionTally";
+    private final static String ADJECTIVE_TALLY = "AdjectiveTally";
+    private final static String ADJECTIVE_COMPARATIVE_TALLY = "AdjectiveComparativeTally";
+    private final static String ADJECTIVE_SUPERLATIVE_TALLY = "AdjectiveSuperlativeTally";
+    private final static String ADVERB_TALLY = "AdverbTally";
+    private final static String ADVERB_COMPARATIVE_TALLY = "AdverbComparativeTally";
+    private final static String ADVERB_SUPERLATIVE_TALLY = "AdverbSuperlativeTally";
+
+    private final static String NOUN_HIST_PERC = "Noun_Hist%";
+    private final static String NOUN_REGULAR_HIST_PERC = "NounRegular_Hist%";
+    private final static String NOUN_IRREGULAR_HIST_PERC = "NounIrregular_Hist%";
+    private final static String PREPOSITION_HIST_PERC = "Preposition_Hist%";
+    private final static String CONJUNCTION_HIST_PERC = "Conjunction_Hist%";
+    private final static String ADJECTIVE_HIST_PERC = "Adjective_Hist%";
+    private final static String ADJECTIVE_COMPARATIVE_HIST_PERC = "AdjectiveComparative_Hist%";
+    private final static String ADJECTIVE_SUPERLATIVE_HIST_PERC = "AdjectiveSuperlative_Hist%";
+    private final static String ADVERB_HIST_PERC = "Adverb_Hist%";
+    private final static String ADVERB_COMPARATIVE_HIST_PERC = "AdverbComparative_Hist%";
+    private final static String ADVERB_SUPERLATIVE_HIST_PERC = "AdverbSuperlative_Hist%";
+
+
+
     private final static int DECLENSION3 = 3;
+
+    private final static String DECLNUM1 = "decl1";
+    private final static String DECLNUM2 = "decl2";
+    private final static String DECLNUM3 = "decl3";
+    private final static String DECLNUM4 = "decl4";
+
+    private final static String DECLNUM1_SCORE = "decl1Score";
+    private final static String DECLNUM2_SCORE = "decl2Score";
+    private final static String DECLNUM3_SCORE = "decl3Score";
+    private final static String DECLNUM4_SCORE = "decl4Score";
+
+    private final String DECL1_TALLY = "DeclTally1";  // Tally of All Conj# Questions Asked
+    private final String DECL2_TALLY = "DeclTally2";  // Key for Meta Table in DB
+    private final String DECL3_TALLY = "DeclTally3";
+    private final String DECL4_TALLY = "DeclTally4";
+
+    private final String DECLNUM1_HIST_PERC = "Decl1_Hist%";  // % of Correctly Answered Conj# Questions
+    private final String DECLNUM2_HIST_PERC = "Decl2_Hist%";  // Key For statisticsMap
+    private final String DECLNUM3_HIST_PERC = "Decl3_Hist%";
+    private final String DECLNUM4_HIST_PERC = "Decl4_Hist%";
+
+
+    private final static String NOMINATIVE = "Nominative";
+    private final static String ACUSTATIVE = "Accusative";
+    private final static String GENITIVE = "Genitive";
+    private final static String DATIVE = "Dative";
+    private final static String ABLATIVE = "Ablative";
+    private final static String VOCATIVE = "Vocative";
+
+    private final static String NOMINATIVE_SCORE = "NominativeScore";
+    private final static String ACUSTATIVE_SCORE = "AccusativeScore";
+    private final static String GENITIVE_SCORE = "GenitiveScore";
+    private final static String DATIVE_SCORE = "DativeScore";
+    private final static String ABLATIVE_SCORE = "AblativeScore";
+    private final static String VOCATIVE_SCORE = "VocativeScore";
+
+    private final static String NOMINATIVE_TALLY = "NominativeTally";
+    private final static String ACUSTATIVE_TALLY = "AccusativeTally";
+    private final static String GENITIVE_TALLY = "GenitiveTally";
+    private final static String DATIVE_TALLY = "DativeTally";
+    private final static String ABLATIVE_TALLY = "AblativeTally";
+    private final static String VOCATIVE_TALLY = "VocativeTally";
+
+    private final static String NOMINATIVE_HIST_PERC = "Nominative_Hist%";
+    private final static String ACUSTATIVE_HIST_PERC = "Accusative_Hist%";
+    private final static String GENITIVE_HIST_PERC = "Genitive_Hist%";
+    private final static String DATIVE_HIST_PERC = "Dative_Hist%";
+    private final static String ABLATIVE_HIST_PERC = "Ablative_Hist%";
+    private final static String VOCATIVE_HIST_PERC = "Vocative_Hist%";
+
+
+    private final static String TOTAL = "NounTotal";  // Historical Score of ALL Correct Questions
+    private final static String TOTAL_SCORE = "NounTotalScore";  // Historical Score of ALL Correct Questions
+    private final static String TOTAL_TALLY = "NounTotalTally";  // Tally of All Correct Questions Asked
+    private final static String TOTAL_HIST = "NounTotal_Hist%";  // Key For statisticsMap
 
     private final static int CORRECT = 1;
     private final static int INCORRECT = 0;
@@ -66,7 +152,7 @@ public class NounEtcGameImpl implements NounEtcGame {
     private int mSkillLevel; // skillLevel of Game
     private double mTheta;  // IRT skill level
     private List<NounEtc> mNounQuestionList;  // List of 6 Verbs for a Multiple Choice Questions
-    private List<NounEtcGameImpl.Answer> mAnswerList;
+    private List<Answer> mAnswerList;
     private int mQuestionNumber;
     private NounEtc mCorrectNounEtc;
     private int mCorrectNounEtcIndex;
@@ -488,88 +574,104 @@ public class NounEtcGameImpl implements NounEtcGame {
      * @param list - List of Answers from the Quiz
      * @return map storing statistics of Current Game and and of all games.
      */
-    public Map<String, Integer> calcStatistics(List<com.example.snewnham.birkbecklatin.Model.verbs.Answer> list){
+    public Map<String, Integer> calcStatistics(List<Answer> list){
 
-        int conj1 = 0;
-        int conj2 = 0;
-        int conj3 = 0;
-        int conj4 = 0;
+        int noun = 0;
+        int preposition = 0;
+        int conjunction = 0;
+        int adjective = 0;
+        int adjectiveComparative = 0;
+        int adjectiveSuperlative = 0;
+        int adverb = 0;
+        int adverbComparative = 0;
+        int adverbSuperlative = 0;
 
-        int present = 0;
-        int imperfect = 0;
-        int future = 0;
-        int perfect = 0;
-        int pluperfect = 0;
-        int futurePerfect = 0;
+        int decl1 = 0;
+        int decl2 = 0;
+        int decl3 = 0;
+        int decl4 = 0;
 
-        int indicative = 0;
-        int subjunctive = 0;
-        int imperative = 0;
-
-        int active = 0;
-        int passive = 0;
+        int nominative = 0;
+        int accusative = 0;
+        int genitive = 0;
+        int dative = 0;
+        int ablative = 0;
+        int vocative = 0;
 
         int total = 0;
 
-        int conj1Tally = 0;
-        int conj2Tally = 0;
-        int conj3Tally = 0;
-        int conj4Tally = 0;
 
-        int presentTally = 0;
-        int imperfectTally = 0;
-        int futureTally = 0;
-        int perfectTally = 0;
-        int pluperfectTally = 0;
-        int futurePerfectTally = 0;
+        int nounTally = 0;
+        int prepositionTally = 0;
+        int conjunctionTally = 0;
+        int adjectiveTally = 0;
+        int adjectiveComparativeTally = 0;
+        int adjectiveSuperlativeTally = 0;
+        int adverbTally = 0;
+        int adverbComparativeTally = 0;
+        int adverbSuperlativeTally = 0;
 
-        int indicativeTally = 0;
-        int subjunctiveTally = 0;
-        int imperativeTally = 0;
+        int decl1Tally = 0;
+        int decl2Tally = 0;
+        int decl3Tally = 0;
+        int decl4Tally = 0;
 
-        int activeTally = 0;
-        int passiveTally = 0;
+        int nominativeTally = 0;
+        int accusativeTally = 0;
+        int genitiveTally = 0;
+        int dativeTally = 0;
+        int ablativeTally = 0;
+        int vocativeTally = 0;
 
         int numQuizQuestions = list.size();
-        int conj1perc;
-        int conj2perc;
-        int conj3perc;
-        int conj4perc;
 
-        int presentPerc;
-        int imperfectPerc;
-        int futurePerc;
-        int perfectPerc;
-        int pluperfectPerc;
-        int futPerfectPerc;
 
-        int indicativePerc;
-        int imperativePerc;
-        int subjunctivePerc;
+        int nounPerc;
+        int prepositionPerc;
+        int conjunctionPerc;
+        int adjectivePerc;
+        int adjectiveComparativePerc;
+        int adjectiveSuperlativePerc;
+        int adverbPerc;
+        int adverbComparativePerc;
+        int adverbSuperlativePerc;
+
+        int decl1perc;
+        int decl2perc;
+        int decl3perc;
+        int decl4perc;
+
+        int nominativePerc;
+        int accusativePerc;
+        int genitivePerc;
+        int dativePerc;
+        int ablativePerc;
+        int vocativePerc;
 
         int totalPerc;
 
-        int activerPerc;
-        int passivePerc;
+        int nounPercHist;
+        int prepositionPercHist;
+        int conjunctionPercHist;
+        int adjectivePercHist;
+        int adjectiveComparativePercHist;
+        int adjectiveSuperlativePercHist;
+        int adverbPercHist;
+        int adverbComparativePercHist;
+        int adverbSuperlativePercHist;
 
-        int conj1percHist;
-        int conj2percHist;
-        int conj3percHist;
-        int conj4percHist;
+        int decl1percHist;
+        int decl2percHist;
+        int decl3percHist;
+        int decl4percHist;
 
-        int presentPercHist;
-        int imperfectPercHist;
-        int futurePercHist;
-        int perfectPercHist;
-        int pluperfectPercHist;
-        int futPerfectPercHist;
+        int nominativePercHist;
+        int accusativePercHist;
+        int genitivePercHist;
+        int dativePercHist;
+        int ablativePercHist;
+        int vocativePercHist;
 
-        int indicativePercHist;
-        int imperativePercHist;
-        int subjunctivePercHist;
-
-        int activePercHist;
-        int passivePercHist;
 
         int totalPercHist;
 
@@ -578,197 +680,246 @@ public class NounEtcGameImpl implements NounEtcGame {
 
         // Tally Data
         // ----------
-        for(com.example.snewnham.birkbecklatin.Model.verbs.Answer ans : list){
-            Verb verb = ans.verb;
+        for(Answer ans : list){
+            NounEtc nounEtc = ans.noun;
             if(ans.correct == 1)
                 total++;  //  total Correct
-            switch(verb.getLatin_ConjNum()) {
+
+            switch (nounEtc.getType()) {
+                case NOUN:
+                    if(ans.correct == 1)
+                        noun++;
+                    nounTally++;
+                    break;
+                case NOUN_IRREGULAR:
+                    if(ans.correct == 1)
+                        noun++;
+                    nounTally++;
+                    break;
+                case PREPOSITION:
+                    if(ans.correct == 1)
+                        preposition++;
+                    prepositionTally++;
+                    break;
+                case CONJUNCTION:
+                    if(ans.correct == 1)
+                        conjunction++;
+                    conjunctionTally++;
+                    break;
+                case ADJECTIVE:
+                    if(ans.correct == 1)
+                        adjective++;
+                    adjectiveTally++;
+                    break;
+                case ADJECTIVE_COMPARATIVE:
+                    if(ans.correct == 1)
+                        adjectiveComparative++;
+                    adjectiveComparativeTally++;
+                    break;
+                case ADJECTIVE_SUPERLATIVE:
+                    if(ans.correct == 1)
+                        adjectiveSuperlative++;
+                    adjectiveSuperlative++;
+                    break;
+                case ADVERB:
+                    if(ans.correct == 1)
+                        adverb++;
+                    adverbTally++;
+                    break;
+                case ADVERB_COMPARATIVE:
+                    if(ans.correct == 1)
+                        adverbComparative++;
+                    adverbComparativeTally++;
+                    break;
+                case ADVERB_SUPERLATIVE:
+                    if(ans.correct == 1)
+                        adverbSuperlative++;
+                    adverbSuperlative++;
+                    break;
+            }
+
+            switch(nounEtc.getDeclension()) {
                 case 1:
                     if(ans.correct == 1)
-                        conj1++;
-                    conj1Tally++;
+                        decl1++;
+                    decl1Tally++;
                     break;
                 case 2:
                     if(ans.correct == 1)
-                        conj2++;
-                    conj2Tally++;
+                        decl2++;
+                    decl2Tally++;
                     break;
                 case 3:
                     if(ans.correct == 1)
-                        conj3++;
-                    conj3Tally++;
+                        decl3++;
+                    decl3Tally++;
                     break;
                 case 4:
                     if(ans.correct == 1)
-                        conj4++;
-                    conj4Tally++;
+                        decl4++;
+                    decl4Tally++;
                     break;
                 default:
                     if(ans.correct == 1)
-                        conj3++;  // For Alternatives of the Conj 3rd
-                    conj3Tally++;
+                        decl3++;  // For Alternatives of the Conj 3rd
+                    decl3Tally++;
                     break;
             }
 
-            switch (verb.getTense()) {
-                case TENSE_PRESENT:
+            switch (nounEtc.getCase()) {
+                case NOMINATIVE:
                     if(ans.correct == 1)
-                        present++;
-                    presentTally++;
+                        nominative++;
+                    nominativeTally++;
                     break;
-                case TENSE_IMPERFECT:
+                case ACUSTATIVE:
                     if(ans.correct == 1)
-                        imperfect++;
-                    imperfectTally++;
+                        accusative++;
+                    accusativeTally++;
                     break;
-                case TENSE_FUTURE:
+                case GENITIVE:
                     if(ans.correct == 1)
-                        future++;
-                    futureTally++;
+                        genitive++;
+                    genitiveTally++;
                     break;
-                case TENSE_PERFECT:
+                case DATIVE:
                     if(ans.correct == 1)
-                        perfect++;
-                    perfectTally++;
+                        dative++;
+                    dativeTally++;
                     break;
-                case TENSE_PLUPERFECT:
+                case ABLATIVE:
                     if(ans.correct == 1)
-                        pluperfect++;
-                    pluperfectTally++;
+                        ablative++;
+                    ablativeTally++;
                     break;
-                case TENSE_FUTURE_PERFECT:
+                case VOCATIVE:
                     if(ans.correct == 1)
-                        futurePerfect++;
-                    futurePerfectTally++;
-                    break;
-            }
-
-            switch (verb.getMood()) {
-                case MOOD_INDICATIVE:
-                    if(ans.correct == 1)
-                        indicative++;
-                    indicativeTally++;
-                    break;
-                case MOOD_IMPERATIVE:
-                    if(ans.correct == 1)
-                        imperative++;
-                    imperativeTally++;
-                    break;
-                case MOOD_SUBJUNCTIVE:
-                    if(ans.correct == 1)
-                        subjunctive++;
-                    subjunctiveTally++;
+                        vocative++;
+                    vocativeTally++;
                     break;
             }
 
-            switch (verb.getVoice()) {
-                case VOICE_ACTIVE:
-                    if(ans.correct == 1)
-                        active++;
-                    activeTally++;
-                    break;
-                case VOICE_PASSIVE:
-                    if(ans.correct == 1)
-                        passive++;
-                    passiveTally++;
-                    break;
-            }
         }
 
 
         // Calc Current Quiz Results
         // -------------------------
-        conj1perc = (conj1Tally>0) ? conj1/conj1Tally*100 : 0;
-        conj2perc = (conj2Tally>0) ? conj2/conj2Tally*100 : 0;
-        conj3perc = (conj3Tally>0) ? conj3/conj3Tally*100 : 0;
-        conj4perc = (conj4Tally>0) ? conj4/conj4Tally*100 : 0;
 
-        presentPerc = (presentTally>0) ? present*100/presentTally : 0;
-        imperfectPerc = (imperfectTally>0) ? imperfect*100/imperfectTally : 0;
-        futurePerc = (futureTally>0) ? future*100/futureTally: 0;
-        perfectPerc = (perfectTally>0) ? perfect*100/perfectTally : 0;
-        pluperfectPerc = (pluperfectTally>0) ? pluperfect*100/pluperfectTally : 0;
-        futPerfectPerc = (futureTally>0) ? futurePerfect*100/futureTally : 0;
+        nounPerc = (nounTally>0) ? noun*100/nounTally : 0;
+        prepositionPerc = (prepositionTally>0) ? preposition*100/prepositionTally : 0;
+        conjunctionPerc = (conjunctionTally>0) ? conjunction*100/conjunctionTally: 0;
+        adjectivePerc = (adjectiveTally>0) ? adjective*100/adjectiveTally : 0;
+        adjectiveComparativePerc = (adjectiveComparativeTally>0) ? adjectiveComparative*100/adjectiveComparativeTally : 0;
+        adjectiveSuperlativePerc = (adjectiveSuperlativeTally>0) ? adjectiveSuperlative*100/adjectiveSuperlative : 0;
+        adverbPerc = (adverbTally>0) ? adverb*100/adverbTally : 0;
+        adverbComparativePerc = (adverbComparativeTally>0) ? adverbComparative*100/adverbComparativeTally : 0;
+        adverbSuperlativePerc = (adverbSuperlativeTally>0) ? adverbSuperlative*100/adverbSuperlative : 0;
 
-        indicativePerc = (indicativeTally>0) ? indicative*100/indicativeTally : 0;
-        subjunctivePerc = (subjunctiveTally>0) ? subjunctive*100/subjunctiveTally : 0;
-        imperativePerc = (imperativeTally>0) ? imperative*100/imperativeTally : 0;
+        decl1perc = (decl1Tally>0) ? decl1/decl1Tally*100 : 0;
+        decl2perc = (decl2Tally>0) ? decl2/decl2Tally*100 : 0;
+        decl3perc = (decl3Tally>0) ? decl3/decl3Tally*100 : 0;
+        decl4perc = (decl4Tally>0) ? decl4/decl4Tally*100 : 0;
 
-        activerPerc = (activeTally>0) ? active*100/activeTally : 0;
-        passivePerc = (passiveTally>0) ? passive*100/passiveTally : 0;
+        nominativePerc = (nominativeTally>0) ? nominative*100/nominativeTally : 0;
+        accusativePerc = (accusativeTally>0) ? accusative*100/accusativeTally : 0;
+        genitivePerc = (genitiveTally>0) ? genitive*100/genitiveTally : 0;
+        dativePerc = (dativeTally>0) ? dative*100/dativeTally : 0;
+        ablativePerc = (ablativeTally>0) ? ablative*100/ablativeTally : 0;
+        vocativePerc = (vocativeTally>0) ? vocative*100/vocativeTally : 0;
 
         totalPerc = total*100/numQuizQuestions;
 
 
         // Insert Current Quiz Scores Into Map
         // -----------------------------------
-        mapStatistics.put( CONJNUM1, conj1perc );
-        mapStatistics.put( CONJNUM2, conj2perc );
-        mapStatistics.put( CONJNUM3, conj3perc );
-        mapStatistics.put( CONJNUM4, conj4perc );
 
-        mapStatistics.put( TENSE_PRESENT, presentPerc );
-        mapStatistics.put( TENSE_IMPERFECT, imperfectPerc );
-        mapStatistics.put( TENSE_FUTURE, futurePerc );
-        mapStatistics.put( TENSE_PERFECT, perfectPerc );
-        mapStatistics.put( TENSE_PLUPERFECT, pluperfectPerc );
-        mapStatistics.put( TENSE_FUTURE_PERFECT, futPerfectPerc );
+        mapStatistics.put( NOUN, nounPerc );
+        mapStatistics.put( PREPOSITION, prepositionPerc );
+        mapStatistics.put( CONJUNCTION, conjunctionPerc );
+        mapStatistics.put( ADJECTIVE, adjectivePerc );
+        mapStatistics.put( ADJECTIVE_COMPARATIVE, adjectiveComparativePerc );
+        mapStatistics.put( ADJECTIVE_SUPERLATIVE, adjectiveSuperlativePerc  );
+        mapStatistics.put( ADVERB, adverbPerc );
+        mapStatistics.put( ADVERB_COMPARATIVE, adverbComparativePerc );
+        mapStatistics.put( ADVERB_SUPERLATIVE, adverbSuperlativePerc  );
 
-        mapStatistics.put( MOOD_INDICATIVE, indicativePerc );
-        mapStatistics.put( MOOD_SUBJUNCTIVE, subjunctivePerc );
-        mapStatistics.put( MOOD_IMPERATIVE, imperativePerc );
+        mapStatistics.put( DECLNUM1, decl1perc );
+        mapStatistics.put( DECLNUM2, decl2perc );
+        mapStatistics.put( DECLNUM3, decl3perc );
+        mapStatistics.put( DECLNUM4, decl4perc );
 
-        mapStatistics.put( VOICE_ACTIVE, activerPerc );
-        mapStatistics.put( VOICE_PASSIVE, passivePerc );
+
+        mapStatistics.put( NOMINATIVE, nominativePerc );
+        mapStatistics.put( ACUSTATIVE, accusativePerc );
+        mapStatistics.put( GENITIVE, genitivePerc );
+        mapStatistics.put( DATIVE, dativePerc );
+        mapStatistics.put( ABLATIVE, ablativePerc );
+        mapStatistics.put( VOCATIVE, vocativePerc );
+
 
         mapStatistics.put( TOTAL, totalPerc);
 
         // Calc Total Historical Scores and Update in Map
         // ----------------------------------------------
-        conj1percHist = calcHistoryStatistics(CONJNUM1_SCORE, CONJ1_TALLY, conj1, conj1Tally);
-        mapStatistics.put(CONJNUM1_HIST_PERC, conj1percHist);
 
-        conj2percHist = calcHistoryStatistics(CONJNUM2_SCORE, CONJ2_TALLY, conj2, conj2Tally);
-        mapStatistics.put(CONJNUM2_HIST_PERC, conj2percHist);
+        nounPercHist = calcHistoryStatistics(NOUN_SCORE, NOUN_TALLY, noun, nounTally);
+        mapStatistics.put(NOUN_HIST_PERC, nounPercHist);
 
-        conj3percHist = calcHistoryStatistics(CONJNUM3_SCORE, CONJ3_TALLY, conj3, conj3Tally);
-        mapStatistics.put(CONJNUM3_HIST_PERC, conj3percHist);
+        prepositionPercHist = calcHistoryStatistics(PREPOSITION_SCORE, PREPOSITION_TALLY, preposition, prepositionTally);
+        mapStatistics.put(PREPOSITION_HIST_PERC, prepositionPercHist);
 
-        conj4percHist = calcHistoryStatistics(CONJNUM4_SCORE, CONJ4_TALLY, conj4, conj4Tally);
-        mapStatistics.put(CONJNUM4_HIST_PERC, conj4percHist);
+        conjunctionPercHist = calcHistoryStatistics(CONJUNCTION_SCORE, CONJUNCTION_TALLY, conjunction, conjunctionTally);
+        mapStatistics.put(CONJUNCTION_HIST_PERC, conjunctionPercHist);
 
-        presentPercHist = calcHistoryStatistics(PRESENT_SCORE, PRESENT_TALLY, present, presentTally);
-        mapStatistics.put(TENSE_PRESENT_HIST, presentPercHist);
+        adjectivePercHist = calcHistoryStatistics(ADJECTIVE_SCORE, ADJECTIVE_TALLY, adjective, adjectiveTally);
+        mapStatistics.put(ADJECTIVE_HIST_PERC, adjectivePercHist);
 
-        imperfectPercHist = calcHistoryStatistics(IMPERFECT_SCORE, IMPERFECT_TALLY, imperfect, imperfectTally);
-        mapStatistics.put(TENSE_IMPERFECT_HIST, imperfectPercHist);
+        adjectiveComparativePerc = calcHistoryStatistics(ADJECTIVE_COMPARATIVE_SCORE, ADJECTIVE_COMPARATIVE_TALLY, adjectiveComparative, adjectiveComparativeTally);
+        mapStatistics.put(ADJECTIVE_COMPARATIVE_HIST_PERC, adjectiveComparativePerc);
 
-        futurePercHist = calcHistoryStatistics(FUTURE_SCORE, FUTURE_TALLY, future, futureTally);
-        mapStatistics.put(TENSE_FUTURE_HIST, futurePercHist);
+        adjectiveSuperlativePerc = calcHistoryStatistics(ADJECTIVE_SUPERLATIVE_SCORE, ADJECTIVE_SUPERLATIVE_TALLY, adjectiveSuperlative, adjectiveSuperlativeTally);
+        mapStatistics.put(ADJECTIVE_SUPERLATIVE_HIST_PERC, adjectiveSuperlativePerc);
 
-        perfectPercHist = calcHistoryStatistics(PERFECT_SCORE, PERFECT_TALLY, perfect, perfectTally);
-        mapStatistics.put(TENSE_PERFECT_HIST, perfectPercHist);
+        adverbPercHist = calcHistoryStatistics(ADVERB_SCORE, ADVERB_TALLY, adverb, adverbTally);
+        mapStatistics.put(ADVERB_HIST_PERC, adverbPercHist);
 
-        pluperfectPercHist = calcHistoryStatistics(PLUPERFECT_SCORE, PLUPERFECT_TALLY, pluperfect, pluperfectTally);
-        mapStatistics.put(TENSE_PLUPERFECT_HIST, pluperfectPercHist);
+        adverbComparativePerc = calcHistoryStatistics(ADVERB_COMPARATIVE_SCORE, ADVERB_COMPARATIVE_TALLY, adverbComparative, adverbComparativeTally);
+        mapStatistics.put(ADVERB_COMPARATIVE_HIST_PERC, adverbComparativePerc);
 
-        futPerfectPercHist = calcHistoryStatistics(FUT_PERFECT_SCORE, FUT_PERFECT_TALLY, futurePerfect, futurePerfectTally);
-        mapStatistics.put(TENSE_FUTURE_PERFECT_HIST, futPerfectPercHist);
+        adverbSuperlativePerc = calcHistoryStatistics(ADVERB_SUPERLATIVE_SCORE, ADVERB_SUPERLATIVE_TALLY, adverbSuperlative, adverbSuperlativeTally);
+        mapStatistics.put(ADVERB_COMPARATIVE_HIST_PERC, adverbSuperlativePerc);
 
-        indicativePercHist = calcHistoryStatistics(INDICATIVE_SCORE, INDICATIVE_TALLY, indicative, indicativeTally);
-        mapStatistics.put(MOOD_INDICATIVE_HIST, indicativePercHist);
+        decl1percHist = calcHistoryStatistics(DECLNUM1_SCORE, DECL1_TALLY, decl1, decl1Tally);
+        mapStatistics.put(DECLNUM1_HIST_PERC, decl1percHist);
 
-        subjunctivePercHist = calcHistoryStatistics(SUBJUNCTIVE_SCORE, SUBJUNCTIVE_TALLY, subjunctive, subjunctiveTally);
-        mapStatistics.put(MOOD_SUBJUNCTIVE_HIST, subjunctivePercHist);
+        decl2percHist = calcHistoryStatistics(DECLNUM2_SCORE, DECL2_TALLY, decl2, decl2Tally);
+        mapStatistics.put(DECLNUM2_HIST_PERC, decl2percHist);
 
-        imperativePercHist = calcHistoryStatistics(IMPERATIVE_SCORE, IMPERATIVE_TALLY, imperative, imperativeTally);
-        mapStatistics.put(MOOD_IMPERATIVE_HIST, imperativePercHist);
+        decl3percHist = calcHistoryStatistics(DECLNUM3_SCORE, DECL3_TALLY, decl3, decl3Tally);
+        mapStatistics.put(DECLNUM3_HIST_PERC, decl3percHist);
 
-        activePercHist = calcHistoryStatistics(ACTIVE_SCORE, ACTIVE_TALLY, active, activeTally);
-        mapStatistics.put(VOICE_ACTIVE_HIST, activePercHist);
+        decl4percHist = calcHistoryStatistics(DECLNUM4_SCORE, DECL4_TALLY, decl4, decl4Tally);
+        mapStatistics.put(DECLNUM4_HIST_PERC, decl4percHist);
 
-        passivePercHist = calcHistoryStatistics(PASSIVE_SCORE, PASSIVE_TALLY, passive, passiveTally);
-        mapStatistics.put(VOICE_PASSIVE_HIST, passivePercHist);
+
+        nominativePercHist = calcHistoryStatistics(NOMINATIVE_SCORE, NOMINATIVE_TALLY, nominative, nominativeTally);
+        mapStatistics.put(NOMINATIVE_HIST_PERC, nominativePercHist);
+
+        accusativePercHist = calcHistoryStatistics(ACUSTATIVE_SCORE, ACUSTATIVE_TALLY, accusative, accusativeTally);
+        mapStatistics.put(ACUSTATIVE_HIST_PERC, accusativePercHist);
+
+        genitivePercHist = calcHistoryStatistics(GENITIVE_SCORE, GENITIVE_TALLY, genitive, genitiveTally);
+        mapStatistics.put(GENITIVE_HIST_PERC, genitivePercHist);
+
+        dativePercHist = calcHistoryStatistics(DATIVE_SCORE, DATIVE_TALLY, dative, dativeTally);
+        mapStatistics.put(DATIVE_HIST_PERC, dativePercHist);
+
+        ablativePercHist = calcHistoryStatistics(ABLATIVE_SCORE, ABLATIVE_TALLY, ablative, ablativeTally);
+        mapStatistics.put(ABLATIVE_HIST_PERC, ablativePercHist);
+
+        vocativePercHist = calcHistoryStatistics(VOCATIVE_SCORE, VOCATIVE_TALLY, vocative, vocativeTally);
+        mapStatistics.put(VOCATIVE_HIST_PERC, vocativePercHist);
+
 
         totalPercHist = calcHistoryStatistics(TOTAL_SCORE, TOTAL_TALLY, total, numQuizQuestions);
         mapStatistics.put(TOTAL_HIST, totalPercHist);

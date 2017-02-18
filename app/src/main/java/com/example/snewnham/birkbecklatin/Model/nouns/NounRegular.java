@@ -15,6 +15,7 @@ public class NounRegular implements NounEtc {
     protected int mId;
     protected String mType;
     protected int mDeclension;
+    protected String mNounCase;
     protected String mGender;
     protected String mNominative;
     protected String mGenitive;
@@ -24,7 +25,7 @@ public class NounRegular implements NounEtc {
     protected String mLatinNoun;
     protected String mEnglishWord;
     protected String mEnglishNounSingular;
-    protected  String mEnglishNounPlural;
+    protected String mEnglishNounPlural;
 
 
     // Constructor
@@ -52,6 +53,7 @@ public class NounRegular implements NounEtc {
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
 
+        mNounCase = noun_Case; // Set Noun Case
         // Override for 2nd Declension Nominative and Singular
         if( mDeclension == 2 && noun_Case.equals(NOMINATIVE) && number.equals(SINGULAR) ) {
                 mLatin_Noun_Ending = "";
@@ -123,6 +125,9 @@ public class NounRegular implements NounEtc {
     public int getDeclension() {
         return mDeclension;
     }
+
+    @Override
+    public String getCase(){ return mNounCase;}
 
     @Override
     public void setDeclension(int declension) {

@@ -15,6 +15,7 @@ public class Adjective implements NounEtc {
     protected int mId;
     protected String mType;
     protected int mDeclension;
+    protected String mNounCase;
     protected String mNominative;
     protected String mNominative_Neuter;
     protected String mLatinAdjectiveStem;
@@ -52,6 +53,7 @@ public class Adjective implements NounEtc {
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case, String gender) {
 
         mGender = gender;  // Set Gender
+        mNounCase = noun_Case; // noun Case
 
         if(mDeclension == DECLENSION333) { // M or F 333
             if(mGender.equals(GENDER_MALE) || mGender.equals(GENDER_FEMALE)) {
@@ -132,6 +134,9 @@ public class Adjective implements NounEtc {
     public int getDeclension() {
         return mDeclension;
     }
+
+    @Override
+    public String getCase(){return mNounCase;}
 
     public void setDeclension(int declension) {
         mDeclension = declension;

@@ -15,6 +15,7 @@ public class Adverb implements NounEtc {
     protected String mType;
     protected String mGender;
     protected int mDeclension;
+    protected String mNounCase;
     protected String mLatinAdverbStem;
     protected String mLatinAdverb;
     protected String mEnglishAdverb;
@@ -53,6 +54,7 @@ public class Adverb implements NounEtc {
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case, String gender) {
         mGender = gender;  // Set Gender
+        mNounCase = noun_Case; // Set noun case
         mLatinWord = mLatinAdverb;
         return mLatinWord;
     }
@@ -87,6 +89,9 @@ public class Adverb implements NounEtc {
     public int getDeclension() {
         return mDeclension;
     }
+
+    @Override
+    public String getCase(){ return  mNounCase; }
 
     @Override
     public void setDeclension(int declension) {

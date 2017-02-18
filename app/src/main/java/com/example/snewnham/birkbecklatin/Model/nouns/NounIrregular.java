@@ -28,7 +28,7 @@ public class NounIrregular extends NounRegular {
 
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
-        return makeLatinWord(databaseAccess, number, noun_Case,mGender);
+        return makeLatinWord(databaseAccess, number, noun_Case, mGender);
     }
 
     @Override
