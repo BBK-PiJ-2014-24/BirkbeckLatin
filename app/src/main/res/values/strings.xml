@@ -32,4 +32,28 @@
     <string name="passive"> - Passive </string>
 
 
+    <string name="Type"><u><b>Type</b></u></string>
+    <string name="Declension"><u><b>Declension</b></u></string>
+    <string name="Case"><u><b>Case</b></u></string>
+    <string name="decl_1st"> - 1st </string>
+    <string name="decl_2nd"> - 2nd </string>
+    <string name="decl_3rd"> - 3rd </string>
+    <string name="decl_4th"> - 4th </string>
+    <string name="Noun"> - Noun </string>
+    <string name="Preposition"> - Preposition </string>
+    <string name="Conjunction"> - Conjunction </string>
+    <string name="Adjective"> - Adjective </string>
+    <string name="Adverb"> - Adverb </string>
+    <string name="Superlative"> - Superlative </string>
+    <string name="Comparative"> - Comparative </string>
+    <string name="Normative"> - Normative </string>
+    <string name="Accusative"> - Accusative </string>
+    <string name="Genitive"> - Genitive </string>
+    <string name="Dative"> - Dative </string>
+    <string name="Ablative"> - Ablative </string>
+    <string name="Vocative"> - Vocative </string>
+
+
+
+
 </resources>

@@ -11,9 +11,13 @@ import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
+import com.example.snewnham.birkbecklatin.Model.nouns.Answer;
+import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -30,6 +34,11 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final static String NOUN_THETA = "Noun_Theta";
 
     private final static String NOMINATIVE = "Nominative";
+    private final static String ACCUSTATIVE = "Accusative";
+    private final static String GENITIVE = "Genitive";
+    private final static String DATIVE = "Dative";
+    private final static String ABLATIVE = "Ablative";
+    private final static String VOCATIVE = "Vocative";
 
     private final static String NOUN = "Noun";
     private final static String NOUN_REGULAR = "NounRegular";
@@ -434,6 +443,8 @@ public class NounEtcGameImpl implements NounEtcGame {
 
 
 
+
+
     // Getter/Setters
     // --------------
 
@@ -469,44 +480,324 @@ public class NounEtcGameImpl implements NounEtcGame {
     }
 
 
-
-
-    // Inner Class
-    // -----------
     /**
-     * RESULT - Inner Class
-     * --------------------
-     * A Container Class that contains the Results for a Question
-     * table - NounEtc Table
-     * id - NounEtc ID
-     * answer - Correct 1, Incorrect 0
-     * difficulty -  RSI Question Difficulty Classification
+     * calcStatistics()
+     * ----------------
      *
+     * Calcs the Statistics for the % of Correct Answers in the Current Quiz and Running (Historical) Score
+     * @param list - List of Answers from the Quiz
+     * @return map storing statistics of Current Game and and of all games.
      */
-    public class Answer {
-        // Fields
-        // ------
-        public String type;
-        public int id;
-        public int correct;
-        public int difficulty;
-        NounEtc noun;
+    public Map<String, Integer> calcStatistics(List<com.example.snewnham.birkbecklatin.Model.verbs.Answer> list){
 
-        // Constructor
-        // -----------
-        public Answer(String type, int id, int correct, int difficulty){
-            this.type = type;
-            this.id = id;
-            this.correct = correct;
-            this.difficulty = difficulty;
+        int conj1 = 0;
+        int conj2 = 0;
+        int conj3 = 0;
+        int conj4 = 0;
+
+        int present = 0;
+        int imperfect = 0;
+        int future = 0;
+        int perfect = 0;
+        int pluperfect = 0;
+        int futurePerfect = 0;
+
+        int indicative = 0;
+        int subjunctive = 0;
+        int imperative = 0;
+
+        int active = 0;
+        int passive = 0;
+
+        int total = 0;
+
+        int conj1Tally = 0;
+        int conj2Tally = 0;
+        int conj3Tally = 0;
+        int conj4Tally = 0;
+
+        int presentTally = 0;
+        int imperfectTally = 0;
+        int futureTally = 0;
+        int perfectTally = 0;
+        int pluperfectTally = 0;
+        int futurePerfectTally = 0;
+
+        int indicativeTally = 0;
+        int subjunctiveTally = 0;
+        int imperativeTally = 0;
+
+        int activeTally = 0;
+        int passiveTally = 0;
+
+        int numQuizQuestions = list.size();
+        int conj1perc;
+        int conj2perc;
+        int conj3perc;
+        int conj4perc;
+
+        int presentPerc;
+        int imperfectPerc;
+        int futurePerc;
+        int perfectPerc;
+        int pluperfectPerc;
+        int futPerfectPerc;
+
+        int indicativePerc;
+        int imperativePerc;
+        int subjunctivePerc;
+
+        int totalPerc;
+
+        int activerPerc;
+        int passivePerc;
+
+        int conj1percHist;
+        int conj2percHist;
+        int conj3percHist;
+        int conj4percHist;
+
+        int presentPercHist;
+        int imperfectPercHist;
+        int futurePercHist;
+        int perfectPercHist;
+        int pluperfectPercHist;
+        int futPerfectPercHist;
+
+        int indicativePercHist;
+        int imperativePercHist;
+        int subjunctivePercHist;
+
+        int activePercHist;
+        int passivePercHist;
+
+        int totalPercHist;
+
+        Map<String, Integer> mapStatistics = new HashMap<>();
+
+
+        // Tally Data
+        // ----------
+        for(com.example.snewnham.birkbecklatin.Model.verbs.Answer ans : list){
+            Verb verb = ans.verb;
+            if(ans.correct == 1)
+                total++;  //  total Correct
+            switch(verb.getLatin_ConjNum()) {
+                case 1:
+                    if(ans.correct == 1)
+                        conj1++;
+                    conj1Tally++;
+                    break;
+                case 2:
+                    if(ans.correct == 1)
+                        conj2++;
+                    conj2Tally++;
+                    break;
+                case 3:
+                    if(ans.correct == 1)
+                        conj3++;
+                    conj3Tally++;
+                    break;
+                case 4:
+                    if(ans.correct == 1)
+                        conj4++;
+                    conj4Tally++;
+                    break;
+                default:
+                    if(ans.correct == 1)
+                        conj3++;  // For Alternatives of the Conj 3rd
+                    conj3Tally++;
+                    break;
+            }
+
+            switch (verb.getTense()) {
+                case TENSE_PRESENT:
+                    if(ans.correct == 1)
+                        present++;
+                    presentTally++;
+                    break;
+                case TENSE_IMPERFECT:
+                    if(ans.correct == 1)
+                        imperfect++;
+                    imperfectTally++;
+                    break;
+                case TENSE_FUTURE:
+                    if(ans.correct == 1)
+                        future++;
+                    futureTally++;
+                    break;
+                case TENSE_PERFECT:
+                    if(ans.correct == 1)
+                        perfect++;
+                    perfectTally++;
+                    break;
+                case TENSE_PLUPERFECT:
+                    if(ans.correct == 1)
+                        pluperfect++;
+                    pluperfectTally++;
+                    break;
+                case TENSE_FUTURE_PERFECT:
+                    if(ans.correct == 1)
+                        futurePerfect++;
+                    futurePerfectTally++;
+                    break;
+            }
+
+            switch (verb.getMood()) {
+                case MOOD_INDICATIVE:
+                    if(ans.correct == 1)
+                        indicative++;
+                    indicativeTally++;
+                    break;
+                case MOOD_IMPERATIVE:
+                    if(ans.correct == 1)
+                        imperative++;
+                    imperativeTally++;
+                    break;
+                case MOOD_SUBJUNCTIVE:
+                    if(ans.correct == 1)
+                        subjunctive++;
+                    subjunctiveTally++;
+                    break;
+            }
+
+            switch (verb.getVoice()) {
+                case VOICE_ACTIVE:
+                    if(ans.correct == 1)
+                        active++;
+                    activeTally++;
+                    break;
+                case VOICE_PASSIVE:
+                    if(ans.correct == 1)
+                        passive++;
+                    passiveTally++;
+                    break;
+            }
         }
 
-        public Answer(String type, int id, int correct, int difficulty, NounEtc noun){
-            this.type = type;
-            this.id = id;
-            this.correct = correct;
-            this.difficulty = difficulty;
-            this.noun = noun;
-        }
+
+        // Calc Current Quiz Results
+        // -------------------------
+        conj1perc = (conj1Tally>0) ? conj1/conj1Tally*100 : 0;
+        conj2perc = (conj2Tally>0) ? conj2/conj2Tally*100 : 0;
+        conj3perc = (conj3Tally>0) ? conj3/conj3Tally*100 : 0;
+        conj4perc = (conj4Tally>0) ? conj4/conj4Tally*100 : 0;
+
+        presentPerc = (presentTally>0) ? present*100/presentTally : 0;
+        imperfectPerc = (imperfectTally>0) ? imperfect*100/imperfectTally : 0;
+        futurePerc = (futureTally>0) ? future*100/futureTally: 0;
+        perfectPerc = (perfectTally>0) ? perfect*100/perfectTally : 0;
+        pluperfectPerc = (pluperfectTally>0) ? pluperfect*100/pluperfectTally : 0;
+        futPerfectPerc = (futureTally>0) ? futurePerfect*100/futureTally : 0;
+
+        indicativePerc = (indicativeTally>0) ? indicative*100/indicativeTally : 0;
+        subjunctivePerc = (subjunctiveTally>0) ? subjunctive*100/subjunctiveTally : 0;
+        imperativePerc = (imperativeTally>0) ? imperative*100/imperativeTally : 0;
+
+        activerPerc = (activeTally>0) ? active*100/activeTally : 0;
+        passivePerc = (passiveTally>0) ? passive*100/passiveTally : 0;
+
+        totalPerc = total*100/numQuizQuestions;
+
+
+        // Insert Current Quiz Scores Into Map
+        // -----------------------------------
+        mapStatistics.put( CONJNUM1, conj1perc );
+        mapStatistics.put( CONJNUM2, conj2perc );
+        mapStatistics.put( CONJNUM3, conj3perc );
+        mapStatistics.put( CONJNUM4, conj4perc );
+
+        mapStatistics.put( TENSE_PRESENT, presentPerc );
+        mapStatistics.put( TENSE_IMPERFECT, imperfectPerc );
+        mapStatistics.put( TENSE_FUTURE, futurePerc );
+        mapStatistics.put( TENSE_PERFECT, perfectPerc );
+        mapStatistics.put( TENSE_PLUPERFECT, pluperfectPerc );
+        mapStatistics.put( TENSE_FUTURE_PERFECT, futPerfectPerc );
+
+        mapStatistics.put( MOOD_INDICATIVE, indicativePerc );
+        mapStatistics.put( MOOD_SUBJUNCTIVE, subjunctivePerc );
+        mapStatistics.put( MOOD_IMPERATIVE, imperativePerc );
+
+        mapStatistics.put( VOICE_ACTIVE, activerPerc );
+        mapStatistics.put( VOICE_PASSIVE, passivePerc );
+
+        mapStatistics.put( TOTAL, totalPerc);
+
+        // Calc Total Historical Scores and Update in Map
+        // ----------------------------------------------
+        conj1percHist = calcHistoryStatistics(CONJNUM1_SCORE, CONJ1_TALLY, conj1, conj1Tally);
+        mapStatistics.put(CONJNUM1_HIST_PERC, conj1percHist);
+
+        conj2percHist = calcHistoryStatistics(CONJNUM2_SCORE, CONJ2_TALLY, conj2, conj2Tally);
+        mapStatistics.put(CONJNUM2_HIST_PERC, conj2percHist);
+
+        conj3percHist = calcHistoryStatistics(CONJNUM3_SCORE, CONJ3_TALLY, conj3, conj3Tally);
+        mapStatistics.put(CONJNUM3_HIST_PERC, conj3percHist);
+
+        conj4percHist = calcHistoryStatistics(CONJNUM4_SCORE, CONJ4_TALLY, conj4, conj4Tally);
+        mapStatistics.put(CONJNUM4_HIST_PERC, conj4percHist);
+
+        presentPercHist = calcHistoryStatistics(PRESENT_SCORE, PRESENT_TALLY, present, presentTally);
+        mapStatistics.put(TENSE_PRESENT_HIST, presentPercHist);
+
+        imperfectPercHist = calcHistoryStatistics(IMPERFECT_SCORE, IMPERFECT_TALLY, imperfect, imperfectTally);
+        mapStatistics.put(TENSE_IMPERFECT_HIST, imperfectPercHist);
+
+        futurePercHist = calcHistoryStatistics(FUTURE_SCORE, FUTURE_TALLY, future, futureTally);
+        mapStatistics.put(TENSE_FUTURE_HIST, futurePercHist);
+
+        perfectPercHist = calcHistoryStatistics(PERFECT_SCORE, PERFECT_TALLY, perfect, perfectTally);
+        mapStatistics.put(TENSE_PERFECT_HIST, perfectPercHist);
+
+        pluperfectPercHist = calcHistoryStatistics(PLUPERFECT_SCORE, PLUPERFECT_TALLY, pluperfect, pluperfectTally);
+        mapStatistics.put(TENSE_PLUPERFECT_HIST, pluperfectPercHist);
+
+        futPerfectPercHist = calcHistoryStatistics(FUT_PERFECT_SCORE, FUT_PERFECT_TALLY, futurePerfect, futurePerfectTally);
+        mapStatistics.put(TENSE_FUTURE_PERFECT_HIST, futPerfectPercHist);
+
+        indicativePercHist = calcHistoryStatistics(INDICATIVE_SCORE, INDICATIVE_TALLY, indicative, indicativeTally);
+        mapStatistics.put(MOOD_INDICATIVE_HIST, indicativePercHist);
+
+        subjunctivePercHist = calcHistoryStatistics(SUBJUNCTIVE_SCORE, SUBJUNCTIVE_TALLY, subjunctive, subjunctiveTally);
+        mapStatistics.put(MOOD_SUBJUNCTIVE_HIST, subjunctivePercHist);
+
+        imperativePercHist = calcHistoryStatistics(IMPERATIVE_SCORE, IMPERATIVE_TALLY, imperative, imperativeTally);
+        mapStatistics.put(MOOD_IMPERATIVE_HIST, imperativePercHist);
+
+        activePercHist = calcHistoryStatistics(ACTIVE_SCORE, ACTIVE_TALLY, active, activeTally);
+        mapStatistics.put(VOICE_ACTIVE_HIST, activePercHist);
+
+        passivePercHist = calcHistoryStatistics(PASSIVE_SCORE, PASSIVE_TALLY, passive, passiveTally);
+        mapStatistics.put(VOICE_PASSIVE_HIST, passivePercHist);
+
+        totalPercHist = calcHistoryStatistics(TOTAL_SCORE, TOTAL_TALLY, total, numQuizQuestions);
+        mapStatistics.put(TOTAL_HIST, totalPercHist);
+
+        return mapStatistics;
     }
+
+
+    /**
+     * calcHistoryStatistics()
+     * -----------------------
+     * Helper method for calcStatistics.
+     * 1) Retrieves Historical Score and Tally from Meta Table
+     * 2) Updates MetaTable with Updated Score and Tally
+     *
+     * @param dbHistScore - KEY for Score
+     * @param dbHistTally - KEY for Tally
+     * @param currentScore - The Score of The Current Game for this type of verb
+     * @param numQuizQuestions - Number of Quiz Questions.
+     */
+
+    public int calcHistoryStatistics(String dbHistScore, String dbHistTally, int currentScore, int numQuizQuestions){
+
+        int totalScore = mDatabaseAccess.sqlMetaQuery(dbHistScore);  // Get Historical Score
+        int tally = mDatabaseAccess.sqlMetaQuery(dbHistTally); // Get Histortical Tally of Questions
+
+        mDatabaseAccess.sqlMeta_Insertion(dbHistScore, totalScore + currentScore);  // Update Database of Historical Score
+        mDatabaseAccess.sqlMeta_Insertion(dbHistTally, tally + numQuizQuestions); // Update Database of Historical Tally
+        return (tally + numQuizQuestions > 0) ? ((totalScore + currentScore)*100)/(tally + numQuizQuestions) : 0 ;  // Calc New Historical %
+    }
+
 }

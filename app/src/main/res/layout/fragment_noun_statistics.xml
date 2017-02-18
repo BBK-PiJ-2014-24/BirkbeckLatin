@@ -1,151 +1,763 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:columnCount="4"
-             android:rowCount="30"
-             tools:context=".view.NounStatisticsFragment">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:rowCount="24"
+            tools:context=".view.VerbStatisticsFragment">
 
 
     <!-- TODO: Update blank fragment layout-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:layout_row="0"
-        android:layout_column="1"
-        android:text="Statistics"/>
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_gravity="center_horizontal"
+        android:textSize="25sp"
+        android:text="@string/statistics"/>
 
+    <!-- TITLES -->
+    <!-- ====== -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="10dp"
         android:layout_row="1"
         android:layout_column="0"
-        android:text="Conjugation"/>
+        android:textSize="15sp"
+        android:text="@string/Type"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="50dp"
+        android:layout_row="1"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:text="@string/latestTest"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_row="1"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:text="@string/history"/>
+
+
+    <!-- NOUN TYPE -->
+    <!-- ========= -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
         android:layout_row="2"
         android:layout_column="0"
-        android:text="1"/>
+        android:textSize="15sp"
+        android:text="@string/Noun"/>
+
+
+    <TextView
+        android:id="@+id/noun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="2"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="non"/>
+
+    <TextView
+        android:id="@+id/nounHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="2"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="non"/>
+
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
         android:layout_row="3"
         android:layout_column="0"
-        android:text="2"/>
+        android:textSize="15sp"
+        android:text="@string/Preposition"/>
+
+    <TextView
+        android:id="@+id/preposition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="3"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="pre"/>
+
+    <TextView
+        android:id="@+id/prepositionHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="3"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="pre"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
         android:layout_row="4"
         android:layout_column="0"
-        android:text="3"/>
+        android:textSize="15sp"
+        android:text="@string/Conjunction"/>
+
+    <TextView
+        android:id="@+id/conjunction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="4"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="con"/>
+
+    <TextView
+        android:id="@+id/conjunctionHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="4"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="con"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
         android:layout_row="5"
         android:layout_column="0"
-        android:text="4"/>
+        android:textSize="15sp"
+        android:text="@string/Adjective"/>
+
+    <TextView
+        android:id="@+id/adjective"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="5"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="adj"/>
+
+    <TextView
+        android:id="@+id/adjectiveHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="5"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="adj"/>
+
+    <!--com-->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="30dp"
+        android:layout_row="6"
+        android:layout_column="0"
+        android:textSize="15sp"
+        android:text="@string/Comparative"/>
+
+    <TextView
+        android:id="@+id/adjectiveComparative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="6"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="adjC"/>
+
+    <TextView
+        android:id="@+id/adjectiveComparativeHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="6"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="adjC"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="30dp"
         android:layout_row="7"
         android:layout_column="0"
-        android:text="Tense"/>
+        android:textSize="15sp"
+        android:text="@string/Superlative"/>
+
+    <TextView
+        android:id="@+id/adjectiveSuperlative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="7"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="adjS"/>
+
+    <TextView
+        android:id="@+id/adjectiveSuperlativeHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="7"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="adjS"/>
+
+
+    <!--com -->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
         android:layout_row="8"
         android:layout_column="0"
-        android:text="Present"/>
+        android:textSize="15sp"
+        android:text="@string/Adverb"/>
+
+    <TextView
+        android:id="@+id/adverb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="8"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="adv"/>
+
+    <TextView
+        android:id="@+id/adverbHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="8"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="adv"/>
+
+    <!-- sup -->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="30dp"
         android:layout_row="9"
         android:layout_column="0"
-        android:text="Imperfect"/>
+        android:textSize="15sp"
+        android:text="@string/Comparative"/>
+
+    <TextView
+        android:id="@+id/adverbComparative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="9"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="advC"/>
+
+    <TextView
+        android:id="@+id/adverbComparativeHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="9"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="adjV"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="30dp"
         android:layout_row="10"
         android:layout_column="0"
-        android:text="Future"/>
+        android:textSize="15sp"
+        android:text="@string/Superlative"/>
+
+    <TextView
+        android:id="@+id/adverbSuperlative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="10"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="avbS"/>
+
+    <TextView
+        android:id="@+id/adverbSuperlativeHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="10"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="advS"/>
+
+
+    <!-- sup -->
+
+
+    <!-- DECLENSION -->
+    <!-- ========== -->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_row="11"
         android:layout_column="0"
-        android:text="Perfect"/>
+        android:textSize="15sp"
+        android:text="@string/Declension"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
         android:layout_row="12"
         android:layout_column="0"
-        android:text="Pluperfect"/>
+        android:textSize="15sp"
+        android:text="@string/decl_1st"/>
+
+
+    <TextView
+        android:id="@+id/decl1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="12"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="d1L"/>
+
+    <TextView
+        android:id="@+id/decl1Hist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="12"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="dL1"/>
+
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
         android:layout_row="13"
         android:layout_column="0"
-        android:text="Future Perfect"/>
+        android:textSize="15sp"
+        android:text="@string/decl_2nd"/>
+
+    <TextView
+        android:id="@+id/decl2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="13"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="d2L"/>
+
+    <TextView
+        android:id="@+id/decl2Hist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="13"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="dL2"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
+        android:layout_row="14"
+        android:layout_column="0"
+        android:textSize="15sp"
+        android:text="@string/decl_3rd"/>
+
+    <TextView
+        android:id="@+id/decl3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="14"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="d3L"/>
+
+    <TextView
+        android:id="@+id/decl3Hist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="14"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="dL3"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
         android:layout_row="15"
         android:layout_column="0"
-        android:text="Mood"/>
+        android:textSize="15sp"
+        android:text="@string/decl_4th"/>
 
+    <TextView
+        android:id="@+id/decl4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="15"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="d4L"/>
+
+    <TextView
+        android:id="@+id/decl4Hist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="15"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="dL4"/>
+
+
+    <!-- CASE -->
+    <!-- ==== -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_row="16"
         android:layout_column="0"
-        android:text="Indicative"/>
+        android:textSize="15sp"
+        android:text="@string/Case"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
         android:layout_row="17"
         android:layout_column="0"
-        android:text="Imperative"/>
+        android:textSize="15sp"
+        android:text="@string/Normative"/>
+
+    <TextView
+        android:id="@+id/normative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="17"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="nom"/>
+
+
+    <TextView
+        android:id="@+id/normativeHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="17"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="nom"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
         android:layout_row="18"
         android:layout_column="0"
-        android:text="Subjunctive"/>
+        android:textSize="15sp"
+        android:text="@string/Accusative"/>
+
+    <TextView
+        android:id="@+id/accusative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="18"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="acc"/>
+
+    <TextView
+        android:id="@+id/accusativeHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="18"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="acc"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
+        android:layout_row="19"
+        android:layout_column="0"
+        android:textSize="15sp"
+        android:text="@string/Genitive"/>
+
+    <TextView
+        android:id="@+id/genitive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="19"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="gen"/>
+
+    <TextView
+        android:id="@+id/genitiveHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="19"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="gen"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
         android:layout_row="20"
         android:layout_column="0"
-        android:text="Voice"/>
+        android:textSize="15sp"
+        android:text="@string/Dative"/>
+
+    <TextView
+        android:id="@+id/dative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="20"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="dat"/>
+
+    <TextView
+        android:id="@+id/perfectHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="20"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="dat"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
         android:layout_row="21"
         android:layout_column="0"
-        android:text="Active"/>
+        android:textSize="15sp"
+        android:text="@string/Ablative"/>
+
+    <TextView
+        android:id="@+id/ablative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="21"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="abl"/>
+
+    <TextView
+        android:id="@+id/ablativeHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="21"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="abl"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="15dp"
         android:layout_row="22"
         android:layout_column="0"
-        android:text="Passive"/>
+        android:textSize="15sp"
+        android:text="@string/Vocative"/>
+
+    <TextView
+        android:id="@+id/vocative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="22"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="voc"/>
+
+    <TextView
+        android:id="@+id/vocativeHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="22"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="voc"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_row="23"
+        android:layout_column="0"
+        android:textSize="15sp"
+        android:text="@string/total"/>
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_row="23"
+        android:layout_column="1"
+        android:textSize="15sp"
+        android:hint="total"/>
+
+    <TextView
+        android:id="@+id/totalHist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_row="23"
+        android:layout_column="2"
+        android:textSize="15sp"
+        android:hint="totHist"/>
+
 
 </GridLayout>
