@@ -923,10 +923,10 @@ public class VerbGame {
 
         // Calc Current Quiz Results
         // -------------------------
-        conj1perc = (conj1Tally>0) ? conj1/conj1Tally*100 : 0;
-        conj2perc = (conj2Tally>0) ? conj2/conj2Tally*100 : 0;
-        conj3perc = (conj3Tally>0) ? conj3/conj3Tally*100 : 0;
-        conj4perc = (conj4Tally>0) ? conj4/conj4Tally*100 : 0;
+        conj1perc = (conj1Tally>0) ? conj1*100/conj1Tally : 0;
+        conj2perc = (conj2Tally>0) ? conj2*100/conj2Tally : 0;
+        conj3perc = (conj3Tally>0) ? conj3*100/conj3Tally : 0;
+        conj4perc = (conj4Tally>0) ? conj4*100/conj4Tally : 0;
 
         presentPerc = (presentTally>0) ? present*100/presentTally : 0;
         imperfectPerc = (imperfectTally>0) ? imperfect*100/imperfectTally : 0;

@@ -684,7 +684,7 @@ public class NounEtcGameImpl implements NounEtcGame {
                 total++;  //  total Correct
 
             switch (nounEtc.getType()) {
-                case NOUN:
+                case NOUN_REGULAR:
                     if(ans.correct == 1)
                         noun++;
                     nounTally++;
@@ -759,8 +759,8 @@ public class NounEtcGameImpl implements NounEtcGame {
                     break;
                 default:
                     if(ans.correct == 1)
-                        decl3++;  // For Alternatives of the Conj 3rd
-                    decl3Tally++;
+                        decl4++;  // For 4th and 5th
+                    decl4Tally++;
                     break;
             }
 
@@ -812,10 +812,10 @@ public class NounEtcGameImpl implements NounEtcGame {
         adverbComparativePerc = (adverbComparativeTally>0) ? adverbComparative*100/adverbComparativeTally : 0;
         adverbSuperlativePerc = (adverbSuperlativeTally>0) ? adverbSuperlative*100/adverbSuperlative : 0;
 
-        decl1perc = (decl1Tally>0) ? decl1/decl1Tally*100 : 0;
-        decl2perc = (decl2Tally>0) ? decl2/decl2Tally*100 : 0;
-        decl3perc = (decl3Tally>0) ? decl3/decl3Tally*100 : 0;
-        decl4perc = (decl4Tally>0) ? decl4/decl4Tally*100 : 0;
+        decl1perc = (decl1Tally>0) ? decl1*100/decl1Tally : 0;
+        decl2perc = (decl2Tally>0) ? decl2*100/decl2Tally : 0;
+        decl3perc = (decl3Tally>0) ? decl3*100/decl3Tally : 0;
+        decl4perc = (decl4Tally>0) ? decl4*100/decl4Tally : 0;
 
         nominativePerc = (nominativeTally>0) ? nominative*100/nominativeTally : 0;
         accusativePerc = (accusativeTally>0) ? accusative*100/accusativeTally : 0;

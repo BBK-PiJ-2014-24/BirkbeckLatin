@@ -21,12 +21,14 @@ public class AdverbComparative extends Adverb {
         super(id);
         mType = ADVERB_COMPARATIVE;
         mEnglishWord = mEnglishAdverbComparative;
+        mNounCase = "";
     }
 
     public AdverbComparative(int id, DatabaseAccess databaseAccess){
         super(id, databaseAccess);
         mType = ADVERB_COMPARATIVE;
         mEnglishWord = mEnglishAdverbComparative;
+        mNounCase = "";
     }
 
     // GETTER/SETTERS
@@ -40,7 +42,6 @@ public class AdverbComparative extends Adverb {
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case, String gender) {
 
         mGender = gender;  // Set Gender
-        mNounCase = noun_Case;
         mType = ADVERB_COMPARATIVE;
 
         if(mLatinAdverbStem != null) {

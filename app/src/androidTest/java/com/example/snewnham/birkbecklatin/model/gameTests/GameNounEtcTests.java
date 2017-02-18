@@ -570,43 +570,43 @@ public class GameNounEtcTests {
         NounEtc noun1 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 1, numberSingular, NOMINATIVE, GENDER_MALE);
         Answer ans1 = new Answer( noun1.getType(), noun1.getId(), 0, 1, noun1);
 
-        NounEtc noun2 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 2, numberSingular, NOMINATIVE, GENDER_MALE);
+        NounEtc noun2 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 2, numberSingular, ACCUSATIVE, GENDER_MALE);
         Answer ans2 = new Answer( noun2.getType(), noun2.getId(), 1, 1, noun2);
 
-        NounEtc noun3 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 3, numberSingular, NOMINATIVE, GENDER_MALE);
+        NounEtc noun3 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 3, numberSingular, GENITIVE, GENDER_MALE);
         Answer ans3 = new Answer( noun3.getType(), noun3.getId(), 0, 1, noun3);
 
-        NounEtc noun4 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 4, numberSingular, NOMINATIVE, GENDER_MALE);
+        NounEtc noun4 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 4, numberSingular, DATIVE, GENDER_MALE);
         Answer ans4 = new Answer( noun4.getType(), noun4.getId(), 1, 1, noun4);
 
-        NounEtc noun5 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 5, numberSingular, NOMINATIVE, GENDER_MALE);
+        NounEtc noun5 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 5, numberSingular, ABLATIVE, GENDER_MALE);
         Answer ans5 = new Answer( noun5.getType(), noun5.getId(), 0, 1, noun5);
 
-        NounEtc noun6 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 6, numberSingular, NOMINATIVE, GENDER_MALE);
+        NounEtc noun6 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 6, numberSingular, VOCATIVE, GENDER_MALE);
         Answer ans6 = new Answer( noun6.getType(), noun6.getId(), 1, 1, noun6);
 
-        NounEtc noun7 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 7, numberSingular, NOMINATIVE, GENDER_MALE);
+        NounEtc noun7 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 7, numberSingular, ACCUSATIVE, GENDER_MALE);
         Answer ans7 = new Answer( noun7.getType(), noun7.getId(), 0, 1, noun7);
 
-        NounEtc noun8 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 8, numberSingular, NOMINATIVE, GENDER_MALE);
+        NounEtc noun8 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 8, numberSingular, GENITIVE, GENDER_MALE);
         Answer ans8 = new Answer( noun8.getType(), noun8.getId(), 1, 1, noun8);
 
-        NounEtc noun9 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 9, numberSingular, NOMINATIVE, GENDER_MALE);
+        NounEtc noun9 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 9, numberSingular, DATIVE, GENDER_MALE);
         Answer ans9 = new Answer( noun9.getType(), noun9.getId(), 0, 1, noun9);
 
-        NounEtc noun10 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 10, numberSingular, NOMINATIVE, GENDER_MALE);
+        NounEtc noun10 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 10, numberSingular, ABLATIVE, GENDER_MALE);
         Answer ans10 = new Answer( noun10.getType(), noun10.getId(), 1, 1, noun10);
 
         NounEtc noun11 = nounGame1.makeGameNounEtc(ADJECTIVE, 1, numberSingular, NOMINATIVE, GENDER_MALE);
         Answer ans11 = new Answer( noun11.getType(), noun11.getId(), 1, 1, noun11);
 
-        NounEtc noun12 = nounGame1.makeGameNounEtc(ADJECTIVE, 2, numberSingular, NOMINATIVE, GENDER_MALE);
+        NounEtc noun12 = nounGame1.makeGameNounEtc(ADJECTIVE, 2, numberSingular, ACCUSATIVE, GENDER_MALE);
         Answer ans12 = new Answer( noun12.getType(), noun12.getId(), 0, 1, noun12);
 
-        NounEtc noun13 = nounGame1.makeGameNounEtc(ADJECTIVE_SUPERLATIVE, 1, numberSingular, NOMINATIVE, GENDER_MALE);
+        NounEtc noun13 = nounGame1.makeGameNounEtc(ADJECTIVE_COMPARATIVE, 1, numberSingular, ABLATIVE, GENDER_MALE);
         Answer ans13 = new Answer( noun13.getType(), noun13.getId(), 1, 1, noun13);
 
-        NounEtc noun14 = nounGame1.makeGameNounEtc(ADJECTIVE_SUPERLATIVE, 1, numberSingular, NOMINATIVE, GENDER_MALE);
+        NounEtc noun14 = nounGame1.makeGameNounEtc(ADJECTIVE_SUPERLATIVE, 1, numberSingular, GENITIVE, GENDER_MALE);
         Answer ans14 = new Answer( noun14.getType(), noun14.getId(), 0, 1, noun14);
 
         NounEtc noun15 = nounGame1.makeGameNounEtc(PREPOSITION, 1, numberSingular, NOMINATIVE, GENDER_MALE);
@@ -652,26 +652,26 @@ public class GameNounEtcTests {
         Map<String, Integer> map = nounGame5.calcStatistics(ansList);
 
         assertEquals((int)map.get(NOUN), 50);
-        assertEquals((int)map.get(PREPOSITION), 50);
-        assertEquals((int)map.get(CONJUNCTION), 50);
-        assertEquals((int)map.get(ADJECTIVE), 50);
-        assertEquals((int)map.get(ADJECTIVE_COMPARATIVE), 50);
-        assertEquals((int)map.get(ADJECTIVE_SUPERLATIVE), 50);
-        assertEquals((int)map.get(ADVERB), 50);
-        assertEquals((int)map.get(ADVERB_COMPARATIVE), 50);
-        assertEquals((int)map.get(ADVERB_SUPERLATIVE), 50);
+        assertEquals((int)map.get(PREPOSITION), 100 );
+        assertEquals((int)map.get(CONJUNCTION), 0 );
+        assertEquals((int)map.get(ADJECTIVE), 50 );
+        assertEquals((int)map.get(ADJECTIVE_COMPARATIVE), 100 );
+        assertEquals((int)map.get(ADJECTIVE_SUPERLATIVE), 0 );
+        assertEquals((int)map.get(ADVERB), 100 );
+        assertEquals((int)map.get(ADVERB_COMPARATIVE), 50 );
+        assertEquals((int)map.get(ADVERB_SUPERLATIVE), 0 );
 
-        assertEquals((int)map.get(DECLNUM1), 50);
-        assertEquals((int)map.get(DECLNUM2), 50);
-        assertEquals((int)map.get(DECLNUM3), 50);
-        assertEquals((int)map.get(DECLNUM4), 50);
+        assertEquals((int)map.get(DECLNUM1), 100 );
+        assertEquals((int)map.get(DECLNUM2), 33 );
+        assertEquals((int)map.get(DECLNUM3), 50 );
+        assertEquals((int)map.get(DECLNUM4), 50 );
 
-        assertEquals((int)map.get(NOMINATIVE), 50);
-        assertEquals((int)map.get(ACCUSATIVE), 50);
-        assertEquals((int)map.get(GENITIVE), 50);
-        assertEquals((int)map.get(DATIVE), 50);
-        assertEquals((int)map.get(ABLATIVE), 50);
-        assertEquals((int)map.get(VOCATIVE), 50);
+        assertEquals((int)map.get(NOMINATIVE), 50 );
+        assertEquals((int)map.get(ACCUSATIVE), 33 );
+        assertEquals((int)map.get(GENITIVE), 33 );
+        assertEquals((int)map.get(DATIVE), 50 );
+        assertEquals((int)map.get(ABLATIVE), 66 );
+        assertEquals((int)map.get(VOCATIVE), 100 );
 
     }
 
