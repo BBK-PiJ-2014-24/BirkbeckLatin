@@ -87,6 +87,7 @@ public class LatinNoun_InstrumentTests_Adverb {
 
         assertEquals("laet", adverb.getLatinWordStem());
         assertEquals("laete", adverb.getLatinWord());
+        assertEquals("", adverb.getCase());
     }
 
 

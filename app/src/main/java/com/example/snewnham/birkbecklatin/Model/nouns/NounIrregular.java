@@ -37,6 +37,7 @@ public class NounIrregular extends NounRegular {
         mGender = gender;  // Set Gender
         mLatin_Noun_Stem = null;
         mLatin_Noun_Ending = null;
+        mNounCase = noun_Case;
 
         String nounColumnName = mNominative.substring(0,1).toUpperCase()+mNominative.substring(1); // Convert to Upper Case
         mLatinNoun = databaseAccess.sqlNounIrregularQuery(nounColumnName, number, noun_Case, mGender);

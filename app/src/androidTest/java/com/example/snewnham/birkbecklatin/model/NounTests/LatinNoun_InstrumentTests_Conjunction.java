@@ -81,6 +81,7 @@ public class LatinNoun_InstrumentTests_Conjunction {
         assertEquals(null, conjunction.getLatinWordStem());
         assertEquals(null, conjunction.getLatinWordEnding());
         assertEquals("tamen", conjunction.getLatinWord());
+        assertEquals("", conjunction.getCase());
     }
 
     /**

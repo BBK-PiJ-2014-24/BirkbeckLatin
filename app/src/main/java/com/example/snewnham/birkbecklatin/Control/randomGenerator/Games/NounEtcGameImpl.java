@@ -82,8 +82,6 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final static String ADVERB_COMPARATIVE_HIST_PERC = "AdverbComparative_Hist%";
     private final static String ADVERB_SUPERLATIVE_HIST_PERC = "AdverbSuperlative_Hist%";
 
-
-
     private final static int DECLENSION3 = 3;
 
     private final static String DECLNUM1 = "decl1";
@@ -798,7 +796,6 @@ public class NounEtcGameImpl implements NounEtcGame {
                     vocativeTally++;
                     break;
             }
-
         }
 
 
@@ -874,20 +871,20 @@ public class NounEtcGameImpl implements NounEtcGame {
         adjectivePercHist = calcHistoryStatistics(ADJECTIVE_SCORE, ADJECTIVE_TALLY, adjective, adjectiveTally);
         mapStatistics.put(ADJECTIVE_HIST_PERC, adjectivePercHist);
 
-        adjectiveComparativePerc = calcHistoryStatistics(ADJECTIVE_COMPARATIVE_SCORE, ADJECTIVE_COMPARATIVE_TALLY, adjectiveComparative, adjectiveComparativeTally);
-        mapStatistics.put(ADJECTIVE_COMPARATIVE_HIST_PERC, adjectiveComparativePerc);
+        adjectiveComparativePercHist = calcHistoryStatistics(ADJECTIVE_COMPARATIVE_SCORE, ADJECTIVE_COMPARATIVE_TALLY, adjectiveComparative, adjectiveComparativeTally);
+        mapStatistics.put(ADJECTIVE_COMPARATIVE_HIST_PERC, adjectiveComparativePercHist);
 
-        adjectiveSuperlativePerc = calcHistoryStatistics(ADJECTIVE_SUPERLATIVE_SCORE, ADJECTIVE_SUPERLATIVE_TALLY, adjectiveSuperlative, adjectiveSuperlativeTally);
-        mapStatistics.put(ADJECTIVE_SUPERLATIVE_HIST_PERC, adjectiveSuperlativePerc);
+        adjectiveSuperlativePercHist = calcHistoryStatistics(ADJECTIVE_SUPERLATIVE_SCORE, ADJECTIVE_SUPERLATIVE_TALLY, adjectiveSuperlative, adjectiveSuperlativeTally);
+        mapStatistics.put(ADJECTIVE_SUPERLATIVE_HIST_PERC, adjectiveSuperlativePercHist);
 
         adverbPercHist = calcHistoryStatistics(ADVERB_SCORE, ADVERB_TALLY, adverb, adverbTally);
         mapStatistics.put(ADVERB_HIST_PERC, adverbPercHist);
 
-        adverbComparativePerc = calcHistoryStatistics(ADVERB_COMPARATIVE_SCORE, ADVERB_COMPARATIVE_TALLY, adverbComparative, adverbComparativeTally);
-        mapStatistics.put(ADVERB_COMPARATIVE_HIST_PERC, adverbComparativePerc);
+        adverbComparativePercHist = calcHistoryStatistics(ADVERB_COMPARATIVE_SCORE, ADVERB_COMPARATIVE_TALLY, adverbComparative, adverbComparativeTally);
+        mapStatistics.put(ADVERB_COMPARATIVE_HIST_PERC, adverbComparativePercHist);
 
-        adverbSuperlativePerc = calcHistoryStatistics(ADVERB_SUPERLATIVE_SCORE, ADVERB_SUPERLATIVE_TALLY, adverbSuperlative, adverbSuperlativeTally);
-        mapStatistics.put(ADVERB_COMPARATIVE_HIST_PERC, adverbSuperlativePerc);
+        adverbSuperlativePercHist = calcHistoryStatistics(ADVERB_SUPERLATIVE_SCORE, ADVERB_SUPERLATIVE_TALLY, adverbSuperlative, adverbSuperlativeTally);
+        mapStatistics.put(ADVERB_COMPARATIVE_HIST_PERC, adverbSuperlativePercHist);
 
         decl1percHist = calcHistoryStatistics(DECLNUM1_SCORE, DECL1_TALLY, decl1, decl1Tally);
         mapStatistics.put(DECLNUM1_HIST_PERC, decl1percHist);

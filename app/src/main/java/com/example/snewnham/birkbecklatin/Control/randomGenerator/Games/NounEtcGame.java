@@ -4,6 +4,7 @@ import com.example.snewnham.birkbecklatin.Model.nouns.Answer;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by snewnham on 20/01/2017.
@@ -112,6 +113,18 @@ public interface NounEtcGame {
      *
      */
     void endGame();
+
+
+    /**
+     * calcStatistics()
+     * ----------------
+     * Test calcStatistics() so that it can correctly supply all statistics
+     * both latest Quiz and Running Total;
+     *
+     * @param ansList - List of Answers
+     * @return Map of Statistics
+     */
+    Map<String, Integer> calcStatistics(List<Answer> ansList);
 
     // GETTER/SETTERS
     // --------------

@@ -33,14 +33,14 @@ public class Preposition implements NounEtc {
         mId = id;
         mDatabaseAccess = null;
         mType = PREPOSITION;
-        mNounCase = NOMINATIVE;
+        mNounCase = "";
     }
 
     public Preposition(int id, DatabaseAccess databaseAccess){
         mId = id;
         mDatabaseAccess = databaseAccess;
         mType = PREPOSITION;
-        mNounCase = NOMINATIVE;
+        mNounCase = "";
     }
 
 

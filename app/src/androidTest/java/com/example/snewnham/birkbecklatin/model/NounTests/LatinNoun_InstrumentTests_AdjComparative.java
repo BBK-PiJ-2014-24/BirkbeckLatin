@@ -139,6 +139,7 @@ public class LatinNoun_InstrumentTests_AdjComparative {
         assertEquals("longior", adjectiveComparative.getLatinWordStem());
         assertEquals("em", adjectiveComparative.getLatinWordEnding());
         assertEquals("longiorem", adjectiveComparative.getLatinWord());
+        assertEquals(caseAccusative, adjectiveComparative.getCase());
 
         adjectiveComparative.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 

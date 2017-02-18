@@ -135,6 +135,8 @@ public class LatinNoun_InstrumentTests_1st_Fem_Declension {
         assertEquals("puell", mNounRegular.getLatinWordStem());
         assertEquals("a", mNounRegular.getLatinWordEnding());
         assertEquals("puella", mNounRegular.getLatinWord());
+        assertEquals(caseNominative, mNounRegular.getCase());
+
 
         mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 

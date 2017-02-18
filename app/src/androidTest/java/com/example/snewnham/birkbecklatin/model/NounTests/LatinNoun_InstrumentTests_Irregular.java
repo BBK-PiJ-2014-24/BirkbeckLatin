@@ -135,6 +135,7 @@ public class LatinNoun_InstrumentTests_Irregular {
         assertEquals(null, nounIrregular.getLatinWordStem());
         assertEquals(null, nounIrregular.getLatinWordEnding());
         assertEquals("hic", nounIrregular.getLatinWord());
+        assertEquals(caseNominative, nounIrregular.getCase());
 
         nounIrregular.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 

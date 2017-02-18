@@ -87,6 +87,7 @@ public class LatinNoun_InstrumentTests_Preposition {
         assertEquals(null, preposition.getLatinWordStem());
         assertEquals(null, preposition.getLatinWordEnding());
         assertEquals("circum", preposition.getLatinWord());
+        assertEquals("", preposition.getCase());
 
     }
 

@@ -140,12 +140,15 @@ public class LatinNoun_InstrumentTests_AdjSuperlative {
         assertEquals("longissim", adjectiveSuperlative.getLatinWordStem());
         assertEquals( "us", adjectiveSuperlative.getLatinWordEnding());
         assertEquals("longissimus", adjectiveSuperlative.getLatinWord());
+        assertEquals(caseNominative, adjectiveSuperlative.getCase());
+
 
         adjectiveSuperlative.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 
         assertEquals("longissim", adjectiveSuperlative.getLatinWordStem());
         assertEquals("um", adjectiveSuperlative.getLatinWordEnding());
         assertEquals("longissimum", adjectiveSuperlative.getLatinWord());
+        assertEquals(caseAccusative, adjectiveSuperlative.getCase());
 
         adjectiveSuperlative.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 

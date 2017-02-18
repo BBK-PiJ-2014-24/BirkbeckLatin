@@ -54,7 +54,7 @@ public class Adverb implements NounEtc {
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case, String gender) {
         mGender = gender;  // Set Gender
-        mNounCase = noun_Case; // Set noun case
+        mNounCase = ""; // Set noun case
         mLatinWord = mLatinAdverb;
         return mLatinWord;
     }

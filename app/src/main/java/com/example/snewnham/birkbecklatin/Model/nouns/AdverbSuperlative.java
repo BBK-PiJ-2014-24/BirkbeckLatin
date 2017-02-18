@@ -20,12 +20,14 @@ public class AdverbSuperlative extends Adverb {
         super(id);
         mType = ADVERB_SUPERLATIVE;
         mEnglishWord = mEnglishAdverbSuperlative;
+        mNounCase = "";
     }
 
     public AdverbSuperlative(int id, DatabaseAccess databaseAccess){
         super(id, databaseAccess);
         mType = ADVERB_SUPERLATIVE;
         mEnglishWord = mEnglishAdverbSuperlative;
+        mNounCase = "";
     }
 
     // GETTER/SETTERS

@@ -129,12 +129,16 @@ public class LatinNoun_InstrumentTests_Adjective212 {
         assertEquals("bon", adjective.getLatinWordStem());
         assertEquals("us", adjective.getLatinWordEnding());
         assertEquals("bonus", adjective.getLatinWord());
+        assertEquals(caseNominative, adjective.getCase());
+
 
         adjective.makeLatinWord(databaseAccess, numberSingular, caseAccusative);
 
         assertEquals("bon", adjective.getLatinWordStem());
         assertEquals("um", adjective.getLatinWordEnding());
         assertEquals("bonum", adjective.getLatinWord());
+        assertEquals(caseAccusative, adjective.getCase());
+
 
         adjective.makeLatinWord(databaseAccess, numberSingular, caseGenitive);
 

@@ -29,14 +29,14 @@ public class Conjunction implements NounEtc {
     public Conjunction(int id){
         mId = id;
         mType = CONJUNCTION;
-        mNounCase = NOMINATIVE;
+        mNounCase = "";
     }
 
     public Conjunction(int id, DatabaseAccess databaseAccess){
         mId = id;
         mDatabaseAccess = databaseAccess;
         mType = CONJUNCTION;
-        mNounCase = NOMINATIVE;
+        mNounCase = "";
     }
 
 

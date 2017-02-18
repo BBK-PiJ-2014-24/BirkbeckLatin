@@ -93,6 +93,7 @@ public class LatinNoun_InstrumentTests_AdverbComparative {
         assertEquals("laet", adverbComparative.getLatinWordStem());
         assertEquals("ius", adverbComparative.getLatinWordEnding());
         assertEquals("laetius", adverbComparative.getLatinWord());
+        assertEquals("", adverbComparative.getCase());
 
     }
 

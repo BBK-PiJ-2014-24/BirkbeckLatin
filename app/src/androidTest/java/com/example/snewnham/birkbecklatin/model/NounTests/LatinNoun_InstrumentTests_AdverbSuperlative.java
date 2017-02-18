@@ -93,6 +93,7 @@ public class LatinNoun_InstrumentTests_AdverbSuperlative {
         assertEquals("laet", adverbSuperlative.getLatinWordStem());
         assertEquals("issime", adverbSuperlative.getLatinWordEnding());
         assertEquals("laetissime", adverbSuperlative.getLatinWord());
+        assertEquals("", adverbSuperlative.getCase());
     }
 
 

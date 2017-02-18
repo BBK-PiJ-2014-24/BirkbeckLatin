@@ -9,6 +9,7 @@ import com.example.snewnham.birkbecklatin.Control.randomGenerator.Games.NounEtcG
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
+import com.example.snewnham.birkbecklatin.Model.nouns.Answer;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 
 import org.junit.After;
@@ -18,6 +19,7 @@ import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -61,6 +63,7 @@ public class GameNounEtcTests {
     int skillLevel5;
 
 
+    private final static String NOUN = "Noun";
     private final static String NOUN_REGULAR = "NounRegular";
     private final static String NOUN_IRREGULAR = "NounIrregular";
     private final static String PREPOSITION = "Preposition";
@@ -72,11 +75,17 @@ public class GameNounEtcTests {
     private final static String ADVERB_COMPARATIVE = "AdverbComparative";
     private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
+    private final static String DECLNUM1 = "decl1";
+    private final static String DECLNUM2 = "decl2";
+    private final static String DECLNUM3 = "decl3";
+    private final static String DECLNUM4 = "decl4";
+
     private final static String NOMINATIVE = "Nominative";
     private final static String ACCUSATIVE = "Accusative";
     private final static String DATIVE = "Dative";
     private final static String GENITIVE = "Genitive";
     private final static String ABLATIVE = "Ablative";
+    private final static String VOCATIVE = "Vocative";
 
     private final static String GENDER_MALE = "m";
 
@@ -443,8 +452,8 @@ public class GameNounEtcTests {
         int testAns = nounGame5.storeAnswer(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE, ans);
         assertEquals(ans, testAns);
 
-        List<NounEtcGameImpl.Answer> list = nounGame5.getAnswerList();
-        NounEtcGameImpl.Answer answer = list.get(0);
+        List<Answer> list = nounGame5.getAnswerList();
+        Answer answer = list.get(0);
 
 
         assertEquals("Answer.TABLE", ADJECTIVE_COMPARATIVE, answer.type);
@@ -462,28 +471,28 @@ public class GameNounEtcTests {
     @Test
     public void testUpdateSkillLevel(){
 
-        List<NounEtcGameImpl.Answer> answerList = new ArrayList<>();
+        List<Answer> answerList = new ArrayList<>();
 
-        NounEtcGameImpl.Answer ans1 = nounGameSkill.new Answer(NOUN_REGULAR, 1,1,1);
-        NounEtcGameImpl.Answer ans2 = nounGameSkill.new Answer(NOUN_REGULAR, 2,1,1);
-        NounEtcGameImpl.Answer ans3 = nounGameSkill.new Answer(NOUN_REGULAR, 3,1,1);
-        NounEtcGameImpl.Answer ans4 = nounGameSkill.new Answer(NOUN_REGULAR, 4,1,1);
-        NounEtcGameImpl.Answer ans5 = nounGameSkill.new Answer(NOUN_REGULAR, 5,1,1);
-        NounEtcGameImpl.Answer ans6 = nounGameSkill.new Answer(NOUN_REGULAR, 6,1,1);
-        NounEtcGameImpl.Answer ans7 = nounGameSkill.new Answer(NOUN_REGULAR, 7,1,1);
-        NounEtcGameImpl.Answer ans8 = nounGameSkill.new Answer(NOUN_REGULAR, 8,1,1);
-        NounEtcGameImpl.Answer ans9 = nounGameSkill.new Answer(NOUN_REGULAR, 9,1,1);
-        NounEtcGameImpl.Answer ans10 = nounGameSkill.new Answer(NOUN_REGULAR, 10,1,1);
-        NounEtcGameImpl.Answer ans11 = nounGameSkill.new Answer(NOUN_REGULAR, 11,1,1);
-        NounEtcGameImpl.Answer ans12 = nounGameSkill.new Answer(NOUN_REGULAR, 12,1,1);
-        NounEtcGameImpl.Answer ans13 = nounGameSkill.new Answer(ADJECTIVE, 1,1,1);
-        NounEtcGameImpl.Answer ans14 = nounGameSkill.new Answer(ADJECTIVE, 2,1,1);
-        NounEtcGameImpl.Answer ans15 = nounGameSkill.new Answer(ADJECTIVE, 3,1,1);
-        NounEtcGameImpl.Answer ans16 = nounGameSkill.new Answer(ADJECTIVE, 4,1,1);
-        NounEtcGameImpl.Answer ans17 = nounGameSkill.new Answer(ADJECTIVE, 5,1,1);
-        NounEtcGameImpl.Answer ans18 = nounGameSkill.new Answer(CONJUNCTION, 1,1,1);
-        NounEtcGameImpl.Answer ans19 = nounGameSkill.new Answer(CONJUNCTION, 2,1,1);
-        NounEtcGameImpl.Answer ans20 = nounGameSkill.new Answer(CONJUNCTION, 3,1,1);
+        Answer ans1 = new Answer(NOUN_REGULAR, 1,1,1);
+        Answer ans2 = new Answer(NOUN_REGULAR, 2,1,1);
+        Answer ans3 = new Answer(NOUN_REGULAR, 3,1,1);
+        Answer ans4 = new Answer(NOUN_REGULAR, 4,1,1);
+        Answer ans5 = new Answer(NOUN_REGULAR, 5,1,1);
+        Answer ans6 = new Answer(NOUN_REGULAR, 6,1,1);
+        Answer ans7 = new Answer(NOUN_REGULAR, 7,1,1);
+        Answer ans8 = new Answer(NOUN_REGULAR, 8,1,1);
+        Answer ans9 = new Answer(NOUN_REGULAR, 9,1,1);
+        Answer ans10 = new Answer(NOUN_REGULAR, 10,1,1);
+        Answer ans11 = new Answer(NOUN_REGULAR, 11,1,1);
+        Answer ans12 = new Answer(NOUN_REGULAR, 12,1,1);
+        Answer ans13 = new Answer(ADJECTIVE, 1,1,1);
+        Answer ans14 = new Answer(ADJECTIVE, 2,1,1);
+        Answer ans15 = new Answer(ADJECTIVE, 3,1,1);
+        Answer ans16 = new Answer(ADJECTIVE, 4,1,1);
+        Answer ans17 = new Answer(ADJECTIVE, 5,1,1);
+        Answer ans18 = new Answer(CONJUNCTION, 1,1,1);
+        Answer ans19 = new Answer(CONJUNCTION, 2,1,1);
+        Answer ans20 = new Answer(CONJUNCTION, 3,1,1);
 
         answerList.add(ans1);
         answerList.add(ans2);
@@ -511,7 +520,7 @@ public class GameNounEtcTests {
         assertEquals(5, newSkillLevel);
 
         // ALL WRONG -> SKillLevel Down!
-        for(NounEtcGameImpl.Answer ans : answerList){  // Change to All Wrong Marks
+        for(Answer ans : answerList){  // Change to All Wrong Marks
             ans.correct = 0;
         }
         newSkillLevel = nounGameSkill.updateSkillLevel(answerList);
@@ -520,7 +529,7 @@ public class GameNounEtcTests {
         int x=5;
         // 75% Correct
         for(int i=0; i<15; i++){
-            NounEtcGameImpl.Answer ans = answerList.get(i);
+            Answer ans = answerList.get(i);
             ans.correct = 1;
         }
         newSkillLevel = nounGameSkill.updateSkillLevel(answerList);
@@ -544,14 +553,136 @@ public class GameNounEtcTests {
 
     }
 
-
     /**
-     * testRunNounGame()
-     * -----------------
-     * Tests Multiple Runs of runNounGame
-     *
+     * testCalcStatistics()
+     * --------------------
+     * Test calcStatistics() so that it can correctly supply all statistics
+     * both latest Quiz and Running Total;
      * @throws Exception
      */
+    @Test
+    public void testCalcStatistics() throws Exception {
+
+        databaseAccess.sqlMeta_Reset(); // RESET
+
+        List<Answer> ansList = new ArrayList<>();
+
+        NounEtc noun1 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 1, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans1 = new Answer( noun1.getType(), noun1.getId(), 0, 1, noun1);
+
+        NounEtc noun2 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 2, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans2 = new Answer( noun2.getType(), noun2.getId(), 1, 1, noun2);
+
+        NounEtc noun3 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 3, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans3 = new Answer( noun3.getType(), noun3.getId(), 0, 1, noun3);
+
+        NounEtc noun4 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 4, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans4 = new Answer( noun4.getType(), noun4.getId(), 1, 1, noun4);
+
+        NounEtc noun5 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 5, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans5 = new Answer( noun5.getType(), noun5.getId(), 0, 1, noun5);
+
+        NounEtc noun6 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 6, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans6 = new Answer( noun6.getType(), noun6.getId(), 1, 1, noun6);
+
+        NounEtc noun7 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 7, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans7 = new Answer( noun7.getType(), noun7.getId(), 0, 1, noun7);
+
+        NounEtc noun8 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 8, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans8 = new Answer( noun8.getType(), noun8.getId(), 1, 1, noun8);
+
+        NounEtc noun9 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 9, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans9 = new Answer( noun9.getType(), noun9.getId(), 0, 1, noun9);
+
+        NounEtc noun10 = nounGame1.makeGameNounEtc(NOUN_REGULAR, 10, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans10 = new Answer( noun10.getType(), noun10.getId(), 1, 1, noun10);
+
+        NounEtc noun11 = nounGame1.makeGameNounEtc(ADJECTIVE, 1, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans11 = new Answer( noun11.getType(), noun11.getId(), 1, 1, noun11);
+
+        NounEtc noun12 = nounGame1.makeGameNounEtc(ADJECTIVE, 2, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans12 = new Answer( noun12.getType(), noun12.getId(), 0, 1, noun12);
+
+        NounEtc noun13 = nounGame1.makeGameNounEtc(ADJECTIVE_SUPERLATIVE, 1, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans13 = new Answer( noun13.getType(), noun13.getId(), 1, 1, noun13);
+
+        NounEtc noun14 = nounGame1.makeGameNounEtc(ADJECTIVE_SUPERLATIVE, 1, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans14 = new Answer( noun14.getType(), noun14.getId(), 0, 1, noun14);
+
+        NounEtc noun15 = nounGame1.makeGameNounEtc(PREPOSITION, 1, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans15 = new Answer( noun15.getType(), noun15.getId(), 1, 1, noun15);
+
+        NounEtc noun16 = nounGame1.makeGameNounEtc(CONJUNCTION, 1, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans16 = new Answer( noun16.getType(), noun16.getId(), 0, 1, noun16);
+
+        NounEtc noun17 = nounGame1.makeGameNounEtc(ADVERB, 1, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans17 = new Answer( noun17.getType(), noun17.getId(), 1, 1, noun17);
+
+        NounEtc noun18 = nounGame1.makeGameNounEtc(ADVERB_SUPERLATIVE, 1, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans18 = new Answer( noun18.getType(), noun18.getId(), 0, 1, noun18);
+
+        NounEtc noun19 = nounGame1.makeGameNounEtc(ADVERB_COMPARATIVE, 1, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans19 = new Answer( noun19.getType(), noun19.getId(), 1, 1, noun19);
+
+        NounEtc noun20 = nounGame1.makeGameNounEtc(ADVERB_COMPARATIVE, 1, numberSingular, NOMINATIVE, GENDER_MALE);
+        Answer ans20 = new Answer( noun20.getType(), noun20.getId(), 0, 1, noun20);
+
+
+        ansList.add(ans1);
+        ansList.add(ans2);
+        ansList.add(ans3);
+        ansList.add(ans4);
+        ansList.add(ans5);
+        ansList.add(ans6);
+        ansList.add(ans7);
+        ansList.add(ans8);
+        ansList.add(ans9);
+        ansList.add(ans10);
+        ansList.add(ans11);
+        ansList.add(ans12);
+        ansList.add(ans13);
+        ansList.add(ans14);
+        ansList.add(ans15);
+        ansList.add(ans16);
+        ansList.add(ans17);
+        ansList.add(ans18);
+        ansList.add(ans19);
+        ansList.add(ans20);
+
+        Map<String, Integer> map = nounGame5.calcStatistics(ansList);
+
+        assertEquals((int)map.get(NOUN), 50);
+        assertEquals((int)map.get(PREPOSITION), 50);
+        assertEquals((int)map.get(CONJUNCTION), 50);
+        assertEquals((int)map.get(ADJECTIVE), 50);
+        assertEquals((int)map.get(ADJECTIVE_COMPARATIVE), 50);
+        assertEquals((int)map.get(ADJECTIVE_SUPERLATIVE), 50);
+        assertEquals((int)map.get(ADVERB), 50);
+        assertEquals((int)map.get(ADVERB_COMPARATIVE), 50);
+        assertEquals((int)map.get(ADVERB_SUPERLATIVE), 50);
+
+        assertEquals((int)map.get(DECLNUM1), 50);
+        assertEquals((int)map.get(DECLNUM2), 50);
+        assertEquals((int)map.get(DECLNUM3), 50);
+        assertEquals((int)map.get(DECLNUM4), 50);
+
+        assertEquals((int)map.get(NOMINATIVE), 50);
+        assertEquals((int)map.get(ACCUSATIVE), 50);
+        assertEquals((int)map.get(GENITIVE), 50);
+        assertEquals((int)map.get(DATIVE), 50);
+        assertEquals((int)map.get(ABLATIVE), 50);
+        assertEquals((int)map.get(VOCATIVE), 50);
+
+    }
+
+
+        /**
+         * testRunNounGame()
+         * -----------------
+         * Tests Multiple Runs of runNounGame
+         *
+         * @throws Exception
+         */
     @Test
     public void testRunNounGame() throws Exception{
 
