@@ -1,7 +1,9 @@
 package com.example.snewnham.birkbecklatin.view;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +21,7 @@ import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -28,7 +31,7 @@ public class NounGameFragment extends Fragment {
 
     // Fields
     // ------
-    private static final int NUM_QUIZ_QUESTIONS = 20;
+    private static final int NUM_QUIZ_QUESTIONS = 3;
     private static final int NUM_MULTIPLE_CHOICES = 6;
     private static final String COUNTER = "counter";
 
@@ -209,6 +212,20 @@ public class NounGameFragment extends Fragment {
         }
     }
 
+    /**
+     * moveToStatisticsActivity()
+     * --------------------------
+     * Collects the Map including statistics and opens NounStatisticsActivity with an
+     * intent. The map passed as an argument.
+     *
+     */
+    public void moveToStatisticsActivity(){
+        HashMap<String, Integer> map = (HashMap<String, Integer>) mNounEtcGame.getStatMap();
+        Activity activity = getActivity();
+        Intent intent = NounStatisticsActivity.newIntent(activity, map);
+        startActivity(intent);
+    }
+
 
     // ------------------------------ INNER CLASSES -------------------------------------------
 
@@ -252,14 +269,16 @@ public class NounGameFragment extends Fragment {
             if((Integer) buttonNext.getTag() == 1) {
                 int status = (Integer) mButtonList.get(0).getTag(); // Temp Neutralize Button Clicks
                 if (status == 1) {   // Check if Question Was Skipped -> MAKE AUTO ANSWER FAIL
-                    // TODO      mNounGame.storeAnswer(0);    // record the answer as incorrect
-                    makeAnswerToast(0); // Set up Toasts
+                    String table = mNounEtcGame.getTableName(mCorrectNounEtc.getType());
+                    mNounEtcGame.storeAnswer(table,0);    // record the answer as incorrect
+                   // makeAnswerToast(0); // Set up Toasts
                 }
 
                 if (mCounter >= NUM_QUIZ_QUESTIONS) {   // Check if end of the game
                     buttonNext.setTag(0);  // Deactivate NextButton after End of Game
-                    mNounEtcGame.endGame();   // Run The End of the Game Method
                     Toast.makeText(getContext(), R.string.game_over, Toast.LENGTH_SHORT).show();  // End Game Toast
+                    mNounEtcGame.endGame();   // Run The End of the Game Method
+                    moveToStatisticsActivity(); // Move to Statistics Activity Page
                 } else {
                     mCounter++;
                     displayTextQuestionNumber(); // update next question number

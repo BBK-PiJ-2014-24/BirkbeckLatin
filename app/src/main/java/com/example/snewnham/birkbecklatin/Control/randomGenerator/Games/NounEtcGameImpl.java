@@ -47,8 +47,6 @@ public class NounEtcGameImpl implements NounEtcGame {
 
 
     private final static String NOUN_SCORE = "NounScore";
-    private final static String NOUN_REGULAR_SCORE= "NounRegularScore";
-    private final static String NOUN_IRREGULAR_SCORE = "NounIrregularScore";
     private final static String PREPOSITION_SCORE = "PrepositionScore";
     private final static String CONJUNCTION_SCORE = "ConjunctionScore";
     private final static String ADJECTIVE_SCORE = "AdjectiveScore";
@@ -59,8 +57,6 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final static String ADVERB_SUPERLATIVE_SCORE = "AdverbSuperlativeScore";
 
     private final static String NOUN_TALLY = "NounTally";
-    private final static String NOUN_REGULAR_TALLY = "NounRegularTally";
-    private final static String NOUN_IRREGULAR_TALLY = "NounIrregularTally";
     private final static String PREPOSITION_TALLY = "PrepositionTally";
     private final static String CONJUNCTION_TALLY = "ConjunctionTally";
     private final static String ADJECTIVE_TALLY = "AdjectiveTally";
@@ -71,8 +67,7 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final static String ADVERB_SUPERLATIVE_TALLY = "AdverbSuperlativeTally";
 
     private final static String NOUN_HIST_PERC = "Noun_Hist%";
-    private final static String NOUN_REGULAR_HIST_PERC = "NounRegular_Hist%";
-    private final static String NOUN_IRREGULAR_HIST_PERC = "NounIrregular_Hist%";
+
     private final static String PREPOSITION_HIST_PERC = "Preposition_Hist%";
     private final static String CONJUNCTION_HIST_PERC = "Conjunction_Hist%";
     private final static String ADJECTIVE_HIST_PERC = "Adjective_Hist%";
@@ -156,6 +151,7 @@ public class NounEtcGameImpl implements NounEtcGame {
     private int mCorrectNounEtcIndex;
     private int mCorrectNounEtcDifficulty;
     private int mNumChoicesInQuestion;
+    private Map<String, Integer> mStatMap;
 
 
 
@@ -467,7 +463,7 @@ public class NounEtcGameImpl implements NounEtcGame {
 
         // Form Answer Object and Add to Lists
         mCorrectNounEtcDifficulty = determineQuestionDifficulty(); // determine Difficulty of Question
-        Answer answer = new Answer(mCorrectNounEtc.getType(), mCorrectNounEtc.getId(), ans, mCorrectNounEtcDifficulty);  // Set Answer Object
+        Answer answer = new Answer(mCorrectNounEtc.getType(), mCorrectNounEtc.getId(), ans, mCorrectNounEtcDifficulty, mCorrectNounEtc);  // Set Answer Object
         mAnswerList.add(answer); // Add to buffer mAsked List
 
         return answer.correct;  // Return if answer is correct/incorrect
@@ -515,17 +511,15 @@ public class NounEtcGameImpl implements NounEtcGame {
      * Run at the end of the game:
      * 1) updates the students IRT Theta and game skill level.
      * 2) Stores Theta and SkillLevel in the Meta Table.
-     *
+     * 3) Run CalcStatics()
      */
     @Override
     public void endGame(){
         updateSkillLevel(mAnswerList); // update the Skill Level after the Test
         mDatabaseAccess.sqlMeta_Insertion(NOUN_SKILL_LEVEL, mSkillLevel*1.0); // Add skill, Theta to meta table
         mDatabaseAccess.sqlMeta_Insertion(NOUN_THETA, mTheta);
-        mDatabaseAccess.close();
+        mStatMap = calcStatistics(mAnswerList);  // Calc Statistics
     }
-
-
 
 
 
@@ -557,10 +551,14 @@ public class NounEtcGameImpl implements NounEtcGame {
         return mAnswerList;
     }
 
-
     @Override
     public void setQuestionNumber(int questionNumber) {
         mQuestionNumber = questionNumber;
+    }
+
+    @Override
+    public Map<String, Integer> getStatMap() {
+        return mStatMap;
     }
 
 
@@ -572,6 +570,7 @@ public class NounEtcGameImpl implements NounEtcGame {
      * @param list - List of Answers from the Quiz
      * @return map storing statistics of Current Game and and of all games.
      */
+    @Override
     public Map<String, Integer> calcStatistics(List<Answer> list){
 
         int noun = 0;
@@ -845,14 +844,12 @@ public class NounEtcGameImpl implements NounEtcGame {
         mapStatistics.put( DECLNUM3, decl3perc );
         mapStatistics.put( DECLNUM4, decl4perc );
 
-
         mapStatistics.put( NOMINATIVE, nominativePerc );
         mapStatistics.put( ACUSTATIVE, accusativePerc );
         mapStatistics.put( GENITIVE, genitivePerc );
         mapStatistics.put( DATIVE, dativePerc );
         mapStatistics.put( ABLATIVE, ablativePerc );
         mapStatistics.put( VOCATIVE, vocativePerc );
-
 
         mapStatistics.put( TOTAL, totalPerc);
 
@@ -884,7 +881,7 @@ public class NounEtcGameImpl implements NounEtcGame {
         mapStatistics.put(ADVERB_COMPARATIVE_HIST_PERC, adverbComparativePercHist);
 
         adverbSuperlativePercHist = calcHistoryStatistics(ADVERB_SUPERLATIVE_SCORE, ADVERB_SUPERLATIVE_TALLY, adverbSuperlative, adverbSuperlativeTally);
-        mapStatistics.put(ADVERB_COMPARATIVE_HIST_PERC, adverbSuperlativePercHist);
+        mapStatistics.put(ADVERB_SUPERLATIVE_HIST_PERC, adverbSuperlativePercHist);
 
         decl1percHist = calcHistoryStatistics(DECLNUM1_SCORE, DECL1_TALLY, decl1, decl1Tally);
         mapStatistics.put(DECLNUM1_HIST_PERC, decl1percHist);

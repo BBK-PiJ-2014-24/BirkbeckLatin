@@ -141,5 +141,7 @@ public interface NounEtcGame {
 
     void setQuestionNumber(int questionNumber);
 
+    Map<String, Integer> getStatMap();
+
 
 }

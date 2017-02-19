@@ -70,8 +70,8 @@ public class NounStatisticsFragment extends Fragment {
     private final static String ABLATIVE_HIST_PERC = "Ablative_Hist%";
     private final static String VOCATIVE_HIST_PERC = "Vocative_Hist%";
 
-    private final static String TOTAL = "Total";  // Historical Score of ALL Correct Questions
-    private final static String TOTAL_HIST_PERC = "Total_Hist%";  // Key For statisticsMap
+    private final static String TOTAL = "NounTotal";  // Historical Score of ALL Correct Questions
+    private final static String TOTAL_HIST_PERC = "NounTotal_Hist%";  // Key For statisticsMap
 
     public final static String STATMAP = "statMap";
     public final static String PCT = " %";
