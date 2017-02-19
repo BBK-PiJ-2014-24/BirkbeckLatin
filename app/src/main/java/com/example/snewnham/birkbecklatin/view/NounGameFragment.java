@@ -134,7 +134,7 @@ public class NounGameFragment extends Fragment {
     }
 
     /**
-     * setUpQuestion()
+     * setUpQuestion() -
      * ---------------
      * Generates a Question List of 6 Nouns, selects a correctNoun, shuffles the order of the list.
      * Place the Question in the TextView; Set Latin Text on each Button.
