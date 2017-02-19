@@ -535,10 +535,10 @@
         android:layout_row="17"
         android:layout_column="0"
         android:textSize="15sp"
-        android:text="@string/Normative"/>
+        android:text="@string/Nominative"/>
 
     <TextView
-        android:id="@+id/normative"
+        android:id="@+id/nominative"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -551,7 +551,7 @@
 
 
     <TextView
-        android:id="@+id/normativeHist"
+        android:id="@+id/nominativeHist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -650,7 +650,7 @@
         android:hint="dat"/>
 
     <TextView
-        android:id="@+id/perfectHist"
+        android:id="@+id/dativeHist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"

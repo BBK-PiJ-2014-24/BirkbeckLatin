@@ -46,14 +46,12 @@
     <string name="Adverb"> - Adverb </string>
     <string name="Superlative"> - Superlative </string>
     <string name="Comparative"> - Comparative </string>
-    <string name="Normative"> - Normative </string>
+    <string name="Nominative"> - Nominative </string>
     <string name="Accusative"> - Accusative </string>
     <string name="Genitive"> - Genitive </string>
     <string name="Dative"> - Dative </string>
     <string name="Ablative"> - Ablative </string>
     <string name="Vocative"> - Vocative </string>
-
-
 
 
 </resources>

@@ -137,7 +137,7 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final static String TOTAL = "NounTotal";  // Historical Score of ALL Correct Questions
     private final static String TOTAL_SCORE = "NounTotalScore";  // Historical Score of ALL Correct Questions
     private final static String TOTAL_TALLY = "NounTotalTally";  // Tally of All Correct Questions Asked
-    private final static String TOTAL_HIST = "NounTotal_Hist%";  // Key For statisticsMap
+    private final static String TOTAL_HIST_PERC = "NounTotal_Hist%";  // Key For statisticsMap
 
     private final static int CORRECT = 1;
     private final static int INCORRECT = 0;
@@ -919,7 +919,7 @@ public class NounEtcGameImpl implements NounEtcGame {
 
 
         totalPercHist = calcHistoryStatistics(TOTAL_SCORE, TOTAL_TALLY, total, numQuizQuestions);
-        mapStatistics.put(TOTAL_HIST, totalPercHist);
+        mapStatistics.put(TOTAL_HIST_PERC, totalPercHist);
 
         return mapStatistics;
     }

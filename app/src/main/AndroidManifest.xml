@@ -23,6 +23,8 @@
         </activity>
         <activity android:name=".view.VerbStatisticsActivity">
         </activity>
+        <activity android:name=".view.NounStatisticsActivity">
+        </activity>
     </application>
 
 </manifest>
