@@ -28,24 +28,24 @@ public class VerbPagerActivity extends AppCompatActivity {
     private DatabaseAccess databaseAccess;
     private ViewPager mViewPager;
     private List<Verb> mVerbList;
-    private static final String EXTRA_CONJ_ID = "Conj_Number";
+    private static final String EXTRA_CONJ_NUM = "Conj_Number";
 
-    // STATIC call on the Intent
+    // STATIC call on the Intent (VerbPagerSelectionActivity -> VerbPagerActivity)
     // -------------------------
-    public static Intent newIntent(Context packageContext, int theVerbID){
+    public static Intent newIntent(Context packageContext, int verbConjNum){
         Intent intent = new Intent(packageContext, VerbPagerActivity.class);
-        intent.putExtra(EXTRA_CONJ_ID, theVerbID);
+        intent.putExtra(EXTRA_CONJ_NUM, verbConjNum);
         return intent;
     }
 
-
+    // OnCreate
+    // --------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verb_pager);
 
-        int verbConj =  (int) getIntent().getSerializableExtra(EXTRA_CONJ_ID);  // Pull the Extra from the Intent
-        // serializable from activity to Fragment
+        int verbConj =  (int) getIntent().getSerializableExtra(EXTRA_CONJ_NUM);  // Pull the Extra from the Intent
 
         mViewPager = (ViewPager) findViewById(R.id.activity_verb_pager); // wire View Pager to XML
         databaseAccess = DatabaseAccess.getInstance(this);
