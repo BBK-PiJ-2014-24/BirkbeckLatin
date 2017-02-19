@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -151,6 +152,8 @@ public class NounGameFragment extends Fragment {
             NounEtc noun = mQuestionList.get(i);
             String latinWord = noun.getLatinWord();
             mButtonList.get(i).setText(latinWord);    // Set Latin Text on each Button
+            mButtonList.get(i).setBackgroundColor(Color.GRAY);
+            mButtonList.get(i).setTextColor(Color.BLACK);
 
             if(i== mCorrectNounEtcIndex)
                 mButtonList.get(i).setOnClickListener(new NounGameFragment.ButtonCorrectClickListener());  // Wire onClicks to Buttons
@@ -239,7 +242,10 @@ public class NounGameFragment extends Fragment {
             if(status==1) {
                 String table = mNounEtcGame.getTableName(mCorrectNounEtc.getType());
                 mNounEtcGame.storeAnswer(table, 1); // record the correct answer
-                makeAnswerToast(1);
+                Button clickedButton = (Button) view;
+                clickedButton.setBackgroundColor(Color.GREEN);
+                clickedButton.setTextColor(Color.DKGRAY);
+                //makeAnswerToast(1);
                 setButtonsNull();   // Turn Off the Button onClick()
             }
 
@@ -255,7 +261,13 @@ public class NounGameFragment extends Fragment {
             if(status==1) {
                 String table = mNounEtcGame.getTableName(mCorrectNounEtc.getType());
                 mNounEtcGame.storeAnswer(table, 0);    // record the incorrect answer
-                makeAnswerToast(0);
+                Button clickedButton = (Button) view; // Find the Clicked Button
+                clickedButton.setBackgroundColor(Color.RED);
+                clickedButton.setTextColor(Color.WHITE);
+                Button correctButton = mButtonList.get(mCorrectNounEtcIndex);  // Find the Correct Button
+                correctButton.setBackgroundColor(Color.GREEN);
+                correctButton.setTextColor(Color.DKGRAY);
+                //makeAnswerToast(0);
                 setButtonsNull();   // Turn Off the Button onClick()
             }
         }
