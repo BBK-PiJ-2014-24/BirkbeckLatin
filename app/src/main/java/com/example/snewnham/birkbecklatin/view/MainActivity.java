@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     // Fields
     // ------
     Button mButtonVerbPager;
+    Button mButtonVerbPagerSelector;
     Button mButtonVerbGame;
     Button mButtonNounGame;
 
@@ -50,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mButtonNounGame = (Button) findViewById(R.id.buttonVerbPagerSelection);
+        mButtonNounGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = VerbPagerSelectionActivity.newIntent(MainActivity.this);
+                startActivity(intent);
+            }
+        });
     }
 
 

@@ -25,6 +25,8 @@
         </activity>
         <activity android:name=".view.NounStatisticsActivity">
         </activity>
+        <activity android:name=".view.VerbPagerSelectionActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.example.snewnham.birkbecklatin.view.VerbPagerSelectionFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment"/>
+
+
+    <Button
+        android:id="@+id/buttonVerb1"
+        android:text="@string/verbConjugation1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
+    <Button
+        android:id="@+id/buttonVerb2"
+        android:text="@string/verbConjugation2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonVerb1"
+        android:layout_alignStart="@+id/buttonVerb1"
+        android:layout_marginTop="25dp"/>
+
+    <Button
+        android:id="@+id/buttonVerb3"
+        android:text="@string/verbConjugation3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonVerb2"
+        android:layout_alignStart="@+id/buttonVerb2"
+        android:layout_marginTop="25dp"/>
+
+    <Button
+        android:id="@+id/buttonVerb4"
+        android:text="@string/verbConjugation4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonVerb3"
+        android:layout_alignStart="@+id/buttonVerb3"
+        android:layout_marginTop="25dp"/>
+
+</RelativeLayout>

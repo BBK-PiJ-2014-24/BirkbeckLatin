@@ -26,7 +26,7 @@
 
     <Button
         android:id="@+id/buttonVerbGame"
-        android:text="Verb"
+        android:text="@string/verbQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonPager"
@@ -35,10 +35,19 @@
 
     <Button
         android:id="@+id/buttonNounGame"
-        android:text="Noun"
+        android:text="@string/nounQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonVerbGame"
+        android:layout_alignStart="@+id/buttonPager"
+        android:layout_marginTop="23dp"/>
+
+    <Button
+        android:id="@+id/buttonVerbPagerSelection"
+        android:text="Verbs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonNounGame"
         android:layout_alignStart="@+id/buttonPager"
         android:layout_marginTop="23dp"/>
 
