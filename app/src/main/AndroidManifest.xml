@@ -27,6 +27,8 @@
         </activity>
         <activity android:name=".view.VerbPagerSelectionActivity">
         </activity>
+        <activity android:name=".view.NounPagerSelectionActivity">
+        </activity>
     </application>
 
 </manifest>

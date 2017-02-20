@@ -19,7 +19,17 @@
     <string name="verbConjugation3">Conjugation III</string>
     <string name="verbConjugation4">Conjugation IV </string>
 
-
+    <!-- NounPagerSelection -->
+    <!-- ================== -->
+    <string name="noun1">Nouns I    </string>
+    <string name="noun2">Nouns II   </string>
+    <string name="noun3">Nouns III  </string>
+    <string name="noun4">Nouns IV+V </string>
+    <string name="pronoun">Pronoun    </string>
+    <string name="conjunction">Conjunction</string>
+    <string name="preposition">Preposition</string>
+    <string name="adjective"> Adjective  </string>
+    <string name="adverb">Adverb     </string>
 
 
     <!-- Toasts -->

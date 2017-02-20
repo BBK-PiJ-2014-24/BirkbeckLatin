@@ -2,19 +2,18 @@ package com.example.snewnham.birkbecklatin.view;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.snewnham.birkbecklatin.R;
 
-public class VerbPagerSelectionActivity extends SingleFragmentActivity {
+public class NounPagerSelectionActivity extends SingleFragmentActivity {
 
 
-    // newIntent() - STATIC call of the VerbPagerSelectionActivity Intent  ( MAIN_ACTIVITY ->  VerbPagerSelectionActivity)
+    // newIntent() - STATIC call of the VerbPagerSelectionActivity Intent  ( MAIN_ACTIVITY ->  NounPagerSelectionActivity)
     // -----------
     public static Intent newIntent(Context packageContext){
-        Intent intent = new Intent(packageContext, VerbPagerSelectionActivity.class);
+        Intent intent = new Intent(packageContext, NounPagerSelectionActivity.class);
         return intent;
     }
 
@@ -22,8 +21,8 @@ public class VerbPagerSelectionActivity extends SingleFragmentActivity {
     // Override for Abstract Method in SingleFragmentActivity
     // ------------------------------------------------------
     @Override
-    protected VerbPagerSelectionFragment createFragment() {
-        return VerbPagerSelectionFragment.newInstance();
+    protected NounPagerSelectionFragment createFragment() {
+        return NounPagerSelectionFragment.newInstance();
     }
 
     // onCreate()
@@ -33,5 +32,4 @@ public class VerbPagerSelectionActivity extends SingleFragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generic_fragment_holder);
     }
-
 }

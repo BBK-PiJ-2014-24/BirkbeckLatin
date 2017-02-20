@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.example.snewnham.birkbecklatin.view.NounPagerSelectionFragment">
+
+    <Button
+        android:id="@+id/buttonNoun1"
+        android:text="@string/noun1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="100dp"/>
+
+    <Button
+        android:id="@+id/buttonNoun2"
+        android:text="@string/noun2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonNoun1"
+        android:layout_alignStart="@+id/buttonNoun1"
+        android:layout_marginTop="25dp"/>
+
+    <Button
+        android:id="@+id/buttonNoun3"
+        android:text="@string/noun3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonNoun2"
+        android:layout_alignStart="@+id/buttonNoun2"
+        android:layout_marginTop="25dp"/>
+
+    <Button
+        android:id="@+id/buttonNoun4"
+        android:text="@string/noun4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonNoun3"
+        android:layout_alignStart="@+id/buttonNoun3"
+        android:layout_marginTop="25dp"/>
+
+    <Button
+        android:id="@+id/buttonConjunction"
+        android:text="@string/conjugation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_alignBaseline="@+id/buttonNoun1"
+        android:layout_alignBottom="@+id/buttonNoun1"
+        android:layout_toEndOf="@+id/buttonNoun1"/>
+
+
+    <Button
+        android:id="@+id/buttonPreposition"
+        android:text="@string/Preposition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonConjunction"
+        android:layout_alignStart="@+id/buttonConjunction"
+        android:layout_marginTop="25dp"/>
+
+    <Button
+    android:id="@+id/buttonAdjective"
+    android:text="@string/adjective"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/buttonPreposition"
+    android:layout_alignStart="@+id/buttonPreposition"
+    android:layout_marginTop="25dp"/>
+
+
+    <Button
+    android:id="@+id/buttonAdverb"
+    android:text="@string/adverb"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/buttonAdjective"
+    android:layout_alignStart="@+id/buttonAdjective"
+    android:layout_marginTop="25dp"/>
+
+
+
+
+</RelativeLayout>
