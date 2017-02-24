@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Fields
     // ------
-    Button mButtonVerbPager;
+    Button mButtonNounPagerSelector;
     Button mButtonVerbPagerSelector;
     Button mButtonVerbGame;
     Button mButtonNounGame;
@@ -24,15 +24,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mButtonVerbPager = (Button) findViewById(R.id.buttonPager);
-        mButtonVerbPager.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = VerbPagerActivity.newIntent(MainActivity.this, 1);
-                startActivity(intent);
-            }
-        });
 
+        // Verb Game
         mButtonVerbGame = (Button) findViewById(R.id.buttonVerbGame);
         mButtonVerbGame.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Noun Game
         mButtonNounGame = (Button) findViewById(R.id.buttonNounGame);
         mButtonNounGame.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,11 +45,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mButtonNounGame = (Button) findViewById(R.id.buttonVerbPagerSelection);
-        mButtonNounGame.setOnClickListener(new View.OnClickListener() {
+        // Verb Pager Selection
+        mButtonVerbPagerSelector = (Button) findViewById(R.id.buttonVerbPagerSelection);
+        mButtonVerbPagerSelector.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = VerbPagerSelectionActivity.newIntent(MainActivity.this);
+                startActivity(intent);
+            }
+        });
+
+        // Noun Pager Selection
+        mButtonNounPagerSelector = (Button) findViewById(R.id.buttonNounPagerSelection);
+        mButtonNounPagerSelector.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = NounPagerSelectionActivity.newIntent(MainActivity.this);
                 startActivity(intent);
             }
         });

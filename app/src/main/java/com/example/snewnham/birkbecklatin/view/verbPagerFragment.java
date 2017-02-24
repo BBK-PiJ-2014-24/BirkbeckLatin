@@ -25,6 +25,8 @@ public class VerbPagerFragment extends Fragment {
     private Verb mVerb;
 
 
+    // Constructor
+    // -----------
     public VerbPagerFragment() {
         // Required empty public constructor
     }

@@ -11,6 +11,7 @@ import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 import com.example.snewnham.birkbecklatin.Model.nouns.AdjectiveComparative;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adverb;
 import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
+import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
@@ -33,8 +34,14 @@ public class DatabaseAccess {
 
     private Context mContext;
 
+    // Constants
+    // ---------
+
     private final static String NOUN_REGULAR = "NounRegular";
     private final static String NOUN_IRREGULAR = "NounIrregular";
+
+    private final static String PREPOSITION = "Preposition";
+    private final static String CONJUNCTION = "Conjunction";
 
     private final static String ADJECTIVE = "Adjective";
     private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
@@ -44,7 +51,7 @@ public class DatabaseAccess {
     private final static String ADVERB_COMPARATIVE = "AdverbComparative";
     private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
-    //
+
 
     /**
      * Private constructor to avoid object creation from outside classes.
@@ -927,6 +934,111 @@ public class DatabaseAccess {
 
 
     // =============================== LATIN NOUNS =================================================
+
+
+    /**
+     * getNounDeclensionList()
+     * -------------------------
+     * Sql query retreiving a list of all nounsEtc. To BE USED WITH A PAGE_VIEWER.
+     *
+     * @return
+     */
+    public List<NounEtc> getNounDeclensionList(String table, int decl){
+
+        String[] column = null;  // SELECT *
+        String whereClause = DbSchema.NounListTable.Cols.DECLENSION + "=?";
+        String[] whereArgs = new String[]{Integer.toString(decl)};
+
+        List<NounEtc> nounEtcList = new ArrayList<>();
+
+        switch(table) {
+            case NOUN_REGULAR:
+                NounListCursor cursorRegular = (NounListCursor) sqlQuery(DbSchema.NounListTable.NOUN_LIST_TABLE, column, whereClause, whereArgs);  // set up cursor pointing at db
+                try {
+                    cursorRegular.moveToFirst();    // move cursor to first element of db
+                    while (!cursorRegular.isAfterLast()) {
+                        nounEtcList.add(cursorRegular.makeNounObject());  // getCrime from cursorWrapper takes db tuple -> Java Crime object
+                        cursorRegular.moveToNext();
+                    }
+                } finally {
+                        cursorRegular.close();  // CLOSE CURSOR  !!
+                }
+                break;
+            case NOUN_IRREGULAR:
+                whereClause = DbSchema.NounListTable.Cols.TYPE + "=?";
+                whereArgs = new String[]{NOUN_IRREGULAR};
+                NounListCursor cursorIrregular = (NounListCursor) sqlQuery(DbSchema.NounListTable.NOUN_LIST_TABLE, column, whereClause, whereArgs);  // set up cursor pointing at db
+                try {
+                    cursorIrregular.moveToFirst();    // move cursor to first element of db
+                    while (!cursorIrregular.isAfterLast()) {
+                        nounEtcList.add(cursorIrregular.makeNounObject());  // getCrime from cursorWrapper takes db tuple -> Java Crime object
+                        cursorIrregular.moveToNext();
+                    }
+                } finally {
+                    cursorIrregular.close();  // CLOSE CURSOR  !!
+                }
+                break;
+            case PREPOSITION:
+                whereClause = null;
+                whereArgs = null;
+                PrepositionListCursor cursorPreposition = (PrepositionListCursor) sqlQuery(DbSchema.PrepositionListTable.PREPOSITION_TABLE, column, whereClause, whereArgs);  // set up cursor pointing at db
+                try {
+                    cursorPreposition.moveToFirst();    // move cursor to first element of db
+                    while (!cursorPreposition.isAfterLast()) {
+                        nounEtcList.add(cursorPreposition.makePrepositionObject());  // getCrime from cursorWrapper takes db tuple -> Java Crime object
+                        cursorPreposition.moveToNext();
+                    }
+                } finally {
+                    cursorPreposition.close();  // CLOSE CURSOR  !!
+                }
+                break;
+            case CONJUNCTION:
+                whereClause = null;
+                whereArgs = null;
+                ConjunctionListCursor cursorConjunction = (ConjunctionListCursor) sqlQuery(DbSchema.ConjunctionListTable.CONJUNCTION_TABLE, column, whereClause, whereArgs);  // set up cursor pointing at db
+                try {
+                    cursorConjunction.moveToFirst();    // move cursor to first element of db
+                    while (!cursorConjunction.isAfterLast()) {
+                        nounEtcList.add(cursorConjunction.makeConjunctionObject());  // getCrime from cursorWrapper takes db tuple -> Java Crime object
+                        cursorConjunction.moveToNext();
+                    }
+                } finally {
+                    cursorConjunction.close();  // CLOSE CURSOR  !!
+                }
+                break;
+            case ADJECTIVE:
+                whereClause = null;
+                whereArgs = null;
+                AdjectiveListCursor adjectiveListCursor = (AdjectiveListCursor) sqlQuery(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE, column, whereClause, whereArgs);  // set up cursor pointing at db
+                try {
+                    adjectiveListCursor.moveToFirst();    // move cursor to first element of db
+                    while (!adjectiveListCursor.isAfterLast()) {
+                        nounEtcList.add(adjectiveListCursor.makeAdjectiveObject());  // getCrime from cursorWrapper takes db tuple -> Java Crime object
+                        adjectiveListCursor.moveToNext();
+                    }
+                } finally {
+                    adjectiveListCursor.close();  // CLOSE CURSOR  !!
+                }
+                break;
+            case ADVERB:
+                whereClause = null;
+                whereArgs = null;
+                AdverbListCursor adverbListCursor = (AdverbListCursor) sqlQuery(DbSchema.AdverbListTable.ADVERB_TABLE, column, whereClause, whereArgs);  // set up cursor pointing at db
+                try {
+                    adverbListCursor.moveToFirst();    // move cursor to first element of db
+                    while (!adverbListCursor.isAfterLast()) {
+                        nounEtcList.add(adverbListCursor.makeAdverbObject());  // getCrime from cursorWrapper takes db tuple -> Java Crime object
+                        adverbListCursor.moveToNext();
+                    }
+                } finally {
+                    adverbListCursor.close();  // CLOSE CURSOR  !!
+                }
+                break;
+        }
+
+        return nounEtcList;
+    }
+
 
     /**
      * getNounEtcIDlist()

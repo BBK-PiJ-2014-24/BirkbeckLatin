@@ -10,6 +10,7 @@ import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adverb;
 import com.example.snewnham.birkbecklatin.Model.nouns.Conjunction;
+import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounRegular;
 import com.example.snewnham.birkbecklatin.Model.nouns.Preposition;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
@@ -119,6 +120,10 @@ public class DatabaseInstrumentedTest {
 
     private final static String NOUN_REGULAR = "NounRegular";
     private final static String NOUN_IRREGULAR = "NounIrregular";
+    private final static String PREPOSITION = "Preposition";
+    private final static String CONJUNCTION = "Conjunction";
+    private final static String ADJECTIVE = "Adjective";
+    private final static String ADVERB = "Adverb";
 
     @Before
     public void setUp() {
@@ -928,6 +933,67 @@ public class DatabaseInstrumentedTest {
         assertEquals( noun_English_Noun_Singular, noun.getEnglishWordSingular() );
         assertEquals( noun_English_Noun_Plural, noun.getEnglishWordPlural() );
     }
+
+    /**
+     * testGetNounDeclensionList()
+     * ---------------------------
+     * Test getNounDeclensionList() can return a list of all NounEtc from any sublist
+     * table.
+     */
+    @Test
+    public void testGetNounDeclensionList(){
+
+        List<NounEtc> nounList = databaseAccess.getNounDeclensionList( NOUN_REGULAR, 1);
+
+        // Regular Nouns
+        List<Integer> idList = new ArrayList<>();
+        for(NounEtc nounEtc : nounList){
+            idList.add(nounEtc.getId());
+        }
+        assertThat(idList, containsInAnyOrder(4,13));
+
+        // Irregular Noun
+        idList.removeAll(idList); // Reset idList
+        nounList = databaseAccess.getNounDeclensionList(NOUN_IRREGULAR, 0);
+        for(NounEtc nounEtc : nounList){
+            idList.add(nounEtc.getId());
+        }
+         assertThat(idList, containsInAnyOrder(14,15,16,17,18));
+
+        // Preposition
+        idList.removeAll(idList); // Reset idList
+        nounList = databaseAccess.getNounDeclensionList(PREPOSITION, 0);
+        for(NounEtc nounEtc : nounList){
+            idList.add(nounEtc.getId());
+        }
+        assertThat(idList, containsInAnyOrder(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16));
+
+        // Conjunction
+        idList.removeAll(idList); // Reset idList
+        nounList = databaseAccess.getNounDeclensionList(CONJUNCTION, 0);
+        for(NounEtc nounEtc : nounList){
+            idList.add(nounEtc.getId());
+        }
+        assertThat(idList, containsInAnyOrder(1,2,3,4,5,6,7,8,9));
+
+        // Adjective
+        idList.removeAll(idList); // Reset idList
+        nounList = databaseAccess.getNounDeclensionList(ADJECTIVE, 0);
+        for(NounEtc nounEtc : nounList){
+            idList.add(nounEtc.getId());
+        }
+        assertThat(idList, containsInAnyOrder(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15));
+
+        // Adverb
+        idList.removeAll(idList); // Reset idList
+        nounList = databaseAccess.getNounDeclensionList(ADVERB, 0);
+        for(NounEtc nounEtc : nounList){
+            idList.add(nounEtc.getId());
+        }
+        assertThat(idList, containsInAnyOrder(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,
+                                              16,17,18,19,20,21,22,23,24,25,26,27,28,29));
+    }
+
 
 
     /**

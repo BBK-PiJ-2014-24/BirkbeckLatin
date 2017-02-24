@@ -17,8 +17,8 @@
         android:text="Hello World!"/>
 
     <Button
-        android:id="@+id/buttonPager"
-        android:text="Pager"
+        android:id="@+id/buttonNounPagerSelection"
+        android:text="@string/nouns"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -29,8 +29,8 @@
         android:text="@string/verbQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonPager"
-        android:layout_alignStart="@+id/buttonPager"
+        android:layout_below="@+id/buttonNounPagerSelection"
+        android:layout_alignStart="@+id/buttonNounPagerSelection"
         android:layout_marginTop="23dp"/>
 
     <Button
@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonVerbGame"
-        android:layout_alignStart="@+id/buttonPager"
+        android:layout_alignStart="@+id/buttonNounPagerSelection"
         android:layout_marginTop="23dp"/>
 
     <Button
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonNounGame"
-        android:layout_alignStart="@+id/buttonPager"
+        android:layout_alignStart="@+id/buttonNounPagerSelection"
         android:layout_marginTop="23dp"/>
 
 
