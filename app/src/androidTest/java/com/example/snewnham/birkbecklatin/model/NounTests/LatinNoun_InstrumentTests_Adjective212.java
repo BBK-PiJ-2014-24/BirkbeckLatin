@@ -114,9 +114,20 @@ public class LatinNoun_InstrumentTests_Adjective212 {
 
     // ================================  SINGULAR, MALE  =============================================
 
+    /** testGetGenitive()
+     *  -----------------
+     *  test the getter getGenitive().
+     */
+    @Test
+    public void testGetGenitive(){
+        String gen = adjective.getGenitive();
+        assertEquals("Test Get Genitive", "boni" , gen);
+    }
+
+
     /**
      * testMakeAdjectiveSingular()  - Singular, Male
-     * ===============================
+     * ==========================
      * test NounEtc Class that It Can build Correct Latin Adjective.
      * @throws Exception
      */

@@ -118,7 +118,11 @@ public class Preposition implements NounEtc {
 
     @Override
     public void setNominative(String nominative) {
+    }
 
+    @Override
+    public String getGenitive(){
+        return null;
     }
 
     @Override

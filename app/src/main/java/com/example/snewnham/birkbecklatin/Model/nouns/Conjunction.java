@@ -103,8 +103,11 @@ public class Conjunction implements NounEtc {
     }
 
     @Override
-    public void setNominative(String nominative) {
+    public void setNominative(String nominative) {}
 
+    @Override
+    public String getGenitive(){
+        return null;
     }
 
     @Override

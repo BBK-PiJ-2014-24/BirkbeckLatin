@@ -152,6 +152,10 @@ public class Adjective implements NounEtc {
         mNominative = nominative;
     }
 
+    public String getGenitive(){
+        return makeLatinWord(mDatabaseAccess, SINGULAR, GENITIVE, GENDER_MALE);
+    }
+
     @Override
     public String getLatinWordStem() {
         return mLatinAdjectiveStem;

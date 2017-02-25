@@ -66,7 +66,6 @@ public class LatinNoun_InstrumentTests_Adjective333 {
         databaseAccess = DatabaseAccess.getInstance(appContext);  // CALL THE DATABASE STATICALY
         databaseAccess.open(); // OPEN THE DATABASE
 
-
         id = 2;
         declension333 = 333;
         typeAdjective = "NounEtc";
@@ -112,6 +111,17 @@ public class LatinNoun_InstrumentTests_Adjective333 {
     }
 
     // ================================  SINGULAR, MALE  =============================================
+
+    /** testGetGenitive()
+     *  -----------------
+     *  test the getter getGenitive().
+     */
+    @Test
+    public void testGetGenitive(){
+        String gen = adjective.getGenitive();
+        assertEquals("Test Get Genitive", "fortis" , gen);
+    }
+
 
     /**
      * testMakeAdjectiveSingular()  - Singular, Male

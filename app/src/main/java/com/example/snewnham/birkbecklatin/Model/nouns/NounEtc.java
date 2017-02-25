@@ -87,6 +87,8 @@ public interface NounEtc {
     String getNominative();
     void setNominative(String nominative);
 
+    String getGenitive();
+
     String getLatinWordStem();
     void setLatinWordStem(String latinStem);
 
