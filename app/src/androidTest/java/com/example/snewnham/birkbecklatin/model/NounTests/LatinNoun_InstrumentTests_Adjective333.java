@@ -90,8 +90,6 @@ public class LatinNoun_InstrumentTests_Adjective333 {
         englishNounSingular = "brave, strong";
         englishNounPlural = "brave, strong";
 
-
-
         adjective = new Adjective(id, databaseAccess);
         adjective.setId(id);
         adjective.setType(typeAdjective);
@@ -170,9 +168,7 @@ public class LatinNoun_InstrumentTests_Adjective333 {
         assertEquals("fortis", adjective.getLatinWord());
     }
 
-
     // ==============================  PLURAL, MALE  =============================================
-
 
     /**
      * testMakeAdjectivePlural()  - Plural, Male

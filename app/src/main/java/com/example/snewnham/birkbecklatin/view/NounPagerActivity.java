@@ -25,14 +25,15 @@ public class NounPagerActivity extends AppCompatActivity {
     private DatabaseAccess databaseAccess;
     private ViewPager mViewPager;
     private List<NounEtc> mNounEtcList;
+    private static final String TYPE = "Type";
     private static final String EXTRA_DECL_NUM = "Decl_Number";
-    private static final String TABLE = "table";
+
 
     // STATIC call on the Intent (NounPagerSelectionActivity -> NounPagerActivity)
     // -------------------------
-    public static Intent newIntent(Context packageContext, String table, int nounDeclNum){
+    public static Intent newIntent(Context packageContext, String type, int nounDeclNum){
         Intent intent = new Intent(packageContext, NounPagerActivity.class);
-        intent.putExtra(TABLE, table);
+        intent.putExtra(TYPE, type);
         intent.putExtra(EXTRA_DECL_NUM, nounDeclNum);
         return intent;
     }
@@ -44,7 +45,7 @@ public class NounPagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noun_pager);
 
-        String table =  (String) getIntent().getSerializableExtra(TABLE);  // Pull the Extra TABLE from the Intent
+        String table =  (String) getIntent().getSerializableExtra(TYPE);  // Pull the Extra TABLE from the Intent
         int declNum =  (int) getIntent().getSerializableExtra(EXTRA_DECL_NUM);  // Pull the Extra from the Intent
 
         mViewPager = (ViewPager) findViewById(R.id.activity_noun_pager); // wire View Pager to XML

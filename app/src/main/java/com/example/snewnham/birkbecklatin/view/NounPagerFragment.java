@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.snewnham.birkbecklatin.Control.randomGenerator.Games.NounEtcGame;
+import com.example.snewnham.birkbecklatin.Control.randomGenerator.Games.NounEtcGameImpl;
+import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.R;
 
@@ -18,8 +21,10 @@ public class NounPagerFragment extends Fragment {
 
     // Constants
     // ---------
-    private static final String EXTRA_DECL_NUM = "Decl_Number";
     private static final String TABLE = "table";
+    private static final String NOUN_ID = "nounId";
+
+
     private final static String NOUN = "Noun";
     private final static String NOUN_REGULAR = "NounRegular";
     private final static String NOUN_IRREGULAR = "NounIrregular";
@@ -34,7 +39,13 @@ public class NounPagerFragment extends Fragment {
 
     // Fields
     // ------
+  //  NounEtcGame mNounEtcGame;
+    String mTable;
+    int mNounID;
+
     NounEtc mNounEtc;
+    DatabaseAccess mDatabaseAccess;
+
 
 
     // Constructor
@@ -47,16 +58,30 @@ public class NounPagerFragment extends Fragment {
 
     // newInstance()  - Static Call for Instantiation
     // -------------
-    public static NounPagerFragment newInstance(String table, int nounDeclNum) {
+    public static NounPagerFragment newInstance(String table, int nounID) {
         Bundle args = new Bundle();
         args.putSerializable(TABLE, table);
-        args.putSerializable(EXTRA_DECL_NUM, nounDeclNum);
+        args.putSerializable(NOUN_ID, nounID);
 
         NounPagerFragment fragment = new NounPagerFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
+
+    // OnCreate
+    // --------
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mDatabaseAccess = DatabaseAccess.getInstance(getContext());
+        //mNounEtcGame = new NounEtcGameImpl(mDatabaseAccess, 5);
+        mTable = (String) getArguments().getSerializable(TABLE);
+        mNounID = (int) getArguments().getSerializable(NOUN_ID);  // call frags arguments
+
+
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,8 +96,9 @@ public class NounPagerFragment extends Fragment {
         // Noun's Principle Parts
         String nounDecl = Integer.toString(mNounEtc.getDeclension());
         String nominative = mNounEtc.getNominative();
-        String genitive = null; //mNounEtc.getGenitive();
+        String genitive = mNounEtc.getGenitive();
         String gender = mNounEtc.getGender();
+
 
 
         switch(mNounEtc.getType()) {
@@ -111,6 +137,13 @@ public class NounPagerFragment extends Fragment {
 //        englishVerbText.setText(engVerb);
 
         return view;
+    }
+
+
+    public NounEtc makeNounEtc(){
+
+
+
     }
 
 }

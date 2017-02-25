@@ -43,10 +43,11 @@ public class VerbPagerSelectionFragment extends Fragment {
         return new VerbPagerSelectionFragment();
     }
 
+    // onCreate()
+    // ----------
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
     }
 

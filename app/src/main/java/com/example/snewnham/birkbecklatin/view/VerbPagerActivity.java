@@ -50,7 +50,6 @@ public class VerbPagerActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.activity_verb_pager); // wire View Pager to XML
         databaseAccess = DatabaseAccess.getInstance(this);
         mVerbList = databaseAccess.getVerbConjugationList(verbConj);
-        int x = 5;
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
