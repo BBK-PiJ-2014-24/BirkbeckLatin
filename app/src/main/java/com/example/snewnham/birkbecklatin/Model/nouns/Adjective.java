@@ -93,6 +93,7 @@ public class Adjective implements NounEtc {
                 mLatin_Adjective_Ending = mNominative.substring(stemLength);  // Calc ending
                 mLatinAdjective = mNominative;
             } else {
+                DatabaseAccess da = databaseAccess;
                 mLatin_Adjective_Ending = databaseAccess.sqlAdjectiveEnding(Integer.toString(mDeclension), mGender, number, noun_Case);
                 mLatinAdjective = mLatinAdjectiveStem + mLatin_Adjective_Ending;
             }
@@ -153,7 +154,7 @@ public class Adjective implements NounEtc {
     }
 
     public String getGenitive(){
-        return makeLatinWord(mDatabaseAccess, SINGULAR, GENITIVE, GENDER_MALE);
+        return "";   // Obtain Genitive Through Make Word
     }
 
     @Override

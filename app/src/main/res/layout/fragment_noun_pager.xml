@@ -1,13 +1,48 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context="com.example.snewnham.birkbecklatin.view.NounPagerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:id="@+id/nounDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:layout_centerHorizontal="true"
+        android:hint="NOUN_DESCRIPTION"
+        android:textSize="20sp"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/noun_principal_parts1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/nounDescription"
+        android:layout_marginTop="40dp"
+        android:hint="PRINCIPAL_PARTS1"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/noun_principal_parts2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/noun_principal_parts1"
+        android:layout_marginTop="10dp"
+        android:hint="PRINCIPAL_PARTS2"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/englishNoun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/noun_principal_parts2"
+        android:layout_marginTop="45dp"
+        android:hint="ENGLISH_NOUN"
+        android:textSize="15sp"/>
+
+
+
+</RelativeLayout>

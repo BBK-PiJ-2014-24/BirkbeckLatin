@@ -943,7 +943,7 @@ public class DatabaseAccess {
      *
      * @return
      */
-    public List<NounEtc> getNounDeclensionList(String table, int decl){
+    public List<NounEtc> getNounDeclensionList(String type, int decl){
 
         String[] column = null;  // SELECT *
         String whereClause = DbSchema.NounListTable.Cols.DECLENSION + "=?";
@@ -951,7 +951,7 @@ public class DatabaseAccess {
 
         List<NounEtc> nounEtcList = new ArrayList<>();
 
-        switch(table) {
+        switch(type) {
             case NOUN_REGULAR:
                 NounListCursor cursorRegular = (NounListCursor) sqlQuery(DbSchema.NounListTable.NOUN_LIST_TABLE, column, whereClause, whereArgs);  // set up cursor pointing at db
                 try {

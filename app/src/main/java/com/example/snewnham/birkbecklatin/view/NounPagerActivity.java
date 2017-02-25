@@ -45,13 +45,12 @@ public class NounPagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noun_pager);
 
-        String table =  (String) getIntent().getSerializableExtra(TYPE);  // Pull the Extra TABLE from the Intent
+        String type =  (String) getIntent().getSerializableExtra(TYPE);  // Pull the Extra TABLE from the Intent
         int declNum =  (int) getIntent().getSerializableExtra(EXTRA_DECL_NUM);  // Pull the Extra from the Intent
 
         mViewPager = (ViewPager) findViewById(R.id.activity_noun_pager); // wire View Pager to XML
         databaseAccess = DatabaseAccess.getInstance(this);
-       //+++++++++ mNounEtcList = databaseAccess.getVerbConjugationList(verbConj);
-        int x = 5;
+        mNounEtcList = databaseAccess.getNounDeclensionList(type, declNum); // Gets List of NounEtc Given Type and Decl
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 

@@ -83,7 +83,7 @@ public class NounPagerSelectionFragment extends Fragment {
         mButtonNoun1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN, DECL1);
+                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECL1);
                 startActivity(intent);
             }
         });
@@ -93,7 +93,7 @@ public class NounPagerSelectionFragment extends Fragment {
         mButtonNoun2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN, DECL2);
+                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECL2);
                 startActivity(intent);
             }
         });
@@ -103,7 +103,7 @@ public class NounPagerSelectionFragment extends Fragment {
         mButtonNoun3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN, DECL3);
+                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECL3);
                 startActivity(intent);
             }
         });
@@ -113,7 +113,7 @@ public class NounPagerSelectionFragment extends Fragment {
         mButtonNoun4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN, DECL4);
+                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECL4);
                 startActivity(intent);
             }
         });
@@ -123,7 +123,7 @@ public class NounPagerSelectionFragment extends Fragment {
         mButtonNoun5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN, DECL5);
+                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECL5);
                 startActivity(intent);
             }
         });
