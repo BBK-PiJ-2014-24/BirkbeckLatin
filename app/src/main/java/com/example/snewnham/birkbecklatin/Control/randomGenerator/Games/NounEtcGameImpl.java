@@ -21,7 +21,9 @@ import java.util.Map;
 import java.util.Random;
 
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ABLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ABLATIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ACCUSATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ACCUSATIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_COMPARATIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_SUPERLATIVE;
@@ -30,17 +32,21 @@ import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_COM
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_SUPERLATIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DATIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL1;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL2;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL3;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL4;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENITIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENITIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOMINATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOMINATIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_IRREGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_REGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOCATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOCATIVE_HIST_PERC;
 
 /**
  * Created by snewnham on 20/01/2017.
@@ -143,12 +149,12 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final static String ABLATIVE_TALLY = "AblativeTally";
     private final static String VOCATIVE_TALLY = "VocativeTally";
 
-    private final static String NOMINATIVE_HIST_PERC = "Nominative_Hist%";
-    private final static String ACUSTATIVE_HIST_PERC = "Accusative_Hist%";
-    private final static String GENITIVE_HIST_PERC = "Genitive_Hist%";
-    private final static String DATIVE_HIST_PERC = "Dative_Hist%";
-    private final static String ABLATIVE_HIST_PERC = "Ablative_Hist%";
-    private final static String VOCATIVE_HIST_PERC = "Vocative_Hist%";
+//    private final static String NOMINATIVE_HIST_PERC = "Nominative_Hist%";
+//    private final static String ACUSTATIVE_HIST_PERC = "Accusative_Hist%";
+//    private final static String GENITIVE_HIST_PERC = "Genitive_Hist%";
+//    private final static String DATIVE_HIST_PERC = "Dative_Hist%";
+//    private final static String ABLATIVE_HIST_PERC = "Ablative_Hist%";
+//    private final static String VOCATIVE_HIST_PERC = "Vocative_Hist%";
 
 
     private final static String TOTAL = "NounTotal";  // Historical Score of ALL Correct Questions
@@ -922,7 +928,7 @@ public class NounEtcGameImpl implements NounEtcGame {
         mapStatistics.put(NOMINATIVE_HIST_PERC, nominativePercHist);
 
         accusativePercHist = calcHistoryStatistics(ACUSTATIVE_SCORE, ACUSTATIVE_TALLY, accusative, accusativeTally);
-        mapStatistics.put(ACUSTATIVE_HIST_PERC, accusativePercHist);
+        mapStatistics.put(ACCUSATIVE_HIST_PERC, accusativePercHist);
 
         genitivePercHist = calcHistoryStatistics(GENITIVE_SCORE, GENITIVE_TALLY, genitive, genitiveTally);
         mapStatistics.put(GENITIVE_HIST_PERC, genitivePercHist);

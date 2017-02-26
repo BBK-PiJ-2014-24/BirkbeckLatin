@@ -13,6 +13,45 @@ import com.example.snewnham.birkbecklatin.R;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ABLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ABLATIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ACCUSATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ACCUSATIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_COMPARATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_COMPARATIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_SUPERLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_SUPERLATIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_COMPARATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_COMPARATIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_SUPERLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_SUPERLATIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DATIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL1;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL1_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL2;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL2_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL3;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL3_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL4;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL4_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENITIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENITIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOMINATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOMINATIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOCATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOCATIVE_HIST_PERC;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -21,54 +60,54 @@ public class NounStatisticsFragment extends Fragment {
     // Constants
     // ---------
 
-    private final static String NOUN = "Noun";
-    private final static String NOUN_REGULAR = "NounRegular";
-    private final static String NOUN_IRREGULAR = "NounIrregular";
-    private final static String PREPOSITION = "Preposition";
-    private final static String CONJUNCTION = "Conjunction";
-    private final static String ADJECTIVE = "Adjective";
-    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
-    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
-    private final static String ADVERB = "Adverb";
-    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
-    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
+//    private final static String NOUN = "Noun";
+//    private final static String NOUN_REGULAR = "NounRegular";
+//    private final static String NOUN_IRREGULAR = "NounIrregular";
+//    private final static String PREPOSITION = "Preposition";
+//    private final static String CONJUNCTION = "Conjunction";
+//    private final static String ADJECTIVE = "Adjective";
+//    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
+//    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
+//    private final static String ADVERB = "Adverb";
+//    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
+//    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
-    private final static String NOUN_HIST_PERC = "Noun_Hist%";
-    private final static String NOUN_REGULAR_HIST_PERC = "NounRegular_Hist%";
-    private final static String NOUN_IRREGULAR_HIST_PERC = "NounIrregular_Hist%";
-    private final static String PREPOSITION_HIST_PERC = "Preposition_Hist%";
-    private final static String CONJUNCTION_HIST_PERC = "Conjunction_Hist%";
-    private final static String ADJECTIVE_HIST_PERC = "Adjective_Hist%";
-    private final static String ADJECTIVE_COMPARATIVE_HIST_PERC = "AdjectiveComparative_Hist%";
-    private final static String ADJECTIVE_SUPERLATIVE_HIST_PERC = "AdjectiveSuperlative_Hist%";
-    private final static String ADVERB_HIST_PERC = "Adverb_Hist%";
-    private final static String ADVERB_COMPARATIVE_HIST_PERC = "AdverbComparative_Hist%";
-    private final static String ADVERB_SUPERLATIVE_HIST_PERC = "AdverbSuperlative_Hist%";
+//    private final static String NOUN_HIST_PERC = "Noun_Hist%";
+//    private final static String NOUN_REGULAR_HIST_PERC = "NounRegular_Hist%";
+//    private final static String NOUN_IRREGULAR_HIST_PERC = "NounIrregular_Hist%";
+//    private final static String PREPOSITION_HIST_PERC = "Preposition_Hist%";
+//    private final static String CONJUNCTION_HIST_PERC = "Conjunction_Hist%";
+//    private final static String ADJECTIVE_HIST_PERC = "Adjective_Hist%";
+//    private final static String ADJECTIVE_COMPARATIVE_HIST_PERC = "AdjectiveComparative_Hist%";
+//    private final static String ADJECTIVE_SUPERLATIVE_HIST_PERC = "AdjectiveSuperlative_Hist%";
+//    private final static String ADVERB_HIST_PERC = "Adverb_Hist%";
+//    private final static String ADVERB_COMPARATIVE_HIST_PERC = "AdverbComparative_Hist%";
+//    private final static String ADVERB_SUPERLATIVE_HIST_PERC = "AdverbSuperlative_Hist%";
 
 
-    private final static String DECLNUM1 = "decl1";
-    private final static String DECLNUM2 = "decl2";
-    private final static String DECLNUM3 = "decl3";
-    private final static String DECLNUM4 = "decl4";
+//    private final static String DECL1 = "decl1";
+//    private final static String DECL2 = "decl2";
+//    private final static String DECL3 = "decl3";
+//    private final static String DECL4 = "decl4";
 
-    private final String DECLNUM1_HIST_PERC = "Decl1_Hist%";  // % of Correctly Answered Conj# Questions
-    private final String DECLNUM2_HIST_PERC = "Decl2_Hist%";  // Key For statisticsMap
-    private final String DECLNUM3_HIST_PERC = "Decl3_Hist%";
-    private final String DECLNUM4_HIST_PERC = "Decl4_Hist%";
+//    private final String DECL1_HIST_PERC = "Decl1_Hist%";  // % of Correctly Answered Conj# Questions
+//    private final String DECL2_HIST_PERC = "Decl2_Hist%";  // Key For statisticsMap
+//    private final String DECL3_HIST_PERC = "Decl3_Hist%";
+//    private final String DECL4_HIST_PERC = "Decl4_Hist%";
 
-    private final static String NOMINATIVE = "Nominative";
-    private final static String ACUSTATIVE = "Accusative";
-    private final static String GENITIVE = "Genitive";
-    private final static String DATIVE = "Dative";
-    private final static String ABLATIVE = "Ablative";
-    private final static String VOCATIVE = "Vocative";
+//    private final static String NOMINATIVE = "Nominative";
+//    private final static String ACUSTATIVE = "Accusative";
+//    private final static String GENITIVE = "Genitive";
+//    private final static String DATIVE = "Dative";
+//    private final static String ABLATIVE = "Ablative";
+//    private final static String VOCATIVE = "Vocative";
 
-    private final static String NOMINATIVE_HIST_PERC = "Nominative_Hist%";
-    private final static String ACUSTATIVE_HIST_PERC = "Accusative_Hist%";
-    private final static String GENITIVE_HIST_PERC = "Genitive_Hist%";
-    private final static String DATIVE_HIST_PERC = "Dative_Hist%";
-    private final static String ABLATIVE_HIST_PERC = "Ablative_Hist%";
-    private final static String VOCATIVE_HIST_PERC = "Vocative_Hist%";
+//    private final static String NOMINATIVE_HIST_PERC = "Nominative_Hist%";
+//    private final static String ACUSTATIVE_HIST_PERC = "Accusative_Hist%";
+//    private final static String GENITIVE_HIST_PERC = "Genitive_Hist%";
+//    private final static String DATIVE_HIST_PERC = "Dative_Hist%";
+//    private final static String ABLATIVE_HIST_PERC = "Ablative_Hist%";
+//    private final static String VOCATIVE_HIST_PERC = "Vocative_Hist%";
 
     private final static String TOTAL = "NounTotal";  // Historical Score of ALL Correct Questions
     private final static String TOTAL_HIST_PERC = "NounTotal_Hist%";  // Key For statisticsMap
@@ -235,25 +274,25 @@ public class NounStatisticsFragment extends Fragment {
         mAdverbComparativeHist.setText(Integer.toString(statMap.get(ADVERB_COMPARATIVE_HIST_PERC))+PCT);
         mAdverbSuperlativeHist.setText(Integer.toString(statMap.get(ADVERB_SUPERLATIVE_HIST_PERC))+PCT);
 
-        mDecl1.setText(Integer.toString(statMap.get(DECLNUM1))+PCT);
-        mDecl2.setText(Integer.toString(statMap.get(DECLNUM2))+PCT);
-        mDecl3.setText(Integer.toString(statMap.get(DECLNUM3))+PCT);
-        mDecl4.setText(Integer.toString(statMap.get(DECLNUM4))+PCT);
+        mDecl1.setText(Integer.toString(statMap.get(DECL1))+PCT);
+        mDecl2.setText(Integer.toString(statMap.get(DECL2))+PCT);
+        mDecl3.setText(Integer.toString(statMap.get(DECL3))+PCT);
+        mDecl4.setText(Integer.toString(statMap.get(DECL4))+PCT);
 
-        mDecl1Hist.setText(Integer.toString(statMap.get(DECLNUM1_HIST_PERC))+PCT);
-        mDecl2Hist.setText(Integer.toString(statMap.get(DECLNUM2_HIST_PERC))+PCT);
-        mDecl3Hist.setText(Integer.toString(statMap.get(DECLNUM3_HIST_PERC))+PCT);
-        mDecl4Hist.setText(Integer.toString(statMap.get(DECLNUM4_HIST_PERC))+PCT);
+        mDecl1Hist.setText(Integer.toString(statMap.get(DECL1_HIST_PERC))+PCT);
+        mDecl2Hist.setText(Integer.toString(statMap.get(DECL2_HIST_PERC))+PCT);
+        mDecl3Hist.setText(Integer.toString(statMap.get(DECL3_HIST_PERC))+PCT);
+        mDecl4Hist.setText(Integer.toString(statMap.get(DECL4_HIST_PERC))+PCT);
 
         mNominative.setText(Integer.toString(statMap.get(NOMINATIVE))+PCT);
-        mAccusative.setText(Integer.toString(statMap.get(ACUSTATIVE))+PCT);
+        mAccusative.setText(Integer.toString(statMap.get(ACCUSATIVE))+PCT);
         mGenitive.setText(Integer.toString(statMap.get(GENITIVE))+PCT);
         mDative.setText(Integer.toString(statMap.get(DATIVE))+PCT);
         mAblative.setText(Integer.toString(statMap.get(ABLATIVE))+PCT);
         mVocative.setText(Integer.toString(statMap.get(VOCATIVE))+PCT);
 
         mNominativeHist.setText(Integer.toString(statMap.get(NOMINATIVE_HIST_PERC))+PCT);
-        mAccusativeHist.setText(Integer.toString(statMap.get(ACUSTATIVE_HIST_PERC))+PCT);
+        mAccusativeHist.setText(Integer.toString(statMap.get(ACCUSATIVE_HIST_PERC))+PCT);
         mGenitiveHist.setText(Integer.toString(statMap.get(GENITIVE_HIST_PERC))+PCT);
         mDativeHist.setText(Integer.toString(statMap.get(DATIVE_HIST_PERC))+PCT);
         mAblativeHist.setText(Integer.toString(statMap.get(ABLATIVE_HIST_PERC))+PCT);

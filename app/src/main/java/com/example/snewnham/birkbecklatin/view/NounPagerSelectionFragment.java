@@ -12,6 +12,17 @@ import android.widget.Button;
 
 import com.example.snewnham.birkbecklatin.R;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECLNUM1;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECLNUM2;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECLNUM3;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECLNUM4;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECLNUM5;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_REGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -20,24 +31,24 @@ public class NounPagerSelectionFragment extends Fragment {
 
     // Constants
     // ---------
-    private final static String NOUN = "Noun";
-    private final static String NOUN_REGULAR = "NounRegular";
-    private final static String NOUN_IRREGULAR = "NounIrregular";
-    private final static String PREPOSITION = "Preposition";
-    private final static String CONJUNCTION = "Conjunction";
-    private final static String ADJECTIVE = "Adjective";
-    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
-    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
-    private final static String ADVERB = "Adverb";
-    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
-    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
+//    private final static String NOUN = "Noun";
+//    private final static String NOUN_REGULAR = "NounRegular";
+//    private final static String NOUN_IRREGULAR = "NounIrregular";
+//    private final static String PREPOSITION = "Preposition";
+//    private final static String CONJUNCTION = "Conjunction";
+//    private final static String ADJECTIVE = "Adjective";
+//    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
+//    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
+//    private final static String ADVERB = "Adverb";
+//    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
+//    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
 
-    private static final int DECL1 = 1;
-    private static final int DECL2 = 2;
-    private static final int DECL3 = 3;
-    private static final int DECL4 = 4;
-    private static final int DECL5 = 5;
+//    private static final int DECLNUM1 = 1;
+//    private static final int DECLNUM2 = 2;
+//    private static final int DECLNUM3 = 3;
+//    private static final int DECLNUM4 = 4;
+//    private static final int DECLNUM5 = 5;
 
 
     // Fields
@@ -83,7 +94,7 @@ public class NounPagerSelectionFragment extends Fragment {
         mButtonNoun1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECL1);
+                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECLNUM1);
                 startActivity(intent);
             }
         });
@@ -93,7 +104,7 @@ public class NounPagerSelectionFragment extends Fragment {
         mButtonNoun2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECL2);
+                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECLNUM2);
                 startActivity(intent);
             }
         });
@@ -103,7 +114,7 @@ public class NounPagerSelectionFragment extends Fragment {
         mButtonNoun3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECL3);
+                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECLNUM3);
                 startActivity(intent);
             }
         });
@@ -113,7 +124,7 @@ public class NounPagerSelectionFragment extends Fragment {
         mButtonNoun4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECL4);
+                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECLNUM4);
                 startActivity(intent);
             }
         });
@@ -123,7 +134,7 @@ public class NounPagerSelectionFragment extends Fragment {
         mButtonNoun5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECL5);
+                Intent intent = NounPagerActivity.newIntent(getActivity(), NOUN_REGULAR, DECLNUM5);
                 startActivity(intent);
             }
         });

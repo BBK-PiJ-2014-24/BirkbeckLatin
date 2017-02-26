@@ -74,6 +74,12 @@ public class LatinConstants {
     public final static String DECL3 = "decl3";
     public final static String DECL4 = "decl4";
 
+    public static final int DECLNUM1 = 1;
+    public static final int DECLNUM2 = 2;
+    public static final int DECLNUM3 = 3;
+    public static final int DECLNUM4 = 4;
+    public static final int DECLNUM5 = 5;
+
 
     public final static String NOMINATIVE = "Nominative";
     public final static String ACCUSATIVE = "Accusative";
@@ -96,4 +102,35 @@ public class LatinConstants {
     public final static int DECLENSION5 = 5;
     public final static int DECLENSION212 = 212;
     public final static int DECLENSION333 = 333;
+
+
+    // NOUN STATISTICS
+    // ---------------
+    public final static String NOUN_HIST_PERC = "Noun_Hist%";
+    public final static String NOUN_REGULAR_HIST_PERC = "NounRegular_Hist%";
+    public final static String NOUN_IRREGULAR_HIST_PERC = "NounIrregular_Hist%";
+    public final static String PREPOSITION_HIST_PERC = "Preposition_Hist%";
+    public final static String CONJUNCTION_HIST_PERC = "Conjunction_Hist%";
+    public final static String ADJECTIVE_HIST_PERC = "Adjective_Hist%";
+    public final static String ADJECTIVE_COMPARATIVE_HIST_PERC = "AdjectiveComparative_Hist%";
+    public final static String ADJECTIVE_SUPERLATIVE_HIST_PERC = "AdjectiveSuperlative_Hist%";
+    public final static String ADVERB_HIST_PERC = "Adverb_Hist%";
+    public final static String ADVERB_COMPARATIVE_HIST_PERC = "AdverbComparative_Hist%";
+    public final static String ADVERB_SUPERLATIVE_HIST_PERC = "AdverbSuperlative_Hist%";
+
+    public final static String DECL1_HIST_PERC = "Decl1_Hist%";  // % of Correctly Answered Conj# Questions
+    public final static String DECL2_HIST_PERC = "Decl2_Hist%";  // Key For statisticsMap
+    public final static String DECL3_HIST_PERC = "Decl3_Hist%";
+    public final static String DECL4_HIST_PERC = "Decl4_Hist%";
+
+    public final static String NOMINATIVE_HIST_PERC = "Nominative_Hist%";
+    public final static String ACCUSATIVE_HIST_PERC = "Accusative_Hist%";
+    public final static String GENITIVE_HIST_PERC = "Genitive_Hist%";
+    public final static String DATIVE_HIST_PERC = "Dative_Hist%";
+    public final static String ABLATIVE_HIST_PERC = "Ablative_Hist%";
+    public final static String VOCATIVE_HIST_PERC = "Vocative_Hist%";
+
+
+
+
 }
