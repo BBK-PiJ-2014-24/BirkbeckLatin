@@ -8,7 +8,7 @@ import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_INDIC
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NUMBER_INFINITIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NUMBER_SINGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PERFECT;
-import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PERSON3;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PERSON_3RD;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PRESENT;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_SUBJUNCTIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_ACTIVE;
@@ -200,7 +200,7 @@ public class VerbRegular implements Verb {
         String englishVerbCase = databaseAccess.sqlEngVerbEnding(number, tense, mood, voice);
 
         if( !number.equals(NUMBER_INFINITIVE)  && !mood.equals(MOOD_IMPERATIVE)) { // Avoid nullpointerException for infinitives
-            if (person.equals(PERSON3) && number.equals(NUMBER_SINGULAR) && tense.equals(TENSE_PRESENT) && mood.equals(MOOD_INDICATIVE) && voice.equals(VOICE_ACTIVE)) {
+            if (person.equals(PERSON_3RD) && number.equals(NUMBER_SINGULAR) && tense.equals(TENSE_PRESENT) && mood.equals(MOOD_INDICATIVE) && voice.equals(VOICE_ACTIVE)) {
                 englishVerbCase = DbSchema.VerbListTable.Cols.ENGLISH_PRESENT_3RDPERSON;   // override to pick up present 3rd person present
             }
         }

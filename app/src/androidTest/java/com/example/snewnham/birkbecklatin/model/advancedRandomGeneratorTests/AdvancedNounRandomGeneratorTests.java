@@ -321,7 +321,7 @@ public class AdvancedNounRandomGeneratorTests {
         int sampleAdjective = (randomSims * numAdjective)/total;
 
 
-        float toleranceFactor = 0.45f;
+        float toleranceFactor = 0.5f;
         int toleranceNounRegulars = (int) (sampleNounRegulars * toleranceFactor);
         int toleranceNounIrregulars = (int) (sampleNounIrregulars * toleranceFactor) + 5;
         int tolerancePreposition = (int) (samplePreposition * toleranceFactor);

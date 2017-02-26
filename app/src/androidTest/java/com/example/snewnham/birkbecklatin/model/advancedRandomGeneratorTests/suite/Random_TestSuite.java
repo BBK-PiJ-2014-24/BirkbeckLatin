@@ -33,8 +33,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 
 @Suite.SuiteClasses({AdvancedNounRandomGeneratorTests.class,
-        AdvancedVerbRandomGeneratorTests.class,
-        })
+                     AdvancedVerbRandomGeneratorTests.class,})
 
 
 public class Random_TestSuite {}

@@ -1,7 +1,5 @@
 package com.example.snewnham.birkbecklatin.Control.randomGenerator.Games;
 
-import android.content.Intent;
-
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.Item;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.ItemResponseTheory;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
@@ -13,13 +11,33 @@ import com.example.snewnham.birkbecklatin.Model.verbs.VerbDeponent;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbIrregular;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbRegular;
 import com.example.snewnham.birkbecklatin.Model.verbs.VerbSemiDeponent;
-import com.example.snewnham.birkbecklatin.view.VerbStatisticsActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ESSE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_IMPERATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_INDICATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_SUBJUNCTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NUMBER_INFINITIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NUMBER_PLURAL;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NUMBER_SINGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE_PERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_IMPERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PLUPERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PRESENT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_DEPONENT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_IRREGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_REGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_SEMI_DEPONENT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_ACTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_PASSIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.esse;
 
 /**
  * CLASS: VerbGame
@@ -67,35 +85,35 @@ public class VerbGame {
 
     private final static String ASKED = "Asked";
 
-    private final static int NUM_CHOICES = 6; // 1 Correct Verb, 5 Incorrect Verbs
-    private final static String REGULAR = "Regular";
-    private final static String DEPONENT = "Deponent";
-    private final static String SEMI_DEPONENT = "Semi Deponent";
-    private final static String IRREGULAR = "Irregular";
+//    private final static int NUM_CHOICES = 6; // 1 Correct Verb, 5 Incorrect Verbs
+//    private final static String VERB_REGULAR = "Regular";
+//    private final static String VERB_DEPONENT = "Deponent";
+//    private final static String VERB_SEMI_DEPONENT = "Semi Deponent";
+//    private final static String VERB_IRREGULAR = "Irregular";
 
-    private final static String ESSE = "esse";
+//    private final static String ESSE = "esse";
 
-    private final static String NUMBER_SINGULAR = "Singular";
-    private final static String NUMBER_PLURAL = "Plural";
-    private final static String NUMBER_INFINITIVE = "Infinitive";
+//    private final static String NUMBER_SINGULAR = "Singular";
+//    private final static String NUMBER_PLURAL = "Plural";
+//    private final static String NUMBER_INFINITIVE = "Infinitive";
 
-    private final static String PERSON1 = "1st";
-    private final static String PERSON2 = "2nd";
-    private final static String PERSON3 = "3rd";
-
-    private final static String TENSE_PRESENT = "Present";
-    private final static String TENSE_IMPERFECT = "Imperfect";
-    private final static String TENSE_FUTURE = "Future";
-    private final static String TENSE_PERFECT = "Perfect";
-    private final static String TENSE_PLUPERFECT = "Pluperfect";
-    private final static String TENSE_FUTURE_PERFECT = "Future Perfect";
-
-    private final static String VOICE_ACTIVE = "Active";
-    private final static String VOICE_PASSIVE = "Passive";
-
-    private final static String MOOD_INDICATIVE = "Indicative";
-    private final static String MOOD_IMPERATIVE = "Imperative";
-    private final static String MOOD_SUBJUNCTIVE = "Subjunctive";
+//    private final static String PERSON1 = "1st";
+//    private final static String PERSON2 = "2nd";
+//    private final static String PERSON3 = "3rd";
+//
+//    private final static String TENSE_PRESENT = "Present";
+//    private final static String TENSE_IMPERFECT = "Imperfect";
+//    private final static String TENSE_FUTURE = "Future";
+//    private final static String TENSE_PERFECT = "Perfect";
+//    private final static String TENSE_PLUPERFECT = "Pluperfect";
+//    private final static String TENSE_FUTURE_PERFECT = "Future Perfect";
+//
+//    private final static String VOICE_ACTIVE = "Active";
+//    private final static String VOICE_PASSIVE = "Passive";
+//
+//    private final static String MOOD_INDICATIVE = "Indicative";
+//    private final static String MOOD_IMPERATIVE = "Imperative";
+//    private final static String MOOD_SUBJUNCTIVE = "Subjunctive";
 
     // CONSTANTS FOR KEYS IN DATABASE and StatisticsMap
     //-------------------------------------------------
@@ -164,7 +182,6 @@ public class VerbGame {
     private final static String TOTAL_SCORE = "TotalScore";  // Historical Score of ALL Correct Questions
     private final static String TOTAL_TALLY = "TotalTally";  // Tally of All Correct Questions Asked
     private final static String TOTAL_HIST = "Total_Hist%";  // Key For statisticsMap
-
 
 
     private final int TIME_FOR_INCORRECT_QUESTION = 3;
@@ -357,8 +374,8 @@ public class VerbGame {
 
         if(mCorrectVerbMood.equals(MOOD_SUBJUNCTIVE))
             return 5;
-        else if(mCorrectVerb.getLatin_Type().equals(DEPONENT) || mCorrectVerb.getLatin_Type().equals(SEMI_DEPONENT) ||
-                mCorrectVerb.getLatin_Type().equals(IRREGULAR) && !mCorrectVerb.getLatin_Infinitive().equals(ESSE))
+        else if(mCorrectVerb.getLatin_Type().equals(VERB_DEPONENT) || mCorrectVerb.getLatin_Type().equals(VERB_SEMI_DEPONENT) ||
+                (mCorrectVerb.getLatin_Type().equals(VERB_IRREGULAR) && !mCorrectVerb.getLatin_Infinitive().equals(esse)))
             return 4;
         else if(mCorrectVerbVoice.equals(VOICE_PASSIVE))
             return 3;
@@ -448,9 +465,9 @@ public class VerbGame {
                 if(voice1.equals(VOICE_PASSIVE)) {
                     type0 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(0));
                     type1 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(1));
-                    if(type0.equals(DEPONENT) || type0.equals(SEMI_DEPONENT) || idList.get(0) == esse_ID)
+                    if(type0.equals(VERB_DEPONENT) || type0.equals(VERB_SEMI_DEPONENT) || idList.get(0) == esse_ID)
                         voice1 = VOICE_ACTIVE;
-                    if(type1.equals(DEPONENT) || type1.equals(SEMI_DEPONENT) || idList.get(1) == esse_ID)
+                    if(type1.equals(VERB_DEPONENT) || type1.equals(VERB_SEMI_DEPONENT) || idList.get(1) == esse_ID)
                         voice2 = VOICE_ACTIVE;
                 }
 
@@ -491,14 +508,14 @@ public class VerbGame {
 
                 // Allow VOICE_ACTIVE and VOICE_PASSIVE, but Checking for Deponent/Semi-Deponent
                 if(voice1.equals(VOICE_PASSIVE)) {
-                    if(type0.equals(DEPONENT) || type0.equals(SEMI_DEPONENT) || idList.get(0) == esse_ID)
+                    if(type0.equals(VERB_DEPONENT) || type0.equals(VERB_SEMI_DEPONENT) || idList.get(0) == esse_ID)
                         voice1 = VOICE_ACTIVE;
-                    if(type1.equals(DEPONENT) || type1.equals(SEMI_DEPONENT) || idList.get(1) == esse_ID)
+                    if(type1.equals(VERB_DEPONENT) || type1.equals(VERB_SEMI_DEPONENT) || idList.get(1) == esse_ID)
                         voice2 = VOICE_ACTIVE;
                 }
 
                 // Check that Irregular Verbs Have Mood = Indicative
-                if(type0.equals(IRREGULAR) || type1.equals(IRREGULAR)){
+                if(type0.equals(VERB_IRREGULAR) || type1.equals(VERB_IRREGULAR)){
                     mood = MOOD_INDICATIVE;
                 } else {
                     do {
@@ -541,14 +558,14 @@ public class VerbGame {
 
                 // Allow VOICE_ACTIVE and VOICE_PASSIVE, but Checking for Deponent/Semi-Deponent
                 if(voice1.equals(VOICE_PASSIVE)) {
-                    if(type0.equals(DEPONENT) || type0.equals(SEMI_DEPONENT) || idList.get(0) == esse_ID)
+                    if(type0.equals(VERB_DEPONENT) || type0.equals(VERB_SEMI_DEPONENT) || idList.get(0) == esse_ID)
                         voice1 = VOICE_ACTIVE;
-                    if(type1.equals(DEPONENT) || type1.equals(SEMI_DEPONENT) || idList.get(1) == esse_ID)
+                    if(type1.equals(VERB_DEPONENT) || type1.equals(VERB_SEMI_DEPONENT) || idList.get(1) == esse_ID)
                         voice2 = VOICE_ACTIVE;
                 }
 
                 // Check that Irregular Verbs Have Mood = Indicative
-                if(type0.equals(IRREGULAR) || type1.equals(IRREGULAR)){
+                if(type0.equals(VERB_IRREGULAR) || type1.equals(VERB_IRREGULAR)){
                     mood = MOOD_INDICATIVE;
                 }
 
@@ -591,7 +608,7 @@ public class VerbGame {
      * are only 4 Imperatives for each Verb. So Need to have a special list to ensure full
      * population of 6 questions.
      * Note that Persons (1,2,3) and tenses are set to Null as they are not required
-     * ALSO note that we have to add 2 Infinitive questions to the list as DEPONENT verbs do not
+     * ALSO note that we have to add 2 Infinitive questions to the list as VERB_DEPONENT verbs do not
      * have passive IMPERATIVES.
      * @param idList - List of IDs
      * @return - List of Imperative Questions
@@ -608,7 +625,7 @@ public class VerbGame {
         imperativeQuestionList.add(makeGameVerb(idList.get(0), null, NUMBER_PLURAL, null, MOOD_IMPERATIVE, VOICE_ACTIVE));
 
         // can't have passive Imperative for Deponents and Semi_Deponents. Replace with Infinitive
-        if(type0.equals(DEPONENT) || type0.equals(SEMI_DEPONENT)) {
+        if(type0.equals(VERB_DEPONENT) || type0.equals(VERB_SEMI_DEPONENT)) {
             imperativeQuestionList.add(makeGameVerb(idList.get(0), null, NUMBER_INFINITIVE, TENSE_PERFECT, MOOD_INDICATIVE, VOICE_ACTIVE));
         } else {
             imperativeQuestionList.add(makeGameVerb(idList.get(0), null, NUMBER_PLURAL, null, MOOD_IMPERATIVE, VOICE_PASSIVE));
@@ -617,7 +634,7 @@ public class VerbGame {
         // Verbs for id1
         imperativeQuestionList.add(makeGameVerb(idList.get(1), null, NUMBER_SINGULAR, null, MOOD_IMPERATIVE, VOICE_ACTIVE));
         imperativeQuestionList.add(makeGameVerb(idList.get(1), null, NUMBER_PLURAL, null, MOOD_IMPERATIVE, VOICE_ACTIVE));
-        if(type1.equals(DEPONENT) || type1.equals(SEMI_DEPONENT)) {  // can't passive Imperative
+        if(type1.equals(VERB_DEPONENT) || type1.equals(VERB_SEMI_DEPONENT)) {  // can't passive Imperative
             imperativeQuestionList.add(makeGameVerb(idList.get(1), null, NUMBER_INFINITIVE, TENSE_FUTURE, MOOD_INDICATIVE, VOICE_ACTIVE));
         } else {
             imperativeQuestionList.add(makeGameVerb(idList.get(1), null, NUMBER_PLURAL, null, MOOD_IMPERATIVE, VOICE_PASSIVE));
@@ -647,7 +664,7 @@ public class VerbGame {
         String type = mDatabaseAccess.sqlVerbTypeQuery(id);  // Find out What Type is the Verb
 
         switch (type) {
-            case REGULAR:
+            case VERB_REGULAR:
                 VerbRegular verbRegular = (VerbRegular) mDatabaseAccess.sqlVerbListQuery(id);
                 verbRegular.makeLatinVerb(mDatabaseAccess, person, number, tense,
                         mood, voice, Integer.toString(verbRegular.getLatin_ConjNum()));
@@ -655,7 +672,7 @@ public class VerbGame {
                         mood, voice);
                 gameVerb = verbRegular;
                 break;
-            case DEPONENT:
+            case VERB_DEPONENT:
                 VerbDeponent verbDeponent = (VerbDeponent) mDatabaseAccess.sqlVerbListQuery(id);
                 verbDeponent.makeLatinVerb(mDatabaseAccess, person, number, tense,
                         mood, voice, Integer.toString(verbDeponent.getLatin_ConjNum()));
@@ -663,7 +680,7 @@ public class VerbGame {
                         mood, voice);
                 gameVerb = verbDeponent;
                 break;
-            case SEMI_DEPONENT:
+            case VERB_SEMI_DEPONENT:
                 VerbSemiDeponent verbSemiDeponent = (VerbSemiDeponent) mDatabaseAccess.sqlVerbListQuery(id);
                 verbSemiDeponent.makeLatinVerb(mDatabaseAccess, person, number, tense,
                         mood, voice, Integer.toString(verbSemiDeponent.getLatin_ConjNum()));
@@ -671,7 +688,7 @@ public class VerbGame {
                         mood, voice);
                 gameVerb = verbSemiDeponent;
                 break;
-            case IRREGULAR:
+            case VERB_IRREGULAR:
                 VerbIrregular verbIrregular = (VerbIrregular) mDatabaseAccess.sqlVerbListQuery(id);
                 verbIrregular.makeLatinVerb(mDatabaseAccess, person, number, tense,
                         mood, voice, Integer.toString(verbIrregular.getLatin_ConjNum()));

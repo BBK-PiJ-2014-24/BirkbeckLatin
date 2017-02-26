@@ -20,6 +20,11 @@ public class LatinConstants {
     // VERB CONSTANTS
     // ==============
 
+    public final static String VERB_REGULAR = "Regular";
+    public final static String VERB_DEPONENT = "Deponent";
+    public final static String VERB_SEMI_DEPONENT = "Semi Deponent";
+    public final static String VERB_IRREGULAR = "Irregular";
+
     public final static String TENSE_PRESENT = "Present";
     public final static String TENSE_IMPERFECT = "Imperfect";
     public final static String TENSE_FUTURE = "Future";
@@ -31,9 +36,9 @@ public class LatinConstants {
     public final static String NUMBER_PLURAL = "Plural";
     public final static String NUMBER_INFINITIVE = "Infinitive";
 
-    public final static String PERSON1 = "1st";
-    public final static String PERSON2 = "2nd";
-    public final static String PERSON3 = "3rd";
+    public final static String PERSON_1ST = "1st";
+    public final static String PERSON_2ND = "2nd";
+    public final static String PERSON_3RD = "3rd";
 
     public final static String MOOD_INDICATIVE = "Indicative";
     public final static String MOOD_IMPERATIVE = "Imperative";

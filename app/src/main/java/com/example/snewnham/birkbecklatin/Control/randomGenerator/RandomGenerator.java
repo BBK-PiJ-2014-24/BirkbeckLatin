@@ -1,8 +1,6 @@
 package com.example.snewnham.birkbecklatin.Control.randomGenerator;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
-import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
-import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 import com.example.snewnham.birkbecklatin.Model.nouns.NounEtc;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 
@@ -11,11 +9,26 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ABLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ACCUSATIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_COMPARATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_SUPERLATIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_COMPARATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_SUPERLATIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_FEMALE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_MALE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_NEUTER;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENITIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOMINATIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_IRREGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_REGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PERSON_1ST;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PERSON_2ND;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PERSON_3RD;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE_PERFECT;
@@ -23,6 +36,7 @@ import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_IMPE
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PERFECT;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PLUPERFECT;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PRESENT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOCATIVE;
 
 /**
  * Uses a Random Generator to Select a Noun From the Noun_List and
@@ -57,16 +71,18 @@ public class RandomGenerator<T> {
     private static final int ADVERB_CUTOFF = 1;
     private static final int ADVERB_COMPARATIVE_CUTOFF = 2;
     private static final int ADVERB_SUPERLATIVE_CUTOFF = 3;
-    private static final String ADVERB_COMPARATIVE = "AdverbComparative";
-    private static final String ADVERB_SUPERLATIVE = "AdverbSuperlative";
+
+//    private static final String ADVERB_COMPARATIVE = "AdverbComparative";
+//    private static final String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
 
     private static final int ADJECTIVE_NUM_OUTCOMES= 4;
     private static final int ADJECTIVE_CUTOFF = 1;
     private static final int ADJECTIVE_COMPARATIVE_CUTOFF = 2;
     private static final int ADJECTIVE_SUPERLATIVE_CUTOFF = 3;
-    private static final String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
-    private static final String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
+
+//    private static final String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
+//    private static final String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
 
 
     private static final int NOUN_NUMBER_NUM_OUTCOMES = 2;
@@ -86,25 +102,27 @@ public class RandomGenerator<T> {
     private static final int GENDER_CUTOFF_MALE = 0;
     private static final int GENDER_CUTOFF_FEMALE = 1;
     private static final int GENDER_CUTOFF_NEUTER = 2;
-    private static final String GENDER_MALE = "m";
-    private static final String GENDER_FEMALE = "f";
-    private static final String GENDER_NEUTER = "n";
 
-    private static final String NOMINATIVE = "Nominative";
-    private static final String ACCUSATIVE = "Accusative";
-    private static final String GENITIVE = "Genitive";
-    private static final String DATIVE = "Dative";
-    private static final String ABLATIVE = "Ablative";
-    private static final String VOCATIVE = "Vocative";
+//    private static final String GENDER_MALE = "m";
+//    private static final String GENDER_FEMALE = "f";
+//    private static final String GENDER_NEUTER = "n";
+
+//    private static final String NOMINATIVE = "Nominative";
+//    private static final String ACCUSATIVE = "Accusative";
+//    private static final String GENITIVE = "Genitive";
+//    private static final String DATIVE = "Dative";
+//    private static final String ABLATIVE = "Ablative";
+//    private static final String VOCATIVE = "Vocative";
 
 
     private final int VERB_PERSON_NUM_OUTCOMES = 3;
     private final int VERB_PERSON_1ST_CUTOFF = 0;
     private final int VERB_PERSON_2ND_CUTOFF = 1;
     private final int VERB_PERSON_3RD_CUTOFF = 2;
-    private final String VERB_PERSON_1ST = "1st";
-    private final String VERB_PERSON_2ND = "2nd";
-    private final String VERB_PERSON_3RD = "3rd";
+
+//    private final String PERSON_1ST = "1st";
+//    private final String PERSON_2ND = "2nd";
+//    private final String PERSON_3RD = "3rd";
 
 
 
@@ -611,11 +629,11 @@ public class RandomGenerator<T> {
         int randomVerbPerson = randomGenerator.nextInt(VERB_PERSON_NUM_OUTCOMES);
 
         if(randomVerbPerson == VERB_PERSON_1ST_CUTOFF)
-            return VERB_PERSON_1ST;
+            return PERSON_1ST;
         else if(randomVerbPerson == VERB_PERSON_2ND_CUTOFF)
-            return VERB_PERSON_2ND;
+            return PERSON_2ND;
         else
-            return VERB_PERSON_3RD;
+            return PERSON_3RD;
     }
 
     /**
