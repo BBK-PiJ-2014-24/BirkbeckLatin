@@ -20,6 +20,28 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ABLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ACCUSATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_COMPARATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_SUPERLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_COMPARATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_SUPERLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL1;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL2;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL3;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL4;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENITIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOMINATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_IRREGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_REGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOCATIVE;
+
 /**
  * Created by snewnham on 20/01/2017.
  */
@@ -33,17 +55,17 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final static String NOUN_SKILL_LEVEL = "Noun_Skill_Level";
     private final static String NOUN_THETA = "Noun_Theta";
 
-    private final static String NOUN = "Noun";
-    private final static String NOUN_REGULAR = "NounRegular";
-    private final static String NOUN_IRREGULAR = "NounIrregular";
-    private final static String PREPOSITION = "Preposition";
-    private final static String CONJUNCTION = "Conjunction";
-    private final static String ADJECTIVE = "Adjective";
-    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
-    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
-    private final static String ADVERB = "Adverb";
-    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
-    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
+//    private final static String NOUN = "Noun";
+//    private final static String NOUN_REGULAR = "NounRegular";
+//    private final static String NOUN_IRREGULAR = "NounIrregular";
+//    private final static String PREPOSITION = "Preposition";
+//    private final static String CONJUNCTION = "Conjunction";
+//    private final static String ADJECTIVE = "Adjective";
+//    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
+//    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
+//    private final static String ADVERB = "Adverb";
+//    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
+//    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
 
     private final static String NOUN_SCORE = "NounScore";
@@ -79,33 +101,33 @@ public class NounEtcGameImpl implements NounEtcGame {
 
     private final static int DECLENSION3 = 3;
 
-    private final static String DECLNUM1 = "decl1";
-    private final static String DECLNUM2 = "decl2";
-    private final static String DECLNUM3 = "decl3";
-    private final static String DECLNUM4 = "decl4";
+//    private final static String DECL1 = "decl1";
+//    private final static String DECL2 = "decl2";
+//    private final static String DECL3 = "decl3";
+//    private final static String DECL4 = "decl4";
 
-    private final static String DECLNUM1_SCORE = "decl1Score";
-    private final static String DECLNUM2_SCORE = "decl2Score";
-    private final static String DECLNUM3_SCORE = "decl3Score";
-    private final static String DECLNUM4_SCORE = "decl4Score";
+    private final static String DECL1_SCORE = "decl1Score";
+    private final static String DECL2_SCORE = "decl2Score";
+    private final static String DECL3_SCORE = "decl3Score";
+    private final static String DECL4_SCORE = "decl4Score";
 
     private final String DECL1_TALLY = "DeclTally1";  // Tally of All Conj# Questions Asked
     private final String DECL2_TALLY = "DeclTally2";  // Key for Meta Table in DB
     private final String DECL3_TALLY = "DeclTally3";
     private final String DECL4_TALLY = "DeclTally4";
 
-    private final String DECLNUM1_HIST_PERC = "Decl1_Hist%";  // % of Correctly Answered Conj# Questions
-    private final String DECLNUM2_HIST_PERC = "Decl2_Hist%";  // Key For statisticsMap
-    private final String DECLNUM3_HIST_PERC = "Decl3_Hist%";
-    private final String DECLNUM4_HIST_PERC = "Decl4_Hist%";
+    private final String DECL1_HIST_PERC = "Decl1_Hist%";  // % of Correctly Answered Conj# Questions
+    private final String DECL2_HIST_PERC = "Decl2_Hist%";  // Key For statisticsMap
+    private final String DECL3_HIST_PERC = "Decl3_Hist%";
+    private final String DECL4_HIST_PERC = "Decl4_Hist%";
 
 
-    private final static String NOMINATIVE = "Nominative";
-    private final static String ACUSTATIVE = "Accusative";
-    private final static String GENITIVE = "Genitive";
-    private final static String DATIVE = "Dative";
-    private final static String ABLATIVE = "Ablative";
-    private final static String VOCATIVE = "Vocative";
+//    private final static String NOMINATIVE = "Nominative";
+//    private final static String ACUSTATIVE = "Accusative";
+//    private final static String GENITIVE = "Genitive";
+//    private final static String DATIVE = "Dative";
+//    private final static String ABLATIVE = "Ablative";
+//    private final static String VOCATIVE = "Vocative";
 
     private final static String NOMINATIVE_SCORE = "NominativeScore";
     private final static String ACUSTATIVE_SCORE = "AccusativeScore";
@@ -769,7 +791,7 @@ public class NounEtcGameImpl implements NounEtcGame {
                         nominative++;
                     nominativeTally++;
                     break;
-                case ACUSTATIVE:
+                case ACCUSATIVE:
                     if(ans.correct == 1)
                         accusative++;
                     accusativeTally++;
@@ -839,13 +861,13 @@ public class NounEtcGameImpl implements NounEtcGame {
         mapStatistics.put( ADVERB_COMPARATIVE, adverbComparativePerc );
         mapStatistics.put( ADVERB_SUPERLATIVE, adverbSuperlativePerc  );
 
-        mapStatistics.put( DECLNUM1, decl1perc );
-        mapStatistics.put( DECLNUM2, decl2perc );
-        mapStatistics.put( DECLNUM3, decl3perc );
-        mapStatistics.put( DECLNUM4, decl4perc );
+        mapStatistics.put(DECL1, decl1perc );
+        mapStatistics.put(DECL2, decl2perc );
+        mapStatistics.put(DECL3, decl3perc );
+        mapStatistics.put(DECL4, decl4perc );
 
         mapStatistics.put( NOMINATIVE, nominativePerc );
-        mapStatistics.put( ACUSTATIVE, accusativePerc );
+        mapStatistics.put( ACCUSATIVE, accusativePerc );
         mapStatistics.put( GENITIVE, genitivePerc );
         mapStatistics.put( DATIVE, dativePerc );
         mapStatistics.put( ABLATIVE, ablativePerc );
@@ -883,17 +905,17 @@ public class NounEtcGameImpl implements NounEtcGame {
         adverbSuperlativePercHist = calcHistoryStatistics(ADVERB_SUPERLATIVE_SCORE, ADVERB_SUPERLATIVE_TALLY, adverbSuperlative, adverbSuperlativeTally);
         mapStatistics.put(ADVERB_SUPERLATIVE_HIST_PERC, adverbSuperlativePercHist);
 
-        decl1percHist = calcHistoryStatistics(DECLNUM1_SCORE, DECL1_TALLY, decl1, decl1Tally);
-        mapStatistics.put(DECLNUM1_HIST_PERC, decl1percHist);
+        decl1percHist = calcHistoryStatistics(DECL1_SCORE, DECL1_TALLY, decl1, decl1Tally);
+        mapStatistics.put(DECL1_HIST_PERC, decl1percHist);
 
-        decl2percHist = calcHistoryStatistics(DECLNUM2_SCORE, DECL2_TALLY, decl2, decl2Tally);
-        mapStatistics.put(DECLNUM2_HIST_PERC, decl2percHist);
+        decl2percHist = calcHistoryStatistics(DECL2_SCORE, DECL2_TALLY, decl2, decl2Tally);
+        mapStatistics.put(DECL2_HIST_PERC, decl2percHist);
 
-        decl3percHist = calcHistoryStatistics(DECLNUM3_SCORE, DECL3_TALLY, decl3, decl3Tally);
-        mapStatistics.put(DECLNUM3_HIST_PERC, decl3percHist);
+        decl3percHist = calcHistoryStatistics(DECL3_SCORE, DECL3_TALLY, decl3, decl3Tally);
+        mapStatistics.put(DECL3_HIST_PERC, decl3percHist);
 
-        decl4percHist = calcHistoryStatistics(DECLNUM4_SCORE, DECL4_TALLY, decl4, decl4Tally);
-        mapStatistics.put(DECLNUM4_HIST_PERC, decl4percHist);
+        decl4percHist = calcHistoryStatistics(DECL4_SCORE, DECL4_TALLY, decl4, decl4Tally);
+        mapStatistics.put(DECL4_HIST_PERC, decl4percHist);
 
 
         nominativePercHist = calcHistoryStatistics(NOMINATIVE_SCORE, NOMINATIVE_TALLY, nominative, nominativeTally);

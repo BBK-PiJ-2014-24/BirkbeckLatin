@@ -21,6 +21,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ABLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ACCUSATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_COMPARATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_SUPERLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_COMPARATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_SUPERLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL1;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL2;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL3;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL4;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_MALE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENITIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOMINATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_IRREGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_REGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOCATIVE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -62,32 +84,32 @@ public class GameNounEtcTests {
     int skillLevel4;
     int skillLevel5;
 
-
-    private final static String NOUN = "Noun";
-    private final static String NOUN_REGULAR = "NounRegular";
-    private final static String NOUN_IRREGULAR = "NounIrregular";
-    private final static String PREPOSITION = "Preposition";
-    private final static String CONJUNCTION = "Conjunction";
-    private final static String ADJECTIVE = "Adjective";
-    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
-    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
-    private final static String ADVERB = "Adverb";
-    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
-    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
-
-    private final static String DECLNUM1 = "decl1";
-    private final static String DECLNUM2 = "decl2";
-    private final static String DECLNUM3 = "decl3";
-    private final static String DECLNUM4 = "decl4";
-
-    private final static String NOMINATIVE = "Nominative";
-    private final static String ACCUSATIVE = "Accusative";
-    private final static String DATIVE = "Dative";
-    private final static String GENITIVE = "Genitive";
-    private final static String ABLATIVE = "Ablative";
-    private final static String VOCATIVE = "Vocative";
-
-    private final static String GENDER_MALE = "m";
+//
+//    private final static String NOUN = "Noun";
+//    private final static String NOUN_REGULAR = "NounRegular";
+//    private final static String NOUN_IRREGULAR = "NounIrregular";
+//    private final static String PREPOSITION = "Preposition";
+//    private final static String CONJUNCTION = "Conjunction";
+//    private final static String ADJECTIVE = "Adjective";
+//    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
+//    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
+//    private final static String ADVERB = "Adverb";
+//    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
+//    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
+//
+//    private final static String DECLNUM1 = "decl1";
+//    private final static String DECLNUM2 = "decl2";
+//    private final static String DECLNUM3 = "decl3";
+//    private final static String DECLNUM4 = "decl4";
+//
+//    private final static String NOMINATIVE = "Nominative";
+//    private final static String ACCUSATIVE = "Accusative";
+//    private final static String DATIVE = "Dative";
+//    private final static String GENITIVE = "Genitive";
+//    private final static String ABLATIVE = "Ablative";
+//    private final static String VOCATIVE = "Vocative";
+//
+//    private final static String GENDER_MALE = "m";
 
     String numberSingular;
     String numberPlural;
@@ -661,10 +683,10 @@ public class GameNounEtcTests {
         assertEquals((int)map.get(ADVERB_COMPARATIVE), 50 );
         assertEquals((int)map.get(ADVERB_SUPERLATIVE), 0 );
 
-        assertEquals((int)map.get(DECLNUM1), 100 );
-        assertEquals((int)map.get(DECLNUM2), 33 );
-        assertEquals((int)map.get(DECLNUM3), 50 );
-        assertEquals((int)map.get(DECLNUM4), 50 );
+        assertEquals((int)map.get(DECL1), 100 );
+        assertEquals((int)map.get(DECL2), 33 );
+        assertEquals((int)map.get(DECL3), 50 );
+        assertEquals((int)map.get(DECL4), 50 );
 
         assertEquals((int)map.get(NOMINATIVE), 50 );
         assertEquals((int)map.get(ACCUSATIVE), 33 );

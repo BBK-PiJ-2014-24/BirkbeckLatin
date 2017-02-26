@@ -57,19 +57,23 @@ public class LatinConstants {
     // NOUN CONSTANTS
     // ==============
 
+    public final static String NOUN = "Noun";
     public final static String NOUN_REGULAR = "NounRegular";
     public final static String NOUN_IRREGULAR = "NounIrregular";
-
     public final static String PREPOSITION = "Preposition";
     public final static String CONJUNCTION = "Conjunction";
-
     public final static String ADJECTIVE = "Adjective";
     public final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
     public final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
-
     public final static String ADVERB = "Adverb";
     public final static String ADVERB_COMPARATIVE = "AdverbComparative";
     public final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
+
+    public final static String DECL1 = "decl1";
+    public final static String DECL2 = "decl2";
+    public final static String DECL3 = "decl3";
+    public final static String DECL4 = "decl4";
+
 
     public final static String NOMINATIVE = "Nominative";
     public final static String ACCUSATIVE = "Accusative";
