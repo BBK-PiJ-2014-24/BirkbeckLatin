@@ -2,11 +2,20 @@ package com.example.snewnham.birkbecklatin.Model.nouns;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_MALE;
+
 /**
  * Created by snewnham on 16/11/2016.
  */
 
 public class Adverb implements NounEtc {
+
+    // Constants
+    // ---------
+    //  protected final static String ADVERB = "Adverb";
+
+
 
     // Fields
     // ------
@@ -25,8 +34,6 @@ public class Adverb implements NounEtc {
     protected String mLatinWordEnding;
     protected String mLatinWord;
     protected String mEnglishWord;
-
-    protected final static String ADVERB = "Adverb";
 
 
     // Constructor

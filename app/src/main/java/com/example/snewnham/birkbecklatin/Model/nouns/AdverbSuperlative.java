@@ -2,16 +2,18 @@ package com.example.snewnham.birkbecklatin.Model.nouns;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_SUPERLATIVE;
+
 /**
  * Created by snewnham on 16/11/2016.
  */
 
 public class AdverbSuperlative extends Adverb {
 
-    // Fields
-    // ------
+    // Constants
+    // ---------
     private final String ADVERB_SUPERLATIVE_ENDING = "issime";
-    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
+   // private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
 
     // Constructor

@@ -19,6 +19,17 @@ import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_COMPARATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_SUPERLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_COMPARATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_SUPERLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_IRREGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_REGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION;
+
 
 /**
  * THIS IS THE DOORWAY TO THE DATABASE GENERATING THE SQL COMMANDS
@@ -37,20 +48,20 @@ public class DatabaseAccess {
     // Constants
     // ---------
 
-    private final static String NOUN_REGULAR = "NounRegular";
-    private final static String NOUN_IRREGULAR = "NounIrregular";
-
-    private final static String PREPOSITION = "Preposition";
-    private final static String CONJUNCTION = "Conjunction";
-
-    private final static String ADJECTIVE = "Adjective";
-    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
-    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
-
-    private final static String ADVERB = "Adverb";
-    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
-    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
-
+//    private final static String NOUN_REGULAR = "NounRegular";
+//    private final static String NOUN_IRREGULAR = "NounIrregular";
+//
+//    private final static String PREPOSITION = "Preposition";
+//    private final static String CONJUNCTION = "Conjunction";
+//
+//    private final static String ADJECTIVE = "Adjective";
+//    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
+//    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
+//
+//    private final static String ADVERB = "Adverb";
+//    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
+//    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
+//
 
 
     /**
@@ -134,7 +145,7 @@ public class DatabaseAccess {
         else if (table.equals(DbSchema.NounListTable.NOUN_LIST_TABLE) && column == null )
             return new NounListCursor(cursor, NOUN_REGULAR);
         else if (table.equals(DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE) && column == null)
-            return new AdjectiveListCursor(cursor, ADJECTIVE );
+            return new AdjectiveListCursor(cursor, ADJECTIVE);
         else if (table.equals(DbSchema.PrepositionListTable.PREPOSITION_TABLE) && column == null)
             return new PrepositionListCursor(cursor);
         else if (table.equals(DbSchema.ConjunctionListTable.CONJUNCTION_TABLE) && column == null)

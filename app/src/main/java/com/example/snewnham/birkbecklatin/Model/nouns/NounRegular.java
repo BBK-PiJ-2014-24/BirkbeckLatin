@@ -1,6 +1,7 @@
 package com.example.snewnham.birkbecklatin.Model.nouns;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.*;
 
 /**
  * Created by snewnham on 05/11/2016.
@@ -56,21 +57,21 @@ public class NounRegular implements NounEtc {
         mNounCase = noun_Case; // Set Noun Case
         // Override for 2nd Declension Nominative and Singular
         if( mDeclension == 2 && noun_Case.equals(NOMINATIVE) && number.equals(SINGULAR) ) {
-                mLatin_Noun_Ending = "";
+                mLatin_Noun_Ending = databaseAccess.sqlNounEndingQuery( Integer.toString(mDeclension), number, mGender, noun_Case);;
                 mLatinNoun = mNominative;
                 return mLatinNoun;
             } else if( mDeclension == 3 ) { // Override for 3rd Declension Nominative and Singular (Singular) && Genitive Plural
 
                 if( (noun_Case.equals(NOMINATIVE) || noun_Case.equals(VOCATIVE)) && number.equals(SINGULAR) ) {
-                    mLatin_Noun_Ending = "";
+                    mLatin_Noun_Ending = "";  // Endings are too irregular
                     mLatinNoun = mNominative;
                     return mLatinNoun;
                 } else if( noun_Case.equals(ACCUSATIVE) && mGender.equals(GENDER_NEUTER) && number.equals(SINGULAR) ){
-                    mLatin_Noun_Ending = "";
+                    mLatin_Noun_Ending = "";  // Endings are too irregular
                     mLatinNoun = mNominative;
                     return mLatinNoun;
                 } else if (noun_Case.equals(GENITIVE) && number.equals(PLURAL) && mGenitive_Plural != null) {
-                    mLatin_Noun_Ending = "";
+                    mLatin_Noun_Ending = "";   // Endings are too irregular
                     mLatinNoun = mGenitive_Plural;
                     return mLatinNoun;
                 }

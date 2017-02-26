@@ -23,6 +23,12 @@ import org.junit.runner.RunWith;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_IRREGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_REGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION;
 import static com.example.snewnham.birkbecklatin.Model.database.DbSchema.VerbListTable.*;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
@@ -118,12 +124,12 @@ public class DatabaseInstrumentedTest {
     String adverbEnglishComparative;
     String adverbEnglishSuperlative;
 
-    private final static String NOUN_REGULAR = "NounRegular";
-    private final static String NOUN_IRREGULAR = "NounIrregular";
-    private final static String PREPOSITION = "Preposition";
-    private final static String CONJUNCTION = "Conjunction";
-    private final static String ADJECTIVE = "Adjective";
-    private final static String ADVERB = "Adverb";
+//    private final static String NOUN_REGULAR = "NounRegular";
+//    private final static String NOUN_IRREGULAR = "NounIrregular";
+//    private final static String PREPOSITION = "Preposition";
+//    private final static String CONJUNCTION = "Conjunction";
+//    private final static String ADJECTIVE = "Adjective";
+//    private final static String ADVERB = "Adverb";
 
     @Before
     public void setUp() {

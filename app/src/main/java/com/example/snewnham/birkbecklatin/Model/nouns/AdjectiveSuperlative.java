@@ -2,13 +2,22 @@ package com.example.snewnham.birkbecklatin.Model.nouns;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_SUPERLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECLENSION1;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECLENSION2;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_FEMALE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_MALE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_NEUTER;
+
 /**
  * Adjective Superlative Class - Builds an Adjective Superlative Element. N.b., that gender needs to be set. default = m
  */
 
 public class AdjectiveSuperlative extends Adjective {
 
-    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
+
+    // Constants
+    //  private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
 
 
     // Fields
@@ -16,8 +25,6 @@ public class AdjectiveSuperlative extends Adjective {
 
     private String mLatinSuperlativeEnding;
     private String mLatinSuperlative;
-
-
 
 
     // Constructor

@@ -2,6 +2,8 @@ package com.example.snewnham.birkbecklatin.Model.nouns;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
+
 /**
  * Preposition - Forms the Latin Preposition and English Translation.
  *
@@ -9,6 +11,11 @@ import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
  */
 
 public class Conjunction implements NounEtc {
+
+    // Constant
+    // --------
+    // protected final static String CONJUNCTION = "Conjunction";
+
 
     // Fields
     // ------
@@ -21,7 +28,6 @@ public class Conjunction implements NounEtc {
     private String mEnglishWord;
     private String mEnglishConjunction;
 
-    protected final static String CONJUNCTION = "Conjunction";
 
 
     // Constructor

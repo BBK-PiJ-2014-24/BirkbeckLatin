@@ -2,18 +2,32 @@ package com.example.snewnham.birkbecklatin.Model.nouns;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ACCUSATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_COMPARATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECLENSION3;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_FEMALE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_MALE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOMINATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.SINGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOCATIVE;
+
 /**
  * Adjective Comparative - Builds an Comparative Element. N.b., that gender needs to be set. default = m
  */
 
 public class AdjectiveComparative extends Adjective {
 
+
+    // Constants
+    // ---------
+    private final static String NEUTER_INFIX = "ius";
+    //private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
+
+
     // Fields
     // ------
     private String mLatinComparativeEnding;
     private String mLatinComparative;
-    private final static String NEUTER_INFIX = "ius";
-    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
 
 
     // Constructor

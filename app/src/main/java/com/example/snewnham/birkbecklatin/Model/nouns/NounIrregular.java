@@ -2,6 +2,8 @@ package com.example.snewnham.birkbecklatin.Model.nouns;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_MALE;
+
 /**
  * Created by snewnham on 11/11/2016.
  */

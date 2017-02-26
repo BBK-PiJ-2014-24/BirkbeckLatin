@@ -15,6 +15,7 @@ package com.example.snewnham.birkbecklatin.Model.nouns;
  * NounEtc - the Correct NounEtc
  */
 public class Answer {
+
     // Fields
     // ------
     public String type;

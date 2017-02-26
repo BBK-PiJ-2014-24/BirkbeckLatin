@@ -10,27 +10,27 @@ import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
 public interface NounEtc {
 
-    final static String NOMINATIVE = "Nominative";
-    final static String ACCUSATIVE = "Accusative";
-    final static String GENITIVE = "Genitive";
-    final static String DATIVE = "Dative";
-    final static String ABLATIVE = "Ablative";
-    final static String VOCATIVE = "Vocative";
-
-    final static String SINGULAR = "Singular";
-    final static String PLURAL = "Plural";
-
-    final static String GENDER_MALE = "m";
-    final static String GENDER_FEMALE = "f";
-    final static String GENDER_NEUTER = "n";
-
-    final static int DECLENSION1 = 1;
-    final static int DECLENSION2 = 2;
-    final static int DECLENSION3 = 3;
-    final static int DECLENSION4 = 4;
-    final static int DECLENSION5 = 5;
-    final static int DECLENSION212 = 212;
-    final static int DECLENSION333 = 333;
+//    final static String NOMINATIVE = "Nominative";
+//    final static String ACCUSATIVE = "Accusative";
+//    final static String GENITIVE = "Genitive";
+//    final static String DATIVE = "Dative";
+//    final static String ABLATIVE = "Ablative";
+//    final static String VOCATIVE = "Vocative";
+//
+//    final static String SINGULAR = "Singular";
+//    final static String PLURAL = "Plural";
+//
+//    final static String GENDER_MALE = "m";
+//    final static String GENDER_FEMALE = "f";
+//    final static String GENDER_NEUTER = "n";
+//
+//    final static int DECLENSION1 = 1;
+//    final static int DECLENSION2 = 2;
+//    final static int DECLENSION3 = 3;
+//    final static int DECLENSION4 = 4;
+//    final static int DECLENSION5 = 5;
+//    final static int DECLENSION212 = 212;
+//    final static int DECLENSION333 = 333;
 
 
 

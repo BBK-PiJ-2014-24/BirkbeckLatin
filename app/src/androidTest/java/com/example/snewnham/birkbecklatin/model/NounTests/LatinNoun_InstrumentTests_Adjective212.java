@@ -121,7 +121,7 @@ public class LatinNoun_InstrumentTests_Adjective212 {
     @Test
     public void testGetGenitive(){
         String gen = adjective.getGenitive();
-        assertEquals("Test Get Genitive", "boni" , gen);
+        assertEquals("Test Get Genitive", "", gen);
     }
 
 

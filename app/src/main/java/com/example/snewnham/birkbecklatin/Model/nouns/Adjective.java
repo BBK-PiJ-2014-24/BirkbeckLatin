@@ -2,6 +2,14 @@ package com.example.snewnham.birkbecklatin.Model.nouns;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ACCUSATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECLENSION333;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_FEMALE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_MALE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOMINATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.SINGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOCATIVE;
+
 /**
  * Adjective Class - Builds an Adjective Element. N.b., that gender needs to be set. default = m
  */

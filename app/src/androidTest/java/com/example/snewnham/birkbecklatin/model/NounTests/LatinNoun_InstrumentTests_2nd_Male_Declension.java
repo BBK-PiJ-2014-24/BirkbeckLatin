@@ -132,7 +132,7 @@ public class LatinNoun_InstrumentTests_2nd_Male_Declension {
         mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseNominative);
 
         assertEquals("amic", mNounRegular.getLatinWordStem());
-        assertEquals("", mNounRegular.getLatinWordEnding());
+        assertEquals("us", mNounRegular.getLatinWordEnding());
         assertEquals("amicus", mNounRegular.getLatinWord());
 
         mNounRegular.makeLatinWord(databaseAccess, numberSingular, caseAccusative);

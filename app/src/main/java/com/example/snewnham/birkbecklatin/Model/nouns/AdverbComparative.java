@@ -2,18 +2,19 @@ package com.example.snewnham.birkbecklatin.Model.nouns;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_COMPARATIVE;
+
 /**
  * Created by snewnham on 16/11/2016.
  */
 
 public class AdverbComparative extends Adverb {
 
-    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
-
-
-    // Fields
-    // ------
+    // Constants
+    // ----------
     private final String ADVERB_COMPARATIVE_ENDING = "ius";
+    // private final static String ADVERB_COMPARATIVE = "AdverbComparative";
+
 
     // Constructor
     // -----------
