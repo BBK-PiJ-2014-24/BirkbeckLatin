@@ -11,6 +11,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_IRREGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_REGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE_PERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_IMPERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PLUPERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PRESENT;
+
 /**
  * Uses a Random Generator to Select a Noun From the Noun_List and
  * its arguments (Case, Number, etc.)
@@ -33,12 +46,12 @@ public class RandomGenerator<T> {
     private static final String PREPOSITION_TABLE = "Preposition_List";
     private static final String CONJUNCTION_TABLE = "Conjunction_List";
 
-    private static final String NOUN_REGULAR = "NounRegular";
-    private static final String NOUN_IRREGULAR = "NounIrregular";
-    private static final String ADJECTIVE = "Adjective";
-    private static final String PREPOSITION = "Preposition";
-    private static final String CONJUNCTION = "Conjunction";
-    private static final String ADVERB = "Adverb";
+//    private static final String NOUN_REGULAR = "NounRegular";
+//    private static final String NOUN_IRREGULAR = "NounIrregular";
+//    private static final String ADJECTIVE = "Adjective";
+//    private static final String PREPOSITION = "Preposition";
+//    private static final String CONJUNCTION = "Conjunction";
+//    private static final String ADVERB = "Adverb";
 
     private static final int ADVERB_NUM_OUTCOMES= 4;
     private static final int ADVERB_CUTOFF = 1;
@@ -102,12 +115,13 @@ public class RandomGenerator<T> {
     private final int VERB_TENSE_PERFECT_CUTOFF = 3;
     private final int VERB_TENSE_PLUPERFECT_CUTOFF = 4;
     private final int VERB_TENSE_FUTURE_PERFECT_CUTOFF = 5;
-    private final String VERB_TENSE_PRESENT = "Present";
-    private final String VERB_TENSE_IMPERFECT = "Imperfect";
-    private final String VERB_TENSE_FUTURE = "Future";
-    private final String VERB_TENSE_PERFECT = "Perfect";
-    private final String VERB_TENSE_PLUPERFECT = "Pluperfect";
-    private final String VERB_TENSE_FUTURE_PERFECT = "Future Perfect";
+
+//    private final String VERB_TENSE_PRESENT = "Present";
+//    private final String VERB_TENSE_IMPERFECT = "Imperfect";
+//    private final String VERB_TENSE_FUTURE = "Future";
+//    private final String VERB_TENSE_PERFECT = "Perfect";
+//    private final String VERB_TENSE_PLUPERFECT = "Pluperfect";
+//    private final String VERB_TENSE_FUTURE_PERFECT = "Future Perfect";
 
 
     private final int VERB_VOICE_NUM_OUTCOMES = 2;
@@ -643,22 +657,22 @@ public class RandomGenerator<T> {
 
         switch (randomVerbPerson) {
             case VERB_TENSE_PRESENT_CUTOFF:
-                return VERB_TENSE_PRESENT;
+                return TENSE_PRESENT;
 
             case VERB_TENSE_IMPERFECT_CUTOFF:
-                return VERB_TENSE_IMPERFECT;
+                return TENSE_IMPERFECT;
 
             case VERB_TENSE_FUTURE_CUTOFF:
-                return VERB_TENSE_FUTURE;
+                return TENSE_FUTURE;
 
             case VERB_TENSE_PERFECT_CUTOFF:
-                return VERB_TENSE_PERFECT;
+                return TENSE_PERFECT;
 
             case VERB_TENSE_PLUPERFECT_CUTOFF:
-                return VERB_TENSE_PLUPERFECT;
+                return TENSE_PLUPERFECT;
 
             case VERB_TENSE_FUTURE_PERFECT_CUTOFF:
-                return VERB_TENSE_FUTURE_PERFECT;
+                return TENSE_FUTURE_PERFECT;
         }
         return null;
     }
@@ -672,12 +686,12 @@ public class RandomGenerator<T> {
     public List<String> getVerbTenseList(){
 
         String[] verbArr = new String[]{
-                VERB_TENSE_PRESENT,
-                VERB_TENSE_IMPERFECT,
-                VERB_TENSE_FUTURE,
-                VERB_TENSE_PERFECT,
-                VERB_TENSE_PLUPERFECT,
-                VERB_TENSE_FUTURE_PERFECT
+                TENSE_PRESENT,
+                TENSE_IMPERFECT,
+                TENSE_FUTURE,
+                TENSE_PERFECT,
+                TENSE_PLUPERFECT,
+                TENSE_FUTURE_PERFECT
         };
 
         // Implementing Adjusted Fisher–Yates to shuffle tenses
@@ -710,10 +724,10 @@ public class RandomGenerator<T> {
     public List<String> getSubjunctiveVerbTenseList(){
 
         String[] verbArr = new String[]{
-                VERB_TENSE_PRESENT,
-                VERB_TENSE_IMPERFECT,
-                VERB_TENSE_PERFECT,
-                VERB_TENSE_PLUPERFECT,
+                TENSE_PRESENT,
+                TENSE_IMPERFECT,
+                TENSE_PERFECT,
+                TENSE_PLUPERFECT,
         };
 
         // Implementing Adjusted Fisher–Yates to shuffle tenses
@@ -746,9 +760,9 @@ public class RandomGenerator<T> {
     public List<String> getInfinitiveVerbTenseList(){
 
         String[] verbArr = new String[]{
-                VERB_TENSE_PRESENT,
-                VERB_TENSE_PERFECT,
-                VERB_TENSE_FUTURE,
+                TENSE_PRESENT,
+                TENSE_PERFECT,
+                TENSE_FUTURE,
         };
 
         // Implementing Adjusted Fisher–Yates to shuffle tenses
