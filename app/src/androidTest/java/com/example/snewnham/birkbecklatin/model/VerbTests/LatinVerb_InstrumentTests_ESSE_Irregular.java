@@ -124,10 +124,10 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
         assertEquals("com.example.snewnham.birkbecklatin", appContext.getPackageName());
     }
 
-    // ==========================  ACTIVE, INDICATIVE  ================================================
+    // ==========================  VOICE_ACTIVE, MOOD_INDICATIVE  ================================================
 
     /**
-     * testMakeVerbWordPresentActiveIndicative()  - PRESENT TENSE, ACTIVE, INDICATIVE
+     * testMakeVerbWordPresentActiveIndicative()  - TENSE_PRESENT TENSE, VOICE_ACTIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -169,7 +169,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
     }
 
     /**
-     * testMakeVerbWordImperfectActiveIndicative()  - IMPERFECT TENSE, ACTIVE, INDICATIVE
+     * testMakeVerbWordImperfectActiveIndicative()  - TENSE_IMPERFECT TENSE, VOICE_ACTIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -212,7 +212,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
     }
 
     /**
-     * testMakeVerbWordFutureActiveIndicative()  - FUTURE TENSE, ACTIVE, INDICATIVE
+     * testMakeVerbWordFutureActiveIndicative()  - TENSE_FUTURE TENSE, VOICE_ACTIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -254,7 +254,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
     }
 
     /**
-     * testMakeVerbWordPerfectActiveIndicative()  - PERFECT TENSE, ACTIVE, INDICATIVE
+     * testMakeVerbWordPerfectActiveIndicative()  - TENSE_PERFECT TENSE, VOICE_ACTIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -297,7 +297,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
     }
 
     /**
-     * testMakeVerbWordPluperfectActiveIndicative()  - PLUPERFECT TENSE, ACTIVE, INDICATIVE
+     * testMakeVerbWordPluperfectActiveIndicative()  - TENSE_PLUPERFECT TENSE, VOICE_ACTIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -340,7 +340,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
     }
 
     /**
-     * testMakeVerbWordFuturePerfectActiveIndicative()  - FUTURE-PERFECT TENSE, ACTIVE, INDICATIVE
+     * testMakeVerbWordFuturePerfectActiveIndicative()  - TENSE_FUTURE-TENSE_PERFECT TENSE, VOICE_ACTIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -381,10 +381,10 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
         assertEquals("fuerint", mVerbEsse.getLatinVerb());
     }
 
-// ============================== PASSIVE, INDICATIVE  =============================================
+// ============================== VOICE_PASSIVE, MOOD_INDICATIVE  =============================================
 
     /**
-     * testMakeVerbWordPresentActiveIndicative()  - PRESENT TENSE, PASSIVE, INDICATIVE
+     * testMakeVerbWordPresentActiveIndicative()  - TENSE_PRESENT TENSE, VOICE_PASSIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -427,7 +427,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
     }
 
     /**
-     * testMakeVerbWordImperfectActiveIndicative()  - IMPERFECT TENSE, PASSIVE, INDICATIVE
+     * testMakeVerbWordImperfectActiveIndicative()  - TENSE_IMPERFECT TENSE, VOICE_PASSIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -469,7 +469,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
     }
 
     /**
-     * testMakeVerbWordFuturePassiveIndicative()  - FUTURE TENSE, PASSIVE, INDICATIVE
+     * testMakeVerbWordFuturePassiveIndicative()  - TENSE_FUTURE TENSE, VOICE_PASSIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -513,7 +513,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
 
 
     /**
-     * testMakeVerbWordPerfectPassiveIndicative()  - PERFECT TENSE, PASSIVE, INDICATIVE
+     * testMakeVerbWordPerfectPassiveIndicative()  - TENSE_PERFECT TENSE, VOICE_PASSIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular and English Translation.
      * @throws Exception
@@ -556,7 +556,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
 
 
     /**
-     * testMakeVerbWordPluperfectPassiveIndicative()  - PERFECT TENSE, PASSIVE, INDICATIVE
+     * testMakeVerbWordPluperfectPassiveIndicative()  - TENSE_PERFECT TENSE, VOICE_PASSIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular and English Translation.
      * @throws Exception
@@ -598,7 +598,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
     }
 
     /**
-     * testMakeVerbWordFuturePerfectPassiveIndicative()  - FUTURE-PERFECT TENSE, PASSIVE, INDICATIVE
+     * testMakeVerbWordFuturePerfectPassiveIndicative()  - TENSE_FUTURE-TENSE_PERFECT TENSE, VOICE_PASSIVE, MOOD_INDICATIVE
      * ================================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular and English Translation.
      * @throws Exception
@@ -640,10 +640,10 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
 
     }
 
-    // ======================= ACTIVE, SUBJUNCTIVE ==================================
+    // ======================= VOICE_ACTIVE, MOOD_SUBJUNCTIVE ==================================
 
     /**
-     * testMakeVerbWordPresentActiveSubjunctive()  - PRESENT TENSE, ACTIVE, SUBJUNCTIVE
+     * testMakeVerbWordPresentActiveSubjunctive()  - TENSE_PRESENT TENSE, VOICE_ACTIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -686,7 +686,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
     }
 
     /**
-     * testMakeVerbWordImperfectActiveSubjunctive()  - IMPERFECT TENSE, ACTIVE, SUBJUNCTIVE
+     * testMakeVerbWordImperfectActiveSubjunctive()  - TENSE_IMPERFECT TENSE, VOICE_ACTIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -728,7 +728,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
 
 
     /**
-     * testMakeVerbWordPerfectActiveSubjunctive()  - PERFECT TENSE, ACTIVE, SUBJUNCTIVE
+     * testMakeVerbWordPerfectActiveSubjunctive()  - TENSE_PERFECT TENSE, VOICE_ACTIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -769,7 +769,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
     }
 
     /**
-     * testMakeVerbWordPluperfectActiveIndicative()  - PLUPERFECT TENSE, ACTIVE, SUBJUNCTIVE
+     * testMakeVerbWordPluperfectActiveIndicative()  - TENSE_PLUPERFECT TENSE, VOICE_ACTIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -810,11 +810,11 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
 
     }
 
-// ======================= PASSIVE, SUBJUNCTIVE =========================
+// ======================= VOICE_PASSIVE, MOOD_SUBJUNCTIVE =========================
 
 
     /**
-     * testMakeVerbWordPresentPassiveSubjunctive()  - PRESENT TENSE, PASSIVE, SUBJUNCTIVE
+     * testMakeVerbWordPresentPassiveSubjunctive()  - TENSE_PRESENT TENSE, VOICE_PASSIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -857,7 +857,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
     }
 
     /**
-     * testMakeVerbWordImperfectPassiveSubjunctive()  - IMPERFECT TENSE, PASSIVE, SUBJUNCTIVE
+     * testMakeVerbWordImperfectPassiveSubjunctive()  - TENSE_IMPERFECT TENSE, VOICE_PASSIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -900,7 +900,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
 
 
     /**
-     * testMakeVerbWordPerfectPassiveSubjunctive()  - PERFECT TENSE, PASSIVE, SUBJUNCTIVE
+     * testMakeVerbWordPerfectPassiveSubjunctive()  - TENSE_PERFECT TENSE, VOICE_PASSIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -943,7 +943,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
 
 
     /**
-     * testMakeVerbWordPluperfectPassiveIndicative()  - PLUPERFECT TENSE, PASSIVE, SUBJUNCTIVE
+     * testMakeVerbWordPluperfectPassiveIndicative()  - TENSE_PLUPERFECT TENSE, VOICE_PASSIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception
@@ -984,7 +984,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
         assertEquals(null, mVerbEsse.getLatinVerb());
     }
 
-    // =========================== INFINITIVE, IMPERATIVE =======================================
+    // =========================== INFINITIVE, MOOD_IMPERATIVE =======================================
 
     /**
      * testMakeVerbWordInfinitive()  - INFINITIVE
@@ -1031,7 +1031,7 @@ public class LatinVerb_InstrumentTests_ESSE_Irregular {
 
 
     /**
-     * testMakeVerbWordImperative()  - IMPERATIVE
+     * testMakeVerbWordImperative()  - MOOD_IMPERATIVE
      * ==========================================
      * test VerbRegular Class that It Can build Correct Latin VerbRegular.
      * @throws Exception

@@ -2,6 +2,15 @@ package com.example.snewnham.birkbecklatin.Model.verbs;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_IMPERATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE_PERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_IMPERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PLUPERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PRESENT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_PASSIVE;
+
 /**
  * Created by snewnham on 25/10/2016.
  */
@@ -29,7 +38,7 @@ public class VerbSemiDeponent extends VerbRegular {
      * @param tense
      * @param mood
      * @param voice Override to Ensure that Deponent Latin Verbs
-     *              HAVE PASSIVE ENDINGS for PERFECT, PLUPERFECT, FUTURE PERFECT
+     *              HAVE VOICE_PASSIVE ENDINGS for TENSE_PERFECT, TENSE_PLUPERFECT, TENSE_FUTURE TENSE_PERFECT
      * @param conjNum
      * @return
      */
@@ -41,17 +50,17 @@ public class VerbSemiDeponent extends VerbRegular {
         mVoice = voice;
         mMood = mood;
 
-        if (voice.equals("Passive")) { // SemiDeponent Verbs cannot be Passive!
+        if (voice.equals(VOICE_PASSIVE)) { // SemiDeponent Verbs cannot be Passive!
             setLatinStem(null);
             setLatinEnding(null);
             setLatinVerb(null);
             return null;
-        } else if( mood.equals("Imperative") ) { // check for Imperatives
+        } else if( mood.equals(MOOD_IMPERATIVE) ) { // check for Imperatives
             return super.makeLatinVerb(databaseAccess, person, number, tense, mood, voice, conjNum);
-        } else if (tense.equals("Present") || tense.equals("Imperfect") || tense.equals("Future") ) {
+        } else if (tense.equals(TENSE_PRESENT) || tense.equals(TENSE_IMPERFECT) || tense.equals(TENSE_FUTURE) ) {
             return super.makeLatinVerb(databaseAccess, person, number, tense, mood, voice, conjNum);
-        } else if (tense.equals("Perfect") || tense.equals("Pluperfect") || tense.equals("Future Perfect")) {
-            String voicePassive = "Passive";
+        } else if (tense.equals(TENSE_PERFECT) || tense.equals(TENSE_PLUPERFECT) || tense.equals(TENSE_FUTURE_PERFECT)) {
+            String voicePassive = VOICE_PASSIVE;
             return super.makeLatinVerb(databaseAccess, person, number, tense, mood, voicePassive, conjNum);  // Voice Override
         } else {
             return null;
@@ -69,7 +78,7 @@ public class VerbSemiDeponent extends VerbRegular {
      * @param number
      * @param tense
      * @param mood
-     * @param voice - ALWAYS SHOULD BE ACTIVE ELSE RETURN NULL
+     * @param voice - ALWAYS SHOULD BE VOICE_ACTIVE ELSE RETURN NULL
      * @return
      */
 
@@ -77,7 +86,7 @@ public class VerbSemiDeponent extends VerbRegular {
     public String makeEnglishVerb(DatabaseAccess databaseAccess, String person, String number,
                                   String tense, String mood, String voice){
 
-        if( voice.equals("Passive") ) {
+        if( voice.equals(VOICE_PASSIVE) ) {
             setEnglishPerson(null); // SemiDeponent Verbs cannot be Passive!
             setEnglishAuxiliaryVerb(null);
             setEnglishVerbEnding(null);

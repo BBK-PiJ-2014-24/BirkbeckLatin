@@ -399,7 +399,7 @@ public class VerbGame {
                 //idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2); // Two Verb IDs
                 person = mRandomGenerator.getVerbPerson();
                 do {
-                    number = mRandomGenerator.getVerbNumber();  // NO INFINTIVES - Cannot Handle IMPERFECT TENSE!!!
+                    number = mRandomGenerator.getVerbNumber();  // NO INFINTIVES - Cannot Handle TENSE_IMPERFECT TENSE!!!
                 } while (number.equals(NUMBER_INFINITIVE));
                 voice1 = VOICE_ACTIVE;
                 mood = MOOD_INDICATIVE;
@@ -443,7 +443,7 @@ public class VerbGame {
                 person = mRandomGenerator.getVerbPerson();
                 number = mRandomGenerator.getVerbNumber();
 
-                voice1 = mRandomGenerator.getVerbVoice(); // Allow ACTIVE and PASSIVE, but Checking for Deponent/Semi-Deponent or Esse Verb
+                voice1 = mRandomGenerator.getVerbVoice(); // Allow VOICE_ACTIVE and VOICE_PASSIVE, but Checking for Deponent/Semi-Deponent or Esse Verb
                 voice2 = voice1;
                 if(voice1.equals(VOICE_PASSIVE)) {
                     type0 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(0));
@@ -489,7 +489,7 @@ public class VerbGame {
                 voice2 = voice1;
 
 
-                // Allow ACTIVE and PASSIVE, but Checking for Deponent/Semi-Deponent
+                // Allow VOICE_ACTIVE and VOICE_PASSIVE, but Checking for Deponent/Semi-Deponent
                 if(voice1.equals(VOICE_PASSIVE)) {
                     if(type0.equals(DEPONENT) || type0.equals(SEMI_DEPONENT) || idList.get(0) == esse_ID)
                         voice1 = VOICE_ACTIVE;
@@ -539,7 +539,7 @@ public class VerbGame {
                 voice2 = voice1;
 
 
-                // Allow ACTIVE and PASSIVE, but Checking for Deponent/Semi-Deponent
+                // Allow VOICE_ACTIVE and VOICE_PASSIVE, but Checking for Deponent/Semi-Deponent
                 if(voice1.equals(VOICE_PASSIVE)) {
                     if(type0.equals(DEPONENT) || type0.equals(SEMI_DEPONENT) || idList.get(0) == esse_ID)
                         voice1 = VOICE_ACTIVE;

@@ -592,7 +592,7 @@ public class DatabaseInstrumentedTest {
         assertEquals(ans1, stem1);
 
 
-        // TEST IMPERATIVE
+        // TEST MOOD_IMPERATIVE
         String stem2 = databaseAccess.sqlVerbStemQuery(numberSingular, moodImperative,
                                                voiceActive, tenseNull);
         String ans2 = "Infinitive_Stem";
@@ -623,7 +623,7 @@ public class DatabaseInstrumentedTest {
         assertEquals(conj2, latinEnding2);
 
 
-        // TEST IMPERATIVE
+        // TEST MOOD_IMPERATIVE
         String latinEnding3 = databaseAccess.sqlVerbEndingQuery(personNull, numberSingular,
                             moodImperative, voiceActive, tenseNull, conjNull);
         String conj3 = null;
@@ -653,7 +653,7 @@ public class DatabaseInstrumentedTest {
                                                     moodIndicative, voiceActive, tensePerfect);
         assertEquals("fuisse", query);
 
-        // TEST IMPERATIVE
+        // TEST MOOD_IMPERATIVE
         query = databaseAccess.sqlLatinIrregularVerb(irregularVerb, personNull, numberPlural,
                 moodImperative, voiceActive, tensePerfect);
         assertEquals("este", query);
@@ -820,7 +820,7 @@ public class DatabaseInstrumentedTest {
         String ans1 = " would have ";
         assertEquals(ans1, engAuxVerb1 );
 
-        // TEST IMPERATIVE
+        // TEST MOOD_IMPERATIVE
         String engAuxVerb2 = databaseAccess.sqlEngAuxVerbQuery(personNull, numberSingular,
                 moodImperative, voicePassive, tenseNull);
 

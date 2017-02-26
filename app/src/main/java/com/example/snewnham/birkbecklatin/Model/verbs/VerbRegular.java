@@ -1,6 +1,17 @@
 package com.example.snewnham.birkbecklatin.Model.verbs;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
+import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
+
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_IMPERATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_INDICATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NUMBER_INFINITIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NUMBER_SINGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PERSON3;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PRESENT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_SUBJUNCTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_ACTIVE;
 
 /**
  * VerbRegular is the class for regular latin verbs. It contains the same data as that held in the database's 'VerbListCursor' table
@@ -8,6 +19,21 @@ import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
  */
 
 public class VerbRegular implements Verb {
+
+    // Constants
+    // ---------
+
+    protected static final String PRESENT_SUBJUNC_STEM = "Present_SubjuncStem";
+    protected static final String PARTICIPLE = "Participle";
+    protected static final String PARTICIPLE_STEM = "Participle_Stem";
+    protected static final String INFINITIVE_STEM = "Infinitive_Stem";
+    protected static final String INFINITIVE_PASSIVE_STEM = "Infinitive_PassiveStem";
+    protected static final String ENGLISH_INFINITIVE = "English_Infinitive";
+    protected static final String ENGLISH_PRESENT_3RDPERSON = "English_Present_3rdPerson";
+    protected static final String ENGLISH_PERFECT = "English_Perfect";
+    protected static final String ENGLISH_PARTICIPLE = "English_Participle";
+
+
 
     // Fields
     // ------
@@ -92,35 +118,35 @@ public class VerbRegular implements Verb {
         //----------------
         String stemTense = mDatabaseAccess.sqlVerbStemQuery(number,mood,voice,tense);
         switch(stemTense){
-            case "Present": {
+            case TENSE_PRESENT: {
                 this.mLatinStem = mLatin_Present_Stem;
                 break;
             }
-            case "Present_SubjuncStem": {
+            case PRESENT_SUBJUNC_STEM: {
                 this.mLatinStem = mLatin_Present_SubjuncStem;
                 break;
             }
-            case "Perfect":{
+            case TENSE_PERFECT:{
                 this.mLatinStem = mLatin_Perfect_Stem;
                 break;
             }
-            case "Participle": {
+            case PARTICIPLE: {
                 this.mLatinStem = mLatin_Participle;
                 break;
             }
-            case "Participle_Stem": {
+            case PARTICIPLE_STEM: {
                 this.mLatinStem = mLatin_Participle_Stem;
                 break;
             }
-            case "Infinitive": {
+            case NUMBER_INFINITIVE: {
                 this.mLatinStem = mLatin_Infinitive;
                 break;
             }
-            case "Infinitive_PassiveStem": {
+            case INFINITIVE_PASSIVE_STEM: {
                 this.mLatinStem = mLatin_Infinitive_PassiveStem;
                 break;
             }
-            case "Infinitive_Stem": {
+            case INFINITIVE_STEM: {
                 this.mLatinStem = mLatin_Infinitive_Stem;
                 break;
             }
@@ -160,11 +186,11 @@ public class VerbRegular implements Verb {
             this.mDatabaseAccess = databaseAccess;
         }
 
-        if (mood.equals("Imperative") ) {
+        if (mood.equals(MOOD_IMPERATIVE) ) {
             mEnglishPerson = ""; // override to drop Person for All Imperatives
-        } else if(tense.equals("Present") && mood.equals("Subjunctive")){
+        } else if(tense.equals(TENSE_PRESENT) && mood.equals(MOOD_SUBJUNCTIVE)){
             mEnglishPerson = ""; // override to drop Person for Subjunctive, Present Verbs
-        } else if (number.equals("Infinitive")) {
+        } else if (number.equals(NUMBER_INFINITIVE)) {
             mEnglishPerson = ""; // override to drop Person for All Infinitives
         } else {
             mEnglishPerson = databaseAccess.sqlEngPersonQuery(person, number);
@@ -173,25 +199,25 @@ public class VerbRegular implements Verb {
         mEnglishAuxiliaryVerb = databaseAccess.sqlEngAuxVerbQuery(person, number, mood, voice, tense);
         String englishVerbCase = databaseAccess.sqlEngVerbEnding(number, tense, mood, voice);
 
-        if( !number.equals("Infinitive")  && !mood.equals("Imperative")) { // Avoid nullpointerException for infinitives
-            if (person.equals("3rd") && number.equals("Singular") && tense.equals("Present") && mood.equals("Indicative") && voice.equals("Active")) {
-                englishVerbCase = "English_Present_3rdPerson";   // override to pick up present 3rd person present
+        if( !number.equals(NUMBER_INFINITIVE)  && !mood.equals(MOOD_IMPERATIVE)) { // Avoid nullpointerException for infinitives
+            if (person.equals(PERSON3) && number.equals(NUMBER_SINGULAR) && tense.equals(TENSE_PRESENT) && mood.equals(MOOD_INDICATIVE) && voice.equals(VOICE_ACTIVE)) {
+                englishVerbCase = DbSchema.VerbListTable.Cols.ENGLISH_PRESENT_3RDPERSON;   // override to pick up present 3rd person present
             }
         }
         switch(englishVerbCase){
-            case "English_Infinitive":{
+            case ENGLISH_INFINITIVE:{
                 mEnglishVerbEnding = this.mEnglish_Infinitive;
                 break;
             }
-            case "English_Present_3rdPerson":{
+            case ENGLISH_PRESENT_3RDPERSON:{
                 mEnglishVerbEnding = this.mEnglish_Present_3rdPerson;
                 break;
             }
-            case "English_Perfect":{
+            case ENGLISH_PERFECT:{
                 mEnglishVerbEnding = this.mEnglish_Perfect;
                 break;
             }
-            case "English_Participle":{
+            case ENGLISH_PARTICIPLE:{
                 mEnglishVerbEnding = this.mEnglish_Participle;
                 break;
             }

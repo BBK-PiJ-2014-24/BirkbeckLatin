@@ -2,6 +2,12 @@ package com.example.snewnham.birkbecklatin.Model.verbs;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ESSE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_INDICATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_IMPERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_PASSIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.esse;
+
 /**
  * Created by snewnham on 29/10/2016.
  */
@@ -83,9 +89,9 @@ public class VerbIrregular extends VerbRegular {
 
             // Verb Ending Adjustment if Irregular Verb is 'to be' ESSE
             // --------------------------------------------------------
-            if (latin_infinitive_verb.equals("esse") || latin_infinitive_verb.equals("Esse")) {
+            if (latin_infinitive_verb.equals(ESSE) || latin_infinitive_verb.equals(esse)) {
 
-                if (voice.equals("Passive")) {  // defence checker for all passive to be to null.
+                if (voice.equals(VOICE_PASSIVE)) {  // defence checker for all passive to be to null.
                     makeEnglishVerbNull();
                     return getEnglishVerb();
                 }
@@ -96,7 +102,7 @@ public class VerbIrregular extends VerbRegular {
                 }
                 if(tense == null)  // For Imperatives
                     setEnglishAuxiliaryVerb("");
-                else if(tense.equals("Imperfect") && mood.equals("Indicative"))  // For Imperfect Indicatives
+                else if(tense.equals(TENSE_IMPERFECT) && mood.equals(MOOD_INDICATIVE))  // For Imperfect Indicatives
                     setEnglishAuxiliaryVerb(" ");
 
                 setEnglishVerbEnding(englishVerb);  // Reset Verb Ending

@@ -4,6 +4,9 @@ import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 
 import java.net.PasswordAuthentication;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_ACTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_PASSIVE;
+
 /**
  * Created by snewnham on 23/10/2016.
  */
@@ -21,8 +24,8 @@ public class VerbDeponent extends VerbRegular {
     }
 
 
-    protected final static String ACTIVE = "Active";
-    protected final static String PASSIVE = "Passive";
+   // protected final static String ACTIVE = "Active";
+   // protected final static String PASSIVE = "Passive";
 
 
     /**
@@ -35,7 +38,7 @@ public class VerbDeponent extends VerbRegular {
      * @param number
      * @param tense
      * @param mood
-     * @param voice - ALWAYS PASSIVE ELSE null
+     * @param voice - ALWAYS VOICE_PASSIVE ELSE null
      * @param conjNum
      * @return
      */
@@ -47,10 +50,10 @@ public class VerbDeponent extends VerbRegular {
         mVoice = voice;
         mMood = mood;
 
-        if( voice.equals(ACTIVE) ){
-            // Override to Ensure that Deponent Latin Verbs ALWAYS HAVE PASSIVE ENDINGS
-            String latinWord = super.makeLatinVerb(databaseAccess,person,number,tense,mood, PASSIVE, conjNum);
-            mVoice = ACTIVE;  // Override again to Ensure that Voice = Acive
+        if( voice.equals(VOICE_ACTIVE) ){
+            // Override to Ensure that Deponent Latin Verbs ALWAYS HAVE VOICE_PASSIVE ENDINGS
+            String latinWord = super.makeLatinVerb(databaseAccess,person,number,tense,mood, VOICE_PASSIVE, conjNum);
+            mVoice = VOICE_ACTIVE;  // Override again to Ensure that Voice = Acive
             return latinWord;
         } else {
             setLatinStem(null);
@@ -71,15 +74,15 @@ public class VerbDeponent extends VerbRegular {
      * @param number
      * @param tense
      * @param mood
-     * @param voice - ALWAYS ACTIVE OR ELSE null
+     * @param voice - ALWAYS VOICE_ACTIVE OR ELSE null
      * @return
      */
     @Override
     public String makeEnglishVerb(DatabaseAccess databaseAccess, String person, String number,
                                   String tense, String mood, String voice){
 
-        if( voice.equals("Active") ) {
-            String voiceActive = "Active"; //Override to Ensure that Deponent Latin Verbs ALWAYS HAVE ACTIVE ENGLISH MEANINGS
+        if( voice.equals(VOICE_ACTIVE) ) {
+            String voiceActive = VOICE_ACTIVE; //Override to Ensure that Deponent Latin Verbs ALWAYS HAVE VOICE_ACTIVE ENGLISH MEANINGS
             return super.makeEnglishVerb(databaseAccess, person, number, tense, mood, voiceActive);
         } else {
             setEnglishPerson(null); // Deponent Verbs cannot be Passive!

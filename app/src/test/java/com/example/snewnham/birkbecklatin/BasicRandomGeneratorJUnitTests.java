@@ -218,7 +218,7 @@ public class BasicRandomGeneratorJUnitTests {
     /**
      * testRandomVerbTense()
      * ----------------------
-     * Tests the randomness of generating TENSE arguments for VERBS (PRESENT, IMPERFECT, ETC.)
+     * Tests the randomness of generating TENSE arguments for VERBS (TENSE_PRESENT, TENSE_IMPERFECT, ETC.)
      * @throws Exception
      */
     @Test
@@ -238,23 +238,23 @@ public class BasicRandomGeneratorJUnitTests {
                 map.put(ans, map.get(ans) + 1);
         }
 
-        assertThat("Num Verb PRESENT TENSE Simulations", map.get(VERB_TENSE_PRESENT), greaterThan(approxAns - tolerance));
-        assertThat("Num Verb PRESENT TENSE Simulations", map.get(VERB_TENSE_PRESENT), lessThan(approxAns + tolerance));
+        assertThat("Num Verb TENSE_PRESENT TENSE Simulations", map.get(VERB_TENSE_PRESENT), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb TENSE_PRESENT TENSE Simulations", map.get(VERB_TENSE_PRESENT), lessThan(approxAns + tolerance));
 
-        assertThat("Num Verb IMPERFECT TENSE Simulations", map.get(VERB_TENSE_IMPERFECT), greaterThan(approxAns - tolerance));
-        assertThat("Num Verb IMPERFECT TENSE Simulations", map.get(VERB_TENSE_IMPERFECT), lessThan(approxAns + tolerance));
+        assertThat("Num Verb TENSE_IMPERFECT TENSE Simulations", map.get(VERB_TENSE_IMPERFECT), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb TENSE_IMPERFECT TENSE Simulations", map.get(VERB_TENSE_IMPERFECT), lessThan(approxAns + tolerance));
 
-        assertThat("Num Verb FUTURE TENSE Simulations", map.get(VERB_TENSE_FUTURE), greaterThan(approxAns - tolerance));
-        assertThat("Num Verb FUTURE TENSE Simulations", map.get(VERB_TENSE_FUTURE), lessThan(approxAns + tolerance));
+        assertThat("Num Verb TENSE_FUTURE TENSE Simulations", map.get(VERB_TENSE_FUTURE), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb TENSE_FUTURE TENSE Simulations", map.get(VERB_TENSE_FUTURE), lessThan(approxAns + tolerance));
 
-        assertThat("Num Verb PERFECT TENSE Simulations", map.get(VERB_TENSE_PERFECT), greaterThan(approxAns - tolerance));
-        assertThat("Num Verb PERFECT TENSE Simulations", map.get(VERB_TENSE_PERFECT), lessThan(approxAns + tolerance));
+        assertThat("Num Verb TENSE_PERFECT TENSE Simulations", map.get(VERB_TENSE_PERFECT), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb TENSE_PERFECT TENSE Simulations", map.get(VERB_TENSE_PERFECT), lessThan(approxAns + tolerance));
 
-        assertThat("Num Verb PLUPERFECT TENSE Simulations", map.get(VERB_TENSE_PLUPERFECT), greaterThan(approxAns - tolerance));
-        assertThat("Num Verb PLUPERFECT TENSE Simulations", map.get(VERB_TENSE_PLUPERFECT), lessThan(approxAns + tolerance));
+        assertThat("Num Verb TENSE_PLUPERFECT TENSE Simulations", map.get(VERB_TENSE_PLUPERFECT), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb TENSE_PLUPERFECT TENSE Simulations", map.get(VERB_TENSE_PLUPERFECT), lessThan(approxAns + tolerance));
 
-        assertThat("Num Verb FUTURE_PERFECT TENSE Simulations", map.get(VERB_TENSE_FUTURE_PERFECT), greaterThan(approxAns - tolerance));
-        assertThat("Num Verb FUTURE_PERFECT TENSE Simulations", map.get(VERB_TENSE_FUTURE_PERFECT), lessThan(approxAns + tolerance));
+        assertThat("Num Verb TENSE_FUTURE_PERFECT TENSE Simulations", map.get(VERB_TENSE_FUTURE_PERFECT), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb TENSE_FUTURE_PERFECT TENSE Simulations", map.get(VERB_TENSE_FUTURE_PERFECT), lessThan(approxAns + tolerance));
     }
 
     /**
@@ -280,11 +280,11 @@ public class BasicRandomGeneratorJUnitTests {
                 map.put(ans, map.get(ans) + 1);
         }
 
-        assertThat("Num Verb Voice ACTIVE", map.get(VERB_VOICE_ACTIVE), greaterThan(approxAns - tolerance));
-        assertThat("Num Verb Voice ACTIVE", map.get(VERB_VOICE_ACTIVE), lessThan(approxAns + tolerance));
+        assertThat("Num Verb Voice VOICE_ACTIVE", map.get(VERB_VOICE_ACTIVE), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb Voice VOICE_ACTIVE", map.get(VERB_VOICE_ACTIVE), lessThan(approxAns + tolerance));
 
-        assertThat("Num Verb Voice PASSIVE", map.get(VERB_VOICE_PASSIVE), greaterThan(approxAns - tolerance));
-        assertThat("Num Verb Voice PASSIVE", map.get(VERB_VOICE_PASSIVE), lessThan(approxAns + tolerance));
+        assertThat("Num Verb Voice VOICE_PASSIVE", map.get(VERB_VOICE_PASSIVE), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb Voice VOICE_PASSIVE", map.get(VERB_VOICE_PASSIVE), lessThan(approxAns + tolerance));
     }
 
 
@@ -352,14 +352,14 @@ public class BasicRandomGeneratorJUnitTests {
         }
 
 
-        assertThat("Num Verb MOOD INDICATIVE", map.get(VERB_MOOD_INDICATIVE), greaterThan(approxAns - tolerance));
-        assertThat("Num Verb MOOD INDICATIVE", map.get(VERB_MOOD_INDICATIVE), lessThan(approxAns + tolerance));
+        assertThat("Num Verb MOOD MOOD_INDICATIVE", map.get(VERB_MOOD_INDICATIVE), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb MOOD MOOD_INDICATIVE", map.get(VERB_MOOD_INDICATIVE), lessThan(approxAns + tolerance));
 
-        assertThat("Num Verb MOOD SUBJUNCTIVE", map.get(VERB_MOOD_SUBJUNCTIVE), greaterThan(approxAns - tolerance));
-        assertThat("Num Verb MOOD SUBJUNCTIVE", map.get(VERB_MOOD_SUBJUNCTIVE), lessThan(approxAns + tolerance));
+        assertThat("Num Verb MOOD MOOD_SUBJUNCTIVE", map.get(VERB_MOOD_SUBJUNCTIVE), greaterThan(approxAns - tolerance));
+        assertThat("Num Verb MOOD MOOD_SUBJUNCTIVE", map.get(VERB_MOOD_SUBJUNCTIVE), lessThan(approxAns + tolerance));
 
-        assertThat("Num Verb MOOD IMPERATIVE", map.get(VERB_MOOD_IMPERATIVE), greaterThan(approxInfinitiveAns - imperativeTolerance));
-        assertThat("Num Verb MOOD IMPERATIVE", map.get(VERB_MOOD_IMPERATIVE), lessThan(approxInfinitiveAns + imperativeTolerance));
+        assertThat("Num Verb MOOD MOOD_IMPERATIVE", map.get(VERB_MOOD_IMPERATIVE), greaterThan(approxInfinitiveAns - imperativeTolerance));
+        assertThat("Num Verb MOOD MOOD_IMPERATIVE", map.get(VERB_MOOD_IMPERATIVE), lessThan(approxInfinitiveAns + imperativeTolerance));
     }
 
 

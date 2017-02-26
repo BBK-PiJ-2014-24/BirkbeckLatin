@@ -120,10 +120,10 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
         conjNull = null;
     }
 
-    // ==========================  ACTIVE, INDICATIVE  =============================================
+    // ==========================  VOICE_ACTIVE, MOOD_INDICATIVE  =============================================
 
     /**
-     * testMakeVerbWordPresentActiveIndicative()  - PRESENT TENSE, ACTIVE, INDICATIVE
+     * testMakeVerbWordPresentActiveIndicative()  - TENSE_PRESENT TENSE, VOICE_ACTIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -184,7 +184,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
 
     /**
-     * testMakeVerbWordImperfectActiveIndicative()  - IMPERFECT TENSE, ACTIVE, INDICATIVE
+     * testMakeVerbWordImperfectActiveIndicative()  - TENSE_IMPERFECT TENSE, VOICE_ACTIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -246,7 +246,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
 
     /**
-     * testMakeVerbWordFutureActiveIndicative()  - FUTURE TENSE, ACTIVE, INDICATIVE
+     * testMakeVerbWordFutureActiveIndicative()  - TENSE_FUTURE TENSE, VOICE_ACTIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -307,7 +307,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
 
     /**
-     * testMakeVerbWordPerfectActiveIndicative()  - PERFECT TENSE, ACTIVE, INDICATIVE
+     * testMakeVerbWordPerfectActiveIndicative()  - TENSE_PERFECT TENSE, VOICE_ACTIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -368,7 +368,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
 
     /**
-     * testMakeVerbWordPluperfectActiveIndicative()  - PLUPERFECT TENSE, ACTIVE, INDICATIVE
+     * testMakeVerbWordPluperfectActiveIndicative()  - TENSE_PLUPERFECT TENSE, VOICE_ACTIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -428,7 +428,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
 
     /**
-     * testMakeVerbWordFutureActiveIndicative()  - FUTURE PERFECT TENSE, ACTIVE, INDICATIVE
+     * testMakeVerbWordFutureActiveIndicative()  - TENSE_FUTURE TENSE_PERFECT TENSE, VOICE_ACTIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -487,10 +487,10 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
     }
 
-    // ==========================  PASSIVE, INDICATIVE  =============================================
+    // ==========================  VOICE_PASSIVE, MOOD_INDICATIVE  =============================================
 
     /**
-     * testMakeVerbWordPresentPassiveIndicative()  - PRESENT TENSE, PASSIVE, INDICATIVE
+     * testMakeVerbWordPresentPassiveIndicative()  - TENSE_PRESENT TENSE, VOICE_PASSIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -551,7 +551,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
 
     /**
-     * testMakeVerbWordImperfectPassiveIndicative()  - IMPERFECT TENSE, PASSIVE, INDICATIVE
+     * testMakeVerbWordImperfectPassiveIndicative()  - TENSE_IMPERFECT TENSE, VOICE_PASSIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -613,7 +613,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
 
     /**
-     * testMakeVerbWordFuturePassiveIndicative()  - FUTURE TENSE, PASSIVE, INDICATIVE
+     * testMakeVerbWordFuturePassiveIndicative()  - TENSE_FUTURE TENSE, VOICE_PASSIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -674,7 +674,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
 
     /**
-     * testMakeVerbWordPerfectPassiveIndicative()  - PERFECT TENSE, PASSIVE, INDICATIVE
+     * testMakeVerbWordPerfectPassiveIndicative()  - TENSE_PERFECT TENSE, VOICE_PASSIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -735,7 +735,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
 
     /**
-     * testMakeVerbWordPluperfectPassiveIndicative()  - PLUPERFECT TENSE, PASSIVE, INDICATIVE
+     * testMakeVerbWordPluperfectPassiveIndicative()  - TENSE_PLUPERFECT TENSE, VOICE_PASSIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -795,7 +795,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
 
     /**
-     * testMakeVerbWordFuturePerfectPassiveIndicative()  - FUTURE PERFECT TENSE, PASSIVE, INDICATIVE
+     * testMakeVerbWordFuturePerfectPassiveIndicative()  - TENSE_FUTURE TENSE_PERFECT TENSE, VOICE_PASSIVE, MOOD_INDICATIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -853,10 +853,10 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
         assertEquals( null, verbSemiDeponent.getEnglishVerb() );
 
     }
-// ==========================  ACTIVE, SUBJUNCTIVE  =============================================
+// ==========================  VOICE_ACTIVE, MOOD_SUBJUNCTIVE  =============================================
 
     /**
-     * testMakeVerbWordPresentActiveSubjunctive()  - PRESENT TENSE, ACTIVE, SUBJUNCTIVE
+     * testMakeVerbWordPresentActiveSubjunctive()  - TENSE_PRESENT TENSE, VOICE_ACTIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -917,7 +917,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
 
     /**
-     * testMakeVerbWordImperfectActiveSubjunctive()  - IMPERFECT TENSE, ACTIVE, SUBJUNCTIVE
+     * testMakeVerbWordImperfectActiveSubjunctive()  - TENSE_IMPERFECT TENSE, VOICE_ACTIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -977,7 +977,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
     }
 
     /**
-     * testMakeVerbWordPerfectActiveSubjunctive()  - PERFECT TENSE, ACTIVE, SUBJUNCTIVE
+     * testMakeVerbWordPerfectActiveSubjunctive()  - TENSE_PERFECT TENSE, VOICE_ACTIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -1038,7 +1038,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
 
     /**
-     * testMakeVerbWordPluperfectActiveSubjunctive()  - PLUPERFECT TENSE, ACTIVE, SUBJUNCTIVE
+     * testMakeVerbWordPluperfectActiveSubjunctive()  - TENSE_PLUPERFECT TENSE, VOICE_ACTIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -1097,10 +1097,10 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
     }
 
 
-    // ==========================  PASSIVE, SUBJUNCTIVE  =============================================
+    // ==========================  VOICE_PASSIVE, MOOD_SUBJUNCTIVE  =============================================
 
     /**
-     * testMakeVerbWordPresentPassiveSubjunctive()  - PRESENT TENSE, PASSIVE, SUBJUNCTIVE
+     * testMakeVerbWordPresentPassiveSubjunctive()  - TENSE_PRESENT TENSE, VOICE_PASSIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -1161,7 +1161,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
 
     /**
-     * testMakeVerbWordImperfectPassiveSubjunctive()  - IMPERFECT TENSE, PASSIVE, SUBJUNCTIVE
+     * testMakeVerbWordImperfectPassiveSubjunctive()  - TENSE_IMPERFECT TENSE, VOICE_PASSIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -1221,7 +1221,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
     }
 
     /**
-     * testMakeVerbWordPerfectPassiveSubjunctive()  - PERFECT TENSE, PASSIVE, SUBJUNCTIVE
+     * testMakeVerbWordPerfectPassiveSubjunctive()  - TENSE_PERFECT TENSE, VOICE_PASSIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -1282,7 +1282,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
 
 
     /**
-     * testMakeVerbWordPluperfectPassiveSubjunctive()  - PLUPERFECT TENSE, PASSIVE, SUBJUNCTIVE
+     * testMakeVerbWordPluperfectPassiveSubjunctive()  - TENSE_PLUPERFECT TENSE, VOICE_PASSIVE, MOOD_SUBJUNCTIVE
      * =========================================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception
@@ -1406,7 +1406,7 @@ public class EnglishVerb_SemiDeponent_InstrumentTests {
     }
 
     /**
-     * testMakeVerbImperative()  - IMPERATIVE
+     * testMakeVerbImperative()  - MOOD_IMPERATIVE
      * ========================
      * test VerbRegular Class that It Can build Correct ENGLISH VerbRegular.
      * @throws Exception

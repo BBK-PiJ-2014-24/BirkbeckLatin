@@ -20,6 +20,32 @@ public class LatinConstants {
     // VERB CONSTANTS
     // ==============
 
+    public final static String TENSE_PRESENT = "Present";
+    public final static String TENSE_IMPERFECT = "Imperfect";
+    public final static String TENSE_FUTURE = "Future";
+    public final static String TENSE_PERFECT = "Perfect";
+    public final static String TENSE_PLUPERFECT = "Pluperfect";
+    public final static String TENSE_FUTURE_PERFECT = "Future Perfect";
+
+    public final static String NUMBER_SINGULAR = "Singular";
+    public final static String NUMBER_PLURAL = "Plural";
+    public final static String NUMBER_INFINITIVE = "Infinitive";
+
+    public final static String PERSON1 = "1st";
+    public final static String PERSON2 = "2nd";
+    public final static String PERSON3 = "3rd";
+
+    public final static String MOOD_INDICATIVE = "Indicative";
+    public final static String MOOD_IMPERATIVE = "Imperative";
+    public final static String MOOD_SUBJUNCTIVE = "Subjunctive";
+
+    public final static String VOICE_ACTIVE = "Active";
+    public final static String VOICE_PASSIVE = "Passive";
+
+    public final static String esse = "esse";
+    public final static String ESSE = "Esse";
+
+
 
 
 
