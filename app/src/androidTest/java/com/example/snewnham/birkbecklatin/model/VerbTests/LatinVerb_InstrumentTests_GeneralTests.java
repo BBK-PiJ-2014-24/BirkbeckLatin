@@ -900,21 +900,21 @@ public class LatinVerb_InstrumentTests_GeneralTests {
     @Test
     public void totalRandomVerb() throws Exception{
 
-        for(int i=0; i<500; i++){
-            String person = mRandomGenerator.getVerbPerson();
-            String number = mRandomGenerator.getVerbNumber();
-            String tense = mRandomGenerator.getVerbTense();
-            String mood = mRandomGenerator.getVerbMood();
-            String voice = mRandomGenerator.getVerbVoice();
-            Log.i(TAG, "person: " + person + "number: " + number + "tense: " + tense
-                      + "mood: " + mood + "voice: " + voice, new Exception());
-
-            mVerbRegular.makeLatinVerb(databaseAccess, person1, numberInfinitive, tenseImPerfect,
-                    moodIndicative, voiceActive, Integer.toString(mVerbRegular.getLatin_ConjNum()));
-
-            Log.i(TAG, "person: " + person + "number: " + number + "tense: " + tense
-                    + "mood: " + mood + "voice: " + voice, new Exception());
-        }
+//        for(int i=0; i<300; i++){
+//            String person = mRandomGenerator.getVerbPerson();
+//            String number = mRandomGenerator.getVerbNumber();
+//            String tense = mRandomGenerator.getVerbTense();
+//            String mood = mRandomGenerator.getVerbMood();
+//            String voice = mRandomGenerator.getVerbVoice();
+//            Log.i(TAG, "person: " + person + "number: " + number + "tense: " + tense
+//                      + "mood: " + mood + "voice: " + voice, new Exception());
+//
+//            mVerbRegular.makeLatinVerb(databaseAccess, person1, numberInfinitive, tenseImPerfect,
+//                    moodIndicative, voiceActive, Integer.toString(mVerbRegular.getLatin_ConjNum()));
+//
+//            Log.i(TAG, "person: " + person + "number: " + number + "tense: " + tense
+//                    + "mood: " + mood + "voice: " + voice, new Exception());
+//        }
 
     }
 

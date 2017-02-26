@@ -151,6 +151,10 @@ public class LatinVerb_SemiDeponent_InstrumentTests {
         assertEquals("eo", verbSemiDeponent.getLatinEnding());
         assertEquals("gaudeo", verbSemiDeponent.getLatinVerb());
 
+        assertEquals(tensePresent, verbSemiDeponent.getTense());
+        assertEquals(moodIndicative, verbSemiDeponent.getMood());
+        assertEquals(voiceActive, verbSemiDeponent.getVoice());
+
         verbSemiDeponent.makeLatinVerb(databaseAccess, person2, numberSingular, tensePresent,
                 moodIndicative, voiceActive, conjNum2);
 
