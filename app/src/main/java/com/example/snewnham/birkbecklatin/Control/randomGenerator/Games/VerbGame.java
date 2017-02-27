@@ -18,6 +18,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ1;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ1_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ2;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ2_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ3;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ3_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ4;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ4_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_IMPERATIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_IMPERATIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_INDICATIVE;
@@ -83,11 +91,11 @@ public class VerbGame {
     private static final int CONJNUM1_4 = 40;
 
 
-    private static final String CONJNUM1 = "ConjNum1";
-    private static final String CONJNUM2 = "ConjNum2";
-    private static final String CONJNUM3 = "ConjNum3";
-    private static final String CONJNUM31 = "ConjNum31";
-    private static final String CONJNUM4 = "ConjNum4";
+//    private static final String CONJ1 = "ConjNum1";
+//    private static final String CONJ2 = "ConjNum2";
+//    private static final String CONJ3 = "ConjNum3";
+//    private static final String CONJ31 = "ConjNum31";
+//    private static final String CONJ4 = "ConjNum4";
 
 
     private static final int VALUE_CORRECT = 1;
@@ -140,10 +148,10 @@ public class VerbGame {
     private final String CONJ3_TALLY = "ConjTally3";
     private final String CONJ4_TALLY = "ConjTally4";
 
-    private final String CONJ1_HIST_PERC = "Conj1_Hist%";  // % of Correctly Answered Conj# Questions
-    private final String CONJ2_HIST_PERC = "Conj2_Hist%";  // Key For statisticsMap
-    private final String CONJ3_HIST_PERC = "Conj3_Hist%";
-    private final String CONJ4_HIST_PERC = "Conj4_Hist%";
+//    private final String CONJ1_HIST_PERC = "Conj1_Hist%";  // % of Correctly Answered Conj# Questions
+//    private final String CONJ2_HIST_PERC = "Conj2_Hist%";  // Key For statisticsMap
+//    private final String CONJ3_HIST_PERC = "Conj3_Hist%";
+//    private final String CONJ4_HIST_PERC = "Conj4_Hist%";
 
     private final String PRESENT_SCORE = "PresentScore";   // Historical Score of Correct Tense Questions
     private final String IMPERFECT_SCORE = "ImperfectScore";  // Key for Meta Table in DB
@@ -975,10 +983,10 @@ public class VerbGame {
 
         // Insert Current Quiz Scores Into Map
         // -----------------------------------
-        mapStatistics.put( CONJNUM1, conj1perc );
-        mapStatistics.put( CONJNUM2, conj2perc );
-        mapStatistics.put( CONJNUM3, conj3perc );
-        mapStatistics.put( CONJNUM4, conj4perc );
+        mapStatistics.put(CONJ1, conj1perc );
+        mapStatistics.put(CONJ2, conj2perc );
+        mapStatistics.put(CONJ3, conj3perc );
+        mapStatistics.put(CONJ4, conj4perc );
 
         mapStatistics.put( TENSE_PRESENT, presentPerc );
         mapStatistics.put( TENSE_IMPERFECT, imperfectPerc );
