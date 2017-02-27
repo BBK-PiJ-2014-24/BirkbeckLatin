@@ -20,6 +20,11 @@ public class LatinConstants {
     // VERB CONSTANTS
     // ==============
 
+    public static final int CONJNUM1 = 1;
+    public static final int CONJNUM2 = 2;
+    public static final int CONJNUM3 = 3;
+    public static final int CONJNUM4 = 4;
+
     public final static String VERB_REGULAR = "Regular";
     public final static String VERB_DEPONENT = "Deponent";
     public final static String VERB_SEMI_DEPONENT = "Semi Deponent";
@@ -50,9 +55,40 @@ public class LatinConstants {
     public final static String esse = "esse";
     public final static String ESSE = "Esse";
 
+    // VERB STATISTICS
+    // ---------------
+
+    public static final String CONJ1 = "Conj1";
+    public static final String CONJ2 = "Conj2";
+    public static final String CONJ3 = "Conj3";
+    public static final String CONJ31 = "Conj31";
+    public static final String CONJ4 = "Conj4";
+
+    public static final String CONJ1_HIST_PERC = "Conj1_Hist%";  // % of Correctly Answered Conj# Questions
+    public static final String CONJ2_HIST_PERC = "Conj2_Hist%";  // Key For statisticsMap
+    public static final String CONJ3_HIST_PERC = "Conj3_Hist%";
+    public static final String CONJ4_HIST_PERC = "Conj4_Hist%";
 
 
+    public final static String TENSE_PRESENT_HIST_PERC = "Present_Hist%";    // % of Correctly Answered Tense Questions
+    public final static String TENSE_IMPERFECT_HIST_PERC = "Imperfect_Hist%";  // Key For statisticsMap
+    public final static String TENSE_FUTURE_HIST_PERC = "Future_Hist%";
+    public final static String TENSE_PERFECT_HIST_PERC = "Perfect_Hist%";
+    public final static String TENSE_PLUPERFECT_HIST_PERC = "Pluperfect_Hist%";
+    public final static String TENSE_FUTURE_PERFECT_HIST_PERC = "Future Perfect_Hist%";
 
+    public final static String MOOD_INDICATIVE_HIST_PERC = "Indicative_Hist%";   // % of Correctly Answered Mood Questions
+    public final static String MOOD_IMPERATIVE_HIST_PERC = "Imperative_Hist%";   // Key For statisticsMap
+    public final static String MOOD_SUBJUNCTIVE_HIST_PERC = "Subjunctive_Hist%";
+
+    public final static String VOICE_ACTIVE_HIST_PERC = "Active_Hist%";   // % of Correctly Answered Voice Questions
+    public final static String VOICE_PASSIVE_HIST_PERC = "Passive_Hist%";  // Key For statisticsMap
+
+    public final static String VERB_TOTAL = "VerbTotal";  // Historical Score of ALL Correct Questions
+    public final static String VERB_TOTAL_HIST_PERC = "VerbTotal_Hist%";  // Key For statisticsMap
+
+
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // NOUN CONSTANTS
     // ==============
@@ -130,6 +166,8 @@ public class LatinConstants {
     public final static String ABLATIVE_HIST_PERC = "Ablative_Hist%";
     public final static String VOCATIVE_HIST_PERC = "Vocative_Hist%";
 
+    public final static String NOUN_TOTAL = "NounTotal";  // Historical Score of ALL Correct Questions
+    public final static String NOUN_TOTAL_HIST_PERC = "NounTotal_Hist%";  // Key For statisticsMap
 
 
 

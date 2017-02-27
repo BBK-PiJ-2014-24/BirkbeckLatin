@@ -12,15 +12,20 @@ import android.widget.Button;
 
 import com.example.snewnham.birkbecklatin.R;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJNUM1;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJNUM2;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJNUM3;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJNUM4;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class VerbPagerSelectionFragment extends Fragment {
 
-    private static final int CONJ1 = 1;
-    private static final int CONJ2 = 2;
-    private static final int CONJ3 = 3;
-    private static final int CONJ4 = 4;
+//    private static final int CONJNUM1 = 1;
+//    private static final int CONJNUM2 = 2;
+//    private static final int CONJNUM3 = 3;
+//    private static final int CONJNUM4 = 4;
 
 
     // Fields
@@ -64,7 +69,7 @@ public class VerbPagerSelectionFragment extends Fragment {
         mButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = VerbPagerActivity.newIntent(getActivity(), CONJ1);
+                Intent intent = VerbPagerActivity.newIntent(getActivity(), CONJNUM1);
                 startActivity(intent);
             }
         });
@@ -73,7 +78,7 @@ public class VerbPagerSelectionFragment extends Fragment {
         mButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = VerbPagerActivity.newIntent(getActivity(), CONJ2);
+                Intent intent = VerbPagerActivity.newIntent(getActivity(), CONJNUM2);
                 startActivity(intent);
             }
         });
@@ -82,7 +87,7 @@ public class VerbPagerSelectionFragment extends Fragment {
         mButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = VerbPagerActivity.newIntent(getActivity(), CONJ3);
+                Intent intent = VerbPagerActivity.newIntent(getActivity(), CONJNUM3);
                 startActivity(intent);
             }
         });
@@ -91,7 +96,7 @@ public class VerbPagerSelectionFragment extends Fragment {
         mButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = VerbPagerActivity.newIntent(getActivity(), CONJ4);
+                Intent intent = VerbPagerActivity.newIntent(getActivity(), CONJNUM4);
                 startActivity(intent);
             }
         });

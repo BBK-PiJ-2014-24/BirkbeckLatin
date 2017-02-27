@@ -13,7 +13,38 @@ import com.example.snewnham.birkbecklatin.R;
 import java.util.HashMap;
 import java.util.Map;
 
-import static android.R.attr.id;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ1;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ1_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ2;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ2_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ3;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ3_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ4;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJ4_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_IMPERATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_IMPERATIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_INDICATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_INDICATIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_SUBJUNCTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_SUBJUNCTIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE_PERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE_PERFECT_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_IMPERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_IMPERFECT_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PERFECT_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PLUPERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PLUPERFECT_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PRESENT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PRESENT_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_TOTAL;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_TOTAL_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_ACTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_ACTIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_PASSIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_PASSIVE_HIST_PERC;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,47 +55,47 @@ public class VerbStatisticsFragment extends Fragment {
     // Constants
     // ---------
 
-    private static final String CONJNUM1 = "ConjNum1";
-    private static final String CONJNUM2 = "ConjNum2";
-    private static final String CONJNUM3 = "ConjNum3";
-    private static final String CONJNUM31 = "ConjNum31";
-    private static final String CONJNUM4 = "ConjNum4";
+//    private static final String CONJ1 = "Conj1";
+//    private static final String CONJ2 = "Conj2";
+//    private static final String CONJ3 = "Conj3";
+//    private static final String CONJ31 = "Conj31";
+//    private static final String CONJ4 = "Conj4";
 
-    private final static String TENSE_PRESENT = "Present";
-    private final static String TENSE_IMPERFECT = "Imperfect";
-    private final static String TENSE_FUTURE = "Future";
-    private final static String TENSE_PERFECT = "Perfect";
-    private final static String TENSE_PLUPERFECT = "Pluperfect";
-    private final static String TENSE_FUTURE_PERFECT = "Future Perfect";
+//    private final static String TENSE_PRESENT = "Present";
+//    private final static String TENSE_IMPERFECT = "Imperfect";
+//    private final static String TENSE_FUTURE = "Future";
+//    private final static String TENSE_PERFECT = "Perfect";
+//    private final static String TENSE_PLUPERFECT = "Pluperfect";
+//    private final static String TENSE_FUTURE_PERFECT = "Future Perfect";
 
-    private final static String MOOD_INDICATIVE = "Indicative";
-    private final static String MOOD_IMPERATIVE = "Imperative";
-    private final static String MOOD_SUBJUNCTIVE = "Subjunctive";
+//    private final static String MOOD_INDICATIVE = "Indicative";
+//    private final static String MOOD_IMPERATIVE = "Imperative";
+//    private final static String MOOD_SUBJUNCTIVE = "Subjunctive";
+//
+//    private final static String VOICE_ACTIVE = "Active";
+//    private final static String VOICE_PASSIVE = "Passive";
 
-    private final static String VOICE_ACTIVE = "Active";
-    private final static String VOICE_PASSIVE = "Passive";
-
-    private final String CONJNUM1_HIST_PERC = "Conj1_Hist%";  // % of Correctly Answered Conj# Questions
-    private final String CONJNUM2_HIST_PERC = "Conj2_Hist%";  // Key For statisticsMap
-    private final String CONJNUM3_HIST_PERC = "Conj3_Hist%";
-    private final String CONJNUM4_HIST_PERC = "Conj4_Hist%";
-
-    private final static String TENSE_PRESENT_HIST = "Present_Hist%";    // % of Correctly Answered Tense Questions
-    private final static String TENSE_IMPERFECT_HIST = "Imperfect_Hist%";  // Key For statisticsMap
-    private final static String TENSE_FUTURE_HIST = "Future_Hist%";
-    private final static String TENSE_PERFECT_HIST = "Perfect_Hist%";
-    private final static String TENSE_PLUPERFECT_HIST = "Pluperfect_Hist%";
-    private final static String TENSE_FUTURE_PERFECT_HIST = "Future Perfect_Hist%";
-
-    private final static String MOOD_INDICATIVE_HIST = "Indicative_Hist%";   // % of Correctly Answered Mood Questions
-    private final static String MOOD_IMPERATIVE_HIST = "Imperative_Hist%";   // Key For statisticsMap
-    private final static String MOOD_SUBJUNCTIVE_HIST = "Subjunctive_Hist%";
-
-    private final static String VOICE_ACTIVE_HIST = "Active_Hist%";   // % of Correctly Answered Voice Questions
-    private final static String VOICE_PASSIVE_HIST = "Passive_Hist%";  // Key For statisticsMap
-
-    private final static String TOTAL = "Total";  // Historical Score of ALL Correct Questions
-    private final static String TOTAL_HIST = "Total_Hist%";  // Key For statisticsMap
+//    private final String CONJ1_HIST_PERC = "Conj1_Hist%";  // % of Correctly Answered Conj# Questions
+//    private final String CONJ2_HIST_PERC = "Conj2_Hist%";  // Key For statisticsMap
+//    private final String CONJ3_HIST_PERC = "Conj3_Hist%";
+//    private final String CONJ4_HIST_PERC = "Conj4_Hist%";
+//
+//    private final static String TENSE_PRESENT_HIST_PERC = "Present_Hist%";    // % of Correctly Answered Tense Questions
+//    private final static String TENSE_IMPERFECT_HIST_PERC = "Imperfect_Hist%";  // Key For statisticsMap
+//    private final static String TENSE_FUTURE_HIST_PERC = "Future_Hist%";
+//    private final static String TENSE_PERFECT_HIST_PERC = "Perfect_Hist%";
+//    private final static String TENSE_PLUPERFECT_HIST_PERC = "Pluperfect_Hist%";
+//    private final static String TENSE_FUTURE_PERFECT_HIST_PERC = "Future Perfect_Hist%";
+//
+//    private final static String MOOD_INDICATIVE_HIST_PERC = "Indicative_Hist%";   // % of Correctly Answered Mood Questions
+//    private final static String MOOD_IMPERATIVE_HIST_PERC = "Imperative_Hist%";   // Key For statisticsMap
+//    private final static String MOOD_SUBJUNCTIVE_HIST_PERC = "Subjunctive_Hist%";
+//
+//    private final static String VOICE_ACTIVE_HIST_PERC = "Active_Hist%";   // % of Correctly Answered Voice Questions
+//    private final static String VOICE_PASSIVE_HIST_PERC = "Passive_Hist%";  // Key For statisticsMap
+//
+//    private final static String VERB_TOTAL = "Total";  // Historical Score of ALL Correct Questions
+//    private final static String VERB_TOTAL_HIST_PERC = "Total_Hist%";  // Key For statisticsMap
 
     public final static String STATMAP = "statMap";
     public final static String PCT = " %";
@@ -193,15 +224,15 @@ public class VerbStatisticsFragment extends Fragment {
 
         // Set TextViews From StatMaps
         // ---------------------------
-        mConj1.setText(Integer.toString(statMap.get(CONJNUM1))+PCT);
-        mConj2.setText(Integer.toString(statMap.get(CONJNUM2))+PCT);
-        mConj3.setText(Integer.toString(statMap.get(CONJNUM3))+PCT);
-        mConj4.setText(Integer.toString(statMap.get(CONJNUM4))+PCT);
+        mConj1.setText(Integer.toString(statMap.get(CONJ1))+PCT);
+        mConj2.setText(Integer.toString(statMap.get(CONJ2))+PCT);
+        mConj3.setText(Integer.toString(statMap.get(CONJ3))+PCT);
+        mConj4.setText(Integer.toString(statMap.get(CONJ4))+PCT);
 
-        mConj1Hist.setText(Integer.toString(statMap.get(CONJNUM1_HIST_PERC))+PCT);
-        mConj2Hist.setText(Integer.toString(statMap.get(CONJNUM2_HIST_PERC))+PCT);
-        mConj3Hist.setText(Integer.toString(statMap.get(CONJNUM3_HIST_PERC))+PCT);
-        mConj4Hist.setText(Integer.toString(statMap.get(CONJNUM4_HIST_PERC))+PCT);
+        mConj1Hist.setText(Integer.toString(statMap.get(CONJ1_HIST_PERC))+PCT);
+        mConj2Hist.setText(Integer.toString(statMap.get(CONJ2_HIST_PERC))+PCT);
+        mConj3Hist.setText(Integer.toString(statMap.get(CONJ3_HIST_PERC))+PCT);
+        mConj4Hist.setText(Integer.toString(statMap.get(CONJ4_HIST_PERC))+PCT);
 
         mPresent.setText(Integer.toString(statMap.get(TENSE_PRESENT))+PCT);
         mImperfect.setText(Integer.toString(statMap.get(TENSE_IMPERFECT))+PCT);
@@ -210,29 +241,29 @@ public class VerbStatisticsFragment extends Fragment {
         mPluperfect.setText(Integer.toString(statMap.get(TENSE_PLUPERFECT))+PCT);
         mFutPerfect.setText(Integer.toString(statMap.get(TENSE_FUTURE_PERFECT))+PCT);
 
-        mPresentHist.setText(Integer.toString(statMap.get(TENSE_PRESENT_HIST))+PCT);
-        mImperfectHist.setText(Integer.toString(statMap.get(TENSE_IMPERFECT_HIST))+PCT);
-        mFutureHist.setText(Integer.toString(statMap.get(TENSE_FUTURE_HIST))+PCT);
-        mPerfectHist.setText(Integer.toString(statMap.get(TENSE_PERFECT_HIST))+PCT);
-        mPluperfectHist.setText(Integer.toString(statMap.get(TENSE_PLUPERFECT_HIST))+PCT);
-        mFutPerfectHist.setText(Integer.toString(statMap.get(TENSE_FUTURE_PERFECT_HIST))+PCT);
+        mPresentHist.setText(Integer.toString(statMap.get(TENSE_PRESENT_HIST_PERC))+PCT);
+        mImperfectHist.setText(Integer.toString(statMap.get(TENSE_IMPERFECT_HIST_PERC))+PCT);
+        mFutureHist.setText(Integer.toString(statMap.get(TENSE_FUTURE_HIST_PERC))+PCT);
+        mPerfectHist.setText(Integer.toString(statMap.get(TENSE_PERFECT_HIST_PERC))+PCT);
+        mPluperfectHist.setText(Integer.toString(statMap.get(TENSE_PLUPERFECT_HIST_PERC))+PCT);
+        mFutPerfectHist.setText(Integer.toString(statMap.get(TENSE_FUTURE_PERFECT_HIST_PERC))+PCT);
 
         mIndicative.setText(Integer.toString(statMap.get(MOOD_INDICATIVE))+PCT);
         mSubjunctive.setText(Integer.toString(statMap.get(MOOD_SUBJUNCTIVE))+PCT);
         mImperative.setText(Integer.toString(statMap.get(MOOD_IMPERATIVE))+PCT);
 
-        mIndicativeHist.setText(Integer.toString(statMap.get(MOOD_INDICATIVE_HIST))+PCT);
-        mSubjunctiveHist.setText(Integer.toString(statMap.get(MOOD_SUBJUNCTIVE_HIST))+PCT);
-        mImperativeHist.setText(Integer.toString(statMap.get(MOOD_IMPERATIVE_HIST))+PCT);
+        mIndicativeHist.setText(Integer.toString(statMap.get(MOOD_INDICATIVE_HIST_PERC))+PCT);
+        mSubjunctiveHist.setText(Integer.toString(statMap.get(MOOD_SUBJUNCTIVE_HIST_PERC))+PCT);
+        mImperativeHist.setText(Integer.toString(statMap.get(MOOD_IMPERATIVE_HIST_PERC))+PCT);
 
         mActive.setText(Integer.toString(statMap.get(VOICE_ACTIVE))+PCT);
         mPassive.setText(Integer.toString(statMap.get(VOICE_PASSIVE))+PCT);
 
-        mPassiveHist.setText(Integer.toString(statMap.get(VOICE_PASSIVE_HIST))+PCT);
-        mPassiveHist.setText(Integer.toString(statMap.get(VOICE_PASSIVE_HIST))+PCT);
+        mActiveHist.setText(Integer.toString(statMap.get(VOICE_ACTIVE_HIST_PERC))+PCT);
+        mPassiveHist.setText(Integer.toString(statMap.get(VOICE_PASSIVE_HIST_PERC))+PCT);
 
-        mTotal.setText(Integer.toString(statMap.get(TOTAL))+PCT);
-        mTotalHist.setText(Integer.toString(statMap.get(TOTAL_HIST))+PCT);
+        mTotal.setText(Integer.toString(statMap.get(VERB_TOTAL))+PCT);
+        mTotalHist.setText(Integer.toString(statMap.get(VERB_TOTAL_HIST_PERC))+PCT);
 
         return view;
     }

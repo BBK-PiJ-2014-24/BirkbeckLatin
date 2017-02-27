@@ -18,25 +18,37 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ESSE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_IMPERATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_IMPERATIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_INDICATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_INDICATIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_SUBJUNCTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_SUBJUNCTIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NUMBER_INFINITIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NUMBER_PLURAL;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NUMBER_SINGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE_PERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_FUTURE_PERFECT_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_IMPERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_IMPERFECT_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PERFECT_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PLUPERFECT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PLUPERFECT_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PRESENT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PRESENT_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_DEPONENT;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_IRREGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_REGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_SEMI_DEPONENT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_TOTAL;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_TOTAL_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_ACTIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_ACTIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_PASSIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_PASSIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.esse;
 
 /**
@@ -118,21 +130,20 @@ public class VerbGame {
     // CONSTANTS FOR KEYS IN DATABASE and StatisticsMap
     //-------------------------------------------------
 
-    private static final String CONJNUM1_SCORE = "ConjScore1";  // Historical Score of Correct Con# Questions
-    private static final String CONJNUM2_SCORE = "ConjScore2";  // Key for Meta Table in DB
-    private static final String CONJNUM3_SCORE = "ConjScore3";
-    private static final String CONJNUM4_SCORE = "ConjScore4";
+    private static final String CONJ1_SCORE = "ConjScore1";  // Historical Score of Correct Con# Questions
+    private static final String CONJ2_SCORE = "ConjScore2";  // Key for Meta Table in DB
+    private static final String CONJ3_SCORE = "ConjScore3";
+    private static final String CONJ4_SCORE = "ConjScore4";
 
     private final String CONJ1_TALLY = "ConjTally1";  // Tally of All Conj# Questions Asked
     private final String CONJ2_TALLY = "ConjTally2";  // Key for Meta Table in DB
     private final String CONJ3_TALLY = "ConjTally3";
     private final String CONJ4_TALLY = "ConjTally4";
 
-    private final String CONJNUM1_HIST_PERC = "Conj1_Hist%";  // % of Correctly Answered Conj# Questions
-    private final String CONJNUM2_HIST_PERC = "Conj2_Hist%";  // Key For statisticsMap
-    private final String CONJNUM3_HIST_PERC = "Conj3_Hist%";
-    private final String CONJNUM4_HIST_PERC = "Conj4_Hist%";
-
+    private final String CONJ1_HIST_PERC = "Conj1_Hist%";  // % of Correctly Answered Conj# Questions
+    private final String CONJ2_HIST_PERC = "Conj2_Hist%";  // Key For statisticsMap
+    private final String CONJ3_HIST_PERC = "Conj3_Hist%";
+    private final String CONJ4_HIST_PERC = "Conj4_Hist%";
 
     private final String PRESENT_SCORE = "PresentScore";   // Historical Score of Correct Tense Questions
     private final String IMPERFECT_SCORE = "ImperfectScore";  // Key for Meta Table in DB
@@ -148,13 +159,13 @@ public class VerbGame {
     private final String PLUPERFECT_TALLY = "PluperfectTally";
     private final String FUT_PERFECT_TALLY = "FutPerfectTally";
 
-
-    private final static String TENSE_PRESENT_HIST = "Present_Hist%";    // % of Correctly Answered Tense Questions
-    private final static String TENSE_IMPERFECT_HIST = "Imperfect_Hist%";  // Key For statisticsMap
-    private final static String TENSE_FUTURE_HIST = "Future_Hist%";
-    private final static String TENSE_PERFECT_HIST = "Perfect_Hist%";
-    private final static String TENSE_PLUPERFECT_HIST = "Pluperfect_Hist%";
-    private final static String TENSE_FUTURE_PERFECT_HIST = "Future Perfect_Hist%";
+//
+//    private final static String TENSE_PRESENT_HIST_PERC = "Present_Hist%";    // % of Correctly Answered Tense Questions
+//    private final static String TENSE_IMPERFECT_HIST_PERC = "Imperfect_Hist%";  // Key For statisticsMap
+//    private final static String TENSE_FUTURE_HIST_PERC = "Future_Hist%";
+//    private final static String TENSE_PERFECT_HIST_PERC = "Perfect_Hist%";
+//    private final static String TENSE_PLUPERFECT_HIST_PERC = "Pluperfect_Hist%";
+//    private final static String TENSE_FUTURE_PERFECT_HIST_PERC = "Future Perfect_Hist%";
 
     private final String INDICATIVE_SCORE = "IndicativeScore";    // Historical Score of Correct Mood Questions
     private final String SUBJUNCTIVE_SCORE = "SubjunctiveScore";  // Key for Meta Table in DB
@@ -164,9 +175,9 @@ public class VerbGame {
     private final String SUBJUNCTIVE_TALLY = "SubjunctiveTally";   // Key for Meta Table in DB
     private final String IMPERATIVE_TALLY = "ImperativeTally";
 
-    private final static String MOOD_INDICATIVE_HIST = "Indicative_Hist%";   // % of Correctly Answered Mood Questions
-    private final static String MOOD_IMPERATIVE_HIST = "Imperative_Hist%";   // Key For statisticsMap
-    private final static String MOOD_SUBJUNCTIVE_HIST = "Subjunctive_Hist%";
+//    private final static String MOOD_INDICATIVE_HIST_PERC = "Indicative_Hist%";   // % of Correctly Answered Mood Questions
+//    private final static String MOOD_IMPERATIVE_HIST_PERC = "Imperative_Hist%";   // Key For statisticsMap
+//    private final static String MOOD_SUBJUNCTIVE_HIST_PERC = "Subjunctive_Hist%";
 
     private final String ACTIVE_SCORE = "ActiveScore";    // Historical Score of Correct Voice Questions
     private final String PASSIVE_SCORE = "PassiveScore";  // Key for Meta Table in DB
@@ -174,14 +185,14 @@ public class VerbGame {
     private final String ACTIVE_TALLY = "ActiveTally";    // Tally of All Voice Questions Asked
     private final String PASSIVE_TALLY = "PassiveTally";  // Key for Meta Table in DB
 
-    private final static String VOICE_ACTIVE_HIST = "Active_Hist%";   // % of Correctly Answered Voice Questions
-    private final static String VOICE_PASSIVE_HIST = "Passive_Hist%";  // Key For statisticsMap
+//    private final static String VOICE_ACTIVE_HIST_PERC = "Active_Hist%";   // % of Correctly Answered Voice Questions
+//    private final static String VOICE_PASSIVE_HIST_PERC = "Passive_Hist%";  // Key For statisticsMap
 
 
-    private final static String TOTAL = "Total";  // Historical Score of ALL Correct Questions
-    private final static String TOTAL_SCORE = "TotalScore";  // Historical Score of ALL Correct Questions
-    private final static String TOTAL_TALLY = "TotalTally";  // Tally of All Correct Questions Asked
-    private final static String TOTAL_HIST = "Total_Hist%";  // Key For statisticsMap
+ //   private final static String VERB_TOTAL = "Total";  // Historical Score of ALL Correct Questions
+    private final static String VERB_TOTAL_SCORE = "VerbTotalScore";  // Historical Score of ALL Correct Questions
+    private final static String VERB_TOTAL_TALLY = "VerbTotalTally";  // Tally of All Correct Questions Asked
+//    private final static String VERB_TOTAL_HIST_PERC = "Total_Hist%";  // Key For statisticsMap
 
 
     private final int TIME_FOR_INCORRECT_QUESTION = 3;
@@ -983,57 +994,57 @@ public class VerbGame {
         mapStatistics.put( VOICE_ACTIVE, activerPerc );
         mapStatistics.put( VOICE_PASSIVE, passivePerc );
 
-        mapStatistics.put( TOTAL, totalPerc);
+        mapStatistics.put(VERB_TOTAL, totalPerc);
 
         // Calc Total Historical Scores and Update in Map
         // ----------------------------------------------
-        conj1percHist = calcHistoryStatistics(CONJNUM1_SCORE, CONJ1_TALLY, conj1, conj1Tally);
-        mapStatistics.put(CONJNUM1_HIST_PERC, conj1percHist);
+        conj1percHist = calcHistoryStatistics(CONJ1_SCORE, CONJ1_TALLY, conj1, conj1Tally);
+        mapStatistics.put(CONJ1_HIST_PERC, conj1percHist);
 
-        conj2percHist = calcHistoryStatistics(CONJNUM2_SCORE, CONJ2_TALLY, conj2, conj2Tally);
-        mapStatistics.put(CONJNUM2_HIST_PERC, conj2percHist);
+        conj2percHist = calcHistoryStatistics(CONJ2_SCORE, CONJ2_TALLY, conj2, conj2Tally);
+        mapStatistics.put(CONJ2_HIST_PERC, conj2percHist);
 
-        conj3percHist = calcHistoryStatistics(CONJNUM3_SCORE, CONJ3_TALLY, conj3, conj3Tally);
-        mapStatistics.put(CONJNUM3_HIST_PERC, conj3percHist);
+        conj3percHist = calcHistoryStatistics(CONJ3_SCORE, CONJ3_TALLY, conj3, conj3Tally);
+        mapStatistics.put(CONJ3_HIST_PERC, conj3percHist);
 
-        conj4percHist = calcHistoryStatistics(CONJNUM4_SCORE, CONJ4_TALLY, conj4, conj4Tally);
-        mapStatistics.put(CONJNUM4_HIST_PERC, conj4percHist);
+        conj4percHist = calcHistoryStatistics(CONJ4_SCORE, CONJ4_TALLY, conj4, conj4Tally);
+        mapStatistics.put(CONJ4_HIST_PERC, conj4percHist);
 
         presentPercHist = calcHistoryStatistics(PRESENT_SCORE, PRESENT_TALLY, present, presentTally);
-        mapStatistics.put(TENSE_PRESENT_HIST, presentPercHist);
+        mapStatistics.put(TENSE_PRESENT_HIST_PERC, presentPercHist);
 
         imperfectPercHist = calcHistoryStatistics(IMPERFECT_SCORE, IMPERFECT_TALLY, imperfect, imperfectTally);
-        mapStatistics.put(TENSE_IMPERFECT_HIST, imperfectPercHist);
+        mapStatistics.put(TENSE_IMPERFECT_HIST_PERC, imperfectPercHist);
 
         futurePercHist = calcHistoryStatistics(FUTURE_SCORE, FUTURE_TALLY, future, futureTally);
-        mapStatistics.put(TENSE_FUTURE_HIST, futurePercHist);
+        mapStatistics.put(TENSE_FUTURE_HIST_PERC, futurePercHist);
 
         perfectPercHist = calcHistoryStatistics(PERFECT_SCORE, PERFECT_TALLY, perfect, perfectTally);
-        mapStatistics.put(TENSE_PERFECT_HIST, perfectPercHist);
+        mapStatistics.put(TENSE_PERFECT_HIST_PERC, perfectPercHist);
 
         pluperfectPercHist = calcHistoryStatistics(PLUPERFECT_SCORE, PLUPERFECT_TALLY, pluperfect, pluperfectTally);
-        mapStatistics.put(TENSE_PLUPERFECT_HIST, pluperfectPercHist);
+        mapStatistics.put(TENSE_PLUPERFECT_HIST_PERC, pluperfectPercHist);
 
         futPerfectPercHist = calcHistoryStatistics(FUT_PERFECT_SCORE, FUT_PERFECT_TALLY, futurePerfect, futurePerfectTally);
-        mapStatistics.put(TENSE_FUTURE_PERFECT_HIST, futPerfectPercHist);
+        mapStatistics.put(TENSE_FUTURE_PERFECT_HIST_PERC, futPerfectPercHist);
 
         indicativePercHist = calcHistoryStatistics(INDICATIVE_SCORE, INDICATIVE_TALLY, indicative, indicativeTally);
-        mapStatistics.put(MOOD_INDICATIVE_HIST, indicativePercHist);
+        mapStatistics.put(MOOD_INDICATIVE_HIST_PERC, indicativePercHist);
 
         subjunctivePercHist = calcHistoryStatistics(SUBJUNCTIVE_SCORE, SUBJUNCTIVE_TALLY, subjunctive, subjunctiveTally);
-        mapStatistics.put(MOOD_SUBJUNCTIVE_HIST, subjunctivePercHist);
+        mapStatistics.put(MOOD_SUBJUNCTIVE_HIST_PERC, subjunctivePercHist);
 
         imperativePercHist = calcHistoryStatistics(IMPERATIVE_SCORE, IMPERATIVE_TALLY, imperative, imperativeTally);
-        mapStatistics.put(MOOD_IMPERATIVE_HIST, imperativePercHist);
+        mapStatistics.put(MOOD_IMPERATIVE_HIST_PERC, imperativePercHist);
 
         activePercHist = calcHistoryStatistics(ACTIVE_SCORE, ACTIVE_TALLY, active, activeTally);
-        mapStatistics.put(VOICE_ACTIVE_HIST, activePercHist);
+        mapStatistics.put(VOICE_ACTIVE_HIST_PERC, activePercHist);
 
         passivePercHist = calcHistoryStatistics(PASSIVE_SCORE, PASSIVE_TALLY, passive, passiveTally);
-        mapStatistics.put(VOICE_PASSIVE_HIST, passivePercHist);
+        mapStatistics.put(VOICE_PASSIVE_HIST_PERC, passivePercHist);
 
-        totalPercHist = calcHistoryStatistics(TOTAL_SCORE, TOTAL_TALLY, total, numQuizQuestions);
-        mapStatistics.put(TOTAL_HIST, totalPercHist);
+        totalPercHist = calcHistoryStatistics(VERB_TOTAL_SCORE, VERB_TOTAL_TALLY, total, numQuizQuestions);
+        mapStatistics.put(VERB_TOTAL_HIST_PERC, totalPercHist);
 
         return mapStatistics;
     }

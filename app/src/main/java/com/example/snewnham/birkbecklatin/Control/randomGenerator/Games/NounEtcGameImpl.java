@@ -26,11 +26,18 @@ import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ACCUSATIVE
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ACCUSATIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_COMPARATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_COMPARATIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_SUPERLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_SUPERLATIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_COMPARATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_COMPARATIVE_HIST_PERC;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_SUPERLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_SUPERLATIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DATIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DATIVE_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECL1;
@@ -44,7 +51,10 @@ import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOMINATIVE
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_IRREGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_REGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_TOTAL;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_TOTAL_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOCATIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOCATIVE_HIST_PERC;
 
@@ -96,14 +106,14 @@ public class NounEtcGameImpl implements NounEtcGame {
 
     private final static String NOUN_HIST_PERC = "Noun_Hist%";
 
-    private final static String PREPOSITION_HIST_PERC = "Preposition_Hist%";
-    private final static String CONJUNCTION_HIST_PERC = "Conjunction_Hist%";
-    private final static String ADJECTIVE_HIST_PERC = "Adjective_Hist%";
-    private final static String ADJECTIVE_COMPARATIVE_HIST_PERC = "AdjectiveComparative_Hist%";
-    private final static String ADJECTIVE_SUPERLATIVE_HIST_PERC = "AdjectiveSuperlative_Hist%";
-    private final static String ADVERB_HIST_PERC = "Adverb_Hist%";
-    private final static String ADVERB_COMPARATIVE_HIST_PERC = "AdverbComparative_Hist%";
-    private final static String ADVERB_SUPERLATIVE_HIST_PERC = "AdverbSuperlative_Hist%";
+//    private final static String PREPOSITION_HIST_PERC = "Preposition_Hist%";
+//    private final static String CONJUNCTION_HIST_PERC = "Conjunction_Hist%";
+//    private final static String ADJECTIVE_HIST_PERC = "Adjective_Hist%";
+//    private final static String ADJECTIVE_COMPARATIVE_HIST_PERC = "AdjectiveComparative_Hist%";
+//    private final static String ADJECTIVE_SUPERLATIVE_HIST_PERC = "AdjectiveSuperlative_Hist%";
+//    private final static String ADVERB_HIST_PERC = "Adverb_Hist%";
+//    private final static String ADVERB_COMPARATIVE_HIST_PERC = "AdverbComparative_Hist%";
+//    private final static String ADVERB_SUPERLATIVE_HIST_PERC = "AdverbSuperlative_Hist%";
 
     private final static int DECLENSION3 = 3;
 
@@ -157,10 +167,10 @@ public class NounEtcGameImpl implements NounEtcGame {
 //    private final static String VOCATIVE_HIST_PERC = "Vocative_Hist%";
 
 
-    private final static String TOTAL = "NounTotal";  // Historical Score of ALL Correct Questions
-    private final static String TOTAL_SCORE = "NounTotalScore";  // Historical Score of ALL Correct Questions
-    private final static String TOTAL_TALLY = "NounTotalTally";  // Tally of All Correct Questions Asked
-    private final static String TOTAL_HIST_PERC = "NounTotal_Hist%";  // Key For statisticsMap
+//    private final static String NOUN_TOTAL = "NounTotal";  // Historical Score of ALL Correct Questions
+    private final static String NOUN_TOTAL_SCORE = "NounTotalScore";  // Historical Score of ALL Correct Questions
+    private final static String NOUN_TOTAL_TALLY = "NounTotalTally";  // Tally of All Correct Questions Asked
+//    private final static String NOUN_TOTAL_HIST_PERC = "NounTotal_Hist%";  // Key For statisticsMap
 
     private final static int CORRECT = 1;
     private final static int INCORRECT = 0;
@@ -879,7 +889,7 @@ public class NounEtcGameImpl implements NounEtcGame {
         mapStatistics.put( ABLATIVE, ablativePerc );
         mapStatistics.put( VOCATIVE, vocativePerc );
 
-        mapStatistics.put( TOTAL, totalPerc);
+        mapStatistics.put(NOUN_TOTAL, totalPerc);
 
         // Calc Total Historical Scores and Update in Map
         // ----------------------------------------------
@@ -943,8 +953,8 @@ public class NounEtcGameImpl implements NounEtcGame {
         mapStatistics.put(VOCATIVE_HIST_PERC, vocativePercHist);
 
 
-        totalPercHist = calcHistoryStatistics(TOTAL_SCORE, TOTAL_TALLY, total, numQuizQuestions);
-        mapStatistics.put(TOTAL_HIST_PERC, totalPercHist);
+        totalPercHist = calcHistoryStatistics(NOUN_TOTAL_SCORE, NOUN_TOTAL_TALLY, total, numQuizQuestions);
+        mapStatistics.put(NOUN_TOTAL_HIST_PERC, totalPercHist);
 
         return mapStatistics;
     }
