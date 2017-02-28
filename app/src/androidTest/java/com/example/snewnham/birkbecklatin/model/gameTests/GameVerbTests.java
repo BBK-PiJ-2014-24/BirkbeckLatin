@@ -5,6 +5,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.Games.VerbGame;
+import com.example.snewnham.birkbecklatin.Control.randomGenerator.Games.VerbGameImpl;
 import com.example.snewnham.birkbecklatin.Control.randomGenerator.RandomGenerator;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.Model.database.DbSchema;
@@ -23,8 +24,6 @@ import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.Matchers.isIn;
-import static org.hamcrest.Matchers.lessThan;
-import static org.hamcrest.number.OrderingComparison.greaterThan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -49,12 +48,12 @@ public class GameVerbTests {
     int id_SemiDeponent;  // id for Semi Deponent
     int id_Irregular; // id for Irregular
 
-    VerbGame verbGame1;
-    VerbGame verbGame2;
-    VerbGame verbGame3;
-    VerbGame verbGame4;
-    VerbGame verbGame5;
-    VerbGame verbGameSkill;
+    VerbGameImpl verbGame1;
+    VerbGameImpl verbGame2;
+    VerbGameImpl verbGame3;
+    VerbGameImpl verbGame4;
+    VerbGameImpl verbGame5;
+    VerbGameImpl verbGameSkill;
     VerbGame verbGameIncorrect;
 
     VerbRegular mVerbRegular;
@@ -197,14 +196,14 @@ public class GameVerbTests {
         randomGenerator = new RandomGenerator(databaseAccess);
 
 
-        verbGame1 = new VerbGame(databaseAccess, 1); // Verb Skill 1
-        verbGame2 = new VerbGame(databaseAccess, 2);
-        verbGame3 = new VerbGame(databaseAccess, 3);
-        verbGame4 = new VerbGame(databaseAccess, 4);
-        verbGame5 = new VerbGame(databaseAccess, 5);
+        verbGame1 = new VerbGameImpl(databaseAccess, 1); // Verb Skill 1
+        verbGame2 = new VerbGameImpl(databaseAccess, 2);
+        verbGame3 = new VerbGameImpl(databaseAccess, 3);
+        verbGame4 = new VerbGameImpl(databaseAccess, 4);
+        verbGame5 = new VerbGameImpl(databaseAccess, 5);
 
-        verbGameSkill = new VerbGame(databaseAccess, 1); // Verb Skill 1
-        verbGameIncorrect = new VerbGame(databaseAccess,1);
+        verbGameSkill = new VerbGameImpl(databaseAccess, 1); // Verb Skill 1
+        verbGameIncorrect = new VerbGameImpl(databaseAccess,1);
 
         id_Regular = 1;
         id_Deponent = 8;

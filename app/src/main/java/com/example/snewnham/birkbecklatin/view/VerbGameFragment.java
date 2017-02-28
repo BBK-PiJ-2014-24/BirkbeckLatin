@@ -1,7 +1,6 @@
 package com.example.snewnham.birkbecklatin.view;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -15,16 +14,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.snewnham.birkbecklatin.Control.randomGenerator.Games.VerbGame;
+import com.example.snewnham.birkbecklatin.Control.randomGenerator.Games.VerbGameImpl;
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
-import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 import com.example.snewnham.birkbecklatin.Model.verbs.Verb;
 import com.example.snewnham.birkbecklatin.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,7 +36,7 @@ public class VerbGameFragment extends Fragment {
 
 
     private DatabaseAccess mDatabaseAccess;
-    private  VerbGame mVerbGame;
+    private VerbGameImpl mVerbGame;
     private  Verb mCorrectVerb;
     private int mCorrectVerbIndex;
     private TextView mQuestionText;
@@ -106,7 +103,7 @@ public class VerbGameFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDatabaseAccess = DatabaseAccess.getInstance(getContext());  // Connect Database
-        mVerbGame = new VerbGame(mDatabaseAccess);                   // Instantiate Verb Game
+        mVerbGame = new VerbGameImpl(mDatabaseAccess);                   // Instantiate Verb Game
         mCounter = 1;
         mButtonList = new ArrayList<>();   // Add Buttons to List
     }
