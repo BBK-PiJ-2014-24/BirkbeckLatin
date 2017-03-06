@@ -6,17 +6,14 @@ import android.support.test.espresso.intent.Intents;
 
 
 import com.example.snewnham.birkbecklatin.R;
-import com.example.snewnham.birkbecklatin.view.MainActivity;
+import com.example.snewnham.birkbecklatin.view.MainActivity2;
 import com.example.snewnham.birkbecklatin.view.VerbGameActivity;
-import com.example.snewnham.birkbecklatin.view.VerbPagerActivity;
 
 import org.junit.Rule;
 import org.junit.Test;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasExtra;
@@ -31,7 +28,7 @@ import static org.hamcrest.core.AllOf.allOf;
 public class IntentTests {
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<MainActivity2> mActivityTestRule = new ActivityTestRule<>(MainActivity2.class);
 
 
     /**

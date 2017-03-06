@@ -48,6 +48,14 @@ public class VerbStatisticsActivity extends SingleFragmentActivity {
 
     }
 
+    // onBackPressed() - Back Key Returns back to MainActivity
+    // ---------------
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this, MainActivity.class));
+        return;
+    }
+
 
 
 }

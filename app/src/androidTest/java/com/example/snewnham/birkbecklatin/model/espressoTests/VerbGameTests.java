@@ -4,8 +4,7 @@ import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
 
 import com.example.snewnham.birkbecklatin.R;
-import com.example.snewnham.birkbecklatin.view.MainActivity;
-import com.example.snewnham.birkbecklatin.view.VerbGameActivity;
+import com.example.snewnham.birkbecklatin.view.MainActivity2;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -23,7 +22,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 public class VerbGameTests {
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<MainActivity2> mActivityTestRule = new ActivityTestRule<>(MainActivity2.class);
 
 
     /**
