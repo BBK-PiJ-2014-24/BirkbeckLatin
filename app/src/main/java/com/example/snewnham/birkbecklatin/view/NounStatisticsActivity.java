@@ -44,4 +44,13 @@ public class NounStatisticsActivity extends SingleFragmentActivity {
         super.onCreate(savedInstanceState);
     }
 
+
+    // onBackPressed() - Back Key Returns back to MainActivity
+    // ---------------
+    @Override
+    public void onBackPressed() {
+        this.startActivity(new Intent(this, MainActivity.class));
+        return;
+    }
+
 }
