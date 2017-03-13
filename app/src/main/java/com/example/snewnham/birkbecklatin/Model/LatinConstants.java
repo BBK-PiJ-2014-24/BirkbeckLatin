@@ -170,5 +170,16 @@ public class LatinConstants {
     public final static String NOUN_TOTAL_HIST_PERC = "NounTotal_Hist%";  // Key For statisticsMap
 
 
+     // --------------------------------------------------------------------------------------------
+
+    // MISCELLANEOUS
+    // -------------
+
+    public final static String ENGLISH_TO_LATIN = "english_to_latin";
+    public final static String LATIN_TO_ENGLISH = "latin_to_english";
+
+
+
+
 
 }

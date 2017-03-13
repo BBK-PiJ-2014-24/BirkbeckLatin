@@ -23,6 +23,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ENGLISH_TO_LATIN;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.LATIN_TO_ENGLISH;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -53,6 +56,9 @@ public class VerbGameFragment extends Fragment {
     private Button buttonNext;
 
     private RefreshListener mRefreshListener;
+
+    private String mTranslationDirection = ENGLISH_TO_LATIN;
+
 
 
 
@@ -160,12 +166,13 @@ public class VerbGameFragment extends Fragment {
         mQuestionList = mVerbGame.getVerbQuestionList();   // Get Question List
         mCorrectVerb = mVerbGame.getCorrectVerb();   // get Correct Verb
         mCorrectVerbIndex = mVerbGame.getCorrectVerbIndex(); // get the index of the Correct Verb in the Question List.
-        mQuestionText.setText(mCorrectVerb.getEnglishVerb()); // Place the Question in the TextView
+        String questionWord = (mTranslationDirection.equals(ENGLISH_TO_LATIN)) ? mCorrectVerb.getEnglishVerb() : mCorrectVerb.getLatinVerb();
+        mQuestionText.setText(questionWord); // Place the Question in the TextView
 
         for(int i = 0; i< NUM_MULTIPLE_CHOICES; i++) {  // set Up Buttons
             Verb verb = mQuestionList.get(i);
-            String latinWord = verb.getLatinVerb();
-            mButtonList.get(i).setText(latinWord);    // Set Latin Text on each Button
+            String word = (mTranslationDirection.equals(LATIN_TO_ENGLISH)) ? verb.getEnglishVerb() : verb.getLatinVerb();
+            mButtonList.get(i).setText(word);    // Set Latin Text on each Button
             mButtonList.get(i).setBackgroundColor(Color.GRAY);
             mButtonList.get(i).setTextColor(Color.BLACK);
 
