@@ -11,6 +11,9 @@
     <string name="verbQuiz">Verb Quiz</string>
     <string name="nounQuiz">Noun Quiz</string>
 
+    <string name="latin_to_english">Latin-to-English</string>
+    <string name="english_to_latin">English-to-Latin</string>
+
 
     <!-- VerbPagerSelection -->
     <!-- ================== -->

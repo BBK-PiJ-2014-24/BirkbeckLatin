@@ -8,6 +8,8 @@ import android.widget.Button;
 
 import com.example.snewnham.birkbecklatin.R;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ENGLISH_TO_LATIN;
+
 public class MainActivity2 extends AppCompatActivity {
 
     // Fields
@@ -16,6 +18,9 @@ public class MainActivity2 extends AppCompatActivity {
     Button mButtonVerbPagerSelector;
     Button mButtonVerbGame;
     Button mButtonNounGame;
+
+    private String mTranslationDirection = ENGLISH_TO_LATIN;  // Default Setting
+
 
     // OnCreate()
     // ----------
@@ -30,7 +35,7 @@ public class MainActivity2 extends AppCompatActivity {
         mButtonVerbGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = VerbGameActivity.newIntent(MainActivity2.this);
+                Intent intent = VerbGameActivity.newIntent(MainActivity2.this, mTranslationDirection);
                 startActivity(intent);
             }
         });

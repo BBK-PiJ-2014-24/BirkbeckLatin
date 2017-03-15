@@ -33,6 +33,8 @@ public class VerbGameFragment extends Fragment {
 
     // Fields
     // ------
+    public final static String TRANSLATION_DIRECTION = "translation_Direction";
+
     private static final int NUM_QUIZ_QUESTIONS = 3;
     private static final int NUM_MULTIPLE_CHOICES = 6;
     private static final String COUNTER = "counter";
@@ -60,8 +62,6 @@ public class VerbGameFragment extends Fragment {
     private String mTranslationDirection = ENGLISH_TO_LATIN;
 
 
-
-
     // Constructor
     // -----------
     public VerbGameFragment() {
@@ -70,8 +70,12 @@ public class VerbGameFragment extends Fragment {
 
     // newInstance()
     // -------------
-    public static VerbGameFragment newInstance(){
-        return new VerbGameFragment();
+    public static VerbGameFragment newInstance(String translationDirection){
+        Bundle args = new Bundle();
+        args.putSerializable(TRANSLATION_DIRECTION, translationDirection);
+        VerbGameFragment verbGameFragment = new VerbGameFragment();
+        verbGameFragment.setArguments(args);
+        return verbGameFragment;
     }
 
 
@@ -111,6 +115,7 @@ public class VerbGameFragment extends Fragment {
         mDatabaseAccess = DatabaseAccess.getInstance(getContext());  // Connect Database
         mVerbGame = new VerbGameImpl(mDatabaseAccess);                   // Instantiate Verb Game
         mCounter = 1;
+        mTranslationDirection = (String) getArguments().getSerializable(TRANSLATION_DIRECTION);
         mButtonList = new ArrayList<>();   // Add Buttons to List
     }
 

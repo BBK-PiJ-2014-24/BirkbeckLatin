@@ -15,6 +15,9 @@ import android.widget.Button;
 
 import com.example.snewnham.birkbecklatin.R;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ENGLISH_TO_LATIN;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.LATIN_TO_ENGLISH;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity
     Button mButtonVerbPagerSelector;
     Button mButtonVerbGame;
     Button mButtonNounGame;
+
+    private String mTranslationDirection = ENGLISH_TO_LATIN;  // Default Setting
 
 
     // OnCreate()
@@ -50,7 +55,7 @@ public class MainActivity extends AppCompatActivity
         mButtonVerbGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = VerbGameActivity.newIntent(MainActivity.this);
+                Intent intent = VerbGameActivity.newIntent(MainActivity.this, mTranslationDirection);
                 startActivity(intent);
             }
         });
@@ -96,6 +101,8 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    // onCreateOptionsMenu() - Inflate ActionBar Menu
+    // ---------------------
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -103,6 +110,8 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    // onOptionsItemSelected() - Item List for Menu
+    // ---------------------
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -111,9 +120,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        if (id == R.id.latin_to_english)
+            mTranslationDirection = LATIN_TO_ENGLISH;
+        else
+            mTranslationDirection = ENGLISH_TO_LATIN;
 
         return super.onOptionsItemSelected(item);
     }
