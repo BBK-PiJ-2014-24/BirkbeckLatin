@@ -25,6 +25,7 @@ import java.util.List;
 
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ENGLISH_TO_LATIN;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.LATIN_TO_ENGLISH;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TRANSLATION_DIRECTION;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,7 +34,7 @@ public class VerbGameFragment extends Fragment {
 
     // Fields
     // ------
-    public final static String TRANSLATION_DIRECTION = "translation_Direction";
+ //   public final static String TRANSLATION_DIRECTION = "translation_Direction";
 
     private static final int NUM_QUIZ_QUESTIONS = 3;
     private static final int NUM_MULTIPLE_CHOICES = 6;
@@ -59,7 +60,7 @@ public class VerbGameFragment extends Fragment {
 
     private RefreshListener mRefreshListener;
 
-    private String mTranslationDirection = ENGLISH_TO_LATIN;
+    private String mTranslationDirection;
 
 
     // Constructor
@@ -70,11 +71,8 @@ public class VerbGameFragment extends Fragment {
 
     // newInstance()
     // -------------
-    public static VerbGameFragment newInstance(String translationDirection){
-        Bundle args = new Bundle();
-        args.putSerializable(TRANSLATION_DIRECTION, translationDirection);
+    public static VerbGameFragment newInstance(){
         VerbGameFragment verbGameFragment = new VerbGameFragment();
-        verbGameFragment.setArguments(args);
         return verbGameFragment;
     }
 
@@ -113,9 +111,10 @@ public class VerbGameFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDatabaseAccess = DatabaseAccess.getInstance(getContext());  // Connect Database
+        int mTranslationCode = mDatabaseAccess.sqlMetaQuery(TRANSLATION_DIRECTION); // Get Translation Direction
+        mTranslationDirection = (mTranslationCode == 0) ? ENGLISH_TO_LATIN : LATIN_TO_ENGLISH ;
         mVerbGame = new VerbGameImpl(mDatabaseAccess);                   // Instantiate Verb Game
         mCounter = 1;
-        mTranslationDirection = (String) getArguments().getSerializable(TRANSLATION_DIRECTION);
         mButtonList = new ArrayList<>();   // Add Buttons to List
     }
 

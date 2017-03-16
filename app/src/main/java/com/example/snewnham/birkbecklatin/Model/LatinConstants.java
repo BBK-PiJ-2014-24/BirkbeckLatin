@@ -175,6 +175,7 @@ public class LatinConstants {
     // MISCELLANEOUS
     // -------------
 
+    public final static String TRANSLATION_DIRECTION = "Translation_Direction";
     public final static String ENGLISH_TO_LATIN = "english_to_latin";
     public final static String LATIN_TO_ENGLISH = "latin_to_english";
 

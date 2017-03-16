@@ -9,19 +9,19 @@ import android.os.Bundle;
 import com.example.snewnham.birkbecklatin.R;
 
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ENGLISH_TO_LATIN;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TRANSLATION_DIRECTION;
 
 public class VerbGameActivity extends SingleFragmentActivity implements VerbGameFragment.RefreshListener{
 
-    public final static String TRANSLATION_DIRECTION = "translation_Direction";
+   // public final static String TRANSLATION_DIRECTION = "translation_Direction";
     private String mTranslationDirection;
 
 
 
     // newIntent() - STATIC call of the VerbGameActivity's Intent  ( MAIN_ACTIVITY -> )
     // -----------
-    public static Intent newIntent(Context packageContext, String languageDirection){
+    public static Intent newIntent(Context packageContext){
         Intent intent = new Intent(packageContext, VerbGameActivity.class);
-        intent.putExtra(TRANSLATION_DIRECTION, languageDirection);
         return intent;
     }
 
@@ -29,9 +29,7 @@ public class VerbGameActivity extends SingleFragmentActivity implements VerbGame
     // ------------------------------------------------------
     @Override
     protected Fragment createFragment() {
-        Intent intent = getIntent();
-        mTranslationDirection = (String) intent.getSerializableExtra(TRANSLATION_DIRECTION);
-        return VerbGameFragment.newInstance(mTranslationDirection);
+        return VerbGameFragment.newInstance();
     }
 
 

@@ -13,10 +13,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.R;
 
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ENGLISH_TO_LATIN;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.LATIN_TO_ENGLISH;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TRANSLATION_DIRECTION;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity
     Button mButtonVerbGame;
     Button mButtonNounGame;
 
-    private String mTranslationDirection = ENGLISH_TO_LATIN;  // Default Setting
+  //  private String mTranslationDirection = ENGLISH_TO_LATIN;  // Default Setting
 
 
     // OnCreate()
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity
         mButtonVerbGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = VerbGameActivity.newIntent(MainActivity.this, mTranslationDirection);
+                Intent intent = VerbGameActivity.newIntent(MainActivity.this);
                 startActivity(intent);
             }
         });
@@ -117,13 +119,14 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.latin_to_english)
-            mTranslationDirection = LATIN_TO_ENGLISH;
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+
+        int id = item.getItemId();
+        if (id == R.id.english_to_latin)
+            databaseAccess.sqlMeta_Insertion(TRANSLATION_DIRECTION, 0);  //  mTranslationDirection = ENGLISH_TO_LATIN ;
         else
-            mTranslationDirection = ENGLISH_TO_LATIN;
+            databaseAccess.sqlMeta_Insertion(TRANSLATION_DIRECTION, 1);  //    mTranslationDirection = LATIN_TO_ENGLISH;
 
         return super.onOptionsItemSelected(item);
     }
