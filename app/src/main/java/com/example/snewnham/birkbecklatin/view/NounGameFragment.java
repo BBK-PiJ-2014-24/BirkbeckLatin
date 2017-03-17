@@ -25,6 +25,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ENGLISH_TO_LATIN;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.LATIN_TO_ENGLISH;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TRANSLATION_DIRECTION;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -52,6 +56,8 @@ public class NounGameFragment extends Fragment {
     private Button button4;
     private Button button5;
     private Button buttonNext;
+
+    private String mTranslationDirection;
 
     private VerbGameFragment.RefreshListener mRefreshListener;
 
@@ -90,6 +96,8 @@ public class NounGameFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDatabaseAccess = DatabaseAccess.getInstance(getContext());  // Connect Database
+        int mTranslationCode = mDatabaseAccess.sqlMetaQuery(TRANSLATION_DIRECTION); // Get Translation Direction
+        mTranslationDirection = (mTranslationCode == 0) ? ENGLISH_TO_LATIN : LATIN_TO_ENGLISH ;
         mNounEtcGame = new NounEtcGameImpl(mDatabaseAccess);                   // Instantiate Noun Game
         mCounter = 1;
         mButtonList = new ArrayList<>();   // Add Buttons to List
@@ -146,12 +154,15 @@ public class NounGameFragment extends Fragment {
         mQuestionList = mNounEtcGame.getNounQuestionList();   // Get Question List
         mCorrectNounEtc = mNounEtcGame.getCorrectNounEtc();   // get Correct Noun
         mCorrectNounEtcIndex = mNounEtcGame.getCorrectNounEtcIndex(); // get the index of the Correct Noun in the Question List.
-        mQuestionText.setText(mCorrectNounEtc.getEnglishWord()); // Place the Question in the TextView
+//        mQuestionText.setText(mCorrectNounEtc.getEnglishWord()); // Place the Question in the TextView
+        String questionWord = (mTranslationDirection.equals(ENGLISH_TO_LATIN)) ? mCorrectNounEtc.getEnglishWord() : mCorrectNounEtc.getLatinWord();
+        mQuestionText.setText(questionWord); // Place the Question in the TextView
+
 
         for(int i = 0; i< NUM_MULTIPLE_CHOICES; i++) {  // set Up Buttons
             NounEtc noun = mQuestionList.get(i);
-            String latinWord = noun.getLatinWord();
-            mButtonList.get(i).setText(latinWord);    // Set Latin Text on each Button
+            String word = (mTranslationDirection.equals(LATIN_TO_ENGLISH)) ? noun.getEnglishWord() : noun.getLatinWord();
+            mButtonList.get(i).setText(word);    // Set Latin Text on each Button
             mButtonList.get(i).setBackgroundColor(Color.GRAY);
             mButtonList.get(i).setTextColor(Color.BLACK);
 

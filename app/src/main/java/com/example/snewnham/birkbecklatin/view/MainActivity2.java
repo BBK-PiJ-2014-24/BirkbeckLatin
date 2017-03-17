@@ -35,7 +35,7 @@ public class MainActivity2 extends AppCompatActivity {
         mButtonVerbGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = VerbGameActivity.newIntent(MainActivity2.this, mTranslationDirection);
+                Intent intent = VerbGameActivity.newIntent(MainActivity2.this);
                 startActivity(intent);
             }
         });
