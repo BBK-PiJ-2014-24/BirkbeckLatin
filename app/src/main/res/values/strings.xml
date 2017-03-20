@@ -13,6 +13,8 @@
 
     <string name="latin_to_english">Latin-to-English</string>
     <string name="english_to_latin">English-to-Latin</string>
+    <string name="reset">Reset Settings</string>
+    <string name="about">About</string>
 
 
     <!-- VerbPagerSelection -->

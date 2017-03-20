@@ -28,7 +28,12 @@ import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_SUP
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_IRREGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_REGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_SKILL_LEVEL;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_THETA;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TRANSLATION_DIRECTION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_SKILL_LEVEL;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_THETA;
 
 
 /**
@@ -1737,11 +1742,6 @@ public class DatabaseAccess {
      */
     public void sqlMeta_Reset(){
 
-        final String VERB_SKILL_LEVEL = "Verb_Skill_Level";
-        final String VERB_THETA = "Verb_Theta";
-        final String NOUN_SKILL_LEVEL = "Noun_Skill_Level";
-        final String NOUN_THETA = "Noun_Theta";
-
 
         String fieldName = "Value";
         String fieldValue = "0";
@@ -1762,9 +1762,7 @@ public class DatabaseAccess {
         sqlMeta_Insertion(VERB_THETA, -2);
         sqlMeta_Insertion(NOUN_SKILL_LEVEL, 1);
         sqlMeta_Insertion(NOUN_THETA, -2);
-
-
-
+        sqlMeta_Insertion(TRANSLATION_DIRECTION, 0);
 
     }
 

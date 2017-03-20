@@ -28,7 +28,10 @@ import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_IRREGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_REGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_SKILL_LEVEL;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_THETA;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TRANSLATION_DIRECTION;
 import static com.example.snewnham.birkbecklatin.Model.database.DbSchema.VerbListTable.*;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
@@ -1378,10 +1381,7 @@ public class DatabaseInstrumentedTest {
 
         final String PRESENT_TALLY = "PresentTally";
         int value = 10;
-        final String VERB_SKILL = "Verb_Skill_Level";
-        final String VERB_THETA = "Verb_Theta";
-        final String NOUN_SKILL = "Noun_Skill_Level";
-        final String NOUN_THETA = "Noun_Theta";
+
 
         databaseAccess.sqlMeta_Reset();
 
@@ -1394,11 +1394,14 @@ public class DatabaseInstrumentedTest {
         ans = databaseAccess.sqlMetaQuery(PRESENT_TALLY);
         assertEquals(0, ans);
 
-        ans = databaseAccess.sqlMetaQuery(NOUN_SKILL);
+        ans = databaseAccess.sqlMetaQuery(NOUN_SKILL_LEVEL);
         assertEquals(1, ans);
 
         ans = databaseAccess.sqlMetaQuery(NOUN_THETA);
         assertEquals(-2, ans);
+
+        ans = databaseAccess.sqlMetaQuery(TRANSLATION_DIRECTION);
+        assertEquals(0, ans);
 
 
 

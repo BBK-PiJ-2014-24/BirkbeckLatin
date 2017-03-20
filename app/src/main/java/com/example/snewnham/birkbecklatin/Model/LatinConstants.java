@@ -179,8 +179,10 @@ public class LatinConstants {
     public final static String ENGLISH_TO_LATIN = "english_to_latin";
     public final static String LATIN_TO_ENGLISH = "latin_to_english";
 
-
-
+    public final static String VERB_SKILL_LEVEL = "Verb_Skill_Level";
+    public final static String VERB_THETA = "Verb_Theta";
+    public final static String NOUN_SKILL_LEVEL = "Noun_Skill_Level";
+    public final static String NOUN_THETA = "Noun_Theta";
 
 
 }

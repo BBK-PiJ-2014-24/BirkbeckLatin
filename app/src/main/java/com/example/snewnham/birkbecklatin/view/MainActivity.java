@@ -131,23 +131,22 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+    // @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        if (id == R.id.nav_english_to_latin) {
+            databaseAccess.sqlMeta_Insertion(TRANSLATION_DIRECTION, 0);  //  mTranslationDirection = ENGLISH_TO_LATIN ;
+        } else if (id == R.id.nav_latin_to_english) {
+            databaseAccess.sqlMeta_Insertion(TRANSLATION_DIRECTION, 1);  //    mTranslationDirection = LATIN_TO_ENGLISH;
+        } else if (id == R.id.nav_reset) {    // Reset
+            databaseAccess.sqlMeta_Reset();
+        } else if (id == R.id.nav_about) {    // About
 
         }
 
