@@ -4,10 +4,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    <!-- MainActivity2 -->
+    <!-- MainActivity -->
     <!-- ============ -->
-    <string name="verbs">Verbs</string>
-    <string name="nouns">Nouns</string>
+    <string name="verbLists">Verb Lists</string>
+    <string name="nounLists">Noun Lists</string>
     <string name="verbQuiz">Verb Quiz</string>
     <string name="nounQuiz">Noun Quiz</string>
 
