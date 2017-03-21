@@ -1403,13 +1403,7 @@ public class DatabaseInstrumentedTest {
         ans = databaseAccess.sqlMetaQuery(TRANSLATION_DIRECTION);
         assertEquals(0, ans);
 
-
-
     }
-
-
-
-
 
 
     @After
