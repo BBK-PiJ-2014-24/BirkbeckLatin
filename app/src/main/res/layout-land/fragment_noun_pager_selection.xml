@@ -5,24 +5,26 @@
                                              android:layout_height="match_parent"
                                              tools:context="com.example.snewnham.birkbecklatin.view.NounPagerSelectionFragment">
 
-
     <Button
         android:id="@+id/buttonNoun1"
         android:text="@string/noun1"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="134dp"
-        android:layout_marginLeft="33dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginLeft="317dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="33dp"/>
+        android:layout_marginStart="33dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.31"/>
 
     <Button
         android:id="@+id/buttonNoun2"
         android:text="@string/noun2"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonNoun1"
         app:layout_constraintLeft_toLeftOf="@+id/buttonNoun1"
         android:layout_marginLeft="0dp"/>
@@ -32,7 +34,6 @@
         android:text="@string/noun3"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonNoun2"
         app:layout_constraintLeft_toLeftOf="@+id/buttonNoun2"/>
 
@@ -41,7 +42,6 @@
         android:text="@string/noun4"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonNoun3"
         app:layout_constraintLeft_toLeftOf="@+id/buttonNoun3"/>
 
@@ -50,9 +50,19 @@
         android:text="@string/noun5"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonNoun4"
         app:layout_constraintLeft_toLeftOf="@+id/buttonNoun4"/>
+
+
+    <Button
+        android:id="@+id/buttonConjunction"
+        android:text="@string/conjugation"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPreposition"
+        app:layout_constraintRight_toRightOf="@+id/buttonPreposition"
+        android:layout_marginRight="0dp"/>
 
 
     <Button
@@ -60,29 +70,18 @@
         android:text="@string/preposition"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         app:layout_constraintTop_toTopOf="@+id/buttonNoun1"
         app:layout_constraintLeft_toRightOf="@+id/buttonNoun1"
-        android:layout_marginLeft="34dp"
-        android:layout_marginStart="34dp"/>
-
-    <Button
-        android:id="@+id/buttonConjunction"
-        android:text="@string/conjunction"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        app:layout_constraintTop_toBottomOf="@+id/buttonPreposition"
-        app:layout_constraintRight_toRightOf="@+id/buttonPreposition"
-        android:layout_marginRight="0dp"/>
-
+        android:layout_marginLeft="65dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="0dp"/>
 
     <Button
         android:id="@+id/buttonAdjective"
         android:text="@string/adjective"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonConjunction"
         android:layout_marginRight="0dp"
         app:layout_constraintRight_toRightOf="@+id/buttonConjunction"
@@ -94,7 +93,7 @@
         android:text="@string/adverb"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonAdjective"
         app:layout_constraintRight_toRightOf="@+id/buttonAdjective"
         android:layout_marginRight="0dp"/>
