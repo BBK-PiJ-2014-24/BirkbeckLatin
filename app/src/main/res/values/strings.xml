@@ -19,10 +19,10 @@
 
     <!-- VerbPagerSelection -->
     <!-- ================== -->
-    <string name="verbConjugation1">Conjugation I  </string>
-    <string name="verbConjugation2">Conjugation II </string>
+    <string name="verbConjugation1">Conjugation I</string>
+    <string name="verbConjugation2">Conjugation II</string>
     <string name="verbConjugation3">Conjugation III</string>
-    <string name="verbConjugation4">Conjugation IV </string>
+    <string name="verbConjugation4">Conjugation IV</string>
 
     <!-- NounPagerSelection -->
     <!-- ================== -->
