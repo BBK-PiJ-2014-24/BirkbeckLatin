@@ -113,7 +113,7 @@ public class NounStatisticsFragment extends Fragment {
     private final static String TOTAL_HIST_PERC = "NounTotal_Hist%";  // Key For statisticsMap
 
     public final static String STATMAP = "statMap";
-    public final static String PCT = " %";
+    public final static String PCT = "%";
 
     // Fields
     // ------
