@@ -149,8 +149,9 @@ public class MainActivity extends AppCompatActivity
             databaseAccess.sqlMeta_Insertion(TRANSLATION_DIRECTION, 1);  //    mTranslationDirection = LATIN_TO_ENGLISH;
         } else if (id == R.id.nav_reset) {    // Reset
             databaseAccess.sqlMeta_Reset();
-        } else if (id == R.id.nav_about) {    // About
-
+        } else if (id == R.id.nav_about) {    // Launch About Page
+            Intent intent = AboutActivity.newIntent(MainActivity.this);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
