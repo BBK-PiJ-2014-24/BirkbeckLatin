@@ -101,7 +101,10 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+        this.startActivity(new Intent(this, MainActivity.class));
     }
+
+
 
     // onCreateOptionsMenu() - Inflate ActionBar Menu
     // ---------------------
@@ -154,4 +157,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
