@@ -8,6 +8,7 @@
         android:id="@+id/questionText"
         android:hint="questionText"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
