@@ -16,6 +16,7 @@
 
     <Button
         android:id="@+id/buttonVerbGame"
+        android:background="@drawable/button_rounded"
         android:layout_width="125dp"
         android:layout_height="115dp"
         android:layout_marginLeft="58dp"
@@ -26,6 +27,7 @@
 
     <Button
         android:id="@+id/buttonNounGame"
+        android:background="@drawable/button_rounded"
         android:layout_width="125dp"
         android:layout_height="115dp"
         android:text="@string/nounQuiz"
@@ -39,6 +41,7 @@
 
     <Button
         android:id="@+id/buttonVerbPagerSelection"
+        android:background="@drawable/button_rounded"
         android:text="@string/verbLists"
         android:layout_width="125dp"
         android:layout_height="115dp"
@@ -49,6 +52,7 @@
 
     <Button
         android:id="@+id/buttonNounPagerSelection"
+        android:background="@drawable/button_rounded"
         android:text="@string/nounLists"
         android:layout_width="125dp"
         android:layout_height="115dp"
@@ -57,19 +61,7 @@
         app:layout_constraintLeft_toRightOf="@+id/buttonVerbPagerSelection"
         android:layout_marginLeft="8dp"/>
 
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline"
-        app:layout_constraintGuide_begin="20dp"
-        android:orientation="vertical"/>
 
-    <android.support.constraint.Guideline
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/guideline2"
-        app:layout_constraintGuide_begin="20dp"
-        android:orientation="horizontal"/>
 
 
 </android.support.constraint.ConstraintLayout>
