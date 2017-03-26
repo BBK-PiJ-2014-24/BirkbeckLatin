@@ -1,5 +1,6 @@
 package com.example.snewnham.birkbecklatin.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.snewnham.birkbecklatin.Model.database.DatabaseAccess;
 import com.example.snewnham.birkbecklatin.R;
@@ -140,15 +142,25 @@ public class MainActivity extends AppCompatActivity
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
 
+        Context context = getApplicationContext();   // arguments for toasts
+        int duration = Toast.LENGTH_SHORT;
+        String translation = " Translation";
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_english_to_latin) {
             databaseAccess.sqlMeta_Insertion(TRANSLATION_DIRECTION, 0);  //  mTranslationDirection = ENGLISH_TO_LATIN ;
+            Toast toast = Toast.makeText(context, getString(R.string.english_to_latin) + translation, duration);
+            toast.show();
         } else if (id == R.id.nav_latin_to_english) {
             databaseAccess.sqlMeta_Insertion(TRANSLATION_DIRECTION, 1);  //    mTranslationDirection = LATIN_TO_ENGLISH;
+            Toast toast = Toast.makeText(context, getString(R.string.latin_to_english) + translation, duration);
+            toast.show();
         } else if (id == R.id.nav_reset) {    // Reset
             databaseAccess.sqlMeta_Reset();
+            Toast toast = Toast.makeText(context, R.string.resetDefault, duration);
+            toast.show();
         } else if (id == R.id.nav_about) {    // Launch About Page
             Intent intent = AboutActivity.newIntent(MainActivity.this);
             startActivity(intent);
