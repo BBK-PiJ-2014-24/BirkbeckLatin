@@ -8,6 +8,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+
+        <!-- MAIN ACTIVITY -->
+        <!-- ============= -->
         <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -16,7 +19,8 @@
             </intent-filter>
         </activity>
 
-
+        <!-- SPLASH SCREEN -->
+        <!-- ============= -->
         <activity
             android:name=".view.SplashScreenActivity"
             android:theme="@style/SplashTheme">
