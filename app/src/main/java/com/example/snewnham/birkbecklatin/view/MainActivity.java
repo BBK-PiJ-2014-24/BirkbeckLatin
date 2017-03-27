@@ -32,7 +32,10 @@ public class MainActivity extends AppCompatActivity
     Button mButtonVerbGame;
     Button mButtonNounGame;
 
-  //  private String mTranslationDirection = ENGLISH_TO_LATIN;  // Default Setting
+    Context context;   // arguments for toasts
+    int duration = Toast.LENGTH_SHORT;
+    String translation = " Translation";
+
 
 
     // OnCreate()
@@ -125,14 +128,19 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+        context = getApplicationContext();
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
 
         int id = item.getItemId();
-        if (id == R.id.english_to_latin)
+        if (id == R.id.english_to_latin) {
             databaseAccess.sqlMeta_Insertion(TRANSLATION_DIRECTION, 0);  //  mTranslationDirection = ENGLISH_TO_LATIN ;
-        else
+            Toast toast = Toast.makeText(context, getString(R.string.english_to_latin) + translation, duration);
+            toast.show();
+        } else {
             databaseAccess.sqlMeta_Insertion(TRANSLATION_DIRECTION, 1);  //    mTranslationDirection = LATIN_TO_ENGLISH;
-
+            Toast toast = Toast.makeText(context, getString(R.string.latin_to_english) + translation, duration);
+            toast.show();
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -140,11 +148,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
-
-        Context context = getApplicationContext();   // arguments for toasts
-        int duration = Toast.LENGTH_SHORT;
-        String translation = " Translation";
+        context = getApplicationContext();
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
 
         // Handle navigation view item clicks here.
         int id = item.getItemId();
