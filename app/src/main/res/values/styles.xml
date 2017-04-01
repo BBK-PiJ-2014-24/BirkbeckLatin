@@ -42,10 +42,8 @@
         <item name="android:background">@color/colorPrimaryDark</item>
     </style>
 
-
+    <!-- Pop Up Menu -->
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:textColorPrimary">@color/colorAccent</item>
-        <item name="android:background">@color/colorPrimaryDark</item>
     </style>
 
     <!-- Statistics Theme -->
