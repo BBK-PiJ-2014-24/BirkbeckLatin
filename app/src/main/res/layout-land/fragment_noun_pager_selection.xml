@@ -7,7 +7,9 @@
 
     <Button
         android:id="@+id/buttonNoun1"
+        android:background="@drawable/button_rounded"
         android:text="@string/noun1"
+        android:textColor="@color/colorAccent"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,45 +23,58 @@
 
     <Button
         android:id="@+id/buttonNoun2"
+        android:background="@drawable/button_rounded"
         android:text="@string/noun2"
+        android:textColor="@color/colorAccent"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonNoun1"
         app:layout_constraintLeft_toLeftOf="@+id/buttonNoun1"
         android:layout_marginLeft="0dp"/>
 
     <Button
         android:id="@+id/buttonNoun3"
+        android:background="@drawable/button_rounded"
         android:text="@string/noun3"
+        android:textColor="@color/colorAccent"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonNoun2"
         app:layout_constraintLeft_toLeftOf="@+id/buttonNoun2"/>
 
     <Button
         android:id="@+id/buttonNoun4"
+        android:background="@drawable/button_rounded"
         android:text="@string/noun4"
+        android:textColor="@color/colorAccent"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonNoun3"
         app:layout_constraintLeft_toLeftOf="@+id/buttonNoun3"/>
 
     <Button
         android:id="@+id/buttonNoun5"
+        android:background="@drawable/button_rounded"
         android:text="@string/noun5"
+        android:textColor="@color/colorAccent"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonNoun4"
         app:layout_constraintLeft_toLeftOf="@+id/buttonNoun4"/>
 
 
     <Button
         android:id="@+id/buttonConjunction"
+        android:background="@drawable/button_rounded"
         android:text="@string/conjugation"
+        android:textColor="@color/colorAccent"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonPreposition"
         app:layout_constraintRight_toRightOf="@+id/buttonPreposition"
         android:layout_marginRight="0dp"/>
@@ -67,21 +82,25 @@
 
     <Button
         android:id="@+id/buttonPreposition"
+        android:background="@drawable/button_rounded"
         android:text="@string/preposition"
+        android:textColor="@color/colorAccent"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@+id/buttonNoun1"
         app:layout_constraintLeft_toRightOf="@+id/buttonNoun1"
         android:layout_marginLeft="65dp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="0dp"/>
+        android:layout_marginTop="5dp"/>
 
     <Button
         android:id="@+id/buttonAdjective"
+        android:background="@drawable/button_rounded"
         android:text="@string/adjective"
+        android:textColor="@color/colorAccent"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonConjunction"
         android:layout_marginRight="0dp"
         app:layout_constraintRight_toRightOf="@+id/buttonConjunction"
@@ -90,10 +109,12 @@
 
     <Button
         android:id="@+id/buttonAdverb"
+        android:background="@drawable/button_rounded"
         android:text="@string/adverb"
+        android:textColor="@color/colorAccent"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@+id/buttonAdjective"
         app:layout_constraintRight_toRightOf="@+id/buttonAdjective"
         android:layout_marginRight="0dp"/>
