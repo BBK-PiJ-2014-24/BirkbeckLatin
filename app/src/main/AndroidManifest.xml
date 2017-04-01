@@ -12,8 +12,7 @@
         <!-- SPLASH SCREEN -->
         <!-- ============= -->
         <activity
-            android:name=".view.SplashScreenActivity"
-            android:theme="@style/SplashTheme">
+            android:name=".view.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
