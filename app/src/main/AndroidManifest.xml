@@ -38,8 +38,10 @@
         </activity>
         <activity android:name=".view.NounGameActivity">
         </activity>
+
         <activity android:name=".view.VerbStatisticsActivity">
         </activity>
+
         <activity android:name=".view.NounStatisticsActivity">
         </activity>
         <activity android:name=".view.VerbPagerSelectionActivity">

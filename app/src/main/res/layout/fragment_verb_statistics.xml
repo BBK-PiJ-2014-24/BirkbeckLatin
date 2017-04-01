@@ -6,8 +6,6 @@
             android:rowCount="24"
             tools:context=".view.VerbStatisticsFragment">
 
-
-    <!-- TODO: Update blank fragment layout-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +15,8 @@
         android:layout_columnSpan="3"
         android:layout_gravity="center_horizontal"
         android:textSize="25sp"
-        android:text="@string/statistics"/>
+        android:text="@string/statistics"
+        android:textColor="@color/colorAccent"/>
 
     <!-- TITLES -->
     <!-- ====== -->
