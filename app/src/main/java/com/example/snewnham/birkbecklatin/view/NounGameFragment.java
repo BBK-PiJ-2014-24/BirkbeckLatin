@@ -6,8 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -163,8 +165,12 @@ public class NounGameFragment extends Fragment {
             NounEtc noun = mQuestionList.get(i);
             String word = (mTranslationDirection.equals(LATIN_TO_ENGLISH)) ? noun.getEnglishWord() : noun.getLatinWord();
             mButtonList.get(i).setText(word);    // Set Latin Text on each Button
-            mButtonList.get(i).setBackgroundColor(Color.GRAY);
-            mButtonList.get(i).setTextColor(Color.BLACK);
+            mButtonList.get(i).setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
+            GradientDrawable gd = new GradientDrawable();
+            gd.setColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
+            gd.setStroke(3, ContextCompat.getColor(getContext(), R.color.colorAccent));
+            gd.setCornerRadius(15);
+            mButtonList.get(i).setBackground(gd);
 
             if(i== mCorrectNounEtcIndex)
                 mButtonList.get(i).setOnClickListener(new NounGameFragment.ButtonCorrectClickListener());  // Wire onClicks to Buttons
@@ -273,12 +279,21 @@ public class NounGameFragment extends Fragment {
                 String table = mNounEtcGame.getTableName(mCorrectNounEtc.getType());
                 mNounEtcGame.storeAnswer(table, 0);    // record the incorrect answer
                 Button clickedButton = (Button) view; // Find the Clicked Button
-                clickedButton.setBackgroundColor(Color.RED);
                 clickedButton.setTextColor(Color.WHITE);
+                GradientDrawable gdClicked = new GradientDrawable();
+                gdClicked.setColor(Color.RED);
+                gdClicked.setStroke(3, ContextCompat.getColor(getContext(), R.color.colorAccent));
+                gdClicked.setCornerRadius(15);
+                clickedButton.setBackground(gdClicked);
+
+
                 Button correctButton = mButtonList.get(mCorrectNounEtcIndex);  // Find the Correct Button
-                correctButton.setBackgroundColor(Color.GREEN);
                 correctButton.setTextColor(Color.DKGRAY);
-                //makeAnswerToast(0);
+                GradientDrawable gdCorrect = new GradientDrawable();
+                gdCorrect.setColor(Color.GREEN);
+                gdCorrect.setStroke(3, ContextCompat.getColor(getContext(), R.color.colorAccent));
+                gdCorrect.setCornerRadius(15);
+                correctButton.setBackground(gdCorrect);
                 setButtonsNull();   // Turn Off the Button onClick()
             }
         }
