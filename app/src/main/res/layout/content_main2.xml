@@ -11,9 +11,6 @@
     tools:showIn="@layout/app_bar_main2">
 
 
-
-
-
     <Button
         android:id="@+id/buttonVerbGame"
         android:background="@drawable/button_rounded"
@@ -22,6 +19,7 @@
         android:layout_marginLeft="58dp"
         android:layout_marginTop="155dp"
         android:text="@string/verbQuiz"
+        android:textColor="@color/colorWhite"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -31,6 +29,7 @@
         android:layout_width="125dp"
         android:layout_height="115dp"
         android:text="@string/nounQuiz"
+        android:textColor="@color/colorWhite"
         app:layout_constraintTop_toTopOf="@+id/buttonVerbGame"
         android:layout_marginTop="0dp"
         app:layout_constraintLeft_toRightOf="@+id/buttonVerbGame"
@@ -43,6 +42,7 @@
         android:id="@+id/buttonVerbPagerSelection"
         android:background="@drawable/button_rounded"
         android:text="@string/verbLists"
+        android:textColor="@color/colorWhite"
         android:layout_width="125dp"
         android:layout_height="115dp"
         android:layout_marginTop="9dp"
@@ -54,6 +54,7 @@
         android:id="@+id/buttonNounPagerSelection"
         android:background="@drawable/button_rounded"
         android:text="@string/nounLists"
+        android:textColor="@color/colorWhite"
         android:layout_width="125dp"
         android:layout_height="115dp"
         android:layout_marginTop="8dp"

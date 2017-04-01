@@ -9,11 +9,22 @@
 
     <!-- Main theme colors -->
     <!--   your app branding color for the app bar -->
-    <color name="colorPrimary">#333333</color>
+    <color name="colorPrimary">@color/colorIndigo</color>
     <!--   darker variant for the status bar and contextual app bars -->
-    <color name="colorPrimaryDark">#444444</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorPrimaryDark">@color/colorIndigoDark</color>
+    <color name="colorAccent">@color/colorIndigoAccent</color>
     <color name="titleColour">#FFFFFF</color>
+
     <color name="textColour">#a3a3a3</color>
     <color name="editTextBackground">#424242</color>
+
+
+    <color name="colorGrey">#444444</color>
+    <color name="colorGreyDark">#333333</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorIndigo">#3F51B5</color>
+    <color name="colorIndigoDark">#303F9F</color>
+    <color name="colorIndigoAccent">#C5CAE9</color>
+
 </resources>
