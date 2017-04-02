@@ -2,6 +2,7 @@ package com.example.snewnham.birkbecklatin.view;
 
 
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,10 @@ import com.example.snewnham.birkbecklatin.R;
  * A simple {@link Fragment} subclass.
  */
 public class VerbPagerFragment extends Fragment {
+
+    // Constants
+    // ---------
+    private final static String TO = "To ";
 
     // Fields
     // ------
@@ -71,14 +76,13 @@ public class VerbPagerFragment extends Fragment {
         String princParts1;
         String princParts2;
 
-
         // Verb's Principle Parts
         String verbConj = Integer.toString(mVerb.getLatin_ConjNum());
         String presentCase = mVerb.getLatin_Present();
         String infinitive = mVerb.getLatin_Infinitive();
         String perfect = mVerb.getLatin_Perfect();
         String participle = mVerb.getLatin_Participle();
-        String engVerb = mVerb.getEnglishVerb();
+        String engVerb = TO + mVerb.getEnglish_Infinitive();
 
         if (perfect != null) {
             princParts1 = presentCase + ", " + infinitive + ", " + perfect;
