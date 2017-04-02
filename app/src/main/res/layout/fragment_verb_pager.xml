@@ -13,7 +13,7 @@
         android:id="@+id/verbConjNum"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:hint="CONJ_NUMBER"
+        android:hint="@string/hint_conjNum"
         android:gravity="center"
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,10 +23,10 @@
 
     <TextView
         android:id="@+id/principal_parts1"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="PRINCIPAL_PARTS1"
+        android:hint="@string/hint_principal_parts_1"
         android:textSize="20sp"
         android:layout_marginTop="54dp"
         app:layout_constraintTop_toBottomOf="@+id/verbConjNum"
@@ -35,10 +35,10 @@
 
     <TextView
         android:id="@+id/principal_parts2"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="PRINCIPAL_PARTS2"
+        android:hint="@string/hint_principal_parts_2"
         android:textSize="20sp"
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@+id/principal_parts1"
@@ -50,12 +50,24 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="ENGLISH_VERB"
-        android:textSize="15sp"
+        android:hint="@string/hint_english_verb"
+        android:textSize="20sp"
         android:layout_marginTop="70dp"
         app:layout_constraintTop_toBottomOf="@+id/principal_parts2"
         android:layout_marginLeft="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/principal_parts2"/>
+
+    <View
+        android:layout_width="256dp"
+        android:layout_height="254dp"
+        android:background="@drawable/rectangle_border"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="124dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/view"/>
 
 
 </android.support.constraint.ConstraintLayout>

@@ -11,7 +11,7 @@
     </style>
 
 
-    <!-- My Android Theme -->
+    <!-- SubClass of AppTheme: Theme With No Action Bar -->
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

@@ -30,6 +30,13 @@
     <string name="verbConjugation3">Conjugation III</string>
     <string name="verbConjugation4">Conjugation IV</string>
 
+    <!-- Verb Pager -->
+    <!-- ========== -->
+    <string name="hint_conjNum">CONJ_NUMBER</string>
+    <string name="hint_english_verb">ENGLISH_VERB</string>
+
+
+
     <!-- NounPagerSelection -->
     <!-- ================== -->
     <string name="noun1">Nouns I    </string>
@@ -42,6 +49,13 @@
     <string name="preposition">Preposition</string>
     <string name="adjective"> Adjective  </string>
     <string name="adverb">Adverb     </string>
+
+    <!-- Noun Pager -->
+    <!-- ========== -->
+    <string name="hint_noun_description">NOUN_DESCRIPTION</string>
+    <string name="hint_principal_parts_1">PRINCIPAL_PARTS1</string>
+    <string name="hint_principal_parts_2">PRINCIPAL_PARTS2</string>
+    <string name="hint_english_noun">ENGLISH_NOUN</string>
 
 
     <!-- Toasts -->
