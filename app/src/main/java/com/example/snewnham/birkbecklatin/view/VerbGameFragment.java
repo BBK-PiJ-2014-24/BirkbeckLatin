@@ -181,11 +181,11 @@ public class VerbGameFragment extends Fragment {
             mButtonList.get(i).setText(word);    // Set Latin Text on each Button
           //  mButtonList.get(i).setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
             mButtonList.get(i).setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
-            GradientDrawable gd = new GradientDrawable();
-            gd.setColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
-            gd.setStroke(3, ContextCompat.getColor(getContext(), R.color.colorAccent));
-            gd.setCornerRadius(15);
-            mButtonList.get(i).setBackground(gd);
+                GradientDrawable gd = new GradientDrawable();
+                gd.setColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
+                gd.setStroke(3, ContextCompat.getColor(getContext(), R.color.colorAccent));
+                gd.setCornerRadius(15);
+                mButtonList.get(i).setBackground(gd);
 
             if(i==mCorrectVerbIndex)
                 mButtonList.get(i).setOnClickListener(new ButtonCorrectClickListener());  // Wire onClicks to Buttons
@@ -195,6 +195,12 @@ public class VerbGameFragment extends Fragment {
             mButtonList.get(i).setTag(1);  // Set Button Tag Flags
         }
         buttonNext.setTag(1);  // Set Next Button Tag Live
+        buttonNext.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
+            GradientDrawable gd = new GradientDrawable();
+            gd.setColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
+            gd.setStroke(3, ContextCompat.getColor(getContext(), R.color.colorAccent));
+            gd.setCornerRadius(15);
+            buttonNext.setBackground(gd);
     }
 
     /**
