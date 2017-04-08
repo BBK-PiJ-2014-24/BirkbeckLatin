@@ -51,6 +51,8 @@ import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_DEPON
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_IRREGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_REGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_SEMI_DEPONENT;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_SKILL_LEVEL;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_THETA;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_TOTAL;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VERB_TOTAL_HIST_PERC;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOICE_ACTIVE;
@@ -80,22 +82,12 @@ import static com.example.snewnham.birkbecklatin.Model.LatinConstants.esse;
 
 public class VerbGameImpl implements VerbGame {
 
-    // Fields
-    // ------
 
-    private final static String VERB_SKILL_LEVEL = "Verb_Skill_Level";
-    private final static String VERB_THETA = "Verb_Theta";
-
+    // CONSTANTS FOR KEYS IN DATABASE and StatisticsMap
+    //-------------------------------------------------
 
     private static final int CONJNUM1_2 = 2;
     private static final int CONJNUM1_4 = 40;
-
-
-//    private static final String CONJ1 = "ConjNum1";
-//    private static final String CONJ2 = "ConjNum2";
-//    private static final String CONJ3 = "ConjNum3";
-//    private static final String CONJ31 = "ConjNum31";
-//    private static final String CONJ4 = "ConjNum4";
 
 
     private static final int VALUE_CORRECT = 1;
@@ -105,38 +97,6 @@ public class VerbGameImpl implements VerbGame {
 
     private final static String ASKED = "Asked";
 
-//    private final static int NUM_CHOICES = 6; // 1 Correct Verb, 5 Incorrect Verbs
-//    private final static String VERB_REGULAR = "Regular";
-//    private final static String VERB_DEPONENT = "Deponent";
-//    private final static String VERB_SEMI_DEPONENT = "Semi Deponent";
-//    private final static String VERB_IRREGULAR = "Irregular";
-
-//    private final static String ESSE = "esse";
-
-//    private final static String NUMBER_SINGULAR = "Singular";
-//    private final static String NUMBER_PLURAL = "Plural";
-//    private final static String NUMBER_INFINITIVE = "Infinitive";
-
-//    private final static String PERSON1 = "1st";
-//    private final static String PERSON2 = "2nd";
-//    private final static String PERSON3 = "3rd";
-//
-//    private final static String TENSE_PRESENT = "Present";
-//    private final static String TENSE_IMPERFECT = "Imperfect";
-//    private final static String TENSE_FUTURE = "Future";
-//    private final static String TENSE_PERFECT = "Perfect";
-//    private final static String TENSE_PLUPERFECT = "Pluperfect";
-//    private final static String TENSE_FUTURE_PERFECT = "Future Perfect";
-//
-//    private final static String VOICE_ACTIVE = "Active";
-//    private final static String VOICE_PASSIVE = "Passive";
-//
-//    private final static String MOOD_INDICATIVE = "Indicative";
-//    private final static String MOOD_IMPERATIVE = "Imperative";
-//    private final static String MOOD_SUBJUNCTIVE = "Subjunctive";
-
-    // CONSTANTS FOR KEYS IN DATABASE and StatisticsMap
-    //-------------------------------------------------
 
     private static final String CONJ1_SCORE = "ConjScore1";  // Historical Score of Correct Con# Questions
     private static final String CONJ2_SCORE = "ConjScore2";  // Key for Meta Table in DB
@@ -147,11 +107,6 @@ public class VerbGameImpl implements VerbGame {
     private final String CONJ2_TALLY = "ConjTally2";  // Key for Meta Table in DB
     private final String CONJ3_TALLY = "ConjTally3";
     private final String CONJ4_TALLY = "ConjTally4";
-
-//    private final String CONJ1_HIST_PERC = "Conj1_Hist%";  // % of Correctly Answered Conj# Questions
-//    private final String CONJ2_HIST_PERC = "Conj2_Hist%";  // Key For statisticsMap
-//    private final String CONJ3_HIST_PERC = "Conj3_Hist%";
-//    private final String CONJ4_HIST_PERC = "Conj4_Hist%";
 
     private final String PRESENT_SCORE = "PresentScore";   // Historical Score of Correct Tense Questions
     private final String IMPERFECT_SCORE = "ImperfectScore";  // Key for Meta Table in DB
@@ -167,14 +122,6 @@ public class VerbGameImpl implements VerbGame {
     private final String PLUPERFECT_TALLY = "PluperfectTally";
     private final String FUT_PERFECT_TALLY = "FutPerfectTally";
 
-//
-//    private final static String TENSE_PRESENT_HIST_PERC = "Present_Hist%";    // % of Correctly Answered Tense Questions
-//    private final static String TENSE_IMPERFECT_HIST_PERC = "Imperfect_Hist%";  // Key For statisticsMap
-//    private final static String TENSE_FUTURE_HIST_PERC = "Future_Hist%";
-//    private final static String TENSE_PERFECT_HIST_PERC = "Perfect_Hist%";
-//    private final static String TENSE_PLUPERFECT_HIST_PERC = "Pluperfect_Hist%";
-//    private final static String TENSE_FUTURE_PERFECT_HIST_PERC = "Future Perfect_Hist%";
-
     private final String INDICATIVE_SCORE = "IndicativeScore";    // Historical Score of Correct Mood Questions
     private final String SUBJUNCTIVE_SCORE = "SubjunctiveScore";  // Key for Meta Table in DB
     private final String IMPERATIVE_SCORE = "ImperativeScore";
@@ -183,27 +130,25 @@ public class VerbGameImpl implements VerbGame {
     private final String SUBJUNCTIVE_TALLY = "SubjunctiveTally";   // Key for Meta Table in DB
     private final String IMPERATIVE_TALLY = "ImperativeTally";
 
-//    private final static String MOOD_INDICATIVE_HIST_PERC = "Indicative_Hist%";   // % of Correctly Answered Mood Questions
-//    private final static String MOOD_IMPERATIVE_HIST_PERC = "Imperative_Hist%";   // Key For statisticsMap
-//    private final static String MOOD_SUBJUNCTIVE_HIST_PERC = "Subjunctive_Hist%";
-
     private final String ACTIVE_SCORE = "ActiveScore";    // Historical Score of Correct Voice Questions
     private final String PASSIVE_SCORE = "PassiveScore";  // Key for Meta Table in DB
 
     private final String ACTIVE_TALLY = "ActiveTally";    // Tally of All Voice Questions Asked
     private final String PASSIVE_TALLY = "PassiveTally";  // Key for Meta Table in DB
 
-//    private final static String VOICE_ACTIVE_HIST_PERC = "Active_Hist%";   // % of Correctly Answered Voice Questions
-//    private final static String VOICE_PASSIVE_HIST_PERC = "Passive_Hist%";  // Key For statisticsMap
-
-
- //   private final static String VERB_TOTAL = "Total";  // Historical Score of ALL Correct Questions
     private final static String VERB_TOTAL_SCORE = "VerbTotalScore";  // Historical Score of ALL Correct Questions
     private final static String VERB_TOTAL_TALLY = "VerbTotalTally";  // Tally of All Correct Questions Asked
-//    private final static String VERB_TOTAL_HIST_PERC = "Total_Hist%";  // Key For statisticsMap
 
+
+    private final static double SKILL_LEVEL_TO_THETA_ADJ = 3.0;  // Used to Calc Theta when Given Skill Level Manually,
+    private final static int START_CORRECT_VERB_INDEX = 100;
+    private final static int START_CORRECT_VERB_DIFFICULTY = 100;
 
     private final int TIME_FOR_INCORRECT_QUESTION = 3;
+
+
+    // Fields
+    // ------
 
     private RandomGenerator mRandomGenerator;
     private DatabaseAccess mDatabaseAccess;
@@ -227,13 +172,13 @@ public class VerbGameImpl implements VerbGame {
         mDatabaseAccess = databaseAccess;
         mRandomGenerator = new RandomGenerator(mDatabaseAccess);
         mSkillLevel = skillLevel;
-        mTheta = skillLevel - 3.0;
+        mTheta = skillLevel - SKILL_LEVEL_TO_THETA_ADJ;
         mVerbQuestionList = new ArrayList<>();
         mAnswerList = new ArrayList<>();
         mQuestionNumber = 0;
         mCorrectVerb = null;
-        mCorrectVerbIndex = 100;
-        mCorrectVerbDifficulty = 100;
+        mCorrectVerbIndex = START_CORRECT_VERB_INDEX;
+        mCorrectVerbDifficulty = START_CORRECT_VERB_DIFFICULTY;
         mCorrectVerbMood = null;
         mCorrectVerbVoice = null;
     }
@@ -247,8 +192,8 @@ public class VerbGameImpl implements VerbGame {
         mAnswerList = new ArrayList<>();
         mQuestionNumber = 0;
         mCorrectVerb = null;
-        mCorrectVerbIndex = 100;
-        mCorrectVerbDifficulty = 100;
+        mCorrectVerbIndex = START_CORRECT_VERB_INDEX;
+        mCorrectVerbDifficulty = START_CORRECT_VERB_DIFFICULTY;
         mCorrectVerbMood = null;
         mCorrectVerbVoice = null;
     }
@@ -427,16 +372,13 @@ public class VerbGameImpl implements VerbGame {
         String type1 = null;
 
         String mood = null;
-       // List<Integer> idList;
         List<String> tenseList0; // list of random tenses
         List<String> tenseList1;
-       // int conjNum1_2 = 2;
-       // int conjNum1_4 = 4;
+
         int esse_ID = 10;  // Need to check that Esse Verbs Are only Active.
 
         switch(mSkillLevel){
             case 1:
-                //idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_2); // Two Verb IDs
                 person = mRandomGenerator.getVerbPerson();
                 do {
                     number = mRandomGenerator.getVerbNumber();  // NO INFINTIVES - Cannot Handle TENSE_IMPERFECT TENSE!!!
@@ -454,7 +396,6 @@ public class VerbGameImpl implements VerbGame {
                 break;
 
             case 2:
-              //  idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4); // Two Verb IDs
                 person = mRandomGenerator.getVerbPerson();
                 number = mRandomGenerator.getVerbNumber();
                 voice1 = VOICE_ACTIVE;
@@ -479,7 +420,6 @@ public class VerbGameImpl implements VerbGame {
                 break;
 
             case 3:
-              //  idList = mRandomGenerator.getRestrictedRandomVerbID(conjNum1_4); // Two Verb IDs
                 person = mRandomGenerator.getVerbPerson();
                 number = mRandomGenerator.getVerbNumber();
 
@@ -520,7 +460,6 @@ public class VerbGameImpl implements VerbGame {
                 break;
 
             case 4:
-              //  idList = mRandomGenerator.getUnrestrictedRandomVerbID();   // Unrestricted Two Verb IDs
                 type0 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(0));
                 type1 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(1));
                 person = mRandomGenerator.getVerbPerson();
@@ -569,7 +508,6 @@ public class VerbGameImpl implements VerbGame {
                 break;
 
             case 5:
-              //  idList = mRandomGenerator.getUnrestrictedRandomVerbID();   // Unrestricted Two Verb IDs
                 type0 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(0));
                 type1 = mDatabaseAccess.sqlVerbTypeQuery(idList.get(1));
                 person = mRandomGenerator.getVerbPerson();
@@ -859,8 +797,6 @@ public class VerbGameImpl implements VerbGame {
         int passivePercHist;
 
         int totalPercHist;
-
-
 
         Map<String, Integer> mapStatistics = new HashMap<>();
 
