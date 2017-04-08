@@ -30,11 +30,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".view.VerbPagerActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
-        <activity android:name=".view.VerbPagerActivity">
+        <activity android:name=".view.VerbGameActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".view.VerbGameActivity">
-        </activity>
+
         <activity android:name=".view.NounGameActivity">
         </activity>
 

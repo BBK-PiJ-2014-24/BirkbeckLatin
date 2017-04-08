@@ -30,7 +30,7 @@ public class NounGameActivity extends SingleFragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_noun_game);
+        //setContentView(R.layout.activity_noun_game);
         setContentView(R.layout.generic_fragment_holder);
     }
 
