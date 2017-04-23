@@ -80,8 +80,8 @@ public class VerbPagerFragment extends Fragment {
         String verbConj = Integer.toString(mVerb.getLatin_ConjNum());
         String presentCase = mVerb.getLatin_Present();
         String infinitive = mVerb.getLatin_Infinitive();
-        String perfect = mVerb.getLatin_Perfect();
-        String participle = mVerb.getLatin_Participle();
+        String perfect = (mVerb.getLatin_Perfect() != null) ? mVerb.getLatin_Perfect() : " - ";
+        String participle = (mVerb.getLatin_Participle()!= null) ? mVerb.getLatin_Participle() : " - ";
         String engVerb = TO + mVerb.getEnglish_Infinitive();
 
         if (perfect != null) {
