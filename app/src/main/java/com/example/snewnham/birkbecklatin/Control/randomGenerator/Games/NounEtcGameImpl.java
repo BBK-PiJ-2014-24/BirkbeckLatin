@@ -125,14 +125,6 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final static String ABLATIVE_TALLY = "AblativeTally";
     private final static String VOCATIVE_TALLY = "VocativeTally";
 
-//    private final static String NOMINATIVE_HIST_PERC = "Nominative_Hist%";
-//    private final static String ACUSTATIVE_HIST_PERC = "Accusative_Hist%";
-//    private final static String GENITIVE_HIST_PERC = "Genitive_Hist%";
-//    private final static String DATIVE_HIST_PERC = "Dative_Hist%";
-//    private final static String ABLATIVE_HIST_PERC = "Ablative_Hist%";
-//    private final static String VOCATIVE_HIST_PERC = "Vocative_Hist%";
-
-
 //    private final static String NOUN_TOTAL = "NounTotal";  // Historical Score of ALL Correct Questions
     private final static String NOUN_TOTAL_SCORE = "NounTotalScore";  // Historical Score of ALL Correct Questions
     private final static String NOUN_TOTAL_TALLY = "NounTotalTally";  // Tally of All Correct Questions Asked

@@ -55,12 +55,16 @@ public class NounRegular implements NounEtc {
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
 
         mNounCase = noun_Case; // Set Noun Case
+        // Check if Noun only has a Plural (e.g. troops)
+        if(mEnglishNounSingular == null){
+            number = NUMBER_PLURAL;
+        }
         // Override for 2nd Declension Nominative and Singular
         if( mDeclension == 2 && noun_Case.equals(NOMINATIVE) && number.equals(SINGULAR) ) {
                 mLatin_Noun_Ending = databaseAccess.sqlNounEndingQuery( Integer.toString(mDeclension), number, mGender, noun_Case);;
                 mLatinNoun = mNominative;
                 return mLatinNoun;
-            } else if( mDeclension == 3 ) { // Override for 3rd Declension Nominative and Singular (Singular) && Genitive Plural
+            } else if( mDeclension == CONJNUM3 || mDeclension == CONJNUM31 ) { // Override for 3rd Declension Nominative and Singular (Singular) && Genitive Plural
 
                 if( (noun_Case.equals(NOMINATIVE) || noun_Case.equals(VOCATIVE)) && number.equals(SINGULAR) ) {
                     mLatin_Noun_Ending = "";  // Endings are too irregular
@@ -88,6 +92,11 @@ public class NounRegular implements NounEtc {
 
     @Override
     public String makeEnglishWord(DatabaseAccess databaseAccess, String number) {
+
+        // Check if Noun only has a Plural (e.g. troops)
+        if(mEnglishNounSingular == null){
+            number = NUMBER_PLURAL;
+        }
 
         if(number.equals(SINGULAR)){
             mEnglishWord = mEnglishNounSingular;
