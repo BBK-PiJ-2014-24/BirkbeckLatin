@@ -102,16 +102,28 @@ public class NounPagerFragment extends Fragment {
         String princParts1 = "";
         String princParts2 = "";
         String genitive = "";
+        String nominativeMale="";
+        String nominativeFemale="";
+        String nominativeNeuter="";
 
         // Noun's Principle Parts
         // ----------------------
         String nounDecl = Integer.toString(mNounEtc.getDeclension());
         String nominative = mNounEtc.getNominative();
-        if(mType.equals(NOUN_REGULAR) || mType.equals(NOUN_IRREGULAR))
-            genitive = mNounEtc.getGenitive();
+
         String gender = "(" + mNounEtc.getGender() + ")";
         String description = mNounEtc.getType();
 
+        if(mType.equals(NOUN_REGULAR))
+            genitive = mNounEtc.getGenitive();
+
+        if(mType.equals(NOUN_IRREGULAR)){
+            nominativeMale = mNounEtc.getLatinWord();
+            mNounEtc = mNounEtcGame.makeGameNounEtc(mType, mNounID, NUMBER_SINGULAR, NOMINATIVE, GENDER_FEMALE );
+            nominativeFemale = mNounEtc.getLatinWord();
+            mNounEtc = mNounEtcGame.makeGameNounEtc(mType, mNounID, NUMBER_SINGULAR, NOMINATIVE, GENDER_NEUTER );
+            nominativeNeuter = mNounEtc.getLatinWord();
+        }
 
         switch(mNounEtc.getType()) {
             case NOUN_REGULAR:  // Nominative, Genitive, Gender
@@ -121,8 +133,8 @@ public class NounPagerFragment extends Fragment {
                 break;
             case NOUN_IRREGULAR: // Nominative, Genitive, Gender
                 description = "PRONOUN/POSSESSIVE";
-                princParts1 = nominative + ", " + genitive;
-                princParts2 = gender;
+                princParts1 = nominativeMale + ", " + nominativeFemale;
+                princParts2 = nominativeNeuter;
                 break;
             case PREPOSITION:
                 princParts1 = mNounEtc.getLatinWord();

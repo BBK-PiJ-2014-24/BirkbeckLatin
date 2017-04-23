@@ -71,19 +71,6 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final static String NOUN_SKILL_LEVEL = "Noun_Skill_Level";
     private final static String NOUN_THETA = "Noun_Theta";
 
-//    private final static String NOUN = "Noun";
-//    private final static String NOUN_REGULAR = "NounRegular";
-//    private final static String NOUN_IRREGULAR = "NounIrregular";
-//    private final static String PREPOSITION = "Preposition";
-//    private final static String CONJUNCTION = "Conjunction";
-//    private final static String ADJECTIVE = "Adjective";
-//    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
-//    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
-//    private final static String ADVERB = "Adverb";
-//    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
-//    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
-
-
     private final static String NOUN_SCORE = "NounScore";
     private final static String PREPOSITION_SCORE = "PrepositionScore";
     private final static String CONJUNCTION_SCORE = "ConjunctionScore";
@@ -106,21 +93,7 @@ public class NounEtcGameImpl implements NounEtcGame {
 
     private final static String NOUN_HIST_PERC = "Noun_Hist%";
 
-//    private final static String PREPOSITION_HIST_PERC = "Preposition_Hist%";
-//    private final static String CONJUNCTION_HIST_PERC = "Conjunction_Hist%";
-//    private final static String ADJECTIVE_HIST_PERC = "Adjective_Hist%";
-//    private final static String ADJECTIVE_COMPARATIVE_HIST_PERC = "AdjectiveComparative_Hist%";
-//    private final static String ADJECTIVE_SUPERLATIVE_HIST_PERC = "AdjectiveSuperlative_Hist%";
-//    private final static String ADVERB_HIST_PERC = "Adverb_Hist%";
-//    private final static String ADVERB_COMPARATIVE_HIST_PERC = "AdverbComparative_Hist%";
-//    private final static String ADVERB_SUPERLATIVE_HIST_PERC = "AdverbSuperlative_Hist%";
-
     private final static int DECLENSION3 = 3;
-
-//    private final static String DECL1 = "decl1";
-//    private final static String DECL2 = "decl2";
-//    private final static String DECL3 = "decl3";
-//    private final static String DECL4 = "decl4";
 
     private final static String DECL1_SCORE = "decl1Score";
     private final static String DECL2_SCORE = "decl2Score";
@@ -137,13 +110,6 @@ public class NounEtcGameImpl implements NounEtcGame {
     private final String DECL3_HIST_PERC = "Decl3_Hist%";
     private final String DECL4_HIST_PERC = "Decl4_Hist%";
 
-
-//    private final static String NOMINATIVE = "Nominative";
-//    private final static String ACUSTATIVE = "Accusative";
-//    private final static String GENITIVE = "Genitive";
-//    private final static String DATIVE = "Dative";
-//    private final static String ABLATIVE = "Ablative";
-//    private final static String VOCATIVE = "Vocative";
 
     private final static String NOMINATIVE_SCORE = "NominativeScore";
     private final static String ACUSTATIVE_SCORE = "AccusativeScore";
