@@ -45,30 +45,6 @@ public class NounPagerFragment extends Fragment {
     private static final String TYPE = "Type";
     private static final String NOUN_ID = "nounId";
 
-//    private final static String NOUN = "Noun";
-//    private final static String NOUN_REGULAR = "NounRegular";
-//    private final static String NOUN_IRREGULAR = "NounIrregular";
-//    private final static String PREPOSITION = "Preposition";
-//    private final static String CONJUNCTION = "Conjunction";
-//    private final static String ADJECTIVE = "Adjective";
-//    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
-//    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
-//    private final static String ADVERB = "Adverb";
-//    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
-//    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
-//
-//    private final static String NOMINATIVE = "Nominative";
-//    private final static String ACUSTATIVE = "Accusative";
-//    private final static String GENITIVE = "Genitive";
-//    private final static String DATIVE = "Dative";
-//    private final static String ABLATIVE = "Ablative";
-//    private final static String VOCATIVE = "Vocative";
-//
-//    private final static String NUMBER_SINGULAR = "Singular";
-//    private final static String GENDER_MALE = "m";
-//    private final static String GENDER_FEMALE = "f";
-//    private final static String GENDER_NEUTER = "n";
-
     private final static String DECL1 = "1";
 
 
@@ -144,7 +120,7 @@ public class NounPagerFragment extends Fragment {
                 princParts2 = gender;
                 break;
             case NOUN_IRREGULAR: // Nominative, Genitive, Gender
-                description = description + " " + nounDecl;
+                description = "PRONOUN/POSSESSIVE";
                 princParts1 = nominative + ", " + genitive;
                 princParts2 = gender;
                 break;
