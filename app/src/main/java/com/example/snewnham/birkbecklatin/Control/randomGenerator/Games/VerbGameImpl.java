@@ -219,7 +219,7 @@ public class VerbGameImpl implements VerbGame {
         mVerbQuestionList = newVerbList; // Hack to Reset The Verb Question List
 
         int conj = CONJNUM1_2;
-        boolean restricted = true;
+        boolean restricted = true; // Restrict to Regular Verbs (with exception of ESSE)
         switch(mSkillLevel) {      // Find out what Verb Restrictions are required, given Skill Level
             case 1:
                 conj = CONJNUM1_2;

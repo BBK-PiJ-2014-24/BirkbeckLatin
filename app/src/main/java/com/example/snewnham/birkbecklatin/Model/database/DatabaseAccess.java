@@ -7,6 +7,7 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.snewnham.birkbecklatin.Model.LatinConstants;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adjective;
 import com.example.snewnham.birkbecklatin.Model.nouns.AdjectiveComparative;
 import com.example.snewnham.birkbecklatin.Model.nouns.Adverb;
@@ -25,6 +26,8 @@ import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE_
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_COMPARATIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB_SUPERLATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJNUM3;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJNUM31;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_IRREGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_REGULAR;
@@ -49,24 +52,6 @@ public class DatabaseAccess {
     private static DatabaseAccess sDatabaseAccess;
 
     private Context mContext;
-
-    // Constants
-    // ---------
-
-//    private final static String NOUN_REGULAR = "NounRegular";
-//    private final static String NOUN_IRREGULAR = "NounIrregular";
-//
-//    private final static String PREPOSITION = "Preposition";
-//    private final static String CONJUNCTION = "Conjunction";
-//
-//    private final static String ADJECTIVE = "Adjective";
-//    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
-//    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
-//
-//    private final static String ADVERB = "Adverb";
-//    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
-//    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
-//
 
 
     /**
@@ -237,11 +222,21 @@ public class DatabaseAccess {
      */
     public List<Verb> getVerbConjugationList(int conj){
 
+        String whereClause;
+        String[] whereArgs;
+
         String table = DbSchema.VerbListTable.VERB_LIST_TABLE;  // FROM VerbStemTable
         String[] column = null;  // SELECT *
-        String whereClause = DbSchema.VerbListTable.Cols.LATIN_CONJNUM + "=?";
-        String[] whereArgs = new String[]{Integer.toString(conj)};
 
+        if(conj != LatinConstants.CONJNUM3) {
+            whereClause = DbSchema.VerbListTable.Cols.LATIN_CONJNUM + "=?";
+            whereArgs = new String[]{Integer.toString(conj)};
+        } else { // If Conj = 3, then also Add Conj 31 (i.e. 3rd Conjugation -io verb s)
+            whereClause = DbSchema.VerbListTable.Cols.LATIN_CONJNUM + "=?" +
+                          " OR " +
+                          DbSchema.VerbListTable.Cols.LATIN_CONJNUM + "=?";
+            whereArgs = new String[]{Integer.toString(conj), Integer.toString(CONJNUM31)};
+        }
 
         List<Verb> verbList = new ArrayList<>();
         VerbListCursor cursor = (VerbListCursor) sqlQuery(table, column, whereClause, whereArgs);  // set up cursor pointing at db
@@ -302,7 +297,7 @@ public class DatabaseAccess {
      * It can be also set so to retrieve a list of Verb IDs that are INCORRECTLY Answered.
      * @param maxConj - max level of Conj Number
      * @param correct - WHERE CORRECT = 1: Correct Answers, 0: Incorrect Answers
-     * @param restricted - Boolean flag: restricted: true, unrestricted: false
+     * @param restricted - Restrict to Only Regular Verbs. Boolean flag: restricted: true, unrestricted: false
      * @return List<integer> of IDs
      */
     public List<Integer> getVerbIDList(int maxConj, int correct, boolean restricted){

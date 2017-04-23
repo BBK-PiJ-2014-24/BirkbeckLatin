@@ -22,10 +22,6 @@ import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJNUM4;
  */
 public class VerbPagerSelectionFragment extends Fragment {
 
-//    private static final int CONJNUM1 = 1;
-//    private static final int CONJNUM2 = 2;
-//    private static final int CONJNUM3 = 3;
-//    private static final int CONJNUM4 = 4;
 
 
     // Fields

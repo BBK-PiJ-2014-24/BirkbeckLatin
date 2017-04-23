@@ -24,6 +24,7 @@ public class LatinConstants {
     public static final int CONJNUM2 = 2;
     public static final int CONJNUM3 = 3;
     public static final int CONJNUM4 = 4;
+    public static final int CONJNUM31 = 31;
 
     public final static String VERB_REGULAR = "Regular";
     public final static String VERB_DEPONENT = "Deponent";

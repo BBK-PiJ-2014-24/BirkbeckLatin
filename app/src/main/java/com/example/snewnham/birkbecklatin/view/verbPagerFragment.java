@@ -44,7 +44,7 @@ public class VerbPagerFragment extends Fragment {
      * @return
      */
     public static VerbPagerFragment newInstance(int verbId) {
-        Bundle args = new Bundle();  // pass the crimeId in the activity Intent to the mFragment
+        Bundle args = new Bundle();  // pass the verbId in the activity Intent to the mFragment
         args.putSerializable(VERB_ID, verbId);
 
         VerbPagerFragment fragment = new VerbPagerFragment();
