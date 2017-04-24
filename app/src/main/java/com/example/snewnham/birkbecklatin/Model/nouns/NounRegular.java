@@ -109,7 +109,6 @@ public class NounRegular implements NounEtc {
         }
 
 
-
         if(number.equals(SINGULAR)){
             mEnglishWord = mEnglishNounSingular;
         } else {
