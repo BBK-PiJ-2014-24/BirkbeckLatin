@@ -7,6 +7,7 @@ import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECLENSION
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_FEMALE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_MALE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOMINATIVE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NUMBER_PLURAL;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.SINGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.VOCATIVE;
 
@@ -54,6 +55,12 @@ public class Adjective implements NounEtc {
 
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
+        // Check if only Plural meaning
+        int wordLength = mNominative.length();
+        if( mDeclension == 212 && mNominative.charAt(wordLength - 1) == 'i')
+            number = NUMBER_PLURAL;
+        if( mDeclension == 333 && mNominative.substring(wordLength - 2).equals("es"))
+            number = NUMBER_PLURAL;
         return makeLatinWord(databaseAccess, number, noun_Case, mGender);
     }
 
@@ -62,8 +69,12 @@ public class Adjective implements NounEtc {
 
         mGender = gender;  // Set Gender
         mNounCase = noun_Case; // noun Case
+        int wordLength = mNominative.length();
 
         if(mDeclension == DECLENSION333) { // M or F 333
+            // Check if only Plural meaning
+            if( mNominative.substring(wordLength - 2).equals("es"))
+                number = NUMBER_PLURAL;
             if(mGender.equals(GENDER_MALE) || mGender.equals(GENDER_FEMALE)) {
                 if (noun_Case.equals(NOMINATIVE) && number.equals(SINGULAR)) {  // Adjective 333 Nominatives can be Irregular
                     int stemLength = mLatinAdjectiveStem.length();
@@ -96,6 +107,8 @@ public class Adjective implements NounEtc {
                 }
             }
         } else { // 212
+            if( mNominative.charAt(wordLength - 1) == 'i')
+                number = NUMBER_PLURAL;
             if(noun_Case.equals(NOMINATIVE) && number.equals(SINGULAR) && mGender.equals(GENDER_MALE)){
                 int stemLength = mLatinAdjectiveStem.length();
                 mLatin_Adjective_Ending = mNominative.substring(stemLength);  // Calc ending
