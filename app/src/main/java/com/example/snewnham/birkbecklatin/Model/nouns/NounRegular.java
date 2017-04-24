@@ -55,10 +55,16 @@ public class NounRegular implements NounEtc {
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
 
         mNounCase = noun_Case; // Set Noun Case
+
         // Check if Noun only has a Plural (e.g. troops)
         if(mEnglishNounSingular == null){
             number = NUMBER_PLURAL;
         }
+        // Check if Noun only has a Single (e.g. Jupiter)
+        if(mEnglishNounPlural == null){
+            number = NUMBER_SINGULAR;
+        }
+
         // Override for 2nd Declension Nominative and Singular
         if( mDeclension == 2 && noun_Case.equals(NOMINATIVE) && number.equals(SINGULAR) ) {
                 mLatin_Noun_Ending = databaseAccess.sqlNounEndingQuery( Integer.toString(mDeclension), number, mGender, noun_Case);;
@@ -97,6 +103,12 @@ public class NounRegular implements NounEtc {
         if(mEnglishNounSingular == null){
             number = NUMBER_PLURAL;
         }
+        // Check if Noun only has a Single (e.g. Jupiter)
+        if(mEnglishNounPlural == null){
+            number = NUMBER_SINGULAR;
+        }
+
+
 
         if(number.equals(SINGULAR)){
             mEnglishWord = mEnglishNounSingular;
