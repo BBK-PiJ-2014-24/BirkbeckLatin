@@ -19,7 +19,6 @@ public class Adjective implements NounEtc {
 
     // Fields
     // ------
-
     protected DatabaseAccess mDatabaseAccess;
     protected int mId;
     protected String mType;
@@ -55,12 +54,18 @@ public class Adjective implements NounEtc {
 
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
-        // Check if only Plural meaning
+
         int wordLength = mNominative.length();
+        if( mDeclension == 0){
+            mLatinAdjective = mNominative;
+            return mNominative;
+        }
+        // Check if only Plural meaning
         if( mDeclension == 212 && mNominative.charAt(wordLength - 1) == 'i')
             number = NUMBER_PLURAL;
         if( mDeclension == 333 && mNominative.substring(wordLength - 2).equals("es"))
             number = NUMBER_PLURAL;
+
         return makeLatinWord(databaseAccess, number, noun_Case, mGender);
     }
 
@@ -70,6 +75,11 @@ public class Adjective implements NounEtc {
         mGender = gender;  // Set Gender
         mNounCase = noun_Case; // noun Case
         int wordLength = mNominative.length();
+
+        if( mDeclension == 0){
+            mLatinAdjective = mNominative;
+            return mNominative;
+        }
 
         if(mDeclension == DECLENSION333) { // M or F 333
             // Check if only Plural meaning
