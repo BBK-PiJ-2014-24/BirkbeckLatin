@@ -7,6 +7,8 @@ import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_IMPER
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.MOOD_INDICATIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NUMBER_INFINITIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NUMBER_SINGULAR;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PERSON_1ST;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.SINGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PERFECT;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PERSON_3RD;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TENSE_PRESENT;
@@ -32,6 +34,7 @@ public class VerbRegular implements Verb {
     protected static final String ENGLISH_PRESENT_3RDPERSON = "English_Present_3rdPerson";
     protected static final String ENGLISH_PERFECT = "English_Perfect";
     protected static final String ENGLISH_PARTICIPLE = "English_Participle";
+    protected static final String START_INFINITIVE = "be ";
 
 
 
@@ -186,6 +189,7 @@ public class VerbRegular implements Verb {
             this.mDatabaseAccess = databaseAccess;
         }
 
+        // Determine If the verb requires a person
         if (mood.equals(MOOD_IMPERATIVE) ) {
             mEnglishPerson = ""; // override to drop Person for All Imperatives
         } else if(tense.equals(TENSE_PRESENT) && mood.equals(MOOD_SUBJUNCTIVE)){
@@ -196,14 +200,25 @@ public class VerbRegular implements Verb {
             mEnglishPerson = databaseAccess.sqlEngPersonQuery(person, number);
         }
 
+        // Pick up an Auxiliary Verb
         mEnglishAuxiliaryVerb = databaseAccess.sqlEngAuxVerbQuery(person, number, mood, voice, tense);
         String englishVerbCase = databaseAccess.sqlEngVerbEnding(number, tense, mood, voice);
 
+        // Check for Compound Verbs
+        String compoundVerb;
+        String startInfininitive = mEnglish_Infinitive.substring(0,3);
+        if(startInfininitive.equals(START_INFINITIVE)){
+            if(number.equals(SINGULAR) && person.equals(PERSON_1ST))
+                compoundVerb = "am";
+        }
+
+        // Determine case of verb
         if( !number.equals(NUMBER_INFINITIVE)  && !mood.equals(MOOD_IMPERATIVE)) { // Avoid nullpointerException for infinitives
             if (person.equals(PERSON_3RD) && number.equals(NUMBER_SINGULAR) && tense.equals(TENSE_PRESENT) && mood.equals(MOOD_INDICATIVE) && voice.equals(VOICE_ACTIVE)) {
                 englishVerbCase = DbSchema.VerbListTable.Cols.ENGLISH_PRESENT_3RDPERSON;   // override to pick up present 3rd person present
             }
         }
+
         switch(englishVerbCase){
             case ENGLISH_INFINITIVE:{
                 mEnglishVerbEnding = this.mEnglish_Infinitive;
@@ -222,9 +237,11 @@ public class VerbRegular implements Verb {
                 break;
             }
         }
+
         if(mEnglishAuxiliaryVerb == null){
             mEnglishAuxiliaryVerb = "";
         }
+
         mEnglishVerb = mEnglishPerson + mEnglishAuxiliaryVerb + mEnglishVerbEnding;
         return mEnglishVerb;
     }
