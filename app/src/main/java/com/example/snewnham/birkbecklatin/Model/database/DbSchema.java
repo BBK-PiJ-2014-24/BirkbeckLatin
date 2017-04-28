@@ -100,7 +100,7 @@ public class DbSchema {
             public static final String VOICE = "Voice";
             public static final String TENSE = "Tense";
             public static final String ENG_AUX_VERB = "English_Aux_Verb";
-
+            public static final String ENG_AUX_COMPOUND_VERB = "English_Aux_CompoundVerb";
         }
     }
 
