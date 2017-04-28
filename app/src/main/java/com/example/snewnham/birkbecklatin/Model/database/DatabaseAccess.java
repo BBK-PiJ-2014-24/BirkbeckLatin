@@ -673,6 +673,55 @@ public class DatabaseAccess {
     }
 
     /**
+     * sqlEngAuxCompoundVerbQuery(String person, String number, String mood, String voice, String tense)
+     * ==========================
+     * A SQL query to select the correct English Auxiliary VerbRegular for an English Compound Verb
+     * @param person
+     * @param number
+     * @param mood
+     * @param voice
+     * @param tense
+     * @return
+     */
+
+    public String sqlEngAuxCompoundVerbQuery(String person, String number, String mood, String voice, String tense) {
+
+        String table = DbSchema.EnglishAuxillaryVerbTable.ENG_AUX_VERB_TABLE;  // FROM EnglishAuxiliaryTable
+        String[] column = new String[]{DbSchema.EnglishAuxillaryVerbTable.Cols.ENG_AUX_COMPOUND_VERB};  // SELECT Eng_Aux_Verb
+
+        String[] whereArgs;
+        String whereClause;
+
+        if( number.equals("Infinitive") ) {       // reduce arguments for Infinitive (as SQLite can't take IS NULL
+            whereArgs = new String[]{number, mood, voice, tense};
+            whereClause = DbSchema.EnglishAuxillaryVerbTable.Cols.NUMBER + "=?" + " AND " +   // WHERE ... AND
+                    DbSchema.EnglishAuxillaryVerbTable.Cols.MOOD + "=?" + " AND " +
+                    DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE + "=?" + " AND " +
+                    DbSchema.EnglishAuxillaryVerbTable.Cols.TENSE + "=?";
+
+        } else if( mood.equals("Imperative") ) {       // reduce arguments for Imperative (as SQLite can't take IS NULL
+            whereArgs = new String[]{number, mood, voice};
+            whereClause = DbSchema.EnglishAuxillaryVerbTable.Cols.NUMBER + "=?" + " AND " +   // WHERE ... AND
+                    DbSchema.EnglishAuxillaryVerbTable.Cols.MOOD + "=?" + " AND " +
+                    DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE + "=?";
+        } else {
+            whereArgs = new String[]{person, number, mood, voice, tense};
+            whereClause = DbSchema.EnglishAuxillaryVerbTable.Cols.PERSON + "=?" + " AND " +  // WHERE ... AND
+                    DbSchema.EnglishAuxillaryVerbTable.Cols.NUMBER + "=?" + " AND " +
+                    DbSchema.EnglishAuxillaryVerbTable.Cols.MOOD + "=?" + " AND " +
+                    DbSchema.EnglishAuxillaryVerbTable.Cols.VOICE + "=?" + " AND " +
+                    DbSchema.EnglishAuxillaryVerbTable.Cols.TENSE + "=?";
+        }
+
+        Cursor cursor = sqlQuery(table, column, whereClause, whereArgs );
+        cursor.moveToFirst();
+
+        String engAuxVerb = cursor.getString(cursor.getColumnIndex(DbSchema.EnglishAuxillaryVerbTable.Cols.ENG_AUX_VERB));
+        cursor.close();
+        return engAuxVerb;
+    }
+
+    /**
      * sqlEngVerbEnding(String number, String tense, String mood, String voice)
      * =================
      * A SQL query to select the English VerbRegular with the correct Ending for a Latin VerbRegular translation
