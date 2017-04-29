@@ -206,10 +206,12 @@ public class VerbRegular implements Verb {
 
         // Check for Compound Verbs
         String compoundVerb;
-        String startInfininitive = mEnglish_Infinitive.substring(0,3);
-        if(startInfininitive.equals(START_INFINITIVE)){
-            if(number.equals(SINGULAR) && person.equals(PERSON_1ST))
-                compoundVerb = "am";
+        String startOfInfininitive;
+        if(mEnglish_Infinitive.length() > 2) {
+            startOfInfininitive = mEnglish_Infinitive.substring(0, 3);  // get the first 3 letters of infinitive
+            if (startOfInfininitive.equals(START_INFINITIVE)) {  // if "be " -> Compound verb
+                mEnglishAuxiliaryVerb = databaseAccess.sqlEngAuxCompoundVerbQuery(person, number, mood, voice, tense);
+            }
         }
 
         // Determine case of verb

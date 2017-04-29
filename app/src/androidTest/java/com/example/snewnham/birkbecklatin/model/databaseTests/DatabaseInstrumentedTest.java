@@ -127,12 +127,6 @@ public class DatabaseInstrumentedTest {
     String adverbEnglishComparative;
     String adverbEnglishSuperlative;
 
-//    private final static String NOUN_REGULAR = "NounRegular";
-//    private final static String NOUN_IRREGULAR = "NounIrregular";
-//    private final static String PREPOSITION = "Preposition";
-//    private final static String CONJUNCTION = "Conjunction";
-//    private final static String ADJECTIVE = "Adjective";
-//    private final static String ADVERB = "Adverb";
 
     @Before
     public void setUp() {
@@ -248,8 +242,6 @@ public class DatabaseInstrumentedTest {
 
 
     // --------------------------------- VERBS ------------------------------------------
-
-
     /**
      * testSqlVerbTypeQuery()
      * ----------------------
