@@ -199,7 +199,7 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
                 tenseImPerfect, moodIndicative, voiceActive);
 
         assertEquals("I", mVerbRegular.getEnglishPerson());
-        assertEquals(" was being", mVerbRegular.getEnglishAuxiliaryVerb());
+        assertEquals(" was being ", mVerbRegular.getEnglishAuxiliaryVerb());
         assertEquals("silent", mVerbRegular.getEnglishVerbEnding());
         assertEquals("I was being silent", mVerbRegular.getEnglishVerb());
 
@@ -207,7 +207,7 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
                 tenseImPerfect, moodIndicative, voiceActive);
 
         assertEquals("you(s)", mVerbRegular.getEnglishPerson());
-        assertEquals(" were ", mVerbRegular.getEnglishAuxiliaryVerb());
+        assertEquals(" were being ", mVerbRegular.getEnglishAuxiliaryVerb());
         assertEquals("silent", mVerbRegular.getEnglishVerbEnding());
         assertEquals("you(s) were being silent", mVerbRegular.getEnglishVerb());
 
@@ -216,8 +216,8 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
 
         assertEquals("he/she", mVerbRegular.getEnglishPerson());
         assertEquals(" was being ", mVerbRegular.getEnglishAuxiliaryVerb());
-        assertEquals("warning, advising", mVerbRegular.getEnglishVerbEnding());
-        assertEquals("he/she was warning, advising", mVerbRegular.getEnglishVerb());
+        assertEquals("silent", mVerbRegular.getEnglishVerbEnding());
+        assertEquals("he/she was being silent", mVerbRegular.getEnglishVerb());
 
         mVerbRegular.makeEnglishVerb(databaseAccess, person1, numberPlural,
                 tenseImPerfect, moodIndicative, voiceActive);
@@ -263,7 +263,7 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
         assertEquals("I", mVerbRegular.getEnglishPerson());
         assertEquals(" shall be ", mVerbRegular.getEnglishAuxiliaryVerb());
         assertEquals("silent", mVerbRegular.getEnglishVerbEnding());
-        assertEquals("I shall warn, advise", mVerbRegular.getEnglishVerb());
+        assertEquals("I shall be silent", mVerbRegular.getEnglishVerb());
 
         mVerbRegular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tenseFuture, moodIndicative, voiceActive);
@@ -354,7 +354,7 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
                 tensePerfect, moodIndicative, voiceActive);
 
         assertEquals("you(pl)", mVerbRegular.getEnglishPerson());
-        assertEquals(" have been", mVerbRegular.getEnglishAuxiliaryVerb());
+        assertEquals(" have been ", mVerbRegular.getEnglishAuxiliaryVerb());
         assertEquals("silent", mVerbRegular.getEnglishVerbEnding());
         assertEquals("you(pl) have been silent", mVerbRegular.getEnglishVerb());
 
@@ -391,9 +391,9 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
                 tensePluperfect, moodIndicative, voiceActive);
 
         assertEquals("you(s)", mVerbRegular.getEnglishPerson());
-        assertEquals(" had ", mVerbRegular.getEnglishAuxiliaryVerb());
+        assertEquals(" had been ", mVerbRegular.getEnglishAuxiliaryVerb());
         assertEquals("silent", mVerbRegular.getEnglishVerbEnding());
-        assertEquals("you(s) had been", mVerbRegular.getEnglishVerb());
+        assertEquals("you(s) had been silent", mVerbRegular.getEnglishVerb());
 
         mVerbRegular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePluperfect, moodIndicative, voiceActive);
@@ -537,7 +537,7 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
                 tensePresent, moodIndicative, voicePassive);
 
         assertEquals("you(pl)", mVerbRegular.getEnglishPerson());
-        assertEquals(" are being", mVerbRegular.getEnglishAuxiliaryVerb());
+        assertEquals(" are being ", mVerbRegular.getEnglishAuxiliaryVerb());
         assertEquals("silent", mVerbRegular.getEnglishVerbEnding());
         assertEquals("you(pl) are being silent", mVerbRegular.getEnglishVerb());
 
@@ -583,7 +583,7 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
 
         assertEquals("he/she", mVerbRegular.getEnglishPerson());
         assertEquals(" was being ", mVerbRegular.getEnglishAuxiliaryVerb());
-        assertEquals("warned, advised", mVerbRegular.getEnglishVerbEnding());
+        assertEquals("silent", mVerbRegular.getEnglishVerbEnding());
         assertEquals("he/she was being silent", mVerbRegular.getEnglishVerb());
 
         mVerbRegular.makeEnglishVerb(databaseAccess, person1, numberPlural,
@@ -591,7 +591,7 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
 
         assertEquals("we", mVerbRegular.getEnglishPerson());
         assertEquals(" were being ", mVerbRegular.getEnglishAuxiliaryVerb());
-        assertEquals("warned, advised", mVerbRegular.getEnglishVerbEnding());
+        assertEquals("silent", mVerbRegular.getEnglishVerbEnding());
         assertEquals("we were being silent", mVerbRegular.getEnglishVerb());
 
         mVerbRegular.makeEnglishVerb(databaseAccess, person2, numberPlural,
@@ -873,7 +873,7 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
         assertEquals("", mVerbRegular.getEnglishPerson());
         assertEquals("May I be ", mVerbRegular.getEnglishAuxiliaryVerb());
         assertEquals("silent", mVerbRegular.getEnglishVerbEnding());
-        assertEquals("May I silent", mVerbRegular.getEnglishVerb());
+        assertEquals("May I be silent", mVerbRegular.getEnglishVerb());
 
         mVerbRegular.makeEnglishVerb(databaseAccess, person2, numberSingular,
                 tensePresent, moodSubjunctive, voiceActive);
@@ -1063,7 +1063,7 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
         assertEquals("you(s)", mVerbRegular.getEnglishPerson());
         assertEquals(" would have been ", mVerbRegular.getEnglishAuxiliaryVerb());
         assertEquals("silent", mVerbRegular.getEnglishVerbEnding());
-        assertEquals("you(s) would have been warned, advised", mVerbRegular.getEnglishVerb());
+        assertEquals("you(s) would have been silent", mVerbRegular.getEnglishVerb());
 
         mVerbRegular.makeEnglishVerb(databaseAccess, person3, numberSingular,
                 tensePluperfect, moodSubjunctive, voiceActive);
@@ -1095,7 +1095,7 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
         assertEquals("they", mVerbRegular.getEnglishPerson());
         assertEquals(" would have been ", mVerbRegular.getEnglishAuxiliaryVerb());
         assertEquals("silent", mVerbRegular.getEnglishVerbEnding());
-        assertEquals("they would have been warned, advised", mVerbRegular.getEnglishVerb());
+        assertEquals("they would have been silent", mVerbRegular.getEnglishVerb());
     }
 
 
@@ -1360,15 +1360,15 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
                 tensePresent, moodIndicative, voiceActive);
 
         assertEquals("", mVerbRegular.getEnglishPerson());
-        assertEquals("to ", mVerbRegular.getEnglishAuxiliaryVerb());
-        assertEquals("be silent", mVerbRegular.getEnglishVerbEnding());
+        assertEquals("to be ", mVerbRegular.getEnglishAuxiliaryVerb());
+        assertEquals("silent", mVerbRegular.getEnglishVerbEnding());
         assertEquals("to be silent", mVerbRegular.getEnglishVerb());
 
         mVerbRegular.makeEnglishVerb(databaseAccess, personNull, numberInfinitive,
                 tensePerfect, moodIndicative, voiceActive);
 
         assertEquals("", mVerbRegular.getEnglishPerson());
-        assertEquals("to have been", mVerbRegular.getEnglishAuxiliaryVerb());
+        assertEquals("to have been ", mVerbRegular.getEnglishAuxiliaryVerb());
         assertEquals("silent", mVerbRegular.getEnglishVerbEnding());
         assertEquals("to have been silent", mVerbRegular.getEnglishVerb());
 
@@ -1421,7 +1421,7 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
                 tenseNull, moodImperative, voiceActive);
 
         assertEquals("", mVerbRegular.getEnglishPerson());
-        assertEquals("", mVerbRegular.getEnglishAuxiliaryVerb());
+        assertEquals("be ", mVerbRegular.getEnglishAuxiliaryVerb());
         assertEquals("be silent", mVerbRegular.getEnglishVerb());
 
 
@@ -1429,7 +1429,7 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
                 tenseNull, moodImperative, voiceActive);
 
         assertEquals("", mVerbRegular.getEnglishPerson());
-        assertEquals("", mVerbRegular.getEnglishAuxiliaryVerb());
+        assertEquals("be ", mVerbRegular.getEnglishAuxiliaryVerb());
         assertEquals("be silent", mVerbRegular.getEnglishVerb());
 
 
@@ -1437,7 +1437,7 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
                 tenseNull, moodImperative, voicePassive);
 
         assertEquals("", mVerbRegular.getEnglishPerson());
-        assertEquals("", mVerbRegular.getEnglishAuxiliaryVerb());
+        assertEquals("be ", mVerbRegular.getEnglishAuxiliaryVerb());
         assertEquals("be silent", mVerbRegular.getEnglishVerb());
 
 
@@ -1445,7 +1445,7 @@ public class EnglishVerb_CompoundVerb_InstrumentTests {
                 tenseNull, moodImperative, voicePassive);
 
         assertEquals("", mVerbRegular.getEnglishPerson());
-        assertEquals("", mVerbRegular.getEnglishAuxiliaryVerb());
+        assertEquals("be ", mVerbRegular.getEnglishAuxiliaryVerb());
         assertEquals("be silent", mVerbRegular.getEnglishVerb());
 
     }

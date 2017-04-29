@@ -204,15 +204,7 @@ public class VerbRegular implements Verb {
         mEnglishAuxiliaryVerb = databaseAccess.sqlEngAuxVerbQuery(person, number, mood, voice, tense);
         String englishVerbCase = databaseAccess.sqlEngVerbEnding(number, tense, mood, voice);
 
-        // Check for Compound Verbs
-        String compoundVerb;
-        String startOfInfininitive;
-        if(mEnglish_Infinitive.length() > 2) {
-            startOfInfininitive = mEnglish_Infinitive.substring(0, 3);  // get the first 3 letters of infinitive
-            if (startOfInfininitive.equals(START_INFINITIVE)) {  // if "be " -> Compound verb
-                mEnglishAuxiliaryVerb = databaseAccess.sqlEngAuxCompoundVerbQuery(person, number, mood, voice, tense);
-            }
-        }
+
 
         // Determine case of verb
         if( !number.equals(NUMBER_INFINITIVE)  && !mood.equals(MOOD_IMPERATIVE)) { // Avoid nullpointerException for infinitives
@@ -242,6 +234,16 @@ public class VerbRegular implements Verb {
 
         if(mEnglishAuxiliaryVerb == null){
             mEnglishAuxiliaryVerb = "";
+        }
+
+        // Adjustments for Compound Verbs
+        String startOfInfinitive;
+        if(mEnglish_Infinitive.length() > 2) {
+            startOfInfinitive = mEnglish_Infinitive.substring(0, 3);  // get the first 3 letters of infinitive
+            if (startOfInfinitive.equals(START_INFINITIVE)) {  // if "be " -> Compound verb
+                mEnglishAuxiliaryVerb = databaseAccess.sqlEngAuxCompoundVerbQuery(person, number, mood, voice, tense);
+                mEnglishVerbEnding = mEnglish_Infinitive.substring(3);  // remove the compound "be " from the infinitive
+            }
         }
 
         mEnglishVerb = mEnglishPerson + mEnglishAuxiliaryVerb + mEnglishVerbEnding;
