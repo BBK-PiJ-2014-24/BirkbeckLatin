@@ -194,7 +194,7 @@ public class DbSchema {
             public static final String GENDER = "Gender";
             public static final String NOMINATIVE = "Nominative";
             public static final String GENITIVE = "Genitive";
-            public static final String GENITIVE_PLURAL = "Genitive_Plural";
+           // public static final String GENITIVE_PLURAL = "Genitive_Plural";
             public static final String LATIN_NOUN_STEM = "Latin_Noun_Stem";
             public static final String ENGLISH_NOUN_SINGULAR = "English_Noun_Singular";
             public static final String ENGLISH_NOUN_PLURAL = "English_Noun_Plural";
@@ -340,21 +340,6 @@ public class DbSchema {
         }
     }
 
-
-//    // inner STATIC class - Incorrect_Noun_Table
-//    // ----------------------------------------------
-//    public static final class Incorrect_NounEtc_Table {
-//        public static final String INCORRECT_NOUNETC_TABLE = "Incorrect_NounEtc_Table";
-//
-//        // inner inner STATIC class of the Table - Attributes
-//        // --------------------------------------
-//        public static final class Cols {
-//            public static final String _id = "_id";
-//            public static final String NOUNETC_TYPE = "NounEtc_Type";
-//            public static final String NOUNETC_ID = "NounEtc_id";
-//        }
-//    }
-//
     // inner STATIC class - Meta_Table
     // ----------------------------------------------
     public static final class Meta_Table {

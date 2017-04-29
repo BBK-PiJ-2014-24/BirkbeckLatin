@@ -237,7 +237,7 @@ public class DatabaseInstrumentedTest {
 
         int answer = databaseAccess.sqlTableCountQuery(table);
 
-        assertEquals(10, answer);
+        assertEquals(198, answer);
     }
 
 
@@ -877,16 +877,38 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testListOfVerbObjects() throws Exception {
 
-        Verb verb1 = databaseAccess.sqlVerbListQuery(1);
-        Verb verb2 = databaseAccess.sqlVerbListQuery(5);
-        Verb verb3 = databaseAccess.sqlVerbListQuery(7);
+        Verb verb1 = databaseAccess.sqlVerbListQuery(4);
+        Verb verb2 = databaseAccess.sqlVerbListQuery(16);
+        Verb verb3 = databaseAccess.sqlVerbListQuery(24);
+        Verb verb4 = databaseAccess.sqlVerbListQuery(40);
+        Verb verb5 = databaseAccess.sqlVerbListQuery(44);
+        Verb verb6 = databaseAccess.sqlVerbListQuery(52);
+        Verb verb7 = databaseAccess.sqlVerbListQuery(75);
+        Verb verb8 = databaseAccess.sqlVerbListQuery(93);
+        Verb verb9 = databaseAccess.sqlVerbListQuery(114);
+        Verb verb10 = databaseAccess.sqlVerbListQuery(128);
+        Verb verb11 = databaseAccess.sqlVerbListQuery(131);
+        Verb verb12 = databaseAccess.sqlVerbListQuery(147);
+        Verb verb13 = databaseAccess.sqlVerbListQuery(167);
+        Verb verb14 = databaseAccess.sqlVerbListQuery(173);
 
         List<Verb> verbList = new ArrayList<>();
         verbList.add(verb1);
         verbList.add(verb2);
         verbList.add(verb3);
+        verbList.add(verb4);
+        verbList.add(verb5);
+        verbList.add(verb6);
+        verbList.add(verb7);
+        verbList.add(verb8);
+        verbList.add(verb9);
+        verbList.add(verb10);
+        verbList.add(verb11);
+        verbList.add(verb12);
+        verbList.add(verb13);
+        verbList.add(verb14);
 
-        List<Verb> verbListQuery = databaseAccess.getVerbConjugationList(Integer.parseInt(conjNum1));
+        List<Verb> verbListQuery = databaseAccess.getVerbConjugationList(Integer.parseInt(conjNum4));
 
         assertEquals(verbList.size(), verbListQuery.size());
         assertEquals(verbList.get(1).getId(), verbListQuery.get(1).getId());
@@ -944,14 +966,14 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testGetNounDeclensionList(){
 
-        List<NounEtc> nounList = databaseAccess.getNounDeclensionList( NOUN_REGULAR, 1);
+        List<NounEtc> nounList = databaseAccess.getNounDeclensionList( NOUN_REGULAR, 4);
 
         // Regular Nouns
         List<Integer> idList = new ArrayList<>();
         for(NounEtc nounEtc : nounList){
             idList.add(nounEtc.getId());
         }
-        assertThat(idList, containsInAnyOrder(4,13));
+        assertThat(idList, containsInAnyOrder(6,43,49,181,182));
 
         // Irregular Noun
         idList.removeAll(idList); // Reset idList
@@ -959,7 +981,8 @@ public class DatabaseInstrumentedTest {
         for(NounEtc nounEtc : nounList){
             idList.add(nounEtc.getId());
         }
-         assertThat(idList, containsInAnyOrder(14,15,16,17,18));
+         assertThat(idList, containsInAnyOrder(14,15,16,17,46,87,91,92,94,96,112,
+                 113,114,126,133,137,164,167,211,212,213,214));
 
         // Preposition
         idList.removeAll(idList); // Reset idList
@@ -967,7 +990,8 @@ public class DatabaseInstrumentedTest {
         for(NounEtc nounEtc : nounList){
             idList.add(nounEtc.getId());
         }
-        assertThat(idList, containsInAnyOrder(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16));
+        assertThat(idList, containsInAnyOrder(1,2,3,4,5,6,7,8,9,10,
+                11,12,13,14,15,16,17,18,19,20,21,22,23,24));
 
         // Conjunction
         idList.removeAll(idList); // Reset idList
@@ -975,7 +999,9 @@ public class DatabaseInstrumentedTest {
         for(NounEtc nounEtc : nounList){
             idList.add(nounEtc.getId());
         }
-        assertThat(idList, containsInAnyOrder(1,2,3,4,5,6,7,8,9));
+        assertThat(idList, containsInAnyOrder(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,
+                16,17,18,19,20,21,22,25,26,27,28,29,30,31,32,33,34,35,
+                36,37,38,39,40,41,42,43,44,45,46,47,48,49));
 
         // Adjective
         idList.removeAll(idList); // Reset idList
@@ -983,8 +1009,10 @@ public class DatabaseInstrumentedTest {
         for(NounEtc nounEtc : nounList){
             idList.add(nounEtc.getId());
         }
-        assertThat(idList, containsInAnyOrder(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15));
-
+        assertThat(idList, containsInAnyOrder(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,
+                16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,
+                36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,
+                56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73));
         // Adverb
         idList.removeAll(idList); // Reset idList
         nounList = databaseAccess.getNounDeclensionList(ADVERB, 0);
@@ -992,7 +1020,10 @@ public class DatabaseInstrumentedTest {
             idList.add(nounEtc.getId());
         }
         assertThat(idList, containsInAnyOrder(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,
-                                              16,17,18,19,20,21,22,23,24,25,26,27,28,29));
+                16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,
+                36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,
+                56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,
+                76,77,78,79,80,81,82,83,84));
     }
 
 
@@ -1045,7 +1076,7 @@ public class DatabaseInstrumentedTest {
 
         // Adjective FIELDS
         // -----------
-        adjectiveId = 2;
+        adjectiveId = 27;
         adjectiveType = "Adjective";
         adjectiveDeclension = 212;
         adjectiveNominative = "longus";
@@ -1107,7 +1138,7 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testPrepositionListQuery(){
 
-        prepositionId = 10;
+        prepositionId = 22;
         prepositionLatin = "trans";
         prepositionEnglish = "across";
 
@@ -1130,7 +1161,7 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testConjunctionListQuery(){
 
-        conjunctionId = 3;
+        conjunctionId = 20;
         conjunctionLatin = "tamen";
         conjunctionEnglish = "however";
 
@@ -1153,7 +1184,7 @@ public class DatabaseInstrumentedTest {
     @Test
     public void testAdverbQuery(){
 
-        adverbId = 1;
+        adverbId = 40;
         adverbDeclension = 212;
         adverbLatinAdverb = "laete";
         adverbLatinAdverbStem = "laet";
