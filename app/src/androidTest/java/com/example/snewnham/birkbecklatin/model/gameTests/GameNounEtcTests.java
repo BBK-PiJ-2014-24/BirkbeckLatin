@@ -84,33 +84,6 @@ public class GameNounEtcTests {
     int skillLevel4;
     int skillLevel5;
 
-//
-//    private final static String NOUN = "Noun";
-//    private final static String NOUN_REGULAR = "NounRegular";
-//    private final static String NOUN_IRREGULAR = "NounIrregular";
-//    private final static String PREPOSITION = "Preposition";
-//    private final static String CONJUNCTION = "Conjunction";
-//    private final static String ADJECTIVE = "Adjective";
-//    private final static String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
-//    private final static String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
-//    private final static String ADVERB = "Adverb";
-//    private final static String ADVERB_COMPARATIVE = "AdverbComparative";
-//    private final static String ADVERB_SUPERLATIVE = "AdverbSuperlative";
-//
-//    private final static String DECLNUM1 = "decl1";
-//    private final static String DECLNUM2 = "decl2";
-//    private final static String DECLNUM3 = "decl3";
-//    private final static String DECLNUM4 = "decl4";
-//
-//    private final static String NOMINATIVE = "Nominative";
-//    private final static String ACCUSATIVE = "Accusative";
-//    private final static String DATIVE = "Dative";
-//    private final static String GENITIVE = "Genitive";
-//    private final static String ABLATIVE = "Ablative";
-//    private final static String VOCATIVE = "Vocative";
-//
-//    private final static String GENDER_MALE = "m";
-
     String numberSingular;
     String numberPlural;
 
@@ -150,10 +123,10 @@ public class GameNounEtcTests {
 
         id_Regular = 1;
         id_Irregular = 14;
-        id_Conjunction = 2;
-        id_Preposition = 3;
-        id_Adjective = 1;
-        id_Adverb = 1;
+        id_Conjunction = 17;
+        id_Preposition = 6;
+        id_Adjective = 5;
+        id_Adverb = 40;
 
         skillLevel1 = 1;
         skillLevel2 = 2;

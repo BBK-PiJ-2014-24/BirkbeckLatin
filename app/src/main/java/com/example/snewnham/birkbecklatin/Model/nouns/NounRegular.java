@@ -65,8 +65,19 @@ public class NounRegular implements NounEtc {
             number = NUMBER_SINGULAR;
         }
 
+        // Check Genders Are Congruent with Declension
+        if(mDeclension == DECLENSION1)
+            mGender = GENDER_FEMALE; // Ensure All 1st Declensions are FEMALE
+        else if(mDeclension == DECLENSION2 && mGender.equals(GENDER_FEMALE))
+            mGender = GENDER_MALE;
+        else if(mDeclension == DECLENSION4 && !mGender.equals(GENDER_FEMALE))
+            mGender = GENDER_FEMALE;
+        else if(mDeclension == DECLENSION5 && mGender.equals(GENDER_NEUTER))
+            mGender = GENDER_MALE;
+
+
         // Override for 2nd Declension Nominative and Singular
-        if( mDeclension == 2 && noun_Case.equals(NOMINATIVE) && number.equals(SINGULAR) ) {
+        if( mDeclension == DECLENSION2 && noun_Case.equals(NOMINATIVE) && number.equals(SINGULAR) ) {
                 mLatin_Noun_Ending = databaseAccess.sqlNounEndingQuery( Integer.toString(mDeclension), number, mGender, noun_Case);;
                 mLatinNoun = mNominative;
                 return mLatinNoun;
@@ -86,6 +97,7 @@ public class NounRegular implements NounEtc {
                     return mLatinNoun;
                 }
             }
+
             mLatin_Noun_Ending = databaseAccess.sqlNounEndingQuery( Integer.toString(mDeclension), number, mGender, noun_Case);
             mLatinNoun = mLatin_Noun_Stem + mLatin_Noun_Ending;
             return mLatinNoun;

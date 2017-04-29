@@ -26,10 +26,15 @@ import java.util.List;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADJECTIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.ADVERB;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.CONJUNCTION;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.DECLENSION1;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_FEMALE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.GENDER_MALE;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOMINATIVE;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_IRREGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_REGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_SKILL_LEVEL;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NOUN_THETA;
+import static com.example.snewnham.birkbecklatin.Model.LatinConstants.NUMBER_SINGULAR;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.PREPOSITION;
 import static com.example.snewnham.birkbecklatin.Model.LatinConstants.TRANSLATION_DIRECTION;
 import static com.example.snewnham.birkbecklatin.Model.database.DbSchema.VerbListTable.*;
@@ -1024,6 +1029,21 @@ public class DatabaseInstrumentedTest {
                 36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,
                 56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,
                 76,77,78,79,80,81,82,83,84));
+    }
+
+
+    /**
+     * testSqlNounEndingQuery()
+     * ------------------------
+     * Tests the the correct Ending of Nouns
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testSqlNounEndingQuery() throws Exception {
+
+        String ans1 = databaseAccess.sqlNounEndingQuery(Integer.toString(DECLENSION1), NUMBER_SINGULAR, GENDER_FEMALE, NOMINATIVE);
+        assertEquals(ans1, "a");
     }
 
 
