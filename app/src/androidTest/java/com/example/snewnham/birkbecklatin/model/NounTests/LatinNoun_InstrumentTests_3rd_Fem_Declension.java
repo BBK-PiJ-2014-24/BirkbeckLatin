@@ -107,6 +107,7 @@ public class LatinNoun_InstrumentTests_3rd_Fem_Declension {
             mNounRegular.setGenitivePlural(genitivePlural);
             mNounRegular.setLatinWordStem(latinNounStem);
             mNounRegular.setEnglishWordSingular(englishNoun);
+            mNounRegular.setEnglishWordPlural(englishNoun);
     }
 
 

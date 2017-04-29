@@ -165,7 +165,7 @@ public class LatinNoun_InstrumentTests_Irregular {
 
         assertEquals(null, nounIrregular.getLatinWordStem());
         assertEquals(null, nounIrregular.getLatinWordEnding());
-        assertEquals(null, nounIrregular.getLatinWord());
+        assertEquals("hic", nounIrregular.getLatinWord());
     }
 
 
@@ -215,7 +215,7 @@ public class LatinNoun_InstrumentTests_Irregular {
 
         assertEquals(null, nounIrregular.getLatinWordStem());
         assertEquals(null, nounIrregular.getLatinWordEnding());
-        assertEquals(null, nounIrregular.getLatinWord());
+        assertEquals("hi", nounIrregular.getLatinWord());
     }
 
     /**
