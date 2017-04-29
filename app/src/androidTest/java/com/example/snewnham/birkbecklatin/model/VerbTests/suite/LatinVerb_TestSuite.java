@@ -18,6 +18,7 @@ import com.example.snewnham.birkbecklatin.model.NounTests.LatinNoun_InstrumentTe
 import com.example.snewnham.birkbecklatin.model.NounTests.LatinNoun_InstrumentTests_Conjunction;
 import com.example.snewnham.birkbecklatin.model.NounTests.LatinNoun_InstrumentTests_Irregular;
 import com.example.snewnham.birkbecklatin.model.NounTests.LatinNoun_InstrumentTests_Preposition;
+import com.example.snewnham.birkbecklatin.model.VerbTests.EnglishVerb_CompoundVerb_InstrumentTests;
 import com.example.snewnham.birkbecklatin.model.VerbTests.EnglishVerb_DeponentInstrumentTests;
 import com.example.snewnham.birkbecklatin.model.VerbTests.EnglishVerb_ESSE_InstrumentTests;
 import com.example.snewnham.birkbecklatin.model.VerbTests.EnglishVerb_Irregular_InstrumentTests;
@@ -49,6 +50,7 @@ import org.junit.runners.Suite;
         EnglishVerb_Irregular_InstrumentTests.class,
         EnglishVerb_Regular_InstrumentTests.class,
         EnglishVerb_SemiDeponent_InstrumentTests.class,
+        EnglishVerb_CompoundVerb_InstrumentTests.class,
         LatinVerb_Deponent_InstrumentTests.class,
         LatinVerb_InstrumentTests_1st_Conj.class,
         LatinVerb_InstrumentTests_2nd_Conj.class,
