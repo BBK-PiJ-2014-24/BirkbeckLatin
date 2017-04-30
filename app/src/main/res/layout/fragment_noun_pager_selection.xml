@@ -14,8 +14,8 @@
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="134dp"
-        android:layout_marginLeft="33dp"
+        android:layout_marginTop="135dp"
+        android:layout_marginLeft="50dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="33dp"/>
 
