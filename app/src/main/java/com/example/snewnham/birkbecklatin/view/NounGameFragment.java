@@ -38,7 +38,7 @@ public class NounGameFragment extends Fragment {
 
     // Fields
     // ------
-    private static final int NUM_QUIZ_QUESTIONS = 3;
+    private static final int NUM_QUIZ_QUESTIONS = 20;
     private static final int NUM_MULTIPLE_CHOICES = 6;
     private static final String COUNTER = "counter";
 

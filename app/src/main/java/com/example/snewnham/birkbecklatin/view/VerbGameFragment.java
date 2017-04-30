@@ -38,7 +38,7 @@ public class VerbGameFragment extends Fragment {
     // ------
  //   public final static String TRANSLATION_DIRECTION = "translation_Direction";
 
-    private static final int NUM_QUIZ_QUESTIONS = 3;
+    private static final int NUM_QUIZ_QUESTIONS = 20;
     private static final int NUM_MULTIPLE_CHOICES = 6;
     private static final String COUNTER = "counter";
 
