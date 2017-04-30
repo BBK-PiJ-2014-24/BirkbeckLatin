@@ -53,7 +53,6 @@ public class VerbPagerFragment extends Fragment {
     }
 
 
-
     // OnCreate
     // --------
     @Override
