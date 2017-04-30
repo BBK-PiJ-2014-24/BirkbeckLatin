@@ -36,7 +36,6 @@ public class VerbPagerFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     /**
      * newInstance()  - Static Call for Instantiation
      * -------------
@@ -76,8 +75,9 @@ public class VerbPagerFragment extends Fragment {
         String princParts3;
         String princParts4;
 
-        int maxFirstLineLength = 20; // max word length in order to avoid overrun
-        int superMaxWordLength = 10; // word requires 3 lines
+        int maxFirstLineLength = 20; // max length of 1st line in order to avoid overrun
+        int superMaxWordLength = 10; // max word length of infinitive
+
 
         // Verb's Principle Parts
         String verbConj = Integer.toString(mVerb.getLatin_ConjNum());
@@ -121,7 +121,6 @@ public class VerbPagerFragment extends Fragment {
 
         TextView principlePart4Text = (TextView) view.findViewById(R.id.principal_parts4);
         principlePart4Text.setText(princParts4);
-
 
         TextView englishVerbText = (TextView) view.findViewById(R.id.englishVerb);
         englishVerbText.setText(engVerb);
