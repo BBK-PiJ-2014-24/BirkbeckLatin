@@ -14,10 +14,13 @@
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="135dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginTop="142dp"
+        android:layout_marginLeft="67dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="33dp"/>
+        android:layout_marginStart="33dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"/>
 
     <Button
         android:id="@+id/buttonNoun2"
