@@ -72,9 +72,13 @@ public class VerbPagerFragment extends Fragment {
         // Inflate the layout for this mFragment
         View view = inflater.inflate(R.layout.fragment_verb_pager, container, false);
 
-
         String princParts1;
         String princParts2;
+        String princParts3;
+        String princParts4;
+
+        int maxFirstLineLength = 20; // max word length in order to avoid overrun
+        int superMaxWordLength = 10; // word requires 3 lines
 
         // Verb's Principle Parts
         String verbConj = Integer.toString(mVerb.getLatin_ConjNum());
@@ -84,12 +88,23 @@ public class VerbPagerFragment extends Fragment {
         String participle = (mVerb.getLatin_Participle()!= null) ? mVerb.getLatin_Participle() : " - ";
         String engVerb = TO + mVerb.getEnglish_Infinitive();
 
-        if (perfect != null) {
+        int firstLineLength = presentCase.length() + infinitive.length() + perfect.length();
+
+        if(firstLineLength <= maxFirstLineLength) { // small words
             princParts1 = presentCase + ", " + infinitive + ", " + perfect;
             princParts2 = participle;
-        } else {
-            princParts1 = presentCase + ", " + infinitive + ", " + participle;   // AMEND FOR DEPONENT VERBS
-            princParts2 = "";
+            princParts3 = " ";
+            princParts4 = " ";
+        } else if(infinitive.length() <= superMaxWordLength) { // medium words
+            princParts1 = presentCase + ", " + infinitive;
+            princParts2 = perfect + ", " + participle;
+            princParts3 = " ";
+            princParts4 = " ";
+        } else {  // large words
+            princParts1 = presentCase + ",";
+            princParts2 = infinitive + ",";
+            princParts3 = perfect + ",";
+            princParts4 = participle;
         }
 
         // Wire to XML
@@ -102,11 +117,18 @@ public class VerbPagerFragment extends Fragment {
         TextView principlePart2Text = (TextView) view.findViewById(R.id.principal_parts2);
         principlePart2Text.setText(princParts2);
 
+        TextView principlePart3Text = (TextView) view.findViewById(R.id.principal_parts3);
+        principlePart3Text.setText(princParts3);
+
+        TextView principlePart4Text = (TextView) view.findViewById(R.id.principal_parts4);
+        principlePart4Text.setText(princParts4);
+
+
         TextView englishVerbText = (TextView) view.findViewById(R.id.englishVerb);
         englishVerbText.setText(engVerb);
 
         return view;
-        //return inflater.inflate(R.layout.fragment_verb_pager, container, false);
+
     }
 
 

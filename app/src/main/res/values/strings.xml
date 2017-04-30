@@ -57,6 +57,8 @@
     <string name="hint_noun_description">NOUN_DESCRIPTION</string>
     <string name="hint_principal_parts_1">PRINCIPAL_PARTS1</string>
     <string name="hint_principal_parts_2">PRINCIPAL_PARTS2</string>
+    <string name="hint_principal_parts_3">PRINCIPAL_PARTS3</string>
+    <string name="hint_principal_parts_4">PRINCIPAL_PARTS4</string>
     <string name="hint_english_noun">ENGLISH_NOUN</string>
 
 
