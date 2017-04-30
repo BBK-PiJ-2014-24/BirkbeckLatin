@@ -483,8 +483,8 @@ public class GameVerbTests {
             assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
             assertEquals(v4.getId(), v5.getId());
 
-            assertTrue(v0.getLatin_ConjNum() <= 4);  // Tests Conj 1-4;
-            assertTrue(v1.getLatin_ConjNum() <= 4);
+            assertTrue(v0.getLatin_ConjNum() <= 40);  // Tests Conj 1-4;
+            assertTrue(v1.getLatin_ConjNum() <= 40);
 
             assertFalse(v0.getLatinVerb().equals(v1.getLatinVerb()));  // Tests Qu 0-2 have Diff.
             assertFalse(v1.getLatinVerb().equals(v2.getLatinVerb()));  // verb endings.
@@ -525,8 +525,8 @@ public class GameVerbTests {
             assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
             assertEquals(v4.getId(), v5.getId());
 
-            assertTrue(v0.getLatin_ConjNum() <= 4);  // Tests Conj 1-4;
-            assertTrue(v1.getLatin_ConjNum() <= 4);
+            assertTrue(v0.getLatin_ConjNum() <= 40);  // Tests Conj 1-4;
+            assertTrue(v1.getLatin_ConjNum() <= 40);
 
             assertFalse(v0.getLatinVerb().equals(v1.getLatinVerb()));  // Tests Qu 0-2 have Diff.
             assertFalse(v1.getLatinVerb().equals(v2.getLatinVerb()));  // verb endings.
@@ -569,8 +569,8 @@ public class GameVerbTests {
             assertEquals(v3.getId(), v4.getId());    // Tests Qu 3-5 have same Verb ID
             assertEquals(v4.getId(), v5.getId());
 
-            assertTrue(v0.getLatin_ConjNum() <= 4);  // Tests Conj 1-4;
-            assertTrue(v1.getLatin_ConjNum() <= 4);
+            assertTrue(v0.getLatin_ConjNum() <= 40);  // Tests Conj 1-4;
+            assertTrue(v1.getLatin_ConjNum() <= 40);
 
             assertFalse(v0.getLatinVerb().equals(v1.getLatinVerb()));  // Tests Qu 0-2 have Diff.
             assertFalse(v1.getLatinVerb().equals(v2.getLatinVerb()));  // verb endings.
