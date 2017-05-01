@@ -5,6 +5,6 @@
     android:id="@+id/activity_noun_pager"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.snewnham.birkbecklatin.view.NounPagerActivity">
+    tools:context="com.newnham.app.birkbecklatin.view.NounPagerActivity">
 
 </android.support.v4.view.ViewPager>
