@@ -126,7 +126,8 @@
 
     <string name="aboutText"> Welcome to Birkbeck Latin! This is a free app geared towards students on the
         \'Beginner\'s Latin\' course at Birkbeck College, University of London, but this is
-        by no means a prerequisite; anyone wanting to learn Latin will find this app useful!
+        by no means a prerequisite; anyone wanting to learn Latin will find this app useful! The vocabulary
+        is based on the book \'Reading Latin\' by Jones and Sidwell.
         \n
         \nBirkbeck Latin contains two translation games, one for verbs and another for nouns, pronouns, adjectives etc.
         The format is multiple choice, and detailed statistics of your performance is shown at the end of
