@@ -165,7 +165,6 @@ public class DbSchema {
     public static final class Incorrect_Verb_Table {
         public static final String INCORRECT_VERB_TABLE = "Incorrect_Verb_Table";
 
-
         // inner inner STATIC class of the Table - Attributes
         // --------------------------------------
         public static final class Cols {

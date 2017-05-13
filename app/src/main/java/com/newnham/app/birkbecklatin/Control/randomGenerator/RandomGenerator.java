@@ -37,6 +37,9 @@ import static com.newnham.app.birkbecklatin.Model.LatinConstants.TENSE_PERFECT;
 import static com.newnham.app.birkbecklatin.Model.LatinConstants.TENSE_PLUPERFECT;
 import static com.newnham.app.birkbecklatin.Model.LatinConstants.TENSE_PRESENT;
 import static com.newnham.app.birkbecklatin.Model.LatinConstants.VOCATIVE;
+import static com.newnham.app.birkbecklatin.Model.database.DbSchema.AdjectiveListTable.ADJECTIVE_LIST_TABLE;
+import static com.newnham.app.birkbecklatin.Model.database.DbSchema.ConjunctionListTable.CONJUNCTION_TABLE;
+import static com.newnham.app.birkbecklatin.Model.database.DbSchema.PrepositionListTable.PREPOSITION_TABLE;
 
 /**
  * Uses a Random Generator to Select a Noun From the Noun_List and
@@ -51,38 +54,15 @@ public class RandomGenerator<T> {
     private Random randomGenerator;
     private DatabaseAccess databaseAccess;
 
-    private static final int CONJNUM1_2 = 2;
-    private static final int CONJNUM1_4 = 40;
-
-    private static final String NOUN_TABLE = "Noun_List";
-    private static final String ADJECTIVE_TABLE = "Adjective_List";
-    private static final String ADVERB_TABLE = "Adverb_List";
-    private static final String PREPOSITION_TABLE = "Preposition_List";
-    private static final String CONJUNCTION_TABLE = "Conjunction_List";
-
-//    private static final String NOUN_REGULAR = "NounRegular";
-//    private static final String NOUN_IRREGULAR = "NounIrregular";
-//    private static final String ADJECTIVE = "Adjective";
-//    private static final String PREPOSITION = "Preposition";
-//    private static final String CONJUNCTION = "Conjunction";
-//    private static final String ADVERB = "Adverb";
-
     private static final int ADVERB_NUM_OUTCOMES= 4;
     private static final int ADVERB_CUTOFF = 1;
     private static final int ADVERB_COMPARATIVE_CUTOFF = 2;
     private static final int ADVERB_SUPERLATIVE_CUTOFF = 3;
 
-//    private static final String ADVERB_COMPARATIVE = "AdverbComparative";
-//    private static final String ADVERB_SUPERLATIVE = "AdverbSuperlative";
-
-
     private static final int ADJECTIVE_NUM_OUTCOMES= 4;
     private static final int ADJECTIVE_CUTOFF = 1;
     private static final int ADJECTIVE_COMPARATIVE_CUTOFF = 2;
     private static final int ADJECTIVE_SUPERLATIVE_CUTOFF = 3;
-
-//    private static final String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
-//    private static final String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
 
 
     private static final int NOUN_NUMBER_NUM_OUTCOMES = 2;
@@ -103,27 +83,10 @@ public class RandomGenerator<T> {
     private static final int GENDER_CUTOFF_FEMALE = 1;
     private static final int GENDER_CUTOFF_NEUTER = 2;
 
-//    private static final String GENDER_MALE = "m";
-//    private static final String GENDER_FEMALE = "f";
-//    private static final String GENDER_NEUTER = "n";
-
-//    private static final String NOMINATIVE = "Nominative";
-//    private static final String ACCUSATIVE = "Accusative";
-//    private static final String GENITIVE = "Genitive";
-//    private static final String DATIVE = "Dative";
-//    private static final String ABLATIVE = "Ablative";
-//    private static final String VOCATIVE = "Vocative";
-
-
     private final int VERB_PERSON_NUM_OUTCOMES = 3;
     private final int VERB_PERSON_1ST_CUTOFF = 0;
     private final int VERB_PERSON_2ND_CUTOFF = 1;
     private final int VERB_PERSON_3RD_CUTOFF = 2;
-
-//    private final String PERSON_1ST = "1st";
-//    private final String PERSON_2ND = "2nd";
-//    private final String PERSON_3RD = "3rd";
-
 
 
     private final int VERB_TENSE_NUM_OUTCOMES = 6;
@@ -133,13 +96,6 @@ public class RandomGenerator<T> {
     private final int VERB_TENSE_PERFECT_CUTOFF = 3;
     private final int VERB_TENSE_PLUPERFECT_CUTOFF = 4;
     private final int VERB_TENSE_FUTURE_PERFECT_CUTOFF = 5;
-
-//    private final String VERB_TENSE_PRESENT = "Present";
-//    private final String VERB_TENSE_IMPERFECT = "Imperfect";
-//    private final String VERB_TENSE_FUTURE = "Future";
-//    private final String VERB_TENSE_PERFECT = "Perfect";
-//    private final String VERB_TENSE_PLUPERFECT = "Pluperfect";
-//    private final String VERB_TENSE_FUTURE_PERFECT = "Future Perfect";
 
 
     private final int VERB_VOICE_NUM_OUTCOMES = 2;
@@ -227,10 +183,10 @@ public class RandomGenerator<T> {
         int numNounRegular = databaseAccess.sqlNounTypeCount(NOUN_REGULAR);
         int numNounIrregular = databaseAccess.sqlNounTypeCount(NOUN_IRREGULAR);
         int numNouns = numNounRegular + numNounIrregular;
-        int numAdjective = databaseAccess.sqlTableCountQuery(ADJECTIVE_TABLE);
+        int numAdjective = databaseAccess.sqlTableCountQuery(ADJECTIVE_LIST_TABLE);
         int numPreposition = databaseAccess.sqlTableCountQuery(PREPOSITION_TABLE);
         int numConjunction = databaseAccess.sqlTableCountQuery(CONJUNCTION_TABLE);
-        int numAdverb = databaseAccess.sqlTableCountQuery(ADJECTIVE_TABLE);
+        int numAdverb = databaseAccess.sqlTableCountQuery(ADJECTIVE_LIST_TABLE);
         int totalOutcomes = numNouns + numAdjective + numPreposition + numConjunction + numAdverb;
 
         int cumulRegularNouns = numNounRegular;
@@ -280,8 +236,8 @@ public class RandomGenerator<T> {
 
         int numPreposition = databaseAccess.sqlTableCountQuery(PREPOSITION_TABLE);
         int numConjunction = databaseAccess.sqlTableCountQuery(CONJUNCTION_TABLE);
-        int numAdjective = databaseAccess.sqlTableCountQuery(ADJECTIVE_TABLE);
-        int numAdverb = databaseAccess.sqlTableCountQuery(ADJECTIVE_TABLE);
+        int numAdjective = databaseAccess.sqlTableCountQuery(ADJECTIVE_LIST_TABLE);
+        int numAdverb = databaseAccess.sqlTableCountQuery(ADJECTIVE_LIST_TABLE);
 
         int totalOutcomes = 0;
         switch(skillLevel){
@@ -464,70 +420,6 @@ public class RandomGenerator<T> {
     }
 
 
-
-
-//    /**
-//     * getIncorrectNounOutput()
-//     * ------------------------
-//     * Generate a random verb_id from the INCORRECT_NOUN_TABLE
-//     * @return the IncorrectNounOutput Object, containing (NounType,NounId)
-//     */
-//    public IncorrectNounOutput getIncorrectNounOutput(){
-//
-//        int numNouns = databaseAccess.sqlTableCountQuery(DbSchema.Incorrect_NounEtc_Table.INCORRECT_NOUNETC_TABLE);
-//        int randomGenderNumber = randomGenerator.nextInt(numNouns) + 1;  // +1 as rand = [0,n-1]
-//
-//        String nounType = databaseAccess.sqlIncorrectNounEtc_GetType(randomGenderNumber);
-//        int nounId = databaseAccess.sqlIncorrectNounEtc_GetId(randomGenderNumber);
-//
-//        IncorrectNounOutput output = new IncorrectNounOutput(nounType,nounId);
-//
-//        return output;
-//    }
-
-
-    //  -------------------------------- VERBS ------------------------------------------------
-//
-//    /**
-//     * getRandomVerbID()
-//     * ----------------
-//     * Generate a random Verb ID from the VerbList
-//     * @return
-//     */
-//    public int getRandomVerbID(){
-//
-//        int numVerbs = databaseAccess.sqlTableCountQuery(DbSchema.VerbListTable.VERB_LIST_TABLE);
-//        int randomVerbIDNumber = randomGenerator.nextInt(numVerbs) + 1;  // +1 as rand = [0,n-1]
-//
-//        return randomVerbIDNumber;
-//    }
-
-//    /**
-//     * getRestrictedRandomVerbID(int conjNum)
-//     * --------------------------------------
-//     * This is used for Selecting Verbs for Skill Levels 1-3 in the Verb Game
-//     * Gets A Pair of Random Selected Verb ID from a Restricted Verb List (confined to
-//     * conj 1-2 or 1-4 and Esse Verb). An ID is randomly selected from the restricted list
-//     * and then the method gets the nearest Verb Id next to the random
-//     * selected Verb in the list (which will be used for the incorrect options in multiple choice).
-//     * @return List of two verb IDs
-//     */
-//    public List<Integer> getRestrictedRandomVerbID(int conjNum){
-//
-//        List<Integer> restrictedVerbList = databaseAccess.getVerbIDConjugationList(conjNum);  // get the restricted verb list
-//        int numRestrictedList = restrictedVerbList.size();
-//        int randomSelectionFromList = randomGenerator.nextInt(numRestrictedList);  // make a random number for selection in list
-//
-//        List<Integer> selectedVerbIDlist = new ArrayList<>();
-//        selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList));  // select the Verb ID of that item in the list.s
-//        if(randomSelectionFromList != 0)  // check condition so that don't overrun the list.
-//            selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList-1)); // select the Verb ID next in the list.
-//        else
-//            selectedVerbIDlist.add(restrictedVerbList.get(randomSelectionFromList+1));
-//
-//        return selectedVerbIDlist;
-//    }
-
     /**
      * getRandomVerbIDpair(int conjNum, int inCorrect, boolean restricted)
      * -----------------------------------------------
@@ -564,55 +456,6 @@ public class RandomGenerator<T> {
 
         return verbIDlist;
     }
-
-//    /**
-//     * getUnrestrictedRandomVerbID()
-//     * -----------------------------
-//     * Creates a list of two consecutive (unrestricted) verb IDs.
-//     * @param  inCorrect - Determines whether to select from a inCorrect IDs (1) or Correct (0)
-//     * @return list<Integer> of unrestricted IDs.
-//     */
-//    public List<Integer> getUnrestrictedRandomVerbID(int inCorrect){
-//
-//        List<Integer> unrestrictedList = databaseAccess.getVerbIDList(CONJNUM1_4, inCorrect ,false)
-//        int id1 = randomGenerator.nextInt(unrestrictedList.size());
-//
-//        int id2;
-//        if(id1 == 1)
-//            id2 = id1 + 1;
-//        else
-//            id2 = id1 - 1;
-//
-//        List<Integer> unrestrictedVerbList = new ArrayList<>();  // add to verb list
-//        unrestrictedVerbList.add(id1);
-//        unrestrictedVerbList.add(id2);
-//
-//        return unrestrictedVerbList;
-//    }
-//
-//    /**
-//     * @Overload
-//     * getUnrestrictedRandomVerbID(int id)
-//     * -----------------------------------
-//     * Creates a list of two consecutive (unrestricted) verb IDs with the first ID
-//     * passed as an argument.
-//     * @return
-//     */
-//    public List<Integer> getUnrestrictedRandomVerbID(int id1){
-//
-//        int id2;
-//        if(id1 == 1)
-//            id2 = id1 + 1;
-//        else
-//            id2 = id1 - 1;
-//
-//        List<Integer> unrestrictedVerbList = new ArrayList<>();  // add to verb list
-//        unrestrictedVerbList.add(id1);
-//        unrestrictedVerbList.add(id2);
-//
-//        return unrestrictedVerbList;
-//    }
-
 
 
     /**
@@ -874,14 +717,5 @@ public class RandomGenerator<T> {
         return shuffleList;
 
     }
-
-
-
-
-
-
-    // ------------------------------CORRECT VERB ID -------------------------------------------
-
-
 
 }

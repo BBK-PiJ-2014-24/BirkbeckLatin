@@ -55,6 +55,7 @@ public class Adjective implements NounEtc {
     @Override
     public String makeLatinWord(DatabaseAccess databaseAccess, String number, String noun_Case) {
 
+        // Check if Adjective Does Not Decline
         int wordLength = mNominative.length();
         if( mDeclension == 0){
             mLatinAdjective = mNominative;
