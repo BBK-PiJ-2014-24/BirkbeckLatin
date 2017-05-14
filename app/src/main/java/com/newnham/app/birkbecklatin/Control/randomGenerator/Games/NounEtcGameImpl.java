@@ -491,7 +491,7 @@ public class NounEtcGameImpl implements NounEtcGame {
             itemList.add(item);  // Build Item List
         }
 
-        mTheta = ItemResponseTheory.calcNewTheta(itemList); // Calc new Theta.
+        mTheta = ItemResponseTheory.calcNewTheta(itemList, mTheta); // Calc new Theta.
 
         if(mTheta > 2 && mSkillLevel < 5)
             mSkillLevel = mSkillLevel + 1;

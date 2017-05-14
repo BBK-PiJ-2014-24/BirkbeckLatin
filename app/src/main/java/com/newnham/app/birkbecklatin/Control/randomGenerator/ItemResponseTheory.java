@@ -38,6 +38,7 @@ public class ItemResponseTheory {
      * (ALL CORRECT items, ALL CORRECT items).
      *
      * @param list - List of Items
+     * @param theta - Initial theta Value
      * Note that an item object contains:
      *      theta - Theta Before Update - the examinee's ability
      *      mark - Correct/Incorrect Answer [wrong: 0, right: +1]
@@ -46,12 +47,12 @@ public class ItemResponseTheory {
      *      lambda - discrimination parameter
      * @return the updated theta.
      */
-    public static double calcNewTheta(List<Item> list) {
+    public static double calcNewTheta(List<Item> list, double theta) {
 
         double tolerance = 0.05;
-        double adjustedTheta = 100;  // Dummy High Level
+        double adjustedTheta = 100;  // Initial high setting.
         double c;
-        double theta = 0;  // Dummy initial setting
+       // double theta = 0;  // Dummy initial setting
         double alpha;
         double lambda;
         int mark;
@@ -66,9 +67,9 @@ public class ItemResponseTheory {
             sumMark = sumMark + item.getMark();
         }
         if(sumMark == 0)
-            return -3;        // FULL MARKS
+            return -3;        // ZERO MARKS
         else if (sumMark == list.size())
-            return 3;         // ZERO MARKS
+            return 3;         // FULL MARKS
         else {
             while (Math.abs(adjustedTheta - theta) > tolerance) {
                 for (Item item : list) {
