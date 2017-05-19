@@ -19,6 +19,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.newnham.app.birkbecklatin.Model.LatinConstants.TENSE_FUTURE;
+import static com.newnham.app.birkbecklatin.Model.LatinConstants.TENSE_FUTURE_PERFECT;
+import static com.newnham.app.birkbecklatin.Model.LatinConstants.TENSE_IMPERFECT;
+import static com.newnham.app.birkbecklatin.Model.LatinConstants.TENSE_PERFECT;
+import static com.newnham.app.birkbecklatin.Model.LatinConstants.TENSE_PLUPERFECT;
+import static com.newnham.app.birkbecklatin.Model.LatinConstants.TENSE_PRESENT;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.isIn;
@@ -37,43 +43,6 @@ public class AdvancedVerbRandomGeneratorTests {
 
     // Fields
     // ------
-    String SINGULAR = "singular";
-    String PLURAL = "plural";
-
-
-    String GENDER_MALE = "m";
-    String GENDER_FEMALE = "f";
-    String GENDER_NEUTER = "n";
-
-    String NOMINATIVE = "Nominative";
-    String ACCUSATIVE = "Accusative";
-    String GENITIVE = "Genitive";
-    String DATIVE = "Dative";
-    String ABLATIVE = "Ablative";
-    String VOCATIVE = "Vocative";
-
-    String NOUN_TABLE = "Noun_List";
-    String ADJECTIVE_TABLE = "Adjective_List";
-    String ADVERB_TABLE = "Adverb_List";
-    String PREPOSITION_TABLE = "Preposition_List";
-    String CONJUNCTION_TABLE = "Conjunction_List";
-
-    String NOUN = "Noun";
-    String ADJECTIVE = "Adjective";
-    String PREPOSITION = "Preposition";
-    String CONJUNCTION = "Conjunction";
-    String ADVERB = "Adverb";
-    String ADJECTIVE_COMPARATIVE = "AdjectiveComparative";
-    String ADJECTIVE_SUPERLATIVE = "AdjectiveSuperlative";
-    String ADVERB_COMPARATIVE = "AdverbComparative";
-    String ADVERB_SUPERLATIVE = "AdverbSuperlative";
-
-    final String VERB_TENSE_PRESENT = "Present";
-    final String VERB_TENSE_IMPERFECT = "Imperfect";
-    final String VERB_TENSE_FUTURE = "Future";
-    final String VERB_TENSE_PERFECT = "Perfect";
-    final String VERB_TENSE_PLUPERFECT = "Pluperfect";
-    final String VERB_TENSE_FUTURE_PERFECT = "Future Perfect";
 
     RandomGenerator randomGenerator;
     DatabaseAccess databaseAccess;
@@ -273,23 +242,23 @@ public class AdvancedVerbRandomGeneratorTests {
         }
 
         int x = 5;
-        assertThat("Num VERB_TENSE_PRESENT Simulations", map.get(VERB_TENSE_PRESENT), greaterThan(sample - toleranceForSample));
-        assertThat("Num VERB_TENSE_PRESENT Simulations", map.get(VERB_TENSE_PRESENT), lessThan(sample + toleranceForSample));
+        assertThat("Num VERB_TENSE_PRESENT Simulations", map.get(TENSE_PRESENT), greaterThan(sample - toleranceForSample));
+        assertThat("Num VERB_TENSE_PRESENT Simulations", map.get(TENSE_PRESENT), lessThan(sample + toleranceForSample));
 
-        assertThat("Num VERB_TENSE_IMPERFECT Simulations", map.get(VERB_TENSE_IMPERFECT), greaterThan(sample - toleranceForSample));
-        assertThat("Num VERB_TENSE_IMPERFECT Simulations", map.get(VERB_TENSE_IMPERFECT), lessThan(sample + toleranceForSample));
+        assertThat("Num VERB_TENSE_IMPERFECT Simulations", map.get(TENSE_IMPERFECT), greaterThan(sample - toleranceForSample));
+        assertThat("Num VERB_TENSE_IMPERFECT Simulations", map.get(TENSE_IMPERFECT), lessThan(sample + toleranceForSample));
 
-        assertThat("Num VERB_TENSE_FUTURE Simulations", map.get(VERB_TENSE_FUTURE), greaterThan(sample - toleranceForSample));
-        assertThat("Num VERB_TENSE_FUTURE Simulations", map.get(VERB_TENSE_FUTURE), lessThan(sample + toleranceForSample));
+        assertThat("Num VERB_TENSE_FUTURE Simulations", map.get(TENSE_FUTURE), greaterThan(sample - toleranceForSample));
+        assertThat("Num VERB_TENSE_FUTURE Simulations", map.get(TENSE_FUTURE), lessThan(sample + toleranceForSample));
 
-        assertThat("Num VERB_TENSE_PERFECT Simulations", map.get(VERB_TENSE_PERFECT), greaterThan(sample - toleranceForSample));
-        assertThat("Num VERB_TENSE_PERFECT Simulations", map.get(VERB_TENSE_PERFECT), lessThan(sample + toleranceForSample));
+        assertThat("Num VERB_TENSE_PERFECT Simulations", map.get(TENSE_PERFECT), greaterThan(sample - toleranceForSample));
+        assertThat("Num VERB_TENSE_PERFECT Simulations", map.get(TENSE_PERFECT), lessThan(sample + toleranceForSample));
 
-        assertThat("Num VERB_TENSE_PLUPERFECT Simulations", map.get(VERB_TENSE_PLUPERFECT), greaterThan(sample - toleranceForSample));
-        assertThat("Num VERB_TENSE_PLUPERFECT Simulations", map.get(VERB_TENSE_PLUPERFECT), lessThan(sample + toleranceForSample));
+        assertThat("Num VERB_TENSE_PLUPERFECT Simulations", map.get(TENSE_PLUPERFECT), greaterThan(sample - toleranceForSample));
+        assertThat("Num VERB_TENSE_PLUPERFECT Simulations", map.get(TENSE_PLUPERFECT), lessThan(sample + toleranceForSample));
 
-        assertThat("Num VERB_TENSE_FUTURE_PERFECT Simulations", map.get(VERB_TENSE_FUTURE_PERFECT), greaterThan(sample - toleranceForSample));
-        assertThat("Num VERB_TENSE_FUTURE_PERFECT Simulations", map.get(VERB_TENSE_FUTURE_PERFECT), lessThan(sample + toleranceForSample));
+        assertThat("Num VERB_TENSE_FUTURE_PERFECT Simulations", map.get(TENSE_FUTURE_PERFECT), greaterThan(sample - toleranceForSample));
+        assertThat("Num VERB_TENSE_FUTURE_PERFECT Simulations", map.get(TENSE_FUTURE_PERFECT), lessThan(sample + toleranceForSample));
     }
 
 
