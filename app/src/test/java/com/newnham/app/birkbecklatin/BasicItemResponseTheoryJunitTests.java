@@ -140,7 +140,7 @@ public class BasicItemResponseTheoryJunitTests {
         itemList.add(item3);
 
 
-        double newTheta = ItemResponseTheory.calcNewTheta( itemList );
+        double newTheta = ItemResponseTheory.calcNewTheta( itemList, theta5 );
         int x = 5;
 
         assertTrue("calcTheta", Math.abs(newTheta - answerTheta)< tolerance);
@@ -166,6 +166,8 @@ public class BasicItemResponseTheoryJunitTests {
 
         double lambda1 = 1.0;   // discrimination
 
+
+
         Item item1 = new Item(c, theta5, alpha1, lambda1, mark1);
 
         List<Item> itemList = new ArrayList<>();
@@ -182,7 +184,7 @@ public class BasicItemResponseTheoryJunitTests {
         itemList.add(item1);
         itemList.add(item1);
 
-        double newTheta = ItemResponseTheory.calcNewTheta( itemList );
+        double newTheta = ItemResponseTheory.calcNewTheta( itemList, theta5 );
 
         assertEquals("test ALL CORRECT", 3.0,newTheta,0.1);
     }
@@ -222,7 +224,7 @@ public class BasicItemResponseTheoryJunitTests {
         itemList.add(item2);
         itemList.add(item2);
 
-        double newTheta = ItemResponseTheory.calcNewTheta( itemList );
+        double newTheta = ItemResponseTheory.calcNewTheta( itemList, theta5 );
 
         assertEquals("test ALL WRONG", -3.0,newTheta,0.1);
     }

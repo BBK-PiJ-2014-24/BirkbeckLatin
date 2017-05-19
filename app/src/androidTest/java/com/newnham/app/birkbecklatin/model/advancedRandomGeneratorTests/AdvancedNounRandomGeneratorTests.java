@@ -67,12 +67,6 @@ public class AdvancedNounRandomGeneratorTests {
     String ADVERB_COMPARATIVE = "AdverbComparative";
     String ADVERB_SUPERLATIVE = "AdverbSuperlative";
 
-    final String VERB_TENSE_PRESENT = "Present";
-    final String VERB_TENSE_IMPERFECT = "Imperfect";
-    final String VERB_TENSE_FUTURE = "Future";
-    final String VERB_TENSE_PERFECT = "Perfect";
-    final String VERB_TENSE_PLUPERFECT = "Pluperfect";
-    final String VERB_TENSE_FUTURE_PERFECT = "Future Perfect";
 
     int numNounRegular;
     int numNounIrregular;
