@@ -226,7 +226,7 @@ public class BasicItemResponseTheoryJunitTests {
 
         double newTheta = ItemResponseTheory.calcNewTheta( itemList, theta5 );
 
-        assertEquals("test ALL WRONG", -3.0,newTheta,0.1);
+        assertEquals("test IRT ALGO", -3.0,newTheta,0.1);
     }
 
     @Test
