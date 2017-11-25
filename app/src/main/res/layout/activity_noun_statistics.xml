@@ -5,5 +5,5 @@
     android:id="@+id/activity_noun_statistics"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.newnham.app.birkbecklatin.view.NounStatisticsActivity">
+    tools:context="com.newnham.app.GCSE_Latin.view.NounStatisticsActivity">
 </FrameLayout>

@@ -3,7 +3,7 @@
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             tools:context="com.newnham.app.birkbecklatin.view.NounPagerSelectionFragment">
+                                             tools:context="com.newnham.app.GCSE_Latin.view.NounPagerSelectionFragment">
 
     <Button
         android:id="@+id/buttonNoun1"

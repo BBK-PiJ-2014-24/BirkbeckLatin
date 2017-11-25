@@ -5,6 +5,6 @@
     android:id="@+id/activity_noun_game"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.newnham.app.birkbecklatin.view.NounGameActivity">
+    tools:context="com.newnham.app.GCSE_Latin.view.NounGameActivity">
 </FrameLayout>
 
