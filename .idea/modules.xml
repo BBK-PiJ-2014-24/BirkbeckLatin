@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BirkbeckLatin.iml" filepath="$PROJECT_DIR$/BirkbeckLatin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GCSE_Latin.iml" filepath="$PROJECT_DIR$/GCSE_Latin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

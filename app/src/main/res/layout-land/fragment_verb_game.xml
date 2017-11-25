@@ -3,7 +3,7 @@
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             tools:context="com.newnham.app.birkbecklatin.view.VerbGameFragment">
+                                             tools:context="com.newnham.app.GCSE_Latin.view.VerbGameFragment">
 
     <TextView
         android:id="@+id/questionText"
